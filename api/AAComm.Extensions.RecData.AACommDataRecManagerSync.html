@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AACommDataRecManagerSync | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AACommDataRecManagerSync | Agito AAComm SDK ">
+      
+      <meta name="description" content="synchronous wrapper for the functionality of  NOT thread-safe !!!">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAComm_Extensions_RecData_AACommDataRecManagerSync.md&amp;value=---%0Auid%3A%20AAComm.Extensions.RecData.AACommDataRecManagerSync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync">
+
+
+
+  <h1 id="AAComm_Extensions_RecData_AACommDataRecManagerSync" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync" class="text-break">
+Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Extensions.html">Extensions</a>.<a class="xref" href="AAComm.Extensions.RecData.html">RecData</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>synchronous wrapper for the functionality of <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html">AACommDataRecManager</a><p></p>
+<p>NOT thread-safe !!!</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AACommDataRecManagerSync</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AACommDataRecManagerSync</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync__ctor_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.#ctor*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync__ctor" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.#ctor">
+  AACommDataRecManagerSync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>default CTOR for the synchronous wrapper of <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html">AACommDataRecManager</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommDataRecManagerSync()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.CommAPI)">
+  ForceTrigger(CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_AAComm_CommAPI_">ForceTrigger(CommAPI)</a><p></p>
+<p>NOTE: a 'sleep' may be required between 'ForceTrigger' and <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_CommAPI_System_String__">UploadRecData(CommAPI, out string)</a> calls</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ForceTrigger(CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string for success, error description for 'error'</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)">
+  SendRecordingParams(RecordingSetupContainer, CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_">SendRecordingParams(RecordingSetupContainer, CommAPI)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SendRecordingParams(RecordingSetupContainer recSetup, CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recSetup</code> <a class="xref" href="AAComm.Extensions.RecData.RecordingSetupContainer.html">RecordingSetupContainer</a></dt>
+    <dd><p>recording setup</p>
+</dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string for success, error description for 'error'</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.CommAPI)">
+  StartRecording(CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_AAComm_CommAPI_">StartRecording(CommAPI)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StartRecording(CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string for success, error description for 'error'</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.CommAPI)">
+  StopRecording(CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_AAComm_CommAPI_">StopRecording(CommAPI)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StopRecording(CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string for success, error description for 'error'</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_CommAPI_System_String__" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI,System.String@)">
+  UploadRecData(CommAPI, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_AAComm_CommAPI_">UploadRecData(CommAPI)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RecordingDataContainer UploadRecData(CommAPI api, out string error)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+    <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string in case of success, error description for 'error'</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html">RecordingDataContainer</a></dt>
+    <dd><p>recording results container, NULL in case of error</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)">
+  WaitForRecToEnd(uint, CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_">WaitForRecToEnd(uint, CommAPI)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string WaitForRecToEnd(uint timeoutMs, CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>the maximum allowed time to wait for the recording to complete</p>
+</dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>empty string for success, error description for 'error'</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

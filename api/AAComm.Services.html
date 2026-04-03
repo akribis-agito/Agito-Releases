@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace AAComm.Services | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace AAComm.Services | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services">
+
+  <h1 id="AAComm_Services" data-uid="AAComm.Services" class="text-break">Namespace AAComm.Services</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommAxisHelper.html">AACommAxisHelper</a></dt>
+      <dd><p>a helper class for controller parameters Axis manipulations</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a></dt>
+      <dd><pre><code>this class is used as an argument, when invoking &lt;xref href=&quot;AAComm.Services.AACommMessage.OnReplyReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; passed to &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;/&gt;
+</code></pre>
+<p></p>
+<pre><code>and as the return value of &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommExclusiveCommsManager.html">AACommExclusiveCommsManager</a></dt>
+      <dd><p>a class to start/stop AACommServer hardware channel &quot;exclusive communication&quot; mode</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommMessage.html">AACommMessage</a></dt>
+      <dd><pre><code>This class describes the message sent to AAComm &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; methods
+</code></pre>
+<p></p>
+<pre><code>Two CTOR sets are available: for the synchronous SendReceive() function, and the asynchronous Send() function
+</code></pre>
+<p></p>
+<pre><code>Every CTOR set has 2 &quot;sub-types&quot; regarding &lt;xref href=&quot;AAComm.Services.AACommMessage.MessageType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Services.AACommMessage.TimeoutMs&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+The 'implicit' CTOR resolves these parameters automatically from the &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; argument
+</code></pre>
+<p></p>
+<pre><code>The 'explicit' CTOR expects the user to specify these arguments. For expert use only.
+</code></pre>
+<p></p>
+<pre><code>To use the &quot;Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessage&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special CNCA Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNC&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special CNCB Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNCB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special Bulk Message for CNCA&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulk&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulkB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommVerifySingleClient.html">AACommVerifySingleClient</a></dt>
+      <dd><p>a helper class used to verify if the AACommServer is used by a single (the querying) client</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ARPTools.html">ARPTools</a></dt>
+      <dd><p>a helper class for discovering Ethernet connections</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ARPTools.EthernetLookupResults.html">ARPTools.EthernetLookupResults</a></dt>
+      <dd><p>container for <a class="xref" href="AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_GetInterNetworkEthernetInterfaces_System_Boolean_">GetInterNetworkEthernetInterfaces(bool)</a> return</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ARPTools.LookupResult.html">ARPTools.LookupResult</a></dt>
+      <dd><p>class for <a class="xref" href="AAComm.Services.ARPTools.EthernetLookupResults.html">ARPTools.EthernetLookupResults</a> result items</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AllStatInterpreter.html">AllStatInterpreter</a></dt>
+      <dd><pre><code>AllStat controller reply interpreter class
+</code></pre>
+<p></p>
+<pre><code>See &lt;xref href=&quot;AAComm.Shared.AllStatData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Shared.AllStatAxisData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.COMTools.html">COMTools</a></dt>
+      <dd><pre><code>a helper class for listing relevant (or ALL) COM ports
+</code></pre>
+<p></p>
+<pre><code>Windows .NET ONLY!!! (returns empty list on .NET 6.0, etc.)
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.CanDescriptionBuilder.html">CanDescriptionBuilder</a></dt>
+      <dd><pre><code>a helper class, used for building CAN/Ethernet description codes and the other way around
+</code></pre>
+<p></p>
+<pre><code>used at very specific cases, i.e. user program.
+</code></pre>
+<p></p>
+<pre><code>please refer to Controller communications protocol, or contact API provider for more information
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+      <dd><p>this class is the connection data container, used for connecting to a controller. See <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a><p></p>
+<p>see <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html">ConnectionDataDefaults</a> for defaults</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerErrorInterpreter.html">ControllerErrorInterpreter</a></dt>
+      <dd><pre><code>a singleton container for controller error codes and their description
+</code></pre>
+<p></p>
+<pre><code>initialized once for all API instances
+</code></pre>
+<p></p>
+<pre><code>provides parsing and interpretation functionality
+</code></pre>
+<p></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerIdentityConnectivity.html">ControllerIdentityConnectivity</a></dt>
+      <dd><p>Provides information about the connectivity identities of a controller: Ethernet IP, MAC address, RS232 port, etc.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerIdentityContainer.html">ControllerIdentityContainer</a></dt>
+      <dd><pre><code>a container class that contains connected controller identity parameters
+</code></pre>
+<p></p>
+<pre><code>also indicates whether the controller is in boot mode
+</code></pre>
+<p></p>
+<pre><code>automatically initialized by &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+may be re-initialized (if need) by using &lt;xref href=&quot;AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_01.html">ControllerIdentityFeature_01</a></dt>
+      <dd><p>a container class for the &quot;New Features 1&quot; bitfield (Identity[26])</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_02.html">ControllerIdentityFeature_02</a></dt>
+      <dd><p>a container class for the &quot;New Features 2&quot; bitfield (Identity[62])</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerIdentityVersions.html">ControllerIdentityVersions</a></dt>
+      <dd><p>Provides controller versions information: FW, FPGA, CM, etc.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+      <dd><pre><code>a container class that contains connected controller messages data
+</code></pre>
+<p></p>
+<pre><code>automatically initialized by &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+automatically cleared by &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (or any event that leads to disconnection)
+</code></pre>
+<p></p>
+<pre><code>may be re-initialized (if need) by using &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitContainerFromFile(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+NOTE: CTOR will throw if failed initializing container with default messages (indicates API package corruption)
+</code></pre>
+<p></p>
+<pre><code>In case of &lt;xref href=&quot;AAComm.Shared.ConnectResult.CorruptAboutFile&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, see &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitErr&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for &quot;corruption&quot; reason
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerMessagesContainer.MessageCategory.html">ControllerMessagesContainer.MessageCategory</a></dt>
+      <dd><p>class that represents messages list within the same category</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.FloatHelper.html">FloatHelper</a></dt>
+      <dd><pre><code>Central floating-point resolution for hardware-uploaded data.
+</code></pre>
+<p></p>
+<pre><code>Controller parameters may be transmitted as bit-masked int/long values representing IEEE 754 float/double.
+</code></pre>
+<p></p>
+<pre><code>This class resolves those raw values to their correct floating-point representation.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.GlobalVar.html">GlobalVar</a></dt>
+      <dd><p>user program Header Info &quot;Global Variable&quot; description</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.HeaderParser.html">HeaderParser</a></dt>
+      <dd><p>a service class to parse the currently loaded User Program Header data, obtained by inquiring &quot;AProgInfo&quot;</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.LocaleProvider.html">LocaleProvider</a></dt>
+      <dd><pre><code>Singleton object that provides localized Error and Status strings
+</code></pre>
+<p></p>
+<pre><code>Currently supported languages: &quot;en-US&quot;, &quot;zh-CN&quot;
+</code></pre>
+<p></p>
+<pre><code>Use &lt;xref href=&quot;AAComm.Services.LocaleProvider.GetError(System.Int32)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for localized Controller Errors strings
+</code></pre>
+<p></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.MessageData.html">MessageData</a></dt>
+      <dd><p>this class describes and contains the different parameters every controller message has</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.NumberFormatter.html">NumberFormatter</a></dt>
+      <dd><pre><code>a service class for formatting numbers to UI display strings
+</code></pre>
+<p></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.SpecialMessages.html">SpecialMessages</a></dt>
+      <dd><pre><code>Centralized constants for controller command/parameter mnemonic strings.
+</code></pre>
+<p></p>
+<pre><code>These are the bare mnemonics — the axis prefix (e.g. 'A') is added at the call site.
+</code></pre>
+<p></p>
+<pre><code>Example usage: &lt;code&gt;$&quot;A{SpecialMessages.About}&quot;&lt;/code&gt; sends the About command for axis A.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.TaskFunc.html">TaskFunc</a></dt>
+      <dd><p>user program Header Info &quot;Task&quot;/&quot;Function&quot; description</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.UserProgVarsAdapter.html">UserProgVarsAdapter</a></dt>
+      <dd><pre><code>a container class for uploading, managing and storing User Program Tasks and Global Variables names
+</code></pre>
+<p></p>
+<pre><code>for 'transparent' use in AAComm applications
+</code></pre>
+<p></p>
+<pre><code>can be used only after AAComm object has been initialized and &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; has been successfully called
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.XmlHandler.html">XmlHandler</a></dt>
+      <dd><p>a helper class, used internally by API to parse XML settings and data files</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.XmlHandler.TextNodeData.html">XmlHandler.TextNodeData</a></dt>
+      <dd><p>XML entry container class</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

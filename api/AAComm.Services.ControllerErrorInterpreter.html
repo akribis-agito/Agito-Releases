@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ControllerErrorInterpreter | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ControllerErrorInterpreter | Agito AAComm SDK ">
+      
+      <meta name="description" content="a singleton container for controller error codes and their description   initialized once for all API instances   provides parsing and interpretation functionality">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAComm_Services_ControllerErrorInterpreter.md&amp;value=---%0Auid%3A%20AAComm.Services.ControllerErrorInterpreter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.ControllerErrorInterpreter">
+
+
+
+  <h1 id="AAComm_Services_ControllerErrorInterpreter" data-uid="AAComm.Services.ControllerErrorInterpreter" class="text-break">
+Class ControllerErrorInterpreter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><pre><code>a singleton container for controller error codes and their description
+</code></pre>
+<p></p>
+<pre><code>initialized once for all API instances
+</code></pre>
+<p></p>
+<pre><code>provides parsing and interpretation functionality
+</code></pre>
+<p></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ControllerErrorInterpreter</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ControllerErrorInterpreter</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_BootErr" data-uid="AAComm.Services.ControllerErrorInterpreter.BootErr">
+  BootErr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>any message returned by the API with this prefix, indicates the controller is in BOOT mode, and an error has occurred
+</code></pre>
+<p></p>
+<pre><code>see &lt;xref href=&quot;AAComm.Services.AACommEventArgs.IsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string BootErr = &quot;BOOT ERR&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_ErrPrefix" data-uid="AAComm.Services.ControllerErrorInterpreter.ErrPrefix">
+  ErrPrefix
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>any message returned by the API with this prefix, indicates an error has occurred
+</code></pre>
+<p></p>
+<pre><code>see &lt;xref href=&quot;AAComm.Services.AACommEventArgs.IsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ErrPrefix = &quot;ERR&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_PcSuiteErr" data-uid="AAComm.Services.ControllerErrorInterpreter.PcSuiteErr">
+  PcSuiteErr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>any message returned by the API with this prefix, indicates an incorrect message format was detected.
+</code></pre>
+<p></p>
+<pre><code>the message was NOT sent to the controller
+</code></pre>
+<p></p>
+<pre><code>see &lt;xref href=&quot;AAComm.Services.AACommEventArgs.IsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PcSuiteErr = &quot;PC Suite: ERR&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_PcSuiteStr" data-uid="AAComm.Services.ControllerErrorInterpreter.PcSuiteStr">
+  PcSuiteStr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>prefix indicates that a message is generated by PCSuite, and NOT by controller
+</code></pre>
+<p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string PcSuiteStr = &quot;PC Suite: &quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_SyncErr" data-uid="AAComm.Services.ControllerErrorInterpreter.SyncErr">
+  SyncErr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>any message returned by the API with this prefix, indicates a synchronization-related error has occurred
+</code></pre>
+<p></p>
+<pre><code>may be invoked by &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; or returned by &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+see &lt;xref href=&quot;AAComm.Services.AACommEventArgs.IsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string SyncErr = &quot;ERR Sync: &quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_Instance_" data-uid="AAComm.Services.ControllerErrorInterpreter.Instance*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_Instance" data-uid="AAComm.Services.ControllerErrorInterpreter.Instance">
+  Instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>static instance to access the singleton</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ControllerErrorInterpreter Instance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerErrorInterpreter.html">ControllerErrorInterpreter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_GetErrorCodeFromErrorString_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorCodeFromErrorString*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_GetErrorCodeFromErrorString_System_String_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorCodeFromErrorString(System.String)">
+  GetErrorCodeFromErrorString(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets the error code from error string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetErrorCodeFromErrorString(string error)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the string containing <a class="xref" href="AAComm.Services.ControllerErrorInterpreter.html#AAComm_Services_ControllerErrorInterpreter_ErrPrefix">ErrPrefix</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>error code, &quot;4005&quot; if not found</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_GetErrorDescriptionByAACommEventArgs_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorDescriptionByAACommEventArgs*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_GetErrorDescriptionByAACommEventArgs_AAComm_Services_AACommEventArgs_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorDescriptionByAACommEventArgs(AAComm.Services.AACommEventArgs)">
+  GetErrorDescriptionByAACommEventArgs(AACommEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns the error description, Code + Description (i.e. ERR123: Description)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetErrorDescriptionByAACommEventArgs(AACommEventArgs e)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a></dt>
+    <dd><p>controller reply</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>error description, &quot;Unknown&quot; if not found</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_GetErrorDescriptionByCode_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorDescriptionByCode*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_GetErrorDescriptionByCode_System_Int32_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetErrorDescriptionByCode(System.Int32)">
+  GetErrorDescriptionByCode(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns the error description text</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetErrorDescriptionByCode(int errorCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the error code</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>error description, &quot;Unknown&quot; if not found</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_GetFormattedErrorText_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetFormattedErrorText*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_GetFormattedErrorText_AAComm_Services_AACommEventArgs_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Services.ControllerErrorInterpreter.GetFormattedErrorText(AAComm.Services.AACommEventArgs,AAComm.Services.ControllerMessagesContainer)">
+  GetFormattedErrorText(AACommEventArgs, ControllerMessagesContainer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns a string describing the error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetFormattedErrorText(AACommEventArgs e, ControllerMessagesContainer messagesContainer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a></dt>
+    <dd><p>the message containing <a class="xref" href="AAComm.Services.ControllerErrorInterpreter.html#AAComm_Services_ControllerErrorInterpreter_ErrPrefix">ErrPrefix</a></p>
+</dd>
+    <dt><code>messagesContainer</code> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+    <dd><p>API controller messages container <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>formatted error text</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerErrorInterpreter_IsAssignedValOutOfRange_" data-uid="AAComm.Services.ControllerErrorInterpreter.IsAssignedValOutOfRange*"></a>
+
+  <h3 id="AAComm_Services_ControllerErrorInterpreter_IsAssignedValOutOfRange_System_Int32_" data-uid="AAComm.Services.ControllerErrorInterpreter.IsAssignedValOutOfRange(System.Int32)">
+  IsAssignedValOutOfRange(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>static function to check whether a controller error code indicates that the assigned value is out of range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAssignedValOutOfRange(int errCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>controller error code</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether the error is &quot;assigned value is out of range&quot;</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ControllerErrorInterpreter.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace AAComm.Extensions | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace AAComm.Extensions | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Extensions">
+
+  <h1 id="AAComm_Extensions" data-uid="AAComm.Extensions" class="text-break">Namespace AAComm.Extensions</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommBinFwInfo.html">AACommBinFwInfo</a></dt>
+      <dd><p>Helper class for parsing AGM800 binary firmware files (.bin) to extract identity and version information.
+Uses magic markers embedded in the Zynq binary format.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommDownloadFPGA.html">AACommDownloadFPGA</a></dt>
+      <dd><pre><code>Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)
+</code></pre>
+<p></p>
+<pre><code>When starting the DL process, the API state must be NOT connected.
+</code></pre>
+<p></p>
+<pre><code>Process ends with API state: Disconnected (success or error)
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommDownloadFPGAEtherCat.html">AACommDownloadFPGAEtherCat</a></dt>
+      <dd><pre><code>Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)
+</code></pre>
+<p></p>
+<pre><code>When starting the DL process, the API state must be NOT connected.
+</code></pre>
+<p></p>
+<pre><code>Process ends with API state: Disconnected (success or error)
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommDownloadFPGARemote.html">AACommDownloadFPGARemote</a></dt>
+      <dd><pre><code>Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit
+</code></pre>
+<p></p>
+<pre><code>Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)
+When starting the DL process, the API state must be NOT connected.
+</code></pre>
+<p></p>
+<pre><code>Process ends with API state: Disconnected (success or error)
+</code></pre>
+<p></p>
+<pre><code>Process can't be canceled in the middle.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommDownloadFW.html">AACommDownloadFW</a></dt>
+      <dd><pre><code>Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)
+</code></pre>
+<p></p>
+<pre><code>When starting the DL process, the API state must be NOT connected.
+</code></pre>
+<p></p>
+<pre><code>Process ends with API state: Disconnected (success or error)
+</code></pre>
+<p></p>
+<pre><code>NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommDownloadUP.html">AACommDownloadUP</a></dt>
+      <dd><pre><code>Asynchronous service class used for downloading User Program to controller
+</code></pre>
+<p></p>
+<pre><code>The API object passed in CTOR must be connected, and NOT used during download process
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommFwInfo.html">AACommFwInfo</a></dt>
+      <dd><pre><code>Helper class used to read HEX files FW info, and to validate HEX/BIN and VER files prior to FW download &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFW&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+For reading FW info, create an instance of this class &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.%23ctor(System.String%2cAAComm.Services.ConnectionData)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+For validating FW files prior to FW download, use the method &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.ValidateFwFiles(AAComm.Services.ConnectionData%2cSystem.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+Older FW HEX files don't contain FW information. Opening such files will result in all the properties being invalid.
+</code></pre>
+<p></p>
+<pre><code>Use &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.DataValid&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to verify that the FW information was read successfully.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommRemoteFpgaInfo.html">AACommRemoteFpgaInfo</a></dt>
+      <dd><pre><code>Helper class used to read and validate Master Remote Unit FPGA RPD (data) and VER (version) files.
+</code></pre>
+<p></p>
+<pre><code>Class instance is passed as an argument to&lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.StartDownloading(AAComm.CommAPI%2cAAComm.Services.ConnectionData%2cAAComm.Extensions.AACommRemoteFpgaInfo)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommFwInfo.Targets.html">AACommFwInfo.Targets</a></dt>
+      <dd><p>An enum listing target controller/core types for FW download</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

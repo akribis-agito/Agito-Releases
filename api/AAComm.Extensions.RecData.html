@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace AAComm.Extensions.RecData | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace AAComm.Extensions.RecData | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Extensions.RecData">
+
+  <h1 id="AAComm_Extensions_RecData" data-uid="AAComm.Extensions.RecData" class="text-break">Namespace AAComm.Extensions.RecData</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html">AACommDataRecManager</a></dt>
+      <dd><pre><code>Asynchronous service for data recording
+</code></pre>
+<p></p>
+<pre><code>The API object passed in all functions must be connected!
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManagerSync.html">AACommDataRecManagerSync</a></dt>
+      <dd><p>synchronous wrapper for the functionality of <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html">AACommDataRecManager</a><p></p>
+<p>NOT thread-safe !!!</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.LoggerDataContainer.html">LoggerDataContainer</a></dt>
+      <dd><pre><code>Parses a LoggerUpload response and resolves floating-point bit patterns to their correct values.
+</code></pre>
+<p></p>
+<pre><code>Wire format: &lt;code&gt;nPackets, [id, val1, val2, ...], [id, val1, val2, ...], ..., 0&lt;/code&gt;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.LoggerPacket.html">LoggerPacket</a></dt>
+      <dd><p>A single logger packet containing a packet ID and resolved parameter values</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.RecParamsResolver.html">RecParamsResolver</a></dt>
+      <dd><p>Resolves recording parameter names and header version based on the connected controller capabilities.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html">RecordingDataContainer</a></dt>
+      <dd><p>An object that contains all the data of a recording (setup and recorded data points)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.RecordingSetupContainer.html">RecordingSetupContainer</a></dt>
+      <dd><p>An object that contains all parameters required for a recording</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.ScopeDataContainer.html">ScopeDataContainer</a></dt>
+      <dd><pre><code>Parses a ScopeUpload response and resolves floating-point bit patterns to their correct values.
+</code></pre>
+<p></p>
+<pre><code>Wire format: &lt;code&gt;nPackets, [time, sig1, sig2, ...], [time, sig1, sig2, ...], ..., 0&lt;/code&gt;&lt;p&gt;&lt;/p&gt;
+
+Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.ScopeDataContainer.Data&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;[signalIndex][pointIndex]
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.ScopeDataPoint.html">ScopeDataPoint</a></dt>
+      <dd><p>A single scope data point containing a time tick and a resolved signal value</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.TriggerContainer.html">TriggerContainer</a></dt>
+      <dd><pre><code>A container to store information for a trigger
+</code></pre>
+<p></p>
+<pre><code>Intended to be used for recording data through &quot;AACommDataRecManager&quot;
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.TriggersDataContainer.html">TriggersDataContainer</a></dt>
+      <dd><p>a class that contains recording trigger parameters for Rec. System A</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.VectorDataContainer.html">VectorDataContainer</a></dt>
+      <dd><p>A class that contains recorded vector parameters and data</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.LogicalTriggerRelation.html">LogicalTriggerRelation</a></dt>
+      <dd><p>an enum to set the behavior of multiple logical triggers, <a class="xref" href="AAComm.Extensions.RecData.MultiTriggerModes.html#AAComm_Extensions_RecData_MultiTriggerModes_Logical">Logical</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.RecData.MultiTriggerModes.html">MultiTriggerModes</a></dt>
+      <dd><p>an enum to set the behavior of multiple triggers</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

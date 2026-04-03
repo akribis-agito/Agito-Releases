@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RecParamsResolver | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RecParamsResolver | Agito AAComm SDK ">
+      
+      <meta name="description" content="Resolves recording parameter names and header version based on the connected controller capabilities.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAComm_Extensions_RecData_RecParamsResolver.md&amp;value=---%0Auid%3A%20AAComm.Extensions.RecData.RecParamsResolver%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Extensions.RecData.RecParamsResolver">
+
+
+
+  <h1 id="AAComm_Extensions_RecData_RecParamsResolver" data-uid="AAComm.Extensions.RecData.RecParamsResolver" class="text-break">
+Class RecParamsResolver  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Extensions.html">Extensions</a>.<a class="xref" href="AAComm.Extensions.RecData.html">RecData</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Resolves recording parameter names and header version based on the connected controller capabilities.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RecParamsResolver</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RecParamsResolver</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver__ctor_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.#ctor*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver__ctor_AAComm_CommAPI_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.CommAPI,System.Int32)">
+  RecParamsResolver(CommAPI, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>MUST be used when API is CONNECTED!
+</code></pre>
+<p></p>
+    <code class="paramref">recSysID</code>: 1 = RecDataA (default), 2 = RecDataB, etc.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RecParamsResolver(CommAPI api, int recSysID = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd></dd>
+    <dt><code>recSysID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_AdvancedRecSupported_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.AdvancedRecSupported*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_AdvancedRecSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.AdvancedRecSupported">
+  AdvancedRecSupported
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the connected controller supports the advanced recording protocol (V3)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AdvancedRecSupported { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_DoubleSupported_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.DoubleSupported*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_DoubleSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.DoubleSupported">
+  DoubleSupported
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the controller supports double-precision floating-point parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DoubleSupported { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecData_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecData*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecData" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecData">
+  RecData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording data command keyword (e.g. &quot;RecData&quot;, &quot;RecDataA&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRecordedPoints_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRecordedPoints*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRecordedPoints" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRecordedPoints">
+  RecDataNumOfRecordedPoints
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Command string to query number of actually recorded points (e.g. &quot;RecData[25]&quot; or &quot;RecDataA[3]&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecDataNumOfRecordedPoints { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRequestedPoints_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRequestedPoints*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRequestedPoints" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRequestedPoints">
+  RecDataNumOfRequestedPoints
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Command string to query number of requested recording points (e.g. &quot;RecData[1]&quot; or &quot;RecDataA[1]&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecDataNumOfRequestedPoints { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecGap_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecGap*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecGap" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecGap">
+  RecGap
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording gap command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecGap { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecLength_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecLength*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecLength" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecLength">
+  RecLength
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording length command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecLength { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecParam_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecParam*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecParam" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecParam">
+  RecParam
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording parameter command keyword (e.g. &quot;RecParam&quot;, &quot;RecParamA&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecParam { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecStart_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStart*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStart" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStart">
+  RecStart
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start recording command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecStart { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecStat_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStat*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStat" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStat">
+  RecStat
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording status query keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecStat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecStop_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStop*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStop" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStop">
+  RecStop
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stop recording command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecStop { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecSysID_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecSysID*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecSysID" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecSysID">
+  RecSysID
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Recording system ID: 1 = RecDataA (default), 2 = RecDataB, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RecSysID { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigForce_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigForce*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigForce" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigForce">
+  RecTrigForce
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Force trigger command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecTrigForce { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigPos_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigPos*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigPos" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigPos">
+  RecTrigPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trigger position command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecTrigPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigValMaxSupported_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigValMaxSupported*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigValMaxSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigValMaxSupported">
+  RecTrigValMaxSupported
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the controller supports <a class="xref" href="AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_RecTrigValMaxS">RecTrigValMaxS</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RecTrigValMaxSupported { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_RecUpload_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecUpload*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecUpload" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecUpload">
+  RecUpload
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Upload recorded data command keyword</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string RecUpload { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_GetRecUploadNext_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetRecUploadNext*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_GetRecUploadNext_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetRecUploadNext(System.Int32)">
+  GetRecUploadNext(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the RecUploadNext command string for the given step index (1 = init, 2 = next packet)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetRecUploadNext(int idx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>idx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV1_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV1*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV1_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV1(System.Int32)">
+  HeaderV1(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>LEGACY support: resolves whether connected controller uses RecUpload 'V1' protocol that supports only 8 recording parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HeaderV1(int nRecParams)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nRecParams</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV3_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV3*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV3_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV3(AAComm.Services.ControllerMessagesContainer)">
+  HeaderV3(ControllerMessagesContainer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Resolves whether a controller supports the 'V3' (advanced) recording protocol based on its messages container.
+</code></pre>
+<p></p>
+<pre><code>V3 requires both RecDataB and RecTrigsLogic support.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HeaderV3(ControllerMessagesContainer mc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mc</code> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

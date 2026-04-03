@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>AAComm Changelog | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="AAComm Changelog | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/release-notes/aacomm-changelog.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="release-notes-aacomm">
+<h1 id="changelog">Changelog</h1>
+
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<hr>
+<h2 id="1200---2026-04-03">[12.0.0] - 2026-04-03</h2>
+<h3 id="-breaking">⚠️ Breaking</h3>
+<p>-AAComm/Services/ControllerIdentityContainer: Removed deprecated const MaxNumOfRecParams (use MaxNumOfRecVectors)
+-AAComm/Services/AllStatInterpreter: 	Constructor now requires CommAPI (old int-based constructor removed)
+-AAComm/Shared/AllStatData: 			All fields upgraded from int to double
+-AACommNative/ParseAllStatData: 		Removed newFeatures parameter
+-AAComm/Services/CanDescriptionBuilder:	Make class static, change methods
+0AAComm/Extensions/RemoteFpgaInfo:		Change FPGAVersion from 'Version' to 'string'</p>
+<h3 id="changed">Changed</h3>
+<p>-AAComm/Services/Feature_02: 			Add LockSrcZero_Supported
+-AAComm/Extensions/RecData: 			Expose RecParamsResolver class + more functionality
+-AAComm/Extensions/RecData: 			Expose RecUploadNext functionality
+-AAComm/Extensions/RecData: 			Expose LoggerDataContainer to parse LoggerUpload
+-AAComm/Extensions/RecData: 			Expose ScopeDataContainer to parse ScopeUpload
+-AAComm/Services/AllStatInterpreter:	Add float/double support
+-AAComm/Services:						Add a 'SpecialMessages' static class with common controller parameters
+-AACommServer + API:					Ethernet packet sniffer for debugging communication issues
+- Auto-captures traffic on Ethernet channel open/close
+- Session snapshots saved to Error/User/Marked folders on disconnect
+- UI: status indicator, statistics, enable checkbox, mark capture button
+- Ring buffer with configurable retention policies</p>
+<h3 id="fixed">Fixed</h3>
+<h2 id="-aacommextensionsrecdata-correct-floatdouble-rec-upload-data-processing-aacommextensionsrecdata-legacy-recupload-header-parsing-trigger-typemask-aacommservicesallstatinterpreter-correct-floatdouble-allstat-data-resolution-was-parsing-all-values-as-int">-AAComm/Extensions/RecData: 			Correct float/double rec upload data processing
+-AAComm/Extensions/RecData: 			Legacy RecUpload header parsing trigger type/mask
+-AAComm/Services/AllStatInterpreter: 	Correct float/double AllStat data resolution (was parsing all values as int)</h2>
+<h2 id="1110---2026-03-08">[11.1.0] - 2026-03-08</h2>
+<h3 id="changed-1">Changed</h3>
+<p>-AAComm:					'Push' notifications support + API
+-AAComm:					Read exact 'Identity' indexes at Connect() without
+'out of range' controller error break</p>
+<h3 id="fixed-1">Fixed</h3>
+<h2 id="-aacommservernet-sdk-10-resource-loading-fix-aacommservermulti-threaded-debug-log-access-crash">-AACommServer:				.NET SDK 10 Resource Loading Fix
+-AACommServer:				multi-threaded debug log access crash</h2>
+<h2 id="1100---2026-01-07">[11.0.0] - 2026-01-07</h2>
+<h3 id="-breaking-1">⚠️ Breaking</h3>
+<p>-AAComm and AACommServer: 	Deprecate .NET 4.0 targets</p>
+<h3 id="changed-2">Changed</h3>
+<h2 id="-aacommextensionsrecdatafix-incorrect-trigger-initialization-at-triggerscontainer-aacommservicesfeature_02-add-highprecgainscaleofr_supported-aacommfw-download-add-aacommbinfwinfo-class-for-agm800-fw-file-info-managefpga-refresh-file-contents-during-remote-fpga-download">-AAComm/Extensions/RecData:	Fix incorrect trigger initialization at TriggersContainer
+-AAComm/Services/Feature_02: Add HighPrecGainScaleOFR_Supported
+-AAComm/FW download: 		Add 'AACommBinFwInfo' class for AGM800 FW file info
+-Manage/FPGA: 				Refresh file contents during Remote FPGA download</h2>
+<h2 id="1000---2025-12-01">[10.0.0] - 2025-12-01</h2>
+<h3 id="-breaking-2">⚠️ Breaking</h3>
+<p>-AAComm/IdentityContainer: 	Rename property: IsInBoot 		-&gt; InBoot
+Rename property: NewFeatures_1 	-&gt; NewFeatures_01
+Factor-out 'Features' containers (NewFeatures_1,2)
+Factor-out 'Versions' container (FW, FPGA, CM, ESI,..)
+Factor-out 'Connectivity' items (IP, MAC, COM port,..)
+Move 'IsCiMasterExt' from IdentityContainer to ProductTypes
+Move 'IsEtherCATExt' from IdentityContainer to ProductTypes
+Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
+<h3 id="-breaking-3">⚠️ Breaking</h3>
+<p>-AAComm:					Remove: 'MinMsgDelayMsec', 'IgnoreDebug13', 'IsUser1', 'DrawCodeCRC',
+'ChannelType.User1UDP', 'ChannelType.User1RS232'</p>
+<h3 id="changed-3">Changed</h3>
+<p>-AAComm/IdentityContainer: 	Add support for 'New_Features_02' (Identity[62])
+-AAComm/IdentityContainer: 	DrawModeProfiler_Supported, HomingStep_21_Supported bits
+-AAComm/FW download:		Allow FW download over any IP address
+-AAComm/FW download: 		Fix flashing of AGD301 in boot mode
+-AACommServer CAN connect: 	Fix native CANLibCLS dependency resolution
+-AAComm/MessageData: 		Correctly apply scaling factor to 'float' and 'double' parameters</p>
+<hr>
+<h2 id="910---2025-07-25">[9.1.0] - 2025-07-25</h2>
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>AAComm: IdentityContainer: Add 'InjectTypeBeforeMotorOn' flag</li>
+<li>AACommServer: Improve Ethernet communication to fix 300 msec delay</li>
+</ul>
+<hr>
+<h2 id="901---2025-05-23">[9.0.1] - 2025-05-23</h2>
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>AACommServerAPI: Ethernet: multiple NIC up/down connect issue</li>
+</ul>
+<hr>
+<h2 id="900---2025-05-12">[9.0.0] - 2025-05-12</h2>
+<h3 id="-breaking-4">⚠️ Breaking</h3>
+<ul>
+<li>AAComm: Change IsAACommServerRunning() to return 'ConnectResult' enum</li>
+</ul>
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>AAComm: Remove ParamAbout handling &quot;hack&quot;</li>
+<li>AAComm: Improve reliability of StartAACommServer() function</li>
+<li>AAComm: Correct error code for disconnected Ethernet cable at Connect() call</li>
+</ul>
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>General: Correct the 'manual' AAComm package .net 6.0 and 8.0 targets</li>
+</ul>
+<hr>
+<h2 id="800---2025-03-21">[8.0.0] - 2025-03-21</h2>
+<h3 id="-breaking-5">⚠️ Breaking</h3>
+<ul>
+<li>AAComm/Services/ControllerMessagesContainer: Deprecate 'MnemonicToData' and 'AllMnemonicsHashLow' containers</li>
+</ul>
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>AAComm/OnResetProgress: Improve behavior and invoke in NEW task</li>
+<li>AAComm/Shared/ProductTypes: Mark AGM400 as 'deprecated'</li>
+<li>AAComm: Add implicit ParamAbout handling</li>
+</ul>
+<hr>
+<h2 id="712---2025-02-12">[7.1.2] - 2025-02-12</h2>
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>AAComm: Add protection against invalid AACommMessage format</li>
+<li>AAComm: Increase AGM800 'reset time' to 10 sec.</li>
+<li>AAComm: Extend FwInfo validations at Connect() with Current Rating</li>
+<li>General: Update YAML nuget to 16.3.0</li>
+</ul>
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>AAComm/Extensions/AACommDownloadFW: Fix AGM800 DL over non-default IP</li>
+</ul>
+<hr>
+<h2 id="711---2025-01-16">[7.1.1] - 2025-01-16</h2>
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>AACommServer: Improve faults logging, add &quot;save log&quot; button</li>
+</ul>
+<hr>
+<h2 id="710---2024-11-21">[7.1.0] - 2024-11-21</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>AAComm/Extensions/DlFPGA: Add support for EC FPGA DL</li>
+</ul>
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>AACommServer/API: Add .NET 4.0 target</li>
+<li>AAComm: Add PULSE_SYNC product type</li>
+<li>AAComm/Services: Add 'AACommAxisHelper' class</li>
+<li>AAComm/Extensions/AACommFwInfo: change signature of ValidateFwFiles()</li>
+</ul>
+<hr>
+<h2 id="704---2024-09-16">[7.0.4] - 2024-09-16</h2>
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>General: Allow connecting over wifi interfaces</li>
+</ul>
+<hr>
+<h2 id="703---2024-06-16">[7.0.3] - 2024-06-16</h2>
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>General: .NET 4.0 YamlDotNet reference 4.2.2</li>
+</ul>
+<hr>
+<h2 id="702---2024-06-11">[7.0.2] - 2024-06-11</h2>
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>AAComm: Add 'MessagesInBulk' property</li>
+<li>AAComm/Shared/DataRecParams: Add 'ParamsToRecParamArray' helper function</li>
+</ul>
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>AACommServer: &quot;Exclusive comms. access&quot; bug</li>
+</ul>
+<hr>
+<h2 id="701---2024-06-01">[7.0.1] - 2024-06-01</h2>
+<h3 id="-breaking-6">⚠️ Breaking</h3>
+<ul>
+<li>AAComm/Extensions/AACommFwInfo: Change CTOR signature</li>
+<li>ControllerIdentityContainer: SlowLoggerByTime -&gt; DataLoggerByTime</li>
+</ul>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Extensions: add &quot;RecData&quot; related classes and functionality</li>
+<li>Support 'float', 'double', 'long' parameters: Terminal, IDE+, Watch and Panel windows</li>
+<li>Add support for AGD101-EC product type</li>
+<li>Add support for AGD156-EC product type</li>
+<li>Add .NET 6.0 and 8.0 targets, deprecate 4.6, core 3.1, 5.0 targets</li>
+<li>AACommDownloadFW: Support EC ESI image flashing</li>
+<li>AACommServerAPI: extended logging mechanism, logs saved at Documents\PCSuite\AACommServer_DebugLogs</li>
+<li>AAComm/Services: Add 'VerifySingleAACommClient' helper class</li>
+<li>AAComm/Services: Add 'AACommExclusiveCommsManager' helper class</li>
+</ul>
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>AACommServer Simulator: Improve behavior for LARGE parameters file</li>
+<li>AACommDownloadFPGA: Add 'Product type' protection to '.ver; file</li>
+<li>Shared.ProductTypes: Add NameToId and IdToName functions</li>
+<li>ConFault LocaleProvider resolving for negative values: &quot;Fault by user: xyz&quot;</li>
+<li>AAComm: Fail initialization if YamlDotNet is missing</li>
+<li>ControllerIdentityContainer: FloatPhase_1_Supported property</li>
+<li>ControllerIdentityContainer: MultipleGantry_Supported property</li>
+<li>AAComm: Disable SendReceive() timeout when DEBUGGER is attached</li>
+<li>AACommServer window: Add &quot;trim long messages&quot; checkbox</li>
+<li>AACommServer: Add setting + folder for &quot;implicit shutdown log&quot; functionality</li>
+<li>AACommDownloadFW: Add protection vs. other device on IP 172.1.1.101</li>
+<li>AACommDownloadFW: Add protection vs. incorrect EC CM FW file</li>
+<li>Services/ConnectionData: Add static properties: ET_IP_Default and ET_IP_DefaultSubnet</li>
+<li>AACommServer window: Improve 'debug log' UI</li>
+<li>AACommServer: Improve protection vs. connect/disconnect re-entry</li>
+<li>Services/COMTools: Add support for 'Prolific' RS-232 manufacturer</li>
+<li>ControllerIdentityContainer: Add Draw Control related property</li>
+<li>AACommDownloadFPGA: Over Ethernet, allow only IP 172.1.1.101</li>
+<li>AACommServer: Allow &quot;retrying&quot; socket init. upon process start</li>
+<li>Services/AllStatInterpreter: Support axes I to L</li>
+<li>AACommServer: Improve logging</li>
+<li>AACommServer: don't show a messagebox if sim. file is missing</li>
+<li>ControllerIdentityContainer: Add DefaultSamplingRate(ProductType) function</li>
+<li>AAComm/Services/LocaleProvider: Add support for Draw err. 5001-6000</li>
+<li>ControllerIdentityContainer: HomingSteps_19_20_Supported property</li>
+</ul>
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>AACommDownloadFW: Add protection CPU1/CM files mismatch</li>
+<li>AACommServer: RecUpload (all &quot;continuous&quot; messages) over Ethernet bug</li>
+<li>AACommServer: 'EA bulk' message: don't append duplicated '&gt;'</li>
+<li>AACommServer: Download User Program over CAN bus bug</li>
+<li>ParametersInfoDB: Fix incorrect DB file encoding</li>
+<li>Services/CanDescriptionBuilder: Fix ParseCanDewscription() wrongly parsing axis &gt; H</li>
+<li>AACommServer: Linux support: Ethernet socket 'fast ack' related bug</li>
+<li>AACommServer: Ethernet 'fast ACK': Enable only for Windows &gt;= v.10</li>
+<li>Params Info: MotionStat bits map strings</li>
+<li>AACommServer: Protect against Debug Log overflow</li>
+<li>AACommServer: Ethernet: fix double '&gt;' at end of 'continuous' messages (i.e. ProgInfo)</li>
+</ul>
+<hr>
+<h2 id="600---2023-05-01">[6.0.0] - 2023-05-01</h2>
+<h3 id="-breaking-7">⚠️ Breaking</h3>
+<ul>
+<li>Removed multiple unused properties and functions</li>
+</ul>
+<h3 id="added-2">Added</h3>
+<ul>
+<li>ParametersInfoDB: Refactor + add support for 'values' descriptions</li>
+</ul>
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>LocaleProvider: Refactor, deprecate functions</li>
+<li>ControllerMessagesContainer: deprecate GetJerkMessage() function</li>
+</ul>
+<hr>
+<h2 id="550---2023-03-13">[5.5.0] - 2023-03-13</h2>
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Support for 'BMI:' prefix: Bulk message that ignores errors</li>
+</ul>
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>ControllerIdentityContainer: 'MasterPWM_Supported' property</li>
+<li>AAComm.CommAPIWrapper: Add GetCanDescriptionFromParameter()</li>
+</ul>
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>AAComm: Set proper timeout when MotorOn,1 is sent using ','</li>
+</ul>
+<hr>
+<h2 id="540---2023-03-03">[5.4.0] - 2023-03-03</h2>
+<h3 id="added-4">Added</h3>
+<ul>
+<li>AAComm.Services: Add ParametersInfoDB class(es) (also add to Services.MessageData)</li>
+<li>General: Support for RecUploadB - new recording stack</li>
+</ul>
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>ControllerIdentityContainer: 'DoubleFlash_Supported' property</li>
+<li>ControllerIdentityContainer: 'HomingSteps_17_18_Supported' property</li>
+<li>ControllerIdentityContainer: 'CNC_Feature_8_Supported' property</li>
+<li>ControllerMessagesContainer: properties, CTOR's, etc. ⚠️ Breaking (but no one uses this!)</li>
+<li>AAComm.Shared.Timeouts: Add DownloadUPBin = 10 sec.</li>
+<li>AAComm.Extensions.AACommDownloadUP: Increase process timeout</li>
+</ul>
+<hr>
+<h2 id="531---2023-01-19">[5.3.1] - 2023-01-19</h2>
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>ControllerIdentityContainer: Add IsEtherCAT property</li>
+<li>AAC: Improve big packets Rx handling</li>
+</ul>
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>AACS: Fix RecUpload and ProgInfo error interpretation</li>
+<li>Fix nuget YamlDotNet dependency</li>
+</ul>
+<hr>
+<h2 id="530---2022-12-21">[5.3.0] - 2022-12-21</h2>
+<h3 id="added-5">Added</h3>
+<ul>
+<li>AACommDownloadFW: Add support for AGD155_EC Core1 and CM FW DL</li>
+</ul>
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>ControllerIdentityContainer: Deprecate 'MaxNumOfRecParams' property</li>
+<li>Update YAML nuget</li>
+<li>AACS/Ethernet: Increase socket receive buffer to 2M bytes</li>
+<li>AACommDownloadFW: Improve protections</li>
+<li>AACS/RS232 handler: Refactoring</li>
+<li>AACS/Log: Trim long messages after 1K characters</li>
+<li>AAComm/AACS/Ethernet: Decrease 'long' messages handling time by a factor of x100 (i.e. RecUpload, ProgInfo, ...)</li>
+<li>AACS Wnd: Add 'Stay on top' checkbox</li>
+</ul>
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>AACommDownloadFPGA: Deprecate unneeded Reset at end of process</li>
+</ul>
+<hr>
+<h2 id="520---2022-11-15">[5.2.0] - 2022-11-15</h2>
+<h3 id="added-6">Added</h3>
+<ul>
+<li>AACS: Controller over Ethernet: 10x speed increase of &quot;continuous messages&quot;</li>
+</ul>
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Add public class &quot;Services/HeaderParser.cs&quot;</li>
+<li>AAComm.Extensions.DL_FPGA: Add &quot;reset&quot; at the end of DL FPGA process</li>
+<li>AAComm.IdentityContainer: Add &quot;Halls-only Phasing supported&quot; property</li>
+<li>AAComm.IdentityContainer: Add &quot;CNC 3D Arc supported&quot; property</li>
+</ul>
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>AACS: Simulation: Do NOT save changes to the Parameters file</li>
+<li>AACS: Simulation: Allow parallel use by multiple clients</li>
+</ul>
+<hr>
+<h2 id="510---2022-06-19">[5.1.0] - 2022-06-19</h2>
+<h3 id="added-7">Added</h3>
+<ul>
+<li>AACS: Improve 'debug' logging and auto-save log on implicit AACS close</li>
+</ul>
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Add support for AGD155-EC</li>
+<li>Internal: Add lock section for socket closure</li>
+<li>AAComm: Increase ASave time-out to 60 sec.</li>
+<li>AAComm.IdentityContainer: Add 'indirect array indexing is supported' flag</li>
+<li>AAComm.Services.CanDescriptionBuilder: Add new functions for User Program CCC handling (internal use!)</li>
+</ul>
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>AAComm.Services.ControllerIdentityContainer.FPGAVersionStr: 'Dyn Brk Mismatch' is NOT an FPGA fault</li>
+<li>AACS: Fix CAN Tx/Rx bug when connecting to multiple controllers over a 'daisy chain'</li>
+<li>AACS: Deprecate a LOCK section that prevented send/receive while Connect was in progress</li>
+</ul>
+<hr>
+<h2 id="501---2022-03-07">[5.0.1] - 2022-03-07</h2>
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>AAComm.Services.ControllerErrorInterpreter: Add 'IsAssignedValOutOfRange()' static function</li>
+<li>AACommNative: Fix dependencies and add YAML dll to package</li>
+<li>Documentation: Some additional details</li>
+</ul>
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Simulator connection: Increase 'Open' timeout to accommodate for large parameters files</li>
+</ul>
+<hr>
+<h2 id="500---2022-02-02">[5.0.0] - 2022-02-02</h2>
+<h3 id="-breaking-8">⚠️ Breaking</h3>
+<ul>
+<li>Removed AAComm.Services.ControllerErrorInterpreter.MotionStatTests (now multi-lang.)</li>
+<li>Removed AAComm.Services.ControllerErrorInterpreter.GetErrorCodeByName() (deprecated)</li>
+<li>AAComm.ControllerIdentityContainer.AnyFPGA_Fault + IsFaultyFPGA... properties are replaced with &quot;UnitStat&quot; property. Contact Agito for faults interpretation.</li>
+</ul>
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Add .NET 5.0 target framework</li>
+<li>AAComm.Services.LocaleProvider class that handles multi-language support</li>
+<li>Add User Program Download protection (target controller FW version check)</li>
+<li>Add support for 16 bit (large) arrays</li>
+</ul>
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Download FW: Increase MAS02 erase flash to 22 sec</li>
+<li>AAComm.Shared.ProductTypes: add public GetProductIdByName() function</li>
+<li>AACommNative: Add IsAACommServerRunning() function wrapper</li>
+<li>AAComm.Services.GetFTDI_COMs(): Add try-catch</li>
+</ul>
+<hr>
+<h2 id="4151---2021-09-29">[4.15.1] - 2021-09-29</h2>
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>Add IdentityContainer &quot;CNC_Feature_6_Supported&quot; NewFeatures bit property</li>
+</ul>
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>FW DL bug over RS-232</li>
+</ul>
+<hr>
+<h2 id="4150---2021-09-16-deprecated-fw-dl-bug-over-rs-232">[4.15.0] - 2021-09-16 (DEPRECATED: FW DL bug over RS-232)</h2>
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Introduce AAComm &lt;-&gt; AACommServer &quot;error reporting&quot; and logging protocol</li>
+</ul>
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Improve ConnectResultInterpreter class</li>
+<li>Improve Connect() error reporting</li>
+</ul>
+<hr>
+<h2 id="4140---2021-09-10">[4.14.0] - 2021-09-10</h2>
+<h3 id="added-10">Added</h3>
+<ul>
+<li>Support for SBCB and BMCB message type for CNCB support</li>
+<li>Shared/ConnectResultInterpreter class for ConnectResult enum interpretation</li>
+</ul>
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>ControllerIdentityContainer/IsFPGAVersionEqualOrGreater(): allow 3 &quot;version&quot; values</li>
+</ul>
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Fix FW/UP/FPGA DL bug over non-Ethernet channels (due to 4.13.0 &quot;protections&quot; feature)</li>
+</ul>
+<hr>
+<h2 id="4130---2021-09-06-deprecated-fwupfpga-dl-bug-over-non-ethernet-channels">[4.13.0] - 2021-09-06 (DEPRECATED: FW/UP/FPGA DL bug over non-Ethernet channels)</h2>
+<h3 id="added-11">Added</h3>
+<ul>
+<li>AAComm property &quot;AACommServerVersion&quot;</li>
+<li>Add multi-AACommServer client protection for FW, FPGA, remote FPGA, UserProg download</li>
+</ul>
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>Add IdentityContainer &quot;GearMasterProfiler&quot; NewFeatures bit property</li>
+<li>Add IdentityContainer &quot;SlowLoggerByTime&quot; NewFeatures bit property</li>
+<li>Add IdentityContainer &quot;SmoothAutophase&quot; NewFeatures bit property</li>
+<li>Add IdentityContainer &quot;IsNoGolden&quot; UnitStat bit property</li>
+<li>Add IdentityContainer &quot;ProductVariant&quot; Identity property</li>
+<li>Add 'Vector' MotionStat texts</li>
+</ul>
+<hr>
+<h2 id="4121---2021-08-24">[4.12.1] - 2021-08-24</h2>
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Add 'Spline Buffer Stop' MotionStat text</li>
+</ul>
+<hr>
+<h2 id="4120---2021-08-12">[4.12.0] - 2021-08-12</h2>
+<h3 id="added-12">Added</h3>
+<ul>
+<li>AACommDownloadFPGA: Don't allow Ethernet FPGA DL over other than 172.1.1 subnets (non-AGM800 products only)</li>
+</ul>
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>AGM800 DL FW: Increase sleep time after DL FW from 8 to 12 sec</li>
+<li>FPGA DL: Don't allow download when BOOT version &lt; 1.013</li>
+</ul>
+<h3 id="fixed-16">Fixed</h3>
+<ul>
+<li>Don't sleep after &quot;failed&quot; Reset request</li>
+</ul>
+<hr>
+<h2 id="4110---2021-06-24">[4.11.0] - 2021-06-24</h2>
+<h3 id="added-13">Added</h3>
+<ul>
+<li>New &quot;Extension&quot;: FPGA Download for Master remote unit</li>
+</ul>
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>FPGA DL: CAN is NOT supported</li>
+<li>Increase Load and Save timeouts</li>
+<li>MessagesContainer InitErr property to indicate failure reason</li>
+</ul>
+<hr>
+<h2 id="4100---2021-06-08">[4.10.0] - 2021-06-08</h2>
+<h3 id="added-14">Added</h3>
+<ul>
+<li>Extensions/DL FW &amp; FPGA: Add FW/FPGA compatibility validation</li>
+<li>New MotionReason status: Controlled stop by input</li>
+</ul>
+<h3 id="changed-29">Changed</h3>
+<ul>
+<li>ControllerErrorInterpreter: Use random file name for errors list resource</li>
+<li>FwInfo: Add info item 26: &quot;Additional Bi-Quad Filters bypassed&quot;</li>
+<li>UserProgVarsAdapter: ignore white-spaces</li>
+</ul>
+<hr>
+<h2 id="495---2021-05-13">[4.9.5] - 2021-05-13</h2>
+<h3 id="changed-30">Changed</h3>
+<ul>
+<li>ControllerMessagesContainer: Use random file name for default messages list</li>
+<li>AACommServerAPI: Fix OpenEnded reported assembly version (not used ATM)</li>
+</ul>
+<hr>
+<h2 id="494---2021-05-10">[4.9.4] - 2021-05-10</h2>
+<h3 id="fixed-17">Fixed</h3>
+<ul>
+<li>AGM400: increase reset time for proper reconnect</li>
+</ul>
+<h3 id="added-15">Added</h3>
+<ul>
+<li>Extend FW/FPGA mismatch indication (Support for UnitStat bits[1,2])</li>
+</ul>
+<h3 id="changed-31">Changed</h3>
+<ul>
+<li>Increase ALoad command timeout from 2 sec to 10 sec</li>
+</ul>
+<hr>
+<h2 id="493---2021-04-18">[4.9.3] - 2021-04-18</h2>
+<h3 id="changed-32">Changed</h3>
+<ul>
+<li>Add DRV3-V6 controller type (8) to Product Types</li>
+<li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
+<li>FullCurrDirOperation property: Indicates that Current Direction operation is fully supported</li>
+</ul>
+<hr>
+<h2 id="483---2021-03-24">[4.8.3] - 2021-03-24</h2>
+<h3 id="changed-33">Changed</h3>
+<ul>
+<li>Add DRV3-V6 controller type (8) to Product Types</li>
+<li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
+</ul>
+<hr>
+<h2 id="473---2021-02-05">[4.7.3] - 2021-02-05</h2>
+<h3 id="changed-34">Changed</h3>
+<ul>
+<li>AACommCore must use explicit AACS file StartAACommServer() parameter</li>
+<li>Change LoggerUpload message from &quot;Continuous&quot; to &quot;Regular&quot;</li>
+<li>Don't allow RecUploadNext in a &quot;bulk&quot; message</li>
+<li>Add delay between &quot;Discover connection&quot; IP pings to not stress the connection. Introduced to fix a fault at AGD155 when user program is running</li>
+</ul>
+<hr>
+<h2 id="472---2020-12-25">[4.7.2] - 2020-12-25</h2>
+<h3 id="fixed-18">Fixed</h3>
+<ul>
+<li>FPGA Download over RS-232</li>
+</ul>
+<h3 id="changed-35">Changed</h3>
+<ul>
+<li>AAComm Core: start AACS process improvement</li>
+<li>AAComm Core: default AACS: AACSCoreConsole on non-Win32 OS</li>
+</ul>
+<hr>
+<h2 id="470---2020-12-07">[4.7.0] - 2020-12-07</h2>
+<h3 id="added-16">Added</h3>
+<ul>
+<li>AACommDownloadFW: Don't allow Ethernet FW DL over other than 172.1.1 subnets (non-AGM800 products only)</li>
+</ul>
+<hr>
+<h2 id="461---2020-11-29">[4.6.1] - 2020-11-29</h2>
+<h3 id="added-17">Added</h3>
+<ul>
+<li>Support for recognition of User Program defined Global Variables and Task names (See CommAPI.Services.UserProgramInfo class for more details.)</li>
+<li>Add ControllerErrorInterpreter.GetErrorDescriptionByAACommEventArgs() function</li>
+</ul>
+<h3 id="changed-36">Changed</h3>
+<ul>
+<li>Support detection of multiple IP's set on a single NIC</li>
+</ul>
+<hr>
+<h2 id="451---2020-11-09">[4.5.1] - 2020-11-09</h2>
+<h3 id="fixed-19">Fixed</h3>
+<ul>
+<li>AACommServer simulation mode 'file name' bug</li>
+</ul>
+<h3 id="changed-37">Changed</h3>
+<ul>
+<li>Add 'Bulk' error code 4002 - &quot;unexpected reply format&quot;</li>
+</ul>
+<hr>
+<h2 id="450---2020-11-08">[4.5.0] - 2020-11-08</h2>
+<h3 id="added-18">Added</h3>
+<ul>
+<li>Improve FPGA Download error message</li>
+</ul>
+<h3 id="changed-38">Changed</h3>
+<ul>
+<li>Add ConnectResult.FailMacAddress error code</li>
+</ul>
+<hr>
+<h2 id="440---2020-10-29">[4.4.0] - 2020-10-29</h2>
+<h3 id="added-19">Added</h3>
+<ul>
+<li>ControllerIdentityContainer.IsFPGAVersionEqualOrGreater function</li>
+</ul>
+<hr>
+<h2 id="430---2020-10-18">[4.3.0] - 2020-10-18</h2>
+<h3 id="added-20">Added</h3>
+<ul>
+<li>Add &quot;CNC_TrueJerk_Supported&quot; property to ControllerIdentityContainer</li>
+<li>Add .NET 4.8, remove 4.62. target frameworks</li>
+<li>Add .Net Core RS-232 support (in dev!)</li>
+</ul>
+<h3 id="changed-39">Changed</h3>
+<ul>
+<li>Improve ConnectResult.CorruptAboutFile error code file logic</li>
+<li>Support &quot;old&quot; '/' FW info names: AGD200orAGC300 and AGD301/AGC301</li>
+<li>'Bulk message': Add error code '4000' for empty, and '4001' for longer than 100 components</li>
+<li>'Bulk message': Add protections for (bulk) unsupported keywords</li>
+</ul>
+<hr>
+<h2 id="420---2020-09-17">[4.2.0] - 2020-09-17</h2>
+<h3 id="added-21">Added</h3>
+<ul>
+<li>Add &quot;Group 10&quot; to AllStatData: DInPortHigh and BoardTemp</li>
+<li>Add &quot;HomingByLock_Supported&quot; property to ControllerIdentityContainer</li>
+<li>Add &quot;VectorMotion_Supported&quot; property to ControllerIdentityContainer</li>
+</ul>
+<hr>
+<h2 id="410---2020-09-10">[4.1.0] - 2020-09-10</h2>
+<h3 id="added-22">Added</h3>
+<ul>
+<li>Improve AAComm.StartAACommServer() capabilities to support .NET Core server</li>
+</ul>
+<hr>
+<h2 id="400---2020-09-09">[4.0.0] - 2020-09-09</h2>
+<h3 id="added-23">Added</h3>
+<ul>
+<li>Resolve AAComm &lt;=&gt; AACommServer socket port number according to OS (instead of target framework) (results in interoperability between .NET and .NET Core assemblies on Windows)</li>
+<li>Add .NET 4.6.2 target framework</li>
+</ul>
+<h3 id="changed-40">Changed</h3>
+<ul>
+<li>Introduce Semantic Versioning 2.0.0 (<a href="https://semver.org/">https://semver.org/</a>) to AAComm and AACommServer (no compilation breaking, or backwards incompatibility changes introduced)</li>
+</ul>
+<hr>
+<h2 id="3031---2020-09-06-101-for-nuget">[3.0.3.1] - 2020-09-06 (.101 for NUGET)</h2>
+<h3 id="-compilation-breaking-aacomm-changes">⚠️ Compilation-breaking AAComm changes</h3>
+<ul>
+<li>Introduce new &quot;AAComm.Shared.ProductTypes&quot; class to manage product names and enums
+<ul>
+<li>Products names were changed according to new names convention</li>
+<li>All previous ControllerIdentityContainer and AACommFwInfo references that relate to Product ID and name, must be redirected to ProductTypes</li>
+<li>CiG1-MAS01 	=&gt; AGM400</li>
+<li>CiG1-MAS02 	=&gt; AGM800</li>
+<li>AG100-DRV50 =&gt; AGD155</li>
+<li>AG300-CTL01	=&gt; AGD200/AGC300</li>
+<li>AG300-CTL02	=&gt; AGD301/AGC301</li>
+</ul>
+</li>
+<li>Make property CommAPI.IsAACommServerRunning STATIC</li>
+<li>Make function CommAPI.StartAACommServer() STATIC</li>
+</ul>
+<h3 id="changed-41">Changed</h3>
+<ul>
+<li>Improve AAComm documentation (including 'Bulk' message type)</li>
+<li>Protection against LocalHost loopback &quot;rogue&quot; connect requests</li>
+</ul>
+<h3 id="fixed-20">Fixed</h3>
+<ul>
+<li>AllStat handling time bug (MAS02)</li>
+</ul>
+<h3 id="added-24">Added</h3>
+<ul>
+<li>Protect all synchronous API functions against multi-thread re-entry (mutual lock)</li>
+<li>Package and NUGET for .NET 4.0 and 4.6</li>
+<li>CNC_Feature_5_Supported ControllerIdentityContainer property</li>
+</ul>
+<hr>
+<h2 id="3028---2020-08-27">[3.0.2.8] - 2020-08-27</h2>
+<h3 id="fixed-21">Fixed</h3>
+<ul>
+<li>AllStat handling time bug</li>
+</ul>
+<h3 id="added-25">Added</h3>
+<ul>
+<li>ControllerIdentityContainer.IsFaultyFPGA property, supported for FW &gt;= 1.3.0.1-142</li>
+</ul>
+<hr>
+<h2 id="3027---2020-08-17-deprecated-allstat-handling-time-bug">[3.0.2.7] - 2020-08-17 (DEPRECATED: AllStat handling time bug!!)</h2>
+<h3 id="fixed-22">Fixed</h3>
+<ul>
+<li>Protect AACommServer startup vs. corrupt user.config file</li>
+<li>AGD301/AGC301 product names</li>
+</ul>
+<h3 id="added-26">Added</h3>
+<ul>
+<li>Backwards compatibility for old products names</li>
+</ul>
+<hr>
+<h2 id="3026---2020-08-16-deprecated-allstat-handling-time-bug">[3.0.2.6] - 2020-08-16 (DEPRECATED: AllStat handling time bug!!)</h2>
+<h3 id="added-27">Added</h3>
+<ul>
+<li>AAComm.Extensions.AACommFwInfo: Rename products according to new definitions</li>
+<li>Services.COMTools.GetFTDI_COMs: add default &quot;GetAllCOMPorts&quot; parameter (no backwards compatibility issues)</li>
+</ul>
+<h3 id="changed-42">Changed</h3>
+<ul>
+<li>Update documentation</li>
+<li>CommAPI.DocsAppFolder to &quot;PCSuite&quot; (default folder for FW connection history)</li>
+</ul>
+<hr>
+<h2 id="3025---2020-08-05-deprecated-allstat-handling-time-bug">[3.0.2.5] - 2020-08-05 (DEPRECATED: AllStat handling time bug!!)</h2>
+<h3 id="added-28">Added</h3>
+<ul>
+<li>FPGA download: rolling progress bar</li>
+</ul>
+<h3 id="changed-43">Changed</h3>
+<ul>
+<li>Remove Microsoft.Windows.Compatibility dependency</li>
+<li>Improve 'special' messages handling (implicit CTOR: need &quot;BM:&quot;, explicit CTOR: NO &quot;BM:&quot;)</li>
+</ul>
+<hr>
+<h2 id="3024---2020-08-04-deprecated">[3.0.2.4] - 2020-08-04 (DEPRECATED)</h2>
+<h3 id="added-29">Added</h3>
+<ul>
+<li>FPGA download support</li>
+</ul>
+<hr>
+<h2 id="3023---2020-08-02">[3.0.2.3] - 2020-08-02</h2>
+<h3 id="changed-44">Changed</h3>
+<ul>
+<li>StartAACommServer(string AACSFile = &quot;&quot;) =&gt; AACS file NAME instead of path (defaults to &quot;&quot; -&gt; look within working directory)</li>
+<li>Default timeout to IsCommServerRunning(int timeoutMS = 100)</li>
+<li>Rename  TemwoutMs.ResetProceesType to TemwoutMs.Reset</li>
+<li>Rename MessageType.Reset to MessageType.ResetRequest</li>
+<li>Rename MessageType.RecUpload and TimeoutsMs.RecUploadTimeout to &quot;Continuous&quot;</li>
+<li>Remove MessageType.About and TimeoutsMs.AboutTimeout (now &quot;Continuous&quot; is used)</li>
+<li>Rename all TimeoutMs enums (remove &quot;Timeout&quot; from items names)</li>
+<li>Simplify AACommMessage class and CTORs - resolve messageType and timeout automatically!!</li>
+<li>Add SetTimeoutMs to AACommMessage</li>
+<li>AACommFwInfo.ValidateFwFiles() is no longer static</li>
+<li>New function: AACommFwInfo.VerifyCurrents()</li>
+<li>AACommDownloadFW.StartDownloadingSafe() now has a new parameter: &quot;verifyCurrents&quot; (does NOT work in BOOT mode, does NOT work with MAS02; FW DL will &quot;fail&quot; with an error, user must uncheck the checkbox, or pass &quot;false&quot; to the API function)</li>
+</ul>
+<hr>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/release-notes/aacomm-changelog.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

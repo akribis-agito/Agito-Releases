@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class FastReadCache | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class FastReadCache | Agito AAComm SDK ">
+      
+      <meta name="description" content="Fast read cache for high-performance data reading. This cache stores parameter values that are refreshed periodically (default 1ms) and allows instant read access without sending commands to the controller.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAMotion_FastReadCache.md&amp;value=---%0Auid%3A%20AAMotion.FastReadCache%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion.FastReadCache">
+
+
+
+  <h1 id="AAMotion_FastReadCache" data-uid="AAMotion.FastReadCache" class="text-break">
+Class FastReadCache  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Fast read cache for high-performance data reading.
+This cache stores parameter values that are refreshed periodically (default 1ms)
+and allows instant read access without sending commands to the controller.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FastReadCache : IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">FastReadCache</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAMotion_FastReadCache__ctor_" data-uid="AAMotion.FastReadCache.#ctor*"></a>
+
+  <h3 id="AAMotion_FastReadCache__ctor_AAMotion_CommAPIInterface_System_Int32_" data-uid="AAMotion.FastReadCache.#ctor(AAMotion.CommAPIInterface,System.Int32)">
+  FastReadCache(CommAPIInterface, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new FastReadCache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastReadCache(CommAPIInterface commInterface, int refreshIntervalMs = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd><p>The communication interface to use for refreshing data.</p>
+</dd>
+    <dt><code>refreshIntervalMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Refresh interval in milliseconds (default: 1ms).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAMotion_FastReadCache_IsEnabled_" data-uid="AAMotion.FastReadCache.IsEnabled*"></a>
+
+  <h3 id="AAMotion_FastReadCache_IsEnabled" data-uid="AAMotion.FastReadCache.IsEnabled">
+  IsEnabled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets whether the cache is currently enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEnabled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_IsRefreshing_" data-uid="AAMotion.FastReadCache.IsRefreshing*"></a>
+
+  <h3 id="AAMotion_FastReadCache_IsRefreshing" data-uid="AAMotion.FastReadCache.IsRefreshing">
+  IsRefreshing
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets whether a refresh is currently in progress.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRefreshing { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_LastRefreshTime_" data-uid="AAMotion.FastReadCache.LastRefreshTime*"></a>
+
+  <h3 id="AAMotion_FastReadCache_LastRefreshTime" data-uid="AAMotion.FastReadCache.LastRefreshTime">
+  LastRefreshTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the last refresh time (UTC).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime LastRefreshTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_RefreshIntervalMs_" data-uid="AAMotion.FastReadCache.RefreshIntervalMs*"></a>
+
+  <h3 id="AAMotion_FastReadCache_RefreshIntervalMs" data-uid="AAMotion.FastReadCache.RefreshIntervalMs">
+  RefreshIntervalMs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the refresh interval in milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RefreshIntervalMs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAMotion_FastReadCache_ClearCache_" data-uid="AAMotion.FastReadCache.ClearCache*"></a>
+
+  <h3 id="AAMotion_FastReadCache_ClearCache" data-uid="AAMotion.FastReadCache.ClearCache">
+  ClearCache()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L340"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears all cached values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearCache()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_Disable_" data-uid="AAMotion.FastReadCache.Disable*"></a>
+
+  <h3 id="AAMotion_FastReadCache_Disable" data-uid="AAMotion.FastReadCache.Disable">
+  Disable()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disables the cache and stops the refresh timer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Disable()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_Dispose_" data-uid="AAMotion.FastReadCache.Dispose*"></a>
+
+  <h3 id="AAMotion_FastReadCache_Dispose" data-uid="AAMotion.FastReadCache.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L629"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes the cache and stops the refresh timer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_Enable_" data-uid="AAMotion.FastReadCache.Enable*"></a>
+
+  <h3 id="AAMotion_FastReadCache_Enable" data-uid="AAMotion.FastReadCache.Enable">
+  Enable()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enables the cache and starts the refresh timer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Enable()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_Finalize_" data-uid="AAMotion.FastReadCache.Finalize*"></a>
+
+  <h3 id="AAMotion_FastReadCache_Finalize" data-uid="AAMotion.FastReadCache.Finalize">
+  ~FastReadCache()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L645"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finalizer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ~FastReadCache()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_GetCacheAgeMs_" data-uid="AAMotion.FastReadCache.GetCacheAgeMs*"></a>
+
+  <h3 id="AAMotion_FastReadCache_GetCacheAgeMs_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.GetCacheAgeMs(AAMotion.AxisRef,AAMotion.eKeyword)">
+  GetCacheAgeMs(AxisRef, eKeyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the age of a cached value in milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetCacheAgeMs(AxisRef axis, eKeyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The keyword.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Age in milliseconds, or -1 if not cached.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_GetCachedArrayValue_" data-uid="AAMotion.FastReadCache.GetCachedArrayValue*"></a>
+
+  <h3 id="AAMotion_FastReadCache_GetCachedArrayValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.FastReadCache.GetCachedArrayValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32)">
+  GetCachedArrayValue(AxisRef, eKeyword, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a cached array element value for the specified axis, keyword, and index.
+Returns null if the value is not cached or cache is disabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? GetCachedArrayValue(AxisRef axis, eKeyword keyword, int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The array keyword.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The array index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The cached value, or null if not available.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_GetCachedValue_" data-uid="AAMotion.FastReadCache.GetCachedValue*"></a>
+
+  <h3 id="AAMotion_FastReadCache_GetCachedValue_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.GetCachedValue(AAMotion.AxisRef,AAMotion.eKeyword)">
+  GetCachedValue(AxisRef, eKeyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a cached value for the specified axis and keyword.
+Returns null if the value is not cached or cache is disabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? GetCachedValue(AxisRef axis, eKeyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The keyword.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The cached value, or null if not available.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_IsArrayElementRegistered_" data-uid="AAMotion.FastReadCache.IsArrayElementRegistered*"></a>
+
+  <h3 id="AAMotion_FastReadCache_IsArrayElementRegistered_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.FastReadCache.IsArrayElementRegistered(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32)">
+  IsArrayElementRegistered(AxisRef, eKeyword, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if an array element is registered for caching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsArrayElementRegistered(AxisRef axis, eKeyword keyword, int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The array keyword.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The array index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if registered, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_IsRegistered_" data-uid="AAMotion.FastReadCache.IsRegistered*"></a>
+
+  <h3 id="AAMotion_FastReadCache_IsRegistered_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.IsRegistered(AAMotion.AxisRef,AAMotion.eKeyword)">
+  IsRegistered(AxisRef, eKeyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a keyword is registered for caching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRegistered(AxisRef axis, eKeyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The keyword.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if registered, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_RefreshNow_" data-uid="AAMotion.FastReadCache.RefreshNow*"></a>
+
+  <h3 id="AAMotion_FastReadCache_RefreshNow" data-uid="AAMotion.FastReadCache.RefreshNow">
+  RefreshNow()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Forces an immediate refresh of all cached values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RefreshNow()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_RegisterArrayElements_" data-uid="AAMotion.FastReadCache.RegisterArrayElements*"></a>
+
+  <h3 id="AAMotion_FastReadCache_RegisterArrayElements_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32___" data-uid="AAMotion.FastReadCache.RegisterArrayElements(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32[])">
+  RegisterArrayElements(AxisRef, eKeyword, params int[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>registers array elements to cache for a specific axis.
+For example: RegisterArrayElements(AxisRef.A, eKeyword.AInPort, 1, 2, 3, 4)
+registers AAInPort[1], AAInPort[2], AAInPort[3], AAInPort[4].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterArrayElements(AxisRef axis, eKeyword keyword, params int[] indices)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis to register array elements for.</p>
+</dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd><p>The array keyword (e.g., eKeyword.AInPort).</p>
+</dd>
+    <dt><code>indices</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>The array indices to cache.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_RegisterKeywords_" data-uid="AAMotion.FastReadCache.RegisterKeywords*"></a>
+
+  <h3 id="AAMotion_FastReadCache_RegisterKeywords_AAMotion_AxisRef_AAMotion_eKeyword___" data-uid="AAMotion.FastReadCache.RegisterKeywords(AAMotion.AxisRef,AAMotion.eKeyword[])">
+  RegisterKeywords(AxisRef, params eKeyword[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>registers keywords to cache for a specific axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterKeywords(AxisRef axis, params eKeyword[] keywords)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis to register keywords for.</p>
+</dd>
+    <dt><code>keywords</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a>[]</dt>
+    <dd><p>The keywords to cache.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_FastReadCache_UnregisterKeywords_" data-uid="AAMotion.FastReadCache.UnregisterKeywords*"></a>
+
+  <h3 id="AAMotion_FastReadCache_UnregisterKeywords_AAMotion_AxisRef_AAMotion_eKeyword___" data-uid="AAMotion.FastReadCache.UnregisterKeywords(AAMotion.AxisRef,AAMotion.eKeyword[])">
+  UnregisterKeywords(AxisRef, params eKeyword[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unregisters keywords from cache for a specific axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnregisterKeywords(AxisRef axis, params eKeyword[] keywords)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>The axis to unregister keywords from.</p>
+</dd>
+    <dt><code>keywords</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a>[]</dt>
+    <dd><p>The keywords to unregister.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="AAMotion_FastReadCache_RefreshCompleted" data-uid="AAMotion.FastReadCache.RefreshCompleted">
+  RefreshCompleted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Event raised when cache refresh completes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action RefreshCompleted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="AAMotion_FastReadCache_RefreshError" data-uid="AAMotion.FastReadCache.RefreshError">
+  RefreshError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Event raised on refresh error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Exception&gt; RefreshError</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="AAMotion_FastReadCache_RefreshStarted" data-uid="AAMotion.FastReadCache.RefreshStarted">
+  RefreshStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Event raised when cache refresh starts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action RefreshStarted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

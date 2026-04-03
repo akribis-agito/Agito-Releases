@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Server Middleware | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Server Middleware | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/architecture/server.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="architecture-server">
+<h1 id="aacommserverapi">AACommServerAPI</h1>
+
+<p>Communication server API for managing hardware communication channels via multiple transport protocols.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>AACommServerAPI acts as a middleware server that manages communication between multiple AAComm client instances and hardware controllers. It binds to a TCP loopback socket (127.0.0.1:399 on Windows, :1024 on Linux) for IPC and handles connection pooling, message queuing (with <code>&gt;\r</code> message delimiters), timeouts, and exclusive channel access.</p>
+<h2 id="communication-pipeline">Communication Pipeline</h2>
+<p>The following diagram illustrates the bidirectional communication flow between AAComm users and hardware:</p>
+<pre><code class="lang-mermaid">graph TB
+    subgraph &quot;AAComm User Process&quot;
+        User[AAComm Client]
+    end
+
+    subgraph &quot;AACommServerAPI Process&quot;
+        subgraph &quot;Socket Layer&quot;
+            Socket[ServerSocketWrapper&lt;br/&gt;- TCP Socket&lt;br/&gt;- UserId Management&lt;br/&gt;- Send/Receive Buffers]
+        end
+
+        subgraph &quot;Orchestration Layer&quot;
+            Server[AACommServerModel&lt;br/&gt;- Socket Listener&lt;br/&gt;- Client Registry&lt;br/&gt;- Channel Management&lt;br/&gt;- Events: OnLog, OnClientAdded/Removed]
+        end
+
+        subgraph &quot;Channel Management Layer&quot;
+            Handler[ChannelHandler&lt;br/&gt;- Message Queue&lt;br/&gt;- Timeout Timer&lt;br/&gt;- Exclusive Access Control&lt;br/&gt;- NumOfUsers Tracking]
+        end
+
+        subgraph &quot;Hardware Abstraction Layer&quot;
+            Comm[ICommunicator&lt;br/&gt;- Open/Send/Close&lt;br/&gt;- OnMsgReceived Callback&lt;br/&gt;Implementations: CAN, RS-232, Ethernet, Simulator]
+        end
+    end
+
+    subgraph &quot;Hardware&quot;
+        HW[Hardware Controller&lt;br/&gt;CAN/RS-232/Ethernet Device]
+    end
+
+    %% Outbound Flow (User → HW)
+    User --&gt;|1. TCP Connect| Socket
+    Socket --&gt;|2. OnAACommConnectRequest| Server
+    User --&gt;|3. Open/Message Request| Socket
+    Socket --&gt;|4. OnAACommRequest| Server
+    Server --&gt;|5. Route by ChannelKey| Handler
+    Handler --&gt;|6. Enqueue Message&lt;br/&gt;Start Timer| Handler
+    Handler --&gt;|7. SendNextMessage| Comm
+    Comm --&gt;|8. Protocol-Specific Send| HW
+
+    %% Inbound Flow (HW → User)
+    HW --&gt;|9. Protocol Response| Comm
+    Comm --&gt;|10. OnMsgReceived Callback| Handler
+    Handler --&gt;|11. Stop Timer&lt;br/&gt;SendReplyToClient| Server
+    Server --&gt;|12. OnMessageFromHardware| Socket
+    Socket --&gt;|13. TCP Send| User
+    Handler --&gt;|14. SendNextMessage&lt;br/&gt;Process Queue| Handler
+
+    %% Styling
+    classDef userClass fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    classDef socketClass fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    classDef serverClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef handlerClass fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef commClass fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef hwClass fill:#efebe9,stroke:#3e2723,stroke-width:2px
+
+    class User userClass
+    class Socket socketClass
+    class Server serverClass
+    class Handler handlerClass
+    class Comm commClass
+    class HW hwClass
+</code></pre>
+<h2 id="pipeline-flow-details">Pipeline Flow Details</h2>
+<h3 id="outbound-path-user--hardware">Outbound Path (User → Hardware)</h3>
+<ol>
+<li><strong>TCP Connect</strong>: AAComm client establishes TCP connection to AACommServer</li>
+<li><strong>Connection Handling</strong>: <code>ServerSocketWrapper</code> created with unique <code>UserId</code></li>
+<li><strong>Request Received</strong>: Client sends Open/Message/Close request</li>
+<li><strong>Request Processing</strong>: <code>AACommServerModel.OnAACommRequest()</code> deserializes and routes message</li>
+<li><strong>Channel Routing</strong>: Message routed to appropriate <code>ChannelHandler</code> by <code>ChannelKey</code></li>
+<li><strong>Message Queuing</strong>: <code>ChannelHandler.Send()</code> enqueues message and starts timeout timer</li>
+<li><strong>Hardware Send</strong>: <code>ChannelHandler.SendNextMessage()</code> dequeues and sends via <code>ICommunicator</code></li>
+<li><strong>Protocol Transmission</strong>: <code>ICommunicator</code> implementation sends using protocol-specific format</li>
+</ol>
+<h3 id="inbound-path-hardware--user">Inbound Path (Hardware → User)</h3>
+<ol start="9">
+<li><strong>Hardware Response</strong>: Physical hardware responds via protocol (CAN/RS-232/Ethernet)</li>
+<li><strong>Receive Callback</strong>: <code>ICommunicator.OnMsgReceived</code> callback invoked with response data</li>
+<li><strong>Reply Processing</strong>: <code>ChannelHandler.OnMsgFromHW()</code> stops timer, sends reply to client</li>
+<li><strong>Message Forwarding</strong>: <code>AACommServerModel.OnMessageFromHardware()</code> forwards to socket</li>
+<li><strong>TCP Response</strong>: <code>ServerSocketWrapper.Send()</code> transmits response back to client</li>
+<li><strong>Queue Processing</strong>: <code>ChannelHandler.SendNextMessage()</code> processes next queued message</li>
+</ol>
+<h2 id="key-features">Key Features</h2>
+<h3 id="multi-user-channel-sharing">Multi-User Channel Sharing</h3>
+<ul>
+<li>Multiple AAComm clients can share the same hardware channel</li>
+<li><code>ChannelHandler</code> tracks <code>NumOfUsers</code> per channel</li>
+<li>Channel closes only when last user disconnects</li>
+</ul>
+<h3 id="exclusive-access-mode">Exclusive Access Mode</h3>
+<ul>
+<li>Clients can request exclusive channel access via <code>StartExclusiveAccess()</code></li>
+<li>Other users' messages rejected with <code>CHANNEL_IS_EXCLUSIVE</code> error</li>
+<li>Prevents concurrent access during critical operations</li>
+</ul>
+<h3 id="timeout-management">Timeout Management</h3>
+<ul>
+<li>Each message has configurable timeout (<code>TimeoutMs</code>, default 2000ms)</li>
+<li>Common timeouts: Reset (10001ms standard controller, varies by type), Firmware (6000ms), User Program (3000ms)</li>
+<li>Timer started on send, stopped on receive</li>
+<li>Timeout triggers fatal error and channel closure</li>
+<li>After-reset wait periods: Standard controller (1500ms), MAS02 (4000ms)</li>
+</ul>
+<h3 id="message-queuing">Message Queuing</h3>
+<ul>
+<li>FIFO queue per channel ensures sequential message processing</li>
+<li>Only one message &quot;in-flight&quot; per channel at a time</li>
+<li>Prevents race conditions and ensures deterministic responses</li>
+<li>Lock-based synchronization (<code>_QueueSyncObj</code>) for thread safety</li>
+</ul>
+<h3 id="buffer-management">Buffer Management</h3>
+<ul>
+<li>Client socket receive buffer: 100,000 bytes</li>
+<li>Ethernet hardware buffer: 256 KB (262,144 bytes)</li>
+<li>Message format: <code>&lt;ConnectionData&gt;#@#&lt;MessageType&gt;#@#&lt;TimeoutMs&gt;#@#&lt;Message&gt;&gt;\r</code></li>
+<li>Internal message separator: <code>#@#</code></li>
+</ul>
+<h3 id="error-handling">Error Handling</h3>
+<ul>
+<li>Fatal errors (timeout, connection loss) close channel and notify all users</li>
+<li>Unsent messages cleared on user disconnect</li>
+<li>Automatic reconnection logic for Ethernet after Reset</li>
+</ul>
+<h2 id="supported-hardware-protocols">Supported Hardware Protocols</h2>
+<ul>
+<li><strong>CAN Bus</strong>: Kvaser CanLib-based communication (Windows only)</li>
+<li><strong>RS-232</strong>: Serial port communication</li>
+<li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk)</li>
+<li><strong>Simulator</strong>: File-based simulation for testing (when <code>AllowSim</code> enabled)</li>
+</ul>
+<h2 id="events">Events</h2>
+<ul>
+<li><code>OnLog</code>: Tx/Rx message logging</li>
+<li><code>OnLogDebug</code>: Debug events and errors</li>
+<li><code>OnClientAdded</code>: New client connected to channel</li>
+<li><code>OnClientRemoved</code>: Client disconnected from channel</li>
+<li><code>OnMsgReceived</code>: Message received from hardware (for counting)</li>
+<li><code>OnKillRequest</code>: Server shutdown requested by last client</li>
+</ul>
+<h2 id="relationship-to-aacomm">Relationship to AAComm</h2>
+<p>AACommServerAPI is the <strong>server middleware</strong>, AAComm is the <strong>client library</strong>.</p>
+<ul>
+<li><strong>AACommServerAPI</strong>: Standalone process, manages hardware connections, handles multiple clients</li>
+<li><strong>AAComm</strong>: Embedded in user applications, provides high-level API</li>
+</ul>
+<p>Multiple AAComm clients can connect to a single AACommServerAPI instance, sharing hardware channels. See <code>../AAComm/ARCHITECTURE.md</code> for the client-side architecture.</p>
+<h2 id="packet-sniffer">Packet Sniffer</h2>
+<p>The sniffer hook (<code>IChannelSnifferHook</code>) and all sniffer implementation have moved to the <code>AACommSniffer</code> project. See <code>../AACommSniffer/</code> for the full API and documentation.</p>
+<p>AACommServerAPI references AACommSniffer and exposes <code>SnifferHook</code> on <code>AACommServerModel</code> as the integration point. When an Ethernet channel opens, the server maps <code>ConnectionData</code> to <code>SnifferConnectionInfo</code> and calls <code>IChannelSnifferHook.OnChannelOpened</code>; on close it calls <code>OnChannelClosed</code>.</p>
+<h2 id="packet-sniffer-details-windowsnet-framework-48-only">Packet Sniffer Details (Windows/.NET Framework 4.8 only)</h2>
+<p>AACommServerAPI includes an optional packet capture feature for debugging Ethernet communication issues. The sniffer captures raw network traffic on the interface used for controller communication.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li><strong>Npcap</strong>: Must be installed (<a href="https://npcap.com">https://npcap.com</a>) - the sniffer gracefully degrades if Npcap is not available</li>
+<li><strong>Windows</strong>: Sniffer functionality is only available on .NET Framework 4.8 (not .NET 6/8)</li>
+<li><strong>SharpPcap</strong>: NuGet package (automatically included for net48 target)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>Automatic capture</strong>: Starts capturing when an Ethernet channel opens (if enabled)</li>
+<li><strong>Smart NIC selection</strong>: Automatically selects the correct network interface based on target IP subnet</li>
+<li><strong>Filter modes</strong>:
+<ul>
+<li><code>Wide</code>: Capture all traffic on the NIC</li>
+<li><code>Focused</code>: Capture only AAComm traffic (filtered by controller IP and port using BPF)</li>
+</ul>
+</li>
+<li><strong>Session snapshots</strong>: Creates timestamped capture snapshots on disconnect:
+<ul>
+<li><code>Error/</code>: Unexpected disconnects (socket errors, cable unplug, timeout, fatal errors)</li>
+<li><code>User/</code>: Normal user-initiated disconnects (click Disconnect in PCSuite)</li>
+<li><code>Marked/</code>: Manual &quot;Mark Capture&quot; button clicks</li>
+</ul>
+</li>
+<li><strong>Ring buffer</strong>: Rolling capture files with configurable size limits (default 50MB per file, 10 files)</li>
+<li><strong>Retention policies</strong>: Configurable number of snapshots to retain per event type (default: 10 Error, 3 User, 5 Marked)</li>
+<li><strong>Clean session start</strong>: <code>_current</code> folder is cleared when a new Ethernet connection starts</li>
+<li><strong>TCP handshake capture</strong>: 500ms delay on disconnect ensures full TCP close handshake (FIN/ACK) is captured</li>
+</ul>
+<h3 id="capture-behavior">Capture Behavior</h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Snapshot Folder</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Socket error / Cable unplug</td>
+<td><code>Sessions/Error/</code></td>
+<td>Fatal error from EthernetWrapper</td>
+</tr>
+<tr>
+<td>User clicks Disconnect</td>
+<td><code>Sessions/User/</code></td>
+<td>Normal channel close</td>
+</tr>
+<tr>
+<td>User clicks &quot;Mark Capture&quot;</td>
+<td><code>Sessions/Marked/</code></td>
+<td>Manual button in AACommServer UI</td>
+</tr>
+<tr>
+<td>New connection starts</td>
+<td>(clears <code>_current/</code>)</td>
+<td>OnChannelOpened event</td>
+</tr>
+</tbody>
+</table>
+<h3 id="capture-files">Capture Files</h3>
+<p>Captures are stored in: <code>%USERPROFILE%\Documents\AACommServer_DebugLogs\Sniffer\</code></p>
+<p>Structure:</p>
+<pre><code>Sniffer/
+├── _current/                       # Active capture ring buffer (cleared on new connection)
+│   ├── capture_000.pcapng
+│   └── capture_001.pcapng
+└── Sessions/
+    ├── Error/
+    │   └── 20260214_103045/        # Error snapshot (cable unplug, socket error)
+    │       ├── capture_000.pcapng
+    │       └── capture_001.pcapng
+    ├── User/
+    │   └── 20260214_110230/        # User disconnect snapshot
+    │       └── capture_000.pcapng
+    └── Marked/
+        └── 20260214_112015/        # Manual mark snapshot
+            └── capture_000.pcapng
+</code></pre>
+<h3 id="ui-integration-aacommserver-window">UI Integration (AACommServer Window)</h3>
+<p>The AACommServer window includes a sniffer status panel:</p>
+<ul>
+<li><strong>Status indicator</strong>: Shows Capturing (green), Paused (yellow), or Unavailable (gray)</li>
+<li><strong>Statistics</strong>: Packet count and bytes captured</li>
+<li><strong>Enable checkbox</strong>: Toggle sniffer on/off</li>
+<li><strong>Mark Capture button</strong>: Manually trigger a snapshot</li>
+<li><strong>Open Folder button</strong>: Open sniffer directory in Explorer</li>
+</ul>
+<p>If Npcap is not installed, a message &quot;Packet sniffer unavailable (Npcap not installed)&quot; is shown.</p>
+<h3 id="api">API</h3>
+<pre><code class="lang-csharp">// Access the singleton
+var sniffer = SnifferService.Instance;
+
+// Check availability
+if (sniffer.IsNpcapInstalled)
+{
+    // Start/stop/pause capture
+    sniffer.Start(connectionData);
+    sniffer.Pause();
+    sniffer.Resume();
+    sniffer.Stop();
+
+    // Trigger manual snapshot
+    sniffer.TriggerSnapshot(SnifferEventType.Marked);
+
+    // Export capture to specific folder
+    string exportPath = sniffer.ExportCapture(@&quot;C:\Temp\Captures&quot;);
+
+    // Get statistics
+    string stats = sniffer.GetStatisticsString(); // &quot;1,234 pkts, 2.5 MB&quot;
+}
+</code></pre>
+<h3 id="events-1">Events</h3>
+<ul>
+<li><code>OnStatusChanged</code>: Sniffer status changed (Capturing/Paused/Unavailable)</li>
+<li><code>OnStatisticsUpdated</code>: Packet count and bytes captured updated (every 100 packets)</li>
+<li><code>OnSnapshotCreated</code>: Session snapshot created (provides event type and path)</li>
+</ul>
+<h2 id="build-notes">Build Notes</h2>
+<h3 id="net-sdk-10-compatibility">.NET SDK 10 Compatibility</h3>
+<p>When building with .NET SDK 10 targeting .NET Framework 4.8, non-string resources (like icons) require special handling. The AACommServer project loads its tray icon via <code>Assembly.GetManifestResourceStream()</code> instead of the designer-generated <code>Resources</code> class to avoid <code>System.Resources.Extensions</code> version conflicts.</p>
+<p>See <code>AACommServer/DOTNETSDK10_RESOURCE_FIX.md</code> for detailed analysis.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/architecture/server.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

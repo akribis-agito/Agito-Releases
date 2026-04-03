@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AACommMessage | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AACommMessage | Agito AAComm SDK ">
+      
+      <meta name="description" content="This class describes the message sent to AAComm &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and &amp;lt;xref href=&amp;quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; methods   Two CTOR sets are available: for the synchronous SendReceive() function, and the asynchronous Send() function   Every CTOR set has 2 &amp;quot;sub-types&amp;quot; regarding &amp;lt;xref href=&amp;quot;AAComm.Services.AACommMessage.MessageType&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and &amp;lt;xref href=&amp;quot;AAComm.Services.AACommMessage.TimeoutMs&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  The &#39;implicit&#39; CTOR resolves these parameters automatically from the &amp;lt;xref href=&amp;quot;AAComm.Services.AACommMessage.Message&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; argument   The &#39;explicit&#39; CTOR expects the user to specify these arguments. For expert use only.   To use the &amp;quot;Bulk Message&amp;quot; functionality: use the &#39;explicit&#39; CTOR, set MessageType to &amp;lt;xref href=&amp;quot;AAComm.Shared.MessageType.BulkMessage&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and Timeout to &amp;lt;xref href=&amp;quot;AAComm.Shared.TimeoutMs.Default&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; To use the &amp;quot;Special CNCA Bulk Message&amp;quot; functionality: use the &#39;explicit&#39; CTOR, set MessageType to &amp;lt;xref href=&amp;quot;AAComm.Shared.MessageType.BulkMessageCNC&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and Timeout to &amp;lt;xref href=&amp;quot;AAComm.Shared.TimeoutMs.Default&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; To use the &amp;quot;Special CNCB Bulk Message&amp;quot; functionality: use the &#39;explicit&#39; CTOR, set MessageType to &amp;lt;xref href=&amp;quot;AAComm.Shared.MessageType.BulkMessageCNCB&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and Timeout to &amp;lt;xref href=&amp;quot;AAComm.Shared.TimeoutMs.Default&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; To use the &amp;quot;Special Bulk Message for CNCA&amp;quot; functionality: use the &#39;explicit&#39; CTOR, set MessageType to &amp;lt;xref href=&amp;quot;AAComm.Shared.MessageType.SpecialBulk&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and Timeout to &amp;lt;xref href=&amp;quot;AAComm.Shared.TimeoutMs.Default&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; To use the &amp;quot;Special Bulk Message for CNCB&amp;quot; functionality: use the &#39;explicit&#39; CTOR, set MessageType to &amp;lt;xref href=&amp;quot;AAComm.Shared.MessageType.SpecialBulkB&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and Timeout to &amp;lt;xref href=&amp;quot;AAComm.Shared.TimeoutMs.Default&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAComm_Services_AACommMessage.md&amp;value=---%0Auid%3A%20AAComm.Services.AACommMessage%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.AACommMessage">
+
+
+
+  <h1 id="AAComm_Services_AACommMessage" data-uid="AAComm.Services.AACommMessage" class="text-break">
+Class AACommMessage  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><pre><code>This class describes the message sent to AAComm &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; methods
+</code></pre>
+<p></p>
+<pre><code>Two CTOR sets are available: for the synchronous SendReceive() function, and the asynchronous Send() function
+</code></pre>
+<p></p>
+<pre><code>Every CTOR set has 2 &quot;sub-types&quot; regarding &lt;xref href=&quot;AAComm.Services.AACommMessage.MessageType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Services.AACommMessage.TimeoutMs&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+The 'implicit' CTOR resolves these parameters automatically from the &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; argument
+</code></pre>
+<p></p>
+<pre><code>The 'explicit' CTOR expects the user to specify these arguments. For expert use only.
+</code></pre>
+<p></p>
+<pre><code>To use the &quot;Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessage&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special CNCA Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNC&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special CNCB Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNCB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special Bulk Message for CNCA&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulk&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulkB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AACommMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AACommMessage</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String)">
+  AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>IMPLICIT Constructor for ASYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method 
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_MessageType">MessageType</a> and <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_TimeoutMs">TimeoutMs</a> are set automatically, according to the message being sent
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(EventHandler&lt;AACommEventArgs&gt; onReplyReceived, string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onReplyReceived</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd><p>the event handler to be called, when reply is received <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_OnReplyReceived">OnReplyReceived</a> (can be 'null')</p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_AAComm_Shared_MessageType_System_Int32_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,AAComm.Shared.MessageType,System.Int32)">
+  AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string, MessageType, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>ADVANCED!!
+</code></pre>
+<p></p>
+<pre><code>EXPLICIT constructor for ASYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method 
+</code></pre>
+<p></p>
+<pre><code>Explicit MessageType and Timeout must be set!
+</code></pre>
+<p></p>
+<pre><code>If AProgErase is sent using this CTOR, &lt;xref href=&quot;AAComm.Services.UserProgVarsAdapter.Clear&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; must be called!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(EventHandler&lt;AACommEventArgs&gt; onReplyReceived, string message, MessageType messageType, int timeoutMs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onReplyReceived</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd><p>the event handler to be called, when reply is received <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_OnReplyReceived">OnReplyReceived</a></p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+    <dt><code>messageType</code> <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></dt>
+    <dd><p>the message type <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></p>
+</dd>
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the message timeout <a class="xref" href="AAComm.Shared.TimeoutMs.html">TimeoutMs</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_String_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String)">
+  AACommMessage(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>IMPLICIT Constructor for SYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_MessageType">MessageType</a> and <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_TimeoutMs">TimeoutMs</a> are set automatically, according to the message being sent
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_String_AAComm_Shared_MessageType_System_Int32_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String,AAComm.Shared.MessageType,System.Int32)">
+  AACommMessage(string, MessageType, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>ADVANCED!!
+</code></pre>
+<p></p>
+<pre><code>EXPLICIT constructor for SYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method 
+</code></pre>
+<p></p>
+<pre><code>Explicit MessageType and Timeout must be set!
+</code></pre>
+<p></p>
+<pre><code>If AProgErase is sent using this CTOR, &lt;xref href=&quot;AAComm.Services.UserProgVarsAdapter.Clear&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; must be called!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(string message, MessageType messageType, int timeoutMs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+    <dt><code>messageType</code> <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></dt>
+    <dd><p>the message type <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></p>
+</dd>
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the message timeout <a class="xref" href="AAComm.Shared.TimeoutMs.html">TimeoutMs</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Services_AACommMessage_Message_" data-uid="AAComm.Services.AACommMessage.Message*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_Message" data-uid="AAComm.Services.AACommMessage.Message">
+  Message
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>the message to be sent to controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Message { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_MessageType_" data-uid="AAComm.Services.AACommMessage.MessageType*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_MessageType" data-uid="AAComm.Services.AACommMessage.MessageType">
+  MessageType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>indicates a special message type, automatically resolved</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MessageType MessageType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_OnReplyReceived_" data-uid="AAComm.Services.AACommMessage.OnReplyReceived*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_OnReplyReceived" data-uid="AAComm.Services.AACommMessage.OnReplyReceived">
+  OnReplyReceived
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>the event handler to be called, when reply is received. Use with <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Send_AAComm_Services_AACommMessage_">Send(AACommMessage)</a><p></p>
+<p>IMPORTANT: do not block or perform long tasks on the callback thread context, as it'll block AAComm operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventHandler&lt;AACommEventArgs&gt; OnReplyReceived { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_TimeoutMs_" data-uid="AAComm.Services.AACommMessage.TimeoutMs*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_TimeoutMs" data-uid="AAComm.Services.AACommMessage.TimeoutMs">
+  TimeoutMs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>message timeout, automatically resolved, can be overridden using <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_SetTimeoutMs_System_Int32_">SetTimeoutMs(int)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TimeoutMs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_AACommMessage_IsSpecialEthernetOnly_" data-uid="AAComm.Services.AACommMessage.IsSpecialEthernetOnly*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_IsSpecialEthernetOnly_System_String_" data-uid="AAComm.Services.AACommMessage.IsSpecialEthernetOnly(System.String)">
+  IsSpecialEthernetOnly(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>ADVANCED!!
+</code></pre>
+<p></p>
+<pre><code>for INTERNAL use!!
+</code></pre>
+<p></p>
+<pre><code>returns whether message is a special &quot;Ethernet only&quot; message
+</code></pre>
+<p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsSpecialEthernetOnly(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to controller</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether the message is of &quot;special&quot; type</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_SetTimeoutMs_" data-uid="AAComm.Services.AACommMessage.SetTimeoutMs*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_SetTimeoutMs_System_Int32_" data-uid="AAComm.Services.AACommMessage.SetTimeoutMs(System.Int32)">
+  SetTimeoutMs(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>ADVANCED!!
+</code></pre>
+<p></p>
+<pre><code>Helper function for the rare case &lt;xref href=&quot;AAComm.Services.AACommMessage.TimeoutMs&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; has to be modified
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTimeoutMs(int timeoutMs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_StartsWithPAxis_" data-uid="AAComm.Services.AACommMessage.StartsWithPAxis*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_StartsWithPAxis_System_String_" data-uid="AAComm.Services.AACommMessage.StartsWithPAxis(System.String)">
+  StartsWithPAxis(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Helper function to checks whether a message starts with <a class="xref" href="AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_PAxis">PAxis</a> (case insensitive)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool StartsWithPAxis(string msg)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>msg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>parameter to check</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether the string starts with <a class="xref" href="AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_PAxis">PAxis</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/AACommMessage.cs/#L19" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

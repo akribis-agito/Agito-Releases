@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>C++ API (AGAAMotion) | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="C++ API (AGAAMotion) | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/getting-started/agaamotion.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="getting-started-agaamotion">
+<h1 id="agaamotion-c-api-user-manual">AGAAMotion C++ API User Manual</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#controller-management">Controller Management</a></li>
+<li><a href="#axis-property-operations">Axis Property Operations</a></li>
+<li><a href="#io-module-operations">IO Module Operations</a></li>
+<li><a href="#group-property-operations">Group Property Operations</a></li>
+<li><a href="#controller-level-properties">Controller-Level Properties</a></li>
+<li><a href="#basic-motion-control">Basic Motion Control</a></li>
+<li><a href="#advanced-motion-features">Advanced Motion Features</a></li>
+<li><a href="#example-code">Example Code</a></li>
+<li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ol>
+<h2 id="overview">Overview</h2>
+<p>AGAAMotion is a C++ syntax sugar library for AAMotion motion controllers, providing an intuitive way to access axis properties and controller functions. It offers C#-like property access syntax such as <code>controller.A.Speed = 10000</code>.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Fluid Property Access</strong>: Use <code>controller.A.Speed</code> instead of <code>SendCommandString(controller, &quot;ASpeed&quot;, ...)</code></li>
+<li><strong>Type Safety</strong>: Compile-time type checking to reduce runtime errors</li>
+<li><strong>Complete Property Support</strong>: Support for all axis properties and controller-level arrays</li>
+<li><strong>Event-Driven Error Handling</strong>: Unified error handling mechanism</li>
+<li><strong>Multi-Controller Support</strong>: Support for managing multiple controllers simultaneously</li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="basic-usage-flow">Basic Usage Flow</h3>
+<pre><code class="lang-cpp">#include &quot;AGAAMotion.h&quot;
+#include &quot;AxisProps.h&quot;
+
+using namespace AxisPropsDSL;
+
+int main() {
+    // 1. Initialize controller
+    MotionController controller = Initialize(AGM800);
+    if (!controller) {
+        printf(&quot;Controller initialization failed\n&quot;);
+        return -1;
+    }
+    
+    // 2. Create property access wrapper
+    Controller ctl(controller);
+    
+// 3. Connect to device
+if (!Connect(controller, &quot;172.1.1.101&quot;)) {
+    printf(&quot;Connection failed\n&quot;);
+    return -1;
+}
+
+// 3.1 Check connection state (new)
+Controller ctl(controller);
+if (!ctl.isConnected()) {
+    printf(&quot;Controller not connected after Connect()\n&quot;);
+    return -1;
+}
+    
+    // 4. Use property access
+    ctl.A.Speed = 10000;        // Set speed
+    int speed = ctl.A.Speed;    // Read speed
+    
+    // 5. Disconnect
+    Disconnect(controller);
+    return 0;
+}
+</code></pre>
+<h2 id="error-handling">Error Handling</h2>
+<h3 id="setting-error-handling-callbacks">Setting Error Handling Callbacks</h3>
+<p>AGAAMotion provides two error handling approaches:</p>
+<h4 id="1-c-layer-error-handling-recommended">1. C# Layer Error Handling (Recommended)</h4>
+<pre><code class="lang-cpp">void OnErrorOccurred(int errorCode, const char* message, const char* exception) {
+    printf(&quot;\n=== Error Event Triggered ===\n&quot;);
+    printf(&quot;Error Code: %d\n&quot;, errorCode);
+    printf(&quot;Error Message: %s\n&quot;, message);
+    if (strlen(exception) &gt; 0) {
+        printf(&quot;Exception Info: %s\n&quot;, exception);
+    }
+    printf(&quot;=============================\n\n&quot;);
+}
+
+int main() {
+    MotionController controller = Initialize(AGM800);
+    
+    // Set error handling callback
+    SetErrorOccurredHandler(controller, OnErrorOccurred);
+    
+    // Use controller...
+    
+    // Clear error handling callback
+    ClearErrorOccurredHandler(controller);
+    return 0;
+}
+</code></pre>
+<h4 id="2-simple-error-handling">2. Simple Error Handling</h4>
+<pre><code class="lang-cpp">void OnError(const char* functionName, const char* errorMessage) {
+    printf(&quot;Error: %s - %s\n&quot;, functionName, errorMessage);
+}
+
+int main() {
+    // Set global error callback
+    SetErrorCallback(OnError);
+    
+    // Use controller...
+    
+    // Clear error callback
+    ClearErrorCallback();
+    return 0;
+}
+</code></pre>
+<h3 id="error-code-reference">Error Code Reference</h3>
+<ul>
+<li><strong>Error Code 13</strong>: C# layer command error (e.g., invalid command)</li>
+<li><strong>Error Code 8001</strong>: C++ wrapper error (e.g., null pointer)</li>
+</ul>
+<h2 id="controller-management">Controller Management</h2>
+<h3 id="supported-controller-types">Supported Controller Types</h3>
+<pre><code class="lang-cpp">typedef enum {
+    AGD200 = 5,     // AGD200 motion controller
+    AGD155 = 9,     // AGD155 motion controller
+    AGM800 = 10,    // AGM800 motion controller
+    AGD301 = 11,    // AGD301 motion controller
+    AGD155EC = 12,  // AGD155EC motion controller
+    AGD101EC = 13,  // AGD101EC motion controller
+    AGD156EC = 14   // AGD156EC motion controller
+} ControllerType;
+</code></pre>
+<h3 id="controller-lifecycle-management">Controller Lifecycle Management</h3>
+<pre><code class="lang-cpp">// 1. Initialize controller
+MotionController controller = Initialize(AGM800);
+if (!controller) {
+    printf(&quot;Initialization failed\n&quot;);
+    return -1;
+}
+
+// 2. Connect to device
+if (!Connect(controller, &quot;172.1.1.101&quot;, true)) {  // true = fastArk
+    printf(&quot;Connection failed\n&quot;);
+    return -1;
+}
+
+// 3. Use controller...
+
+// 4. Disconnect
+if (Disconnect(controller)) {
+    printf(&quot;Disconnected successfully\n&quot;);
+}
+
+// 5. Release resources (optional, Disconnect calls this automatically)
+Release(controller);
+</code></pre>
+<h3 id="multi-controller-support">Multi-Controller Support</h3>
+<pre><code class="lang-cpp">// Support for managing multiple controllers simultaneously
+MotionController controller1 = Initialize(AGM800);
+MotionController controller2 = Initialize(AGD200);
+
+Controller ctl1(controller1);
+Controller ctl2(controller2);
+
+// Connect separately
+Connect(controller1, &quot;172.1.1.101&quot;);
+Connect(controller2, &quot;172.1.1.102&quot;);
+
+// Operate separately
+ctl1.A.Speed = 10000;
+ctl2.A.Speed = 5000;
+
+// Disconnect separately
+Disconnect(controller1);
+Disconnect(controller2);
+</code></pre>
+<h2 id="axis-property-operations">Axis Property Operations</h2>
+<h3 id="axis-references">Axis References</h3>
+<pre><code class="lang-cpp">typedef enum {
+    A = 1, B = 2, C = 4, D = 8,
+    E = 16, F = 32, G = 64, H = 128,
+    I = 256, J = 512, K = 1024, L = 2048
+} AxisRef;
+</code></pre>
+<h3 id="basic-property-access">Basic Property Access</h3>
+<pre><code class="lang-cpp">Controller ctl(controller);
+
+// Position and velocity properties (read-only)
+int position = ctl.A.Pos;           // Main encoder position
+int auxPos = ctl.A.AuxPos;          // Auxiliary encoder position
+int pdPos = ctl.A.PDPos;            // Pulse direction input position
+int auxVel = ctl.A.AuxVel;          // Auxiliary encoder velocity
+int pdVel = ctl.A.PDVel;            // Pulse direction input velocity
+
+// Motion control properties (read-write)
+ctl.A.Speed = 10000;                // Set speed
+int speed = ctl.A.Speed;            // Read speed
+ctl.A.Accel = 5000;                 // Set acceleration
+ctl.A.Decel = 5000;                 // Set deceleration
+ctl.A.MaxVel = 20000;               // Set maximum velocity
+ctl.A.MaxAcc = 10000;               // Set maximum acceleration
+
+// Status properties (read-only)
+int motionStat = ctl.A.MotionStat;  // Motion status
+int inTarget = ctl.A.InTargetStat;  // In-target status
+int homingStat = ctl.A.HomingStat;  // Homing status
+</code></pre>
+<h3 id="motor-configuration-properties">Motor Configuration Properties</h3>
+<pre><code class="lang-cpp">// Motor type and parameters (read-write)
+ctl.A.MotorType = 1;                // Motor type
+ctl.A.ContCL = 1000;                // Continuous current limit
+ctl.A.PeakCL = 2000;                // Peak current limit
+ctl.A.PeakTime = 100;               // Peak time
+ctl.A.PolePrs = 4;                  // Pole pairs
+
+// Encoder configuration (read-write)
+ctl.A.EncType = 1;                  // Encoder type
+ctl.A.EncRes = 1000;                // Encoder resolution
+ctl.A.EncFilt = 0;                  // Encoder filter
+ctl.A.EncDir = 0;                   // Encoder direction
+</code></pre>
+<h3 id="current-and-voltage-properties-read-only">Current and Voltage Properties (Read-Only)</h3>
+<pre><code class="lang-cpp">// Phase currents
+int ia = ctl.A.Ia;                  // A-phase current
+int ib = ctl.A.Ib;                  // B-phase current
+int id = ctl.A.Id;                  // D-axis current
+int iq = ctl.A.Iq;                  // Q-axis current
+
+// Phase voltages
+int va = ctl.A.Va;                  // A-phase voltage
+int vb = ctl.A.Vb;                  // B-phase voltage
+int vc = ctl.A.Vc;                  // C-phase voltage
+int vd = ctl.A.Vd;                  // D-axis voltage
+int vq = ctl.A.Vq;                  // Q-axis voltage
+</code></pre>
+<h3 id="array-property-access">Array Property Access</h3>
+<pre><code class="lang-cpp">// Velocity array (read-only)
+int vel1 = ctl.A.Vel[1];            // Velocity[1]
+int vel2 = ctl.A.Vel[2];            // Velocity[2]
+int vel3 = ctl.A.Vel[3];            // Velocity[3]
+
+// Motion samples array (read-only)
+int sample1 = ctl.A.MotionSamples[1]; // Sample analyzer
+int sample2 = ctl.A.MotionSamples[2]; // Sample until target
+int sample3 = ctl.A.MotionSamples[3]; // Sample until target reached
+int sample4 = ctl.A.MotionSamples[4]; // Sample stable time
+
+// User parameter array (read-write)
+ctl.A.UserParam[0] = 100;           // Set user parameter[0]
+int userParam0 = ctl.A.UserParam[0]; // Read user parameter[0]
+
+// User PWM array (read-write)
+ctl.A.UserPWM[0] = 50;              // Set user PWM[0]
+int userPWM0 = ctl.A.UserPWM[0];    // Read user PWM[0]
+</code></pre>
+<h3 id="force-control-properties">Force Control Properties</h3>
+<pre><code class="lang-cpp">// Force control parameters (read-write)
+ctl.A.ForceGain = 1000;             // Force gain
+ctl.A.ForceKi = 100;                // Force integral gain
+ctl.A.ForceKd = 50;                 // Force derivative gain
+ctl.A.ForceFFW = 0;                 // Force feedforward
+ctl.A.ForceVelFFW = 0;              // Force velocity feedforward
+
+// Force control status (read-only)
+int forceRef = ctl.A.ForceRef;      // Force reference
+int force = ctl.A.Force;            // Actual force
+int forceErr = ctl.A.ForceErr;      // Force error
+</code></pre>
+<h2 id="io-module-operations">IO Module Operations</h2>
+<h3 id="digital-inputoutput">Digital Input/Output</h3>
+<pre><code class="lang-cpp">// Digital input (read-only)
+int dInPort = ctl.IO.DInPort;       // Digital input port status
+int dInPortHigh = ctl.IO.DInPortHigh; // Digital input high level status
+
+// Digital input configuration (read-write)
+ctl.IO.DInLog = 1;                  // Digital input logic
+ctl.IO.DInLogHigh = 0;              // Digital input high level logic
+ctl.IO.DInFilt = 10;                // Digital input filter
+
+// Digital input mode array (read-write)
+ctl.IO.DInMode[0] = 1;              // Digital input mode[0]
+int dInMode0 = ctl.IO.DInMode[0];   // Read digital input mode[0]
+
+// Digital output configuration (read-write)
+ctl.IO.DOutLog = 1;                 // Digital output logic
+ctl.IO.DOutType = 0;                // Digital output type
+ctl.IO.DOutPort = 0xFF;             // Digital output port
+
+// Digital output mode array (read-write)
+ctl.IO.DOutMode[0] = 1;             // Digital output mode[0]
+ctl.IO.DOutSelect[0] = 1;           // Digital output select[0]
+</code></pre>
+<h3 id="analog-inputoutput">Analog Input/Output</h3>
+<pre><code class="lang-cpp">// Analog input array (read-only)
+int aInPort0 = ctl.IO.AInPort[0];   // Analog input port[0]
+
+// Analog input configuration array (read-write)
+ctl.IO.AInFilt[0] = 5;              // Analog input filter[0]
+ctl.IO.AInOffSet[0] = 0;            // Analog input offset[0]
+ctl.IO.AInDB[0] = 0;                // Analog input deadband[0]
+ctl.IO.AInGain[0] = 1000;           // Analog input gain[0]
+ctl.IO.AInMode[0] = 1;              // Analog input mode[0]
+
+// Analog output configuration array (read-write)
+ctl.IO.AOutMode[0] = 1;             // Analog output mode[0]
+ctl.IO.AOutOffset[0] = 0;           // Analog output offset[0]
+ctl.IO.AOutShifts[0] = 0;           // Analog output shifts[0]
+ctl.IO.AOutPort[0] = 0;             // Analog output port[0]
+</code></pre>
+<h2 id="group-property-operations">Group Property Operations</h2>
+<h3 id="group-a-and-group-b">Group A and Group B</h3>
+<pre><code class="lang-cpp">// Group A properties
+ctl.Group.CNCAEmrgDec = 10000;      // Emergency deceleration
+ctl.Group.CNCAPercents = 100;       // Percentage
+ctl.Group.CNCAEncRatio = 1000;      // Encoder ratio
+
+// Group A status (read-only)
+int status0 = ctl.Group.CNCAStatus[0]; // Status[0]
+int posRef = ctl.Group.CNCAPosRef;     // Position reference
+int dPosRef = ctl.Group.CNCAdPosRef;   // Position reference derivative
+
+// Group B properties
+ctl.GroupB.CNCAEmrgDec = 8000;      // Emergency deceleration
+ctl.GroupB.CNCAPercents = 80;       // Percentage
+ctl.GroupB.CNCAEncRatio = 800;      // Encoder ratio
+</code></pre>
+<h2 id="controller-level-properties">Controller-Level Properties</h2>
+<h3 id="gendata-array-operations">GenData Array Operations</h3>
+<pre><code class="lang-cpp">// GenData array (read-write)
+ctl.GenData[0] = 12345;             // Set GenData[0]
+int genData0 = ctl.GenData[0];      // Read GenData[0]
+
+// Batch operations
+for (int i = 0; i &lt; 10; i++) {
+    ctl.GenData[i] = i * 1000;
+    printf(&quot;GenData[%d] = %d\n&quot;, i, ctl.GenData[i]);
+}
+</code></pre>
+<h3 id="controller-status-properties">Controller Status Properties</h3>
+<pre><code class="lang-cpp">// Read-only array properties
+int identity0 = ctl.Identity[0];    // Identity info[0]
+int dcdc0 = ctl.DCDC[0];            // DCDC[0]
+int errLog0 = ctl.ErrLog[0];        // Error log[0]
+int progStat0 = ctl.ProgStat[0];    // Program status[0]
+
+// Read-write array properties
+ctl.CounterUp[0] = 1000;            // Up counter[0]
+ctl.CounterDown[0] = 500;           // Down counter[0]
+ctl.ProgHaltAll[0] = 1;             // Program halt all[0]
+
+// Read-only scalar properties
+int time = ctl.Time;                // Time
+int boardTemp = ctl.BoardTemp;      // Board temperature
+int vBus = ctl.VBus;                // Bus voltage
+int vLogic = ctl.VLogic;            // Logic voltage
+int pwrTemp = ctl.PwrTemp;          // Power temperature
+int motorTemp = ctl.MotorTemp;      // Motor temperature
+
+// Read-write scalar properties
+ctl.CANAddr = 1;                    // CAN address
+ctl.CANBaud = 1000000;              // CAN baud rate
+ctl.LoggerOn = 1;                   // Logger on
+ctl.LoggerGap = 100;                // Logger gap
+ctl.LoggerFullMod = 0;              // Logger full mode
+</code></pre>
+<h3 id="logger-functions">Logger Functions</h3>
+<pre><code class="lang-cpp">// Logger upload
+char loggerResponse[1024];
+if (ctl.LoggerUpload(loggerResponse, sizeof(loggerResponse))) {
+    printf(&quot;Logger data: %s\n&quot;, loggerResponse);
+}
+</code></pre>
+<h2 id="basic-motion-control">Basic Motion Control</h2>
+<h3 id="motor-control">Motor Control</h3>
+<pre><code class="lang-cpp">// Motor on/off
+MotorOn(controller, A);             // Turn on motor
+MotorOff(controller, A);            // Turn off motor
+
+// Using property method
+ctl.A.MotorOn = 1;                  // Turn on motor
+ctl.A.MotorOn = 0;                  // Turn off motor
+</code></pre>
+<h3 id="basic-motion">Basic Motion</h3>
+<pre><code class="lang-cpp">// Absolute motion
+MoveAbs(controller, A, 10000, 5000, 10000, 10000);
+// Parameters: axis, target position, velocity, acceleration, deceleration
+
+// Relative motion
+MoveRelative(controller, A, 5000, 5000, 10000, 10000);
+// Parameters: axis, relative distance, velocity, acceleration, deceleration
+
+// Wait for motion completion
+MoveAbsAndWait(controller, A, 10000, 5000, 10000, 10000);
+MoveRelAndWait(controller, A, 5000, 5000, 10000, 10000);
+</code></pre>
+<h3 id="jog-motion">Jog Motion</h3>
+<pre><code class="lang-cpp">// Positive jog
+Jog(controller, A, 1000);           // Velocity 1000
+
+// Negative jog
+Jog(controller, A, -1000);          // Velocity -1000
+
+// Stop jog
+Stop(controller, A);
+</code></pre>
+<h3 id="homing-motion">Homing Motion</h3>
+<pre><code class="lang-cpp">// Basic homing
+Home(controller, A);
+
+// Homing with options
+HomeWithOptions(controller, A, true, true, 1000, 5000, 10000, 0, 10000);
+// Parameters: axis, home to limit, home to index, velocity, acceleration, emergency deceleration, home offset, timeout
+
+// Hard stop homing
+HomeToHardStop(controller, A, 100, 1000, 5000, 10000, 0, 10000);
+// Parameters: axis, threshold, velocity, acceleration, emergency deceleration, home offset, timeout
+
+// Check homing status
+if (IsHomed(controller, A)) {
+    printf(&quot;Axis A is homed\n&quot;);
+}
+</code></pre>
+<h3 id="motion-control">Motion Control</h3>
+<pre><code class="lang-cpp">// Stop motion
+Stop(controller, A);                // Normal stop
+StopRep(controller, A);             // Repeat stop
+Abort(controller, A);               // Emergency stop
+
+// Event correction
+EventCorrect(controller, A);
+</code></pre>
+<h2 id="advanced-motion-features">Advanced Motion Features</h2>
+<h3 id="repetitive-motion">Repetitive Motion</h3>
+<pre><code class="lang-cpp">// Absolute repetitive motion
+MoveAbsRepetitive(controller, A, 10000, 1000, 5000, 10000, 10000);
+// Parameters: axis, position, dwell time(ms), velocity, acceleration, deceleration
+
+// Relative repetitive motion
+MoveRelRepetitive(controller, A, 5000, 1000, 5000, 10000, 10000);
+// Parameters: axis, distance, dwell time(ms), velocity, acceleration, deceleration
+
+// Repetitive motion with wait
+MoveAbsRepetitiveAndWait(controller, A, 10000, 1000, 5000, 10000, 10000, 30000);
+MoveRelRepetitiveAndWait(controller, A, 5000, 1000, 5000, 10000, 10000, 30000);
+// Last parameter is timeout time(ms)
+</code></pre>
+<h3 id="linear-interpolation">Linear Interpolation</h3>
+<pre><code class="lang-cpp">// Single-axis linear interpolation
+LinearAbsoluteX(controller, 10000, 5000, 1000);
+LinearAbsoluteY(controller, 20000, 5000, 1000);
+LinearAbsoluteZ(controller, 30000, 5000, 1000);
+
+// Multi-axis linear interpolation
+LinearAbsoluteXY(controller, 10000, 20000, 5000, 1000);
+LinearAbsoluteXYZ(controller, 10000, 20000, 30000, 5000, 1000);
+
+// Three-axis linear interpolation
+LinearAbsolute(controller, 10000, 20000, 30000, 5000, 1000);
+// Parameters: A-axis position, B-axis position, C-axis position, cruise velocity, end velocity
+</code></pre>
+<h3 id="arc-interpolation">Arc Interpolation</h3>
+<pre><code class="lang-cpp">// XY plane arc
+ArcXY(controller, 10000, 20000, 5000, 10000, 1, 5000, 1000);
+// Parameters: X position, Y position, I center, J center, direction, cruise velocity, end velocity
+
+// Arc with cycles
+ArcXYWithCycles(controller, 10000, 20000, 5000, 10000, 1, 5000, 1000, 2);
+// Last parameter is additional cycle count
+
+// XZ and YZ plane arcs
+ArcXZ(controller, 10000, 30000, 5000, 15000, 1, 5000, 1000);
+ArcYZ(controller, 20000, 30000, 10000, 15000, 1, 5000, 1000);
+</code></pre>
+<h3 id="program-control">Program Control</h3>
+<pre><code class="lang-cpp">// Program run
+ProgRun(controller, A, 1, 1);       // axis, thread number, task number
+
+// Auto execute
+AutoExec(controller, A, true);      // axis, enable
+
+// Program control
+ProgReset(controller, A, 1);        // axis, thread number
+ProgHalt(controller, A, 1);         // axis, thread number
+ProgHaltAll(controller, A);         // axis
+</code></pre>
+<h3 id="group-control">Group Control</h3>
+<pre><code class="lang-cpp">// CNC group control
+CNCBegin(controller);               // Begin CNC
+Pause(controller);                  // Pause
+Resume(controller);                 // Resume
+ClearBuffer(controller);            // Clear buffer
+GroupStop(controller);              // Group stop
+</code></pre>
+<h2 id="example-code">Example Code</h2>
+<h3 id="complete-example-basic-motion-control">Complete Example: Basic Motion Control</h3>
+<pre><code class="lang-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &quot;../AGAAMotion/AGAAMotion.h&quot;
+#include &quot;../AGAAMotion/AxisProps.h&quot;
+#include &lt;thread&gt;
+#include &lt;chrono&gt;
+
+using namespace AxisPropsDSL;
+
+void OnErrorOccurred(int errorCode, const char* message, const char* exception) {
+    printf(&quot;\n=== Error Event Triggered ===\n&quot;);
+    printf(&quot;Error Code: %d\n&quot;, errorCode);
+    printf(&quot;Error Message: %s\n&quot;, message);
+    if (strlen(exception) &gt; 0) {
+        printf(&quot;Exception Info: %s\n&quot;, exception);
+    }
+    printf(&quot;=============================\n\n&quot;);
+}
+
+int main() {
+    printf(&quot;=== AGAAMotion Complete Example ===\n\n&quot;);
+
+    // 1. Initialize controller
+    MotionController controller = Initialize(AGM800);
+    if (!controller) {
+        printf(&quot;Controller initialization failed\n&quot;);
+        return -1;
+    }
+
+    // 2. Create property access wrapper
+    Controller ctl(controller);
+
+    // 3. Set error handling
+    SetErrorOccurredHandler(controller, OnErrorOccurred);
+
+    // 4. Connect to device
+    if (!Connect(controller, &quot;172.1.1.101&quot;)) {
+        printf(&quot;Connection failed\n&quot;);
+        return -1;
+    }
+    printf(&quot;Connected successfully\n&quot;);
+
+    // 5. Configure axis parameters
+    ctl.A.Speed = 10000;            // Set speed
+    ctl.A.Accel = 5000;             // Set acceleration
+    ctl.A.Decel = 5000;             // Set deceleration
+    ctl.A.MaxVel = 20000;           // Set maximum velocity
+
+    // 6. Turn on motor
+    MotorOn(controller, A);
+    printf(&quot;Motor turned on\n&quot;);
+
+    // 7. Execute homing
+    printf(&quot;Starting homing...\n&quot;);
+    Home(controller, A);
+    
+    // Wait for homing completion
+    while (ctl.A.HomingStat != 4) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    printf(&quot;Homing completed\n&quot;);
+
+    // 8. Execute absolute motion
+    printf(&quot;Executing absolute motion to position 50000...\n&quot;);
+    MoveAbsAndWait(controller, A, 50000, 10000, 10000, 10000);
+    printf(&quot;Current position: %d\n&quot;, ctl.A.Pos);
+
+    // 9. Execute relative motion
+    printf(&quot;Executing relative motion +20000...\n&quot;);
+    MoveRelAndWait(controller, A, 20000, 10000, 10000, 10000);
+    printf(&quot;Current position: %d\n&quot;, ctl.A.Pos);
+
+    // 10. Jog motion
+    printf(&quot;Executing jog motion...\n&quot;);
+    Jog(controller, A, 5000);       // Positive jog
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    Stop(controller, A);            // Stop
+
+    // 11. Operate GenData
+    printf(&quot;Operating GenData array...\n&quot;);
+    ctl.GenData[0] = 12345;
+    ctl.GenData[1] = 67890;
+    printf(&quot;GenData[0] = %d\n&quot;, ctl.GenData[0]);
+    printf(&quot;GenData[1] = %d\n&quot;, ctl.GenData[1]);
+
+    // 12. Read status information
+    printf(&quot;Reading status information...\n&quot;);
+    printf(&quot;Motion status: %d\n&quot;, ctl.A.MotionStat);
+    printf(&quot;In-target status: %d\n&quot;, ctl.A.InTargetStat);
+    printf(&quot;Current position: %d\n&quot;, ctl.A.Pos);
+    printf(&quot;Current velocity: %d\n&quot;, ctl.A.Vel[1]);
+
+    // 13. Turn off motor
+    MotorOff(controller, A);
+    printf(&quot;Motor turned off\n&quot;);
+
+    // 14. Disconnect
+    Disconnect(controller);
+    printf(&quot;Disconnected successfully\n&quot;);
+
+    // 15. Clear error handling
+    ClearErrorOccurredHandler(controller);
+
+    printf(&quot;\nExample completed\n&quot;);
+    return 0;
+}
+</code></pre>
+<h3 id="multi-axis-coordinated-motion-example">Multi-Axis Coordinated Motion Example</h3>
+<pre><code class="lang-cpp">void MultiAxisExample() {
+    MotionController controller = Initialize(AGM800);
+    Controller ctl(controller);
+    
+    Connect(controller, &quot;172.1.1.101&quot;);
+    
+    // Configure multi-axis parameters
+    ctl.A.Speed = 10000;
+    ctl.B.Speed = 8000;
+    ctl.C.Speed = 6000;
+    
+    ctl.A.Accel = 5000;
+    ctl.B.Accel = 4000;
+    ctl.C.Accel = 3000;
+    
+    // Turn on all axis motors
+    MotorOn(controller, A);
+    MotorOn(controller, B);
+    MotorOn(controller, C);
+    
+    // Three-axis linear interpolation motion
+    LinearAbsolute(controller, 10000, 20000, 30000, 8000, 1000);
+    
+    // Wait for motion completion
+    while (ctl.A.InTargetStat != 4 || ctl.B.InTargetStat != 4 || ctl.C.InTargetStat != 4) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    
+    printf(&quot;Multi-axis motion completed\n&quot;);
+    printf(&quot;A-axis position: %d\n&quot;, ctl.A.Pos);
+    printf(&quot;B-axis position: %d\n&quot;, ctl.B.Pos);
+    printf(&quot;C-axis position: %d\n&quot;, ctl.C.Pos);
+    
+    // Turn off all axis motors
+    MotorOff(controller, A);
+    MotorOff(controller, B);
+    MotorOff(controller, C);
+    
+    Disconnect(controller);
+}
+</code></pre>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<h3 id="q1-how-to-handle-connection-failures">Q1: How to handle connection failures?</h3>
+<pre><code class="lang-cpp">if (!Connect(controller, &quot;172.1.1.101&quot;)) {
+    printf(&quot;Connection failed, please check:\n&quot;);
+    printf(&quot;1. Network connection is normal\n&quot;);
+    printf(&quot;2. Controller IP address is correct\n&quot;);
+    printf(&quot;3. Controller is started\n&quot;);
+    return -1;
+}
+</code></pre>
+<h3 id="q2-how-to-check-if-motion-is-completed">Q2: How to check if motion is completed?</h3>
+<pre><code class="lang-cpp">// Method 1: Use InTargetStat property
+while (ctl.A.InTargetStat != 4) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+}
+
+// Method 2: Use Wait functions
+MoveAbsAndWait(controller, A, 10000, 5000, 10000, 10000);
+</code></pre>
+<h3 id="q3-how-to-handle-error-commands">Q3: How to handle error commands?</h3>
+<pre><code class="lang-cpp">char response[256];
+if (SendCommandString(controller, &quot;ASpeed = 10000&quot;, response, sizeof(response))) {
+    printf(&quot;Command successful: %s\n&quot;, response);
+} else {
+    printf(&quot;Command failed: %s\n&quot;, response);
+}
+</code></pre>
+<h3 id="q4-how-to-operate-multiple-controllers-simultaneously">Q4: How to operate multiple controllers simultaneously?</h3>
+<pre><code class="lang-cpp">MotionController ctrl1 = Initialize(AGM800);
+MotionController ctrl2 = Initialize(AGD200);
+
+Controller ctl1(ctrl1);
+Controller ctl2(ctrl2);
+
+Connect(ctrl1, &quot;172.1.1.101&quot;);
+Connect(ctrl2, &quot;172.1.1.102&quot;);
+
+// Operate separately
+ctl1.A.Speed = 10000;
+ctl2.A.Speed = 5000;
+</code></pre>
+<h3 id="q5-how-to-optimize-performance">Q5: How to optimize performance?</h3>
+<pre><code class="lang-cpp">// 1. Use property access instead of SendCommandString
+// Good practice
+int speed = ctl.A.Speed;
+
+// Avoid this
+char response[64];
+SendCommandString(controller, &quot;ASpeed&quot;, response, sizeof(response));
+int speed = std::atoi(response);
+
+// 2. Batch operations on GenData
+for (int i = 0; i &lt; 100; i++) {
+    ctl.GenData[i] = i * 1000;  // Faster than individual SendCommandString calls
+}
+</code></pre>
+<h3 id="q6-memory-management-considerations">Q6: Memory management considerations</h3>
+<pre><code class="lang-cpp">// Correct practice: Ensure resource release
+MotionController controller = Initialize(AGM800);
+// ... use controller ...
+Disconnect(controller);  // Automatically calls Release
+
+// Incorrect practice: Forgetting to disconnect
+MotionController controller = Initialize(AGM800);
+// ... use controller ...
+// Forgetting to call Disconnect may cause resource leaks
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>AGAAMotion provides a powerful and intuitive C++ API that makes it easy to control AAMotion motion controllers. By using property access syntax and event-driven error handling, you can write cleaner and more reliable code.</p>
+<p>Always remember to:</p>
+<ol>
+<li>Set error handling callbacks</li>
+<li>Check function return values</li>
+<li>Properly manage controller lifecycle</li>
+<li>Use property access instead of raw command strings</li>
+<li>Disconnect when finished</li>
+</ol>
+<p>For questions, please refer to the example code or contact technical support.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/getting-started/agaamotion.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

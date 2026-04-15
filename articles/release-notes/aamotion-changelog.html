@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/release-notes/aamotion-changelog.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/articles/release-notes/aamotion-changelog.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -76,6 +76,17 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="910---2026-04-15">[9.1.0] - 2026-04-15</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><code>ScanController</code> / <code>ScanControllerDetailed</code>: Replaced unreliable TCP probe (<code>TcpPortReachable</code>) with ARP-based discovery via <code>ARPTools.GetSubnetActiveIPs</code>. This uses the same multi-NIC ARP scan as PCSuite's Discover Connections, ensuring controllers on all Ethernet interfaces are reliably found.
+<ul>
+<li>Fixes: random discovery failures with multiple NICs on the same subnet (OS routing picked one interface only)</li>
+<li>Fixes: <code>NullReferenceException</code> in <code>TcpClient.EndConnect</code> when scanning IPs with no controller (disposed socket from dangling <code>ConnectAsync</code> task)</li>
+<li>Removed <code>TcpPortReachable</code> private method (no longer needed)</li>
+</ul>
+</li>
+</ul>
 <h2 id="900---2026-04-03">[9.0.0] - 2026-04-03</h2>
 <h3 id="changed">Changed</h3>
 <ul>
@@ -205,7 +216,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="809---2026-01-06">[8.0.9] - 2026-01-06</h2>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>Corrected CNC buffer clear routing so GroupA and GroupB send to their own CNC groups.</li>
 </ul>
@@ -273,13 +284,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Enhanced <code>KeywordRegistry</code> to accept firmware version parameter for dynamic keyword filtering</li>
 <li>Improved <code>CommAPIInterface.Connect()</code> method to read and parse firmware version from controller during connection</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>Fixed keyword filtering to properly handle firmware version-dependent keywords for different controller types</li>
 <li>Improved keyword availability detection based on actual controller firmware version</li>
 </ul>
 <h2 id="804---2025-12-22">[8.0.4] - 2025-12-22</h2>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li><code>EventPulseRes</code> now reports the correct value (previously always 0).</li>
 </ul>
@@ -288,7 +299,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>Commutated</code> and <code>IsCommutated</code> APIs.</li>
 </ul>
 <h2 id="803---2025-12-17">[8.0.3] - 2025-12-17</h2>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>Fixed vector motion <code>Begin</code> behavior in <code>SingleAxis.Vector*</code> helpers to <strong>only send one <code>Begin</code> command for the currently selected axis</strong>, ensuring correct behavior when multiple member axes participate in a vector move.</li>
 </ul>
@@ -420,7 +431,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Enhanced backward compatibility: old code expecting int types continues to work without modification</li>
 <li>Optimized <code>KeywordMappings</code> initialization in <code>Connect()</code> method to handle controller type detection failures gracefully</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Fixed type conversion errors when accessing float/double/long parameters in old code that expects int types</li>
 <li>Fixed <code>KeyNotFoundException</code> when <code>KeywordMappings</code> was not initialized due to controller connection failures</li>
@@ -463,7 +474,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>A dynamic keyword shielding mechanism based on controller type has been implemented, which has enhanced the system's compatibility and maintainability.</li>
 <li>Initialization and connection exception information optimization</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>The issue of the AGD101-EC controller connection failure has been resolved.</li>
 </ul>
@@ -505,7 +516,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <hr>
 <hr>
 <h2 id="747---2025-06-26">[7.4.7] - 2025-06-26</h2>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>Modify the array length of HomingDef.</li>
 </ul>
@@ -535,7 +546,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Add method and attribute annotations.</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>Add the minimum axis judgment of the VectorLinear method of Vector.</li>
 </ul>
@@ -631,7 +642,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Add the SetLock method to set the Lock function.</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>Delete the attribute array VecPosFDef. This attribute is not in the dictionary.</li>
 <li>Make four connection attempts while making a connection in AAmotion.</li>
@@ -651,7 +662,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Implement AAValueArray's foreach method.</li>
 <li>Add and implement the Java language call AAMotion project. AAMotionJava.</li>
 </ul>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>Fixed VecPosFDef attribute being AAValueArray<int>.</int></li>
 <li>Adds the undefined attribute int UserPWMDiv. AAValueArray<int> MapTable. int EventOn.</int></li>
@@ -663,7 +674,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Add the method CiGroupDOutSetBit, CiGroupDOutClearBit, CiGroupDOutToggleBit. When using CNCGroup, can set, clear, and switch the specified axis (AAMotionAPI also add).</li>
 <li>AAValueArray<int> CNCAStatus, added to the registry.</int></li>
 </ul>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li>Fixed the return value error of MotionReason, ForceCmdValVecArcDir, VecSpeed, VecType, LoggerFullMod.</li>
 </ul>
@@ -673,7 +684,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Add Home(filepath) to return to zero based on the zeroback file.</li>
 </ul>
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 <ul>
 <li>Fix the Group API method using GetGroup.</li>
 </ul>
@@ -687,7 +698,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="721---2025-02-11">[7.2.1] - 2025-02-11</h2>
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 <ul>
 <li>Fix AAMotion MoveAbs by adding Begin().</li>
 <li>Fix MoveAbs() of AAMotionAPI; MoveAbs is called instead of MoveRel.</li>
@@ -711,7 +722,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="705---2025-01-16">[7.0.5] - 2025-01-16</h2>
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 <ul>
 <li>If connection fail due to FwInfoMismatch, retry connection with ForceAboutData set to true.</li>
 </ul>
@@ -724,19 +735,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="703---2025-01-09">[7.0.3] - 2025-01-09</h2>
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="fixed-15">Fixed</h3>
 <ul>
 <li>Add a timeout mechanism to the initialization loop in the CommAPIInterface constructor to prevent infinite waiting. Set the maximum wait time to 3 seconds (30 ticks of 100ms).</li>
 </ul>
 <hr>
 <h2 id="702---2025-01-09">[7.0.2] - 2025-01-09</h2>
-<h3 id="fixed-15">Fixed</h3>
+<h3 id="fixed-16">Fixed</h3>
 <ul>
 <li>Make sure the dictionary's life cycle is permanent.</li>
 </ul>
 <hr>
 <h2 id="701---2025-01-08">[7.0.1] - 2025-01-08</h2>
-<h3 id="fixed-16">Fixed</h3>
+<h3 id="fixed-17">Fixed</h3>
 <ul>
 <li>Include controller parameters eKeyword.cs file.</li>
 </ul>
@@ -760,25 +771,25 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="604---2024-11-20">[6.0.4] - 2024-11-20</h2>
-<h3 id="fixed-17">Fixed</h3>
+<h3 id="fixed-18">Fixed</h3>
 <ul>
 <li>Fixed indexing bug for ForceCurr_SetForceCmdSource() and ForceCurr_SetCurrCmdSource() methods.</li>
 </ul>
 <hr>
 <h2 id="603---2024-07-01">[6.0.3] - 2024-07-01</h2>
-<h3 id="fixed-18">Fixed</h3>
+<h3 id="fixed-19">Fixed</h3>
 <ul>
 <li>Setting and Querying the MotorOn keyword in PCSuite is 20 seconds, so here we do the same thing at the communicator interface.</li>
 </ul>
 <hr>
 <h2 id="602---2024-06-16">[6.0.2] - 2024-06-16</h2>
-<h3 id="fixed-19">Fixed</h3>
+<h3 id="fixed-20">Fixed</h3>
 <ul>
 <li>.NET 4.0 YamlDotNet reference 4.2.2.</li>
 </ul>
 <hr>
 <h2 id="601---2024-05-31">[6.0.1] - 2024-05-31</h2>
-<h3 id="fixed-20">Fixed</h3>
+<h3 id="fixed-21">Fixed</h3>
 <ul>
 <li>Set motion mode when MoveAbs is called.</li>
 </ul>
@@ -796,7 +807,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5123---2023-11-30">[5.12.3] - 2023-11-30</h2>
-<h3 id="fixed-21">Fixed</h3>
+<h3 id="fixed-22">Fixed</h3>
 <ul>
 <li>AllStatInterpreter now supports 12 axes to compliment changes in 5.10.0.</li>
 <li>VectorMotion Pause Continue Fix, Added Enum for Vector Motion.</li>
@@ -821,31 +832,31 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5110---2023-09-08">[5.11.0] - 2023-09-08</h2>
-<h3 id="fixed-22">Fixed</h3>
+<h3 id="fixed-23">Fixed</h3>
 <ul>
 <li>Fix the errcode of 'FailAboutData' when connecting.</li>
 </ul>
 <hr>
 <h2 id="5100---2023-08-04">[5.10.0] - 2023-08-04</h2>
-<h3 id="fixed-23">Fixed</h3>
+<h3 id="fixed-24">Fixed</h3>
 <ul>
 <li>AllStatUpdate to query for all 12 axes (instead of 8) such that the auxiliary ports will be updated too.</li>
 </ul>
 <hr>
 <h2 id="590---2023-08-03">[5.9.0] - 2023-08-03</h2>
-<h3 id="fixed-24">Fixed</h3>
+<h3 id="fixed-25">Fixed</h3>
 <ul>
 <li>AllStatUpdate to include AGD155_EC_ID as well.</li>
 </ul>
 <hr>
 <h2 id="580---2023-04-13">[5.8.0] - 2023-04-13</h2>
-<h3 id="fixed-25">Fixed</h3>
+<h3 id="fixed-26">Fixed</h3>
 <ul>
 <li>CRITICAL! AAComm RecUpload and &quot;continuous&quot; messages related bug.</li>
 </ul>
 <hr>
 <h2 id="570---2023-04-13">[5.7.0] - 2023-04-13</h2>
-<h3 id="fixed-26">Fixed</h3>
+<h3 id="fixed-27">Fixed</h3>
 <ul>
 <li>Add YamlDotNet nuget dependency.</li>
 </ul>
@@ -929,7 +940,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5412---2022-08-03">[5.4.12] - 2022-08-03</h2>
-<h3 id="fixed-27">Fixed</h3>
+<h3 id="fixed-28">Fixed</h3>
 <ul>
 <li>Removing MotorCurrent, Fixing MotorCurr and CurrRef Statuses in ISingleAxis.</li>
 </ul>
@@ -959,7 +970,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="547---2021-09-07">[5.4.7] - 2021-09-07</h2>
-<h3 id="fixed-28">Fixed</h3>
+<h3 id="fixed-29">Fixed</h3>
 <ul>
 <li>BuffTime and BuffPos command format must be array type.</li>
 </ul>
@@ -971,7 +982,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="545---2021-08-04">[5.4.5] - 2021-08-04</h2>
-<h3 id="fixed-29">Fixed</h3>
+<h3 id="fixed-30">Fixed</h3>
 <ul>
 <li>HomeToLimitThenIndex, Jog to index - 4, the first parameter is speed, argu 1.</li>
 </ul>
@@ -1013,7 +1024,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="541---2021-05-12">[5.4.1] - 2021-05-12</h2>
-<h3 id="fixed-30">Fixed</h3>
+<h3 id="fixed-31">Fixed</h3>
 <ul>
 <li>Default set time out as 2 seconds when send out packet.</li>
 </ul>
@@ -1025,13 +1036,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="532---2021-03-24">[5.3.2] - 2021-03-24</h2>
-<h3 id="fixed-31">Fixed</h3>
+<h3 id="fixed-32">Fixed</h3>
 <ul>
 <li>Corrected <param> tag for CNC Arc Motion.</li>
 </ul>
 <hr>
 <h2 id="531---2021-03-04">[5.3.1] - 2021-03-04</h2>
-<h3 id="fixed-32">Fixed</h3>
+<h3 id="fixed-33">Fixed</h3>
 <ul>
 <li>Fix the bug on AIO Output Readback value incorrect.</li>
 </ul>
@@ -1062,7 +1073,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="526---2020-09-29">[5.2.6] - 2020-09-29</h2>
-<h3 id="fixed-33">Fixed</h3>
+<h3 id="fixed-34">Fixed</h3>
 <ul>
 <li>Updated calls to GetAllAxisStat within Group.cs.</li>
 </ul>
@@ -1094,7 +1105,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Array Type parameter index start from 1 for AAMotion user.</li>
 <li>Rename and add elements in enum ControllerType.</li>
 </ul>
-<h3 id="fixed-34">Fixed</h3>
+<h3 id="fixed-35">Fixed</h3>
 <ul>
 <li>Instantiate eEventSetting dictionary for read.</li>
 </ul>
@@ -1129,7 +1140,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Change the commands of GetAllSettingsDIOAG300, GetAllSettingsAIOAG300 to dynamic contents, initialize them in the CommandList and rebuild later dynamically.</li>
 </ul>
-<h3 id="fixed-35">Fixed</h3>
+<h3 id="fixed-36">Fixed</h3>
 <ul>
 <li>Dynamic Command fix the AGD301 system down after connection.</li>
 <li>Add eIOSetting.DInMode in UpdatePropertyListIOSettingArray.</li>
@@ -1137,7 +1148,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="501---2020-09-09">[5.0.1] - 2020-09-09</h2>
-<h3 id="fixed-36">Fixed</h3>
+<h3 id="fixed-37">Fixed</h3>
 <ul>
 <li>FIX nuget package.</li>
 </ul>
@@ -1156,19 +1167,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4217---2020-09-04">[4.21.7] - 2020-09-04</h2>
-<h3 id="fixed-37">Fixed</h3>
+<h3 id="fixed-38">Fixed</h3>
 <ul>
 <li>Take CiStatus from AllStat returning data structure.</li>
 </ul>
 <hr>
 <h2 id="4216---2020-08-31">[4.21.6] - 2020-08-31</h2>
-<h3 id="fixed-38">Fixed</h3>
+<h3 id="fixed-39">Fixed</h3>
 <ul>
 <li>Make AllStat &quot;Continuous&quot; message type.</li>
 </ul>
 <hr>
 <h2 id="4215---2020-08-27">[4.21.5] - 2020-08-27</h2>
-<h3 id="fixed-39">Fixed</h3>
+<h3 id="fixed-40">Fixed</h3>
 <ul>
 <li>Increase Axis to L.</li>
 </ul>
@@ -1213,7 +1224,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Rename the property arrayStorage.</li>
 </ul>
-<h3 id="fixed-40">Fixed</h3>
+<h3 id="fixed-41">Fixed</h3>
 <ul>
 <li>Refresh takes after the communication OK with the controller.</li>
 <li>VBus, VLogic, PwrTemp, MotorTemp updated valid only after the communication OK with the controller.</li>
@@ -1261,7 +1272,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4131---2019-01-10">[4.13.1] - 2019-01-10</h2>
-<h3 id="fixed-41">Fixed</h3>
+<h3 id="fixed-42">Fixed</h3>
 <ul>
 <li>Put back bulk command method which was removed in v4.12.0.</li>
 </ul>
@@ -1291,13 +1302,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4102---2019-10-13">[4.10.2] - 2019-10-13</h2>
-<h3 id="fixed-42">Fixed</h3>
+<h3 id="fixed-43">Fixed</h3>
 <ul>
 <li>Edited summary of SendBulkCommandString method.</li>
 </ul>
 <hr>
 <h2 id="4101---2019-10-10">[4.10.1] - 2019-10-10</h2>
-<h3 id="fixed-43">Fixed</h3>
+<h3 id="fixed-44">Fixed</h3>
 <ul>
 <li>Differentiated between internal and external bulk messaging.</li>
 </ul>
@@ -1327,7 +1338,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added InTargetTol, Added InTargetTime Keywords.</li>
 <li>Added Arc functions in Group Axis to include Additional Cycles Input Parameter.</li>
 </ul>
-<h3 id="fixed-44">Fixed</h3>
+<h3 id="fixed-45">Fixed</h3>
 <ul>
 <li>Arc functions in Group axis was missing 1 parameter.</li>
 </ul>
@@ -1374,7 +1385,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AACommDocs/articles/release-notes/aamotion-changelog.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/articles/release-notes/aamotion-changelog.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

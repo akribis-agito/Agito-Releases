@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/v12.0.0/apiSpec/new?filename=AAComm_Services_ARPTools.md&amp;value=---%0Auid%3A%20AAComm.Services.ARPTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_ARPTools.md&amp;value=---%0Auid%3A%20AAComm.Services.ARPTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Services_ARPTools" data-uid="AAComm.Services.ARPTools" class="text-break">
-Class ARPTools  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class ARPTools  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class ARPTools  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="AAComm_Services_ARPTools_GetInterNetworkEthernetInterfaces_System_Boolean_" data-uid="AAComm.Services.ARPTools.GetInterNetworkEthernetInterfaces(System.Boolean)">
   GetInterNetworkEthernetInterfaces(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>function returns all Ethernet interfaces that have InterNetwork within Unicast addresses</p>
@@ -191,14 +191,56 @@ Class ARPTools  <a class="header-action link-secondary" title="View source" href
 
 
 
+  <a id="AAComm_Services_ARPTools_GetLocalIPsOnSubnet_" data-uid="AAComm.Services.ARPTools.GetLocalIPsOnSubnet*"></a>
+
+  <h3 id="AAComm_Services_ARPTools_GetLocalIPsOnSubnet_System_String_" data-uid="AAComm.Services.ARPTools.GetLocalIPsOnSubnet(System.String)">
+  GetLocalIPsOnSubnet(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns all local IPv4 addresses on UP Ethernet adapters that match the given subnet (e.g. &quot;172.1.1&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;IPAddress&gt; GetLocalIPsOnSubnet(string subnet)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>subnet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Services_ARPTools_GetSubnetActiveIPs_" data-uid="AAComm.Services.ARPTools.GetSubnetActiveIPs*"></a>
 
   <h3 id="AAComm_Services_ARPTools_GetSubnetActiveIPs_System_String_" data-uid="AAComm.Services.ARPTools.GetSubnetActiveIPs(System.String)">
   GetSubnetActiveIPs(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>searches for devices across subnet, will THROW if argument is in incorrect format</p>
+  <div class="markdown level1 summary"><pre><code>searches for devices across subnet, will THROW if argument is in incorrect format.
+</code></pre>
+<p></p>
+<pre><code>scans from all local Ethernet NICs that match the subnet in parallel (each NIC is a
+separate L2 segment, so per-NIC ARP throttling is safe in parallel).
+</code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -234,10 +276,10 @@ Class ARPTools  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="AAComm_Services_ARPTools_PingAddress_System_Net_IPAddress_" data-uid="AAComm.Services.ARPTools.PingAddress(System.Net.IPAddress)">
   PingAddress(IPAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L271"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>sends ARP request (or Ping on non-Windows OS) to device
+  <div class="markdown level1 summary"><pre><code>sends ARP request (or Ping on non-Windows OS) to device using the OS default interface (SrcIP=0).
 </code></pre>
 <p></p>
 <pre><code>may throw on &lt;xref href=&quot;System.Net.NetworkInformation.Ping.Send(System.Net.IPAddress)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
@@ -277,7 +319,7 @@ Class ARPTools  <a class="header-action link-secondary" title="View source" href
 
   <h3 id="AAComm_Services_ARPTools_PingAddress_System_String_" data-uid="AAComm.Services.ARPTools.PingAddress(System.String)">
   PingAddress(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L260"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>sends ARP request (or Ping on non-Windows OS) to device
@@ -316,11 +358,57 @@ Class ARPTools  <a class="header-action link-secondary" title="View source" href
 
 
 
+  <a id="AAComm_Services_ARPTools_PingAddressFromMatchingNICs_" data-uid="AAComm.Services.ARPTools.PingAddressFromMatchingNICs*"></a>
+
+  <h3 id="AAComm_Services_ARPTools_PingAddressFromMatchingNICs_System_String_" data-uid="AAComm.Services.ARPTools.PingAddressFromMatchingNICs(System.String)">
+  PingAddressFromMatchingNICs(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L307"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>tries ARP from every local Ethernet NIC that matches the device's subnet.
+</code></pre>
+<p></p>
+<pre><code>returns true as soon as any NIC gets a response.
+</code></pre>
+<p></p>
+<pre><code>falls back to SrcIP=0 if no matching NICs are found.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool PingAddressFromMatchingNICs(string deviceIP)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deviceIP</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>IP string, i.e. 172.1.1.101</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>whether address responded on any NIC</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/v12.0.0/AACommComponents/AAComm/Services/ARPTools.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ARPTools.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
 

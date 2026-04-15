@@ -3613,6 +3613,22 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ARPTools.GetInterNetworkEthernetInterfaces
   nameWithType: ARPTools.GetInterNetworkEthernetInterfaces
+- uid: AAComm.Services.ARPTools.GetLocalIPsOnSubnet(System.String)
+  name: GetLocalIPsOnSubnet(string)
+  href: api/AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_GetLocalIPsOnSubnet_System_String_
+  commentId: M:AAComm.Services.ARPTools.GetLocalIPsOnSubnet(System.String)
+  name.vb: GetLocalIPsOnSubnet(String)
+  fullName: AAComm.Services.ARPTools.GetLocalIPsOnSubnet(string)
+  fullName.vb: AAComm.Services.ARPTools.GetLocalIPsOnSubnet(String)
+  nameWithType: ARPTools.GetLocalIPsOnSubnet(string)
+  nameWithType.vb: ARPTools.GetLocalIPsOnSubnet(String)
+- uid: AAComm.Services.ARPTools.GetLocalIPsOnSubnet*
+  name: GetLocalIPsOnSubnet
+  href: api/AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_GetLocalIPsOnSubnet_
+  commentId: Overload:AAComm.Services.ARPTools.GetLocalIPsOnSubnet
+  isSpec: "True"
+  fullName: AAComm.Services.ARPTools.GetLocalIPsOnSubnet
+  nameWithType: ARPTools.GetLocalIPsOnSubnet
 - uid: AAComm.Services.ARPTools.GetSubnetActiveIPs(System.String)
   name: GetSubnetActiveIPs(string)
   href: api/AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_GetSubnetActiveIPs_System_String_
@@ -3718,6 +3734,22 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ARPTools.PingAddress
   nameWithType: ARPTools.PingAddress
+- uid: AAComm.Services.ARPTools.PingAddressFromMatchingNICs(System.String)
+  name: PingAddressFromMatchingNICs(string)
+  href: api/AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_PingAddressFromMatchingNICs_System_String_
+  commentId: M:AAComm.Services.ARPTools.PingAddressFromMatchingNICs(System.String)
+  name.vb: PingAddressFromMatchingNICs(String)
+  fullName: AAComm.Services.ARPTools.PingAddressFromMatchingNICs(string)
+  fullName.vb: AAComm.Services.ARPTools.PingAddressFromMatchingNICs(String)
+  nameWithType: ARPTools.PingAddressFromMatchingNICs(string)
+  nameWithType.vb: ARPTools.PingAddressFromMatchingNICs(String)
+- uid: AAComm.Services.ARPTools.PingAddressFromMatchingNICs*
+  name: PingAddressFromMatchingNICs
+  href: api/AAComm.Services.ARPTools.html#AAComm_Services_ARPTools_PingAddressFromMatchingNICs_
+  commentId: Overload:AAComm.Services.ARPTools.PingAddressFromMatchingNICs
+  isSpec: "True"
+  fullName: AAComm.Services.ARPTools.PingAddressFromMatchingNICs
+  nameWithType: ARPTools.PingAddressFromMatchingNICs
 - uid: AAComm.Services.AllStatInterpreter
   name: AllStatInterpreter
   href: api/AAComm.Services.AllStatInterpreter.html
@@ -19088,15 +19120,15 @@ references:
   isSpec: "True"
   fullName: AAMotion.ISingleAxis.HomeToHardStop
   nameWithType: ISingleAxis.HomeToHardStop
-- uid: AAMotion.ISingleAxis.HomeToHardStopThenIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name: HomeToHardStopThenIndex(int, int, int, int, int, int, int)
-  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopThenIndex_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
-  commentId: M:AAMotion.ISingleAxis.HomeToHardStopThenIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name.vb: HomeToHardStopThenIndex(Integer, Integer, Integer, Integer, Integer, Integer, Integer)
-  fullName: AAMotion.ISingleAxis.HomeToHardStopThenIndex(int, int, int, int, int, int, int)
-  fullName.vb: AAMotion.ISingleAxis.HomeToHardStopThenIndex(Integer, Integer, Integer, Integer, Integer, Integer, Integer)
-  nameWithType: ISingleAxis.HomeToHardStopThenIndex(int, int, int, int, int, int, int)
-  nameWithType.vb: ISingleAxis.HomeToHardStopThenIndex(Integer, Integer, Integer, Integer, Integer, Integer, Integer)
+- uid: AAMotion.ISingleAxis.HomeToHardStopThenIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+  name: HomeToHardStopThenIndex(int, int, uint, uint, uint, uint, uint)
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopThenIndex_System_Int32_System_Int32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_
+  commentId: M:AAMotion.ISingleAxis.HomeToHardStopThenIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+  name.vb: HomeToHardStopThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger, UInteger)
+  fullName: AAMotion.ISingleAxis.HomeToHardStopThenIndex(int, int, uint, uint, uint, uint, uint)
+  fullName.vb: AAMotion.ISingleAxis.HomeToHardStopThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger, UInteger)
+  nameWithType: ISingleAxis.HomeToHardStopThenIndex(int, int, uint, uint, uint, uint, uint)
+  nameWithType.vb: ISingleAxis.HomeToHardStopThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger, UInteger)
 - uid: AAMotion.ISingleAxis.HomeToHardStopThenIndex*
   name: HomeToHardStopThenIndex
   href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopThenIndex_
@@ -19104,15 +19136,15 @@ references:
   isSpec: "True"
   fullName: AAMotion.ISingleAxis.HomeToHardStopThenIndex
   nameWithType: ISingleAxis.HomeToHardStopThenIndex
-- uid: AAMotion.ISingleAxis.HomeToIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name: HomeToIndex(int, int, int, int, int)
-  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToIndex_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
-  commentId: M:AAMotion.ISingleAxis.HomeToIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name.vb: HomeToIndex(Integer, Integer, Integer, Integer, Integer)
-  fullName: AAMotion.ISingleAxis.HomeToIndex(int, int, int, int, int)
-  fullName.vb: AAMotion.ISingleAxis.HomeToIndex(Integer, Integer, Integer, Integer, Integer)
-  nameWithType: ISingleAxis.HomeToIndex(int, int, int, int, int)
-  nameWithType.vb: ISingleAxis.HomeToIndex(Integer, Integer, Integer, Integer, Integer)
+- uid: AAMotion.ISingleAxis.HomeToIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32)
+  name: HomeToIndex(int, int, uint, uint, uint)
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToIndex_System_Int32_System_Int32_System_UInt32_System_UInt32_System_UInt32_
+  commentId: M:AAMotion.ISingleAxis.HomeToIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32)
+  name.vb: HomeToIndex(Integer, Integer, UInteger, UInteger, UInteger)
+  fullName: AAMotion.ISingleAxis.HomeToIndex(int, int, uint, uint, uint)
+  fullName.vb: AAMotion.ISingleAxis.HomeToIndex(Integer, Integer, UInteger, UInteger, UInteger)
+  nameWithType: ISingleAxis.HomeToIndex(int, int, uint, uint, uint)
+  nameWithType.vb: ISingleAxis.HomeToIndex(Integer, Integer, UInteger, UInteger, UInteger)
 - uid: AAMotion.ISingleAxis.HomeToIndex*
   name: HomeToIndex
   href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToIndex_
@@ -19120,15 +19152,15 @@ references:
   isSpec: "True"
   fullName: AAMotion.ISingleAxis.HomeToIndex
   nameWithType: ISingleAxis.HomeToIndex
-- uid: AAMotion.ISingleAxis.HomeToLimitThenIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name: HomeToLimitThenIndex(int, int, int, int, int, int)
-  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToLimitThenIndex_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
-  commentId: M:AAMotion.ISingleAxis.HomeToLimitThenIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-  name.vb: HomeToLimitThenIndex(Integer, Integer, Integer, Integer, Integer, Integer)
-  fullName: AAMotion.ISingleAxis.HomeToLimitThenIndex(int, int, int, int, int, int)
-  fullName.vb: AAMotion.ISingleAxis.HomeToLimitThenIndex(Integer, Integer, Integer, Integer, Integer, Integer)
-  nameWithType: ISingleAxis.HomeToLimitThenIndex(int, int, int, int, int, int)
-  nameWithType.vb: ISingleAxis.HomeToLimitThenIndex(Integer, Integer, Integer, Integer, Integer, Integer)
+- uid: AAMotion.ISingleAxis.HomeToLimitThenIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+  name: HomeToLimitThenIndex(int, int, uint, uint, uint, uint)
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToLimitThenIndex_System_Int32_System_Int32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_
+  commentId: M:AAMotion.ISingleAxis.HomeToLimitThenIndex(System.Int32,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32)
+  name.vb: HomeToLimitThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger)
+  fullName: AAMotion.ISingleAxis.HomeToLimitThenIndex(int, int, uint, uint, uint, uint)
+  fullName.vb: AAMotion.ISingleAxis.HomeToLimitThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger)
+  nameWithType: ISingleAxis.HomeToLimitThenIndex(int, int, uint, uint, uint, uint)
+  nameWithType.vb: ISingleAxis.HomeToLimitThenIndex(Integer, Integer, UInteger, UInteger, UInteger, UInteger)
 - uid: AAMotion.ISingleAxis.HomeToLimitThenIndex*
   name: HomeToLimitThenIndex
   href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToLimitThenIndex_

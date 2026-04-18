@@ -77,6 +77,16 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr>
+<h2 id="1211---2026-04-17">[12.1.1] - 2026-04-17</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Packaging: 	NuGet sidecar selection is now <strong>OS-based</strong> instead of TFM-based.
+Windows consumers (net48 or net8.0) always receive the WPF <code>AACommServer.exe</code>
+(net48 build, runs on any Windows with .NET Framework 4.8 — keeps sniffer/UI
+available to net8.0 Windows consumers). Non-Windows net8.0 consumers continue
+to receive <code>AACommServerNetConsole</code></li>
+</ul>
+<hr>
 <h2 id="1210---2026-04-15">[12.1.0] - 2026-04-15</h2>
 <h3 id="fixed">Fixed</h3>
 <p>-AAComm/Services/ARPTools:	SendARP multi-NIC discovery fix: scan from all local Ethernet
@@ -98,7 +108,7 @@ ScanSubnetFromSource() with explicit SrcIP binding
 -AACommNative/ParseAllStatData: 		Removed newFeatures parameter
 -AAComm/Services/CanDescriptionBuilder:	Make class static, change methods
 0AAComm/Extensions/RemoteFpgaInfo:		Change FPGAVersion from 'Version' to 'string'</p>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <p>-AAComm/Services/Feature_02: 			Add LockSrcZero_Supported
 -AAComm/Extensions/RecData: 			Expose RecParamsResolver class + more functionality
 -AAComm/Extensions/RecData: 			Expose RecUploadNext functionality
@@ -116,7 +126,7 @@ ScanSubnetFromSource() with explicit SrcIP binding
 -AAComm/Extensions/RecData: 			Legacy RecUpload header parsing trigger type/mask
 -AAComm/Services/AllStatInterpreter: 	Correct float/double AllStat data resolution (was parsing all values as int)</h2>
 <h2 id="1110---2026-03-08">[11.1.0] - 2026-03-08</h2>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <p>-AAComm:					'Push' notifications support + API
 -AAComm:					Read exact 'Identity' indexes at Connect() without
 'out of range' controller error break</p>
@@ -126,7 +136,7 @@ ScanSubnetFromSource() with explicit SrcIP binding
 <h2 id="1100---2026-01-07">[11.0.0] - 2026-01-07</h2>
 <h3 id="-breaking-1">⚠️ Breaking</h3>
 <p>-AAComm and AACommServer: 	Deprecate .NET 4.0 targets</p>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <h2 id="-aacommextensionsrecdatafix-incorrect-trigger-initialization-at-triggerscontainer-aacommservicesfeature_02-add-highprecgainscaleofr_supported-aacommfw-download-add-aacommbinfwinfo-class-for-agm800-fw-file-info-managefpga-refresh-file-contents-during-remote-fpga-download">-AAComm/Extensions/RecData:	Fix incorrect trigger initialization at TriggersContainer
 -AAComm/Services/Feature_02: Add HighPrecGainScaleOFR_Supported
 -AAComm/FW download: 		Add 'AACommBinFwInfo' class for AGM800 FW file info
@@ -144,7 +154,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <h3 id="-breaking-3">⚠️ Breaking</h3>
 <p>-AAComm:					Remove: 'MinMsgDelayMsec', 'IgnoreDebug13', 'IsUser1', 'DrawCodeCRC',
 'ChannelType.User1UDP', 'ChannelType.User1RS232'</p>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <p>-AAComm/IdentityContainer: 	Add support for 'New_Features_02' (Identity[62])
 -AAComm/IdentityContainer: 	DrawModeProfiler_Supported, HomingStep_21_Supported bits
 -AAComm/FW download:		Allow FW download over any IP address
@@ -153,7 +163,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 -AAComm/MessageData: 		Correctly apply scaling factor to 'float' and 'double' parameters</p>
 <hr>
 <h2 id="910---2025-07-25">[9.1.0] - 2025-07-25</h2>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>AAComm: IdentityContainer: Add 'InjectTypeBeforeMotorOn' flag</li>
 <li>AACommServer: Improve Ethernet communication to fix 300 msec delay</li>
@@ -170,7 +180,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AAComm: Change IsAACommServerRunning() to return 'ConnectResult' enum</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>AAComm: Remove ParamAbout handling &quot;hack&quot;</li>
 <li>AAComm: Improve reliability of StartAACommServer() function</li>
@@ -186,7 +196,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AAComm/Services/ControllerMessagesContainer: Deprecate 'MnemonicToData' and 'AllMnemonicsHashLow' containers</li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>AAComm/OnResetProgress: Improve behavior and invoke in NEW task</li>
 <li>AAComm/Shared/ProductTypes: Mark AGM400 as 'deprecated'</li>
@@ -194,7 +204,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="712---2025-02-12">[7.1.2] - 2025-02-12</h2>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>AAComm: Add protection against invalid AACommMessage format</li>
 <li>AAComm: Increase AGM800 'reset time' to 10 sec.</li>
@@ -207,7 +217,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="711---2025-01-16">[7.1.1] - 2025-01-16</h2>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li>AACommServer: Improve faults logging, add &quot;save log&quot; button</li>
 </ul>
@@ -217,7 +227,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AAComm/Extensions/DlFPGA: Add support for EC FPGA DL</li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li>AACommServer/API: Add .NET 4.0 target</li>
 <li>AAComm: Add PULSE_SYNC product type</li>
@@ -226,7 +236,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="704---2024-09-16">[7.0.4] - 2024-09-16</h2>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>General: Allow connecting over wifi interfaces</li>
 </ul>
@@ -238,7 +248,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="702---2024-06-11">[7.0.2] - 2024-06-11</h2>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>AAComm: Add 'MessagesInBulk' property</li>
 <li>AAComm/Shared/DataRecParams: Add 'ParamsToRecParamArray' helper function</li>
@@ -266,7 +276,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>AAComm/Services: Add 'VerifySingleAACommClient' helper class</li>
 <li>AAComm/Services: Add 'AACommExclusiveCommsManager' helper class</li>
 </ul>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>AACommServer Simulator: Improve behavior for LARGE parameters file</li>
 <li>AACommDownloadFPGA: Add 'Product type' protection to '.ver; file</li>
@@ -318,7 +328,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>ParametersInfoDB: Refactor + add support for 'values' descriptions</li>
 </ul>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li>LocaleProvider: Refactor, deprecate functions</li>
 <li>ControllerMessagesContainer: deprecate GetJerkMessage() function</li>
@@ -329,7 +339,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>Support for 'BMI:' prefix: Bulk message that ignores errors</li>
 </ul>
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: 'MasterPWM_Supported' property</li>
 <li>AAComm.CommAPIWrapper: Add GetCanDescriptionFromParameter()</li>
@@ -345,7 +355,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>AAComm.Services: Add ParametersInfoDB class(es) (also add to Services.MessageData)</li>
 <li>General: Support for RecUploadB - new recording stack</li>
 </ul>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: 'DoubleFlash_Supported' property</li>
 <li>ControllerIdentityContainer: 'HomingSteps_17_18_Supported' property</li>
@@ -356,7 +366,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="531---2023-01-19">[5.3.1] - 2023-01-19</h2>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: Add IsEtherCAT property</li>
 <li>AAC: Improve big packets Rx handling</li>
@@ -372,7 +382,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AACommDownloadFW: Add support for AGD155_EC Core1 and CM FW DL</li>
 </ul>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: Deprecate 'MaxNumOfRecParams' property</li>
 <li>Update YAML nuget</li>
@@ -393,7 +403,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AACS: Controller over Ethernet: 10x speed increase of &quot;continuous messages&quot;</li>
 </ul>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>Add public class &quot;Services/HeaderParser.cs&quot;</li>
 <li>AAComm.Extensions.DL_FPGA: Add &quot;reset&quot; at the end of DL FPGA process</li>
@@ -411,7 +421,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AACS: Improve 'debug' logging and auto-save log on implicit AACS close</li>
 </ul>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li>Add support for AGD155-EC</li>
 <li>Internal: Add lock section for socket closure</li>
@@ -427,7 +437,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="501---2022-03-07">[5.0.1] - 2022-03-07</h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>AAComm.Services.ControllerErrorInterpreter: Add 'IsAssignedValOutOfRange()' static function</li>
 <li>AACommNative: Fix dependencies and add YAML dll to package</li>
@@ -452,7 +462,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Add User Program Download protection (target controller FW version check)</li>
 <li>Add support for 16 bit (large) arrays</li>
 </ul>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>Download FW: Increase MAS02 erase flash to 22 sec</li>
 <li>AAComm.Shared.ProductTypes: add public GetProductIdByName() function</li>
@@ -461,7 +471,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="4151---2021-09-29">[4.15.1] - 2021-09-29</h2>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>Add IdentityContainer &quot;CNC_Feature_6_Supported&quot; NewFeatures bit property</li>
 </ul>
@@ -475,7 +485,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>Introduce AAComm &lt;-&gt; AACommServer &quot;error reporting&quot; and logging protocol</li>
 </ul>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>Improve ConnectResultInterpreter class</li>
 <li>Improve Connect() error reporting</li>
@@ -487,7 +497,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Support for SBCB and BMCB message type for CNCB support</li>
 <li>Shared/ConnectResultInterpreter class for ConnectResult enum interpretation</li>
 </ul>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer/IsFPGAVersionEqualOrGreater(): allow 3 &quot;version&quot; values</li>
 </ul>
@@ -502,7 +512,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>AAComm property &quot;AACommServerVersion&quot;</li>
 <li>Add multi-AACommServer client protection for FW, FPGA, remote FPGA, UserProg download</li>
 </ul>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li>Add IdentityContainer &quot;GearMasterProfiler&quot; NewFeatures bit property</li>
 <li>Add IdentityContainer &quot;SlowLoggerByTime&quot; NewFeatures bit property</li>
@@ -513,7 +523,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="4121---2021-08-24">[4.12.1] - 2021-08-24</h2>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Add 'Spline Buffer Stop' MotionStat text</li>
 </ul>
@@ -523,7 +533,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AACommDownloadFPGA: Don't allow Ethernet FPGA DL over other than 172.1.1 subnets (non-AGM800 products only)</li>
 </ul>
-<h3 id="changed-27">Changed</h3>
+<h3 id="changed-28">Changed</h3>
 <ul>
 <li>AGM800 DL FW: Increase sleep time after DL FW from 8 to 12 sec</li>
 <li>FPGA DL: Don't allow download when BOOT version &lt; 1.013</li>
@@ -538,7 +548,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>New &quot;Extension&quot;: FPGA Download for Master remote unit</li>
 </ul>
-<h3 id="changed-28">Changed</h3>
+<h3 id="changed-29">Changed</h3>
 <ul>
 <li>FPGA DL: CAN is NOT supported</li>
 <li>Increase Load and Save timeouts</li>
@@ -551,7 +561,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Extensions/DL FW &amp; FPGA: Add FW/FPGA compatibility validation</li>
 <li>New MotionReason status: Controlled stop by input</li>
 </ul>
-<h3 id="changed-29">Changed</h3>
+<h3 id="changed-30">Changed</h3>
 <ul>
 <li>ControllerErrorInterpreter: Use random file name for errors list resource</li>
 <li>FwInfo: Add info item 26: &quot;Additional Bi-Quad Filters bypassed&quot;</li>
@@ -559,7 +569,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="495---2021-05-13">[4.9.5] - 2021-05-13</h2>
-<h3 id="changed-30">Changed</h3>
+<h3 id="changed-31">Changed</h3>
 <ul>
 <li>ControllerMessagesContainer: Use random file name for default messages list</li>
 <li>AACommServerAPI: Fix OpenEnded reported assembly version (not used ATM)</li>
@@ -574,13 +584,13 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>Extend FW/FPGA mismatch indication (Support for UnitStat bits[1,2])</li>
 </ul>
-<h3 id="changed-31">Changed</h3>
+<h3 id="changed-32">Changed</h3>
 <ul>
 <li>Increase ALoad command timeout from 2 sec to 10 sec</li>
 </ul>
 <hr>
 <h2 id="493---2021-04-18">[4.9.3] - 2021-04-18</h2>
-<h3 id="changed-32">Changed</h3>
+<h3 id="changed-33">Changed</h3>
 <ul>
 <li>Add DRV3-V6 controller type (8) to Product Types</li>
 <li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
@@ -588,14 +598,14 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="483---2021-03-24">[4.8.3] - 2021-03-24</h2>
-<h3 id="changed-33">Changed</h3>
+<h3 id="changed-34">Changed</h3>
 <ul>
 <li>Add DRV3-V6 controller type (8) to Product Types</li>
 <li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
 </ul>
 <hr>
 <h2 id="473---2021-02-05">[4.7.3] - 2021-02-05</h2>
-<h3 id="changed-34">Changed</h3>
+<h3 id="changed-35">Changed</h3>
 <ul>
 <li>AACommCore must use explicit AACS file StartAACommServer() parameter</li>
 <li>Change LoggerUpload message from &quot;Continuous&quot; to &quot;Regular&quot;</li>
@@ -608,7 +618,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>FPGA Download over RS-232</li>
 </ul>
-<h3 id="changed-35">Changed</h3>
+<h3 id="changed-36">Changed</h3>
 <ul>
 <li>AAComm Core: start AACS process improvement</li>
 <li>AAComm Core: default AACS: AACSCoreConsole on non-Win32 OS</li>
@@ -626,7 +636,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Support for recognition of User Program defined Global Variables and Task names (See CommAPI.Services.UserProgramInfo class for more details.)</li>
 <li>Add ControllerErrorInterpreter.GetErrorDescriptionByAACommEventArgs() function</li>
 </ul>
-<h3 id="changed-36">Changed</h3>
+<h3 id="changed-37">Changed</h3>
 <ul>
 <li>Support detection of multiple IP's set on a single NIC</li>
 </ul>
@@ -636,7 +646,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>AACommServer simulation mode 'file name' bug</li>
 </ul>
-<h3 id="changed-37">Changed</h3>
+<h3 id="changed-38">Changed</h3>
 <ul>
 <li>Add 'Bulk' error code 4002 - &quot;unexpected reply format&quot;</li>
 </ul>
@@ -646,7 +656,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>Improve FPGA Download error message</li>
 </ul>
-<h3 id="changed-38">Changed</h3>
+<h3 id="changed-39">Changed</h3>
 <ul>
 <li>Add ConnectResult.FailMacAddress error code</li>
 </ul>
@@ -664,7 +674,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Add .NET 4.8, remove 4.62. target frameworks</li>
 <li>Add .Net Core RS-232 support (in dev!)</li>
 </ul>
-<h3 id="changed-39">Changed</h3>
+<h3 id="changed-40">Changed</h3>
 <ul>
 <li>Improve ConnectResult.CorruptAboutFile error code file logic</li>
 <li>Support &quot;old&quot; '/' FW info names: AGD200orAGC300 and AGD301/AGC301</li>
@@ -692,7 +702,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Resolve AAComm &lt;=&gt; AACommServer socket port number according to OS (instead of target framework) (results in interoperability between .NET and .NET Core assemblies on Windows)</li>
 <li>Add .NET 4.6.2 target framework</li>
 </ul>
-<h3 id="changed-40">Changed</h3>
+<h3 id="changed-41">Changed</h3>
 <ul>
 <li>Introduce Semantic Versioning 2.0.0 (<a href="https://semver.org/">https://semver.org/</a>) to AAComm and AACommServer (no compilation breaking, or backwards incompatibility changes introduced)</li>
 </ul>
@@ -714,7 +724,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>Make property CommAPI.IsAACommServerRunning STATIC</li>
 <li>Make function CommAPI.StartAACommServer() STATIC</li>
 </ul>
-<h3 id="changed-41">Changed</h3>
+<h3 id="changed-42">Changed</h3>
 <ul>
 <li>Improve AAComm documentation (including 'Bulk' message type)</li>
 <li>Protection against LocalHost loopback &quot;rogue&quot; connect requests</li>
@@ -757,7 +767,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <li>AAComm.Extensions.AACommFwInfo: Rename products according to new definitions</li>
 <li>Services.COMTools.GetFTDI_COMs: add default &quot;GetAllCOMPorts&quot; parameter (no backwards compatibility issues)</li>
 </ul>
-<h3 id="changed-42">Changed</h3>
+<h3 id="changed-43">Changed</h3>
 <ul>
 <li>Update documentation</li>
 <li>CommAPI.DocsAppFolder to &quot;PCSuite&quot; (default folder for FW connection history)</li>
@@ -768,7 +778,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 <ul>
 <li>FPGA download: rolling progress bar</li>
 </ul>
-<h3 id="changed-43">Changed</h3>
+<h3 id="changed-44">Changed</h3>
 <ul>
 <li>Remove Microsoft.Windows.Compatibility dependency</li>
 <li>Improve 'special' messages handling (implicit CTOR: need &quot;BM:&quot;, explicit CTOR: NO &quot;BM:&quot;)</li>
@@ -781,7 +791,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</p>
 </ul>
 <hr>
 <h2 id="3023---2020-08-02">[3.0.2.3] - 2020-08-02</h2>
-<h3 id="changed-44">Changed</h3>
+<h3 id="changed-45">Changed</h3>
 <ul>
 <li>StartAACommServer(string AACSFile = &quot;&quot;) =&gt; AACS file NAME instead of path (defaults to &quot;&quot; -&gt; look within working directory)</li>
 <li>Default timeout to IsCommServerRunning(int timeoutMS = 100)</li>

@@ -76,6 +76,15 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="911---2026-04-17">[9.1.1] - 2026-04-17</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Packaging: picks up AAComm 12.1.1 sidecar change. AACommServer sidecar is now
+selected by consumer OS rather than TFM: Windows consumers (net48 or net8.0)
+get the WPF <code>AACommServer.exe</code>; non-Windows net8.0 consumers get
+<code>AACommServerNetConsole</code>. AAMotion consumers inherit this transitively — no
+code or reference changes required.</li>
+</ul>
 <h2 id="910---2026-04-15">[9.1.0] - 2026-04-15</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
@@ -88,7 +97,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </li>
 </ul>
 <h2 id="900---2026-04-03">[9.0.0] - 2026-04-03</h2>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>Decoupled nuget from direct AAComm dependency: AAComm is now resolved via nuget</li>
 </ul>
@@ -118,7 +127,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li><code>AAMotionConfig</code> now exposes <code>FastReadEnabled</code> (global on/off switch) and <code>FastReadCacheRefreshIntervalMs</code> (default 1ms).</li>
 <li><code>MotionController</code> now exposes <code>FastReadCache</code> property, <code>EnableFastReadCache()</code>, <code>DisableFastReadCache()</code>, <code>RegisterCacheKeywords()</code>, <code>RefreshCacheNow()</code>, and <code>GetCacheAgeMs()</code>.</li>
@@ -149,7 +158,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 </ul>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>DataLogger <code>GetDataRecordingStatus</code>: AGD155 and AGD155-EC now use keyword <code>ARecStat</code> (no array index); other controllers continue to use <code>ARecStat[1]</code>.</li>
 </ul>
@@ -159,7 +168,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Added <code>GetDataRecordingCapacity</code> method to DataLogger API for querying the maximum recording capacity of the controller.</li>
 </ul>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li>Improved auto-reconnect logic in <code>IsConnected</code> property:
 <ul>
@@ -184,13 +193,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>Improved XML documentation for DataLogger trigger parameters with clearer English/Chinese descriptions to match PCSuite terminology (持续时间, 间隔, 触发器, 掩码, 最大触发值, 触发时刻).</li>
 </ul>
 <hr>
 <h2 id="811---2026-01-09">[8.1.1] - 2026-01-09</h2>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li><strong>Keyword filtering now relies solely on MessagesContainer (from AAbout command) instead of ControllerKeywordFilter</strong>
 <ul>
@@ -233,7 +242,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </li>
 </ul>
 <h2 id="807---2026-01-06">[8.0.7] - 2026-01-06</h2>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li><code>IsCNCCompleted</code> now supports AGM800's GroupB (AxisRef.B). For GroupB, it reads <code>{axis}CNCBStatus[10]</code> instead of <code>CNCAStatus[10]</code>.</li>
 <li><code>ControllerType</code> enum values now reference <code>ProductTypes</code> constants to eliminate duplicate definitions and ensure single source of truth for product type IDs.</li>
@@ -272,7 +281,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 </ul>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>Refactored keyword filtering system to use unified configuration:
 <ul>
@@ -324,7 +333,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </li>
 <li>Added <code>SendViaAsyncQueue</code> implementation in <code>CommAPIInterface</code> to wrap AAComm's async <code>Send</code> API into a synchronous-style call at AAMotion level.</li>
 </ul>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li>Centralized communication error handling in <code>CommAPIInterface</code> via unified <code>ErrorHandlers(AACommEventArgs status)</code> helper:
 <ul>
@@ -421,7 +430,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added unified <code>AASmartArrayWrapper</code> class to automatically handle type conversion for array properties (int/float/double/long)</li>
 <li>Added support for native float, double, and long data types with automatic type detection and conversion</li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li>Refactored parameter type conversion logic from <code>SingleAxis.cs</code> to centralized <code>ParameterTypeConverter</code> class</li>
 <li>Enhanced array wrapper system to automatically detect and handle int/float/double/long types based on parameter metadata</li>
@@ -439,14 +448,14 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="755---2025-9-24">[7.5.5] - 2025-9-24</h2>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>Add the retry reconnection mechanism. Method: TryReconnect()</li>
 <li>Add the automatic connection mechanism. In the Connect() method, add the parameter enableAutoReconnect to enable/disable the automatic reconnection mechanism.</li>
 <li>AGM800 supports linear and ARC movements for all axes.</li>
 </ul>
 <h2 id="754---2025-9-12">[7.5.4] - 2025-9-12</h2>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>Add CNC attributes ：CNCASpeed, CNCAAccel, CNCADecel, CNCAJerk</li>
 <li>Add ECAM attributes: ECAMStart, ECAMStartCyc, ECAMEndCyc, ECAMEnd, ECAMGap, ECAMCycles, ECAMMasterIni, ECAMCycCount, ECAMInterp, ECAMMaster, StopECAM, ECAMTableNum</li>
@@ -454,13 +463,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Enhance ECAM functions</li>
 </ul>
 <h2 id="753---2025-08-26">[7.5.3] - 2025-08-26</h2>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>Added a check for relative motion to disallow zero distance.</li>
 <li>Added IO_B for AGD20.</li>
 </ul>
 <h2 id="752---2025-08-08">[7.5.2] - 2025-08-08</h2>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li>Change &quot;Commutated&quot; to &quot;AutoPhase&quot;. Change &quot;IsCommutated&quot; to &quot;IsAutoPhase&quot;</li>
 <li>Add the keywords CNCAEncFactNu, CNCAEncFactDn, CNCASpeedPer, CNCAEndSegMod,AccelFact</li>
@@ -468,7 +477,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="751---2025-08-04">[7.5.1] - 2025-08-04</h2>
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 <ul>
 <li>Add WriteGenData and ReadGenData to read and write GenData</li>
 <li>A dynamic keyword shielding mechanism based on controller type has been implemented, which has enhanced the system's compatibility and maintainability.</li>
@@ -480,35 +489,35 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="7412---2025-07-30">[7.4.12] - 2025-07-30</h2>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>Add the keyword &quot;EventPulseRes&quot;</li>
 <li>Override MoveAbs to achieve position override</li>
 </ul>
 <hr>
 <h2 id="7411---2025-07-22">[7.4.11] - 2025-07-22</h2>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>Add methods SetEventTableBeginIndex, SetEventTableEndIndex, SetEventTableSelect, and SetEventTableValue to be compatible with older versions of PEG</li>
 <li>Modify the return type of ClearConFlt to be bool</li>
 </ul>
 <hr>
 <h2 id="7410---2025-07-18">[7.4.10] - 2025-07-18</h2>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>Add method RunCNCProgramFromFile (use the CNC file generated by PCSuite to perform interpolation movement)</li>
 <li>Add method IsCNCCompleted (determine whether the CNC movement has been completed)</li>
 </ul>
 <hr>
 <h2 id="749---2025-07-17">[7.4.9] - 2025-07-17</h2>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>Add the MotorOn and InjectType enumeration types along with the English descriptions of the parameters.</li>
 <li>Added methods MoveAbsAndWait, MoveAbsRepetitiveAndWait, MoveRelAndWait, MoveRelRepetitiveAndWait. Return true after movement and positioning.</li>
 </ul>
 <hr>
 <h2 id="748---2025-07-04">[7.4.8] - 2025-07-04</h2>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li>Add enumeration types and English descriptions for parameters to enhance usability.</li>
 <li>After the vector motion parameters are configured, the &quot;Begin&quot; command is automatically sent.</li>
@@ -522,27 +531,27 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="746---2025-06-16">[7.4.6] - 2025-06-16</h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>The AAValueArray array starts from index 1.</li>
 <li>Add the keywords MapTableB, MapTableC, MapTableD, and MapTableE.</li>
 </ul>
 <hr>
 <h2 id="745---2025-06-11">[7.4.5] - 2025-06-11</h2>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>Add the method ClearConFlt() to clear ConFlt.</li>
 <li>Add the methods GetDOutPort and GetDInPort to obtain the IO status of the specified bit.</li>
 </ul>
 <hr>
 <h2 id="744---2025-06-05">[7.4.4] - 2025-06-05</h2>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>Add annotations to methods and attributes.</li>
 </ul>
 <hr>
 <h2 id="743---2025-06-03">[7.4.3] - 2025-06-03</h2>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>Add method and attribute annotations.</li>
 </ul>
@@ -552,93 +561,93 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="742---2025-05-30">[7.4.2] - 2025-05-30</h2>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>Change IsHomed to IsHoming and determine whether the return to home is complete.</li>
 </ul>
 <hr>
 <h2 id="741---2025-05-29">[7.4.1] - 2025-05-29</h2>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li>Add Home() to set HomingOn=1.</li>
 </ul>
 <hr>
 <h2 id="740---2025-05-29">[7.4.0] - 2025-05-29</h2>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Add the Vector function.</li>
 </ul>
 <hr>
 <h2 id="7313---2025-05-23">[7.3.13] - 2025-05-23</h2>
-<h3 id="changed-27">Changed</h3>
+<h3 id="changed-28">Changed</h3>
 <ul>
 <li>OpenAACommServer increases the return value ConnectResult.</li>
 </ul>
 <hr>
 <h2 id="7312---2025-05-23">[7.3.12] - 2025-05-23</h2>
-<h3 id="changed-28">Changed</h3>
+<h3 id="changed-29">Changed</h3>
 <ul>
 <li>The Amotion API of CiGroup adds operations on GroupB.</li>
 </ul>
 <hr>
 <h2 id="7311---2025-05-21">[7.3.11] - 2025-05-21</h2>
-<h3 id="changed-29">Changed</h3>
+<h3 id="changed-30">Changed</h3>
 <ul>
 <li>The MoveRel and MoveAbs of the AAMotionAPI add MotionController (different controller instances can be used).</li>
 </ul>
 <hr>
 <h2 id="7310---2025-05-20">[7.3.10] - 2025-05-20</h2>
-<h3 id="changed-30">Changed</h3>
+<h3 id="changed-31">Changed</h3>
 <ul>
 <li>Commutation success added judgment 200: Not required, 300/400: Successfully completed (using Hall), 500: Successfully completed (parameters have been modified).</li>
 <li>Adding a judgment to return to zero completes IsHoming().</li>
 </ul>
 <hr>
 <h2 id="739---2025-05-06">[7.3.9] - 2025-05-06</h2>
-<h3 id="changed-31">Changed</h3>
+<h3 id="changed-32">Changed</h3>
 <ul>
 <li>Add GroupB to AGM800.</li>
 </ul>
 <hr>
 <h2 id="738---2025-04-24">[7.3.8] - 2025-04-24</h2>
-<h3 id="changed-32">Changed</h3>
+<h3 id="changed-33">Changed</h3>
 <ul>
 <li>Add force control function.</li>
 <li>Add attributes &quot;RptMode&quot;, &quot;RptCycles&quot;, and &quot;RptCounter&quot;.</li>
 </ul>
 <hr>
 <h2 id="737---2025-04-16">[7.3.7] - 2025-04-16</h2>
-<h3 id="changed-33">Changed</h3>
+<h3 id="changed-34">Changed</h3>
 <ul>
 <li>Added axis properties CurrDir, RevPLim, FwdPLim, MaxPosErr, MaxVelErr.</li>
 </ul>
 <hr>
 <h2 id="736---2025-04-03">[7.3.6] - 2025-04-03</h2>
-<h3 id="changed-34">Changed</h3>
+<h3 id="changed-35">Changed</h3>
 <ul>
 <li>Adapt to AAComm.StartAACommServer() return type change from 'string' to 'ConnectResult'.</li>
 </ul>
 <hr>
 <h2 id="735---2025-04-03">[7.3.5] - 2025-04-03</h2>
-<h3 id="changed-35">Changed</h3>
+<h3 id="changed-36">Changed</h3>
 <ul>
 <li>PEG and Lock do not need to specify an axis when using an axis object.</li>
 </ul>
 <hr>
 <h2 id="734---2025-03-27">[7.3.4] - 2025-03-27</h2>
-<h3 id="changed-36">Changed</h3>
+<h3 id="changed-37">Changed</h3>
 <ul>
 <li>Increase the Commutate method commutate and determine whether commutation is complete.</li>
 </ul>
 <hr>
 <h2 id="733---2025-03-27">[7.3.3] - 2025-03-27</h2>
-<h3 id="changed-37">Changed</h3>
+<h3 id="changed-38">Changed</h3>
 <ul>
 <li>The fourth parameter of SetMotionProfile is double.</li>
 </ul>
 <hr>
 <h2 id="732---2025-03-21">[7.3.2] - 2025-03-21</h2>
-<h3 id="changed-38">Changed</h3>
+<h3 id="changed-39">Changed</h3>
 <ul>
 <li>Add the SetLock method to set the Lock function.</li>
 </ul>
@@ -649,7 +658,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="731---2025-03-20">[7.3.1] - 2025-03-20</h2>
-<h3 id="changed-39">Changed</h3>
+<h3 id="changed-40">Changed</h3>
 <ul>
 <li>Repair Group can set the specified bit of the specified axis.</li>
 <li>Add PEG methods, SetSingleEventPEG and SetEventFixedGapPEG.</li>
@@ -657,7 +666,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="730---2025-03-18">[7.3.0] - 2025-03-18</h2>
-<h3 id="changed-40">Changed</h3>
+<h3 id="changed-41">Changed</h3>
 <ul>
 <li>Implement AAValueArray's foreach method.</li>
 <li>Add and implement the Java language call AAMotion project. AAMotionJava.</li>
@@ -669,7 +678,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="724---2025-03-05">[7.2.4] - 2025-03-05</h2>
-<h3 id="changed-41">Changed</h3>
+<h3 id="changed-42">Changed</h3>
 <ul>
 <li>Add the method CiGroupDOutSetBit, CiGroupDOutClearBit, CiGroupDOutToggleBit. When using CNCGroup, can set, clear, and switch the specified axis (AAMotionAPI also add).</li>
 <li>AAValueArray<int> CNCAStatus, added to the registry.</int></li>
@@ -680,7 +689,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="723---2025-02-18">[7.2.3] - 2025-02-18</h2>
-<h3 id="changed-42">Changed</h3>
+<h3 id="changed-43">Changed</h3>
 <ul>
 <li>Add Home(filepath) to return to zero based on the zeroback file.</li>
 </ul>
@@ -690,7 +699,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="722---2025-02-12">[7.2.2] - 2025-02-12</h2>
-<h3 id="changed-43">Changed</h3>
+<h3 id="changed-44">Changed</h3>
 <ul>
 <li>Add the noAck parameter of Connect.</li>
 <li>Deleted the directory &quot;\AAMotion\Implementations\Central_I\Core&quot;.</li>
@@ -703,19 +712,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fix AAMotion MoveAbs by adding Begin().</li>
 <li>Fix MoveAbs() of AAMotionAPI; MoveAbs is called instead of MoveRel.</li>
 </ul>
-<h3 id="changed-44">Changed</h3>
+<h3 id="changed-45">Changed</h3>
 <ul>
 <li>Improve the AAMotionAPI and add the API of IGroupAxis, ICiSlave, ICiGroupAxis and IGroupAxis interfaces.</li>
 </ul>
 <hr>
 <h2 id="720---2025-02-10">[7.2.0] - 2025-02-10</h2>
-<h3 id="changed-45">Changed</h3>
+<h3 id="changed-46">Changed</h3>
 <ul>
 <li>Add the bit operation of Group on IO output (GroupDOutSetBit, GroupDOutClearBit, GroupDOutToggleBit).</li>
 </ul>
 <hr>
 <h2 id="710---2025-02-07">[7.1.0] - 2025-02-07</h2>
-<h3 id="changed-46">Changed</h3>
+<h3 id="changed-47">Changed</h3>
 <ul>
 <li>Increase the usage methods of the keywords, ProgHalt, ProgRun, AutoExec, ProgHaltAll and ProgReset.</li>
 <li>Reload connect and add the port number.</li>
@@ -728,7 +737,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="704---2025-01-16">[7.0.4] - 2025-01-16</h2>
-<h3 id="changed-47">Changed</h3>
+<h3 id="changed-48">Changed</h3>
 <ul>
 <li>Reduce AAMotionAPI overloading: use methods with optional parameters.</li>
 <li>Add the calling method of the AAMotionAPI.</li>
@@ -814,19 +823,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5122---2023-11-27">[5.12.2] - 2023-11-27</h2>
-<h3 id="changed-48">Changed</h3>
+<h3 id="changed-49">Changed</h3>
 <ul>
 <li>AACommServer: Allow &quot;retrying&quot; socket init. upon process start.</li>
 </ul>
 <hr>
 <h2 id="5121---2023-11-22">[5.12.1] - 2023-11-22</h2>
-<h3 id="changed-49">Changed</h3>
+<h3 id="changed-50">Changed</h3>
 <ul>
 <li>Added support for on-the-fly target/speed/accel change for MoveAbs().</li>
 </ul>
 <hr>
 <h2 id="5120---2023-10-31">[5.12.0] - 2023-10-31</h2>
-<h3 id="changed-50">Changed</h3>
+<h3 id="changed-51">Changed</h3>
 <ul>
 <li>Add .net 6.0 and 7.0 targets. (nuget 5.11.0 is wrongly built and deprecated).</li>
 </ul>
@@ -862,55 +871,55 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5610---2023-04-13">[5.6.10] - 2023-04-13</h2>
-<h3 id="changed-51">Changed</h3>
+<h3 id="changed-52">Changed</h3>
 <ul>
 <li>Add vector motion methods.</li>
 </ul>
 <hr>
 <h2 id="569---2023-01-12">[5.6.9] - 2023-01-12</h2>
-<h3 id="changed-52">Changed</h3>
+<h3 id="changed-53">Changed</h3>
 <ul>
 <li>Added gcode analysis methods.</li>
 </ul>
 <hr>
 <h2 id="568---2023-01-12">[5.6.8] - 2023-01-12</h2>
-<h3 id="changed-53">Changed</h3>
+<h3 id="changed-54">Changed</h3>
 <ul>
 <li>Added methods to cigroup-axis class to do 6-axes linear motion and write doutport value related to axis to buffer.</li>
 </ul>
 <hr>
 <h2 id="566---2023-01-12">[5.6.6] - 2023-01-12</h2>
-<h3 id="changed-54">Changed</h3>
+<h3 id="changed-55">Changed</h3>
 <ul>
 <li>Move params and methods of event class to single axis class.</li>
 </ul>
 <hr>
 <h2 id="565---2023-01-12">[5.6.5] - 2023-01-12</h2>
-<h3 id="changed-55">Changed</h3>
+<h3 id="changed-56">Changed</h3>
 <ul>
 <li>Added params of gantry.</li>
 </ul>
 <hr>
 <h2 id="564---2023-01-12">[5.6.4] - 2023-01-12</h2>
-<h3 id="changed-56">Changed</h3>
+<h3 id="changed-57">Changed</h3>
 <ul>
 <li>Added params and methods of error map.</li>
 </ul>
 <hr>
 <h2 id="563---2023-01-12">[5.6.3] - 2023-01-12</h2>
-<h3 id="changed-57">Changed</h3>
+<h3 id="changed-58">Changed</h3>
 <ul>
 <li>Added params of userpwm.</li>
 </ul>
 <hr>
 <h2 id="562---2023-01-12">[5.6.2] - 2023-01-12</h2>
-<h3 id="changed-58">Changed</h3>
+<h3 id="changed-59">Changed</h3>
 <ul>
 <li>Added params and methods of group9(userparam).</li>
 </ul>
 <hr>
 <h2 id="561---2023-01-11">[5.6.1] - 2023-01-11</h2>
-<h3 id="changed-59">Changed</h3>
+<h3 id="changed-60">Changed</h3>
 <ul>
 <li>Added params and methods of position lock.</li>
 </ul>
@@ -922,7 +931,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="550---2022-08-17">[5.5.0] - 2022-08-17</h2>
-<h3 id="changed-60">Changed</h3>
+<h3 id="changed-61">Changed</h3>
 <ul>
 <li>Communicator interface, AllStat Instantiation is cleaned to used feature_1 integer directly.</li>
 </ul>
@@ -934,7 +943,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5413---2022-08-03">[5.4.13] - 2022-08-03</h2>
-<h3 id="changed-61">Changed</h3>
+<h3 id="changed-62">Changed</h3>
 <ul>
 <li>MotionStat is added to the end of each Move Command. This should eliminate the timing issue that we experienced with the Taiwan customer.</li>
 </ul>
@@ -946,19 +955,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5411---2021-10-04">[5.4.11] - 2021-10-04</h2>
-<h3 id="changed-62">Changed</h3>
+<h3 id="changed-63">Changed</h3>
 <ul>
 <li>Modify all Properties related to Force/Current/Position Mode Switch feature to be based on InternalProperies.</li>
 </ul>
 <hr>
 <h2 id="5410---2021-09-13">[5.4.10] - 2021-09-13</h2>
-<h3 id="changed-63">Changed</h3>
+<h3 id="changed-64">Changed</h3>
 <ul>
 <li>If packet number in a SlowLogger UpLoad is zero, jump to next UpLoad without processing.</li>
 </ul>
 <hr>
 <h2 id="549---2021-09-10">[5.4.9] - 2021-09-10</h2>
-<h3 id="changed-64">Changed</h3>
+<h3 id="changed-65">Changed</h3>
 <ul>
 <li>Slow logger API StopSlowLogData: check the ID of the packet that was last logged, remove unwanted packet ID and contents from the main log list.</li>
 </ul>
@@ -988,20 +997,20 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="544---2021-06-30">[5.4.4] - 2021-06-30</h2>
-<h3 id="changed-65">Changed</h3>
+<h3 id="changed-66">Changed</h3>
 <ul>
 <li>Turn on AGMotion.</li>
 <li>Open the CloseAACommServer API to the user.</li>
 </ul>
 <hr>
 <h2 id="543---2021-06-08">[5.4.3] - 2021-06-08</h2>
-<h3 id="changed-66">Changed</h3>
+<h3 id="changed-67">Changed</h3>
 <ul>
 <li>Hide AGMotion for interim version release.</li>
 </ul>
 <hr>
 <h2 id="543---2021-05-24">[5.4.3] - 2021-05-24</h2>
-<h3 id="changed-67">Changed</h3>
+<h3 id="changed-68">Changed</h3>
 <ul>
 <li>Do some Clearance works.</li>
 </ul>
@@ -1017,7 +1026,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Add new AGMotion feature.</li>
 </ul>
-<h3 id="changed-68">Changed</h3>
+<h3 id="changed-69">Changed</h3>
 <ul>
 <li>Eliminate all compilation Warnings.</li>
 <li>AGMotion as an individual namespace.</li>
@@ -1048,26 +1057,26 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="5210---2021-02-17">[5.2.10] - 2021-02-17</h2>
-<h3 id="changed-69">Changed</h3>
+<h3 id="changed-70">Changed</h3>
 <ul>
 <li>Move VBus, VLogic, PwrTemp, MotorTemp into IMotionController to be used for all controller class.</li>
 </ul>
 <hr>
 <h2 id="529---2021-02-17">[5.2.9] - 2021-02-17</h2>
-<h3 id="changed-70">Changed</h3>
+<h3 id="changed-71">Changed</h3>
 <ul>
 <li>Extend AGM400 Axes, IO, GroupAxis, PositionEventEx, full range from A to F.</li>
 <li>Extend AGM800 Axes, IO, GroupAxis, PositionEventEx, full range from A to L.</li>
 </ul>
 <hr>
 <h2 id="528---2020-10-29">[5.2.8] - 2020-10-29</h2>
-<h3 id="changed-71">Changed</h3>
+<h3 id="changed-72">Changed</h3>
 <ul>
 <li>AllStat for different controllers.</li>
 </ul>
 <hr>
 <h2 id="527---2020-09-29">[5.2.7] - 2020-09-29</h2>
-<h3 id="changed-72">Changed</h3>
+<h3 id="changed-73">Changed</h3>
 <ul>
 <li>Change 4.6.2 target frameworks to 4.8 (remove redundancy).</li>
 </ul>
@@ -1085,13 +1094,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="515---2020-09-18">[5.1.5] - 2020-09-18</h2>
-<h3 id="changed-73">Changed</h3>
+<h3 id="changed-74">Changed</h3>
 <ul>
 <li>Updated definitions and bug fixes for CNC Motion.</li>
 </ul>
 <hr>
 <h2 id="514---2020-09-18">[5.1.4] - 2020-09-18</h2>
-<h3 id="changed-74">Changed</h3>
+<h3 id="changed-75">Changed</h3>
 <ul>
 <li>Call GetAllAxisStat using a new parameter to decide if AllStatAxisData group 10 is included.</li>
 <li>Add DInPortHigh in AllStatAxisData group 10.</li>
@@ -1100,7 +1109,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="513---2020-09-17">[5.1.3] - 2020-09-17</h2>
-<h3 id="changed-75">Changed</h3>
+<h3 id="changed-76">Changed</h3>
 <ul>
 <li>Array Type parameter index start from 1 for AAMotion user.</li>
 <li>Rename and add elements in enum ControllerType.</li>
@@ -1117,7 +1126,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="511---2020-09-15">[5.1.1] - 2020-09-15</h2>
-<h3 id="changed-76">Changed</h3>
+<h3 id="changed-77">Changed</h3>
 <ul>
 <li>Rename Class AG100 to AGD155.</li>
 <li>Rename Class MAS02 to AGM800.</li>
@@ -1136,7 +1145,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Add AGD301 class.</li>
 <li>Add TimerHandler in TimerEvent for internal debug from AAMotion user source code program.</li>
 </ul>
-<h3 id="changed-77">Changed</h3>
+<h3 id="changed-78">Changed</h3>
 <ul>
 <li>Change the commands of GetAllSettingsDIOAG300, GetAllSettingsAIOAG300 to dynamic contents, initialize them in the CommandList and rebuild later dynamically.</li>
 </ul>
@@ -1154,14 +1163,14 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="500---2020-09-09">[5.0.0] - 2020-09-09</h2>
-<h3 id="changed-78">Changed</h3>
+<h3 id="changed-79">Changed</h3>
 <ul>
 <li>Merge from 4.21.8.</li>
 <li>ParseDIOSettings, ParseAIOSettings don't trigger event to write into Array-Type IO variables.</li>
 </ul>
 <hr>
 <h2 id="4218---2020-09-04">[4.21.8] - 2020-09-04</h2>
-<h3 id="changed-79">Changed</h3>
+<h3 id="changed-80">Changed</h3>
 <ul>
 <li>Replace PosEvent with PosEvent_A, PosEvent_B, PosEvent_C in AG300 class.</li>
 </ul>
@@ -1220,7 +1229,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4192---2020-06-30">[4.19.2] - 2020-06-30</h2>
-<h3 id="changed-80">Changed</h3>
+<h3 id="changed-81">Changed</h3>
 <ul>
 <li>Rename the property arrayStorage.</li>
 </ul>
@@ -1231,13 +1240,13 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4191---2020-06-26">[4.19.1] - 2020-06-26</h2>
-<h3 id="changed-81">Changed</h3>
+<h3 id="changed-82">Changed</h3>
 <ul>
 <li>Set a flag called &quot;AxisInternalPropertyUpdatedFromController&quot; to true after the connection is OK, which prevent intermittently read PropertyList after connection but InternalProperty have not been updated.</li>
 </ul>
 <hr>
 <h2 id="4190---2020-06-23">[4.19.0] - 2020-06-23</h2>
-<h3 id="changed-82">Changed</h3>
+<h3 id="changed-83">Changed</h3>
 <ul>
 <li>Optimize the IO array properties update event handler.</li>
 <li>Property read must occur after connected, otherwise default as &quot;unreasonable&quot; values.</li>
@@ -1256,7 +1265,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4160---2020-06-12">[4.16.0] - 2020-06-12</h2>
-<h3 id="changed-83">Changed</h3>
+<h3 id="changed-84">Changed</h3>
 <ul>
 <li>Upgraded AAComm DLL is upgraded from v3.0.0.2 to v3.0.0.18.</li>
 </ul>
@@ -1266,7 +1275,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>AOutPort has additional option to change to openloop mode.</li>
 </ul>
-<h3 id="changed-84">Changed</h3>
+<h3 id="changed-85">Changed</h3>
 <ul>
 <li>Clean up namespaces to use only one AAMotion namespace.</li>
 </ul>
@@ -1284,7 +1293,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="4121---2019-01-06">[4.12.1] - 2019-01-06</h2>
-<h3 id="changed-85">Changed</h3>
+<h3 id="changed-86">Changed</h3>
 <ul>
 <li>Changed [UpdateInternalStatus()] to type boolean.</li>
 </ul>
@@ -1344,7 +1353,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="460---2019-08-26">[4.6.0] - 2019-08-26</h2>
-<h3 id="changed-86">Changed</h3>
+<h3 id="changed-87">Changed</h3>
 <ul>
 <li>AAComm is now taken from nuget package.</li>
 </ul>
@@ -1362,7 +1371,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <hr>
 <h2 id="430---2019-08-26">[4.3.0] - 2019-08-26</h2>
-<h3 id="changed-87">Changed</h3>
+<h3 id="changed-88">Changed</h3>
 <ul>
 <li>Whenever motion method is called from either SingleAxis or GroupAxis, AllStat command is called immediately afterwards to update the statuses of the internal variables.</li>
 </ul>

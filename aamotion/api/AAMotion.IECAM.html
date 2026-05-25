@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IECAM | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IECAM | Agito AAMotion SDK ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAMotion_IECAM.md&amp;value=---%0Auid%3A%20AAMotion.IECAM%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion.IECAM">
+
+
+
+  <h1 id="AAMotion_IECAM" data-uid="AAMotion.IECAM" class="text-break">
+Interface IECAM  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L3"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IECAM</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAMotion_IECAM_ECAMCycCount_" data-uid="AAMotion.IECAM.ECAMCycCount*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMCycCount" data-uid="AAMotion.IECAM.ECAMCycCount">
+  ECAMCycCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current cycle count for ECAM motion for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMCycCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMCycles_" data-uid="AAMotion.IECAM.ECAMCycles*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMCycles" data-uid="AAMotion.IECAM.ECAMCycles">
+  ECAMCycles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of cycles for ECAM motion for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMCycles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMEnd_" data-uid="AAMotion.IECAM.ECAMEnd*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMEnd" data-uid="AAMotion.IECAM.ECAMEnd">
+  ECAMEnd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>End index of ECAM table data in GenData array for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMEnd { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMEndCyc_" data-uid="AAMotion.IECAM.ECAMEndCyc*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMEndCyc" data-uid="AAMotion.IECAM.ECAMEndCyc">
+  ECAMEndCyc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>End cycle index for ECAM table repetition for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMEndCyc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMGap_" data-uid="AAMotion.IECAM.ECAMGap*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMGap" data-uid="AAMotion.IECAM.ECAMGap">
+  ECAMGap
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gap between master positions for each ECAM table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMGap { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMInterp_" data-uid="AAMotion.IECAM.ECAMInterp*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMInterp" data-uid="AAMotion.IECAM.ECAMInterp">
+  ECAMInterp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Interpolation type or mode for ECAM table for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMInterp { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMMaster_" data-uid="AAMotion.IECAM.ECAMMaster*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMMaster" data-uid="AAMotion.IECAM.ECAMMaster">
+  ECAMMaster
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Master axis keyword or code for each ECAM table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMMaster { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMMasterIni_" data-uid="AAMotion.IECAM.ECAMMasterIni*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMMasterIni" data-uid="AAMotion.IECAM.ECAMMasterIni">
+  ECAMMasterIni
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Master initial position compensation for each ECAM table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMMasterIni { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMStart_" data-uid="AAMotion.IECAM.ECAMStart*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMStart" data-uid="AAMotion.IECAM.ECAMStart">
+  ECAMStart
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start index of ECAM table data in GenData array for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMStart { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMStartCyc_" data-uid="AAMotion.IECAM.ECAMStartCyc*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMStartCyc" data-uid="AAMotion.IECAM.ECAMStartCyc">
+  ECAMStartCyc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start cycle index for ECAM table repetition for each table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMStartCyc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IECAM_ECAMTableNum_" data-uid="AAMotion.IECAM.ECAMTableNum*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAMTableNum" data-uid="AAMotion.IECAM.ECAMTableNum">
+  ECAMTableNum
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current ECAM table number in use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ECAMTableNum { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAMotion_IECAM_ECAM_ConfigureTable_" data-uid="AAMotion.IECAM.ECAM_ConfigureTable*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_ConfigureTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_ConfigureTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ECAM_ConfigureTable(int, int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configure ECAM table parameters for electronic cam motion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_ConfigureTable(int startIndex, int endIndex, int startCycIndex, int endCycIndex, int cycles, int masterKeyword, int gap, int tableNum = 1, int masterIni = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index in GenData array where ECAM table data begins</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index in GenData array where ECAM table data ends</p>
+</dd>
+    <dt><code>startCycIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start cycle index for repetition (0-based)</p>
+</dd>
+    <dt><code>endCycIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End cycle index for repetition (0-based)</p>
+</dd>
+    <dt><code>cycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of cycles (positive for forward, negative for bidirectional, 2147483647 for infinite)</p>
+</dd>
+    <dt><code>masterKeyword</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Master axis keyword code (e.g., 2 for PosRef, 24 for PosRef)</p>
+</dd>
+    <dt><code>gap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Gap between master positions (negative for reverse direction)</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+    <dt><code>masterIni</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Master initial position compensation (default: 0)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_ConfigureTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method configures all the necessary parameters for ECAM motion.
+The ECAM table data should be stored in GenData array from startIndex to endIndex.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_CreateLinearTable_" data-uid="AAMotion.IECAM.ECAM_CreateLinearTable*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_CreateLinearTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_CreateLinearTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ECAM_CreateLinearTable(int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a simple ECAM table with linear interpolation between start and end positions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_CreateLinearTable(int startPos, int endPos, int numPoints, int startIndex, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Starting position</p>
+</dd>
+    <dt><code>endPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Ending position</p>
+</dd>
+    <dt><code>numPoints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of interpolation points</p>
+</dd>
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index in GenData array</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_CreateLinearTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method automatically generates a linear ECAM table and stores it in the GenData array.
+The table will contain numPoints positions linearly interpolated between startPos and endPos.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_CreateSinusoidalTable_" data-uid="AAMotion.IECAM.ECAM_CreateSinusoidalTable*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_CreateSinusoidalTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_CreateSinusoidalTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ECAM_CreateSinusoidalTable(int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a sinusoidal ECAM table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_CreateSinusoidalTable(int amplitude, int offset, int numPoints, int startIndex, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amplitude</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Sinusoidal amplitude</p>
+</dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Position offset</p>
+</dd>
+    <dt><code>numPoints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of points in the table</p>
+</dd>
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index in GenData array</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_CreateSinusoidalTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method automatically generates a sinusoidal ECAM table and stores it in the GenData array.
+The table will contain numPoints positions following a sinusoidal pattern with specified amplitude and offset.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_GetCycleCount_" data-uid="AAMotion.IECAM.ECAM_GetCycleCount*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_GetCycleCount_System_Int32_" data-uid="AAMotion.IECAM.ECAM_GetCycleCount(System.Int32)">
+  ECAM_GetCycleCount(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get current ECAM cycle count for specified table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ECAM_GetCycleCount(int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Current cycle count</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_GetCycleCount_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Returns the number of cycles completed for the specified ECAM table.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_IsActive_" data-uid="AAMotion.IECAM.ECAM_IsActive*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_IsActive" data-uid="AAMotion.IECAM.ECAM_IsActive">
+  ECAM_IsActive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check if ECAM motion is currently active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ECAM_IsActive()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if ECAM motion is active, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_IsActive_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Use this method to monitor the status of ECAM motion during operation.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetCycleParams_" data-uid="AAMotion.IECAM.ECAM_SetCycleParams*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetCycleParams_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetCycleParams(System.Int32,System.Int32,System.Int32,System.Int32)">
+  ECAM_SetCycleParams(int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM cycle parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetCycleParams(int startCycIndex, int endCycIndex, int cycles, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startCycIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start cycle index for repetition (0-based)</p>
+</dd>
+    <dt><code>endCycIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End cycle index for repetition (0-based)</p>
+</dd>
+    <dt><code>cycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of cycles (positive for forward, negative for bidirectional, 2147483647 for infinite)</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetCycleParams_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>These parameters control how the ECAM table is repeated during motion.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetGap_" data-uid="AAMotion.IECAM.ECAM_SetGap*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetGap_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetGap(System.Int32,System.Int32)">
+  ECAM_SetGap(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM gap between master positions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetGap(int gap, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Gap between master positions (negative for reverse direction)</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetGap_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The gap determines the step size for master position increments during ECAM motion.
+Negative values reverse the direction of motion.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetMaster_" data-uid="AAMotion.IECAM.ECAM_SetMaster*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetMaster_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetMaster(System.Int32,System.Int32)">
+  ECAM_SetMaster(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM master axis (typically the main axis being followed).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetMaster(int masterKeyword, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>masterKeyword</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Master axis keyword code (e.g., 2 for PosRef, 24 for PosRef)</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetMaster_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The master axis is the reference axis that the slave axis follows during ECAM motion.
+Common master keywords: 2 (PosRef), 24 (PosRef), etc.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetMasterIni_" data-uid="AAMotion.IECAM.ECAM_SetMasterIni*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetMasterIni_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetMasterIni(System.Int32,System.Int32)">
+  ECAM_SetMasterIni(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM master initial position compensation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetMasterIni(int masterIni, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>masterIni</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Master initial position compensation value</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetMasterIni_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This parameter compensates for the initial position difference between master and slave axes.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetTableData_" data-uid="AAMotion.IECAM.ECAM_SetTableData*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetTableData_System_Int32___System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetTableData(System.Int32[],System.Int32)">
+  ECAM_SetTableData(int[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM table data using GenData array. Data will be written starting from ECAMStart[tableNum] to ECAMEnd[tableNum].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetTableData(int[] data, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Array of position data to set in GenData</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetTableData_System_Int32___System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The data array will be written to the GenData array starting from the configured start index.
+Make sure the data array size matches the configured table range.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_SetTableRange_" data-uid="AAMotion.IECAM.ECAM_SetTableRange*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_SetTableRange_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetTableRange(System.Int32,System.Int32,System.Int32)">
+  ECAM_SetTableRange(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set ECAM table range (start and end indices in GenData array).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ECAM_SetTableRange(int startIndex, int endIndex, int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index in GenData array</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index in GenData array</p>
+</dd>
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_SetTableRange_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This sets the range in the GenData array where the ECAM table data is stored.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_Start_" data-uid="AAMotion.IECAM.ECAM_Start*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_Start_System_Int32_" data-uid="AAMotion.IECAM.ECAM_Start(System.Int32)">
+  ECAM_Start(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start ECAM motion with specified table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ECAM_Start(int tableNum = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tableNum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>ECAM table number to use (1-10, default: 1)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if ECAM motion started successfully, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_Start_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Before starting ECAM motion, ensure that:</p>
+<ol>
+<li>ECAM table is properly configured with ECAM_ConfigureTable</li>
+<li>ECAM table data is set with ECAM_SetTableData</li>
+<li>Master axis is properly configured</li>
+</ol>
+</div>
+
+
+
+
+  <a id="AAMotion_IECAM_ECAM_Stop_" data-uid="AAMotion.IECAM.ECAM_Stop*"></a>
+
+  <h3 id="AAMotion_IECAM_ECAM_Stop" data-uid="AAMotion.IECAM.ECAM_Stop">
+  ECAM_Stop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stop ECAM motion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ECAM_Stop()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if ECAM motion stopped successfully, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="AAMotion_IECAM_ECAM_Stop_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This will immediately stop the current ECAM motion and return the axis to normal operation.</p>
+</div>
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L3" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

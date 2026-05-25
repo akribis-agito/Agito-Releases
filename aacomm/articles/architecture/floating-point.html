@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Floating Point Resolution | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Floating Point Resolution | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="architecture-floating-point">
+<h1 id="aacomm-floating-point-resolution">AAComm Floating-Point Resolution</h1>
+
+<h2 id="principle">Principle</h2>
+<p>Data that leaves AAComm via the <strong>Extension classes</strong> (e.g., <code>RecordingDataContainer</code>, <code>LoggerDataContainer</code>, <code>ScopeDataContainer</code>, <code>AllStatInterpreter</code>) is properly resolved and ready to use. Raw IEEE 754 bit-pattern resolution is handled transparently by these classes.</p>
+<p><strong>Limitation</strong>: Resolution only applies when data is obtained through the Extension mechanism, or for protocols that have Rx-path resolution (see below). If an unsupported upload command is issued directly via <code>CommAPI.Send()</code> — such as from PCSuite Terminal — the raw response is <strong>not</strong> resolved. The consumer receives unprocessed bit-masked values.</p>
+<p>ConFltSnapVal and ProgSnapVal cannot be auto-resolved via an Extension mechanism because the snapshot source parameters (ConFltSnapSrc / ProgSnapSrc) are user-configurable — the parameter types are unknown until the CCC sources are queried at runtime.</p>
+<p><strong>TODO</strong>: Consider an Extension-level auto-resolve path for protocols currently resolved only by PCSuite UI code (ConFltSnapVal, ProgSnapVal). This would require querying snapshot source CCCs as part of the Extension flow.</p>
+<h2 id="resolution">Resolution</h2>
+<p>Core logic lives in <code>FloatHelper</code> (<code>AAComm.Services</code>) — public static class, callable directly by all consumers.</p>
+<p><code>FloatHelper.ResolveFloatingPoint(MessageData md, long val, bool doubleSupported, bool floatSupport)</code> determines the correct conversion based on the parameter's <code>MessageData</code> type:</p>
+<ul>
+<li><strong>float/double</strong> with <code>doubleSupported</code> — <code>LongToDouble()</code> (64-bit IEEE 754)</li>
+<li><strong>float</strong> with <code>!doubleSupported</code> and <code>floatSupport</code> — <code>IntToFloat()</code> (32-bit IEEE 754)</li>
+<li><strong>float</strong> with <code>!doubleSupported</code> and <code>!floatSupport</code> — returned as-is (float hole protection)</li>
+<li><strong>int / long</strong> — returned as-is</li>
+<li><strong>null metadata</strong> (unknown parameter) — returned as-is (safe fallback)</li>
+</ul>
+<p><code>FloatHelper.ResolveFromCCC(int ccc, long rawVal, ControllerMessagesContainer dataContainer, bool doubleSupported, bool floatSupport)</code> resolves via Complex CAN Code: parses CCC -&gt; looks up MessageData -&gt; delegates to <code>ResolveFloatingPoint</code>.</p>
+<p>Throws <code>FormatException</code> on NaN or Infinity.</p>
+<h3 id="float-hole-protection">Float Hole Protection</h3>
+<p>AllStat_64bit protocols (AllStat, Logger, Scope, ConFltSnap, ProgSnap) never transmit 32-bit float bit patterns. They either send raw integers or 64-bit doubles. These protocols pass <code>floatSupport: false</code>, which blocks the <code>IntToFloat</code> path and prevents garbage values when <code>doubleSupported=false</code> and a parameter has float metadata. RecUpload and ParamAbout pass <code>floatSupport: true</code>.</p>
+<h3 id="double-support-flags">Double Support Flags</h3>
+<p>Two independent flags control double support for different protocol groups:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Source</th>
+<th>Protocols</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Features_01.DoublePhase_1_Supported</code></td>
+<td>Identity[26] bit 28</td>
+<td>RecUpload</td>
+</tr>
+<tr>
+<td><code>Features_02.AllStat_64bit_Supported</code></td>
+<td>Identity[62] bit 3</td>
+<td>AllStat, LoggerUpload, ScopeUpload, ParamAbout, ConFltSnapVal, ProgSnapVal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="protocols">Protocols</h2>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Container</th>
+<th>doubleSupported</th>
+<th>floatSupport</th>
+<th>Auto-resolved</th>
+<th>Rx-path resolved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RecUpload</strong></td>
+<td><code>RecordingDataContainer</code></td>
+<td><code>DoublePhase_1_Supported</code></td>
+<td><code>true</code></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>LoggerUpload</strong></td>
+<td><code>LoggerDataContainer</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>false</code></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>ScopeUpload</strong></td>
+<td><code>ScopeDataContainer</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>false</code></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>AllStat</strong></td>
+<td><code>AllStatInterpreter</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>false</code></td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>ParamAbout</strong></td>
+<td><code>FloatHelper.ResolveParamAbout</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>true</code></td>
+<td>Yes (inline)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>ConFltSnapVal</strong></td>
+<td>PCSuite <code>FaultDataView</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>false</code></td>
+<td>No (PCSuite UI)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>ProgSnapVal</strong></td>
+<td>PCSuite <code>UPDataView</code></td>
+<td><code>AllStat_64bit_Supported</code></td>
+<td><code>false</code></td>
+<td>No (PCSuite UI)</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="loggerupload--scopeupload">LoggerUpload / ScopeUpload</h3>
+<p>Both use <code>PacketDataParser</code> for the common wire format: <code>nPackets, [header, val1, val2, ...], ..., 0</code>. Header is packet ID (Logger) or Time (Scope). Resolution is applied per value using the caller-provided <code>MessageData</code> list.</p>
+<p>PCSuite adapts these containers into its UI models. The CSV import path in <code>LoggerData</code> bypasses AAComm resolution (values are already resolved in the file).</p>
+<h3 id="allstat">AllStat</h3>
+<p><code>AllStatInterpreter</code> requires a connected <code>CommAPI</code> (constructor delegates validation to <code>RecParamsResolver.ValidateAPI</code>). Every field in <code>AllStatAxisData</code> is resolved via mnemonic lookup against the controller's <code>MessagesContainer</code> — float/double fields get bit-pattern conversion, integer fields pass through as <code>double</code>. The <code>AllStatData</code> struct is shared with <code>AACommNative</code> (C++) via <code>#if __cplusplus</code> preprocessor directives.</p>
+<h3 id="rx-path-resolution-convertreplytofloatifneed">Rx-Path Resolution (ConvertReplyToFloatIfNeed)</h3>
+<p><code>FloatHelper.ConvertReplyToFloatIfNeed</code> is the inline Rx-path resolver for all message replies. It intercepts raw controller replies before delivery to the caller and converts IEEE 754 bit patterns to floating-point values. This ensures that even low-level <code>SendReceive()</code> consumers (e.g., PCSuite Terminal) receive properly resolved data.</p>
+<p><strong>Resolved in the Rx path:</strong></p>
+<ul>
+<li><strong>Single-value parameters</strong>: float (<code>IntToFloat</code>) and double (<code>LongToDouble</code>) based on <code>MessageData</code> type. Note: the single-value path dispatches purely on <code>MessageData.IsFloat</code>/<code>IsDouble</code> — it does NOT check the <code>doubleSupported</code>/<code>floatSupport</code> flags.</li>
+<li><strong>ParamAbout</strong>: multi-value <code>State,MIN,MAX,DEFAULT</code> — delegated to <code>FloatHelper.ResolveParamAbout</code></li>
+<li><strong>AllStat</strong>: multi-value comma-separated longs per axis/group — delegated to <code>AllStatInterpreter.ResolveRawReply</code>. Uses the static mnemonic arrays and the private <code>Resolve()</code> instance method to convert each value in group order. Returns reply unchanged if <code>!AllStat_64bit_Supported</code>.</li>
+</ul>
+<p><strong>NOT resolved in the Rx path</strong> (CAN code unknown at Rx flow time):</p>
+<ul>
+<li><strong>RecUpload</strong>: not resolved here — <code>RecordingDataContainer</code> parses raw longs and resolves per-vector with the correct feature flags. Rx-path resolution would double-convert (long→string→long parse failure)</li>
+<li><strong>RecUploadNext</strong>: sequential packet protocol — the CAN codes are not embedded in the N2 data packets</li>
+<li><strong>ScopeUpload / LoggerUpload</strong>: the CAN codes are supplied by the caller, not present in the reply</li>
+<li><strong>ConFltSnapVal / ProgSnapVal</strong>: snapshot source CCCs are user-configurable and unknown without runtime query</li>
+</ul>
+<h3 id="error-handling">Error Handling</h3>
+<p>AAComm throws generic <code>FormatException</code> on invalid floating-point values (NaN, Infinity). Consumer applications (e.g., PCSuite) catch and localize these messages.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

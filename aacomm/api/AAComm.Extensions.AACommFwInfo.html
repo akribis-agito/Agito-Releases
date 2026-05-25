@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AACommFwInfo | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AACommFwInfo | Agito AAComm SDK ">
+      
+      <meta name="description" content="Helper class used to read HEX files FW info, and to validate HEX/BIN and VER files prior to FW download &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommDownloadFW&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  For reading FW info, create an instance of this class &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommFwInfo.%23ctor(System.String%2cAAComm.Services.ConnectionData)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  For validating FW files prior to FW download, use the method &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommFwInfo.ValidateFwFiles(AAComm.Services.ConnectionData%2cSystem.String)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  Older FW HEX files don&#39;t contain FW information. Opening such files will result in all the properties being invalid.   Use &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommFwInfo.DataValid&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; to verify that the FW information was read successfully.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Extensions_AACommFwInfo.md&amp;value=---%0Auid%3A%20AAComm.Extensions.AACommFwInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Extensions.AACommFwInfo">
+
+
+
+  <h1 id="AAComm_Extensions_AACommFwInfo" data-uid="AAComm.Extensions.AACommFwInfo" class="text-break">
+Class AACommFwInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Extensions.html">Extensions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><pre><code>Helper class used to read HEX files FW info, and to validate HEX/BIN and VER files prior to FW download &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFW&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+For reading FW info, create an instance of this class &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.%23ctor(System.String%2cAAComm.Services.ConnectionData)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+For validating FW files prior to FW download, use the method &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.ValidateFwFiles(AAComm.Services.ConnectionData%2cSystem.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+
+Older FW HEX files don't contain FW information. Opening such files will result in all the properties being invalid.
+</code></pre>
+<p></p>
+<pre><code>Use &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.DataValid&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to verify that the FW information was read successfully.
+</code></pre>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AACommFwInfo</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AACommFwInfo</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Extensions_AACommFwInfo__ctor_" data-uid="AAComm.Extensions.AACommFwInfo.#ctor*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo__ctor_System_String_AAComm_Services_ConnectionData_" data-uid="AAComm.Extensions.AACommFwInfo.#ctor(System.String,AAComm.Services.ConnectionData)">
+  AACommFwInfo(string, ConnectionData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>throws on data reading/parsing errors</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommFwInfo(string fwFile, ConnectionData cd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fwFile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>FW HEX/BIN file</p>
+</dd>
+    <dt><code>cd</code> <a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd><p>target controller <a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a> (to resolve the controller type)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Bin" data-uid="AAComm.Extensions.AACommFwInfo.Bin">
+  Bin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGM800 FW binary file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string Bin = &quot;.bin&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Hex" data-uid="AAComm.Extensions.AACommFwInfo.Hex">
+  Hex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>non-AGM800 FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string Hex = &quot;.hex&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Ver" data-uid="AAComm.Extensions.AACommFwInfo.Ver">
+  Ver
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>non-AGM800 FW version file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string Ver = &quot;.ver&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_BypassAddVelFilt_" data-uid="AAComm.Extensions.AACommFwInfo.BypassAddVelFilt*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_BypassAddVelFilt" data-uid="AAComm.Extensions.AACommFwInfo.BypassAddVelFilt">
+  BypassAddVelFilt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Bypass additional velocity filters flag
+-1/0: NA
+1: Additional Bi-Quad Filters bypassed
+Other: Unknown special feature, item 26</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BypassAddVelFilt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_DataValid_" data-uid="AAComm.Extensions.AACommFwInfo.DataValid*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_DataValid" data-uid="AAComm.Extensions.AACommFwInfo.DataValid">
+  DataValid
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>indicated whether the analyzed HEX file contains FW information. If false - all fields are initialized to &quot;-1&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DataValid { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_FullScaleMa_" data-uid="AAComm.Extensions.AACommFwInfo.FullScaleMa*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_FullScaleMa" data-uid="AAComm.Extensions.AACommFwInfo.FullScaleMa">
+  FullScaleMa
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>FullScaleMa, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FullScaleMa { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_FwIdentityText_" data-uid="AAComm.Extensions.AACommFwInfo.FwIdentityText*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_FwIdentityText" data-uid="AAComm.Extensions.AACommFwInfo.FwIdentityText">
+  FwIdentityText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>empty, if old HEX format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; FwIdentityText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_FwSystemVersion_" data-uid="AAComm.Extensions.AACommFwInfo.FwSystemVersion*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_FwSystemVersion" data-uid="AAComm.Extensions.AACommFwInfo.FwSystemVersion">
+  FwSystemVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>FW <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a> object, as read from analyzed FW file. Format: as <a class="xref" href="AAComm.Services.ControllerIdentityVersions.html#AAComm_Services_ControllerIdentityVersions_BuildSystemVersion_System_Int32___">BuildSystemVersion(int[])</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Version FwSystemVersion { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_FwVersion_" data-uid="AAComm.Extensions.AACommFwInfo.FwVersion*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_FwVersion" data-uid="AAComm.Extensions.AACommFwInfo.FwVersion">
+  FwVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>FW version, as read from analyzed FW file. Format: as <a class="xref" href="AAComm.Services.ControllerIdentityVersions.html#AAComm_Services_ControllerIdentityVersions_BuildVersionString_System_Int32___">BuildVersionString(int[])</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FwVersion { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_GregVQCA1_" data-uid="AAComm.Extensions.AACommFwInfo.GregVQCA1*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_GregVQCA1" data-uid="AAComm.Extensions.AACommFwInfo.GregVQCA1">
+  GregVQCA1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>GregVQCA1 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GregVQCA1 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_HesseAG100_" data-uid="AAComm.Extensions.AACommFwInfo.HesseAG100*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_HesseAG100" data-uid="AAComm.Extensions.AACommFwInfo.HesseAG100">
+  HesseAG100
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L214"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>HesseAG100 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HesseAG100 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsEssentium_" data-uid="AAComm.Extensions.AACommFwInfo.IsEssentium*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsEssentium" data-uid="AAComm.Extensions.AACommFwInfo.IsEssentium">
+  IsEssentium
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsEssentium feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEssentium { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsFourPorts_" data-uid="AAComm.Extensions.AACommFwInfo.IsFourPorts*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsFourPorts" data-uid="AAComm.Extensions.AACommFwInfo.IsFourPorts">
+  IsFourPorts
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsFourPorts feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFourPorts { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsMdd_" data-uid="AAComm.Extensions.AACommFwInfo.IsMdd*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsMdd" data-uid="AAComm.Extensions.AACommFwInfo.IsMdd">
+  IsMdd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsMdd feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMdd { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsNoIcnqc_" data-uid="AAComm.Extensions.AACommFwInfo.IsNoIcnqc*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsNoIcnqc" data-uid="AAComm.Extensions.AACommFwInfo.IsNoIcnqc">
+  IsNoIcnqc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsNoIcnqc feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNoIcnqc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsPhilips_" data-uid="AAComm.Extensions.AACommFwInfo.IsPhilips*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsPhilips" data-uid="AAComm.Extensions.AACommFwInfo.IsPhilips">
+  IsPhilips
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsPhilips feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPhilips { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsUser1_" data-uid="AAComm.Extensions.AACommFwInfo.IsUser1*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsUser1" data-uid="AAComm.Extensions.AACommFwInfo.IsUser1">
+  IsUser1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>DEPRECATED!! IsUser1 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUser1 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsUser2_" data-uid="AAComm.Extensions.AACommFwInfo.IsUser2*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsUser2" data-uid="AAComm.Extensions.AACommFwInfo.IsUser2">
+  IsUser2
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsUser2 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUser2 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_IsVariant71_" data-uid="AAComm.Extensions.AACommFwInfo.IsVariant71*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_IsVariant71" data-uid="AAComm.Extensions.AACommFwInfo.IsVariant71">
+  IsVariant71
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IsVariant71 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsVariant71 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_Magal_" data-uid="AAComm.Extensions.AACommFwInfo.Magal*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Magal" data-uid="AAComm.Extensions.AACommFwInfo.Magal">
+  Magal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Magal feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Magal { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_MaxContCL_" data-uid="AAComm.Extensions.AACommFwInfo.MaxContCL*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_MaxContCL" data-uid="AAComm.Extensions.AACommFwInfo.MaxContCL">
+  MaxContCL
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MaxContCL, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxContCL { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_MaxPeakCL_" data-uid="AAComm.Extensions.AACommFwInfo.MaxPeakCL*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_MaxPeakCL" data-uid="AAComm.Extensions.AACommFwInfo.MaxPeakCL">
+  MaxPeakCL
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MaxPeakCL, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPeakCL { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_MoreVelFilt_" data-uid="AAComm.Extensions.AACommFwInfo.MoreVelFilt*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_MoreVelFilt" data-uid="AAComm.Extensions.AACommFwInfo.MoreVelFilt">
+  MoreVelFilt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>MoreVelFilt feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MoreVelFilt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_NumOfAxes_" data-uid="AAComm.Extensions.AACommFwInfo.NumOfAxes*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_NumOfAxes" data-uid="AAComm.Extensions.AACommFwInfo.NumOfAxes">
+  NumOfAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>NumOfAxes, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfAxes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_ProductIdToNameCopy_" data-uid="AAComm.Extensions.AACommFwInfo.ProductIdToNameCopy*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_ProductIdToNameCopy" data-uid="AAComm.Extensions.AACommFwInfo.ProductIdToNameCopy">
+  ProductIdToNameCopy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>list of all products. for API users, that don't have PCSuite ApplicationIniData.xml file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;int, string&gt; ProductIdToNameCopy { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_ProductType_" data-uid="AAComm.Extensions.AACommFwInfo.ProductType*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_ProductType" data-uid="AAComm.Extensions.AACommFwInfo.ProductType">
+  ProductType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Numeric product type/&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ProductType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_ProductTypeStr_" data-uid="AAComm.Extensions.AACommFwInfo.ProductTypeStr*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_ProductTypeStr" data-uid="AAComm.Extensions.AACommFwInfo.ProductTypeStr">
+  ProductTypeStr
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Literal product type. May contain PATH-ILLEGAL characters, i.e. '/'
+</code></pre>
+<p></p>
+<pre><code>For AGM800 family products (types 6, 10, 15), always returns &quot;AGM800&quot;
+regardless of source file type (.bin or .hex) and specific product ID.
+This handles the deprecated AGM400 ID (6) and ensures consistent display name.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ProductTypeStr { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_ReadmeText_" data-uid="AAComm.Extensions.AACommFwInfo.ReadmeText*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_ReadmeText" data-uid="AAComm.Extensions.AACommFwInfo.ReadmeText">
+  ReadmeText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>content of '.readme' accompanying file. Null, if no file found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadmeText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_Target_" data-uid="AAComm.Extensions.AACommFwInfo.Target*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Target" data-uid="AAComm.Extensions.AACommFwInfo.Target">
+  Target
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The controller type this FW is designed for, <a class="xref" href="AAComm.Extensions.AACommFwInfo.Targets.html">AACommFwInfo.Targets</a> enum</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommFwInfo.Targets Target { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Extensions.AACommFwInfo.html">AACommFwInfo</a>.<a class="xref" href="AAComm.Extensions.AACommFwInfo.Targets.html">Targets</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_TwUser_" data-uid="AAComm.Extensions.AACommFwInfo.TwUser*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_TwUser" data-uid="AAComm.Extensions.AACommFwInfo.TwUser">
+  TwUser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>TwUser feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TwUser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_Variant_" data-uid="AAComm.Extensions.AACommFwInfo.Variant*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Variant" data-uid="AAComm.Extensions.AACommFwInfo.Variant">
+  Variant
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variant feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Variant { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_Variant72_" data-uid="AAComm.Extensions.AACommFwInfo.Variant72*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_Variant72" data-uid="AAComm.Extensions.AACommFwInfo.Variant72">
+  Variant72
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Variant72 feature, as reported by FW file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Variant72 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_AACommVersionFromString_" data-uid="AAComm.Extensions.AACommFwInfo.AACommVersionFromString*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_AACommVersionFromString_System_String_" data-uid="AAComm.Extensions.AACommFwInfo.AACommVersionFromString(System.String)">
+  AACommVersionFromString(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L716"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>reformat VER file version string to AAComm-style version format
+</code></pre>
+<p></p>
+<pre><code>should be used for display purposes, or not used at all.
+</code></pre>
+<p></p>
+<pre><code>throws on invalid numerics format
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string AACommVersionFromString(string verStr)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>verStr</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>VER file version string (line #1)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>reformatted string, or input string in case of failure</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_GetSpecialFeaturesStr_" data-uid="AAComm.Extensions.AACommFwInfo.GetSpecialFeaturesStr*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_GetSpecialFeaturesStr_System_Char_" data-uid="AAComm.Extensions.AACommFwInfo.GetSpecialFeaturesStr(System.Char)">
+  GetSpecialFeaturesStr(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds a string that describes all the special features supported by analyzed FW</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetSpecialFeaturesStr(char sep)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sep</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>features 'separator' within the resulting string</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>features string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_ValidateFwFiles_" data-uid="AAComm.Extensions.AACommFwInfo.ValidateFwFiles*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_ValidateFwFiles_AAComm_Services_ConnectionData_System_String_" data-uid="AAComm.Extensions.AACommFwInfo.ValidateFwFiles(AAComm.Services.ConnectionData,System.String)">
+  ValidateFwFiles(ConnectionData, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L521"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Validates FW hex/bin and ver files: (THROWS on errors)
+</code></pre>
+<p></p>
+<pre><code>Can be called if &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.DataValid&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; is 'false' =&gt; will skip internal FW file data checks
+</code></pre>
+<p></p>
+<pre><code>0. files existence, extensions, FW and ver names matching
+</code></pre>
+<p></p>
+<pre><code>1. only bin files can be flashed to AGM800
+</code></pre>
+<p></p>
+<pre><code>FOR AGM800: If .ver file exists, performs validation (MD5, version, type). If not, download proceeds without validation (backward compatible).
+</code></pre>
+<p></p>
+<pre><code>FOR NON-AGM800:
+</code></pre>
+<p></p>
+<pre><code>2. fw vs. ver file version (if fw file supports this feature)
+</code></pre>
+<p></p>
+<pre><code>3. fw product type vs. defined connection product type (if fw file supports)
+</code></pre>
+<p></p>
+<pre><code>4. ver MD5 vs fw computed hash (if supported)
+</code></pre>
+<p></p>
+<pre><code>5. ver product type vs. defined connection product type (if ver file supports)
+</code></pre>
+<p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ValidateFwFiles(ConnectionData cd, string verFile)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cd</code> <a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd><p>ConnectionData object that describes the product to be flashed</p>
+</dd>
+    <dt><code>verFile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>full FW version file path (.ver, can be null for AGM800)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_AACommFwInfo_VerifyCurrents_" data-uid="AAComm.Extensions.AACommFwInfo.VerifyCurrents*"></a>
+
+  <h3 id="AAComm_Extensions_AACommFwInfo_VerifyCurrents_AAComm_CommAPI_AAComm_Services_ConnectionData_" data-uid="AAComm.Extensions.AACommFwInfo.VerifyCurrents(AAComm.CommAPI,AAComm.Services.ConnectionData)">
+  VerifyCurrents(CommAPI, ConnectionData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L430"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Checks whether provided MaxPeakCL and MaxContCL match the ones specified within the FW file
+</code></pre>
+<p></p>
+<pre><code>Supported for HEX files with embedded identity data.
+</code></pre>
+<p></p>
+<pre><code>NOT supported for AGM800 family products.
+</code></pre>
+<p></p>
+<pre><code>Product must not be in boot mode.
+</code></pre>
+<p></p>
+<pre><code>If &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.DataValid&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; is 'false' - exception is thrown
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> object must be in 'disconnected' state
+<p></p>
+<pre><code>Connects to controller to query required data, disconnects when done
+</code></pre>
+<p></p>
+<pre><code>Throws on verification failure and on errors
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void VerifyCurrents(CommAPI api, ConnectionData connData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>instance of the API class to perform the verification, must be disconnected</p>
+</dd>
+    <dt><code>connData</code> <a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd><p>connection data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommFwInfo.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

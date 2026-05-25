@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ICommService | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ICommService | Agito AAComm SDK ">
+      
+      <meta name="description" content="Phase 1 interface over  for consumers that want to mock or substitute the controller boundary (e.g., headless Core libraries, unit and integration tests).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Interfaces_ICommService.md&amp;value=---%0Auid%3A%20AAComm.Interfaces.ICommService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Interfaces.ICommService">
+
+
+
+  <h1 id="AAComm_Interfaces_ICommService" data-uid="AAComm.Interfaces.ICommService" class="text-break">
+Interface ICommService  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Phase 1 interface over <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> for consumers that want to mock or substitute
+the controller boundary (e.g., headless Core libraries, unit and integration tests).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICommService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="AAComm_Interfaces_ICommService_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>The interface intentionally exposes a small, additive subset of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a>'s public
+surface — only what is required by the first canary (TerminalCore). Members will be added as
+new Core extractions surface new needs. <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> implements this interface natively;
+no adapter is required for production wiring (<code>ICommService comm = CommAPIWrapper.Instance;</code>).</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Interfaces_ICommService_CurrentConnectionData_" data-uid="AAComm.Interfaces.ICommService.CurrentConnectionData*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_CurrentConnectionData" data-uid="AAComm.Interfaces.ICommService.CurrentConnectionData">
+  CurrentConnectionData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current connection descriptor, or null if not connected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ConnectionData CurrentConnectionData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_IdentityContainer_" data-uid="AAComm.Interfaces.ICommService.IdentityContainer*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_IdentityContainer" data-uid="AAComm.Interfaces.ICommService.IdentityContainer">
+  IdentityContainer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read-only view over the controller identity metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IIdentityContainer IdentityContainer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Interfaces.IIdentityContainer.html">IIdentityContainer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_IsConnected_" data-uid="AAComm.Interfaces.ICommService.IsConnected*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_IsConnected" data-uid="AAComm.Interfaces.ICommService.IsConnected">
+  IsConnected
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>API state: is the API connected to a controller.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsConnected { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_MessagesContainer_" data-uid="AAComm.Interfaces.ICommService.MessagesContainer*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_MessagesContainer" data-uid="AAComm.Interfaces.ICommService.MessagesContainer">
+  MessagesContainer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read-only view over the parameter database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMessagesContainer MessagesContainer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Interfaces.IMessagesContainer.html">IMessagesContainer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_UserProgAdapter_" data-uid="AAComm.Interfaces.ICommService.UserProgAdapter*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_UserProgAdapter" data-uid="AAComm.Interfaces.ICommService.UserProgAdapter">
+  UserProgAdapter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>User Program globals/tasks adapter. Exposed as the concrete type for Phase 1; will be
+promoted to an interface in a future canary alongside the broader <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a>
+surface growth.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">UserProgVarsAdapter UserProgAdapter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.UserProgVarsAdapter.html">UserProgVarsAdapter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Interfaces_ICommService_GetCanDescriptionFromParameter_" data-uid="AAComm.Interfaces.ICommService.GetCanDescriptionFromParameter*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_GetCanDescriptionFromParameter_System_String_" data-uid="AAComm.Interfaces.ICommService.GetCanDescriptionFromParameter(System.String)">
+  GetCanDescriptionFromParameter(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resolves the Complex CAN Code (CCC) for the given mnemonic using the connected controller's
+parameter database. Throws on errors. Instance variant of the static
+<a class="xref" href="AAComm.CommAPIWrapper.html#AAComm_CommAPIWrapper_GetCanDescriptionFromParameter_System_String_">GetCanDescriptionFromParameter(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetCanDescriptionFromParameter(string mnemonic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_Send_" data-uid="AAComm.Interfaces.ICommService.Send*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_Send_AAComm_Services_AACommMessage_" data-uid="AAComm.Interfaces.ICommService.Send(AAComm.Services.AACommMessage)">
+  Send(AACommMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Asynchronous send. Reply is delivered via <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_OnReplyReceived">OnReplyReceived</a>.
+Safe to interleave freely with <a class="xref" href="AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_SendReceive_AAComm_Services_AACommMessage_">SendReceive(AACommMessage)</a> from any thread — sync and
+async use independent FIFO pipelines; ordinary messages do not gate each other.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Send(AACommMessage commMessage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commMessage</code> <a class="xref" href="AAComm.Services.AACommMessage.html">AACommMessage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_ICommService_SendReceive_" data-uid="AAComm.Interfaces.ICommService.SendReceive*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_SendReceive_AAComm_Services_AACommMessage_" data-uid="AAComm.Interfaces.ICommService.SendReceive(AAComm.Services.AACommMessage)">
+  SendReceive(AACommMessage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Synchronous send/receive. Safe to interleave freely with <a class="xref" href="AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_Send_AAComm_Services_AACommMessage_">Send(AACommMessage)</a> from any
+thread — sync and async use independent FIFO pipelines; ordinary messages do not gate each other.
+See <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_SendReceive_AAComm_Services_AACommMessage_">SendReceive(AACommMessage)</a> for the full thread-safety contract.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AACommEventArgs SendReceive(AACommMessage commMessage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commMessage</code> <a class="xref" href="AAComm.Services.AACommMessage.html">AACommMessage</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

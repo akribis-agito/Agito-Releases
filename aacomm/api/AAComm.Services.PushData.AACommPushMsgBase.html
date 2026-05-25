@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AACommPushMsgBase | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AACommPushMsgBase | Agito AAComm SDK ">
+      
+      <meta name="description" content="Base type for controller push messages. Expected raw message format: [VERSION_PUSH].[SOURCE],[VERSION_DATA].[DATA] Where:  VERSION_PUSH: integer protocol version for the overall push feature SOURCE: integer enum value () telling which derived message type to create VERSION_DATA: integer version for the payload format DATA: raw payload (may be ASCII string or raw binary bytes depending on SOURCE/VERSION_DATA)">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_PushData_AACommPushMsgBase.md&amp;value=---%0Auid%3A%20AAComm.Services.PushData.AACommPushMsgBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.PushData.AACommPushMsgBase">
+
+
+
+  <h1 id="AAComm_Services_PushData_AACommPushMsgBase" data-uid="AAComm.Services.PushData.AACommPushMsgBase" class="text-break">
+Class AACommPushMsgBase  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a>.<a class="xref" href="AAComm.Services.PushData.html">PushData</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base type for controller push messages.</p>
+<p>Expected raw message format:</p>
+<pre><code class="lang-csharp">[VERSION_PUSH].[SOURCE],[VERSION_DATA].[DATA]</code></pre>
+<p>Where:</p>
+<ul>
+<li>VERSION_PUSH: integer protocol version for the overall push feature</li>
+<li>SOURCE: integer enum value (<a class="xref" href="AAComm.Services.PushData.PushSources.html">PushSources</a>) telling which derived message type to create</li>
+<li>VERSION_DATA: integer version for the payload format</li>
+<li>DATA: raw payload (may be ASCII string or raw binary bytes depending on SOURCE/VERSION_DATA)</li>
+</ul>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class AACommPushMsgBase</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AACommPushMsgBase</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AAComm.Services.PushData.AACommPushMsgError.html">AACommPushMsgError</a></div>
+      <div><a class="xref" href="AAComm.Services.PushData.AACommPushMsgUP.html">AACommPushMsgUP</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase__ctor_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.#ctor*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase__ctor_System_Byte___" data-uid="AAComm.Services.PushData.AACommPushMsgBase.#ctor(System.Byte[])">
+  AACommPushMsgBase(byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses the envelope and initializes base properties.
+Handles both ASCII and binary DATA sections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected AACommPushMsgBase(byte[] raw)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>raw</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>Raw controller message in the expected format.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>If <code class="paramref">raw</code> is null or empty.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>If the message does not match the expected envelope format.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>If the SOURCE value is not supported by this application.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase__ctor_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.#ctor*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase__ctor_System_Int32_AAComm_Services_PushData_PushSources_System_Int32_System_String_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.#ctor(System.Int32,AAComm.Services.PushData.PushSources,System.Int32,System.String)">
+  AACommPushMsgBase(int, PushSources, int, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Protected convenience ctor that allows derived/error types to be constructed
+without reparsing the raw envelope. Use for error objects only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected AACommPushMsgBase(int protocolVersion, PushSources source, int dataVersion, string fullMessage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>protocolVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>source</code> <a class="xref" href="AAComm.Services.PushData.PushSources.html">PushSources</a></dt>
+    <dd></dd>
+    <dt><code>dataVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>fullMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_BinaryData_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.BinaryData*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_BinaryData" data-uid="AAComm.Services.PushData.AACommPushMsgBase.BinaryData">
+  BinaryData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raw DATA payload as binary bytes (for binary data formats).
+Null if data is ASCII.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] BinaryData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_DataVersion_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.DataVersion*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_DataVersion" data-uid="AAComm.Services.PushData.AACommPushMsgBase.DataVersion">
+  DataVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Payload/data format version (VERSION_DATA).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DataVersion { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_FullMessage_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.FullMessage*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_FullMessage" data-uid="AAComm.Services.PushData.AACommPushMsgBase.FullMessage">
+  FullMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raw DATA payload as string (for ASCII data) or empty if binary data is used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FullMessage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_ProtocolVersion_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.ProtocolVersion*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_ProtocolVersion" data-uid="AAComm.Services.PushData.AACommPushMsgBase.ProtocolVersion">
+  ProtocolVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Overall push protocol version (VERSION_PUSH).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ProtocolVersion { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_Source_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.Source*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_Source" data-uid="AAComm.Services.PushData.AACommPushMsgBase.Source">
+  Source
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The push message initiator/source (SOURCE).
+Used by the factory to choose the correct derived class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PushSources Source { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.PushData.PushSources.html">PushSources</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_Parse_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.Parse*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_Parse_System_Byte___" data-uid="AAComm.Services.PushData.AACommPushMsgBase.Parse(System.Byte[])">
+  Parse(byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Factory: creates the correct derived class by SOURCE.
+On parse or ctor errors returns an <a class="xref" href="AAComm.Services.PushData.AACommPushMsgError.html">AACommPushMsgError</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AACommPushMsgBase Parse(byte[] raw)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>raw</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>Raw controller message as byte array.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.PushData.AACommPushMsgBase.html">AACommPushMsgBase</a></dt>
+    <dd><p>A derived <a class="xref" href="AAComm.Services.PushData.AACommPushMsgBase.html">AACommPushMsgBase</a> instance or an error object on failure.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_PushData_AACommPushMsgBase_ParseEnvelope_" data-uid="AAComm.Services.PushData.AACommPushMsgBase.ParseEnvelope*"></a>
+
+  <h3 id="AAComm_Services_PushData_AACommPushMsgBase_ParseEnvelope_System_Byte___System_Int32__AAComm_Services_PushData_PushSources__System_Int32__System_String__System_Byte____" data-uid="AAComm.Services.PushData.AACommPushMsgBase.ParseEnvelope(System.Byte[],System.Int32@,AAComm.Services.PushData.PushSources@,System.Int32@,System.String@,System.Byte[]@)">
+  ParseEnvelope(byte[], out int, out PushSources, out int, out string, out byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses the message envelope and extracts the DATA section.
+The header is ASCII, the DATA section may be binary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void ParseEnvelope(byte[] raw, out int protocolVersion, out PushSources source, out int dataVersion, out string asciiData, out byte[] binaryData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>raw</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>protocolVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>source</code> <a class="xref" href="AAComm.Services.PushData.PushSources.html">PushSources</a></dt>
+    <dd></dd>
+    <dt><code>dataVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>asciiData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>binaryData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/PushData/AACommPushMsgBase.cs/#L34" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

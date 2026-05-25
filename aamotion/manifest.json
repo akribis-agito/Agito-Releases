@@ -1,0 +1,909 @@
+{
+  "source_base_path": "C:/DEV/actions-runner/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aamotion",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AADoubleArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AADoubleArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AADoubleArray",
+      "Summary": "<p sourcefile=\"api/AAMotion.AADoubleArray.yml\" sourcestartlinenumber=\"1\">Backward compatibility: Double array wrapper</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AADynamicValueArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AADynamicValueArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AADynamicValueArray",
+      "Summary": "<p sourcefile=\"api/AAMotion.AADynamicValueArray.yml\" sourcestartlinenumber=\"1\">Backward compatibility: Dynamic array wrapper</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AAMotionAPI.ConcreteMotionController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AAMotionAPI.ConcreteMotionController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AAMotionAPI.ConcreteMotionController",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AAMotionAPI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AAMotionAPI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AAMotionAPI",
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.AAMotionAPI.yml\" sourcestartlinenumber=\"1\">AAMotionAPI is a static class used for object-oriented programming \n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.AAMotionAPI.yml\" sourcestartlinenumber=\"4\">Provides an advanced interface for unified access to the Agito Motion Systems motion controller.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AAMotionConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AAMotionConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AAMotionConfig",
+      "Summary": "<p sourcefile=\"api/AAMotion.AAMotionConfig.yml\" sourcestartlinenumber=\"1\">Global configuration class to control the behavior of AAMotion</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AASmartArrayWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AASmartArrayWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AASmartArrayWrapper",
+      "Summary": "<p sourcefile=\"api/AAMotion.AASmartArrayWrapper.yml\" sourcestartlinenumber=\"1\">Unified smart array wrapper - supports automatic type conversion for int/float/double/long</p>\n<p sourcefile=\"api/AAMotion.AASmartArrayWrapper.yml\" sourcestartlinenumber=\"3\">Design Pattern: Strategy Pattern</p>\n<ul sourcefile=\"api/AAMotion.AASmartArrayWrapper.yml\" sourcestartlinenumber=\"4\">\n<li sourcefile=\"api/AAMotion.AASmartArrayWrapper.yml\" sourcestartlinenumber=\"4\">Automatically selects appropriate read/write strategy based on data type</li>\n<li sourcefile=\"api/AAMotion.AASmartArrayWrapper.yml\" sourcestartlinenumber=\"5\">Supports four data types: Int (32-bit), Float (32-bit), Double (64-bit), Long (64-bit)</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AAValueArray-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AAValueArray-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AAValueArray<T>",
+      "Summary": "<p sourcefile=\"api/AAMotion.AAValueArray-1.yml\" sourcestartlinenumber=\"1\">Base array wrapper - provides index validation, event triggering and other basic functionality\nUsed for low-level arrays (event-driven) that communicate with controller</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD101EC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD101EC.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD101EC",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD155.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD155.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD155",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD155EC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD155EC.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD155EC",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD156EC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD156EC.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD156EC",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD200.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD200.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD200",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGD301.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGD301.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGD301",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGM800.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGM800.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGM800",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AxisRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AxisRef.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AxisRef",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.CNCType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.CNCType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.CNCType",
+      "Summary": "<p sourcefile=\"api/AAMotion.CNCType.yml\" sourcestartlinenumber=\"1\">Enumeration of CNC motion segment types, corresponding to the dropdown menu order in the interface.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.CachedParameterTypeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.CachedParameterTypeInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.CachedParameterTypeInfo",
+      "Summary": "<p sourcefile=\"api/AAMotion.CachedParameterTypeInfo.yml\" sourcestartlinenumber=\"1\">Cached parameter type information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.CommAPIInterface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.CommAPIInterface.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.CommAPIInterface",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Command.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Command.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Command",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ConFlt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ConFlt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ConFlt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ControllerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ControllerType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ControllerType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.DynamicArrayFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.DynamicArrayFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.DynamicArrayFactory",
+      "Summary": "<p sourcefile=\"api/AAMotion.DynamicArrayFactory.yml\" sourcestartlinenumber=\"1\">Dynamic array factory - simplifies array wrapper creation and caching\nCentralizes array wrapper creation logic for better maintainability</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.EncType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.EncType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.EncType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.EnumPropertyHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.EnumPropertyHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.EnumPropertyHelper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.FastReadCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.FastReadCache.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.FastReadCache",
+      "Summary": "<p sourcefile=\"api/AAMotion.FastReadCache.yml\" sourcestartlinenumber=\"1\">Fast read cache for high-performance data reading.\nThis cache stores parameter values that are refreshed periodically (default 1ms)\nand allows instant read access without sending commands to the controller.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.HomingStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.HomingStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.HomingStat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.HybridValueMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.HybridValueMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.HybridValueMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ICiGroupAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ICiGroupAxis.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ICiGroupAxis",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ICiIOModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ICiIOModule.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ICiIOModule",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ICiSingleAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ICiSingleAxis.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ICiSingleAxis",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ICiSlave.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ICiSlave.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ICiSlave",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.IECAM.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.IECAM.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.IECAM",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.IGroupAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.IGroupAxis.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.IGroupAxis",
+      "Summary": "<p sourcefile=\"api/AAMotion.IGroupAxis.yml\" sourcestartlinenumber=\"1\">IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.IIOModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.IIOModule.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.IIOModule",
+      "Summary": "<p sourcefile=\"api/AAMotion.IIOModule.yml\" sourcestartlinenumber=\"1\">IIOModule interface definition, used to describe the parameters and states related to the IO module</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ISingleAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ISingleAxis.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ISingleAxis",
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.ISingleAxis.yml\" sourcestartlinenumber=\"1\">Single axis interface, defines all properties and methods of a single axis motion controller. \n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.ISingleAxis.yml\" sourcestartlinenumber=\"4\">This is a sub-interface of IVector.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.IVector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.IVector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.IVector",
+      "Summary": "<p sourcefile=\"api/AAMotion.IVector.yml\" sourcestartlinenumber=\"1\">Interface representing vector motion functionalities.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.InTargetStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.InTargetStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.InTargetStat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.InjectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.InjectType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.InjectType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.KeywordSettings-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.KeywordSettings-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.KeywordSettings<T, V>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MapType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MapType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MapType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.DataLoggerConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.DataLoggerConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController.DataLoggerConfiguration",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.DataLoggerConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration class for DataLogger recording parameters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.DataLoggerResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.DataLoggerResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController.DataLoggerResult",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.DataLoggerResult.yml\" sourcestartlinenumber=\"1\">Container for recorded data from DataLogger.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.DataLoggerTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.DataLoggerTrigger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController.DataLoggerTrigger",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.DataLoggerTrigger.yml\" sourcestartlinenumber=\"1\">Configuration class for DataLogger trigger (触发器配置).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.DataLoggerVector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.DataLoggerVector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController.DataLoggerVector",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.DataLoggerVector.yml\" sourcestartlinenumber=\"1\">Container for a single recorded vector (one parameter's data).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.SlowLoggerParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.SlowLoggerParameter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController.SlowLoggerParameter",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.SlowLoggerParameter.yml\" sourcestartlinenumber=\"1\">Strongly typed logger parameter descriptor.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionController",
+      "Summary": "<p sourcefile=\"api/AAMotion.MotionController.yml\" sourcestartlinenumber=\"1\">DataLogger specific members for <xref href=\"AAMotion.MotionController\" data-throw-if-not-resolved=\"false\"></xref>.\nProvides high-speed data recording functionality with trigger support.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionReason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionReason.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionReason",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotionStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotionStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotionStat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.MotorOn.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.MotorOn.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.MotorOn",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Node.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Node.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Node",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.OperationMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.OperationMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.OperationMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ParameterMetadataCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ParameterMetadataCache.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ParameterMetadataCache",
+      "Summary": "<p sourcefile=\"api/AAMotion.ParameterMetadataCache.yml\" sourcestartlinenumber=\"1\">Parameter metadata cache - avoids repeated XML queries\nInitialized once on connection, subsequent O(1) dictionary lookup\nUses ConcurrentDictionary for thread-safe read operations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ParameterTypeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ParameterTypeConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ParameterTypeConverter",
+      "Summary": "<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"1\">Parameter type converter - handles type conversion for controller parameters</p>\n<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"3\">Core functionality:</p>\n<ul sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">All data in controller is stored as int (32-bit)</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"5\">float: uses IEEE 754 encoding in int</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"6\">double/long: requires additional commands to get full 64-bit value</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"7\">Automatically detects type and converts (based on XML metadata or cache)</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.StatReg.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.StatReg.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.StatReg",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.eKeyword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.eKeyword.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.eKeyword",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/aamotion.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/aamotion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/getting-started/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/getting-started/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/release-notes/aamotion-changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/release-notes/aamotion-changelog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/release-notes/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/release-notes/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/release-notes/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

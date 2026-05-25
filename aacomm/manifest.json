@@ -1,0 +1,1401 @@
+{
+  "source_base_path": "C:/DEV/actions-runner/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aacomm",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.CommAPI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.CommAPI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.CommAPI",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"1\">An API for handling communication with the AACommServer executable.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"4\">The API provides low-level send/receive capabilities + special functionality.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"7\">All *synchronous* functions are mutually-locking, and should not be called from multiple threads\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"10\">Proper work-flow: (see usage details at every function description)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"13\">0. subscribe to events: Reset: &lt;xref href=&quot;AAComm.CommAPI.OnResetProgress&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"16\">1. &lt;xref href=&quot;AAComm.CommAPI.StartAACommServer(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n2. &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory, can be used to determine &lt;xref href=&quot;AAComm.Services.ConnectionData.ControllerType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"21\">3. &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n4. &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and/or &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"26\">5. &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n6. &lt;xref href=&quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory)\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.CommAPIWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.CommAPIWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.CommAPIWrapper",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.CommAPIWrapper.yml\" sourcestartlinenumber=\"1\">this class is used to wrap the CommAPI as a singleton\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPIWrapper.yml\" sourcestartlinenumber=\"4\">useful for single-user API usage scenario\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommBinFwInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommBinFwInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommBinFwInfo",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.AACommBinFwInfo.yml\" sourcestartlinenumber=\"1\">Helper class for parsing AGM800 binary firmware files (.bin) to extract identity and version information.\nUses magic markers embedded in the Zynq binary format.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommDownloadFPGA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommDownloadFPGA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommDownloadFPGA",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGA.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGA.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGA.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommDownloadFPGAEtherCat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommDownloadFPGAEtherCat",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommDownloadFPGARemote.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommDownloadFPGARemote.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommDownloadFPGARemote",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"4\">Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)\nWhen starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"8\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"11\">Process can't be canceled in the middle.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommDownloadFW.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommDownloadFW.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommDownloadFW",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"10\">NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommDownloadUP.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommDownloadUP.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommDownloadUP",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadUP.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading User Program to controller\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadUP.yml\" sourcestartlinenumber=\"4\">The API object passed in CTOR must be connected, and NOT used during download process\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommFwInfo.Targets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommFwInfo.Targets.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommFwInfo.Targets",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.AACommFwInfo.Targets.yml\" sourcestartlinenumber=\"1\">An enum listing target controller/core types for FW download</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommFwInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommFwInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommFwInfo",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommFwInfo.yml\" sourcestartlinenumber=\"1\">Helper class used to read HEX files FW info, and to validate HEX/BIN and VER files prior to FW download &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFW&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nFor reading FW info, create an instance of this class &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.%23ctor(System.String%2cAAComm.Services.ConnectionData)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nFor validating FW files prior to FW download, use the method &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.ValidateFwFiles(AAComm.Services.ConnectionData%2cSystem.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nOlder FW HEX files don't contain FW information. Opening such files will result in all the properties being invalid.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommFwInfo.yml\" sourcestartlinenumber=\"10\">Use &lt;xref href=&quot;AAComm.Extensions.AACommFwInfo.DataValid&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to verify that the FW information was read successfully.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommRemoteFpgaInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommRemoteFpgaInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommRemoteFpgaInfo",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommRemoteFpgaInfo.yml\" sourcestartlinenumber=\"1\">Helper class used to read and validate Master Remote Unit FPGA RPD (data) and VER (version) files.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommRemoteFpgaInfo.yml\" sourcestartlinenumber=\"4\">Class instance is passed as an argument to&lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.StartDownloading(AAComm.CommAPI%2cAAComm.Services.ConnectionData%2cAAComm.Extensions.AACommRemoteFpgaInfo)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nMake sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.AACommDataRecManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.AACommDataRecManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.AACommDataRecManager",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.RecData.AACommDataRecManager.yml\" sourcestartlinenumber=\"1\">Asynchronous service for data recording\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.RecData.AACommDataRecManager.yml\" sourcestartlinenumber=\"4\">The API object passed in all functions must be connected!\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.AACommDataRecManagerSync.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.AACommDataRecManagerSync",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.AACommDataRecManagerSync.yml\" sourcestartlinenumber=\"1\">synchronous wrapper for the functionality of <xref href=\"AAComm.Extensions.RecData.AACommDataRecManager\" data-throw-if-not-resolved=\"false\"></xref><p></p>\n<p sourcefile=\"api/AAComm.Extensions.RecData.AACommDataRecManagerSync.yml\" sourcestartlinenumber=\"3\">NOT thread-safe !!!</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.LoggerDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.LoggerDataContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.LoggerDataContainer",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.RecData.LoggerDataContainer.yml\" sourcestartlinenumber=\"1\">Parses a LoggerUpload response and resolves floating-point bit patterns to their correct values.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.RecData.LoggerDataContainer.yml\" sourcestartlinenumber=\"4\">Wire format: &lt;code&gt;nPackets, [id, val1, val2, ...], [id, val1, val2, ...], ..., 0&lt;/code&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.LoggerPacket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.LoggerPacket.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.LoggerPacket",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.LoggerPacket.yml\" sourcestartlinenumber=\"1\">A single logger packet containing a packet ID and resolved parameter values</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.LogicalTriggerRelation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.LogicalTriggerRelation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.LogicalTriggerRelation",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.LogicalTriggerRelation.yml\" sourcestartlinenumber=\"1\">an enum to set the behavior of multiple logical triggers, <xref href=\"AAComm.Extensions.RecData.MultiTriggerModes.Logical\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.MultiTriggerModes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.MultiTriggerModes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.MultiTriggerModes",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.MultiTriggerModes.yml\" sourcestartlinenumber=\"1\">an enum to set the behavior of multiple triggers</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.RecParamsResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.RecParamsResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.RecParamsResolver",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.RecParamsResolver.yml\" sourcestartlinenumber=\"1\">Resolves recording parameter names and header version based on the connected controller capabilities.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.RecordingDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.RecordingDataContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.RecordingDataContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.RecordingDataContainer.yml\" sourcestartlinenumber=\"1\">An object that contains all the data of a recording (setup and recorded data points)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.RecordingSetupContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.RecordingSetupContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.RecordingSetupContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.RecordingSetupContainer.yml\" sourcestartlinenumber=\"1\">An object that contains all parameters required for a recording</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.ScopeDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.ScopeDataContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.ScopeDataContainer",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.RecData.ScopeDataContainer.yml\" sourcestartlinenumber=\"1\">Parses a ScopeUpload response and resolves floating-point bit patterns to their correct values.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.RecData.ScopeDataContainer.yml\" sourcestartlinenumber=\"4\">Wire format: &lt;code&gt;nPackets, [time, sig1, sig2, ...], [time, sig1, sig2, ...], ..., 0&lt;/code&gt;&lt;p&gt;&lt;/p&gt;\n\nData is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.ScopeDataContainer.Data&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;[signalIndex][pointIndex]\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.ScopeDataPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.ScopeDataPoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.ScopeDataPoint",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.ScopeDataPoint.yml\" sourcestartlinenumber=\"1\">A single scope data point containing a time tick and a resolved signal value</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.TriggerContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.TriggerContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.TriggerContainer",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.RecData.TriggerContainer.yml\" sourcestartlinenumber=\"1\">A container to store information for a trigger\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.RecData.TriggerContainer.yml\" sourcestartlinenumber=\"4\">Intended to be used for recording data through &quot;AACommDataRecManager&quot;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.TriggersDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.TriggersDataContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.TriggersDataContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.TriggersDataContainer.yml\" sourcestartlinenumber=\"1\">a class that contains recording trigger parameters for Rec. System A</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.VectorDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.VectorDataContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData.VectorDataContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.VectorDataContainer.yml\" sourcestartlinenumber=\"1\">A class that contains recorded vector parameters and data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.RecData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.RecData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.RecData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Interfaces.ICommService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Interfaces.ICommService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Interfaces.ICommService",
+      "Summary": "<p sourcefile=\"api/AAComm.Interfaces.ICommService.yml\" sourcestartlinenumber=\"1\">Phase 1 interface over <xref href=\"AAComm.CommAPI\" data-throw-if-not-resolved=\"false\"></xref> for consumers that want to mock or substitute\nthe controller boundary (e.g., headless Core libraries, unit and integration tests).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Interfaces.IIdentityContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Interfaces.IIdentityContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Interfaces.IIdentityContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Interfaces.IIdentityContainer.yml\" sourcestartlinenumber=\"1\">Read-only view of <xref href=\"AAComm.Services.ControllerIdentityContainer\" data-throw-if-not-resolved=\"false\"></xref> for consumers\nthat need controller identity metadata without depending on the concrete container type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Interfaces.IMessagesContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Interfaces.IMessagesContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Interfaces.IMessagesContainer",
+      "Summary": "<p sourcefile=\"api/AAComm.Interfaces.IMessagesContainer.yml\" sourcestartlinenumber=\"1\">Read-only view of <xref href=\"AAComm.Services.ControllerMessagesContainer\" data-throw-if-not-resolved=\"false\"></xref> for consumers\nthat need parameter metadata (mnemonics, descriptions) without depending on the concrete\ncontainer type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommAxisHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommAxisHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommAxisHelper",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommAxisHelper.yml\" sourcestartlinenumber=\"1\">a helper class for controller parameters Axis manipulations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommEventArgs",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.AACommEventArgs.yml\" sourcestartlinenumber=\"1\">this class is used as an argument, when invoking &lt;xref href=&quot;AAComm.Services.AACommMessage.OnReplyReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; passed to &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;/&gt;\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommEventArgs.yml\" sourcestartlinenumber=\"4\">and as the return value of &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommExclusiveCommsManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommExclusiveCommsManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommExclusiveCommsManager",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommExclusiveCommsManager.yml\" sourcestartlinenumber=\"1\">a class to start/stop AACommServer hardware channel &quot;exclusive communication&quot; mode</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommMessage",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"1\">This class describes the message sent to AAComm &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; methods\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"4\">Two CTOR sets are available: for the synchronous SendReceive() function, and the asynchronous Send() function\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"7\">Every CTOR set has 2 &quot;sub-types&quot; regarding &lt;xref href=&quot;AAComm.Services.AACommMessage.MessageType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Services.AACommMessage.TimeoutMs&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nThe 'implicit' CTOR resolves these parameters automatically from the &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; argument\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"12\">The 'explicit' CTOR expects the user to specify these arguments. For expert use only.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"15\">To use the &quot;Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessage&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special CNCA Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNC&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special CNCB Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNCB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special Bulk Message for CNCA&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulk&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulkB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommVerifySingleClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommVerifySingleClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommVerifySingleClient",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommVerifySingleClient.yml\" sourcestartlinenumber=\"1\">a helper class used to verify if the AACommServer is used by a single (the querying) client</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ARPTools.EthernetLookupResults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ARPTools.EthernetLookupResults.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ARPTools.EthernetLookupResults",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ARPTools.EthernetLookupResults.yml\" sourcestartlinenumber=\"1\">container for <xref href=\"AAComm.Services.ARPTools.GetInterNetworkEthernetInterfaces(System.Boolean)\" data-throw-if-not-resolved=\"false\"></xref> return</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ARPTools.LookupResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ARPTools.LookupResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ARPTools.LookupResult",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ARPTools.LookupResult.yml\" sourcestartlinenumber=\"1\">class for <xref href=\"AAComm.Services.ARPTools.EthernetLookupResults\" data-throw-if-not-resolved=\"false\"></xref> result items</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ARPTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ARPTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ARPTools",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ARPTools.yml\" sourcestartlinenumber=\"1\">a helper class for discovering Ethernet connections</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AllStatInterpreter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AllStatInterpreter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AllStatInterpreter",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.AllStatInterpreter.yml\" sourcestartlinenumber=\"1\">AllStat controller reply interpreter class\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AllStatInterpreter.yml\" sourcestartlinenumber=\"4\">See &lt;xref href=&quot;AAComm.Shared.AllStatData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Shared.AllStatAxisData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.COMTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.COMTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.COMTools",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"1\">a helper class for listing relevant (or ALL) COM ports\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"4\">Windows .NET ONLY!!! (returns empty list on .NET 6.0, etc.)\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.CanDescriptionBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.CanDescriptionBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.CanDescriptionBuilder",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"1\">a helper class, used for building CAN/Ethernet description codes and the other way around\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"4\">used at very specific cases, i.e. user program.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"7\">please refer to Controller communications protocol, or contact API provider for more information\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ConnectionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ConnectionData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ConnectionData",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ConnectionData.yml\" sourcestartlinenumber=\"1\">this class is the connection data container, used for connecting to a controller. See <xref href=\"AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)\" data-throw-if-not-resolved=\"false\"></xref><p></p>\n<p sourcefile=\"api/AAComm.Services.ConnectionData.yml\" sourcestartlinenumber=\"3\">see <xref href=\"AAComm.Shared.ConnectionDataDefaults\" data-throw-if-not-resolved=\"false\"></xref> for defaults</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerErrorInterpreter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerErrorInterpreter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerErrorInterpreter",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.ControllerErrorInterpreter.yml\" sourcestartlinenumber=\"1\">a singleton container for controller error codes and their description\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerErrorInterpreter.yml\" sourcestartlinenumber=\"4\">initialized once for all API instances\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerErrorInterpreter.yml\" sourcestartlinenumber=\"7\">provides parsing and interpretation functionality\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerIdentityConnectivity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerIdentityConnectivity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerIdentityConnectivity",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityConnectivity.yml\" sourcestartlinenumber=\"1\">Provides information about the connectivity identities of a controller: Ethernet IP, MAC address, RS232 port, etc.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerIdentityContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerIdentityContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerIdentityContainer",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.ControllerIdentityContainer.yml\" sourcestartlinenumber=\"1\">a container class that contains connected controller identity parameters\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerIdentityContainer.yml\" sourcestartlinenumber=\"4\">also indicates whether the controller is in boot mode\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerIdentityContainer.yml\" sourcestartlinenumber=\"7\">automatically initialized by &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nmay be re-initialized (if need) by using &lt;xref href=&quot;AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerIdentityFeature_01.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerIdentityFeature_01.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerIdentityFeature_01",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityFeature_01.yml\" sourcestartlinenumber=\"1\">a container class for the &quot;New Features 1&quot; bitfield (Identity[26])</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerIdentityFeature_02.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerIdentityFeature_02.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerIdentityFeature_02",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityFeature_02.yml\" sourcestartlinenumber=\"1\">a container class for the &quot;New Features 2&quot; bitfield (Identity[62])</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerIdentityVersions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerIdentityVersions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerIdentityVersions",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityVersions.yml\" sourcestartlinenumber=\"1\">Provides controller versions information: FW, FPGA, CM, etc.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerMessagesContainer.MessageCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerMessagesContainer.MessageCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerMessagesContainer.MessageCategory",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerMessagesContainer.MessageCategory.yml\" sourcestartlinenumber=\"1\">class that represents messages list within the same category</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerMessagesContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerMessagesContainer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerMessagesContainer",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.ControllerMessagesContainer.yml\" sourcestartlinenumber=\"1\">a container class that contains connected controller messages data\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerMessagesContainer.yml\" sourcestartlinenumber=\"4\">automatically initialized by &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nautomatically cleared by &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (or any event that leads to disconnection)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerMessagesContainer.yml\" sourcestartlinenumber=\"9\">may be re-initialized (if need) by using &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitContainerFromFile(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nNOTE: CTOR will throw if failed initializing container with default messages (indicates API package corruption)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerMessagesContainer.yml\" sourcestartlinenumber=\"14\">In case of &lt;xref href=&quot;AAComm.Shared.ConnectResult.CorruptAboutFile&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, see &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitErr&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for &quot;corruption&quot; reason\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.FloatHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.FloatHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.FloatHelper",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.FloatHelper.yml\" sourcestartlinenumber=\"1\">Central floating-point resolution for hardware-uploaded data.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.FloatHelper.yml\" sourcestartlinenumber=\"4\">Controller parameters may be transmitted as bit-masked int/long values representing IEEE 754 float/double.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.FloatHelper.yml\" sourcestartlinenumber=\"7\">This class resolves those raw values to their correct floating-point representation.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.GlobalVar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.GlobalVar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.GlobalVar",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.GlobalVar.yml\" sourcestartlinenumber=\"1\">user program Header Info &quot;Global Variable&quot; description</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.HeaderParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.HeaderParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.HeaderParser",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.HeaderParser.yml\" sourcestartlinenumber=\"1\">a service class to parse the currently loaded User Program Header data, obtained by inquiring &quot;AProgInfo&quot;</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.LocaleProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.LocaleProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.LocaleProvider",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"1\">Singleton object that provides localized Error and Status strings\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"4\">Currently supported languages: &quot;en-US&quot;, &quot;zh-CN&quot;\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"7\">Use &lt;xref href=&quot;AAComm.Services.LocaleProvider.GetError(System.Int32)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for localized Controller Errors strings\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.MessageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.MessageData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.MessageData",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.MessageData.yml\" sourcestartlinenumber=\"1\">this class describes and contains the different parameters every controller message has</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.NumberFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.NumberFormatter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.NumberFormatter",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.NumberFormatter.yml\" sourcestartlinenumber=\"1\">a service class for formatting numbers to UI display strings\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ParamInfo.ParameterDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ParamInfo.ParameterDescription.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ParamInfo.ParameterDescription",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ParamInfo.ParameterDescription.yml\" sourcestartlinenumber=\"1\">Contains the Parameter index or bit description</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ParamInfo.ParameterIndexInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ParamInfo.ParameterIndexInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ParamInfo.ParameterIndexInfo",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ParamInfo.ParameterIndexInfo.yml\" sourcestartlinenumber=\"1\">Contains the Parameter index and/or bits information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ParamInfo.ParameterInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ParamInfo.ParameterInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ParamInfo.ParameterInfo",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ParamInfo.ParameterInfo.yml\" sourcestartlinenumber=\"1\">Contains the Parameter Name, all indexes and/or bits information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ParamInfo.ParametersInfoDB.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ParamInfo.ParametersInfoDB.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ParamInfo.ParametersInfoDB",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.ParamInfo.ParametersInfoDB.yml\" sourcestartlinenumber=\"1\">Singleton object that provides localized descriptions for Array and/or bit-wise controller keywords\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ParamInfo.ParametersInfoDB.yml\" sourcestartlinenumber=\"4\">Currently supported languages: &quot;en-US&quot;, &quot;zh-CN&quot;\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ParamInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ParamInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ParamInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.AACommPushMsgBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.AACommPushMsgBase",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"1\">Base type for controller push messages.</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"3\">Expected raw message format:</p>\n<pre><code class=\"lang-csharp\">[VERSION_PUSH].[SOURCE],[VERSION_DATA].[DATA]</code></pre>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"7\">Where:</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"8\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"8\">VERSION_PUSH: integer protocol version for the overall push feature</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"9\">SOURCE: integer enum value (<xref href=\"AAComm.Services.PushData.PushSources\" data-throw-if-not-resolved=\"false\"></xref>) telling which derived message type to create</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"10\">VERSION_DATA: integer version for the payload format</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgBase.yml\" sourcestartlinenumber=\"11\">DATA: raw payload (may be ASCII string or raw binary bytes depending on SOURCE/VERSION_DATA)</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.AACommPushMsgError.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.AACommPushMsgError",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgError.yml\" sourcestartlinenumber=\"1\">Error/fallback push message type.\nCreated when parsing or constructing a derived type fails.\nHolds the original raw bytes and the exception for logging/debugging.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgUP.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.AACommPushMsgUP.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.AACommPushMsgUP",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"1\">SOURCE == 1 (User Program):</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"3\">For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)\nwith multiple printf messages.</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"6\">Binary packet structure (after the header, before the messages slots):</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"7\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"7\">uint8 n: number of printf messages</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"8\">uint16 missed: messages dropped since last flush</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"9\">uint16 freeBytesMsgQueue: remaining free bytes in FW printf buffer</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"10\">uint8 freeDescSlots: remaining free descriptor slots</li>\n</ul>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"12\">Then n times:</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"13\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"13\">uint32 timeSec: seconds since power-on</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"14\">uint32 timeTick: sub-second tick</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"15\">uint8 thread: thread ID</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"16\">uint16 len: text length in bytes</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgUP.yml\" sourcestartlinenumber=\"17\">byte[len] textBytes: raw ASCII text (NOT null-terminated)</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.PrintfMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.PrintfMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.PrintfMessage",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.PrintfMessage.yml\" sourcestartlinenumber=\"1\">Represents a single printf message within a push packet.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.PushSources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.PushSources.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.PushSources",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.PushSources.yml\" sourcestartlinenumber=\"1\">Identifies the initiator/source of a push message.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.SpecialMessages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.SpecialMessages.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.SpecialMessages",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.SpecialMessages.yml\" sourcestartlinenumber=\"1\">Centralized constants for controller command/parameter mnemonic strings.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.SpecialMessages.yml\" sourcestartlinenumber=\"4\">These are the bare mnemonics — the axis prefix (e.g. 'A') is added at the call site.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.SpecialMessages.yml\" sourcestartlinenumber=\"7\">Example usage: &lt;code&gt;$&quot;A{SpecialMessages.About}&quot;&lt;/code&gt; sends the About command for axis A.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.TaskFunc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.TaskFunc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.TaskFunc",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.TaskFunc.yml\" sourcestartlinenumber=\"1\">user program Header Info &quot;Task&quot;/&quot;Function&quot; description</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserProgVarsAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserProgVarsAdapter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserProgVarsAdapter",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.UserProgVarsAdapter.yml\" sourcestartlinenumber=\"1\">a container class for uploading, managing and storing User Program Tasks and Global Variables names\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.UserProgVarsAdapter.yml\" sourcestartlinenumber=\"4\">for 'transparent' use in AAComm applications\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.UserProgVarsAdapter.yml\" sourcestartlinenumber=\"7\">can be used only after AAComm object has been initialized and &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; has been successfully called\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.XmlHandler.TextNodeData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.XmlHandler.TextNodeData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.XmlHandler.TextNodeData",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.XmlHandler.TextNodeData.yml\" sourcestartlinenumber=\"1\">XML entry container class</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.XmlHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.XmlHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.XmlHandler",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.XmlHandler.yml\" sourcestartlinenumber=\"1\">a helper class, used internally by API to parse XML settings and data files</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.AllStatAxisData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.AllStatAxisData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.AllStatAxisData",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"1\">Container for AllStat data, per axis. Used by &lt;xref href=&quot;AAComm.Services.AllStatInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"4\">Shared between AAComm (C#) and AACommNative (C++) via preprocessor directives.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"7\">Groups (wire order per axis):\n 1  (13): MotorOn, InjectType, Pos, Vel_1, PosErr, VelErr, MotionStat, ConFlt, MotionReason, StatReg, LimitStat, HomingStat, DInPort\n 2  (10): Vel_2, Vel_3, Vel_4, MotorCurr, ScheduleSet, MotionSamples_1, MotionSamples_2, MotionSamples_3, InTargetStat, ComtStatus_1\n 3  (16): ProgStat_1..8, ProgErr_1..8\n 4  (17): FifoStatus_1..5, CNCAStatus_1..12\n 5   (7): CiStatus_1..7\n 6 (15+): Ia, Ib, Id, Iq, Va, Vb, Vc, AInPort_1..4, VBus, VLogic, PwrTemp, [MotorTemp (FW&gt;=1.3.0)], Time\n 7   (6): PosRef, VelRef, CurrRef, dPosRef, CNCAPosRef, CNCAdPosRef\n 8   (7): LockEn, LockCntr, LockVal, EventOn, EventCntr, EventNextPos, EventSelect\n 9   (5): UserParam_1..5\n10   (2): DInPortHigh, BoardTemp\nPlease refer to the user manual for more information.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.AllStatData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.AllStatData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.AllStatData",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.AllStatData.yml\" sourcestartlinenumber=\"1\">container for ALL axes AllStat data. Used by <xref href=\"AAComm.Services.AllStatInterpreter\" data-throw-if-not-resolved=\"false\"></xref><p></p>\n<p sourcefile=\"api/AAComm.Shared.AllStatData.yml\" sourcestartlinenumber=\"3\">NOTE: <xref href=\"AAComm.Shared.AllStatData.IsParsedOK\" data-throw-if-not-resolved=\"false\"></xref><p></p>\n<p sourcefile=\"api/AAComm.Shared.AllStatData.yml\" sourcestartlinenumber=\"5\">shared for AAComm and AACommNative</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ChannelType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ChannelType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ChannelType",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ChannelType.yml\" sourcestartlinenumber=\"1\">connection data communication channel types\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ChannelType.yml\" sourcestartlinenumber=\"4\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ConnectResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ConnectResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ConnectResult",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ConnectResult.yml\" sourcestartlinenumber=\"1\">enum to indicate the result of calling AAComm functions\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ConnectResult.yml\" sourcestartlinenumber=\"4\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ConnectResultInterpreter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ConnectResultInterpreter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ConnectResultInterpreter",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ConnectResultInterpreter.yml\" sourcestartlinenumber=\"1\">Helper class to get a literal interpretation of a <xref href=\"AAComm.Shared.ConnectResult\" data-throw-if-not-resolved=\"false\"></xref> enumerator</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ConnectionDataDefaults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ConnectionDataDefaults.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ConnectionDataDefaults",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ConnectionDataDefaults.yml\" sourcestartlinenumber=\"1\">commons class with &lt;xref href=&quot;AAComm.Services.ConnectionData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; defaults\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ConnectionDataDefaults.yml\" sourcestartlinenumber=\"4\">shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.DataRecParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.DataRecParams.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.DataRecParams",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.DataRecParams.yml\" sourcestartlinenumber=\"1\">a class that contains all parameters required for a recording + helper functions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.MessageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.MessageType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.MessageType",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"1\">enum to indicate special messages types for communication over CAN and Ethernet\n</code></pre>\n<p></p>\n    <xref href=\"AAComm.Services.AACommMessage\" data-throw-if-not-resolved=\"false\"></xref> for details.\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"6\">disregarded for RS-232 channel\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"9\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ProductTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ProductTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ProductTypes",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ProductTypes.yml\" sourcestartlinenumber=\"1\">Supported products, <xref href=\"AAComm.Services.ControllerIdentityContainer.ProductType\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.TimeoutMs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.TimeoutMs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.TimeoutMs",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.TimeoutMs.yml\" sourcestartlinenumber=\"1\">commons class with timeouts\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.TimeoutMs.yml\" sourcestartlinenumber=\"4\">shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/advanced/firmware-download.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/advanced/firmware-download.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/advanced/recording-headers.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/advanced/recording-headers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/advanced/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/advanced/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/advanced/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/architecture/floating-point.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/architecture/floating-point.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/architecture/pipeline.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/architecture/pipeline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/architecture/server.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/architecture/server.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/architecture/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/architecture/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/architecture/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/aacomm.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/aacomm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/aacommpy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/aacommpy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/getting-started/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/getting-started/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/release-notes/aacomm-changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/release-notes/aacomm-changelog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/release-notes/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/release-notes/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/release-notes/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

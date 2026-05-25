@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ConnectionData | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ConnectionData | Agito AAComm SDK ">
+      
+      <meta name="description" content="this class is the connection data container, used for connecting to a controller. See  see  for defaults">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_ConnectionData.md&amp;value=---%0Auid%3A%20AAComm.Services.ConnectionData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.ConnectionData">
+
+
+
+  <h1 id="AAComm_Services_ConnectionData" data-uid="AAComm.Services.ConnectionData" class="text-break">
+Class ConnectionData  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>this class is the connection data container, used for connecting to a controller. See <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a><p></p>
+<p>see <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html">ConnectionDataDefaults</a> for defaults</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ConnectionData</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ConnectionData</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Services_ConnectionData_CAN_BaudRate_" data-uid="AAComm.Services.ConnectionData.CAN_BaudRate*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CAN_BaudRate" data-uid="AAComm.Services.ConnectionData.CAN_BaudRate">
+  CAN_BaudRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CAN bus baud rate, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_CAN_BaudRate">DCD_CAN_BaudRate</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CAN_BaudRate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_CAN_Channel_" data-uid="AAComm.Services.ConnectionData.CAN_Channel*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CAN_Channel" data-uid="AAComm.Services.ConnectionData.CAN_Channel">
+  CAN_Channel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CAN channel, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_CAN_Channel">DCD_CAN_Channel</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CAN_Channel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_CAN_Delay_" data-uid="AAComm.Services.ConnectionData.CAN_Delay*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CAN_Delay" data-uid="AAComm.Services.ConnectionData.CAN_Delay">
+  CAN_Delay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CAN delay, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_CAN_Delay">DCD_CAN_Delay</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CAN_Delay { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_CAN_ReceiveAddress_" data-uid="AAComm.Services.ConnectionData.CAN_ReceiveAddress*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CAN_ReceiveAddress" data-uid="AAComm.Services.ConnectionData.CAN_ReceiveAddress">
+  CAN_ReceiveAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CAN receive address, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_CAN_ReceiveAddress">DCD_CAN_ReceiveAddress</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CAN_ReceiveAddress { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_CAN_SendAddress_" data-uid="AAComm.Services.ConnectionData.CAN_SendAddress*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CAN_SendAddress" data-uid="AAComm.Services.ConnectionData.CAN_SendAddress">
+  CAN_SendAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CAN send address, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_CAN_SendAddress">DCD_CAN_SendAddress</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CAN_SendAddress { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_CommChannelType_" data-uid="AAComm.Services.ConnectionData.CommChannelType*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_CommChannelType" data-uid="AAComm.Services.ConnectionData.CommChannelType">
+  CommChannelType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>required communication channel type <a class="xref" href="AAComm.Shared.ChannelType.html">ChannelType</a>, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_ChannelType">DCD_ChannelType</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChannelType CommChannelType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.ChannelType.html">ChannelType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ControllerType_" data-uid="AAComm.Services.ConnectionData.ControllerType*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ControllerType" data-uid="AAComm.Services.ConnectionData.ControllerType">
+  ControllerType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>controller type. Must correspond with actual type, as reported by <a class="xref" href="AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_ProductType">ProductType</a><p></p>
+<p>may be modified by <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_TestConnection_AAComm_Services_ConnectionData_System_Boolean_">TestConnection(ConnectionData, bool)</a> when invoked with &quot;knownControllerType == false&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ControllerType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_1_" data-uid="AAComm.Services.ConnectionData.ET_IP_1*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_1" data-uid="AAComm.Services.ConnectionData.ET_IP_1">
+  ET_IP_1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet IP, byte 1, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_IP_1">DCD_IP_1</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_IP_1 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_2_" data-uid="AAComm.Services.ConnectionData.ET_IP_2*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_2" data-uid="AAComm.Services.ConnectionData.ET_IP_2">
+  ET_IP_2
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet IP, byte 2, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_IP_2">DCD_IP_2</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_IP_2 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_3_" data-uid="AAComm.Services.ConnectionData.ET_IP_3*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_3" data-uid="AAComm.Services.ConnectionData.ET_IP_3">
+  ET_IP_3
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet IP, byte 3, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_IP_3">DCD_IP_3</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_IP_3 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_4_" data-uid="AAComm.Services.ConnectionData.ET_IP_4*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_4" data-uid="AAComm.Services.ConnectionData.ET_IP_4">
+  ET_IP_4
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet IP, byte 4, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_IP_4">DCD_IP_4</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_IP_4 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_Default_" data-uid="AAComm.Services.ConnectionData.ET_IP_Default*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_Default" data-uid="AAComm.Services.ConnectionData.ET_IP_Default">
+  ET_IP_Default
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default Ethernet IP string (X.Y.Z.W)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ET_IP_Default { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_DefaultSubnet_" data-uid="AAComm.Services.ConnectionData.ET_IP_DefaultSubnet*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_DefaultSubnet" data-uid="AAComm.Services.ConnectionData.ET_IP_DefaultSubnet">
+  ET_IP_DefaultSubnet
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default Ethernet IP subnet string (X.Y.Z)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ET_IP_DefaultSubnet { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_IP_Str_" data-uid="AAComm.Services.ConnectionData.ET_IP_Str*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_IP_Str" data-uid="AAComm.Services.ConnectionData.ET_IP_Str">
+  ET_IP_Str
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet IP string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ET_IP_Str { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_Port_" data-uid="AAComm.Services.ConnectionData.ET_Port*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_Port" data-uid="AAComm.Services.ConnectionData.ET_Port">
+  ET_Port
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ethernet port, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_ET_Port">DCD_ET_Port</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_Port { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_ET_Push_Port_" data-uid="AAComm.Services.ConnectionData.ET_Push_Port*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_ET_Push_Port" data-uid="AAComm.Services.ConnectionData.ET_Push_Port">
+  ET_Push_Port
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>push messages Ethernet port</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ET_Push_Port { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_IsAGM800_" data-uid="AAComm.Services.ConnectionData.IsAGM800*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_IsAGM800" data-uid="AAComm.Services.ConnectionData.IsAGM800">
+  IsAGM800
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>specifies whether <a class="xref" href="AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_ControllerType">ControllerType</a> is <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGM800_ID">AGM800_ID</a> or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_PULSE_SYNC_ID">PULSE_SYNC_ID</a>&quot;/&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAGM800 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_IsEC_" data-uid="AAComm.Services.ConnectionData.IsEC*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_IsEC" data-uid="AAComm.Services.ConnectionData.IsEC">
+  IsEC
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>specifies whether <a class="xref" href="AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_ControllerType">ControllerType</a> is <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD101_EC_ID">AGD101_EC_ID</a> or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD155_EC_ID">AGD155_EC_ID</a>&quot; or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD156_EC_ID">AGD156_EC_ID</a>&quot;/&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEC { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Name_" data-uid="AAComm.Services.ConnectionData.Name*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Name" data-uid="AAComm.Services.ConnectionData.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>connection name, not mandatory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_BaudRate_" data-uid="AAComm.Services.ConnectionData.Rs232_BaudRate*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_BaudRate" data-uid="AAComm.Services.ConnectionData.Rs232_BaudRate">
+  Rs232_BaudRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>baud rate, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_Rs232_BaudRate">DCD_Rs232_BaudRate</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Rs232_BaudRate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_CableType_" data-uid="AAComm.Services.ConnectionData.Rs232_CableType*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_CableType" data-uid="AAComm.Services.ConnectionData.Rs232_CableType">
+  Rs232_CableType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>RS-232 cable type. Modified by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (no need to set manually)
+</code></pre>
+<p></p>
+<pre><code>-1: unknown, 1: Micro USB, else: RS-232
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Rs232_CableType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_DataBits_" data-uid="AAComm.Services.ConnectionData.Rs232_DataBits*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_DataBits" data-uid="AAComm.Services.ConnectionData.Rs232_DataBits">
+  Rs232_DataBits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>data bits, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_Rs232_DataBits">DCD_Rs232_DataBits</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Rs232_DataBits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_Parity_" data-uid="AAComm.Services.ConnectionData.Rs232_Parity*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_Parity" data-uid="AAComm.Services.ConnectionData.Rs232_Parity">
+  Rs232_Parity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>parity, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_Rs232_Parity">DCD_Rs232_Parity</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Parity Rs232_Parity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ports.parity">Parity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_PortName_" data-uid="AAComm.Services.ConnectionData.Rs232_PortName*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_PortName" data-uid="AAComm.Services.ConnectionData.Rs232_PortName">
+  Rs232_PortName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>port name, i.e. COM3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Rs232_PortName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Rs232_StopBit_" data-uid="AAComm.Services.ConnectionData.Rs232_StopBit*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Rs232_StopBit" data-uid="AAComm.Services.ConnectionData.Rs232_StopBit">
+  Rs232_StopBit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>stop bit, default <a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html#AAComm_Shared_ConnectionDataDefaults_DCD_Rs232_StopBits">DCD_Rs232_StopBits</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StopBits Rs232_StopBit { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ports.stopbits">StopBits</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_ConnectionData_Clone_" data-uid="AAComm.Services.ConnectionData.Clone*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Clone" data-uid="AAComm.Services.ConnectionData.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>a method for cloning a connection data object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConnectionData Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd><p>new object, identical to invoking object</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Deserialize_" data-uid="AAComm.Services.ConnectionData.Deserialize*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Deserialize_System_String_" data-uid="AAComm.Services.ConnectionData.Deserialize(System.String)">
+  Deserialize(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>tries to de-serialize a string, returns a ConnectionData item filled with RELEVANT data. for INTERNAL use.
+</code></pre>
+<p></p>
+<pre><code>Connection type is decided by NUMBER OF SERIALIZED ITEMS!!!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConnectionData Deserialize(string serialized)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>serialized</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a></dt>
+    <dd><p>resulting ConnectionData object</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_GetChannelKeyStr_" data-uid="AAComm.Services.ConnectionData.GetChannelKeyStr*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_GetChannelKeyStr" data-uid="AAComm.Services.ConnectionData.GetChannelKeyStr">
+  GetChannelKeyStr()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns a string describing the a unique HW channel identifier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetChannelKeyStr()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>string describing the CommChannelType enum</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_GetChannelTypeStr_" data-uid="AAComm.Services.ConnectionData.GetChannelTypeStr*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_GetChannelTypeStr" data-uid="AAComm.Services.ConnectionData.GetChannelTypeStr">
+  GetChannelTypeStr()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns a string describing the CommChannelType enum</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetChannelTypeStr()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>string describing the CommChannelType enum</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_Serialize_" data-uid="AAComm.Services.ConnectionData.Serialize*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_Serialize" data-uid="AAComm.Services.ConnectionData.Serialize">
+  Serialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns serialized connection data for sending the message to Communicator. for INTERNAL use
+</code></pre>
+<p></p>
+<pre><code>Connection type is decided by NUMBER OF SERIALIZED ITEMS!!!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Serialize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>serialized string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ParameterTypeConverter | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ParameterTypeConverter | Agito AAMotion SDK ">
+      
+      <meta name="description" content="Parameter type converter - handles type conversion for controller parameters Core functionality:  All data in controller is stored as int (32-bit) float: uses IEEE 754 encoding in int double/long: requires additional commands to get full 64-bit value Automatically detects type and converts (based on XML metadata or cache)">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAMotion_ParameterTypeConverter.md&amp;value=---%0Auid%3A%20AAMotion.ParameterTypeConverter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion.ParameterTypeConverter">
+
+
+
+  <h1 id="AAMotion_ParameterTypeConverter" data-uid="AAMotion.ParameterTypeConverter" class="text-break">
+Class ParameterTypeConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Parameter type converter - handles type conversion for controller parameters</p>
+<p>Core functionality:</p>
+<ul>
+<li>All data in controller is stored as int (32-bit)</li>
+<li>float: uses IEEE 754 encoding in int</li>
+<li>double/long: requires additional commands to get full 64-bit value</li>
+<li>Automatically detects type and converts (based on XML metadata or cache)</li>
+</ul>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ParameterTypeConverter</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ParameterTypeConverter</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAMotion_ParameterTypeConverter_ConvertStringToRawInt_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawInt*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_ConvertStringToRawInt_AAMotion_eKeyword_System_String_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawInt(AAMotion.eKeyword,System.String)">
+  ConvertStringToRawInt(eKeyword, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L724"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Convert controller returned string to internal int representation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ConvertStringToRawInt(eKeyword keyword, string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite(AAMotion.eKeyword,System.Int32)">
+  ConvertValueForWrite(eKeyword, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L703"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Convert internal int value to string format for sending to controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ConvertValueForWrite(eKeyword keyword, int rawValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>rawValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_GetArray_" data-uid="AAMotion.ParameterTypeConverter.GetArray*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_GetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32)">
+  GetArray(AxisRef, CommAPIInterface, eKeyword, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L626"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read array element value (automatic type conversion)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static dynamic GetArray(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword, int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">dynamic</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_GetDoubleArray_" data-uid="AAMotion.ParameterTypeConverter.GetDoubleArray*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_GetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32)">
+  GetDoubleArray(AxisRef, CommAPIInterface, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L667"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read Double array element (for GenDataD)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double GetDoubleArray(AxisRef axis, CommAPIInterface commApiInterface, string parameterName, int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_GetSmartValue_" data-uid="AAMotion.ParameterTypeConverter.GetSmartValue*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_GetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_" data-uid="AAMotion.ParameterTypeConverter.GetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword)">
+  GetSmartValue(AxisRef, CommAPIInterface, eKeyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read parameter value (automatically detects type and converts)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static dynamic GetSmartValue(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">dynamic</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_SetArray_" data-uid="AAMotion.ParameterTypeConverter.SetArray*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_SetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32,System.Object)">
+  SetArray(AxisRef, CommAPIInterface, eKeyword, int, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L641"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write array element value (automatic type conversion)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetArray(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword, int index, object value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_SetDoubleArray_" data-uid="AAMotion.ParameterTypeConverter.SetDoubleArray*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_SetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32,System.Object)">
+  SetDoubleArray(AxisRef, CommAPIInterface, string, int, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L684"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write Double array element (for GenDataD)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetDoubleArray(AxisRef axis, CommAPIInterface commApiInterface, string parameterName, int index, object value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_SetSmartValue_" data-uid="AAMotion.ParameterTypeConverter.SetSmartValue*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_SetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Object)">
+  SetSmartValue(AxisRef, CommAPIInterface, eKeyword, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write parameter value (automatic type conversion)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetSmartValue(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword, object value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>commApiInterface</code> <a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L216" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

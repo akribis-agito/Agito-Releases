@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Recording Data Headers | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Recording Data Headers | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/recording-headers.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="advanced-recording-headers">
+<h1 id="recording-data-header-versions">Recording Data Header Versions</h1>
+
+<p>Last validated: 2026-03-14</p>
+<h2 id="overview">Overview</h2>
+<p>The <code>HeaderV1</code>/<code>V2</code>/<code>V3</code> classes define array index mappings for parsing recording data
+uploaded from the firmware. The firmware populates <code>gllRecData[]</code> using <strong>1-based indexing</strong>
+(index 0 is unused and never transmitted). The C# side receives the data as a 0-based
+<code>List&lt;long&gt;</code>, so: <strong>C# index = FW index - 1</strong>.</p>
+<p>Header version is selected at runtime by <code>RecParamsResolver</code> based on controller identity:</p>
+<ol>
+<li><code>HeaderV1</code> if <code>MaxNumOfRecVectors &lt;= 8</code></li>
+<li><code>HeaderV3</code> if <code>MessagesContainer</code> contains both <code>RecDataB</code> and <code>RecTrigsLogicS</code></li>
+<li><code>HeaderV2</code> as fallback</li>
+</ol>
+<p><code>RecParamsResolver.HeaderV3(ControllerMessagesContainer)</code> is a public static helper
+that mirrors the V3 detection logic for external callers.</p>
+<p>Firmware repo: <code>C:\DEV\Firmware\Firmware-Main</code>
+Firmware sources: <code>CommonIncludes/AG300_CTL01ParamsCommon.h</code> (defines),
+<code>CommonC/AG300_CTL01Funcs.c</code> (<code>RecStart</code>, <code>RecUpload</code>).</p>
+<hr>
+<h2 id="version-summary">Version Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>V1</th>
+<th>V2</th>
+<th>V3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC_HDR_SIZE</code> (FW)</td>
+<td>40</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr>
+<td><code>REC_PARAM_SIZE</code> (FW, 1-based)</td>
+<td>9 (8 vectors)</td>
+<td>21 (20 vectors)</td>
+<td>21 (20 vectors)</td>
+</tr>
+<tr>
+<td>Max recording vectors</td>
+<td>8</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Multi-trigger support</td>
+<td>No</td>
+<td>No</td>
+<td>Yes (3 triggers)</td>
+</tr>
+<tr>
+<td>Multi-RecSystem support</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AdvancedRecSupported</code></td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>RecTrigsLogicSupported</code></td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>RecDataNumOfRequestedPointsIdx</code></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>RecDataNumOfRecordedPointsIdx</code></td>
+<td>25 (FW[26])</td>
+<td>3 (FW[4])</td>
+<td>3 (FW[4])</td>
+</tr>
+</tbody>
+</table>
+<p><code>RecDataNumOfRequestedPointsIdx</code> is a virtual property on <code>HeaderBase</code> (default = 1,
+not overridden by any version). <code>RecDataNumOfRecordedPointsIdx</code> is abstract — the
+progress-query index used by <code>RecParamsResolver.RecDataNumOfRecordedPoints</code> to read
+how many points have been recorded so far. In V2/V3 it coincides with <code>RecTrigPosIdx</code>;
+in V1 it coincides with <code>RecTrigPosIdx</code> at C# index 25 (FW[26]).</p>
+<hr>
+<h2 id="v3-mapping-current-firmware">V3 Mapping (Current Firmware)</h2>
+<p>Validated against: current HEAD of <code>Firmware-Main</code>,
+defines in <code>AG300_CTL01ParamsCommon.h</code> lines 2498-2518.</p>
+<table>
+<thead>
+<tr>
+<th>FW Define</th>
+<th>FW idx</th>
+<th>C# idx</th>
+<th>C# Property</th>
+<th>Match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC_LEN_INDEX</code></td>
+<td>1</td>
+<td>0</td>
+<td><em>(not mapped)</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>REC_REQUESTED_LEN_INDEX</code></td>
+<td>2</td>
+<td>1</td>
+<td><code>RecLengthIdx = 1</code></td>
+<td>See note 1</td>
+</tr>
+<tr>
+<td><code>REC_NUM_OF_POINTS_RECORDED_INDEX</code></td>
+<td>3</td>
+<td>2</td>
+<td><em>(not mapped directly — see note 2)</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>REC_TRIG_POS_INDEX</code></td>
+<td>4</td>
+<td>3</td>
+<td><code>RecTrigPosIdx = 3</code> / <code>RecDataNumOfRecordedPointsIdx = 3</code></td>
+<td>OK (dual-purpose slot — see note 2)</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_VAL_MAX_INDEX</code></td>
+<td>5-7</td>
+<td>4-6</td>
+<td><code>RecTrigValMaxBeginIdx = 4</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_ALL_USER_UNITS_SCALING_INDEX</code></td>
+<td>8</td>
+<td>7</td>
+<td><em>(not mapped)</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>REC_GAP_INDEX</code></td>
+<td>9</td>
+<td>8</td>
+<td><code>RecGapIdx = 8</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_SRC_INDEX</code></td>
+<td>10-12</td>
+<td>9-11</td>
+<td><code>RecTrigSrcBeginIdx = 9</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_MASK_INDEX</code></td>
+<td>13-15</td>
+<td>12-14</td>
+<td><code>RecTrigMaskBeginIdx = 12</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_TYP_INDEX</code></td>
+<td>16-18</td>
+<td>15-17</td>
+<td><code>RecTrigTypBeginIdx = 15</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_VAL_INDEX</code></td>
+<td>19-21</td>
+<td>18-20</td>
+<td><code>RecTrigValBeginIdx = 18</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_CURR_LOOP_FREQ_INDEX</code></td>
+<td>22</td>
+<td>21</td>
+<td><code>ControllerSampleRateIdx = 21</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_FIRST_ELEMENT_TO_REC_INDEX</code></td>
+<td>23</td>
+<td>22</td>
+<td><code>IndexOfFirstElementIdx = 22</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_FIRST_ELEMENT_WITH_TRIG_TO_REC_INDEX</code></td>
+<td>24</td>
+<td>23</td>
+<td><code>IndexOfTriggerLocationIdx = 23</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_LAST_ELEMENT_TO_REC_INDEX</code></td>
+<td>25</td>
+<td>24</td>
+<td><code>IndexOfLastElementIdx = 24</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_CCC_TO_RECORD_INDEX</code></td>
+<td>26-45</td>
+<td>25-44</td>
+<td><code>RecDataFirstCCCIdx = 25</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIGS_MODE_INDEX</code></td>
+<td>46</td>
+<td>45</td>
+<td><code>RecTrigsModeIdx = 45</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIGS_LOGIC_INDEX</code></td>
+<td>47-48</td>
+<td>46-47</td>
+<td><code>RecTrigsLogicRelationBeginIdx = 46</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><em>(reserved)</em></td>
+<td>49-55</td>
+<td>48-54</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>REC_USER_UNITS_INDEX</code></td>
+<td>56-75</td>
+<td>55-74</td>
+<td><code>GetUserUnitsIndex(i) = 55 + i</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_HDR_SIZE</code></td>
+<td>80</td>
+<td>80</td>
+<td><code>RecDataDataBeginIdx = 80</code></td>
+<td>OK (count, not offset)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note 2 — RecDataNumOfRecordedPointsIdx</strong>: In V2 and V3, the progress-counter
+index (C# 3 = FW[4]) coincides with <code>RecTrigPosIdx</code>. In V1 it is C# 25 = FW[26],
+which also coincides with <code>RecTrigPosIdx</code>. The slot is read for different purposes
+at different times: trigger position during header parsing, recorded-point count
+during progress polling.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note 1 — RecLengthIdx across all versions</strong>: C# <code>RecLengthIdx</code> reads FW
+<code>REC_REQUESTED_LEN_INDEX</code> (requested recording length), not <code>REC_LEN_INDEX</code>
+(total data length = numVectors * recLength). This works because at upload time
+the recording is always complete, so requested length = actual length.
+Not worth fixing.</p>
+</blockquote>
+<hr>
+<h2 id="v2-mapping">V2 Mapping</h2>
+<p>Validated against: commit <code>428f39b4f</code> (&quot;From here starting to work on advanced data
+recording triggers - new keywords&quot;) — the last commit before the V2→V3 header restructure
+(<code>fbc553c33</code>). Defines in <code>AG300_CTL01ParamsCommon.h</code> lines 2227-2241, header assignments
+in <code>RecStart()</code> at <code>AG300_CTL01Funcs.c</code> lines 6470-6497.</p>
+<p>V2 is an <strong>intermediate development step</strong> between V1 and V3. It introduced
+<code>REC_HDR_SIZE = 80</code> and <code>REC_PARAM_SIZE = 21</code> (20 vectors), but predates multi-trigger
+and multi-RecSystem support (only one recording system existed; <code>RecSysID</code> did not exist).
+No multi-trigger: <code>RecTrigsModeIdx = -1</code>, <code>RecTrigsLogicRelationBeginIdx = -1</code>.</p>
+<h3 id="v2-fw-header-layout">V2 FW Header Layout</h3>
+<pre><code>FW[1]     REC_LEN_INDEX: numVectors * recLength (total data length)
+FW[2]     REC_REQUESTED_LEN_INDEX: requested recording length
+FW[3]     REC_NUM_OF_POINTS_RECORDED_INDEX: progress counter
+FW[4]     REC_TRIG_POS_INDEX: trigger position %
+FW[5]     REC_TRIG_VAL_MAX_INDEX: trigger value max
+FW[6]     REC_ALL_USER_UNITS_SCALING_INDEX
+FW[7]     REC_GAP_INDEX: recording gap
+FW[8]     REC_TRIG_SRC_INDEX: trigger source
+FW[9]     REC_TRIG_MASK_INDEX: trigger mask
+FW[10]    REC_TRIG_TYP_INDEX: trigger type
+FW[11]    REC_TRIG_VAL_INDEX: trigger value
+FW[12]    CurrentLoopFreq (hardcoded — no named define, marked TODO in FW)
+FW[13]    REC_FIRST_ELEMENT_TO_REC_INDEX
+FW[14]    REC_FIRST_ELEMENT_WITH_TRIG_TO_REC_INDEX
+FW[15]    REC_LAST_ELEMENT_TO_REC_INDEX
+FW[16-35] CCCs to record (20 vectors, stored by loop starting at z=16)
+FW[36-45] unused/reserved
+FW[46-65] user units (20 vectors, stored as glRecData[46 + j])
+FW[66-80] unused/reserved
+FW[81+]   recorded data
+</code></pre>
+<h3 id="v2-index-mapping-table">V2 Index Mapping Table</h3>
+<table>
+<thead>
+<tr>
+<th>FW Define</th>
+<th>FW idx</th>
+<th>C# idx</th>
+<th>C# Property</th>
+<th>C# value</th>
+<th>Match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC_REQUESTED_LEN_INDEX</code></td>
+<td>2</td>
+<td>1</td>
+<td><code>RecLengthIdx</code></td>
+<td>1</td>
+<td>OK (see note 1)</td>
+</tr>
+<tr>
+<td><code>REC_NUM_OF_POINTS_RECORDED_INDEX</code></td>
+<td>3</td>
+<td>2</td>
+<td><em>(FW slot — see note 2)</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>REC_TRIG_POS_INDEX</code></td>
+<td>4</td>
+<td>3</td>
+<td><code>RecTrigPosIdx</code> / <code>RecDataNumOfRecordedPointsIdx</code></td>
+<td>3</td>
+<td>OK (dual-purpose — see note 2)</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_VAL_MAX_INDEX</code></td>
+<td>5</td>
+<td>4</td>
+<td><code>RecTrigValMaxBeginIdx</code></td>
+<td>4</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_GAP_INDEX</code></td>
+<td>7</td>
+<td>6</td>
+<td><code>RecGapIdx</code></td>
+<td>6</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_SRC_INDEX</code></td>
+<td>8</td>
+<td>7</td>
+<td><code>RecTrigSrcBeginIdx</code></td>
+<td>7</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_MASK_INDEX</code></td>
+<td>9</td>
+<td>8</td>
+<td><code>RecTrigMaskBeginIdx</code></td>
+<td>8</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_TYP_INDEX</code></td>
+<td>10</td>
+<td>9</td>
+<td><code>RecTrigTypBeginIdx</code></td>
+<td>9</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_TRIG_VAL_INDEX</code></td>
+<td>11</td>
+<td>10</td>
+<td><code>RecTrigValBeginIdx</code></td>
+<td>10</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><em>(hardcoded [12])</em></td>
+<td>12</td>
+<td>11</td>
+<td><code>ControllerSampleRateIdx</code></td>
+<td>11</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_FIRST_ELEMENT_TO_REC_INDEX</code></td>
+<td>13</td>
+<td>12</td>
+<td><code>IndexOfFirstElementIdx</code></td>
+<td>12</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_FIRST_ELEMENT_WITH_TRIG_TO_REC_INDEX</code></td>
+<td>14</td>
+<td>13</td>
+<td><code>IndexOfTriggerLocationIdx</code></td>
+<td>13</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_LAST_ELEMENT_TO_REC_INDEX</code></td>
+<td>15</td>
+<td>14</td>
+<td><code>IndexOfLastElementIdx</code></td>
+<td>14</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>CCCs <code>[16..35]</code></td>
+<td>16</td>
+<td>15</td>
+<td><code>RecDataFirstCCCIdx</code></td>
+<td>15</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>User units <code>[46..65]</code></td>
+<td>46</td>
+<td>45</td>
+<td><code>GetUserUnitsIndex(i)</code></td>
+<td><code>45 + i</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>REC_HDR_SIZE</code></td>
+<td>80</td>
+<td>80</td>
+<td><code>RecDataDataBeginIdx</code></td>
+<td>80</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="v1-mapping">V1 Mapping</h2>
+<p>Validated against: commit <code>692b6924</code> (2022-11-24) — the last commit before the V1→V2
+header restructure (<code>dd893e3b</code>, 2022-11-27). No named <code>REC_*_INDEX</code> defines existed;
+all indexes were hardcoded in <code>RecStart()</code> at <code>AG300_CTL01Funcs.c</code> lines ~6482-6513.
+<code>REC_HDR_SIZE = 40</code>, <code>REC_PARAM_SIZE = 9</code> (8 vectors + 1 for 1-based indexing).</p>
+<p>FW supports 8 recording vectors in V1. User units have a split layout: vectors 1-4
+at FW[20-23] (<code>20+j</code>), vectors 5-8 at FW[27-30] (<code>20+j+3</code>), with FW[24-26] occupied
+by other fields in between.</p>
+<h3 id="v1-fw-header-layout">V1 FW Header Layout</h3>
+<pre><code>FW[1]     gsNumOfRecParams * glRecLength    (total expected data length)
+FW[2-9]   glRecParam[1..8]                  (CCCs to record, 8 slots)
+FW[10]    glRecLength                       (requested recording length)
+FW[11]    glRecGap
+FW[12]    glRecTrigSrc
+FW[13]    glRecTrigMask
+FW[14]    glRecTrigTyp
+FW[15]    glRecTrigVal
+FW[16]    glIdentity[IDENTITY_CURR_LOOP_FREQ_INDEX]  (sample rate)
+FW[17]    REC_HDR_SIZE + 1 = 41             (index of first element)
+FW[18]    trigger location index
+FW[19]    last recording index
+FW[20-23] user units for vectors 1-4        (20+j, j=0..3)
+FW[24]    ALL_USER_UNITS_SCALING
+FW[25]    (unused)
+FW[26]    glRecTrigPos / points recorded counter (dual-purpose — see note 2)
+FW[27-30] user units for vectors 5-8        (20+j+3, j=4..7)
+FW[31]    glRecTrigValMax
+FW[32-40] unused
+FW[41+]   recorded data
+</code></pre>
+<h3 id="v1-index-mapping-table">V1 Index Mapping Table</h3>
+<table>
+<thead>
+<tr>
+<th>FW idx</th>
+<th>C# idx</th>
+<th>FW content</th>
+<th>C# Property</th>
+<th>C# value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2-9</td>
+<td>1-8</td>
+<td>CCCs (8 vectors)</td>
+<td><code>RecDataFirstCCCIdx</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>9</td>
+<td>RecLength</td>
+<td><code>RecLengthIdx</code></td>
+<td>9</td>
+</tr>
+<tr>
+<td>11</td>
+<td>10</td>
+<td>RecGap</td>
+<td><code>RecGapIdx</code></td>
+<td>10</td>
+</tr>
+<tr>
+<td>12</td>
+<td>11</td>
+<td>TrigSrc</td>
+<td><code>RecTrigSrcBeginIdx</code></td>
+<td>11</td>
+</tr>
+<tr>
+<td>13</td>
+<td>12</td>
+<td>TrigMask</td>
+<td><code>RecTrigMaskBeginIdx</code></td>
+<td>12</td>
+</tr>
+<tr>
+<td>14</td>
+<td>13</td>
+<td>TrigTyp</td>
+<td><code>RecTrigTypBeginIdx</code></td>
+<td>13</td>
+</tr>
+<tr>
+<td>15</td>
+<td>14</td>
+<td>TrigVal</td>
+<td><code>RecTrigValBeginIdx</code></td>
+<td>14</td>
+</tr>
+<tr>
+<td>16</td>
+<td>15</td>
+<td>SampleRate</td>
+<td><code>ControllerSampleRateIdx</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td>17</td>
+<td>16</td>
+<td>FirstElement</td>
+<td><code>IndexOfFirstElementIdx</code></td>
+<td>16</td>
+</tr>
+<tr>
+<td>18</td>
+<td>17</td>
+<td>TrigLocation</td>
+<td><code>IndexOfTriggerLocationIdx</code></td>
+<td>17</td>
+</tr>
+<tr>
+<td>19</td>
+<td>18</td>
+<td>LastElement</td>
+<td><code>IndexOfLastElementIdx</code></td>
+<td>18</td>
+</tr>
+<tr>
+<td>20-23</td>
+<td>19-22</td>
+<td>UserUnits 1-4</td>
+<td><code>GetUserUnitsIndex(0..3)</code></td>
+<td><code>19 + i</code></td>
+</tr>
+<tr>
+<td>26</td>
+<td>25</td>
+<td>TrigPos / progress counter</td>
+<td><code>RecTrigPosIdx</code> / <code>RecDataNumOfRecordedPointsIdx</code></td>
+<td>25</td>
+</tr>
+<tr>
+<td>27-30</td>
+<td>26-29</td>
+<td>UserUnits 5-8</td>
+<td><code>GetUserUnitsIndex(4..7)</code></td>
+<td><code>22 + i</code></td>
+</tr>
+<tr>
+<td>31</td>
+<td>30</td>
+<td>TrigValMax</td>
+<td><code>RecTrigValMaxBeginIdx</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td>41</td>
+<td>40</td>
+<td>First data point</td>
+<td><code>RecDataDataBeginIdx</code></td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/recording-headers.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

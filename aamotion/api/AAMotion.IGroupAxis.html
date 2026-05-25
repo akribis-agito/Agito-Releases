@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IGroupAxis | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IGroupAxis | Agito AAMotion SDK ">
+      
+      <meta name="description" content="IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAMotion_IGroupAxis.md&amp;value=---%0Auid%3A%20AAMotion.IGroupAxis%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion.IGroupAxis">
+
+
+
+  <h1 id="AAMotion_IGroupAxis" data-uid="AAMotion.IGroupAxis" class="text-break">
+Interface IGroupAxis  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IGroupAxis</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAMotion_IGroupAxis_CNCAEmrgDec_" data-uid="AAMotion.IGroupAxis.CNCAEmrgDec*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAEmrgDec" data-uid="AAMotion.IGroupAxis.CNCAEmrgDec">
+  CNCAEmrgDec
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>CNC vector deceleration used during emergency stop 
+</code></pre>
+<p></p>
+<pre><code>(e.g., when hardware positive/negative limit switches are triggered, or software positive/negative limit positions are reached).
+</code></pre>
+<p></p>
+    <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAPosRef">CNCAPosRef</a>, <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAdPosRef">CNCAdPosRef</a>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CNCAEmrgDec { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_CNCAEncRatio_" data-uid="AAMotion.IGroupAxis.CNCAEncRatio*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAEncRatio" data-uid="AAMotion.IGroupAxis.CNCAEncRatio">
+  CNCAEncRatio
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>This parameter is axis-related and should be set individually for each member axis.
+</code></pre>
+<p></p>
+<pre><code>It defines the ratio between the resolution of one axis and other axes, used for more accurate CNC motion calculation when member axes have inconsistent physical resolutions.
+</code></pre>
+<p></p>
+<pre><code>Currently, this parameter is reserved for future use.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CNCAEncRatio { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_CNCAPercents_" data-uid="AAMotion.IGroupAxis.CNCAPercents*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAPercents" data-uid="AAMotion.IGroupAxis.CNCAPercents">
+  CNCAPercents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p></p>
+<pre><code>Scale factor for user adjustment of speed (and acceleration/deceleration) along the CNC path.
+</code></pre>
+<p></p>
+<pre><code>By affecting speed and acceleration/deceleration, CNCAPercents actually influences the time required to complete CNC motion.
+</code></pre>
+<p></p>
+<pre><code>CNCAPercents can be greater than 100% and can be dynamically adjusted at any time.
+</code></pre>
+<p></p>
+<pre><code>Users should consider the value of CNCAPercents before starting CNC motion.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CNCAPercents { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_CNCAPosRef_" data-uid="AAMotion.IGroupAxis.CNCAPosRef*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAPosRef" data-uid="AAMotion.IGroupAxis.CNCAPosRef">
+  CNCAPosRef
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CNCAPosRef represents the expected position along the CNC path (starting from zero, reaching CNCAAbsTrgt at the end of the motion segment).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CNCAPosRef { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_CNCAStatus_" data-uid="AAMotion.IGroupAxis.CNCAStatus*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAStatus" data-uid="AAMotion.IGroupAxis.CNCAStatus">
+  CNCAStatus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Containing CNC-related status data. The meaning of each index is as follows:
+</code></pre>
+<p></p>
+<pre><code>Index 1: Oldest command
+</code></pre>
+<p></p>
+<pre><code>Index 2: Last pushed command
+</code></pre>
+<p></p>
+<pre><code>Index 3: Last segment command
+</code></pre>
+<p></p>
+<pre><code>Index 4: Total number of parameters in the last segment
+</code></pre>
+<p></p>
+<pre><code>Index 5: Last segment requires multiple parameters to be pushed
+</code></pre>
+<p></p>
+<pre><code>Index 6: Motion segment input
+</code></pre>
+<p></p>
+<pre><code>Index 7: Available space
+</code></pre>
+<p></p>
+<pre><code>Index 8: Last used ID
+</code></pre>
+<p></p>
+<pre><code>Index 9: ID in motion
+</code></pre>
+<p></p>
+<pre><code>Index 10: CNC FIFO motion status
+
+&lt;ul&gt;&lt;li&gt;BIT_0: CNC in motion&lt;/li&gt;&lt;li&gt;BIT_3: CNC stop request issued&lt;/li&gt;&lt;li&gt;BIT_4: CNC accelerating&lt;/li&gt;&lt;li&gt;BIT_5: CNC decelerating&lt;/li&gt;&lt;li&gt;BIT_6: CNC waiting for end smoothing&lt;/li&gt;&lt;li&gt;BIT_9: CNC waiting for input&lt;/li&gt;&lt;li&gt;BIT_12: CNC in CNC stop state&lt;/li&gt;&lt;li&gt;BIT_13: CNC waiting for first segment&lt;/li&gt;&lt;li&gt;BIT_14: CNC controlled stop request issued&lt;/li&gt;&lt;/ul&gt;
+
+Index 11: CNC FIFO member axes
+</code></pre>
+<p></p>
+<pre><code>Index 12: CNC FIFO involved axes
+</code></pre>
+<p></p>
+<pre><code>Index 13: Maximum acceleration counter
+</code></pre>
+<p></p>
+<pre><code>Index 14: Maximum velocity fluctuation counter
+</code></pre>
+<p></p>
+<pre><code>When the status is invalid, its value is -1 (when the status is valid, -1 is not a valid value for any status).
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; CNCAStatus { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_CNCAdPosRef_" data-uid="AAMotion.IGroupAxis.CNCAdPosRef*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_CNCAdPosRef" data-uid="AAMotion.IGroupAxis.CNCAdPosRef">
+  CNCAdPosRef
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>CNCAdPosRef is the derivative of CNCAPosRef, representing the current vector velocity of the profiler along the CNC path (i.e., the current vector velocity).
+</code></pre>
+<p></p>
+    <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAPosRef">CNCAPosRef</a>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CNCAdPosRef { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAMotion_IGroupAxis_ArcXY_" data-uid="AAMotion.IGroupAxis.ArcXY*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcXY_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcXY(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcXY(int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on XY axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcXY(int xPos, int yPos, int iPos, int jPos, int dir, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>iPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X axis center offset</p>
+</dd>
+    <dt><code>jPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ArcXY_" data-uid="AAMotion.IGroupAxis.ArcXY*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcXY_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcXY(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcXY(int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on XY axes (with additional cycles)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcXY(int xPos, int yPos, int iPos, int jPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>iPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X axis center offset</p>
+</dd>
+    <dt><code>jPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+</dd>
+    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Additional cycles</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ArcXZ_" data-uid="AAMotion.IGroupAxis.ArcXZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcXZ_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcXZ(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcXZ(int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on XZ axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcXZ(int xPos, int zPos, int iPos, int kPos, int dir, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>iPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X axis center offset</p>
+</dd>
+    <dt><code>kPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Z axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ArcXZ_" data-uid="AAMotion.IGroupAxis.ArcXZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcXZ_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcXZ(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcXZ(int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on XZ axes (with additional cycles)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcXZ(int xPos, int zPos, int iPos, int kPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>iPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X axis center offset</p>
+</dd>
+    <dt><code>kPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Z axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+</dd>
+    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Additional cycles</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ArcYZ_" data-uid="AAMotion.IGroupAxis.ArcYZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcYZ_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcYZ(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcYZ(int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on YZ axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcYZ(int yPos, int zPos, int jPos, int kPos, int dir, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>jPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y axis center offset</p>
+</dd>
+    <dt><code>kPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Z axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ArcYZ_" data-uid="AAMotion.IGroupAxis.ArcYZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ArcYZ_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.ArcYZ(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  ArcYZ(int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L266"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC arc motion on YZ axes (with additional cycles)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ArcYZ(int yPos, int zPos, int jPos, int kPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>jPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y axis center offset</p>
+</dd>
+    <dt><code>kPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Z axis center offset</p>
+</dd>
+    <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Motion direction</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+</dd>
+    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Additional cycles</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_AutoCorner_" data-uid="AAMotion.IGroupAxis.AutoCorner*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_AutoCorner_AAMotion_AxisRef_" data-uid="AAMotion.IGroupAxis.AutoCorner(AAMotion.AxisRef)">
+  AutoCorner(AxisRef)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Auto corner</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AutoCorner(AxisRef axisRef)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Begin_" data-uid="AAMotion.IGroupAxis.Begin*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Begin" data-uid="AAMotion.IGroupAxis.Begin">
+  Begin()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start CNC motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Begin()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if start command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Begin_" data-uid="AAMotion.IGroupAxis.Begin*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Begin_AAMotion_AxisRef_" data-uid="AAMotion.IGroupAxis.Begin(AAMotion.AxisRef)">
+  Begin(AxisRef)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start CNC motion for specified axis mask.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Begin(AxisRef axisRef)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis mask to begin motion on</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if start command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_ClearBuffer_" data-uid="AAMotion.IGroupAxis.ClearBuffer*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_ClearBuffer" data-uid="AAMotion.IGroupAxis.ClearBuffer">
+  ClearBuffer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clear CNC motion buffer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ClearBuffer()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if buffer is cleared successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Delay_" data-uid="AAMotion.IGroupAxis.Delay*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Delay_System_Int32_" data-uid="AAMotion.IGroupAxis.Delay(System.Int32)">
+  Delay(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC delay operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Delay(int ms)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ms</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC delay time (milliseconds)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_GenDataWait_" data-uid="AAMotion.IGroupAxis.GenDataWait*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_GenDataWait_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.GenDataWait(System.Int32,System.Int32,System.Int32)">
+  GenDataWait(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L371"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wait for GenData condition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GenDataWait(int gendataIndex, int trigTyp, int trigVal)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gendataIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData index</p>
+</dd>
+    <dt><code>trigTyp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger type</p>
+</dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if wait command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_GroupDOutClearBit_" data-uid="AAMotion.IGroupAxis.GroupDOutClearBit*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_GroupDOutClearBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.IGroupAxis.GroupDOutClearBit(AAMotion.AxisRef,System.Int32)">
+  GroupDOutClearBit(AxisRef, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clear axis digital output bit</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GroupDOutClearBit(AxisRef axisRef, int bitMask)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Bit mask</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if bit is cleared successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_GroupDOutSetBit_" data-uid="AAMotion.IGroupAxis.GroupDOutSetBit*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_GroupDOutSetBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.IGroupAxis.GroupDOutSetBit(AAMotion.AxisRef,System.Int32)">
+  GroupDOutSetBit(AxisRef, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L337"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set axis digital output bit</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GroupDOutSetBit(AxisRef axisRef, int bitMask)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Bit mask</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if bit is set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_GroupDOutToggleBit_" data-uid="AAMotion.IGroupAxis.GroupDOutToggleBit*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_GroupDOutToggleBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.IGroupAxis.GroupDOutToggleBit(AAMotion.AxisRef,System.Int32)">
+  GroupDOutToggleBit(AxisRef, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Toggle axis digital output bit</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GroupDOutToggleBit(AxisRef axisRef, int bitMask)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Bit mask</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if bit is toggled successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_IsCNCCompleted_" data-uid="AAMotion.IGroupAxis.IsCNCCompleted*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_IsCNCCompleted_AAMotion_AxisRef_" data-uid="AAMotion.IGroupAxis.IsCNCCompleted(AAMotion.AxisRef)">
+  IsCNCCompleted(AxisRef)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine whether the CNC movement has been completed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCNCCompleted(AxisRef axisRef)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>The CNC movement is completed and returns true; otherwise, it returns false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsolute_" data-uid="AAMotion.IGroupAxis.LinearAbsolute*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsolute_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsolute(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
+  LinearAbsolute(int?, int?, int?, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform multi-axis CNC absolute linear motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsolute(int? aPos, int? bPos, int? cPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Target position for axis A, optional</p>
+</dd>
+    <dt><code>bPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Target position for axis B, optional</p>
+</dd>
+    <dt><code>cPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Target position for axis C, optional</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteX_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteX*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteX_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteX(System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteX(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on X axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteX(int xPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteXY_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXY*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteXY_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXY(System.Int32,System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteXY(int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on XY axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteXY(int xPos, int yPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteXYZ_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXYZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteXYZ_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXYZ(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteXYZ(int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on XYZ axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteXYZ(int xPos, int yPos, int zPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteXZ_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteXZ_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteXZ(System.Int32,System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteXZ(int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on XZ axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteXZ(int xPos, int zPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for X axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteY_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteY*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteY_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteY(System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteY(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on Y axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteY(int yPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteYZ_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteYZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteYZ_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteYZ(System.Int32,System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteYZ(int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on YZ axes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteYZ(int yPos, int zPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>yPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Y axis</p>
+</dd>
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_LinearAbsoluteZ_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteZ*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_LinearAbsoluteZ_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.LinearAbsoluteZ(System.Int32,System.Int32,System.Int32)">
+  LinearAbsoluteZ(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform CNC absolute linear motion on Z axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LinearAbsoluteZ(int zPos, int velCruise, int velEnd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>zPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Target position for Z axis</p>
+</dd>
+    <dt><code>velCruise</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC cruise velocity</p>
+</dd>
+    <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC end velocity</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_MultiWriteGenData_" data-uid="AAMotion.IGroupAxis.MultiWriteGenData*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_MultiWriteGenData_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteGenData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  MultiWriteGenData(int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multi-channel write to GenData</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiWriteGenData(int gendataIndex, int gendataValue1, int gendataValue2, int gendataValue3, int gendataValue4)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gendataIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData index</p>
+</dd>
+    <dt><code>gendataValue1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 1</p>
+</dd>
+    <dt><code>gendataValue2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 2</p>
+</dd>
+    <dt><code>gendataValue3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 3</p>
+</dd>
+    <dt><code>gendataValue4</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 4</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if values are written successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_MultiWriteGenDataWait_" data-uid="AAMotion.IGroupAxis.MultiWriteGenDataWait*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_MultiWriteGenDataWait_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteGenDataWait(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  MultiWriteGenDataWait(int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multi-channel write to GenData and wait</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiWriteGenDataWait(int gendataIndex, int gendataValue1, int gendataValue2, int gendataValue3, int gendataValue4, int trigIndex, int trigTyp, int trigVal)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gendataIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData index</p>
+</dd>
+    <dt><code>gendataValue1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 1</p>
+</dd>
+    <dt><code>gendataValue2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 2</p>
+</dd>
+    <dt><code>gendataValue3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 3</p>
+</dd>
+    <dt><code>gendataValue4</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>GenData value 4</p>
+</dd>
+    <dt><code>trigIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger index</p>
+</dd>
+    <dt><code>trigTyp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger type</p>
+</dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if values are written and wait is successful, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_MultiWriteUserParam_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParam*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_MultiWriteUserParam_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParam(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  MultiWriteUserParam(AxisRef, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multi-channel write to UserParam</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiWriteUserParam(AxisRef axisRef, int userparamIndex, int userparamValue1, int userparamValue2, int userparamValue3, int userparamValue4)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>userparamIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam index</p>
+</dd>
+    <dt><code>userparamValue1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 1</p>
+</dd>
+    <dt><code>userparamValue2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 2</p>
+</dd>
+    <dt><code>userparamValue3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 3</p>
+</dd>
+    <dt><code>userparamValue4</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 4</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if values are written successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_MultiWriteUserParamWait_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParamWait*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_MultiWriteUserParamWait_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParamWait(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  MultiWriteUserParamWait(AxisRef, int, int, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multi-channel write to UserParam and wait</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiWriteUserParamWait(AxisRef axisRef, int userparamIndex, int userparamValue1, int userparamValue2, int userparamValue3, int userparamValue4, int trigIndex, int trigTyp, int trigVal)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>userparamIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam index</p>
+</dd>
+    <dt><code>userparamValue1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 1</p>
+</dd>
+    <dt><code>userparamValue2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 2</p>
+</dd>
+    <dt><code>userparamValue3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 3</p>
+</dd>
+    <dt><code>userparamValue4</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value 4</p>
+</dd>
+    <dt><code>trigIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger index</p>
+</dd>
+    <dt><code>trigTyp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger type</p>
+</dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if values are written and wait is successful, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Pause_" data-uid="AAMotion.IGroupAxis.Pause*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Pause" data-uid="AAMotion.IGroupAxis.Pause">
+  Pause()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause CNC motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Pause()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if pause command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Resume_" data-uid="AAMotion.IGroupAxis.Resume*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Resume" data-uid="AAMotion.IGroupAxis.Resume">
+  Resume()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume CNC motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Resume()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if resume command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_RunCNCProgramFromFile_" data-uid="AAMotion.IGroupAxis.RunCNCProgramFromFile*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_RunCNCProgramFromFile_System_String_" data-uid="AAMotion.IGroupAxis.RunCNCProgramFromFile(System.String)">
+  RunCNCProgramFromFile(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Carry out the movement using the CNC program generated by PCSuite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RunCNCProgramFromFile(string filePath)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Absolute path of CNC file</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetCornerParams_" data-uid="AAMotion.IGroupAxis.SetCornerParams*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetCornerParams_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.SetCornerParams(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  SetCornerParams(int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set CNC corner parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetCornerParams(int cornerType, int radiusMethod, int radiusOrError, int axisAccel, int minAngle, int accelLimitType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cornerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC corner type</p>
+</dd>
+    <dt><code>radiusMethod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC radius method</p>
+</dd>
+    <dt><code>radiusOrError</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC radius or error</p>
+</dd>
+    <dt><code>axisAccel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC axis acceleration</p>
+</dd>
+    <dt><code>minAngle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC minimum angle</p>
+</dd>
+    <dt><code>accelLimitType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC acceleration limit type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if parameters are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetCurrPositions_" data-uid="AAMotion.IGroupAxis.SetCurrPositions*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetCurrPositions_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="AAMotion.IGroupAxis.SetCurrPositions(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+  SetCurrPositions(int?, int?, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L390"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set current positions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetCurrPositions(int? aPos, int? bPos, int? cPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis A, optional</p>
+</dd>
+    <dt><code>bPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis B, optional</p>
+</dd>
+    <dt><code>cPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis C, optional</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if positions are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetMaxAccelParams_" data-uid="AAMotion.IGroupAxis.SetMaxAccelParams*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetMaxAccelParams_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="AAMotion.IGroupAxis.SetMaxAccelParams(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+  SetMaxAccelParams(int?, int?, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set maximum acceleration parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetMaxAccelParams(int? aMaxAccel, int? bMaxAccel, int? cMaxAccel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aMaxAccel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum acceleration for axis A, optional</p>
+</dd>
+    <dt><code>bMaxAccel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum acceleration for axis B, optional</p>
+</dd>
+    <dt><code>cMaxAccel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum acceleration for axis C, optional</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if parameters are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetMaxVelJumpParams_" data-uid="AAMotion.IGroupAxis.SetMaxVelJumpParams*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetMaxVelJumpParams_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_" data-uid="AAMotion.IGroupAxis.SetMaxVelJumpParams(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32)">
+  SetMaxVelJumpParams(int?, int?, int?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set maximum velocity jump parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetMaxVelJumpParams(int? aMaxVJ, int? bMaxVJ, int? cMaxVJ, int jumpMode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aMaxVJ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum velocity jump for axis A, optional</p>
+</dd>
+    <dt><code>bMaxVJ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum velocity jump for axis B, optional</p>
+</dd>
+    <dt><code>cMaxVJ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Maximum velocity jump for axis C, optional</p>
+</dd>
+    <dt><code>jumpMode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Jump mode</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if parameters are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetMotionProfile_" data-uid="AAMotion.IGroupAxis.SetMotionProfile*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetMotionProfile_System_Int32_System_Int32_System_Int32_System_Double_" data-uid="AAMotion.IGroupAxis.SetMotionProfile(System.Int32,System.Int32,System.Int32,System.Double)">
+  SetMotionProfile(int, int, int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set CNC motion parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetMotionProfile(int percentage, int accel, int decel, double sfactor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>percentage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC percentage</p>
+</dd>
+    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC acceleration</p>
+</dd>
+    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CNC deceleration</p>
+</dd>
+    <dt><code>sfactor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>CNC smoothing factor</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if parameters are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetStartPositions_" data-uid="AAMotion.IGroupAxis.SetStartPositions*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetStartPositions_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.SetStartPositions(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32)">
+  SetStartPositions(AxisRef, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L305"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set start positions (using axis mask)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetStartPositions(AxisRef groupAxisMask, int xPosCurrent, int yPosCurrent, int zPosCurrent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupAxisMask</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Group axis mask</p>
+</dd>
+    <dt><code>xPosCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Current position of X axis</p>
+</dd>
+    <dt><code>yPosCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Current position of Y axis</p>
+</dd>
+    <dt><code>zPosCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Current position of Z axis</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if positions are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_SetStartPositions_" data-uid="AAMotion.IGroupAxis.SetStartPositions*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_SetStartPositions_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="AAMotion.IGroupAxis.SetStartPositions(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+  SetStartPositions(int?, int?, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L314"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set start positions (using optional parameters)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetStartPositions(int? aPos, int? bPos, int? cPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis A, optional</p>
+</dd>
+    <dt><code>bPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis B, optional</p>
+</dd>
+    <dt><code>cPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Position of axis C, optional</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if positions are set successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_Stop_" data-uid="AAMotion.IGroupAxis.Stop*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_Stop" data-uid="AAMotion.IGroupAxis.Stop">
+  Stop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stop CNC motion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Stop()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if stop command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_UserParamWait_" data-uid="AAMotion.IGroupAxis.UserParamWait*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_UserParamWait_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.UserParamWait(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32)">
+  UserParamWait(AxisRef, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L381"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wait for UserParam condition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool UserParamWait(AxisRef axisRef, int userparamIndex, int trigTyp, int trigVal)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>userparamIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam index</p>
+</dd>
+    <dt><code>trigTyp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger type</p>
+</dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Trigger value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if wait command is sent successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_WriteDOutPort_" data-uid="AAMotion.IGroupAxis.WriteDOutPort*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_WriteDOutPort_System_Int32_" data-uid="AAMotion.IGroupAxis.WriteDOutPort(System.Int32)">
+  WriteDOutPort(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write digital output port value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WriteDOutPort(int dOutPortValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dOutPortValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Digital output port value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if value is written successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_WriteGenData_" data-uid="AAMotion.IGroupAxis.WriteGenData*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_WriteGenData_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.WriteGenData(System.Int32,System.Int32)">
+  WriteGenData(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write eGenData</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WriteGenData(int gendataIndex, int gendataValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gendataIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>eGenData index</p>
+</dd>
+    <dt><code>gendataValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>eGenData value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if value is written successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IGroupAxis_WriteUserParam_" data-uid="AAMotion.IGroupAxis.WriteUserParam*"></a>
+
+  <h3 id="AAMotion_IGroupAxis_WriteUserParam_AAMotion_AxisRef_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.WriteUserParam(AAMotion.AxisRef,System.Int32,System.Int32)">
+  WriteUserParam(AxisRef, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L362"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Write UserParam</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool WriteUserParam(AxisRef axisRef, int userparamIndex, int userparamValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd><p>Axis reference</p>
+</dd>
+    <dt><code>userparamIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam index</p>
+</dd>
+    <dt><code>userparamValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>UserParam value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if value is written successfully, otherwise false</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L6" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

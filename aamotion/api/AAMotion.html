@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace AAMotion | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace AAMotion | Agito AAMotion SDK ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion">
+
+  <h1 id="AAMotion" data-uid="AAMotion" class="text-break">Namespace AAMotion</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AADoubleArray.html">AADoubleArray</a></dt>
+      <dd><p>Backward compatibility: Double array wrapper</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
+      <dd><p>Backward compatibility: Dynamic array wrapper</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAMotionAPI.html">AAMotionAPI</a></dt>
+      <dd><pre><code>AAMotionAPI is a static class used for object-oriented programming 
+</code></pre>
+<p></p>
+<pre><code>Provides an advanced interface for unified access to the Agito Motion Systems motion controller.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAMotionAPI.ConcreteMotionController.html">AAMotionAPI.ConcreteMotionController</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAMotionConfig.html">AAMotionConfig</a></dt>
+      <dd><p>Global configuration class to control the behavior of AAMotion</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AASmartArrayWrapper.html">AASmartArrayWrapper</a></dt>
+      <dd><p>Unified smart array wrapper - supports automatic type conversion for int/float/double/long</p>
+<p>Design Pattern: Strategy Pattern</p>
+<ul>
+<li>Automatically selects appropriate read/write strategy based on data type</li>
+<li>Supports four data types: Int (32-bit), Float (32-bit), Double (64-bit), Long (64-bit)</li>
+</ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray&lt;T&gt;</a></dt>
+      <dd><p>Base array wrapper - provides index validation, event triggering and other basic functionality
+Used for low-level arrays (event-driven) that communicate with controller</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD101EC.html">AGD101EC</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD155.html">AGD155</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD155EC.html">AGD155EC</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD156EC.html">AGD156EC</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD200.html">AGD200</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGD301.html">AGD301</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGM800.html">AGM800</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.CachedParameterTypeInfo.html">CachedParameterTypeInfo</a></dt>
+      <dd><p>Cached parameter type information</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.DynamicArrayFactory.html">DynamicArrayFactory</a></dt>
+      <dd><p>Dynamic array factory - simplifies array wrapper creation and caching
+Centralizes array wrapper creation logic for better maintainability</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.EnumPropertyHelper.html">EnumPropertyHelper</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.FastReadCache.html">FastReadCache</a></dt>
+      <dd><p>Fast read cache for high-performance data reading.
+This cache stores parameter values that are refreshed periodically (default 1ms)
+and allows instant read access without sending commands to the controller.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.KeywordSettings-2.html">KeywordSettings&lt;T, V&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.html">MotionController</a></dt>
+      <dd><p>DataLogger specific members for <a class="xref" href="AAMotion.MotionController.html">MotionController</a>.
+Provides high-speed data recording functionality with trigger support.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.DataLoggerConfiguration.html">MotionController.DataLoggerConfiguration</a></dt>
+      <dd><p>Configuration class for DataLogger recording parameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.DataLoggerResult.html">MotionController.DataLoggerResult</a></dt>
+      <dd><p>Container for recorded data from DataLogger.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.DataLoggerTrigger.html">MotionController.DataLoggerTrigger</a></dt>
+      <dd><p>Configuration class for DataLogger trigger (触发器配置).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.DataLoggerVector.html">MotionController.DataLoggerVector</a></dt>
+      <dd><p>Container for a single recorded vector (one parameter's data).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.Node.html">Node</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ParameterMetadataCache.html">ParameterMetadataCache</a></dt>
+      <dd><p>Parameter metadata cache - avoids repeated XML queries
+Initialized once on connection, subsequent O(1) dictionary lookup
+Uses ConcurrentDictionary for thread-safe read operations</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ParameterTypeConverter.html">ParameterTypeConverter</a></dt>
+      <dd><p>Parameter type converter - handles type conversion for controller parameters</p>
+<p>Core functionality:</p>
+<ul>
+<li>All data in controller is stored as int (32-bit)</li>
+<li>float: uses IEEE 754 encoding in int</li>
+<li>double/long: requires additional commands to get full 64-bit value</li>
+<li>Automatically detects type and converts (based on XML metadata or cache)</li>
+</ul>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.Command.html">Command</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionController.SlowLoggerParameter.html">MotionController.SlowLoggerParameter</a></dt>
+      <dd><p>Strongly typed logger parameter descriptor.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ICiGroupAxis.html">ICiGroupAxis</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ICiIOModule.html">ICiIOModule</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ICiSingleAxis.html">ICiSingleAxis</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ICiSlave.html">ICiSlave</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.IECAM.html">IECAM</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a></dt>
+      <dd><p>IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.IIOModule.html">IIOModule</a></dt>
+      <dd><p>IIOModule interface definition, used to describe the parameters and states related to the IO module</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ISingleAxis.html">ISingleAxis</a></dt>
+      <dd><pre><code>Single axis interface, defines all properties and methods of a single axis motion controller. 
+</code></pre>
+<p></p>
+<pre><code>This is a sub-interface of IVector.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.IVector.html">IVector</a></dt>
+      <dd><p>Interface representing vector motion functionalities.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.CNCType.html">CNCType</a></dt>
+      <dd><p>Enumeration of CNC motion segment types, corresponding to the dropdown menu order in the interface.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ConFlt.html">ConFlt</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ControllerType.html">ControllerType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.EncType.html">EncType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.HomingStat.html">HomingStat</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.HybridValueMode.html">HybridValueMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.InTargetStat.html">InTargetStat</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.InjectType.html">InjectType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MapType.html">MapType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionMode.html">MotionMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionReason.html">MotionReason</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotionStat.html">MotionStat</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.MotorOn.html">MotorOn</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.OperationMode.html">OperationMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.StatReg.html">StatReg</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+      <dd></dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

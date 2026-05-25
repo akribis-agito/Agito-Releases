@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Firmware Download | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Firmware Download | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="advanced-firmware-download">
+
+<p>2025-12-26</p>
+<h1 id="managefw-agm800-binary-firmware-validation-with-ver-file-support">Manage/FW: AGM800 Binary Firmware Validation with .ver File Support</h1>
+<h2 id="overview">Overview</h2>
+<p>Added support for validating AGM800 binary (.bin) firmware files using
+embedded magic markers and optional .ver file validation. This brings
+AGM800 firmware download to parity with non-AGM800 products while
+maintaining full backward compatibility.</p>
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<ul>
+<li><strong>No .ver file</strong>: AGM800 firmware download proceeds without validation
+(same behavior as before)</li>
+<li><strong>.ver file exists</strong>: Performs MD5 checksum, version, and product type
+validation before download</li>
+</ul>
+<h2 id="binary-firmware-parsing-aacommbinfwinfo">Binary Firmware Parsing (<code>AACommBinFwInfo</code>)</h2>
+<p>Parses Zynq binary firmware files to extract identity and version
+information using magic markers embedded in the binary.</p>
+<h3 id="magic-markers">Magic Markers</h3>
+<p>Each marker starts with the signature <code>&quot;AKRB&quot;</code> followed by a type tag:</p>
+<table>
+<thead>
+<tr>
+<th>Marker</th>
+<th>Tag</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td><code>IDNT</code></td>
+<td>version(4) + size(4) + int32[32] (128 bytes)</td>
+</tr>
+<tr>
+<td>Version</td>
+<td><code>VERS</code></td>
+<td>version(4) + size(4) + char[4][64] (256 bytes)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Byte-order note:</strong> Marker types are stored as little-endian 32-bit
+integers. <code>&quot;IDNT&quot;</code> (0x49444E54) appears as bytes <code>54 4E 44 49</code>
+(<code>&quot;TNDI&quot;</code> in a hex editor). Similarly, <code>&quot;VERS&quot;</code> appears as <code>&quot;SREV&quot;</code>.</p>
+<h3 id="extracted-identity-data-32-int32-values">Extracted Identity Data (32 int32 values)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Index</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>Data version</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Product type</td>
+</tr>
+<tr>
+<td style="text-align: right;">2-6</td>
+<td>FW version: Major.Minor.Patch.Owner-Subversion</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Continuous current limit</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Peak current limit</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Number of axes</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Full scale current</td>
+</tr>
+<tr>
+<td style="text-align: right;">31</td>
+<td>Magic end marker (<code>0x12345678</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ver-file-format-agm800">.ver File Format (AGM800)</h2>
+<pre><code>Line 1: Version  (optional)  e.g. &quot;3.8.0.0-123&quot;
+Line 2: MD5      (optional)  e.g. &quot;MD5:XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX&quot;
+Line 3: Type     (optional)  e.g. &quot;Type:AGM800&quot;
+</code></pre>
+<p>Valid Type values: <code>AGM800</code>, <code>CiG1-MAS02</code>, <code>MAS02</code></p>
+<h2 id="validation-steps-when-ver-file-exists">Validation Steps (when .ver file exists)</h2>
+<ol>
+<li><strong>MD5 checksum</strong> verification (if <code>MD5:</code> line present)</li>
+<li><strong>Version match</strong> between .ver and binary identity data (if binary
+contains identity markers)</li>
+<li><strong>Product type</strong> validation (if <code>Type:</code> line present) — two independent checks:
+<ul>
+<li><strong>Binary identity</strong>: AGM800 family product-type IDs (6=AGM400, 10=AGM800,
+15=PULSE_SYNC) are considered compatible</li>
+<li><strong>Type string</strong>: only <code>AGM800</code>, <code>CiG1-MAS02</code>, <code>MAS02</code> are accepted. Note:
+<code>Pulse-Sync</code> is NOT a valid Type string even though product type 15 passes
+the binary identity check</li>
+</ul>
+</li>
+</ol>
+<h2 id="mas02-hex-encoding-ipc-framing-fix">MAS02 Hex-Encoding (IPC Framing Fix)</h2>
+<p>MAS02 binary FW packets are raw binary that may contain <code>0x3E 0x0D</code> — the IPC
+envelope terminator (<code>&gt;\r</code>). To keep the IPC body ASCII-safe, the client wraps
+each binary chunk with the <code>@#HEX:</code> sigil (<code>CommCommons.HexEncodedPrefix</code>):</p>
+<pre><code>&lt;message-type-prefix&gt;@#HEX:&lt;hex-pairs&gt;\r
+</code></pre>
+<p>The server-side <code>SocketMessageData</code> detects the sigil via <code>IndexOf</code>, strips it,
+decodes the hex pairs back to raw bytes, and forwards a byte-identical payload
+to the controller. The per-packet MAS02 header and EOF marker are encoded as
+hex ASCII strings (<code>&quot;0000&quot;</code> / <code>&quot;FFFF&quot;</code>) rather than raw <code>char</code> constants.</p>
+<h3 id="post-reset-disconnect-tolerance">Post-Reset Disconnect Tolerance</h3>
+<p>Both FW and FPGA download use <code>ResetReplyHelper.IsExpectedPostResetDisconnect</code>
+after the final packet/batch to handle the race where the controller resets
+before the OK reply arrives. Disconnect-style replies (<code>ERR 4021</code>, <code>ERR 4020</code>,
+channel-fatal) are accepted as success for the last step.</p>
+<h2 id="files">Files</h2>
+<p><strong>Added:</strong></p>
+<ul>
+<li><code>AACommComponents/AAComm/Extensions/AACommBinFwInfo.cs</code></li>
+</ul>
+<p><strong>Modified:</strong></p>
+<ul>
+<li><code>AACommComponents/AAComm/Extensions/AACommFwInfo.cs</code>
+<ul>
+<li>Constructor parses AGM800 .bin files via <code>AACommBinFwInfo</code></li>
+<li><code>DataValid</code> property: private setter</li>
+<li><code>ValidateFwFiles</code> enhanced for AGM800 with optional .ver file</li>
+<li><code>ProductTypeStr</code> returns <code>&quot;AGM800&quot;</code> for all AGM800 family types</li>
+</ul>
+</li>
+<li><code>AACommComponents/AAComm/Extensions/AACommDownloadFW.cs</code>
+<ul>
+<li>MAS02 packets wrapped with <code>@#HEX:</code> sigil for IPC-safe binary transport</li>
+<li><code>TriageFwReply</code> helper for post-reset disconnect tolerance</li>
+</ul>
+</li>
+<li><code>AACommComponents/AAComm/Extensions/AACommDownloadFPGA.cs</code>
+<ul>
+<li>EOF reply uses <code>ResetReplyHelper.IsExpectedPostResetDisconnect</code></li>
+</ul>
+</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

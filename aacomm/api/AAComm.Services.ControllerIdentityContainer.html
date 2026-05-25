@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ControllerIdentityContainer | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ControllerIdentityContainer | Agito AAComm SDK ">
+      
+      <meta name="description" content="a container class that contains connected controller identity parameters   also indicates whether the controller is in boot mode   automatically initialized by &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; may be re-initialized (if need) by using &amp;lt;xref href=&amp;quot;AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_ControllerIdentityContainer.md&amp;value=---%0Auid%3A%20AAComm.Services.ControllerIdentityContainer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.ControllerIdentityContainer">
+
+
+
+  <h1 id="AAComm_Services_ControllerIdentityContainer" data-uid="AAComm.Services.ControllerIdentityContainer" class="text-break">
+Class ControllerIdentityContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><pre><code>a container class that contains connected controller identity parameters
+</code></pre>
+<p></p>
+<pre><code>also indicates whether the controller is in boot mode
+</code></pre>
+<p></p>
+<pre><code>automatically initialized by &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+may be re-initialized (if need) by using &lt;xref href=&quot;AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+</code></pre>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ControllerIdentityContainer : IIdentityContainer</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ControllerIdentityContainer</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AAComm.Interfaces.IIdentityContainer.html">IIdentityContainer</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer__ctor_" data-uid="AAComm.Services.ControllerIdentityContainer.#ctor*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer__ctor" data-uid="AAComm.Services.ControllerIdentityContainer.#ctor">
+  ControllerIdentityContainer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>default constructor - initializes all fields to default values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ControllerIdentityContainer()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_BootPrefix" data-uid="AAComm.Services.ControllerIdentityContainer.BootPrefix">
+  BootPrefix
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>this is the controller reply prefix, when queried in Boot mode. i.e. BOOT OK&gt; or BOOT ERR 13&gt;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string BootPrefix = &quot;BOOT&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_AnalogInputSampleRate_" data-uid="AAComm.Services.ControllerIdentityContainer.AnalogInputSampleRate*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_AnalogInputSampleRate" data-uid="AAComm.Services.ControllerIdentityContainer.AnalogInputSampleRate">
+  AnalogInputSampleRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[24] analog input sampling rate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AnalogInputSampleRate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_Connectivity_" data-uid="AAComm.Services.ControllerIdentityContainer.Connectivity*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_Connectivity" data-uid="AAComm.Services.ControllerIdentityContainer.Connectivity">
+  Connectivity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides connectivity information: Ethernet IP, MAC address, RS232 port, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ControllerIdentityConnectivity Connectivity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerIdentityConnectivity.html">ControllerIdentityConnectivity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_CurrentLoopSampleRate_" data-uid="AAComm.Services.ControllerIdentityContainer.CurrentLoopSampleRate*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_CurrentLoopSampleRate" data-uid="AAComm.Services.ControllerIdentityContainer.CurrentLoopSampleRate">
+  CurrentLoopSampleRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[13] controller current loop sample rate (samples per second)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentLoopSampleRate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_CustomerCode_" data-uid="AAComm.Services.ControllerIdentityContainer.CustomerCode*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_CustomerCode" data-uid="AAComm.Services.ControllerIdentityContainer.CustomerCode">
+  CustomerCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[8] customer code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CustomerCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_DrawMaxBlocksPerScheme_" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxBlocksPerScheme*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_DrawMaxBlocksPerScheme" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxBlocksPerScheme">
+  DrawMaxBlocksPerScheme
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[56] Draw Control data: maximum number of blocks per scheme
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DrawMaxBlocksPerScheme { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_DrawMaxFlashSize_" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxFlashSize*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_DrawMaxFlashSize" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxFlashSize">
+  DrawMaxFlashSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[59] Draw Control data: Number of bytes dedicated in the Flash for Draw Control code
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DrawMaxFlashSize { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_DrawMaxParamsPerBlocks_" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxParamsPerBlocks*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_DrawMaxParamsPerBlocks" data-uid="AAComm.Services.ControllerIdentityContainer.DrawMaxParamsPerBlocks">
+  DrawMaxParamsPerBlocks
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[57] Draw Control data: maximum number of parameters per block
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DrawMaxParamsPerBlocks { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_DrawNumOfSchemes_" data-uid="AAComm.Services.ControllerIdentityContainer.DrawNumOfSchemes*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_DrawNumOfSchemes" data-uid="AAComm.Services.ControllerIdentityContainer.DrawNumOfSchemes">
+  DrawNumOfSchemes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[58] Draw Control data: number of schemes
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DrawNumOfSchemes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_FIFOPositionTrackingSize_" data-uid="AAComm.Services.ControllerIdentityContainer.FIFOPositionTrackingSize*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_FIFOPositionTrackingSize" data-uid="AAComm.Services.ControllerIdentityContainer.FIFOPositionTrackingSize">
+  FIFOPositionTrackingSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[55] the size of the FIFO position tracking buffer
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FIFOPositionTrackingSize { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_Features_01_" data-uid="AAComm.Services.ControllerIdentityContainer.Features_01*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_Features_01" data-uid="AAComm.Services.ControllerIdentityContainer.Features_01">
+  Features_01
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides bit-wise interpretation of <a class="xref" href="AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_NewFeatures_01">NewFeatures_01</a> flags</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ControllerIdentityFeature_01 Features_01 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_01.html">ControllerIdentityFeature_01</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_Features_02_" data-uid="AAComm.Services.ControllerIdentityContainer.Features_02*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_Features_02" data-uid="AAComm.Services.ControllerIdentityContainer.Features_02">
+  Features_02
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides bit-wise interpretation of <a class="xref" href="AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_NewFeatures_02">NewFeatures_02</a> flags</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ControllerIdentityFeature_02 Features_02 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_02.html">ControllerIdentityFeature_02</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_InBootMode_" data-uid="AAComm.Services.ControllerIdentityContainer.InBootMode*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_InBootMode" data-uid="AAComm.Services.ControllerIdentityContainer.InBootMode">
+  InBootMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>specifies whether the queried controller is in BOOT mode
+</code></pre>
+<p></p>
+<pre><code>determined if reply to Identity requests is with &quot;BOOT&quot;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InBootMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_IsCiMaster_" data-uid="AAComm.Services.ControllerIdentityContainer.IsCiMaster*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_IsCiMaster" data-uid="AAComm.Services.ControllerIdentityContainer.IsCiMaster">
+  IsCiMaster
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>specifies whether the connected controller is of type Ci Master</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCiMaster { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_IsEtherCAT_" data-uid="AAComm.Services.ControllerIdentityContainer.IsEtherCAT*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_IsEtherCAT" data-uid="AAComm.Services.ControllerIdentityContainer.IsEtherCAT">
+  IsEtherCAT
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>specifies whether the connected controller is of type EtherCAT</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEtherCAT { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_ManufacturingDate_" data-uid="AAComm.Services.ControllerIdentityContainer.ManufacturingDate*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_ManufacturingDate" data-uid="AAComm.Services.ControllerIdentityContainer.ManufacturingDate">
+  ManufacturingDate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[6] controller manufacturing date</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManufacturingDate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MaxContCurrent_" data-uid="AAComm.Services.ControllerIdentityContainer.MaxContCurrent*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MaxContCurrent" data-uid="AAComm.Services.ControllerIdentityContainer.MaxContCurrent">
+  MaxContCurrent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[9] controller maximal continuous current</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxContCurrent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MaxDataRecordingPoints_" data-uid="AAComm.Services.ControllerIdentityContainer.MaxDataRecordingPoints*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MaxDataRecordingPoints" data-uid="AAComm.Services.ControllerIdentityContainer.MaxDataRecordingPoints">
+  MaxDataRecordingPoints
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[14] maximum number of recording points supported by controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxDataRecordingPoints { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MaxNumOfRecVectors_" data-uid="AAComm.Services.ControllerIdentityContainer.MaxNumOfRecVectors*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MaxNumOfRecVectors" data-uid="AAComm.Services.ControllerIdentityContainer.MaxNumOfRecVectors">
+  MaxNumOfRecVectors
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[15] maximum number of vectors supported for parallel recording</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxNumOfRecVectors { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MaxPeakCurrent_" data-uid="AAComm.Services.ControllerIdentityContainer.MaxPeakCurrent*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MaxPeakCurrent" data-uid="AAComm.Services.ControllerIdentityContainer.MaxPeakCurrent">
+  MaxPeakCurrent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[10] controller maximal peak current</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPeakCurrent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MaximalBusVoltage_" data-uid="AAComm.Services.ControllerIdentityContainer.MaximalBusVoltage*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MaximalBusVoltage" data-uid="AAComm.Services.ControllerIdentityContainer.MaximalBusVoltage">
+  MaximalBusVoltage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[12] controller maximal bus voltage</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaximalBusVoltage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_MinimalBusVoltage_" data-uid="AAComm.Services.ControllerIdentityContainer.MinimalBusVoltage*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_MinimalBusVoltage" data-uid="AAComm.Services.ControllerIdentityContainer.MinimalBusVoltage">
+  MinimalBusVoltage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[11] controller minimal bus voltage</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MinimalBusVoltage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NewFeatures_01_" data-uid="AAComm.Services.ControllerIdentityContainer.NewFeatures_01*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NewFeatures_01" data-uid="AAComm.Services.ControllerIdentityContainer.NewFeatures_01">
+  NewFeatures_01
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[25] bit-wise value indicating whether certain features are supported
+</code></pre>
+<p></p>
+<pre><code>Use &lt;xref href=&quot;AAComm.Services.ControllerIdentityContainer.Features_01&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for explicit bit-wise interpretation
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NewFeatures_01 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NewFeatures_02_" data-uid="AAComm.Services.ControllerIdentityContainer.NewFeatures_02*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NewFeatures_02" data-uid="AAComm.Services.ControllerIdentityContainer.NewFeatures_02">
+  NewFeatures_02
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[62] bit-wise value indicating whether certain features are supported
+</code></pre>
+<p></p>
+<pre><code>Use &lt;xref href=&quot;AAComm.Services.ControllerIdentityContainer.Features_02&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for explicit bit-wise interpretation
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NewFeatures_02 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NumOfMotorAxes_" data-uid="AAComm.Services.ControllerIdentityContainer.NumOfMotorAxes*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NumOfMotorAxes" data-uid="AAComm.Services.ControllerIdentityContainer.NumOfMotorAxes">
+  NumOfMotorAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>indicates the number of axes that support a motor.
+for example, if Master has 12 axes, and <a class="xref" href="AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_NumOfServoAxes">NumOfServoAxes</a> is 8, axes 'A' to 'H' will support motors</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfMotorAxes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NumOfServoAxes_" data-uid="AAComm.Services.ControllerIdentityContainer.NumOfServoAxes*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NumOfServoAxes" data-uid="AAComm.Services.ControllerIdentityContainer.NumOfServoAxes">
+  NumOfServoAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[23] number of servo axes supported by controller (for Ci Master only)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfServoAxes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NumberOfAxes_" data-uid="AAComm.Services.ControllerIdentityContainer.NumberOfAxes*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NumberOfAxes" data-uid="AAComm.Services.ControllerIdentityContainer.NumberOfAxes">
+  NumberOfAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[16] number of axes supported by controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfAxes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_NumberOfMessages_" data-uid="AAComm.Services.ControllerIdentityContainer.NumberOfMessages*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_NumberOfMessages" data-uid="AAComm.Services.ControllerIdentityContainer.NumberOfMessages">
+  NumberOfMessages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[21] total number of messages supported by controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumberOfMessages { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_PWMMax_" data-uid="AAComm.Services.ControllerIdentityContainer.PWMMax*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_PWMMax" data-uid="AAComm.Services.ControllerIdentityContainer.PWMMax">
+  PWMMax
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[20] controller serial number</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PWMMax { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_PrintfBufferSize_" data-uid="AAComm.Services.ControllerIdentityContainer.PrintfBufferSize*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_PrintfBufferSize" data-uid="AAComm.Services.ControllerIdentityContainer.PrintfBufferSize">
+  PrintfBufferSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[73] the size of the printf byte buffer in the controller
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PrintfBufferSize { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_PrintfDescriptorSize_" data-uid="AAComm.Services.ControllerIdentityContainer.PrintfDescriptorSize*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_PrintfDescriptorSize" data-uid="AAComm.Services.ControllerIdentityContainer.PrintfDescriptorSize">
+  PrintfDescriptorSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Identity[74] the number of printf descriptors supported by the controller
+</code></pre>
+<p></p>
+<pre><code>('-1' if not supported or not applicable)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PrintfDescriptorSize { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_ProductType_" data-uid="AAComm.Services.ControllerIdentityContainer.ProductType*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_ProductType" data-uid="AAComm.Services.ControllerIdentityContainer.ProductType">
+  ProductType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[1] controller type. 5=AG300, 6=Ci Master, etc. (refer to product documentation)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ProductType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_SerialNumber_" data-uid="AAComm.Services.ControllerIdentityContainer.SerialNumber*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_SerialNumber" data-uid="AAComm.Services.ControllerIdentityContainer.SerialNumber">
+  SerialNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[2] controller serial number: Concatenation of {Year - 2 digits, Week - 2 digits, # of Controllers - 4 digits}</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SerialNumber { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_TesterCode_" data-uid="AAComm.Services.ControllerIdentityContainer.TesterCode*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_TesterCode" data-uid="AAComm.Services.ControllerIdentityContainer.TesterCode">
+  TesterCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[7] tester code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TesterCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_UP_DepthOfNumStack_" data-uid="AAComm.Services.ControllerIdentityContainer.UP_DepthOfNumStack*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_UP_DepthOfNumStack" data-uid="AAComm.Services.ControllerIdentityContainer.UP_DepthOfNumStack">
+  UP_DepthOfNumStack
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[19] depth of numerical stack supported by controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UP_DepthOfNumStack { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_UP_NumOfThreads_" data-uid="AAComm.Services.ControllerIdentityContainer.UP_NumOfThreads*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_UP_NumOfThreads" data-uid="AAComm.Services.ControllerIdentityContainer.UP_NumOfThreads">
+  UP_NumOfThreads
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[18] number of user-program threads supported by controller</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UP_NumOfThreads { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_UnitStat_" data-uid="AAComm.Services.ControllerIdentityContainer.UnitStat*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_UnitStat" data-uid="AAComm.Services.ControllerIdentityContainer.UnitStat">
+  UnitStat
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Indicates that the connected unit has a faulty/mismatched/old FW/FPGA images
+</code></pre>
+<p></p>
+<pre><code>Also can indicate a 'Golden' image is missing
+</code></pre>
+<p></p>
+<pre><code>Enabling motors will be blocked and in general, the unit behavior is unexpected
+</code></pre>
+<p></p>
+<pre><code>Please download correct FW/FPGA files, and/or contact Agito support
+</code></pre>
+<p></p>
+<pre><code>Please contact Agito for bit-wise interpretation of the UnitStat flags.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UnitStat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_Versions_" data-uid="AAComm.Services.ControllerIdentityContainer.Versions*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_Versions" data-uid="AAComm.Services.ControllerIdentityContainer.Versions">
+  Versions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L183"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides controller versions information: FW, FPGA, CM, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ControllerIdentityVersions Versions { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerIdentityVersions.html">ControllerIdentityVersions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_Clear_" data-uid="AAComm.Services.ControllerIdentityContainer.Clear*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_Clear" data-uid="AAComm.Services.ControllerIdentityContainer.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>clears all container fields to (0) default value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_DefaultSamplingRate_" data-uid="AAComm.Services.ControllerIdentityContainer.DefaultSamplingRate*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_DefaultSamplingRate_System_Int32_" data-uid="AAComm.Services.ControllerIdentityContainer.DefaultSamplingRate(System.Int32)">
+  DefaultSamplingRate(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>default sampling rate by controller type <a class="xref" href="AAComm.Shared.ProductTypes.html">ProductTypes</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int DefaultSamplingRate(int type)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ControllerIdentityContainer_ReadIdentity_" data-uid="AAComm.Services.ControllerIdentityContainer.ReadIdentity*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityContainer_ReadIdentity_AAComm_CommAPI_" data-uid="AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)">
+  ReadIdentity(CommAPI)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L214"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Synchronously reads the Identity data from the controller
+</code></pre>
+<p></p>
+<pre><code>Throws exception if AAComm argument is null or disconnected
+</code></pre>
+<p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConnectResult ReadIdentity(CommAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>API instance, must be connected</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.ConnectResult.html">ConnectResult</a></dt>
+    <dd><p>operation result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityContainer.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AACommMnemonicHelper | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AACommMnemonicHelper | Agito AAComm SDK ">
+      
+      <meta name="description" content="SDK helper for controller-message string manipulation: axis letters, mnemonics, array indexes and assignment separation, plus ordinal-ignore-case string helpers.   Controller messages have the shape &amp;lt;code&amp;gt;&amp;lt;axis-letter&amp;gt;&amp;lt;Mnemonic&amp;gt;[index]=value&amp;lt;/code&amp;gt; (e.g. &amp;lt;code&amp;gt;&amp;quot;APos&amp;quot;&amp;lt;/code&amp;gt;, &amp;lt;code&amp;gt;&amp;quot;BGain[3]=5&amp;quot;&amp;lt;/code&amp;gt;).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_AACommMnemonicHelper.md&amp;value=---%0Auid%3A%20AAComm.Services.AACommMnemonicHelper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.AACommMnemonicHelper">
+
+
+
+  <h1 id="AAComm_Services_AACommMnemonicHelper" data-uid="AAComm.Services.AACommMnemonicHelper" class="text-break">
+Class AACommMnemonicHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><pre><code>SDK helper for controller-message string manipulation: axis letters, mnemonics,
+array indexes and assignment separation, plus ordinal-ignore-case string helpers.
+</code></pre>
+<p></p>
+<pre><code>Controller messages have the shape &lt;code&gt;&lt;axis-letter&gt;&lt;Mnemonic&gt;[index]=value&lt;/code&gt;
+(e.g. &lt;code&gt;&quot;APos&quot;&lt;/code&gt;, &lt;code&gt;&quot;BGain[3]=5&quot;&lt;/code&gt;).
+</code></pre>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class AACommMnemonicHelper</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AACommMnemonicHelper</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_AAxis" data-uid="AAComm.Services.AACommMnemonicHelper.AAxis">
+  AAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>the 'first' controller Axis letter, upper case</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char AAxis = &#39;A&#39;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ActiveAxis" data-uid="AAComm.Services.AACommMnemonicHelper.ActiveAxis">
+  ActiveAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>'active axis' placeholder used by host tools (&quot;?&quot; resolves to the currently selected axis)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string ActiveAxis = &quot;?&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_AllAxes" data-uid="AAComm.Services.AACommMnemonicHelper.AllAxes">
+  AllAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>'all axes' wildcard used by host tools ('*' expands to every connected axis)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char AllAxes = &#39;*&#39;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_PAxis" data-uid="AAComm.Services.AACommMnemonicHelper.PAxis">
+  PAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>'Dynamic' axis letter, see ChooseAxis keyword for usage details</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PAxis = &#39;P&#39;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_ArrayIndex_" data-uid="AAComm.Services.AACommMnemonicHelper.ArrayIndex*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ArrayIndex_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.ArrayIndex(System.String)">
+  ArrayIndex(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns '-1' if no index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ArrayIndex(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_ContainsOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.ContainsOIC*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ContainsOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.ContainsOIC(System.String,System.String)">
+  ContainsOIC(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns whether the string contains input arg., StringComparison.OrdinalIgnoreCase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ContainsOIC(this string s, string o)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_EndsWithOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.EndsWithOIC*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_EndsWithOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.EndsWithOIC(System.String,System.String)">
+  EndsWithOIC(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns whether the string ends with input arg., StringComparison.OrdinalIgnoreCase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool EndsWithOIC(this string s, string o)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_EqualsOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.EqualsOIC*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_EqualsOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.EqualsOIC(System.String,System.String)">
+  EqualsOIC(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns whether the string equals input arg., StringComparison.OrdinalIgnoreCase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool EqualsOIC(this string s, string o)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_IndexOfAssignment_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfAssignment*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_IndexOfAssignment_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfAssignment(System.String)">
+  IndexOfAssignment(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns index of '=' or ',' ('-1' if not found)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int IndexOfAssignment(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_IndexOfEquality_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfEquality*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_IndexOfEquality_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfEquality(System.String)">
+  IndexOfEquality(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns index of '=' for assignment ('-1' if not found).
+Skips comparison operators: &lt;=, &gt;=, ==, !=</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int IndexOfEquality(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_IndexOfMnemonicEnd_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_IndexOfMnemonicEnd_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd(System.String)">
+  IndexOfMnemonicEnd(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns index of array or equality character ('[', '=', ',')
+</code></pre>
+<p></p>
+<pre><code>returns -1 if not array or equality
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int IndexOfMnemonicEnd(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_IsAxisInRange_" data-uid="AAComm.Services.AACommMnemonicHelper.IsAxisInRange*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_IsAxisInRange_System_Char_AAComm_Interfaces_IIdentityContainer_" data-uid="AAComm.Services.AACommMnemonicHelper.IsAxisInRange(System.Char,AAComm.Interfaces.IIdentityContainer)">
+  IsAxisInRange(char, IIdentityContainer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns whether the char is a valid axis letter for the connected controller:
+'A'..'A'+NumberOfAxes-1 (case-insensitive), or the 'dynamic' axis &lt;xref href=&quot;AAComm.Services.AACommMnemonicHelper.PAxis&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
+</code></pre>
+<p></p>
+<pre><code>when disconnected (identity reports no axes) or &lt;code class=&quot;paramref&quot;&gt;identity&lt;/code&gt; is null,
+falls back to the theoretical maximum 'A'..'L' (&lt;xref href=&quot;AAComm.CommAPI.MaxTheoreticalNumOfAxes&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; axes)
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAxisInRange(this char axis, IIdentityContainer identity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>identity</code> <a class="xref" href="AAComm.Interfaces.IIdentityContainer.html">IIdentityContainer</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_Mnemonic_" data-uid="AAComm.Services.AACommMnemonicHelper.Mnemonic*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_Mnemonic_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.Mnemonic(System.String)">
+  Mnemonic(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns mnemonic only, no Axis (REMOVES first char!)
+removes index and equality (checks for '[', '=', ',')</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Mnemonic(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_RemoveArrayIndex_" data-uid="AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_RemoveArrayIndex_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex(System.String)">
+  RemoveArrayIndex(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>removes index, doesn't modify the message</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string RemoveArrayIndex(this string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_SeparateArrayIndex_" data-uid="AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_SeparateArrayIndex_System_String_System_String__System_Int32__" data-uid="AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex(System.String,System.String@,System.Int32@)">
+  SeparateArrayIndex(string, out string, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>separates index from message, '-1' if no index (does NOT remove Axis !!!)
+</code></pre>
+<p></p>
+<pre><code>the out parameter 'mnemonic' is the message without the index [...]
+</code></pre>
+<p></p>
+<pre><code>returns false for invalid index format, and for index &lt; 1 !!!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SeparateArrayIndex(this string message, out string mnemonic, out int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_SplitMessage_" data-uid="AAComm.Services.AACommMnemonicHelper.SplitMessage*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_SplitMessage_System_String_System_String__System_String__System_Int32__" data-uid="AAComm.Services.AACommMnemonicHelper.SplitMessage(System.String,System.String@,System.String@,System.Int32@)">
+  SplitMessage(string, out string, out string, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>splits message to Axis, Mnemonic and array Index (disregards assignment '=/,')
+</code></pre>
+<p></p>
+<pre><code>arrIdx is '-1' if no index
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SplitMessage(this string message, out string axis, out string mnemonic, out int arrIdx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>arrIdx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_StartsWithOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.StartsWithOIC*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_StartsWithOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.StartsWithOIC(System.String,System.String)">
+  StartsWithOIC(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns whether the string starts with input arg., StringComparison.OrdinalIgnoreCase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool StartsWithOIC(this string s, string o)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_ToAxis_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxis*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ToAxis_System_Int32_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxis(System.Int32)">
+  ToAxis(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns axis char according to axis index, ZERO-based ('0' -&gt; 'A')
+</code></pre>
+<p></p>
+<pre><code>does NOT check input range!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static char ToAxis(this int axisIdx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axisIdx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_ToAxisChar_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxisChar*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ToAxisChar_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxisChar(System.String)">
+  ToAxisChar(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>returns the upper-case FIRST (axis) char from string, or 'A' if null/empty</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static char ToAxisChar(this string axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMnemonicHelper_ToAxisIdx_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxisIdx*"></a>
+
+  <h3 id="AAComm_Services_AACommMnemonicHelper_ToAxisIdx_System_Char_" data-uid="AAComm.Services.AACommMnemonicHelper.ToAxisIdx(System.Char)">
+  ToAxisIdx(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns axis index according to axis letter, ZERO-based ('A' -&gt; '0')
+</code></pre>
+<p></p>
+<pre><code>does NOT check input axis validity!
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte ToAxisIdx(this char axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

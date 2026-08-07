@@ -122,6 +122,38 @@ that need controller identity metadata without depending on the concrete contain
 </h2>
 
 
+  <a id="AAComm_Interfaces_IIdentityContainer_CurrentLoopSampleRate_" data-uid="AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate*"></a>
+
+  <h3 id="AAComm_Interfaces_IIdentityContainer_CurrentLoopSampleRate" data-uid="AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate">
+  CurrentLoopSampleRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[13] — current-loop sample rate (Hz). Used for recording time-axis math.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CurrentLoopSampleRate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_Interfaces_IIdentityContainer_Features_01_" data-uid="AAComm.Interfaces.IIdentityContainer.Features_01*"></a>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_Features_01" data-uid="AAComm.Interfaces.IIdentityContainer.Features_01">
@@ -146,6 +178,40 @@ behaviours such as the User Program message adapter.</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_01.html">ControllerIdentityFeature_01</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IIdentityContainer_Features_02_" data-uid="AAComm.Interfaces.IIdentityContainer.Features_02*"></a>
+
+  <h3 id="AAComm_Interfaces_IIdentityContainer_Features_02" data-uid="AAComm.Interfaces.IIdentityContainer.Features_02">
+  Features_02
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Bit-wise interpretation of the controller's &quot;New Features 2&quot; identity word.
+Carries advanced-recording / 64-bit / AllStat capability flags consumed by the
+recording pipeline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ControllerIdentityFeature_02 Features_02 { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.ControllerIdentityFeature_02.html">ControllerIdentityFeature_02</a></dt>
     <dd></dd>
   </dl>
 
@@ -210,6 +276,70 @@ behaviours such as the User Program message adapter.</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IIdentityContainer_MaxDataRecordingPoints_" data-uid="AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints*"></a>
+
+  <h3 id="AAComm_Interfaces_IIdentityContainer_MaxDataRecordingPoints" data-uid="AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints">
+  MaxDataRecordingPoints
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[14] — maximum number of recording points the controller supports.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MaxDataRecordingPoints { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IIdentityContainer_MaxNumOfRecVectors_" data-uid="AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors*"></a>
+
+  <h3 id="AAComm_Interfaces_IIdentityContainer_MaxNumOfRecVectors" data-uid="AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors">
+  MaxNumOfRecVectors
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity[15] — maximum number of vectors supported for parallel recording.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MaxNumOfRecVectors { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

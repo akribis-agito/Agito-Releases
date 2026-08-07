@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_ScopeDataContainer" data-uid="AAComm.Extensions.RecData.ScopeDataContainer" class="text-break">
-Class ScopeDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L33"><i class="bi bi-code-slash"></i></a>
+Class ScopeDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -161,9 +161,9 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
 
   <a id="AAComm_Extensions_RecData_ScopeDataContainer__ctor_" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.#ctor*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_ScopeDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)">
-  ScopeDataContainer(AACommEventArgs, IReadOnlyList&lt;MessageData&gt;, CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_ScopeDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_Interfaces_ICommService_System_Char___" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])">
+  ScopeDataContainer(AACommEventArgs, IReadOnlyList&lt;MessageData&gt;, ICommService, char[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parses a ScopeUpload response and resolves floating-point values.</p>
@@ -171,7 +171,7 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ScopeDataContainer(AACommEventArgs e, IReadOnlyList&lt;MessageData&gt; signalsData, CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public ScopeDataContainer(AACommEventArgs e, IReadOnlyList&lt;MessageData&gt; signalsData, ICommService api, char[] signalAxes)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -182,8 +182,11 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
     <dt><code>signalsData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>&gt;</dt>
     <dd><p>per-signal MessageData for floating-point resolution, matching the scope signal order</p>
 </dd>
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
-    <dd><p>connected CommAPI instance (used for double-precision support detection)</p>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd><p>connected comm service (used for double-precision support detection)</p>
+</dd>
+    <dt><code>signalAxes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
+    <dd><p>per-signal axis characters for User Units resolution, matching the scope signal order</p>
 </dd>
   </dl>
 
@@ -206,7 +209,7 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
 
   <h3 id="AAComm_Extensions_RecData_ScopeDataContainer_Data" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.Data">
   Data
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Per-signal list of data points, ordered by signal index as defined in the scope configuration.
@@ -242,7 +245,7 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
 
   <h3 id="AAComm_Extensions_RecData_ScopeDataContainer_NumOfSignals" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.NumOfSignals">
   NumOfSignals
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of signals in the scope configuration</p>
@@ -274,7 +277,7 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
 
   <h3 id="AAComm_Extensions_RecData_ScopeDataContainer_PointsPerPacket" data-uid="AAComm.Extensions.RecData.ScopeDataContainer.PointsPerPacket">
   PointsPerPacket
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of data points per signal in this response</p>
@@ -306,7 +309,7 @@ Data is organized per-signal: &lt;xref href=&quot;AAComm.Extensions.RecData.Scop
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L33" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/ScopeDataContainer.cs/#L34" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum ConnectResult | Agito AAComm SDK ">
       
-      <meta name="description" content="enum to indicate the result of calling AAComm functions   shared enum for AAComm and AACommNative!">
+      <meta name="description" content="enum to indicate the result of calling AAComm functions.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -90,7 +90,7 @@
 
 
   <h1 id="AAComm_Shared_ConnectResult" data-uid="AAComm.Shared.ConnectResult" class="text-break">
-Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L109"><i class="bi bi-code-slash"></i></a>
+Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,11 +98,7 @@ Enum ConnectResult  <a class="header-action link-secondary" title="View source" 
   <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><pre><code>enum to indicate the result of calling AAComm functions
-</code></pre>
-<p></p>
-<pre><code>shared enum for AAComm and AACommNative!
-</code></pre>
+  <div class="markdown summary"><p>enum to indicate the result of calling AAComm functions.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -185,7 +181,13 @@ surfaced via &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if
 </dd>
     <dt id="AAComm_Shared_ConnectResult_CANLibMissing"><code>CANLibMissing = 17</code></dt>
   
-  <dd><p>17 - environment error - canlibCLSNET.dll CAN library is missing</p>
+  <dd><p>17 - environment error - the native Kvaser CAN library (canlib32.dll) is missing or failed to load</p>
+</dd>
+    <dt id="AAComm_Shared_ConnectResult_CanNotConnected"><code>CanNotConnected = 48</code></dt>
+  
+  <dd><p>48 - connection error - no Kvaser CAN device detected on the AACommServer host (canlib
+enumerates only virtual channels). Distinct from <a class="xref" href="AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_CANLibMissing">CANLibMissing</a> (the canlib
+driver is absent) — here the driver is present but no physical Kvaser interface is connected.</p>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_ChannelInExclusiveCommsMode"><code>ChannelInExclusiveCommsMode = 33</code></dt>
   
@@ -318,6 +320,23 @@ surfaced via &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if
   
   <dd><p>5 - the connection channel specified in ConnectionData is unavailable</p>
 </dd>
+    <dt id="AAComm_Shared_ConnectResult_ServerNotBinaryCapable"><code>ServerNotBinaryCapable = 47</code></dt>
+  
+  <dd><p>47 - internal negotiation signal (NOT user-facing): a binary Open got no handshake
+ack, so the server is a legacy ASCII-only build. Consumed by
+<span class="xref">AAComm.Internal.Lifecycle.ConnectionOrchestrator</span> to fall back to ASCII on a
+fresh socket; never returned from a public Connect.</p>
+</dd>
+    <dt id="AAComm_Shared_ConnectResult_SimLaunchFailed"><code>SimLaunchFailed = 49</code></dt>
+  
+  <dd><p>49 - Managed simulation: the firmware_sim executable could not be launched
+(missing/invalid path, or the process failed to start).</p>
+</dd>
+    <dt id="AAComm_Shared_ConnectResult_SimNoPort"><code>SimNoPort = 50</code></dt>
+  
+  <dd><p>50 - Managed simulation: firmware_sim started but did not announce its
+loopback port (&quot;PORT=&lt;n&gt;&quot;) within the timeout.</p>
+</dd>
     <dt id="AAComm_Shared_ConnectResult_SimNotEnabled"><code>SimNotEnabled = 26</code></dt>
   
   <dd><p>26 - connection error - 'Simulation' mode isn't enabled in AACommServer</p>
@@ -337,7 +356,7 @@ surfaced via &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L109" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L119" class="edit-link">Edit this page</a>
         </div>
 
 

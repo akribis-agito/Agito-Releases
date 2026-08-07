@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Python Bindings (AACommPy) | Agito AAComm SDK </title>
+      <title>Python Client (AACommPy) | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Python Bindings (AACommPy) | Agito AAComm SDK ">
+      <meta name="title" content="Python Client (AACommPy) | Agito AAComm SDK ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -71,132 +71,198 @@
         </div>
 
         <article data-uid="getting-started-aacommpy">
-<h1 id="aacommpy">AACommPy</h1>
+<h1 id="aacommpy">aacommpy</h1>
 
-<p>Python wrapper for the <strong>Agito AAComm</strong> .NET communication library. Provides full access to AAComm's motion controller API with IDE IntelliSense support.</p>
-<h2 id="requirements">Requirements</h2>
-<ul>
-<li>Python &gt;= 3.10</li>
-<li>Windows (Linux support planned)</li>
-<li>.NET Framework 4.8 and/or .NET 6.0/8.0 runtime</li>
-</ul>
-<h2 id="installation">Installation</h2>
+<p>A small, Pythonic, <strong>runtime-free</strong> client for Agito <strong>AAComm</strong> motion controllers.</p>
+<p><code>aacommpy</code> drives a controller through the native <code>aacomm.*</code> C library and a bundled native
+<code>AACommServerNative</code> daemon — both NativeAOT, <strong>zero .NET runtime, no Python.NET, no NuGet</strong>. <code>pip install</code> and connect.</p>
+<pre><code class="lang-python">import aacommpy
+from aacommpy import Ethernet
+
+with aacommpy.connect(Ethernet(&quot;172.1.1.101&quot;)) as c:
+    print(c.query(&quot;AIdentity[1]&quot;).text)   # controller type, e.g. &quot;10&quot;
+    print(c.get(&quot;APos&quot;))                  # parameter value as a number
+    c.set(&quot;AVel[1]&quot;, 1000)                # assign a parameter
+    fut = c.send(&quot;AReset&quot;)                # async -&gt; concurrent.futures.Future
+    fut.result(timeout=15)
+    c.on_push(lambda msg: print(&quot;push:&quot;, msg))
+</code></pre>
+<h2 id="install">Install</h2>
 <pre><code class="lang-bash">pip install aacommpy
 </code></pre>
-<p>The AAComm NuGet package is downloaded automatically on first import.</p>
-<p>To install a specific AAComm version manually:</p>
-<pre><code class="lang-bash">aacommpy install --version 11.1.0
-</code></pre>
-<h2 id="quick-start">Quick Start</h2>
-<pre><code class="lang-python">from aacommpy import CommAPI, Services, Shared, AACOMM_SERVER_EXE_PATH
-
-# Start server
-CommAPI.StartAACommServer(AACOMM_SERVER_EXE_PATH)
-
-# Configure connection
-api = CommAPI()
-cData = Services.ConnectionData()
-cData.ControllerType = Shared.ProductTypes.AGM800_ID
-cData.CommChannelType = Shared.ChannelType.Ethernet
-cData.ET_IP_1 = 172
-cData.ET_IP_2 = 1
-cData.ET_IP_3 = 1
-cData.ET_IP_4 = 101
-cData.ET_Port = 50000
-
-# Connect
-result = api.Connect(cData)
-print(f&quot;Connected: {api.IsConnected}&quot;)
-
-# Communicate
-msg = Services.AACommMessage()
-msg.MessageStr = &quot;ASpeed&quot;
-reply = api.SendReceive(msg)
-print(f&quot;Speed: {reply.ReplyStr}&quot;)
-
-# Disconnect
-api.Disconnect()
-api.CloseAACommServer(False)
-</code></pre>
-<h2 id="net-framework-selection">.NET Framework Selection</h2>
-<p>AAComm supports multiple .NET targets. Switch with:</p>
-<pre><code class="lang-bash">aacommpy dotnetfw --netfw net48    # .NET Framework 4.8 (default)
-aacommpy dotnetfw --netfw net6.0   # .NET 6.0
-aacommpy dotnetfw --netfw net8.0   # .NET 8.0
-</code></pre>
-<p>The runtime (netfx or coreclr) is configured automatically based on your selection.</p>
-<p>Check installed .NET versions:</p>
-<pre><code class="lang-bash">aacommpy dotnetfw --check
-</code></pre>
-<h2 id="cli-commands">CLI Commands</h2>
+<p>Platform wheels bundle the native library (<code>aacomm.dll</code> / <code>libaacomm.so</code>) <strong>and</strong> the AACS daemon
+(<code>AACommServerNative</code>), so there is nothing else to install — no .NET, no server setup. (win-x64
+first; other platforms as their wheels land.)</p>
+<h2 id="api">API</h2>
 <table>
 <thead>
 <tr>
-<th>Command</th>
-<th>Description</th>
+<th>Call</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>aacommpy install [--version X.Y.Z]</code></td>
-<td>Download and install AAComm NuGet package</td>
+<td><code>connect(conn, *, server=None, default_timeout_ms=0) -&gt; Client</code></td>
+<td>Start the bundled daemon, connect, return a context-managed <code>Client</code>. Raises on failure.</td>
 </tr>
 <tr>
-<td><code>aacommpy version</code></td>
-<td>Show installed AAComm version</td>
+<td><code>Ethernet(ip, port=0)</code> · <code>Serial(port, baud=0)</code> · <code>Can(node, channel=0, baud=0)</code></td>
+<td>Connection configs.</td>
 </tr>
 <tr>
-<td><code>aacommpy update</code></td>
-<td>Update to latest AAComm version</td>
+<td><code>Client.query(message, timeout_ms=None) -&gt; Reply</code></td>
+<td>Synchronous send/receive.</td>
 </tr>
 <tr>
-<td><code>aacommpy dotnetfw --netfw {net48,net6.0,net8.0}</code></td>
-<td>Switch .NET target framework</td>
+<td><code>Client.send(message, timeout_ms=None) -&gt; Future[Reply]</code></td>
+<td>Asynchronous send; the <code>Future</code> resolves with the reply.</td>
 </tr>
 <tr>
-<td><code>aacommpy dotnetfw --check</code></td>
-<td>List installed .NET runtimes</td>
+<td><code>Client.get(param) -&gt; int\|float</code> · <code>Client.set(param, value) -&gt; Reply</code></td>
+<td>Convenience get/set over <code>query</code>.</td>
+</tr>
+<tr>
+<td><code>Client.identity(index=1) -&gt; Reply</code></td>
+<td><code>AIdentity[index]</code> (default <code>[1]</code> = controller type).</td>
+</tr>
+<tr>
+<td><code>Client.record(params, duration_s, gap_ms, triggers, *, force=False, trigger_mode=2, trigger_position=0, logic01=0, logic12=0, timeout_ms=10000) -&gt; Recording</code></td>
+<td>Capture a controller data recording. Needs ≥1 <code>Trigger</code>; <code>force=True</code> completes immediately; <code>timeout_ms</code> bounds the wait-for-completion poll (default 10 s).</td>
+</tr>
+<tr>
+<td><code>Client.download_firmware(conn, fw_path, *, ver_path=None, password=&quot;160412&quot;, verify_currents=False, target=0, timeout_ms=180000, on_progress=None)</code></td>
+<td>Flash firmware; blocks until done. Ethernet (AGM800) / RS-232 only — never CAN.</td>
+</tr>
+<tr>
+<td><code>Client.download_fpga(conn, fpga_path, ver_path, *, password=&quot;160412&quot;, timeout_ms=180000, on_progress=None)</code></td>
+<td>Flash FPGA (<code>ver_path</code> required); blocks until done. RS-232 / Ethernet, non-AGM800, normal mode.</td>
+</tr>
+<tr>
+<td><code>Client.download_user_program(path, *, timeout_ms=180000, on_progress=None)</code></td>
+<td>Download a compiled user program to the <strong>already-connected</strong> controller; blocks until done.</td>
+</tr>
+<tr>
+<td><code>Client.get_user_units_enabled(axis) -&gt; bool</code> · <code>set_user_units_enabled(axis, enabled)</code></td>
+<td>Query / request per-axis user-units enable (e.g. <code>axis=&quot;A&quot;</code>).</td>
+</tr>
+<tr>
+<td><code>Client.on_push / on_error / on_longop_started / on_longop_ended(cb)</code></td>
+<td>Register session-event callbacks.</td>
+</tr>
+<tr>
+<td><code>Client.test_connection(conn) -&gt; ConnectResult</code> · <code>connect</code> · <code>disconnect</code> · <code>is_connected</code> · <code>close_server</code> · <code>close</code></td>
+<td>Explicit lifecycle.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="intellisense">IntelliSense</h2>
-<p>AACommPy ships with type stubs (<code>.pyi</code>) for full IDE autocomplete and type checking. Supported in VS Code (Pylance), Visual Studio, and PyCharm.</p>
-<p>To regenerate stubs after updating AAComm:</p>
-<pre><code class="lang-bash">python generate_stubs.py
+<h3 id="recording">Recording</h3>
+<pre><code class="lang-python">import aacommpy
+from aacommpy import Ethernet, Trigger
+
+with aacommpy.connect(Ethernet(&quot;172.1.1.101&quot;)) as c:
+    rec = c.record(
+        [&quot;APos&quot;, &quot;AVel[1]&quot;], duration_s=0.05, gap_ms=1.0,
+        triggers=[Trigger(source=&quot;APos&quot;, type=5, value=0.0, mask=-1)],
+        force=True,                    # complete immediately; the condition is irrelevant
+    )
+    print(rec.rec_length, rec.sample_rate_hz)
+    print(rec[&quot;APos&quot;].values)          # samples for one vector
+    print(rec.time_s)                  # shared time axis, seconds
 </code></pre>
-<h2 id="api-reference">API Reference</h2>
-<p>The package exposes these AAComm namespaces:</p>
-<table>
-<thead>
-<tr>
-<th>Import</th>
-<th>Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CommAPI</code></td>
-<td>Main communication API (connect, send, receive, disconnect)</td>
-</tr>
-<tr>
-<td><code>CommAPIWrapper</code></td>
-<td>Singleton wrapper for single-client usage</td>
-</tr>
-<tr>
-<td><code>Services</code></td>
-<td><code>ConnectionData</code>, <code>AACommMessage</code>, <code>AllStatInterpreter</code>, <code>ControllerMessagesContainer</code>, ...</td>
-</tr>
-<tr>
-<td><code>Shared</code></td>
-<td><code>ChannelType</code>, <code>ProductTypes</code>, <code>ConnectResult</code>, <code>MessageType</code>, ...</td>
-</tr>
-<tr>
-<td><code>Extensions</code></td>
-<td><code>AACommDownloadFW</code>, <code>AACommDownloadUP</code>, <code>AACommDownloadFPGA</code>, data recording, ...</td>
-</tr>
-</tbody>
-</table>
-<p>All types are .NET objects accessed via <a href="https://github.com/pythonnet/pythonnet">pythonnet</a>. See the AAComm documentation for full API details.</p>
+<p>A recording always needs at least one <code>Trigger</code> — <code>type</code>/<code>mask</code> are raw controller values
+(<code>RecTrigTyp</code>/<code>RecTrigMask</code>), <code>value</code>/<code>max_value</code> are in user units. <code>force=True</code> drives completion
+via a forced trigger regardless of the condition; omit it to wait for the condition to fire (up to
+<code>timeout_ms</code>). Multi-trigger logic (serial/logical, <code>trigger_mode</code>/<code>logic01</code>/<code>logic12</code>) mirrors the
+controller's RecData trigger model. The parse, float resolution, and user-unit scaling are done in the
+managed engine — the result <code>Recording</code> carries per-vector <code>Vector</code>s already in user units.</p>
+<h3 id="firmware-download">Firmware download</h3>
+<pre><code class="lang-python">import aacommpy
+from aacommpy import Ethernet
+
+c = aacommpy.Client()
+try:
+    c.start_server()
+    c.download_firmware(
+        Ethernet(&quot;172.1.1.101&quot;), r&quot;C:\fw\AGM800-3.8.0.0.bin&quot;,
+        on_progress=lambda permille, status: print(status or f&quot;{permille/10:.0f}%&quot;),
+    )
+finally:
+    c.close()
+</code></pre>
+<p>The session must <strong>not</strong> be connected — the engine opens its own connection and leaves it
+disconnected. The controller type is auto-discovered so the AGM800 <code>.bin</code> path is chosen (pass
+<code>controller_type=</code> on the connection if the controller may be in BOOT mode). <code>ver_path</code> is the
+optional <code>.ver</code> validation file (AGM800 flashes without it). Runs over <strong>Ethernet (AGM800)</strong> or
+<strong>RS-232</strong> — CAN is rejected. <code>download_firmware</code> blocks until the flash completes (default 3-minute
+bound) and raises <code>AACommError</code> on any failure; <code>on_progress</code> reports <code>permille</code> 0–1000 (status
+lines arrive with <code>permille == -1</code>). <strong>Destructive</strong> — it reboots the controller.</p>
+<h3 id="fpga-download">FPGA download</h3>
+<p><code>download_fpga(conn, fpga_path, ver_path, ...)</code> is the FPGA counterpart with the same disconnected-
+session contract, progress callback, and blocking semantics. Differences: the <code>.ver</code> companion
+(<code>ver_path</code>) is <strong>required</strong> (it carries the algo/data sizes, CRC and product type), there is no
+<code>verify_currents</code>/<code>target</code>, and FPGA download runs over <strong>RS-232</strong> or <strong>Ethernet</strong> (default IP only) —
+never CAN, never AGM800 — and requires <strong>normal (non-BOOT)</strong> mode. <strong>Destructive</strong> — it resets the
+controller.</p>
+<h3 id="user-program-download">User-program download</h3>
+<pre><code class="lang-python">import aacommpy
+from aacommpy import Serial
+
+with aacommpy.connect(Serial(&quot;COM4&quot;)) as c:   # must already be connected — unlike FW/FPGA
+    c.download_user_program(r&quot;C:\up\program.cupb2&quot;)
+</code></pre>
+<p><code>download_user_program(path, ...)</code> downloads a compiled user program (<code>.cupb2</code>). <strong>Unlike</strong> firmware/FPGA
+it takes <strong>no <code>Connection</code></strong> and the client must <strong>already be connected</strong> — the engine uses the live
+session and rejects a disconnected one. Binary auto-detect plus file-version and target-firmware match
+are validated in the engine: the program must be compiled for the connected controller's firmware
+version. Same progress callback and blocking semantics (default 3-minute bound); raises <code>AACommError</code> on
+any failure. <strong>Non-destructive</strong> — a user program is reversible.</p>
+<h3 id="user-units">User units</h3>
+<p><code>get_user_units_enabled(axis)</code> / <code>set_user_units_enabled(axis, enabled)</code> query and toggle the controller's
+per-axis user-units scaling (<code>axis</code> is a letter, e.g. <code>&quot;A&quot;</code>). The connect handshake reads the user-units
+data, so the getter is a local read of that cache — <code>False</code> when the feature is unsupported, the session is
+disconnected, or user units are being ignored. The setter is confirmed asynchronously by the controller, so
+re-query the getter for the applied state.</p>
+<h3 id="errors-and-replies-the-requests-model">Errors and replies (the <code>requests</code> model)</h3>
+<ul>
+<li><strong>Transport / lifecycle failures raise</strong> — <code>connect</code>/<code>start_server</code> raise <code>ConnectionError</code> /
+<code>ServerError</code> (subclasses of <code>AACommError</code>).</li>
+<li><strong>A controller <code>ERR NN</code> reply is data, not an exception.</strong> <code>query</code>/<code>send</code> return a <code>Reply</code> you
+inspect (<code>reply.is_error</code>, <code>reply.text</code>); call <code>reply.raise_for_error()</code> to opt into
+a <code>ControllerError</code>. <code>get</code>/<code>set</code> call it for you (they must return a value). A <code>Reply</code> is falsy when
+it is an error, so <code>if c.query(m):</code> works.</li>
+</ul>
+<h2 id="development-running-from-source-no-wheel">Development (running from source, no wheel)</h2>
+<p>The native binaries aren't checked in. Point the package at your local NativeAOT publishes:</p>
+<pre><code class="lang-powershell">$env:PYTHONPATH    = &quot;&lt;repo&gt;/AACommComponents/AACommPy&quot;
+$env:AACOMM_LIB    = &quot;&lt;repo&gt;/AACommComponents/AACommNative/bin/Release/net8.0/win-x64/publish/AACommNative.dll&quot;
+$env:AACOMM_SERVER = &quot;&lt;repo&gt;/AACommComponents/AACommServerNative/bin/Release/net10.0/win-x64/publish/AACommServerNative.exe&quot;
+python -c &quot;import aacommpy; from aacommpy import Ethernet; print(aacommpy.connect(Ethernet('172.1.1.101')).query('AIdentity[1]').text)&quot;
+</code></pre>
+<p><code>AACOMM_LIB</code> / <code>AACOMM_SERVER</code> override the bundled binaries; <code>AACOMM_NATIVE_DIR</code> overrides the whole
+bundle directory. Build the two native artifacts per <code>../AACommNative/packaging/README.md</code> and
+<code>../AACommServerNative/README.md</code>.</p>
+<h3 id="building-a-wheel">Building a wheel</h3>
+<p><code>packaging/build-wheel.ps1</code> publishes both native artifacts, drops them in <code>aacommpy/_bundle/</code>, and
+builds a platform wheel.</p>
+<h2 id="tests">Tests</h2>
+<pre><code class="lang-bash">pip install pytest
+pytest aacommpy/tests -m &quot;not hardware&quot;        # pure-Python unit tests, no hardware
+# hardware smoke (needs the rig + native binaries via the env vars above):
+$env:AACOMM_HARDWARE_IP=&quot;172.1.1.101&quot;; pytest aacommpy/tests -m hardware
+</code></pre>
+<h2 id="notes--not-yet-in-v1">Notes / not yet in v1</h2>
+<ul>
+<li>Firmware, FPGA, and user-program download are supported: <code>Client.download_firmware(conn, fw_path)</code>,
+<code>Client.download_fpga(conn, fpga_path, ver_path)</code> (Ethernet / RS-232; never CAN), and
+<code>Client.download_user_program(path)</code> (on an already-connected client).</li>
+<li>linux/macOS wheels and a CLI are roadmap items.</li>
+</ul>
+<h2 id="migrating-from-1x">Migrating from 1.x</h2>
+<p>2.0 is a clean break: the old pythonnet/.NET object model (<code>CommAPI</code>, <code>Services.ConnectionData</code>,
+<code>Shared.ChannelType</code>, <code>AACommMessage</code>) is gone. Replace <code>api.SendReceive(AACommMessage(&quot;APos&quot;))</code> with
+<code>c.query(&quot;APos&quot;)</code>, <code>Services.ConnectionData()</code> field-setting with <code>Ethernet(...)</code>/<code>Serial(...)</code>/<code>Can(...)</code>,
+and <code>.MsgReceived</code> with <code>Reply.text</code>. No <code>install</code>/<code>dotnetfw</code> CLI — there is no .NET to manage.</p>
 
 </article>
 

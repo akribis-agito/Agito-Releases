@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Services_MessageData" data-uid="AAComm.Services.MessageData" class="text-break">
-Class MessageData  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class MessageData  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -141,6 +141,34 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueInt_AAComm_Services_MessageData_">MessageDataValueExtensions.DefaultValueInt(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueLong_AAComm_Services_MessageData_">MessageDataValueExtensions.DefaultValueLong(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueInt_AAComm_Services_MessageData_">MessageDataValueExtensions.MaxValueInt(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueLong_AAComm_Services_MessageData_">MessageDataValueExtensions.MaxValueLong(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueStr_AAComm_Services_MessageData_">MessageDataValueExtensions.MaxValueStr(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueInt_AAComm_Services_MessageData_">MessageDataValueExtensions.MinValueInt(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueLong_AAComm_Services_MessageData_">MessageDataValueExtensions.MinValueLong(MessageData)</a>
+  </div>
+  <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueStr_AAComm_Services_MessageData_">MessageDataValueExtensions.MinValueStr(MessageData)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -154,7 +182,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_CANCode" data-uid="AAComm.Services.MessageData.CANCode">
   CANCode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>message CAN code, i.e 24 for PosRef</p>
@@ -186,10 +214,10 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_DefaultValue" data-uid="AAComm.Services.MessageData.DefaultValue">
   DefaultValue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>default value, see also <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueInt">DefaultValueInt</a></p>
+  <div class="markdown level1 summary"><p>does NOT account for User Units <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_UserUnits">UserUnits</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -214,111 +242,11 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
 
 
-  <a id="AAComm_Services_MessageData_DefaultValueInt_" data-uid="AAComm.Services.MessageData.DefaultValueInt*"></a>
-
-  <h3 id="AAComm_Services_MessageData_DefaultValueInt" data-uid="AAComm.Services.MessageData.DefaultValueInt">
-  DefaultValueInt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L142"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>default parameter value (rounded 32 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int DefaultValueInt { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_DefaultValueLong_" data-uid="AAComm.Services.MessageData.DefaultValueLong*"></a>
-
-  <h3 id="AAComm_Services_MessageData_DefaultValueLong" data-uid="AAComm.Services.MessageData.DefaultValueLong">
-  DefaultValueLong
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L155"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>default parameter value (rounded 64 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long DefaultValueLong { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_DefaultValueStr_" data-uid="AAComm.Services.MessageData.DefaultValueStr*"></a>
-
-  <h3 id="AAComm_Services_MessageData_DefaultValueStr" data-uid="AAComm.Services.MessageData.DefaultValueStr">
-  DefaultValueStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L171"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><pre><code>string representation of the default value according to the parameter type
-</code></pre>
-<p></p>
-<pre><code>may contain commas or EXP notation!
-</code></pre>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DefaultValueStr { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="AAComm_Services_MessageData_DynamicPtr_" data-uid="AAComm.Services.MessageData.DynamicPtr*"></a>
 
   <h3 id="AAComm_Services_MessageData_DynamicPtr" data-uid="AAComm.Services.MessageData.DynamicPtr">
   DynamicPtr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>dynamic value, applicable to Ci Master controller type</p>
@@ -350,7 +278,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ExtendedInfo" data-uid="AAComm.Services.MessageData.ExtendedInfo">
   ExtendedInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L126"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>extended parameter information: indexes, bit-wise (NULL if NA)</p>
@@ -382,7 +310,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_Implemented" data-uid="AAComm.Services.MessageData.Implemented">
   Implemented
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>DEPRECATED!!! is implemented</p>
@@ -414,7 +342,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_InUserUnits" data-uid="AAComm.Services.MessageData.InUserUnits">
   InUserUnits
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is in User Units</p>
@@ -446,7 +374,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_Is64_bit" data-uid="AAComm.Services.MessageData.Is64_bit">
   Is64_bit
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is a 64 bit value (either <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_IsDouble">IsDouble</a> or <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_IsLong">IsLong</a>)</p>
@@ -478,7 +406,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsArray" data-uid="AAComm.Services.MessageData.IsArray">
   IsArray
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is array, i.e GenData[...]</p>
@@ -510,7 +438,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsAxisRelated" data-uid="AAComm.Services.MessageData.IsAxisRelated">
   IsAxisRelated
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is value related to Axis</p>
@@ -542,7 +470,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsCommand" data-uid="AAComm.Services.MessageData.IsCommand">
   IsCommand
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is this a command</p>
@@ -574,7 +502,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsDouble" data-uid="AAComm.Services.MessageData.IsDouble">
   IsDouble
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is represented as a 'double' 64 bit value (<a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_ParamType">ParamType</a> == 2)</p>
@@ -606,10 +534,10 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsDynamicPtr" data-uid="AAComm.Services.MessageData.IsDynamicPtr">
   IsDynamicPtr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>is dynamic value</p>
+  <div class="markdown level1 summary"><p>is dynamic value, meaning min/max/default values depend on connected remote unit</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -638,7 +566,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsFloat" data-uid="AAComm.Services.MessageData.IsFloat">
   IsFloat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is represented as a 'float' 32 bit value (<a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_ParamType">ParamType</a> == 1)</p>
@@ -670,7 +598,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsFloatingPoint" data-uid="AAComm.Services.MessageData.IsFloatingPoint">
   IsFloatingPoint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is a floating point value (either <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_IsFloat">IsFloat</a> or <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_IsDouble">IsDouble</a>)</p>
@@ -702,7 +630,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsInt" data-uid="AAComm.Services.MessageData.IsInt">
   IsInt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is an 'int' 32 bit value (<a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_ParamType">ParamType</a> == 0)</p>
@@ -734,7 +662,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsLong" data-uid="AAComm.Services.MessageData.IsLong">
   IsLong
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates that the parameter is a 'long' 64 bit value (<a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_ParamType">ParamType</a> == 3)</p>
@@ -766,7 +694,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_IsSaveToFlash" data-uid="AAComm.Services.MessageData.IsSaveToFlash">
   IsSaveToFlash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is need to save to flash</p>
@@ -798,7 +726,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_MaxArrayIndex" data-uid="AAComm.Services.MessageData.MaxArrayIndex">
   MaxArrayIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>maximum array index (0 if not an array)</p>
@@ -830,10 +758,10 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_MaxValue" data-uid="AAComm.Services.MessageData.MaxValue">
   MaxValue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>maximum value, see also <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueInt">MaxValueInt</a></p>
+  <div class="markdown level1 summary"><p>does NOT account for User Units <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_UserUnits">UserUnits</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -858,114 +786,14 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
 
 
-  <a id="AAComm_Services_MessageData_MaxValueInt_" data-uid="AAComm.Services.MessageData.MaxValueInt*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MaxValueInt" data-uid="AAComm.Services.MessageData.MaxValueInt">
-  MaxValueInt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L138"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>maximum parameter value (rounded 32 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxValueInt { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_MaxValueLong_" data-uid="AAComm.Services.MessageData.MaxValueLong*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MaxValueLong" data-uid="AAComm.Services.MessageData.MaxValueLong">
-  MaxValueLong
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L151"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>maximum parameter value (rounded 64 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long MaxValueLong { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_MaxValueStr_" data-uid="AAComm.Services.MessageData.MaxValueStr*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MaxValueStr" data-uid="AAComm.Services.MessageData.MaxValueStr">
-  MaxValueStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L166"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><pre><code>string representation of the maximum value according to the parameter type
-</code></pre>
-<p></p>
-<pre><code>may contain commas or EXP notation!
-</code></pre>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string MaxValueStr { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="AAComm_Services_MessageData_MinValue_" data-uid="AAComm.Services.MessageData.MinValue*"></a>
 
   <h3 id="AAComm_Services_MessageData_MinValue" data-uid="AAComm.Services.MessageData.MinValue">
   MinValue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>minimum value, see also <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueInt">MinValueInt</a></p>
+  <div class="markdown level1 summary"><p>does NOT account for User Units <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_UserUnits">UserUnits</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -990,111 +818,11 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
 
 
-  <a id="AAComm_Services_MessageData_MinValueInt_" data-uid="AAComm.Services.MessageData.MinValueInt*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MinValueInt" data-uid="AAComm.Services.MessageData.MinValueInt">
-  MinValueInt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L134"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>minimum parameter value (rounded 32 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MinValueInt { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_MinValueLong_" data-uid="AAComm.Services.MessageData.MinValueLong*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MinValueLong" data-uid="AAComm.Services.MessageData.MinValueLong">
-  MinValueLong
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L147"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>minimum parameter value (rounded 64 bit integral)/&gt;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long MinValueLong { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_MessageData_MinValueStr_" data-uid="AAComm.Services.MessageData.MinValueStr*"></a>
-
-  <h3 id="AAComm_Services_MessageData_MinValueStr" data-uid="AAComm.Services.MessageData.MinValueStr">
-  MinValueStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L161"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><pre><code>string representation of the minimum value according to the parameter type
-</code></pre>
-<p></p>
-<pre><code>may contain commas or EXP notation!
-</code></pre>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string MinValueStr { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="AAComm_Services_MessageData_Mnemonic_" data-uid="AAComm.Services.MessageData.Mnemonic*"></a>
 
   <h3 id="AAComm_Services_MessageData_Mnemonic" data-uid="AAComm.Services.MessageData.Mnemonic">
   Mnemonic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>message ASCII mnemonic, i.e PosRef</p>
@@ -1126,7 +854,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_OKInMotion" data-uid="AAComm.Services.MessageData.OKInMotion">
   OKInMotion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is OK while in motion</p>
@@ -1158,7 +886,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_OKMotorOn" data-uid="AAComm.Services.MessageData.OKMotorOn">
   OKMotorOn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is OK while motor is ON</p>
@@ -1190,7 +918,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ParamType" data-uid="AAComm.Services.MessageData.ParamType">
   ParamType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the parameter type: 0 - int, 1 - float, 2 - double, 3 - long</p>
@@ -1222,7 +950,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ParamTypeStr" data-uid="AAComm.Services.MessageData.ParamTypeStr">
   ParamTypeStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the parameter type string description (i.e. &quot;'float' 32 bit&quot;)</p>
@@ -1254,7 +982,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ParamWithFunc" data-uid="AAComm.Services.MessageData.ParamWithFunc">
   ParamWithFunc
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is function can be associated with it</p>
@@ -1286,7 +1014,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ReadOnly" data-uid="AAComm.Services.MessageData.ReadOnly">
   ReadOnly
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>is read only</p>
@@ -1318,7 +1046,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ScalingFact" data-uid="AAComm.Services.MessageData.ScalingFact">
   ScalingFact
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>scaling factor</p>
@@ -1346,6 +1074,42 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="AAComm_Services_MessageData_UserUnits_" data-uid="AAComm.Services.MessageData.UserUnits*"></a>
+
+  <h3 id="AAComm_Services_MessageData_UserUnits" data-uid="AAComm.Services.MessageData.UserUnits">
+  UserUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>provides information about the user units for this parameter, per axis
+</code></pre>
+<p></p>
+<pre><code>null if not applicable
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UserUnitGroup UserUnits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitGroup.html">UserUnitGroup</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -1354,7 +1118,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_GetCanMessage_System_String_System_Int32_" data-uid="AAComm.Services.MessageData.GetCanMessage(System.String,System.Int32)">
   GetCanMessage(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L296"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>get complex CAN message, that includes Axis, keyword, and array index (if applicable)</p>
@@ -1392,14 +1156,99 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <a id="AAComm_Services_MessageData_GetDescription_" data-uid="AAComm.Services.MessageData.GetDescription*"></a>
+
+  <h3 id="AAComm_Services_MessageData_GetDescription_System_Char_" data-uid="AAComm.Services.MessageData.GetDescription(System.Char)">
+  GetDescription(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>textual description of the parameter: mnemonic, CAN code, type, access, axis related, user units, min/max/default values, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetDescription(char axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_MessageData_GetUserUnitsData_" data-uid="AAComm.Services.MessageData.GetUserUnitsData*"></a>
+
+  <h3 id="AAComm_Services_MessageData_GetUserUnitsData_System_Char_System_Double__System_Double__System_Double__System_Double__System_String__" data-uid="AAComm.Services.MessageData.GetUserUnitsData(System.Char,System.Double@,System.Double@,System.Double@,System.Double@,System.String@)">
+  GetUserUnitsData(char, out double, out double, out double, out double, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>returns the Min, Max, and Default values, and the Factor + Units string, adjusted for 'User Units' (if defined!)
+</code></pre>
+<p></p>
+<pre><code>In case units aren't defined: Factor = 1, Units = &quot;&quot;
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GetUserUnitsData(char axis, out double min, out double max, out double def, out double factor, out string units)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>def</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>units</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Services_MessageData_ToString_" data-uid="AAComm.Services.MessageData.ToString*"></a>
 
   <h3 id="AAComm_Services_MessageData_ToString" data-uid="AAComm.Services.MessageData.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L358"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>ToString override for UI display</p>
+  <div class="markdown level1 summary"><pre><code>returns the parameter description without trying to resolve per-axis User Units
+</code></pre>
+<p></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1411,8 +1260,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>textual description of the parameter</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1429,7 +1277,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Native C SDK (aacomm.h) | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Native C SDK (aacomm.h) | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="getting-started-native-c-sdk">
+<h1 id="aacomm-native-sdk">AAComm Native SDK</h1>
+
+<p>A native <strong>C ABI</strong> over the AAComm client — talk to an Agito motion controller from C, C++,
+Python, or any language with a C FFI, with <strong>no .NET runtime on the target</strong>. The library is
+NativeAOT-compiled per platform and ships as a single shared library plus one header.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Library</th>
+<th>Link with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows x64</td>
+<td><code>aacomm.dll</code></td>
+<td><code>aacomm.lib</code> (import lib)</td>
+</tr>
+<tr>
+<td>Linux x64</td>
+<td><code>libaacomm.so</code></td>
+<td><code>-laacomm</code></td>
+</tr>
+<tr>
+<td>macOS x64 / arm64</td>
+<td><code>libaacomm.dylib</code></td>
+<td><code>-laacomm</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every platform ships the same two headers: <strong><code>aacomm.h</code></strong> (the API) and <strong><code>aacomm_enums.h</code></strong>
+(channel/result/long-operation codes, generated from the C# source of truth). <code>aacomm.h</code> is the
+authoritative per-function reference — its comments document every parameter and contract; this
+guide is the conceptual overview.</p>
+<blockquote>
+<p>Status: validated on <strong>win-x64</strong> (pure C, against live hardware) and <strong>linux-x64</strong> (Python
+<code>ctypes</code>). macOS builds are pending a CI runner.</p>
+</blockquote>
+<p><strong>Getting the library</strong></p>
+<ul>
+<li><strong>.NET (P/Invoke):</strong> add the <code>Agito.AAComm.Native</code> NuGet — <code>aacomm.dll</code> / <code>libaacomm.so</code> lands
+next to your build output automatically; <code>[DllImport(&quot;aacomm&quot;)]</code>.</li>
+<li><strong>C / C++:</strong> take the <code>agito-aacomm-native-sdk-&lt;version&gt;.zip</code> archive (the <code>include/</code> headers +
+per-RID native libs + <code>sample.c</code>).</li>
+<li><strong>Python / other FFI:</strong> drop the platform library beside your script and <code>dlopen</code>/<code>ctypes.CDLL</code> it
+(it is inside both artifacts above).</li>
+<li><strong>From source:</strong> see <code>packaging/README.md</code> in the repo (NativeAOT can't cross-compile —
+build each RID on its own OS).</li>
+</ul>
+<blockquote>
+<p><strong>Distribution note:</strong> the <code>Agito.AAComm.Native</code> NuGet and the sdk zip are currently produced as
+internal build artifacts (win-x64 + linux-x64) and are <strong>not yet published to nuget.org</strong> — obtain
+them from Agito. The package version is locked to the managed <code>Agito.AAComm</code>.</p>
+</blockquote>
+<hr>
+<h2 id="architecture-in-one-paragraph">Architecture in one paragraph</h2>
+<p>The SDK is a <strong>client</strong>. It talks to <strong>AACS</strong> (the AAComm server) — a separate, shared process
+that owns the actual controller connection and can serve multiple clients. Your program either
+<strong>spawns</strong> a local AACS (<code>aacomm_start_server</code>) or connects to one that is already running, then
+opens a controller channel through it. AACS is not embedded in the SDK; it is resolved/launched
+as its own process.</p>
+<hr>
+<h2 id="the-status-convention">The status convention</h2>
+<p><strong>Every</strong> export returns <code>int32_t aacomm_status</code>: <code>0</code> (<code>AACOMM_OK</code>) on success, negative on an ABI
+fault — <code>AACOMM_NULL_ARG</code> (-1), <code>AACOMM_BAD_HANDLE</code> (-2), <code>AACOMM_EXCEPTION</code> (-3). A <em>domain</em> result
+— a <code>ConnectResult</code>, the connected flag, a reply/error byte size — is <strong>not</strong> the return value; it
+is written to an <code>out_*</code> parameter you pass. So a connect looks like:</p>
+<pre><code class="lang-c">int32_t result = 0;
+int32_t status = aacomm_connect(h, &amp;conn, &amp;result);   /* status = ABI ok/fault; result = ConnectResult */
+if (status == AACOMM_OK &amp;&amp; result == AACOMM_RESULT_SUCCESS) { /* connected */ }
+</code></pre>
+<p>This keeps &quot;the call could not run&quot; (a NULL arg, a stale handle, a managed exception) cleanly
+distinct from &quot;the call ran and the controller said X&quot; — the two never alias on one integer.</p>
+<p><strong>Check the status before reading an out-param.</strong> The <code>ConnectResult</code> in <code>out_result</code> is meaningful
+only when the status is <code>AACOMM_OK</code> — on a negative status it is left untouched (there is no &quot;neutral&quot;
+<code>ConnectResult</code>; <code>0</code> already means success). The other out-params get a safe default on every path:
+<code>aacomm_create</code> zeroes <code>*out_handle</code>, <code>aacomm_is_connected</code> writes <code>0</code>, and <code>aacomm_send_receive</code> sets
+<code>*is_error = 1</code> / <code>*out_required = 0</code> before any early return.</p>
+<hr>
+<h2 id="quick-start--c--c">Quick start — C / C++</h2>
+<pre><code class="lang-c">#include &quot;aacomm.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+    /* Optionally spawn a local AACS; pass &quot;&quot; to use the default resolution / an already-running one. */
+    int32_t sres = 0;
+    aacomm_start_server(&quot;&quot;, &amp;sres);
+
+    aacomm_handle h = NULL;
+    if (aacomm_create(&amp;h) != AACOMM_OK) return 1;
+
+    aacomm_connection conn;
+    memset(&amp;conn, 0, sizeof(conn));          /* zero-init, then set your channel's fields */
+    conn.channel_type = AACOMM_CHANNEL_ETHERNET;
+    conn.ip1 = 172; conn.ip2 = 1; conn.ip3 = 1; conn.ip4 = 102;
+
+    /* test_connection detects the controller type and writes it back into conn for connect. */
+    int32_t result = 0;
+    aacomm_test_connection(h, &amp;conn, 0, &amp;result);
+    if (aacomm_connect(h, &amp;conn, &amp;result) == AACOMM_OK &amp;&amp; result == AACOMM_RESULT_SUCCESS)
+    {
+        char reply[256];
+        int32_t is_error = 0, size = 0;
+        aacomm_send_receive(h, &quot;APos&quot;, 2000, reply, (int32_t)sizeof(reply), &amp;is_error, &amp;size);
+        printf(&quot;APos -&gt; %s (is_error=%d)\n&quot;, reply, is_error);
+    }
+
+    aacomm_disconnect(h);
+    aacomm_destroy(h);
+    return 0;
+}
+</code></pre>
+<p>Build (Windows, from a <em>x64 Native Tools</em> prompt or after <code>vcvars64</code>):</p>
+<pre><code class="lang-bat">cl /nologo sample.c /I path\to\include /link path\to\aacomm.lib
+:: aacomm.dll must sit next to the .exe or on PATH at run time
+</code></pre>
+<p>Build (Linux / macOS):</p>
+<pre><code class="lang-sh">cc sample.c -I path/to/include -L path/to/lib -laacomm -o sample
+LD_LIBRARY_PATH=path/to/lib ./sample        # macOS: DYLD_LIBRARY_PATH
+</code></pre>
+<p>A complete, runnable program (Ethernet/serial, sync query + async query + error callback) is in
+<code>sample/sample.c</code> (in the sdk zip and the repo).</p>
+<hr>
+<h2 id="quick-start--python-ctypes">Quick start — Python (<code>ctypes</code>)</h2>
+<p>No bindings package required — load the shared library directly. Mirror the struct layout and set
+<code>restype</code>/<code>argtypes</code> so values marshal correctly.</p>
+<pre><code class="lang-python">import ctypes, sys
+
+lib = ctypes.CDLL(&quot;./libaacomm.so&quot;)          # &quot;aacomm.dll&quot; on Windows, &quot;libaacomm.dylib&quot; on macOS
+
+class AacommConnection(ctypes.Structure):
+    _fields_ = [
+        (&quot;channel_type&quot;, ctypes.c_int32), (&quot;controller_type&quot;, ctypes.c_int32),
+        (&quot;ip1&quot;, ctypes.c_int32), (&quot;ip2&quot;, ctypes.c_int32),
+        (&quot;ip3&quot;, ctypes.c_int32), (&quot;ip4&quot;, ctypes.c_int32),
+        (&quot;port&quot;, ctypes.c_int32), (&quot;can_channel&quot;, ctypes.c_int32),
+        (&quot;can_baud_rate&quot;, ctypes.c_int32), (&quot;can_send_address&quot;, ctypes.c_int32),
+        (&quot;can_receive_address&quot;, ctypes.c_int32), (&quot;rs232_baud_rate&quot;, ctypes.c_int32),
+        (&quot;rs232_port_name&quot;, ctypes.c_char * 32),
+    ]
+
+lib.aacomm_create.argtypes = [ctypes.POINTER(ctypes.c_void_p)]
+lib.aacomm_send_receive.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_int32,
+                                    ctypes.c_char_p, ctypes.c_int32,
+                                    ctypes.POINTER(ctypes.c_int32), ctypes.POINTER(ctypes.c_int32)]
+
+result = ctypes.c_int32(0)
+lib.aacomm_start_server(b&quot;&quot;, ctypes.byref(result))
+h = ctypes.c_void_p()
+lib.aacomm_create(ctypes.byref(h))
+
+conn = AacommConnection()
+conn.channel_type = 2                          # AACOMM_CHANNEL_ETHERNET
+conn.ip1, conn.ip2, conn.ip3, conn.ip4 = 172, 1, 1, 102
+
+lib.aacomm_test_connection(h, ctypes.byref(conn), 0, ctypes.byref(result))
+if lib.aacomm_connect(h, ctypes.byref(conn), ctypes.byref(result)) == 0 and result.value == 0:
+    buf = ctypes.create_string_buffer(256)
+    is_error, size = ctypes.c_int32(0), ctypes.c_int32(0)
+    lib.aacomm_send_receive(h, b&quot;APos&quot;, 2000, buf, 256, ctypes.byref(is_error), ctypes.byref(size))
+    print(&quot;APos -&gt;&quot;, buf.value.decode(), &quot;is_error&quot;, is_error.value)
+
+lib.aacomm_disconnect(h)
+lib.aacomm_destroy(h)
+</code></pre>
+<p>To receive async replies, push messages, or error/long-operation events, declare the matching
+<code>CFUNCTYPE</code> and register it. <strong>Keep a Python reference to the <code>CFUNCTYPE</code> instance for as long as it can
+fire</strong> — if it is garbage-collected the library calls a freed trampoline:</p>
+<pre><code class="lang-python">REPLY_CB = ctypes.CFUNCTYPE(None, ctypes.c_char_p, ctypes.c_int32, ctypes.c_void_p)
+ERROR_CB = ctypes.CFUNCTYPE(None, ctypes.c_char_p, ctypes.c_void_p)
+
+def _on_reply(reply, is_error, user):
+    print(&quot;reply&quot;, reply.decode() if reply else &quot;&quot;, &quot;is_error&quot;, is_error)
+
+def _on_error(error, user):
+    print(&quot;error&quot;, error.decode() if error else &quot;&quot;)
+
+reply_cb, error_cb = REPLY_CB(_on_reply), ERROR_CB(_on_error)   # keep these alive
+
+lib.aacomm_set_error_callback.argtypes = [ctypes.c_void_p, ERROR_CB, ctypes.c_void_p]
+lib.aacomm_send.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_int32, REPLY_CB, ctypes.c_void_p]
+
+lib.aacomm_set_error_callback(h, error_cb, None)
+lib.aacomm_send(h, b&quot;APos&quot;, 2000, reply_cb, None)
+</code></pre>
+<hr>
+<h2 id="core-contracts">Core contracts</h2>
+<h3 id="handle-lifecycle">Handle lifecycle</h3>
+<p><code>aacomm_create(&amp;h)</code> writes an opaque handle and returns <code>AACOMM_OK</code> (or a negative status on
+failure); <code>aacomm_destroy()</code> disconnects and frees it. <strong>One handle owns at most one controller
+connection.</strong> For concurrent connections, create multiple handles. Handles come from a table that
+never reuses a value, so a stale or forged handle resolves to <code>AACOMM_BAD_HANDLE</code> rather than
+undefined behavior.</p>
+<h3 id="the-connect-handshake">The connect handshake</h3>
+<ol>
+<li><strong>(optional) <code>aacomm_start_server(path, &amp;result)</code></strong> — spawn or locate AACS. <code>&quot;&quot;</code>/<code>NULL</code> uses the
+default resolution (or an AACS that is already running); <code>result</code> is the <code>ConnectResult</code>.</li>
+<li><strong><code>aacomm_test_connection(h, &amp;conn, is_known_controller_type, &amp;result)</code></strong> — probes the controller
+and, when <code>is_known_controller_type == 0</code>, <strong>writes the detected <code>controller_type</code> back into <code>conn</code></strong>.</li>
+<li><strong><code>aacomm_connect(h, &amp;conn, &amp;result)</code></strong> — consumes that <code>controller_type</code>. Passing a freshly
+zero-initialized struct straight to <code>connect</code> (skipping <code>test_connection</code>) yields
+<code>result == AACOMM_RESULT_INVALID_CONTROLLER_TYPE</code> — run <code>test_connection</code> first, or set
+<code>controller_type</code> yourself.</li>
+</ol>
+<p>For firmware or FPGA download, call <code>aacomm_download_firmware</code> / <code>aacomm_download_fpga</code> directly — each
+opens its own connection (the handle must be <strong>disconnected</strong>) and uses neither <code>aacomm_connect</code> nor
+<code>aacomm_connect_silent</code>. <code>aacomm_download_user_program</code> is the exception: it downloads over the handle's
+<strong>already-connected</strong> session (connect first — it takes no <code>aacomm_connection</code> and rejects a
+disconnected handle). <code>aacomm_connect_silent</code> is for connecting to a controller in <strong>boot mode</strong> for
+direct messaging, where the identity/about handshake <code>aacomm_connect</code> performs is unavailable.</p>
+<p>Fill <code>aacomm_connection</code> by <strong>zero-initializing then setting only your channel's fields</strong> — <code>0</code>
+means &quot;library default&quot; for everything except <code>channel_type</code> (always honored) and <code>can_channel</code>
+(<code>0</code> is a valid CAN channel). The struct layout must match the header exactly.</p>
+<h3 id="synchronous-vs-asynchronous-messaging">Synchronous vs asynchronous messaging</h3>
+<ul>
+<li><strong><code>aacomm_send_receive</code></strong> blocks for the reply, writes it into your buffer, and sets <code>*is_error</code>.
+Sync and async pipelines are independent — you may interleave them from any thread.</li>
+<li><strong><code>aacomm_send</code></strong> returns immediately; the optional <code>aacomm_reply_cb</code> fires <strong>exactly once</strong> —
+with the reply, or with <code>is_error = 1</code> if the session tears down (disconnect / fatal) before
+the reply arrives. A consumer waiting on the callback never waits forever.</li>
+</ul>
+<h3 id="strings-the-two-call-pattern">Strings: the two-call pattern</h3>
+<p>Output strings are UTF-8. The output functions (<code>aacomm_last_error</code>, <code>aacomm_last_reply</code>,
+<code>aacomm_send_receive</code>) take a <code>buffer</code>/<code>buffer_len</code> plus an <code>int32_t* out_required</code>: call with
+<code>buffer = NULL, buffer_len = 0</code> to learn the required size (including the NUL) via <code>*out_required</code>,
+allocate, then call again. The copy is truncated to fit and always NUL-terminated, so if
+<code>*out_required &gt; buffer_len</code> the text was truncated — for <code>aacomm_send_receive</code> the full reply is
+cached, so re-fetch it with <strong><code>aacomm_last_reply</code></strong> (which does <strong>not</strong> re-send the command).
+<code>out_required</code> may be NULL if you don't need the size.</p>
+<h3 id="callbacks-and-threading">Callbacks and threading</h3>
+<p>The callbacks — reply (<code>aacomm_send</code>), <code>error</code>, <code>push</code>, <code>longop_started</code>, <code>longop_ended</code> — are invoked
+<strong>on the library's firing thread</strong>, never on your calling thread. Keep them <strong>short and thread-safe</strong>:
+marshal work to your own thread/queue rather than blocking inside the callback. Each takes an opaque
+<code>void* user_data</code> that is passed straight through. Precise firing thread per callback:</p>
+<table>
+<thead>
+<tr>
+<th>Callback</th>
+<th>Set by</th>
+<th>Fires on</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reply</td>
+<td>passed to <code>aacomm_send</code></td>
+<td>a dispatcher thread</td>
+<td>fires exactly once per accepted <code>aacomm_send</code> (reply, or <code>is_error = 1</code> terminal error on teardown); the receiver thread never invokes it</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>aacomm_set_error_callback</code></td>
+<td>the <strong>receiver thread, synchronously</strong></td>
+<td>a slow handler stalls reply/push classification — off-load with your own queue</td>
+</tr>
+<tr>
+<td><code>push</code></td>
+<td><code>aacomm_set_push_callback</code></td>
+<td>the thread pool</td>
+<td>ASCII push payload</td>
+</tr>
+<tr>
+<td><code>longop_started</code> / <code>longop_ended</code></td>
+<td>the matching setter</td>
+<td>the firing thread</td>
+<td>bracket a busy window (reset/save/load)</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>const char*</code> passed to a callback is <strong>owned by the library and valid only for the duration of
+the call</strong> — copy it if you need it later; do not free it. Re-entrancy: do <strong>not</strong> call
+<code>aacomm_send_receive</code> from inside a callback — it fails fast with an in-band error reply instead of
+blocking (from a reply callback it is rejected outright; by the time the error callback fires the
+connection is already torn down, so it reports not-connected). Issue follow-up traffic from your own
+thread. Registering or
+clearing callbacks from inside a callback is allowed. A registered callback may fire until you clear it
+(pass a NULL function pointer) or call <code>aacomm_destroy</code> — destroy delivers pending reply callbacks
+terminally (<code>is_error = 1</code>), waits (bounded, ~2 s) for in-flight callbacks to return, and guarantees no
+callback fires after it returns, so callback state may be freed as soon as destroy returns.</p>
+<h3 id="per-handle-threading">Per-handle threading</h3>
+<p>A handle is <strong>single-threaded by contract</strong>: make calls on a given handle from one thread at a time
+(concurrent calls on <em>different</em> handles are fine, and callbacks arrive on library threads regardless).
+The recovery/two-call state — <code>aacomm_last_reply</code> after <code>aacomm_send_receive</code>, <code>aacomm_record_result</code>
+after <code>aacomm_record</code>, <code>aacomm_last_error</code> after any failure — is cached <strong>per handle</strong>, so a
+concurrent call on the same handle overwrites it between your two calls.</p>
+<h3 id="timeouts">Timeouts</h3>
+<p>Every <code>timeout_ms</code> accepts <code>0</code> or a negative value as &quot;use the family default&quot;:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th><code>timeout_ms</code> &gt; 0</th>
+<th><code>0</code> / negative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aacomm_send_receive</code> / <code>aacomm_send</code></td>
+<td>per-call override</td>
+<td>the per-message default</td>
+</tr>
+<tr>
+<td><code>aacomm_record</code></td>
+<td>wait-for-completion bound</td>
+<td>10 000 ms</td>
+</tr>
+<tr>
+<td><code>aacomm_download_firmware</code> / <code>_fpga</code> / <code>_user_program</code></td>
+<td>completion bound</td>
+<td>180 000 ms (3 min)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="error-handling">Error handling</h3>
+<p>Every function returns an <code>aacomm_status</code> (<code>0</code> == OK; <code>-1</code>/<code>-2</code>/<code>-3</code> are NULL-arg / bad-handle /
+exception). On an <code>AACOMM_EXCEPTION</code> the detail text is available via <code>aacomm_last_error(h, ...)</code>. The
+<em>domain</em> outcome of a connect/test/send is the <code>ConnectResult</code> written to the <code>out_result</code> parameter —
+a separate axis from the status (see <a href="#status--result-codes">Status / result codes</a>).</p>
+<p>Message-level errors are <strong>in-band</strong>: <code>aacomm_send_receive</code> returns <code>AACOMM_OK</code> with <code>*is_error = 1</code>
+and the reply text carrying one of a <strong>closed prefix set</strong> — <code>&quot;ERR &quot;</code> (controller error),
+<code>&quot;BOOT ERR&quot;</code> (controller error in BOOT mode), <code>&quot;ERR Sync:&quot;</code> (client-side sync-pipeline error:
+<code>Timeout</code> / <code>Session terminated</code> / <code>No reply</code> / callback re-entry rejection), <code>&quot;PC Suite: ERR&quot;</code>
+(API-synthesized, e.g. <code>PC Suite: ERR 4020</code> = not connected). Timeout semantics: a timeout that
+expires while the message is still <strong>queued</strong> behind a slower call returns <code>ERR Sync: Timeout</code>
+without sending the message and <strong>keeps the connection</strong>; a timeout after the message reached the
+wire returns the same text but <strong>disconnects the handle</strong> — subsequent calls report
+<code>PC Suite: ERR 4020</code> until you reconnect.</p>
+<hr>
+<h2 id="status--result-codes">Status / result codes</h2>
+<p><code>aacomm_status</code> (the <strong>return value</strong> of every function) is the ABI axis:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AACOMM_OK</code></td>
+<td>0</td>
+<td>The call ran; inspect the out-params for the domain result</td>
+</tr>
+<tr>
+<td><code>AACOMM_NULL_ARG</code></td>
+<td>-1</td>
+<td>A required pointer argument was NULL</td>
+</tr>
+<tr>
+<td><code>AACOMM_BAD_HANDLE</code></td>
+<td>-2</td>
+<td>The handle is zero, already destroyed, or not from <code>aacomm_create</code></td>
+</tr>
+<tr>
+<td><code>AACOMM_EXCEPTION</code></td>
+<td>-3</td>
+<td>A managed exception was caught — see <code>aacomm_last_error</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>ConnectResult</code> (written to the <code>out_result</code> of connect/test/server functions) is the <strong>domain</strong> axis.
+The values below are the <code>aacomm_connect_result</code> enum from
+<code>include/aacomm_enums.h</code> (generated from the <code>AAComm.Shared.ConnectResult</code>
+C# enum — do not edit). <code>0</code> is success.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AACOMM_RESULT_SUCCESS</code></td>
+<td>0</td>
+<td>Connected / tested / sent OK</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACOMM_SERVER_NOT_RUNNING</code></td>
+<td>1</td>
+<td>No AACS reachable — call <code>aacomm_start_server</code> first</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_CORRUPT_ABOUT_FILE</code></td>
+<td>2</td>
+<td>Local &quot;about&quot; data file is corrupt</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_INVALID_CONNECTION_DATA</code></td>
+<td>3</td>
+<td>The <code>aacomm_connection</code> fields are invalid for the channel</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_ALREADY_CONNECTED</code></td>
+<td>4</td>
+<td>Handle is already connected — <code>aacomm_disconnect</code> first</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_REQUIRED_CONNECTION_UNAVAILABLE</code></td>
+<td>5</td>
+<td>The requested channel/resource is not available</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_IOOPERATION</code></td>
+<td>6</td>
+<td>Low-level I/O operation failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_SOCKET_CONNECT</code></td>
+<td>7</td>
+<td>Could not reach the controller (Ethernet socket connect failed)</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_OPEN_COMM_HANDLER</code></td>
+<td>8</td>
+<td>Could not open the comm handler</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_RS232_CLEAR_BUFFER</code></td>
+<td>9</td>
+<td>RS-232 buffer clear failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_CONTROLLER_IN_BOOT_MODE</code></td>
+<td>10</td>
+<td>Controller is in boot mode — a normal connect cannot complete its handshake. <code>aacomm_connect_silent</code> opens a boot-mode controller without the handshake; <code>aacomm_download_firmware</code> itself requires a DISCONNECTED handle (the engine opens its own connection)</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_CONTROLLER_TYPE</code></td>
+<td>11</td>
+<td>Controller type query/handshake failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_RS232_CABLE_TYPE</code></td>
+<td>12</td>
+<td>RS-232 cable-type check failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_CANDELAY</code></td>
+<td>13</td>
+<td>CAN delay/timing failure</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_IDENTITY</code></td>
+<td>14</td>
+<td>Controller identity query failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_ABOUT_DATA</code></td>
+<td>15</td>
+<td>&quot;About&quot; data query failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_INVALID_CONTROLLER_TYPE</code></td>
+<td>16</td>
+<td><code>controller_type</code> not set (skipped <code>test_connection</code>), or mismatch</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_CANLIB_MISSING</code></td>
+<td>17</td>
+<td>CAN driver library (canlib) not present</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FW_INFO_MISMATCH</code></td>
+<td>18</td>
+<td>Firmware-info mismatch</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_NO_ETHERNET_INTERFACES</code></td>
+<td>19</td>
+<td>No Ethernet interfaces found on the host</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_ETHERNET_INTERFACE_DISCONNECTED</code></td>
+<td>20</td>
+<td>The chosen Ethernet interface is disconnected</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_ETHERNET_INTERFACE_MISMATCH</code></td>
+<td>21</td>
+<td>Ethernet interface does not match the controller subnet</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_ETHERNET_INTERFACE_ABNORMAL</code></td>
+<td>22</td>
+<td>Ethernet interface is in an abnormal state</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_FW_INFO</code></td>
+<td>23</td>
+<td>Firmware-info query failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_MAC_ADDRESS</code></td>
+<td>24</td>
+<td>MAC-address query failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_USER_PROG_INFO</code></td>
+<td>25</td>
+<td>User-program-info query failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_SIM_NOT_ENABLED</code></td>
+<td>26</td>
+<td>Simulator channel requested but simulator is not enabled</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_SIM_ONLY_ONE_SUPPORTED</code></td>
+<td>27</td>
+<td>Only one simulator connection is supported</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_ETHERNET_FAIL_ARP</code></td>
+<td>28</td>
+<td>ARP resolution to the controller failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_INVALID_CANBAUD</code></td>
+<td>29</td>
+<td>Invalid CAN baud rate</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_OPEN_CHANNEL_TIMEOUT</code></td>
+<td>30</td>
+<td>Channel open timed out</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_INVALID_ABOUT_REPLY</code></td>
+<td>31</td>
+<td>Controller's &quot;about&quot; reply was invalid</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACOMM_SERVER_FAILED_TO_OPEN_PROPERLY</code></td>
+<td>32</td>
+<td>AACS started but did not initialize correctly</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_CHANNEL_IN_EXCLUSIVE_COMMS_MODE</code></td>
+<td>33</td>
+<td>Channel is held by another client in exclusive mode</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_DUPLICATE_USER_UNIT</code></td>
+<td>34</td>
+<td>Duplicate user-unit definition</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_SOCKET_CONNECT_TIMEOUT</code></td>
+<td>35</td>
+<td>Timed out connecting to AACS</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_SOCKET_CONNECT_FAIL</code></td>
+<td>36</td>
+<td>Socket connect to AACS failed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_SOCKET_CONNECT_EXCEPTION</code></td>
+<td>37</td>
+<td>Exception while connecting to AACS</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_FILE_MISSING</code></td>
+<td>38</td>
+<td>AACS executable file is missing</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_PROCESS_START_FAIL</code></td>
+<td>39</td>
+<td>AACS process failed to start</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_PROCESS_START_EXCEPTION</code></td>
+<td>40</td>
+<td>Exception while starting the AACS process</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_RESOLVE_WRONG_OS</code></td>
+<td>41</td>
+<td>AACS resolution: wrong OS for the located binary</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_RESOLVE_PCSUITE_DIR_MISSING</code></td>
+<td>42</td>
+<td>AACS resolution: PCSuite directory missing</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_AACS_RESOLVE_FILE_MISSING</code></td>
+<td>43</td>
+<td>AACS resolution: resolved file missing</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_IDENTITY_INDEX</code></td>
+<td>44</td>
+<td>Identity index out of range</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_IDENTITY_PARSING</code></td>
+<td>45</td>
+<td>Identity reply could not be parsed</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_FAIL_ABOUT_IDENTITY_INDEX</code></td>
+<td>46</td>
+<td>&quot;About&quot; identity index out of range</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_SERVER_NOT_BINARY_CAPABLE</code></td>
+<td>47</td>
+<td>AACS is too old to negotiate the binary protocol</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_CAN_NOT_CONNECTED</code></td>
+<td>48</td>
+<td>Kvaser driver is installed but no physical CAN interface is connected (distinct from <code>CANLIB_MISSING</code>=17, where the driver itself is absent)</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_SIM_LAUNCH_FAILED</code></td>
+<td>49</td>
+<td>The managed firmware-sim channel could not launch its <code>firmware_sim</code> process</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_SIM_NO_PORT</code></td>
+<td>50</td>
+<td>The launched <code>firmware_sim</code> never announced its loopback port</td>
+</tr>
+</tbody>
+</table>
+<h3 id="channel-and-long-operation-enums">Channel and long-operation enums</h3>
+<p><code>aacomm_channel_type</code> selects the transport in <code>aacomm_connection.channel_type</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AACOMM_CHANNEL_RS_232</code></td>
+<td>0</td>
+<td>RS-232 serial</td>
+</tr>
+<tr>
+<td><code>AACOMM_CHANNEL_CAN</code></td>
+<td>1</td>
+<td>CAN bus</td>
+</tr>
+<tr>
+<td><code>AACOMM_CHANNEL_ETHERNET</code></td>
+<td>2</td>
+<td>Ethernet</td>
+</tr>
+<tr>
+<td><code>AACOMM_CHANNEL_SIMULATOR</code></td>
+<td>3</td>
+<td>Legacy param-echo simulator (test harness only)</td>
+</tr>
+<tr>
+<td><code>AACOMM_CHANNEL_SIMULATION</code></td>
+<td>4</td>
+<td>Managed firmware-sim channel — the server launches a local <code>firmware_sim</code> process over loopback</td>
+</tr>
+</tbody>
+</table>
+<p><code>aacomm_long_operation_type</code> is the <code>op_type</code> passed to the long-operation callbacks:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AACOMM_LONGOP_RESET</code></td>
+<td>0</td>
+<td>Controller reset</td>
+</tr>
+<tr>
+<td><code>AACOMM_LONGOP_SAVE</code></td>
+<td>1</td>
+<td>Save parameters to flash</td>
+</tr>
+<tr>
+<td><code>AACOMM_LONGOP_LOAD</code></td>
+<td>2</td>
+<td>Load parameters</td>
+</tr>
+<tr>
+<td><code>AACOMM_LONGOP_SAVE_USER</code></td>
+<td>3</td>
+<td>Save user data</td>
+</tr>
+<tr>
+<td><code>AACOMM_LONGOP_EVENT_CORRECT</code></td>
+<td>4</td>
+<td>Event-correction operation</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="api-reference">API reference</h2>
+<p><code>aacomm.h</code> is the authoritative per-function reference (documented inline). At a glance:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ABI</td>
+<td><code>aacomm_abi_version</code></td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td><code>aacomm_create</code>, <code>aacomm_destroy</code>, <code>aacomm_is_connected</code>, <code>aacomm_last_error</code></td>
+</tr>
+<tr>
+<td>Connection</td>
+<td><code>aacomm_start_server</code>, <code>aacomm_test_connection</code>, <code>aacomm_connect</code>, <code>aacomm_connect_silent</code>, <code>aacomm_disconnect</code>, <code>aacomm_close_server</code></td>
+</tr>
+<tr>
+<td>Synchronous</td>
+<td><code>aacomm_send_receive</code>, <code>aacomm_last_reply</code></td>
+</tr>
+<tr>
+<td>Async + events</td>
+<td><code>aacomm_send</code>, <code>aacomm_set_error_callback</code>, <code>aacomm_set_push_callback</code>, <code>aacomm_set_longop_started_callback</code>, <code>aacomm_set_longop_ended_callback</code></td>
+</tr>
+<tr>
+<td>Recording + firmware/FPGA/user-program</td>
+<td><code>aacomm_record</code>, <code>aacomm_record_result</code>, <code>aacomm_download_firmware</code>, <code>aacomm_download_fpga</code>, <code>aacomm_download_user_program</code></td>
+</tr>
+<tr>
+<td>User units</td>
+<td><code>aacomm_get_user_units_enabled</code>, <code>aacomm_set_user_units_enabled</code></td>
+</tr>
+</tbody>
+</table>
+<p>In every signature below, <code>h</code> is an <code>aacomm_handle</code> from <code>aacomm_create</code>. Every function returns an
+<code>aacomm_status</code> (<code>0</code> == OK; <code>-1</code>/<code>-2</code>/<code>-3</code> == NULL arg / bad handle / internal exception — see
+<a href="#status--result-codes">Status / result codes</a>); domain results travel in <code>out_*</code> parameters. The
+library <strong>never</strong> takes ownership of buffers you pass in, and the <code>const char*</code> it hands to callbacks
+is valid only for the duration of the call.</p>
+<h3 id="abi-versioning--stability">ABI versioning &amp; stability</h3>
+<pre><code class="lang-c">int32_t aacomm_abi_version(void);
+</code></pre>
+<p>The SDK carries <strong>two</strong> version numbers, for two different purposes:</p>
+<ul>
+<li><strong>Package version</strong> — the SemVer of the <code>aacomm.*</code> library / <code>Agito.AAComm.Native</code> NuGet,
+<strong>version-locked</strong> to the managed <code>Agito.AAComm</code> (<code>$(AACommVersion)</code>; the native package is not
+co-published with managed releases — see the distribution note above). This is what you pin in a
+package reference; release history is in the SDK's <code>CHANGELOG.md</code> (shipped in the C/C++ archive).</li>
+<li><strong><code>aacomm_abi_version()</code></strong> — a soname-style <strong>breaking-generation number</strong>, the C-ABI contract.
+It is bumped <strong>only on a breaking change</strong>: a changed or removed export signature, a struct
+layout change, a callback-signature change, or changed status-code semantics. <strong>Additive
+changes — new exports, new enum values, new result codes — never bump it</strong> (they cannot break a
+compiled consumer). It returns its value directly (it cannot fail) and takes no handle; the same
+value is the <code>AACOMM_ABI_VERSION</code> macro in the generated <code>aacomm_enums.h</code>. Generation <strong>1</strong> is
+the first shipped ABI (pre-release increments carried no compatibility meaning and were reset).</li>
+</ul>
+<p><strong>Consumer rule — exact-match gate.</strong> Call <code>aacomm_abi_version()</code> once at load and reject a library
+whose value does not equal <code>AACOMM_ABI_VERSION</code> from the headers your binding was built against —
+coherent with the bump policy, because the number only moves when your binary genuinely cannot run.
+The bundled Python binding does this automatically; the committed <code>include/aacomm.abi.txt</code> records
+the exact export surface <em>and the callback typedef signatures</em> for that generation. Always build
+against the <code>aacomm.h</code> that ships with the library you load.</p>
+<p><strong>Compatibility.</strong> The native client, the native AACS daemon, and the language bindings ship
+together at one package version — run matching versions. <code>aacomm_enums.h</code>, <code>aacomm.abi.txt</code>, and
+the Python mirrors are generated from the C# source and CI diff-gated; <code>aacomm.h</code> itself is
+<strong>hand-maintained</strong> — the manifest diff is what forces it to be updated in review.</p>
+<h3 id="lifecycle">Lifecycle</h3>
+<pre><code class="lang-c">int32_t aacomm_create(aacomm_handle* out_handle);
+</code></pre>
+<p>Allocates a client session and writes its opaque handle to <code>*out_handle</code>. Returns <code>AACOMM_OK</code>, or
+<code>AACOMM_NULL_ARG</code> if <code>out_handle</code> is NULL / <code>AACOMM_EXCEPTION</code> on internal failure. Each handle owns
+one AAComm client (and thus at most one controller connection). Free every handle with <code>aacomm_destroy</code>.</p>
+<pre><code class="lang-c">int32_t aacomm_destroy(aacomm_handle h);
+</code></pre>
+<p>Disconnects (best-effort) and frees the handle and its client. Returns <code>AACOMM_OK</code>, or
+<code>AACOMM_BAD_HANDLE</code> if <code>h</code> is unknown/already freed. After this call the handle and any callbacks
+registered on it are invalid; do not reuse it.</p>
+<pre><code class="lang-c">int32_t aacomm_is_connected(aacomm_handle h, int32_t* out_connected);
+</code></pre>
+<p>Writes <code>1</code>/<code>0</code> (open controller connection?) to <code>*out_connected</code>. Returns <code>AACOMM_OK</code>,
+<code>AACOMM_NULL_ARG</code> (NULL out-param) or <code>AACOMM_BAD_HANDLE</code>. Does not allocate; safe to poll. Because
+the bad-handle case is a distinct status, <code>out_connected == 0</code> unambiguously means &quot;not connected&quot;
+(not &quot;bad handle&quot;).</p>
+<pre><code class="lang-c">int32_t aacomm_last_error(aacomm_handle h, char* buffer, int32_t buffer_len, int32_t* out_required);
+</code></pre>
+<p>Copies the handle's most-recent error text (UTF-8, NUL-terminated) into <code>buffer</code> (two-call sizing;
+<code>*out_required</code> receives the required byte length <strong>including</strong> the NUL when non-NULL). Returns
+<code>AACOMM_OK</code> or <code>AACOMM_BAD_HANDLE</code>. The error text is set by the most recent operation that returned
+<code>AACOMM_EXCEPTION</code> on this handle.</p>
+<h3 id="connection">Connection</h3>
+<pre><code class="lang-c">int32_t aacomm_start_server(const char* exe_path, int32_t* out_result);
+</code></pre>
+<p>Spawns or locates AACS (the shared AAComm server process). Pass <code>&quot;&quot;</code> or <code>NULL</code> for default resolution
+(or to attach to an AACS already running); <code>exe_path</code> may be a UTF-8 path to a specific <code>AACommServer</code>
+executable. Writes the <code>ConnectResult</code> to <code>*out_result</code> (<code>0</code> == AACS is up; AACS-resolution/start codes
+are values 35–43). Returns <code>AACOMM_OK</code>/<code>AACOMM_NULL_ARG</code>/<code>AACOMM_EXCEPTION</code>. Process-wide, not
+per-handle — call it once before connecting.</p>
+<pre><code class="lang-c">int32_t aacomm_test_connection(aacomm_handle h, aacomm_connection* conn, int32_t is_known_controller_type, int32_t* out_result);
+</code></pre>
+<p>Probes the controller described by <code>conn</code> (non-<code>const</code>: when <code>is_known_controller_type == 0</code> it detects
+the controller type and <strong>writes it back into <code>conn-&gt;controller_type</code></strong> so a subsequent <code>aacomm_connect</code>
+can consume it — see <a href="#the-connect-handshake">the connect handshake</a>). Pass non-zero only when you have
+already set <code>controller_type</code> yourself. Writes the <code>ConnectResult</code> to <code>*out_result</code>. Returns a status
+(<code>AACOMM_NULL_ARG</code> if <code>conn</code>/<code>out_result</code> is NULL, <code>AACOMM_BAD_HANDLE</code> for a bad handle).</p>
+<pre><code class="lang-c">int32_t aacomm_connect(aacomm_handle h, const aacomm_connection* conn, int32_t* out_result);
+</code></pre>
+<p>Opens the controller connection, querying identity / about / firmware data. Requires
+<code>conn-&gt;controller_type</code> to be set (run <code>aacomm_test_connection</code> first, or set it yourself) — otherwise
+<code>*out_result == AACOMM_RESULT_INVALID_CONTROLLER_TYPE</code> (16). Writes the <code>ConnectResult</code> to <code>*out_result</code>.</p>
+<pre><code class="lang-c">int32_t aacomm_connect_silent(aacomm_handle h, const aacomm_connection* conn, int32_t* out_result);
+</code></pre>
+<p>Opens the connection <strong>without</strong> querying the controller for identity/about/firmware data (it only
+clears the RS-232 buffer on a serial channel) — the path for connecting to a controller in <strong>boot
+mode</strong>, where the normal identity handshake is not available. (Firmware download has its own export,
+<code>aacomm_download_firmware</code>, which manages its connection internally — don't connect first.) Writes the
+<code>ConnectResult</code> to <code>*out_result</code>.</p>
+<pre><code class="lang-c">int32_t aacomm_disconnect(aacomm_handle h);
+</code></pre>
+<p>Closes the controller connection for the handle (the handle stays valid and can reconnect). Returns
+<code>AACOMM_OK</code>, <code>AACOMM_BAD_HANDLE</code>, or <code>AACOMM_EXCEPTION</code>.</p>
+<pre><code class="lang-c">int32_t aacomm_close_server(aacomm_handle h, int32_t force);
+</code></pre>
+<p>Closes the AACS process this client is using. <code>force != 0</code> requests an unconditional shutdown; <code>0</code> is a
+cooperative close. Returns <code>AACOMM_OK</code>, <code>AACOMM_BAD_HANDLE</code>, or <code>AACOMM_EXCEPTION</code>. Pair it with
+<code>aacomm_start_server</code> when your program owns the AACS lifecycle.</p>
+<h3 id="synchronous-messaging">Synchronous messaging</h3>
+<pre><code class="lang-c">int32_t aacomm_send_receive(aacomm_handle h, const char* command, int32_t timeout_ms,
+                            char* reply_buf, int32_t reply_cap, int32_t* is_error, int32_t* out_required);
+</code></pre>
+<p>Sends <code>command</code> (UTF-8) and <strong>blocks</strong> until the reply arrives. Writes the reply text (UTF-8, truncated
+to fit and always NUL-terminated) into <code>reply_buf</code>/<code>reply_cap</code>, sets <code>*is_error</code> to <code>0</code>/<code>1</code> (the
+controller/transport error flag; also <code>1</code> on internal failure) when non-NULL, and writes the full reply
+byte length including the NUL to <code>*out_required</code> when non-NULL (so <code>*out_required &gt; reply_cap</code> means it
+was truncated — re-fetch with <code>aacomm_last_reply</code>). <code>timeout_ms &gt; 0</code> overrides the message's default.
+Returns <code>AACOMM_OK</code>, <code>AACOMM_NULL_ARG</code> (NULL <code>command</code>), <code>AACOMM_BAD_HANDLE</code>, or <code>AACOMM_EXCEPTION</code>.
+Sync and async pipelines are independent; this may be interleaved with <code>aacomm_send</code> from any thread,
+but must <strong>not</strong> be called from inside a reply callback.</p>
+<pre><code class="lang-c">int32_t aacomm_last_reply(aacomm_handle h, char* buffer, int32_t buffer_len, int32_t* out_required);
+</code></pre>
+<p>Re-fetches the reply from the most recent <code>aacomm_send_receive</code> on this handle (two-call UTF-8, same
+sizing rule as <code>aacomm_last_error</code>) <strong>without sending the command again</strong>. Use it when a prior
+<code>aacomm_send_receive</code> buffer was too small.</p>
+<h3 id="asynchronous-messaging--events">Asynchronous messaging + events</h3>
+<pre><code class="lang-c">int32_t aacomm_send(aacomm_handle h, const char* command, int32_t timeout_ms,
+                    aacomm_reply_cb reply_cb, void* user_data);
+</code></pre>
+<p>Enqueues <code>command</code> (UTF-8) and returns immediately (<code>AACOMM_OK</code> on enqueue; <code>AACOMM_NULL_ARG</code> /
+<code>AACOMM_BAD_HANDLE</code> / <code>AACOMM_EXCEPTION</code> otherwise). If <code>reply_cb</code> is non-NULL it fires <strong>once</strong> when the
+reply arrives, as <code>reply_cb(const char* reply, int32_t is_error, void* user_data)</code>; pass NULL to
+fire-and-forget. <code>timeout_ms &gt; 0</code> overrides the default. <code>user_data</code> is passed through verbatim.</p>
+<pre><code class="lang-c">int32_t aacomm_set_error_callback(aacomm_handle h, aacomm_error_cb cb, void* user_data);
+int32_t aacomm_set_push_callback(aacomm_handle h, aacomm_push_cb cb, void* user_data);
+int32_t aacomm_set_longop_started_callback(aacomm_handle h, aacomm_longop_started_cb cb, void* user_data);
+int32_t aacomm_set_longop_ended_callback(aacomm_handle h, aacomm_longop_ended_cb cb, void* user_data);
+</code></pre>
+<p>Register (or, with a NULL <code>cb</code>, clear) a session-level event callback on the handle. Each returns
+<code>AACOMM_OK</code> or <code>AACOMM_BAD_HANDLE</code>. Only one callback of each kind is held per handle — a later
+registration replaces the earlier one. Callback signatures and firing threads are in
+<a href="#callbacks-and-threading">Callbacks and threading</a>; <code>user_data</code> is passed through verbatim to each
+invocation.</p>
+<ul>
+<li><code>aacomm_error_cb</code> — <code>void cb(const char* error, void* user_data)</code> — fatal comms error.</li>
+<li><code>aacomm_push_cb</code> — <code>void cb(const char* message, void* user_data)</code> — controller push message.</li>
+<li><code>aacomm_longop_started_cb</code> — <code>void cb(int32_t op_type, void* user_data)</code> — <code>op_type</code> is <code>aacomm_long_operation_type</code>.</li>
+<li><code>aacomm_longop_ended_cb</code> — <code>void cb(int32_t op_type, int32_t error_code, void* user_data)</code> — <code>error_code</code> <code>0</code> means success.</li>
+</ul>
+<p>This surface is <strong>v0 and intentionally minimal — it will be extended as the SDK matures.</strong> Always build
+against the headers that ship with your library (the <code>aacomm_connection</code> layout in particular must
+match), and call <code>aacomm_abi_version()</code> to verify the loaded library matches the header you built
+against — the value is bumped on any breaking change.</p>
+<hr>
+<h2 id="see-also">See also</h2>
+<p>In the repo (<code>AACommComponents/</code>):</p>
+<ul>
+<li><code>AACommNative/packaging/README.md</code> — building a library from source, per RID.</li>
+<li><code>AACommNative/sample/sample.c</code> — a complete pure-C program (also in the sdk zip).</li>
+<li><code>AAComm/docs/native-aot-sdk.md</code> — design, status, and roadmap.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

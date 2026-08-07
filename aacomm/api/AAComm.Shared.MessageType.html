@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum MessageType | Agito AAComm SDK ">
       
-      <meta name="description" content="enum to indicate special messages types for communication over CAN and Ethernet        for details.  disregarded for RS-232 channel   shared enum for AAComm and AACommNative!">
+      <meta name="description" content="enum to indicate special messages types for communication over CAN and Ethernet        for details.  disregarded for RS-232 channel">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -90,7 +90,7 @@
 
 
   <h1 id="AAComm_Shared_MessageType" data-uid="AAComm.Shared.MessageType" class="text-break">
-Enum MessageType  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/MessageType.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Enum MessageType  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/MessageType.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -104,9 +104,6 @@ Enum MessageType  <a class="header-action link-secondary" title="View source" hr
     <a class="xref" href="AAComm.Services.AACommMessage.html">AACommMessage</a> for details.
 <p></p>
 <pre><code>disregarded for RS-232 channel
-</code></pre>
-<p></p>
-<pre><code>shared enum for AAComm and AACommNative!
 </code></pre>
 </div>
   <div class="markdown conceptual"></div>
@@ -222,10 +219,9 @@ Timeout: &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if
 <p></p>
 <pre><code>DEFAULTS with &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Reset&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
 
-when this type is encountered, the &lt;xref href=&quot;AAComm.CommAPI.OnResetProgress&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; will be invoked twice: 
-</code></pre>
-<p></p>
-<pre><code>before sending he message to controller, and after reset is complete
+when this type is encountered, &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; /
+&lt;xref href=&quot;AAComm.CommAPI.OnLongOperationEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; fire with
+&lt;xref href=&quot;AAComm.Shared.LongOperationType.Reset&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; around the post-reset recovery window
 </code></pre>
 </dd>
     <dt id="AAComm_Shared_MessageType_SpecialBulk"><code>SpecialBulk = 10</code></dt>
@@ -265,7 +261,7 @@ when this type is encountered, the &lt;xref href=&quot;AAComm.CommAPI.OnResetPro
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/MessageType.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/MessageType.cs/#L8" class="edit-link">Edit this page</a>
         </div>
 
 

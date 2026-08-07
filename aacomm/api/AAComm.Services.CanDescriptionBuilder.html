@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Services_CanDescriptionBuilder" data-uid="AAComm.Services.CanDescriptionBuilder" class="text-break">
-Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -164,7 +164,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <h3 id="AAComm_Services_CanDescriptionBuilder_GetCanDescription_System_String_System_Int32_System_Boolean_System_Int32_" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanDescription(System.String,System.Int32,System.Boolean,System.Int32)">
   GetCanDescription(string, int, bool, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>get Complex CAN Code (CCC) description according to provided parameters
@@ -214,9 +214,9 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <a id="AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter*"></a>
 
-  <h3 id="AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_System_String_System_Int32_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Services.ControllerMessagesContainer)">
-  GetCanDescriptionFromParameter(string, int, ControllerMessagesContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_System_String_System_Int32_AAComm_Interfaces_IMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Interfaces.IMessagesContainer)">
+  GetCanDescriptionFromParameter(string, int, IMessagesContainer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Get Complex CAN Code (CCC) description according to provided mnemonic and data container
@@ -228,7 +228,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int GetCanDescriptionFromParameter(string parameter, int numOfAxes, ControllerMessagesContainer dataContainer)</code></pre>
+    <pre><code class="lang-csharp hljs">public static int GetCanDescriptionFromParameter(string parameter, int numOfAxes, IMessagesContainer dataContainer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -239,7 +239,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
     <dt><code>numOfAxes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>number of axes supported by connected controller, <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_NumberOfAxes">NumberOfAxes</a></p>
 </dd>
-    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Interfaces.IMessagesContainer.html">IMessagesContainer</a></dt>
     <dd><p>messages data container to use, <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></p>
 </dd>
   </dl>
@@ -265,7 +265,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <h3 id="AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameterIDE_System_String_AAComm_CommAPI_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameterIDE(System.String,AAComm.CommAPI,AAComm.Services.ControllerMessagesContainer)">
   GetCanDescriptionFromParameterIDE(string, CommAPI, ControllerMessagesContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Get Complex CAN Code (CCC) description according to provided mnemonic and data container
@@ -317,7 +317,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <h3 id="AAComm_Services_CanDescriptionBuilder_GetCanMessageFromMessageIDE_System_String_AAComm_CommAPI_AAComm_Services_ControllerMessagesContainer_System_Byte____System_Int32__" data-uid="AAComm.Services.CanDescriptionBuilder.GetCanMessageFromMessageIDE(System.String,AAComm.CommAPI,AAComm.Services.ControllerMessagesContainer,System.Byte[]@,System.Int32@)">
   GetCanMessageFromMessageIDE(string, CommAPI, ControllerMessagesContainer, out byte[], out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>builds low-level Tx data byte array, throws on errors!!
@@ -370,9 +370,9 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <a id="AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_" data-uid="AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription*"></a>
 
-  <h3 id="AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_System_Int32_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Services.ControllerMessagesContainer)">
-  GetParameterFromCanDescription(int, ControllerMessagesContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_System_Int32_AAComm_Interfaces_IMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Interfaces.IMessagesContainer)">
+  GetParameterFromCanDescription(int, IMessagesContainer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>get full parameter (i.e. AGenData[17])  according to provided Complex CAN Code (CCC) description</p>
@@ -380,7 +380,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetParameterFromCanDescription(int complexCanCode, ControllerMessagesContainer dataContainer)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetParameterFromCanDescription(int complexCanCode, IMessagesContainer dataContainer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -388,7 +388,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
     <dt><code>complexCanCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>complex CAN code, describing Mnemonic, Axis and Index</p>
 </dd>
-    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Interfaces.IMessagesContainer.html">IMessagesContainer</a></dt>
     <dd><p>currently used messages data container, <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></p>
 </dd>
   </dl>
@@ -414,7 +414,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <h3 id="AAComm_Services_CanDescriptionBuilder_ParseCanDescription_System_Int32_System_Int32__System_String__System_Int32__" data-uid="AAComm.Services.CanDescriptionBuilder.ParseCanDescription(System.Int32,System.Int32@,System.String@,System.Int32@)">
   ParseCanDescription(int, out int, out string, out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>parses a complex CAN description (CCC, created by <a class="xref" href="AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetCanDescription_System_String_System_Int32_System_Boolean_System_Int32_">GetCanDescription(string, int, bool, int)</a></p>
@@ -456,7 +456,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 
   <h3 id="AAComm_Services_CanDescriptionBuilder_TryParseParameter_System_String_System_Int32_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Services.CanDescriptionBuilder.TryParseParameter(System.String,System.Int32,AAComm.Services.ControllerMessagesContainer)">
   TryParseParameter(string, int, ControllerMessagesContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns whether the provided parameter (i.e. AGenData[17]) is valid according to the provided data container and number of axes</p>
@@ -500,7 +500,7 @@ Class CanDescriptionBuilder  <a class="header-action link-secondary" title="View
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/CanDescriptionBuilder.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

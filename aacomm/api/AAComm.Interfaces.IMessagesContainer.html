@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Interfaces_IMessagesContainer" data-uid="AAComm.Interfaces.IMessagesContainer" class="text-break">
-Interface IMessagesContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Interface IMessagesContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -127,7 +127,7 @@ container type.</p>
 
   <h3 id="AAComm_Interfaces_IMessagesContainer_AllMnemonics" data-uid="AAComm.Interfaces.IMessagesContainer.AllMnemonics">
   AllMnemonics
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Snapshot of all known mnemonics. Read-only — do not mutate the underlying list.</p>
@@ -155,15 +155,119 @@ container type.</p>
 
 
 
+  <a id="AAComm_Interfaces_IMessagesContainer_CanCodeToData_" data-uid="AAComm.Interfaces.IMessagesContainer.CanCodeToData*"></a>
+
+  <h3 id="AAComm_Interfaces_IMessagesContainer_CanCodeToData" data-uid="AAComm.Interfaces.IMessagesContainer.CanCodeToData">
+  CanCodeToData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Read-only view over the Complex CAN Code (CCC) → <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a> map.
+Used by the recording-upload path to resolve per-vector CCCs back to parameter metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyDictionary&lt;int, MessageData&gt; CanCodeToData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IMessagesContainer_IsInitialized_" data-uid="AAComm.Interfaces.IMessagesContainer.IsInitialized*"></a>
+
+  <h3 id="AAComm_Interfaces_IMessagesContainer_IsInitialized" data-uid="AAComm.Interfaces.IMessagesContainer.IsInitialized">
+  IsInitialized
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True once the container has been populated from the controller's &quot;About&quot; data.
+Used by parser/builder helpers to assert their precondition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsInitialized { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="AAComm_Interfaces_IMessagesContainer_Contains_" data-uid="AAComm.Interfaces.IMessagesContainer.Contains*"></a>
+
+  <h3 id="AAComm_Interfaces_IMessagesContainer_Contains_System_String_" data-uid="AAComm.Interfaces.IMessagesContainer.Contains(System.String)">
+  Contains(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True if the controller's parameter database contains the given mnemonic.
+Equivalent to <code>GetDataFromMnemonic(mnemonic) != null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Contains(string mnemonic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="AAComm_Interfaces_IMessagesContainer_GetDataFromMnemonic_" data-uid="AAComm.Interfaces.IMessagesContainer.GetDataFromMnemonic*"></a>
 
   <h3 id="AAComm_Interfaces_IMessagesContainer_GetDataFromMnemonic_System_String_" data-uid="AAComm.Interfaces.IMessagesContainer.GetDataFromMnemonic(System.String)">
   GetDataFromMnemonic(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Looks up the <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a> for the given mnemonic (case-insensitive).
@@ -197,11 +301,89 @@ Returns null if the container is not initialized or the mnemonic is unknown.</p>
 
 
 
+  <a id="AAComm_Interfaces_IMessagesContainer_TryGetUserUnitAxis_" data-uid="AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis*"></a>
+
+  <h3 id="AAComm_Interfaces_IMessagesContainer_TryGetUserUnitAxis_System_Char_System_Int32_" data-uid="AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)">
+  TryGetUserUnitAxis(char, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resolves the User Unit axis descriptor for the given axis + CAN code, or null when the
+parameter is not part of a User Units group. Consumed by <a class="xref" href="AAComm.Services.FloatHelper.html">FloatHelper</a> scaling.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">UserUnitAxis TryGetUserUnitAxis(char axis, int canCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>canCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitAxis.html">UserUnitAxis</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IMessagesContainer_TryGetUserUnitsGroup_" data-uid="AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup*"></a>
+
+  <h3 id="AAComm_Interfaces_IMessagesContainer_TryGetUserUnitsGroup_AAComm_Services_UserUnits_UUGroups_" data-uid="AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)">
+  TryGetUserUnitsGroup(UUGroups)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a COPY of the User Units group by the specified key, or null if not found /
+User Units unsupported. Consumed by per-group unit/factor lookups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">UserUnitGroup TryGetUserUnitsGroup(UUGroups group)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>group</code> <a class="xref" href="AAComm.Services.UserUnits.UUGroups.html">UUGroups</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitGroup.html">UserUnitGroup</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IMessagesContainer.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_RecParamsResolver" data-uid="AAComm.Extensions.RecData.RecParamsResolver" class="text-break">
-Class RecParamsResolver  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class RecParamsResolver  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -155,9 +155,9 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <a id="AAComm_Extensions_RecData_RecParamsResolver__ctor_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.#ctor*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_RecParamsResolver__ctor_AAComm_CommAPI_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.CommAPI,System.Int32)">
-  RecParamsResolver(CommAPI, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver__ctor_AAComm_Interfaces_ICommService_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.Interfaces.ICommService,System.Int32)">
+  RecParamsResolver(ICommService, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>MUST be used when API is CONNECTED!
@@ -168,12 +168,12 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RecParamsResolver(CommAPI api, int recSysID = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">public RecParamsResolver(ICommService api, int recSysID = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd></dd>
     <dt><code>recSysID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
@@ -198,7 +198,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_AdvancedRecSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.AdvancedRecSupported">
   AdvancedRecSupported
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the connected controller supports the advanced recording protocol (V3)</p>
@@ -230,7 +230,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_DoubleSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.DoubleSupported">
   DoubleSupported
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the controller supports double-precision floating-point parameters</p>
@@ -262,7 +262,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecData" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecData">
   RecData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording data command keyword (e.g. &quot;RecData&quot;, &quot;RecDataA&quot;)</p>
@@ -294,7 +294,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRecordedPoints" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRecordedPoints">
   RecDataNumOfRecordedPoints
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Command string to query number of actually recorded points (e.g. &quot;RecData[25]&quot; or &quot;RecDataA[3]&quot;)</p>
@@ -326,7 +326,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecDataNumOfRequestedPoints" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecDataNumOfRequestedPoints">
   RecDataNumOfRequestedPoints
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Command string to query number of requested recording points (e.g. &quot;RecData[1]&quot; or &quot;RecDataA[1]&quot;)</p>
@@ -358,7 +358,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecGap" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecGap">
   RecGap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording gap command keyword</p>
@@ -390,7 +390,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecLength" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecLength">
   RecLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording length command keyword</p>
@@ -422,7 +422,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecParam" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecParam">
   RecParam
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording parameter command keyword (e.g. &quot;RecParam&quot;, &quot;RecParamA&quot;)</p>
@@ -454,7 +454,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStart" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStart">
   RecStart
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start recording command keyword</p>
@@ -486,7 +486,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStat" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStat">
   RecStat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording status query keyword</p>
@@ -518,7 +518,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecStop" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecStop">
   RecStop
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop recording command keyword</p>
@@ -550,7 +550,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecSysID" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecSysID">
   RecSysID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Recording system ID: 1 = RecDataA (default), 2 = RecDataB (Data Rec Snapshot)</p>
@@ -582,7 +582,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigForce" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigForce">
   RecTrigForce
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Force trigger command keyword</p>
@@ -614,7 +614,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigPos" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigPos">
   RecTrigPos
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Trigger position command keyword</p>
@@ -646,7 +646,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecTrigValMaxSupported" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecTrigValMaxSupported">
   RecTrigValMaxSupported
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the controller supports <a class="xref" href="AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_RecTrigValMaxS">RecTrigValMaxS</a></p>
@@ -678,7 +678,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_RecUpload" data-uid="AAComm.Extensions.RecData.RecParamsResolver.RecUpload">
   RecUpload
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Upload recorded data command keyword</p>
@@ -714,7 +714,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_GetRecUploadNext_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetRecUploadNext(System.Int32)">
   GetRecUploadNext(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L132"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the RecUploadNext command string for the given step index (1 = init, 2 = next packet)</p>
@@ -747,11 +747,93 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
 
 
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_GetTriggerIndex_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_GetTriggerIndex_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex(System.Int32)">
+  GetTriggerIndex(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Returns the global 1-based trigger index for the given local trigger ID (1-based) within this recording system.
+</code></pre>
+<p></p>
+<pre><code>For RecSysID=1: returns trigID as-is. For RecSysID=2: offsets by MaxNumOfTriggers.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetTriggerIndex(int localTrigID)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>localTrigID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_RecParamsResolver_GetTriggerLogicIndex_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_RecParamsResolver_GetTriggerLogicIndex_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex(System.Int32)">
+  GetTriggerLogicIndex(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Returns the global 1-based logic connection index for the given local logic ID (1 or 2) within this recording system.
+</code></pre>
+<p></p>
+<pre><code>For RecSysID=1: returns logicID as-is. For RecSysID=2: offsets by (MaxNumOfTriggers - 1).
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetTriggerLogicIndex(int localLogicID)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>localLogicID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV1_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV1*"></a>
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV1_System_Int32_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV1(System.Int32)">
   HeaderV1(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>LEGACY support: resolves whether connected controller uses RecUpload 'V1' protocol that supports only 8 recording parameters</p>
@@ -788,7 +870,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 
   <h3 id="AAComm_Extensions_RecData_RecParamsResolver_HeaderV3_AAComm_Services_ControllerMessagesContainer_" data-uid="AAComm.Extensions.RecData.RecParamsResolver.HeaderV3(AAComm.Services.ControllerMessagesContainer)">
   HeaderV3(ControllerMessagesContainer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Resolves whether a controller supports the 'V3' (advanced) recording protocol based on its messages container.
@@ -829,7 +911,7 @@ Class RecParamsResolver  <a class="header-action link-secondary" title="View sou
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecParamsResolver.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

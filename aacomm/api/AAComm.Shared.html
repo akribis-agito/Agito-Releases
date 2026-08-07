@@ -101,11 +101,7 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Shared.ConnectionDataDefaults.html">ConnectionDataDefaults</a></dt>
-      <dd><pre><code>commons class with &lt;xref href=&quot;AAComm.Services.ConnectionData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; defaults
-</code></pre>
-<p></p>
-<pre><code>shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++
-</code></pre>
+      <dd><p>commons class with <a class="xref" href="AAComm.Services.ConnectionData.html">ConnectionData</a> defaults.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -120,11 +116,7 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Shared.TimeoutMs.html">TimeoutMs</a></dt>
-      <dd><pre><code>commons class with timeouts
-</code></pre>
-<p></p>
-<pre><code>shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++
-</code></pre>
+      <dd><p>commons class with timeout constants.</p>
 </dd>
     </dl>
     <h3 id="structs">
@@ -133,9 +125,6 @@ Structs
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Shared.AllStatAxisData.html">AllStatAxisData</a></dt>
       <dd><pre><code>Container for AllStat data, per axis. Used by &lt;xref href=&quot;AAComm.Services.AllStatInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
-</code></pre>
-<p></p>
-<pre><code>Shared between AAComm (C#) and AACommNative (C++) via preprocessor directives.
 </code></pre>
 <p></p>
 <pre><code>Groups (wire order per axis):
@@ -165,20 +154,18 @@ Enums
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Shared.ChannelType.html">ChannelType</a></dt>
-      <dd><pre><code>connection data communication channel types
-</code></pre>
-<p></p>
-<pre><code>shared enum for AAComm and AACommNative!
-</code></pre>
+      <dd><p>connection data communication channel types.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Shared.ConnectResult.html">ConnectResult</a></dt>
-      <dd><pre><code>enum to indicate the result of calling AAComm functions
-</code></pre>
-<p></p>
-<pre><code>shared enum for AAComm and AACommNative!
-</code></pre>
+      <dd><p>enum to indicate the result of calling AAComm functions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Shared.LongOperationType.html">LongOperationType</a></dt>
+      <dd><p>Identifies controller operations that freeze firmware for a significant duration,
+used by <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationStarted">OnLongOperationStarted</a> / <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationEnded">OnLongOperationEnded</a> to bracket the busy window.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -190,8 +177,23 @@ Enums
 <p></p>
 <pre><code>disregarded for RS-232 channel
 </code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Shared.ProtocolMode.html">ProtocolMode</a></dt>
+      <dd><p>Wire protocol used between AAComm and AACommServer for a connection.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Shared.ServerCompat.html">ServerCompat</a></dt>
+      <dd><pre><code>Classification of the AACommServer this client attached to, reported by
+&lt;xref href=&quot;AAComm.CommAPI.ServerCompat&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; after a successful &lt;code&gt;Connect&lt;/code&gt;.
+</code></pre>
 <p></p>
-<pre><code>shared enum for AAComm and AACommNative!
+<pre><code>The version floor CLASSIFIES the attach, it never rejects: a legacy server still
+connects (compat mode), because a new client must coexist with a server started by an
+older SDK application on the same machine — but the degraded mode is queryable here
+instead of silent. A client must never shut down a server it did not spawn.
 </code></pre>
 </dd>
     </dl>

@@ -226,7 +226,7 @@ Class TriggersDataContainer  <a class="header-action link-secondary" title="View
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TriggersDataContainer(List&lt;TriggerContainer&gt; triggers, MultiTriggerModes triggersMode, int triggerPosition, List&lt;LogicalTriggerRelation&gt; triggersLogicalConnection = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public TriggersDataContainer(List&lt;TriggerContainer&gt; triggers, MultiTriggerModes triggersMode, int triggerPosition, List&lt;LogicalTriggerRelation&gt; triggersLogicalConnection)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -391,6 +391,54 @@ Class TriggersDataContainer  <a class="header-action link-secondary" title="View
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_TriggersDataContainer_GetDownloadCommands_" data-uid="AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_TriggersDataContainer_GetDownloadCommands_AAComm_Extensions_RecData_RecParamsResolver_" data-uid="AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver)">
+  GetDownloadCommands(RecParamsResolver)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggersContainer.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Returns trigger(s) mode and logic download commands + the trigger(s) setup.
+</code></pre>
+<p></p>
+<pre><code>Uses &lt;xref href=&quot;AAComm.Extensions.RecData.RecParamsResolver&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for RecSysID-based index offsetting.
+</code></pre>
+<p></p>
+<pre><code>Recording trigger parameters always use axis &quot;A&quot; prefix (not motor-axis-related).
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; GetDownloadCommands(RecParamsResolver resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>resolver</code> <a class="xref" href="AAComm.Extensions.RecData.RecParamsResolver.html">RecParamsResolver</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 

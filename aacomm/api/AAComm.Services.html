@@ -95,11 +95,6 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.AACommAxisHelper.html">AACommAxisHelper</a></dt>
-      <dd><p>a helper class for controller parameters Axis manipulations</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a></dt>
       <dd><pre><code>this class is used as an argument, when invoking &lt;xref href=&quot;AAComm.Services.AACommMessage.OnReplyReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; passed to &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;/&gt;
 </code></pre>
@@ -138,6 +133,17 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.AACommMnemonicHelper.html">AACommMnemonicHelper</a></dt>
+      <dd><pre><code>SDK helper for controller-message string manipulation: axis letters, mnemonics,
+array indexes and assignment separation, plus ordinal-ignore-case string helpers.
+</code></pre>
+<p></p>
+<pre><code>Controller messages have the shape &lt;code&gt;&lt;axis-letter&gt;&lt;Mnemonic&gt;[index]=value&lt;/code&gt;
+(e.g. &lt;code&gt;&quot;APos&quot;&lt;/code&gt;, &lt;code&gt;&quot;BGain[3]=5&quot;&lt;/code&gt;).
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.AACommVerifySingleClient.html">AACommVerifySingleClient</a></dt>
       <dd><p>a helper class used to verify if the AACommServer is used by a single (the querying) client</p>
 </dd>
@@ -168,10 +174,12 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.COMTools.html">COMTools</a></dt>
-      <dd><pre><code>a helper class for listing relevant (or ALL) COM ports
+      <dd><pre><code>a helper class for listing relevant (or ALL) COM ports.
 </code></pre>
 <p></p>
-<pre><code>Windows .NET ONLY!!! (returns empty list on .NET 6.0, etc.)
+<pre><code>Cross-platform: USB-serial enumeration via the Windows registry on Windows
+and udev &lt;code&gt;/dev/serial/by-id&lt;/code&gt; on Linux — no WMI dependency. (macOS, which has
+no udev by-id path, falls through to an empty list; no native macOS build exists yet.)
 </code></pre>
 </dd>
     </dl>
@@ -301,6 +309,12 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.MessageData.html">MessageData</a></dt>
       <dd><p>this class describes and contains the different parameters every controller message has</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.MessageDataValueExtensions.html">MessageDataValueExtensions</a></dt>
+      <dd><p>string / integral accessors for <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a> Min/Max/Default values,
+formatted according to the parameter type</p>
 </dd>
     </dl>
     <dl class="jumplist">

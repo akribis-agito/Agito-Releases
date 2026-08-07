@@ -71,14 +71,26 @@
         </div>
 
         <article data-uid="advanced-firmware-download">
+<h1 id="firmware--fpga-download">Firmware &amp; FPGA Download</h1>
 
-<p>2025-12-26</p>
-<h1 id="managefw-agm800-binary-firmware-validation-with-ver-file-support">Manage/FW: AGM800 Binary Firmware Validation with .ver File Support</h1>
 <h2 id="overview">Overview</h2>
-<p>Added support for validating AGM800 binary (.bin) firmware files using
-embedded magic markers and optional .ver file validation. This brings
-AGM800 firmware download to parity with non-AGM800 products while
-maintaining full backward compatibility.</p>
+<p>Firmware (and, for non-AGM800 products, FPGA) images download over <strong>Ethernet</strong>
+or <strong>RS-232</strong> — never CAN (see Transport support). AGM800 binary (<code>.bin</code>) firmware
+is validated via embedded magic markers and an optional <code>.ver</code> file, at parity
+with the non-AGM800 (<code>.hex</code> FW + <code>.dat</code> FPGA) products.</p>
+<h2 id="transport-support">Transport support</h2>
+<p>FW download runs over <strong>Ethernet</strong> (AGM800 family — Ethernet only) or <strong>RS-232</strong>
+(non-AGM800 products). It is <strong>NOT supported over CAN</strong> — <code>AACommDownloadFW</code>
+(<code>StartDownloading</code>/<code>StartDownloadingSafe</code>) rejects a CAN <code>ConnectionData</code> up
+front with <em>&quot;Firmware download is not supported over CAN…&quot;</em>. The controller's
+CAN boot-loader FW-data contract is owned by the C2000 flash kernel at
+<code>0x100000</code> (separate from the application image) and is not met by this client
+path, so a CAN attempt fails controller-side with <code>ERR 43</code> (unexpected
+character) / <code>ERR 15</code> (unexpected byte count). Use Ethernet or RS-232.</p>
+<p>The AGD301 FW (<code>.hex</code>) and FPGA (<code>.dat</code>) download paths are HW-validated over
+<strong>RS-232</strong> on both the String and Binary IPC protocols (<code>Agd301HardwareTests</code>,
+goldens <code>AGD301orAGC301_2D05_V3.0.42.hex</code> + <code>AGD301_for_BissC_and_SinCos_v2.7.2.dat</code>).
+FPGA download requires normal mode — it rejects BOOT.</p>
 <h2 id="backward-compatibility">Backward Compatibility</h2>
 <ul>
 <li><strong>No .ver file</strong>: AGM800 firmware download proceeds without validation
@@ -189,6 +201,9 @@ each binary chunk with the <code>@#HEX:</code> sigil (<code>CommCommons.HexEncod
 decodes the hex pairs back to raw bytes, and forwards a byte-identical payload
 to the controller. The per-packet MAS02 header and EOF marker are encoded as
 hex ASCII strings (<code>&quot;0000&quot;</code> / <code>&quot;FFFF&quot;</code>) rather than raw <code>char</code> constants.</p>
+<p>This <code>@#HEX:</code> framing is the <strong>string-protocol</strong> path. Under the default binary
+(protobuf) IPC the raw FW bytes ride in <code>IpcRequest.PayloadBytes</code> with no hex
+round-trip — see <code>architecture.md</code> (IPC Framing).</p>
 <h3 id="post-reset-disconnect-tolerance">Post-Reset Disconnect Tolerance</h3>
 <p>Both FW and FPGA download use <code>ResetReplyHelper.IsExpectedPostResetDisconnect</code>
 after the final packet/batch to handle the race where the controller resets

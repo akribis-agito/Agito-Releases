@@ -71,11 +71,12 @@
         </div>
 
         <article data-uid="architecture-server">
-<h1 id="aacommserverapi">AACommServerAPI</h1>
+<h1 id="aacommservercore">AACommServerCore</h1>
 
 <p>Communication server API for managing hardware communication channels via multiple transport protocols.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
-<p>AACommServerAPI acts as a middleware server that manages communication between multiple AAComm client instances and hardware controllers. It binds to a TCP loopback socket (127.0.0.1:399 on Windows, :1024 on Linux) for IPC and handles connection pooling, message queuing (with <code>&gt;\r</code> message delimiters), timeouts, and exclusive channel access.</p>
+<p>AACommServerCore acts as a middleware server that manages communication between multiple AAComm client instances and hardware controllers. It binds to a TCP loopback socket (127.0.0.1:399 on Windows, :1024 on Linux) for IPC and handles connection pooling, message queuing, timeouts, and exclusive channel access. It speaks two wire protocols on that one socket — legacy string envelopes and the default binary (protobuf) protocol, detected per client from its first byte; the full wire contract (framing, negotiation, correlation ids, ordering invariants, error codes, compatibility matrix) is <code>AACommComponents/docs/ipc-contract.md</code>.</p>
+<p>The loopback IPC is deliberately unauthenticated: the trust boundary is the machine — any local process may open channels or request shutdown. Remote access is a different boundary and must go through its own authenticated listener, never by exposing this socket beyond loopback.</p>
 <h2 id="communication-pipeline">Communication Pipeline</h2>
 <p>The following diagram illustrates the bidirectional communication flow between AAComm users and hardware:</p>
 <pre><code class="lang-mermaid">graph TB
@@ -83,7 +84,7 @@
         User[AAComm Client]
     end
 
-    subgraph &quot;AACommServerAPI Process&quot;
+    subgraph &quot;AACommServerCore Process&quot;
         subgraph &quot;Socket Layer&quot;
             Socket[ServerSocketWrapper&lt;br/&gt;- TCP Socket&lt;br/&gt;- UserId Management&lt;br/&gt;- Send/Receive Buffers]
         end
@@ -97,7 +98,7 @@
         end
 
         subgraph &quot;Hardware Abstraction Layer&quot;
-            Comm[ICommunicator&lt;br/&gt;- Open/Send/Close&lt;br/&gt;- OnMsgReceived Callback&lt;br/&gt;Implementations: CAN, RS-232, Ethernet, Simulator]
+            Comm[ICommunicator&lt;br/&gt;- Open/Send/Close&lt;br/&gt;- OnMsgReceived Callback&lt;br/&gt;Implementations: CAN, RS-232, Ethernet, Simulation]
         end
     end
 
@@ -112,16 +113,16 @@
     Socket --&gt;|4. OnAACommRequest| Server
     Server --&gt;|5. Route by ChannelKey| Handler
     Handler --&gt;|6. Enqueue Message&lt;br/&gt;Start Timer| Handler
-    Handler --&gt;|7. SendNextMessage| Comm
+    Handler --&gt;|7. PumpLocked| Comm
     Comm --&gt;|8. Protocol-Specific Send| HW
 
     %% Inbound Flow (HW → User)
     HW --&gt;|9. Protocol Response| Comm
     Comm --&gt;|10. OnMsgReceived Callback| Handler
-    Handler --&gt;|11. Stop Timer&lt;br/&gt;SendReplyToClient| Server
+    Handler --&gt;|11. Stop Timer&lt;br/&gt;Enqueue on delivery lane| Server
     Server --&gt;|12. OnMessageFromHardware| Socket
     Socket --&gt;|13. TCP Send| User
-    Handler --&gt;|14. SendNextMessage&lt;br/&gt;Process Queue| Handler
+    Handler --&gt;|14. PumpLocked&lt;br/&gt;Process Queue| Handler
 
     %% Styling
     classDef userClass fill:#e1f5ff,stroke:#01579b,stroke-width:2px
@@ -146,18 +147,18 @@
 <li><strong>Request Received</strong>: Client sends Open/Message/Close request</li>
 <li><strong>Request Processing</strong>: <code>AACommServerModel.OnAACommRequest()</code> deserializes and routes message</li>
 <li><strong>Channel Routing</strong>: Message routed to appropriate <code>ChannelHandler</code> by <code>ChannelKey</code></li>
-<li><strong>Message Queuing</strong>: <code>ChannelHandler.Send()</code> enqueues message and starts timeout timer</li>
-<li><strong>Hardware Send</strong>: <code>ChannelHandler.SendNextMessage()</code> dequeues and sends via <code>ICommunicator</code></li>
+<li><strong>Message Queuing</strong>: <code>ChannelHandler.Send()</code> enqueues the message</li>
+<li><strong>Hardware Send</strong>: <code>ChannelHandler.PumpLocked()</code> dequeues the next message (one in-flight per channel), starts the timeout timer, and sends via <code>ICommunicator</code></li>
 <li><strong>Protocol Transmission</strong>: <code>ICommunicator</code> implementation sends using protocol-specific format</li>
 </ol>
 <h3 id="inbound-path-hardware--user">Inbound Path (Hardware → User)</h3>
 <ol start="9">
 <li><strong>Hardware Response</strong>: Physical hardware responds via protocol (CAN/RS-232/Ethernet)</li>
 <li><strong>Receive Callback</strong>: <code>ICommunicator.OnMsgReceived</code> callback invoked with response data</li>
-<li><strong>Reply Processing</strong>: <code>ChannelHandler.OnMsgFromHW()</code> stops timer, sends reply to client</li>
-<li><strong>Message Forwarding</strong>: <code>AACommServerModel.OnMessageFromHardware()</code> forwards to socket</li>
-<li><strong>TCP Response</strong>: <code>ServerSocketWrapper.Send()</code> transmits response back to client</li>
-<li><strong>Queue Processing</strong>: <code>ChannelHandler.SendNextMessage()</code> processes next queued message</li>
+<li><strong>Reply Processing</strong>: <code>ChannelHandler.OnMsgFromHW()</code> stops the timer and enqueues the reply on the channel's ordered delivery lane (drained outside the lock)</li>
+<li><strong>Message Forwarding</strong>: <code>AACommServerModel.OnMessageFromHardware()</code> formats per the client's protocol and forwards to its socket</li>
+<li><strong>TCP Response</strong>: <code>ServerSocketWrapper.Send()</code> enqueues on the client's single-writer outbound queue</li>
+<li><strong>Queue Processing</strong>: <code>ChannelHandler.PumpLocked()</code> dispatches the next queued message</li>
 </ol>
 <h2 id="key-features">Key Features</h2>
 <h3 id="multi-user-channel-sharing">Multi-User Channel Sharing</h3>
@@ -174,39 +175,146 @@
 </ul>
 <h3 id="timeout-management">Timeout Management</h3>
 <ul>
-<li>Each message has configurable timeout (<code>TimeoutMs</code>, default 2000ms)</li>
-<li>Common timeouts: Reset (10001ms standard controller, varies by type), Firmware (6000ms), User Program (3000ms)</li>
+<li>Each message carries its own timeout (<code>TimeoutMs</code>, default 2000 ms); the full timeout/limit table is in <code>AACommComponents/docs/ipc-contract.md</code></li>
 <li>Timer started on send, stopped on receive</li>
 <li>Timeout triggers fatal error and channel closure</li>
-<li>After-reset wait periods: Standard controller (1500ms), MAS02 (4000ms)</li>
 </ul>
-<h3 id="message-queuing">Message Queuing</h3>
+<h3 id="message-queuing--channel-lifecycle">Message Queuing &amp; Channel Lifecycle</h3>
 <ul>
-<li>FIFO queue per channel ensures sequential message processing</li>
-<li>Only one message &quot;in-flight&quot; per channel at a time</li>
-<li>Prevents race conditions and ensures deterministic responses</li>
-<li>Lock-based synchronization (<code>_QueueSyncObj</code>) for thread safety</li>
+<li>FIFO queue per channel ensures sequential message processing; server-internal (<code>IA:</code>)
+queries ride the same queue, so per-client replies always arrive in request order</li>
+<li>Only one hardware message &quot;in-flight&quot; per channel at a time</li>
+<li>Channel state machine (<code>Open</code> / <code>Resetting</code> / <code>Dead</code>): slow operations — the communicator
+open, the post-Reset recovery wait, Ethernet reconnect retries — run as states on worker
+tasks, never as threads parked under a lock, so one channel's slow phase cannot stall
+message routing on other channels or clients</li>
+<li>Replies to clients are collected under the channel lock into a per-channel ordered
+delivery lane and written outside it; each client socket additionally has a dedicated
+single-writer outbound queue (<code>ServerSocketWrapper</code>), so a client that stops reading
+blocks only its own writer and is evicted on send timeout or queue overflow</li>
 </ul>
+<pre><code class="lang-mermaid">stateDiagram-v2
+    [*] --&gt; Open : constructed Open (registry ctor is cheap; the communicator opens later, off the registry lock — dispatch can't run before Open commits a user)
+    Open --&gt; Resetting : reset request OK'd (PostResetWaitMs &gt; 0, or legacy 10001/10002 marker)
+    Resetting --&gt; Open : recovery worker done (wait elapsed; Ethernet reopened, bounded retries)
+    Resetting --&gt; Dead : closed/evicted during recovery, or reopen retries exhausted (fatal)
+    Open --&gt; Dead : FATAL (timeout / link lost / send failure), or Dispose (last-user close marks eviction; the registry's eviction disposes)
+    Dead --&gt; [*] : registry eviction, posted off-lock (EvictionPending keeps revived channels safe)
+</code></pre>
+<p>Slow work (the communicator open, the recovery wait, reopen retries) always runs on worker
+tasks in a <em>state</em>, never on a thread parked under a lock — <code>Resetting</code> and <code>Dead</code> are what
+make that safe: dispatch refuses in both, and the recovery worker alone owns the
+<code>Resetting → Open</code> transition. (The state field is born <code>Open</code> at construction; nothing can
+dispatch until the first Open commits a communicator and a user, so the window is inert.)</p>
 <h3 id="buffer-management">Buffer Management</h3>
 <ul>
 <li>Client socket receive buffer: 100,000 bytes</li>
 <li>Ethernet hardware buffer: 256 KB (262,144 bytes)</li>
-<li>Message format: <code>&lt;ConnectionData&gt;#@#&lt;MessageType&gt;#@#&lt;TimeoutMs&gt;#@#&lt;Message&gt;&gt;\r</code></li>
-<li>Internal message separator: <code>#@#</code></li>
+<li>Wire framing (string envelope vs binary length-prefix) per protocol: see <code>AACommComponents/docs/ipc-contract.md</code></li>
 </ul>
 <h3 id="error-handling">Error Handling</h3>
 <ul>
-<li>Fatal errors (timeout, connection loss) close channel and notify all users</li>
+<li>Fatal errors (timeout, connection loss) close the channel and notify <strong>every</strong> user of it:
+in-flight/queued users get the fatal as their reply; passive users are notified too — as a
+<code>CHANNEL_EVENT</code> frame for binary clients that declared the capability on Open, or the
+legacy fatal shape otherwise. Client sockets close after the fatal flushes — best-effort
+with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; see
+<code>AACommComponents/docs/ipc-contract.md</code> §Fatal broadcast).</li>
 <li>Unsent messages cleared on user disconnect</li>
 <li>Automatic reconnection logic for Ethernet after Reset</li>
 </ul>
 <h2 id="supported-hardware-protocols">Supported Hardware Protocols</h2>
 <ul>
-<li><strong>CAN Bus</strong>: Kvaser CanLib-based communication (Windows only)</li>
+<li><strong>CAN Bus</strong>: Kvaser CANlib-based communication (Windows or Linux)</li>
 <li><strong>RS-232</strong>: Serial port communication</li>
 <li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk)</li>
-<li><strong>Simulator</strong>: File-based simulation for testing (when <code>AllowSim</code> enabled)</li>
+<li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). The legacy file-based <code>Simulator</code> channel is removed; the <code>Simulator</code> enum survives only as the in-process echo channel for the AAComm virtual-test harness.</li>
 </ul>
+<h3 id="spawned-child-lifetime">Spawned-child lifetime</h3>
+<p>A spawned <code>firmware_sim</code> is started bound to the server process by <code>ChildProcessReaper.StartReaped</code>, so it is reaped when the server dies for <strong>any</strong> reason — including a hard crash or external kill, where the graceful <code>Shutdown()</code>/<code>Dispose()</code> teardown never runs. The mechanism is per-OS:</p>
+<ul>
+<li><strong>Windows</strong> — a kill-on-close Job Object (<code>JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE</code>): the child is assigned to a process-wide job; when the server's last job handle closes, the OS terminates the job. Kernel-enforced.</li>
+<li><strong>Linux</strong> — <code>prctl(PR_SET_PDEATHSIG, SIGKILL)</code>, applied by launching the child through <code>setpriv --pdeathsig</code> (util-linux) since .NET has no pre-exec hook. The death-signal is keyed to the <em>forking task</em>, so the fork runs on a process-lifetime spawner thread (else a transient caller thread exiting would SIGKILL a healthy sim). Logged no-op fallback if setpriv is absent.</li>
+<li><strong>macOS</strong> — deferred with the osx native build (issue #101); the crash-safe equivalent is a <code>kqueue NOTE_EXIT</code> babysitter. Graceful <code>Dispose</code>/<code>Close</code> still reaps the child; only an abnormal server exit can orphan it.</li>
+</ul>
+<p>The IPC listen socket is also made non-inheritable (<code>HandleInheritance</code>) so a spawned child (started with <code>bInheritHandles=TRUE</code> for stdio redirect) never inherits it and pins the IPC port after the server exits — Windows-only, since .NET Core already creates non-inheritable sockets on Linux/macOS.</p>
+<h2 id="internal-layout--seams">Internal layout &amp; seams</h2>
+<p>The file map for code work (the client-side equivalent is in <code>AAComm/docs/architecture.md</code>
+§Internal layout):</p>
+<pre><code class="lang-text">AACommServerCore/
+  AACommServerModel.cs        orchestrator: accept loop, request routing, client registry
+                              (Open/Close/ShutDown), per-client protocol state (serializer +
+                              formatter + declared features), internal (IA:) requests through
+                              the channel FIFO, OnChannelFatal passive-user broadcast, events
+  ChannelHandler.cs           per-channel state machine (Open/Resetting/Dead), FIFO queue +
+                              one in-flight message, timeout timer, ordered delivery lane,
+                              reset recovery worker, fatal teardown, exclusive access
+  AACSM_CTC_Sync.cs           channel registry (ChannelKey → ChannelHandler): GetOrAdd /
+                              RemoveIf with EvictionPending liveness (revive-safe eviction)
+  ServerSocketWrapper.cs      per-client socket: single-writer outbound queue, flush-close
+                              sentinel, send-timeout / queue-overflow eviction
+  SocketMessageData.cs        one parsed request (either protocol) + its reply state
+  CommCommons.cs              server-namespace alias of the shared wire constants
+  GlobalLogger.cs             per-session debug log (%LOCALAPPDATA%\...\AACommServer_DebugLogs)
+  Ipc/                        protocol seams + impls: IIpcFraming (String / Binary /
+                              Detecting), IIpcSerializer, IReplyFormatter (String / Binary)
+  Comms/                      ICommunicator impls: Ethernet (+ EthernetWrapper), RS-232
+                              (+ Rs232BinaryAdapter), CAN (NativeCanlib / ICanChannel),
+                              FirmwareSim (+ SimProcessHost, ChildProcessReaper)
+  Sniffing/                   IChannelSnifferHook contract + SnifferConnectionInfo DTO
+</code></pre>
+<p>Injection / test seams:</p>
+<table>
+<thead>
+<tr>
+<th>Seam</th>
+<th>Purpose</th>
+<th>Test double</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ICommunicator</code> / <code>ICommunicatorFactory</code></td>
+<td>transport abstraction; factory injected via <code>AACommServerModel</code> ctor</td>
+<td><code>FakeCommunicator</code> (+ <code>OpenGate</code> to park an open deterministically), <code>FakeCommunicatorFactory</code></td>
+</tr>
+<tr>
+<td><code>IServerListener</code></td>
+<td>accept-loop seam</td>
+<td><code>FakeServerListener</code></td>
+</tr>
+<tr>
+<td><code>IServerSocket</code></td>
+<td>client-socket seam (<code>Send</code>/<code>Close</code>/<code>IsProtobuf</code>)</td>
+<td><code>FakeServerSocket</code></td>
+</tr>
+<tr>
+<td><code>IIpcSerializer</code> / <code>IReplyFormatter</code></td>
+<td>per-protocol request decode / reply encode, injectable via ctor</td>
+<td>passed directly in IPC tests</td>
+</tr>
+<tr>
+<td><code>AACommServerModel.EvictionScheduler</code> (internal)</td>
+<td>how FATAL-path eviction is posted off-lock</td>
+<td>overridden to gate the revive-race deterministically</td>
+</tr>
+<tr>
+<td><code>AACommServerModel.ActiveChannelCount</code> (internal)</td>
+<td>registry liveness probe</td>
+<td>polled by the virtual fixture between tests</td>
+</tr>
+<tr>
+<td><code>IChannelSnifferHook</code></td>
+<td>host sniffer integration</td>
+<td>n/a (contract consumer is <code>AACommSniffer</code>)</td>
+</tr>
+<tr>
+<td><code>CommCommons.SetSocketPort</code> / <code>ResetSocketPort</code></td>
+<td>process-wide IPC port override</td>
+<td>ephemeral ports in the virtual suite</td>
+</tr>
+</tbody>
+</table>
 <h2 id="events">Events</h2>
 <ul>
 <li><code>OnLog</code>: Tx/Rx message logging</li>
@@ -217,139 +325,27 @@
 <li><code>OnKillRequest</code>: Server shutdown requested by last client</li>
 </ul>
 <h2 id="relationship-to-aacomm">Relationship to AAComm</h2>
-<p>AACommServerAPI is the <strong>server middleware</strong>, AAComm is the <strong>client library</strong>.</p>
+<p>AACommServerCore is the <strong>server middleware</strong>, AAComm is the <strong>client library</strong>.</p>
 <ul>
-<li><strong>AACommServerAPI</strong>: Standalone process, manages hardware connections, handles multiple clients</li>
+<li><strong>AACommServerCore</strong>: Standalone process, manages hardware connections, handles multiple clients</li>
 <li><strong>AAComm</strong>: Embedded in user applications, provides high-level API</li>
 </ul>
-<p>Multiple AAComm clients can connect to a single AACommServerAPI instance, sharing hardware channels. See <code>../AAComm/ARCHITECTURE.md</code> for the client-side architecture.</p>
+<p>Multiple AAComm clients can connect to a single AACommServerCore instance, sharing hardware channels. See <code>AAComm/docs/architecture.md</code> for the client-side architecture and <code>AACommComponents/docs/ipc-contract.md</code> for the wire contract between the two.</p>
 <h2 id="packet-sniffer">Packet Sniffer</h2>
-<p>The sniffer hook (<code>IChannelSnifferHook</code>) and all sniffer implementation have moved to the <code>AACommSniffer</code> project. See <code>../AACommSniffer/</code> for the full API and documentation.</p>
-<p>AACommServerAPI references AACommSniffer and exposes <code>SnifferHook</code> on <code>AACommServerModel</code> as the integration point. When an Ethernet channel opens, the server maps <code>ConnectionData</code> to <code>SnifferConnectionInfo</code> and calls <code>IChannelSnifferHook.OnChannelOpened</code>; on close it calls <code>OnChannelClosed</code>.</p>
-<h2 id="packet-sniffer-details-windowsnet-framework-48-only">Packet Sniffer Details (Windows/.NET Framework 4.8 only)</h2>
-<p>AACommServerAPI includes an optional packet capture feature for debugging Ethernet communication issues. The sniffer captures raw network traffic on the interface used for controller communication.</p>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li><strong>Npcap</strong>: Must be installed (<a href="https://npcap.com">https://npcap.com</a>) - the sniffer gracefully degrades if Npcap is not available</li>
-<li><strong>Windows</strong>: Sniffer functionality is only available on .NET Framework 4.8 (not .NET 6/8)</li>
-<li><strong>SharpPcap</strong>: NuGet package (automatically included for net48 target)</li>
-</ul>
-<h3 id="features">Features</h3>
-<ul>
-<li><strong>Automatic capture</strong>: Starts capturing when an Ethernet channel opens (if enabled)</li>
-<li><strong>Smart NIC selection</strong>: Automatically selects the correct network interface based on target IP subnet</li>
-<li><strong>Filter modes</strong>:
-<ul>
-<li><code>Wide</code>: Capture all traffic on the NIC</li>
-<li><code>Focused</code>: Capture only AAComm traffic (filtered by controller IP and port using BPF)</li>
-</ul>
-</li>
-<li><strong>Session snapshots</strong>: Creates timestamped capture snapshots on disconnect:
-<ul>
-<li><code>Error/</code>: Unexpected disconnects (socket errors, cable unplug, timeout, fatal errors)</li>
-<li><code>User/</code>: Normal user-initiated disconnects (click Disconnect in PCSuite)</li>
-<li><code>Marked/</code>: Manual &quot;Mark Capture&quot; button clicks</li>
-</ul>
-</li>
-<li><strong>Ring buffer</strong>: Rolling capture files with configurable size limits (default 50MB per file, 10 files)</li>
-<li><strong>Retention policies</strong>: Configurable number of snapshots to retain per event type (default: 10 Error, 3 User, 5 Marked)</li>
-<li><strong>Clean session start</strong>: <code>_current</code> folder is cleared when a new Ethernet connection starts</li>
-<li><strong>TCP handshake capture</strong>: 500ms delay on disconnect ensures full TCP close handshake (FIN/ACK) is captured</li>
-</ul>
-<h3 id="capture-behavior">Capture Behavior</h3>
-<table>
-<thead>
-<tr>
-<th>Event</th>
-<th>Snapshot Folder</th>
-<th>Trigger</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Socket error / Cable unplug</td>
-<td><code>Sessions/Error/</code></td>
-<td>Fatal error from EthernetWrapper</td>
-</tr>
-<tr>
-<td>User clicks Disconnect</td>
-<td><code>Sessions/User/</code></td>
-<td>Normal channel close</td>
-</tr>
-<tr>
-<td>User clicks &quot;Mark Capture&quot;</td>
-<td><code>Sessions/Marked/</code></td>
-<td>Manual button in AACommServer UI</td>
-</tr>
-<tr>
-<td>New connection starts</td>
-<td>(clears <code>_current/</code>)</td>
-<td>OnChannelOpened event</td>
-</tr>
-</tbody>
-</table>
-<h3 id="capture-files">Capture Files</h3>
-<p>Captures are stored in: <code>%USERPROFILE%\Documents\AACommServer_DebugLogs\Sniffer\</code></p>
-<p>Structure:</p>
-<pre><code>Sniffer/
-├── _current/                       # Active capture ring buffer (cleared on new connection)
-│   ├── capture_000.pcapng
-│   └── capture_001.pcapng
-└── Sessions/
-    ├── Error/
-    │   └── 20260214_103045/        # Error snapshot (cable unplug, socket error)
-    │       ├── capture_000.pcapng
-    │       └── capture_001.pcapng
-    ├── User/
-    │   └── 20260214_110230/        # User disconnect snapshot
-    │       └── capture_000.pcapng
-    └── Marked/
-        └── 20260214_112015/        # Manual mark snapshot
-            └── capture_000.pcapng
-</code></pre>
-<h3 id="ui-integration-aacommserver-window">UI Integration (AACommServer Window)</h3>
-<p>The AACommServer window includes a sniffer status panel:</p>
-<ul>
-<li><strong>Status indicator</strong>: Shows Capturing (green), Paused (yellow), or Unavailable (gray)</li>
-<li><strong>Statistics</strong>: Packet count and bytes captured</li>
-<li><strong>Enable checkbox</strong>: Toggle sniffer on/off</li>
-<li><strong>Mark Capture button</strong>: Manually trigger a snapshot</li>
-<li><strong>Open Folder button</strong>: Open sniffer directory in Explorer</li>
-</ul>
-<p>If Npcap is not installed, a message &quot;Packet sniffer unavailable (Npcap not installed)&quot; is shown.</p>
-<h3 id="api">API</h3>
-<pre><code class="lang-csharp">// Access the singleton
-var sniffer = SnifferService.Instance;
-
-// Check availability
-if (sniffer.IsNpcapInstalled)
-{
-    // Start/stop/pause capture
-    sniffer.Start(connectionData);
-    sniffer.Pause();
-    sniffer.Resume();
-    sniffer.Stop();
-
-    // Trigger manual snapshot
-    sniffer.TriggerSnapshot(SnifferEventType.Marked);
-
-    // Export capture to specific folder
-    string exportPath = sniffer.ExportCapture(@&quot;C:\Temp\Captures&quot;);
-
-    // Get statistics
-    string stats = sniffer.GetStatisticsString(); // &quot;1,234 pkts, 2.5 MB&quot;
-}
-</code></pre>
-<h3 id="events-1">Events</h3>
-<ul>
-<li><code>OnStatusChanged</code>: Sniffer status changed (Capturing/Paused/Unavailable)</li>
-<li><code>OnStatisticsUpdated</code>: Packet count and bytes captured updated (every 100 packets)</li>
-<li><code>OnSnapshotCreated</code>: Session snapshot created (provides event type and path)</li>
-</ul>
+<p>AACommServerCore <strong>defines</strong> the host-facing sniffer contract — <code>IChannelSnifferHook</code> + the <code>SnifferConnectionInfo</code> DTO (in <code>Sniffing/</code>) — and exposes <code>SnifferHook</code> on <code>AACommServerModel</code> as the integration point. When an Ethernet <strong>or managed Simulation</strong> channel opens, the server maps <code>ConnectionData</code> to <code>SnifferConnectionInfo</code> and calls <code>IChannelSnifferHook.OnChannelOpened</code>; on close it calls <code>OnChannelClosed(SnifferConnectionInfo, bool)</code>. The endpoint captured at open is reused at close (a sim's Close request carries no endpoint of its own), so the notifications always match. A managed sim's loopback port is single-use, so its <code>SnifferConnectionInfo.IsEphemeral</code> is set — the sniffer discards that context on close (raising <code>OnNicRemoved</code>) instead of keeping it Paused for a reconnect that can never come. Notifications carry the controller endpoint, so a host can capture several controllers concurrently and route each close to the right capture.</p>
+<p>The concrete sniffer (<code>SnifferService</code>) and all SharpPcap/Npcap-bound implementation live in the <strong><code>AACommSniffer</code></strong> project, which references AACommServerCore and implements the contract. The dependency runs <code>AACommSniffer</code> → <code>AACommServerCore</code>, <strong>not</strong> the reverse — so AACommServerCore carries no SharpPcap dependency and builds platform-agnostic (a Linux <code>AACommServerNative</code> has no capture library in its graph unless it explicitly wires the sniffer). See <code>../AACommSniffer/sniffer.md</code> for the full API and documentation.</p>
+<h3 id="sniffer-feature-details">Sniffer feature details</h3>
+<!-- This README is [!INCLUDE]d into the DocFX site; relative links to .md files outside the
+     docfx content set fail the strict (-Strict / --warningsAsErrors) build. Use code-spans,
+     not `[text](../path.md)` links, for repo docs that aren't published. See AACommDocs/Build-Docs.ps1. -->
+<p>The capture feature (NIC selection, ring buffer, session snapshots, filter modes, config
+knobs, host UI, threading, failure modes) is documented in full — and without duplication —
+in <code>../AACommSniffer/sniffer.md</code>. The sniffer multi-targets
+net48 + net8.0 and detects its capture backend per platform (Npcap on Windows, libpcap on
+Linux/macOS) via <code>PcapDetector</code>.</p>
 <h2 id="build-notes">Build Notes</h2>
 <h3 id="net-sdk-10-compatibility">.NET SDK 10 Compatibility</h3>
 <p>When building with .NET SDK 10 targeting .NET Framework 4.8, non-string resources (like icons) require special handling. The AACommServer project loads its tray icon via <code>Assembly.GetManifestResourceStream()</code> instead of the designer-generated <code>Resources</code> class to avoid <code>System.Resources.Extensions</code> version conflicts.</p>
-<p>See <code>AACommServer/DOTNETSDK10_RESOURCE_FIX.md</code> for detailed analysis.</p>
 
 </article>
 

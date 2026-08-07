@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class COMTools | Agito AAComm SDK </title>
+      <title>Class UserUnitAxis | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class COMTools | Agito AAComm SDK ">
+      <meta name="title" content="Class UserUnitAxis | Agito AAComm SDK ">
       
-      <meta name="description" content="a helper class for listing relevant (or ALL) COM ports.   Cross-platform: USB-serial enumeration via the Windows registry on Windows and udev &amp;lt;code&amp;gt;/dev/serial/by-id&amp;lt;/code&amp;gt; on Linux — no WMI dependency. (macOS, which has no udev by-id path, falls through to an empty list; no native macOS build exists yet.)">
+      <meta name="description" content="contains the scaling factor and units for a single axis">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_COMTools.md&amp;value=---%0Auid%3A%20AAComm.Services.COMTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_UserUnits_UserUnitAxis.md&amp;value=---%0Auid%3A%20AAComm.Services.UserUnits.UserUnitAxis%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,31 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AAComm.Services.COMTools">
+        <article data-uid="AAComm.Services.UserUnits.UserUnitAxis">
 
 
 
-  <h1 id="AAComm_Services_COMTools" data-uid="AAComm.Services.COMTools" class="text-break">
-Class COMTools  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/COMTools.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <h1 id="AAComm_Services_UserUnits_UserUnitAxis" data-uid="AAComm.Services.UserUnits.UserUnitAxis" class="text-break">
+Class UserUnitAxis  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitAxis.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a>.<a class="xref" href="AAComm.Services.UserUnits.html">UserUnits</a></dd></dl>
   <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><pre><code>a helper class for listing relevant (or ALL) COM ports.
-</code></pre>
-<p></p>
-<pre><code>Cross-platform: USB-serial enumeration via the Windows registry on Windows
-and udev &lt;code&gt;/dev/serial/by-id&lt;/code&gt; on Linux — no WMI dependency. (macOS, which has
-no udev by-id path, falls through to an empty list; no native macOS build exists yet.)
-</code></pre>
+  <div class="markdown summary"><p>contains the scaling factor and units for a single axis</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class COMTools</code></pre>
+    <pre><code class="lang-csharp hljs">public class UserUnitAxis</code></pre>
   </div>
 
 
@@ -118,7 +112,7 @@ no udev by-id path, falls through to an empty list; no native macOS build exists
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">COMTools</span></div>
+      <div><span class="xref">UserUnitAxis</span></div>
     </dd>
   </dl>
 
@@ -155,41 +149,70 @@ no udev by-id path, falls through to an empty list; no native macOS build exists
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="AAComm_Services_COMTools_GetFTDI_COMs_" data-uid="AAComm.Services.COMTools.GetFTDI_COMs*"></a>
+  <a id="AAComm_Services_UserUnits_UserUnitAxis_Factor_" data-uid="AAComm.Services.UserUnits.UserUnitAxis.Factor*"></a>
 
-  <h3 id="AAComm_Services_COMTools_GetFTDI_COMs_System_Boolean_" data-uid="AAComm.Services.COMTools.GetFTDI_COMs(System.Boolean)">
-  GetFTDI_COMs(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/COMTools.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_UserUnits_UserUnitAxis_Factor" data-uid="AAComm.Services.UserUnits.UserUnitAxis.Factor">
+  Factor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitAxis.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>gets a list of 'FTDI' / 'Z-TEK' / 'Prolific' USB-serial COM ports.</p>
+  <div class="markdown level1 summary"><pre><code>scaling factor: the controller parameter value is multiplied by 'Factor':
+</code></pre>
+<p></p>
+<pre><code>for example, controller parameter is 10 and factor is 0.01 =&gt; the resulting value is 10 * 0.01 =  0.1
+</code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; GetFTDI_COMs(bool getAll = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public double Factor { get; }</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>getAll</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>set to 'true' to get ALL COM ports, as detected by the OS, and NOT apply the vendor filtering</p>
-</dd>
-  </dl>
 
-  <h4 class="section">Returns</h4>
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>list of COM ports, empty if none or error</p>
-</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
   </dl>
 
 
 
+
+
+
+
+
+  <a id="AAComm_Services_UserUnits_UserUnitAxis_Units_" data-uid="AAComm.Services.UserUnits.UserUnitAxis.Units*"></a>
+
+  <h3 id="AAComm_Services_UserUnits_UserUnitAxis_Units" data-uid="AAComm.Services.UserUnits.UserUnitAxis.Units">
+  Units
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitAxis.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>the units of the scaled parameter (i.e. mm, deg, etc.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Units { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -202,7 +225,7 @@ no udev by-id path, falls through to an empty list; no native macOS build exists
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/COMTools.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitAxis.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 

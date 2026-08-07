@@ -118,7 +118,7 @@ the controller boundary (e.g., headless Core libraries, unit and integration tes
 
   <h2 id="AAComm_Interfaces_ICommService_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>The interface intentionally exposes a small, additive subset of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a>'s public
-surface — only what is required by the first canary (TerminalCore). Members will be added as
+surface — only what is required by the first canary (Terminal). Members will be added as
 new Core extractions surface new needs. <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> implements this interface natively;
 no adapter is required for production wiring (<code>ICommService comm = CommAPIWrapper.Instance;</code>).</p>
 </div>
@@ -132,7 +132,7 @@ no adapter is required for production wiring (<code>ICommService comm = CommAPIW
 
   <h3 id="AAComm_Interfaces_ICommService_CurrentConnectionData" data-uid="AAComm.Interfaces.ICommService.CurrentConnectionData">
   CurrentConnectionData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Current connection descriptor, or null if not connected.</p>
@@ -164,7 +164,7 @@ no adapter is required for production wiring (<code>ICommService comm = CommAPIW
 
   <h3 id="AAComm_Interfaces_ICommService_IdentityContainer" data-uid="AAComm.Interfaces.ICommService.IdentityContainer">
   IdentityContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Read-only view over the controller identity metadata.</p>
@@ -228,7 +228,7 @@ no adapter is required for production wiring (<code>ICommService comm = CommAPIW
 
   <h3 id="AAComm_Interfaces_ICommService_MessagesContainer" data-uid="AAComm.Interfaces.ICommService.MessagesContainer">
   MessagesContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Read-only view over the parameter database.</p>
@@ -256,11 +256,44 @@ no adapter is required for production wiring (<code>ICommService comm = CommAPIW
 
 
 
+  <a id="AAComm_Interfaces_ICommService_MessagesInBulk_" data-uid="AAComm.Interfaces.ICommService.MessagesInBulk*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_MessagesInBulk" data-uid="AAComm.Interfaces.ICommService.MessagesInBulk">
+  MessagesInBulk
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of messages the transport will batch into a single bulk send. 50 on Ethernet,
+1 otherwise. Used by recording-pipeline command download to choose bulk vs. sequential.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MessagesInBulk { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_Interfaces_ICommService_UserProgAdapter_" data-uid="AAComm.Interfaces.ICommService.UserProgAdapter*"></a>
 
   <h3 id="AAComm_Interfaces_ICommService_UserProgAdapter" data-uid="AAComm.Interfaces.ICommService.UserProgAdapter">
   UserProgAdapter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>User Program globals/tasks adapter. Exposed as the concrete type for Phase 1; will be
@@ -298,7 +331,7 @@ surface growth.</p>
 
   <h3 id="AAComm_Interfaces_ICommService_GetCanDescriptionFromParameter_System_String_" data-uid="AAComm.Interfaces.ICommService.GetCanDescriptionFromParameter(System.String)">
   GetCanDescriptionFromParameter(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Resolves the Complex CAN Code (CCC) for the given mnemonic using the connected controller's
@@ -333,11 +366,49 @@ parameter database. Throws on errors. Instance variant of the static
 
 
 
+  <a id="AAComm_Interfaces_ICommService_GetUserUnitsEnabled_" data-uid="AAComm.Interfaces.ICommService.GetUserUnitsEnabled*"></a>
+
+  <h3 id="AAComm_Interfaces_ICommService_GetUserUnitsEnabled_System_Char_" data-uid="AAComm.Interfaces.ICommService.GetUserUnitsEnabled(System.Char)">
+  GetUserUnitsEnabled(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True when User Units scaling is active for the given axis (and not globally bypassed).
+Consumed by <a class="xref" href="AAComm.Services.FloatHelper.html">FloatHelper</a> on the Rx/Tx scaling paths.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GetUserUnitsEnabled(char axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Interfaces_ICommService_Send_" data-uid="AAComm.Interfaces.ICommService.Send*"></a>
 
   <h3 id="AAComm_Interfaces_ICommService_Send_AAComm_Services_AACommMessage_" data-uid="AAComm.Interfaces.ICommService.Send(AAComm.Services.AACommMessage)">
   Send(AACommMessage)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Asynchronous send. Reply is delivered via <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_OnReplyReceived">OnReplyReceived</a>.
@@ -371,7 +442,7 @@ async use independent FIFO pipelines; ordinary messages do not gate each other.<
 
   <h3 id="AAComm_Interfaces_ICommService_SendReceive_AAComm_Services_AACommMessage_" data-uid="AAComm.Interfaces.ICommService.SendReceive(AAComm.Services.AACommMessage)">
   SendReceive(AACommMessage)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/ICommService.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Synchronous send/receive. Safe to interleave freely with <a class="xref" href="AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_Send_AAComm_Services_AACommMessage_">Send(AACommMessage)</a> from any

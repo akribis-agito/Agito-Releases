@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Services_FloatHelper" data-uid="AAComm.Services.FloatHelper" class="text-break">
-Class FloatHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class FloatHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -160,11 +160,205 @@ Class FloatHelper  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
+  <a id="AAComm_Services_FloatHelper_ApplyUserUnits_" data-uid="AAComm.Services.FloatHelper.ApplyUserUnits*"></a>
+
+  <h3 id="AAComm_Services_FloatHelper_ApplyUserUnits_System_Double_System_Char_System_Int32_AAComm_Interfaces_ICommService_" data-uid="AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)">
+  ApplyUserUnits(double, char, int, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Applies User Units scaling factor to a resolved value.
+</code></pre>
+<p></p>
+<pre><code>Returns the value unchanged if UU is not enabled for this axis/parameter.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double ApplyUserUnits(double value, char axis, int canCode, ICommService api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>resolved floating-point value (post IEEE 754 conversion)</p>
+</dd>
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>axis character ('A', 'B', etc.)</p>
+</dd>
+    <dt><code>canCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>CAN code of the parameter (NOT the full CCC)</p>
+</dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd><p>connected CommAPI instance</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_FloatHelper_ApplyUserUnits_" data-uid="AAComm.Services.FloatHelper.ApplyUserUnits*"></a>
+
+  <h3 id="AAComm_Services_FloatHelper_ApplyUserUnits_System_Double_System_Int32_AAComm_Interfaces_ICommService_" data-uid="AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)">
+  ApplyUserUnits(double, int, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Applies User Units scaling factor using a Complex CAN Code (CCC) which encodes axis, CAN code, and array index.
+</code></pre>
+<p></p>
+<pre><code>Returns the value unchanged if UU is not enabled for this axis/parameter.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double ApplyUserUnits(double value, int ccc, ICommService api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>resolved floating-point value (post IEEE 754 conversion)</p>
+</dd>
+    <dt><code>ccc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Complex CAN Code encoding axis + CAN code + array index</p>
+</dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd><p>connected CommAPI instance</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_FloatHelper_RemoveUserUnits_" data-uid="AAComm.Services.FloatHelper.RemoveUserUnits*"></a>
+
+  <h3 id="AAComm_Services_FloatHelper_RemoveUserUnits_System_Double_System_Char_System_Int32_AAComm_Interfaces_ICommService_" data-uid="AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)">
+  RemoveUserUnits(double, char, int, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Removes User Units scaling factor from a display value (Tx path: display → controller).
+</code></pre>
+<p></p>
+<pre><code>Counterpart to &lt;xref href=&quot;AAComm.Services.FloatHelper.ApplyUserUnits(System.Double%2cSystem.Char%2cSystem.Int32%2cAAComm.Interfaces.ICommService)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; which multiplies (Rx path).
+</code></pre>
+<p></p>
+<pre><code>Returns the value unchanged if UU is not enabled for this axis/parameter.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double RemoveUserUnits(double value, char axis, int canCode, ICommService api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>canCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_FloatHelper_RemoveUserUnits_" data-uid="AAComm.Services.FloatHelper.RemoveUserUnits*"></a>
+
+  <h3 id="AAComm_Services_FloatHelper_RemoveUserUnits_System_Double_System_Int32_AAComm_Interfaces_ICommService_" data-uid="AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)">
+  RemoveUserUnits(double, int, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Removes User Units scaling factor using a Complex CAN Code (CCC).
+</code></pre>
+<p></p>
+<pre><code>Counterpart to &lt;xref href=&quot;AAComm.Services.FloatHelper.ApplyUserUnits(System.Double%2cSystem.Int32%2cAAComm.Interfaces.ICommService)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (Rx path).
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double RemoveUserUnits(double value, int ccc, ICommService api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>ccc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Services_FloatHelper_ResolveFloatingPoint_" data-uid="AAComm.Services.FloatHelper.ResolveFloatingPoint*"></a>
 
   <h3 id="AAComm_Services_FloatHelper_ResolveFloatingPoint_AAComm_Services_MessageData_System_Int64_System_Boolean_System_Boolean_" data-uid="AAComm.Services.FloatHelper.ResolveFloatingPoint(AAComm.Services.MessageData,System.Int64,System.Boolean,System.Boolean)">
   ResolveFloatingPoint(MessageData, long, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Resolves raw integer/long values to their correct floating-point representation.
@@ -226,9 +420,9 @@ Class FloatHelper  <a class="header-action link-secondary" title="View source" h
 
   <a id="AAComm_Services_FloatHelper_ResolveFromCCC_" data-uid="AAComm.Services.FloatHelper.ResolveFromCCC*"></a>
 
-  <h3 id="AAComm_Services_FloatHelper_ResolveFromCCC_System_Int32_System_Int64_AAComm_Services_ControllerMessagesContainer_System_Boolean_System_Boolean_" data-uid="AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Services.ControllerMessagesContainer,System.Boolean,System.Boolean)">
-  ResolveFromCCC(int, long, ControllerMessagesContainer, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_FloatHelper_ResolveFromCCC_System_Int32_System_Int64_AAComm_Interfaces_IMessagesContainer_System_Boolean_System_Boolean_" data-uid="AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Interfaces.IMessagesContainer,System.Boolean,System.Boolean)">
+  ResolveFromCCC(int, long, IMessagesContainer, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Resolves a raw 64-bit value using a Complex CAN Code (CCC) to its floating-point representation.
@@ -240,7 +434,7 @@ Class FloatHelper  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double ResolveFromCCC(int ccc, long rawVal, ControllerMessagesContainer dataContainer, bool doubleSupported, bool floatSupport)</code></pre>
+    <pre><code class="lang-csharp hljs">public static double ResolveFromCCC(int ccc, long rawVal, IMessagesContainer dataContainer, bool doubleSupported, bool floatSupport)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -251,7 +445,7 @@ Class FloatHelper  <a class="header-action link-secondary" title="View source" h
     <dt><code>rawVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
     <dd><p>raw 64-bit value from the controller</p>
 </dd>
-    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html">ControllerMessagesContainer</a></dt>
+    <dt><code>dataContainer</code> <a class="xref" href="AAComm.Interfaces.IMessagesContainer.html">IMessagesContainer</a></dt>
     <dd><p>messages data container</p>
 </dd>
     <dt><code>doubleSupported</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
@@ -282,7 +476,7 @@ Class FloatHelper  <a class="header-action link-secondary" title="View source" h
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/FloatHelper.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

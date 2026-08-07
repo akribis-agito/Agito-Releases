@@ -75,7 +75,7 @@
 
 <p><strong>AAComm</strong> is a C# .NET API for PC-to-Controller communications, supporting a wide range of .NET targets and Windows platforms.</p>
 <ul>
-<li>📚 <strong>API documentation:</strong> <a href="https://akribis-agito.github.io/PC-Toolsets-Releases/aacomm/">https://akribis-agito.github.io/PC-Toolsets-Releases/aacomm/</a></li>
+<li>📚 <strong>API documentation:</strong> <a href="https://akribis-agito.github.io/Agito-Releases/aacomm/">https://akribis-agito.github.io/Agito-Releases/aacomm/</a></li>
 <li>🌐 <strong>Vendor:</strong> <a href="https://agito-akribis.com">https://agito-akribis.com</a></li>
 </ul>
 <h2 id="overview">Overview</h2>
@@ -83,7 +83,7 @@
 <ul>
 <li><strong>Supported platforms:</strong> Windows 7 or later</li>
 <li><strong>Supported frameworks:</strong> .NET Framework 4.8, .NET 8.0</li>
-<li><strong>Required files:</strong> <code>AAComm.dll</code>, <code>AACommServer.exe</code>, <code>AACommServerAPI.dll</code></li>
+<li><strong>Required files:</strong> <code>AAComm.dll</code> plus the bundled server matching your framework — .NET Framework 4.8: the <code>aacommserver\</code> folder (the <code>AACommServer.exe</code> WPF host with its full closure); .NET 8.0: <code>AACommServerNative.exe</code> (self-contained native host, <strong>win-x64</strong>). The NuGet package copies the right one to your output automatically — do <strong>not</strong> hand-assemble a partial server file set (a net48 server under a net8 consumer crashes on launch). No Linux/macOS sidecar ships yet: a non-Windows .NET 8 consumer must supply its own host-native AACS build and pass its full path to <code>StartAACommServer</code> — the copied <code>AACommServerNative.exe</code> is the Windows artifact, not a host-native server.</li>
 <li><strong>Documentation:</strong> API documentation is available via IntelliSense (XML doc comments included with the package).</li>
 </ul>
 <h2 id="system-requirements">System Requirements</h2>
@@ -98,14 +98,14 @@
 Or via the NuGet Package Manager in Visual Studio.</p>
 <blockquote>
 <p><strong>Note:</strong><br>
-<code>AACommServer.exe</code> and <code>AACommServerAPI.dll</code> are automatically copied to your output directory when using the NuGet package. For manual referencing, copy these files explicitly.</p>
+The bundled server is copied to your output directory automatically by the NuGet package — the <code>aacommserver\</code> folder for .NET Framework consumers, <code>AACommServerNative.exe</code> for .NET 8.0 consumers. For a manual (non-NuGet) deployment, copy that complete server payload as-is; never mix the net48 server into a net8 output.</p>
 </blockquote>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
 <li>Create a new C# project.</li>
 <li>Add the <code>Agito.AAComm</code> NuGet package.</li>
-<li>For Windows: Ensure <code>AACommServer.exe</code> and <code>AACommServerAPI.dll</code> are in your output directory, or specify the executable path when calling <code>AAComm.StartAACommServer()</code>.</li>
-<li>For non-Windows: Specify the full path to the AACommServer executable when starting the server.</li>
+<li>For Windows: build — the bundled server lands in your output directory and <code>CommAPI.StartAACommServer()</code> resolves it from there; or pass an explicit executable path.</li>
+<li>For non-Windows: Specify the full path to a <strong>host-native</strong> AACommServer build when starting the server (no non-Windows sidecar is packaged — the copied <code>AACommServerNative.exe</code> is win-x64 only).</li>
 </ol>
 <h2 id="usage-example">Usage Example</h2>
 <p>Below is a minimal example demonstrating how to start the AAComm server, connect to a controller, and send/receive messages:</p>
@@ -113,15 +113,14 @@ Or via the NuGet Package Manager in Visual Studio.</p>
 using AAComm.Services;
 using AAComm.Shared;
 
-string aacs = CommAPI.StartAACommServer();
-Console.WriteLine($&quot;AACommServer started: {(string.IsNullOrEmpty(aacs) ? &quot;OK&quot; : aacs)}&quot;);
+ConnectResult aacs = CommAPI.StartAACommServer();
+Console.WriteLine($&quot;AACommServer start: {aacs}&quot;);
 
 var api = new CommAPI();
 var cd = new ConnectionData
 {
-    ControllerType = ProductTypes.AGD200_AGC300_ID,
     CommChannelType = ChannelType.Ethernet,
-    Rs232_PortName = &quot;COM7&quot;,
+    ET_IP_1 = 172, ET_IP_2 = 1, ET_IP_3 = 1, ET_IP_4 = 101,
 };
 
 var res = api.Connect(cd);
@@ -155,7 +154,7 @@ void OnExit()
     api.CloseAACommServer();
 }
 
-void OnReceive(object? sender, AACommEventArgs e)
+void OnReceive(object sender, AACommEventArgs e)
 {
     Console.WriteLine($&quot;ASYNC: APos = {e.MsgReceived}&quot;);
 }
@@ -163,7 +162,7 @@ void OnReceive(object? sender, AACommEventArgs e)
 <h2 id="api-documentation">API Documentation</h2>
 <p>API documentation is available via IntelliSense. XML doc comments are included with the NuGet package.</p>
 <h2 id="release-notes">Release Notes</h2>
-<p>See <a href="https://akribis-agito.github.io/PC-Toolsets-Releases/aacomm/articles/release-notes/aacomm-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
+<p>See <a href="https://akribis-agito.github.io/Agito-Releases/aacomm/articles/release-notes/aacomm-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
 <h2 id="license">License</h2>
 <p>This software is licensed under the <strong>MIT License</strong>. See the NuGet package metadata for details.</p>
 <hr>

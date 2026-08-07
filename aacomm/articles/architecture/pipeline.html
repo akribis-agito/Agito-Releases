@@ -87,9 +87,14 @@ Async Reset is the deliberate exception: later dispatch is parked until reset re
 completes. Per-flow FIFO is preserved (consecutive Sends fire callbacks in order;
 consecutive SRs return in order); cross-flow ordering is NOT guaranteed (an async <code>Send</code>
 and a sync <code>SendReceive</code> issued back-to-back may dispatch in either order).</p>
-<p>Wire writes from the two dispatchers are serialized by an internal mutex; the receiver
-routes arriving replies in wire-arrival order via a <code>_wireOrder</code> queue (this works because
-AACommServer processes one message per channel at a time and replies in send order). For
+<p>Wire writes from the two dispatchers are serialized by an internal mutex, and each dispatched
+message is stamped with a session-scoped <strong>correlation id</strong> (carried on the binary wire; the
+ASCII handler ignores it). On the binary protocol the server echoes the id on the routed reply
+and the receiver routes <strong>by identity</strong> (<code>Session.TryTakeInFlight</code>); an id of 0 — the string
+protocol or a legacy binary server — falls back to wire-arrival-order routing via the
+<code>_wireOrder</code> queue (safe because AACommServer processes one message per channel at a time,
+answers server-internal <code>IA:</code> queries through the same per-channel FIFO, and each client
+socket has a single ordered writer — so replies arrive in send order). For
 <strong>replies</strong>, the receiver thread hands the parsed args to the originating flow's
 dispatcher via a per-iteration <code>TaskCompletionSource</code>, and the dispatcher runs the user
 callback on its own thread — the receiver thread does not invoke <code>OnReplyReceived</code>. For
@@ -104,8 +109,9 @@ on a UI dispatcher would deadlock a concurrent <code>SendReceive</code> from the
 <p>SendReceive is implemented on top of the sync pipeline: it builds a tagged duplicate of
 the user's message (<code>IsSyncRequest = true</code>), installs an internal wait-handle hook as
 <code>OnReplyReceived</code>, and blocks until the reply arrives or the safety-net timeout expires.
-The per-message <code>IsSyncRequest</code> marker drives event-suppression (<code>OnCommsError</code> and
-<code>OnResetProgress</code> are not raised for sync requests; the Reset recovery sleep is skipped).</p>
+The per-message <code>IsSyncRequest</code> marker drives event-suppression (<code>OnCommsError</code> and the
+long-operation events <code>OnLongOperationStarted</code>/<code>OnLongOperationEnded</code> are not raised for sync
+requests; the Reset recovery sleep is skipped).</p>
 <pre><code class="lang-mermaid">graph TB
     subgraph &quot;User Application&quot;
         App[Application Code]
@@ -119,7 +125,7 @@ The per-message <code>IsSyncRequest</code> marker drives event-suppression (<cod
         subgraph &quot;Message Management Layer&quot;
             AsyncDispatcher[Async Dispatcher&lt;br/&gt;- Channel&amp;lt;T&amp;gt; FIFO (async)&lt;br/&gt;- Long-running dispatcher task&lt;br/&gt;- _asyncInFlight slot]
             SyncDispatcher[Sync Dispatcher&lt;br/&gt;- Channel&amp;lt;T&amp;gt; FIFO (sync)&lt;br/&gt;- Long-running dispatcher task&lt;br/&gt;- _syncInFlight slot]
-            WireRouting[Wire-Order Routing&lt;br/&gt;- _wireSendLock serializes wire writes&lt;br/&gt;- _wireOrder routes replies in send-order&lt;br/&gt;- _resetDispatchGate parks the other flow during async-Reset recovery]
+            WireRouting[Reply Routing&lt;br/&gt;- _wireSendLock serializes wire writes + stamps correlation ids&lt;br/&gt;- TryTakeInFlight routes replies by id (id 0 = _wireOrder FIFO fallback)&lt;br/&gt;- _resetDispatchGate parks the other flow during async-Reset recovery]
             Containers[State Containers&lt;br/&gt;- ControllerIdentityContainer&lt;br/&gt;- MessagesContainer&lt;br/&gt;- UserProgVarsAdapter]
         end
 
@@ -137,7 +143,7 @@ The per-message <code>IsSyncRequest</code> marker drives event-suppression (<cod
     end
 
     subgraph &quot;AACommServer Process&quot;
-        Server[AACommServerAPI&lt;br/&gt;See AACommServerAPI/README.md]
+        Server[AACommServerCore&lt;br/&gt;See AACommServerCore/README.md]
     end
 
     %% Outbound Flow (App → Server)
@@ -157,7 +163,7 @@ The per-message <code>IsSyncRequest</code> marker drives event-suppression (<cod
     Socket --&gt;|9. OnMessageReceived| Handler
     Handler --&gt;|10. Parse Response| Handler
     Handler --&gt;|11. Update State| Containers
-    Handler --&gt;|12. Route via _wireOrder head| WireRouting
+    Handler --&gt;|12. Route by correlation id&lt;br/&gt;(id 0 = _wireOrder head)| WireRouting
     WireRouting --&gt;|13a. Hand reply args via TCS| AsyncDispatcher
     WireRouting --&gt;|13b. Hand reply args via TCS| SyncDispatcher
     AsyncDispatcher --&gt;|14a. Run user callback on dispatcher thread&lt;br/&gt;(+ fire events)| API
@@ -218,20 +224,24 @@ and applies bulk-error mangling via per-message <code>ReplyPostProcessingState</
 <li><strong>Route</strong>:
 Fatals invoke <code>OnCommsError</code> synchronously on the receiver (the suppression rule on
 that event is documented on the event itself). Pushes are dispatched to
-<code>OnPushMessageReceived</code> via <code>Task.Run</code>. Replies pop the head of <code>_wireOrder</code> and
-<code>TrySetResult</code> the originating in-flight item's <code>ReplyDone</code> — the receiver thread
-does NOT invoke <code>OnReplyReceived</code> for replies.</li>
+<code>OnPushMessageReceived</code> via <code>Task.Run</code>. Replies resolve their in-flight item via
+<code>TryTakeInFlight</code> (by correlation id; id 0 pops the <code>_wireOrder</code> head) and
+<code>TrySetResult</code> its <code>ReplyDone</code> — the receiver thread does NOT invoke
+<code>OnReplyReceived</code> for replies.</li>
 <li><strong>Dispatcher resumes</strong>: The flow's dispatcher wakes from its <code>await item.ReplyDone.Task</code>
 with the parsed args. State containers updated (e.g., <code>_userProg.Clear()</code> on ProgErase ack).</li>
 <li><strong>User callback / sync return</strong>:
 <ul>
 <li><strong>Async (<code>Send</code>)</strong>: <code>OnReplyReceived</code> invoked on the async dispatcher thread.
-<code>OnResetProgress</code> (begin → recovery sleep → end) runs here for async Reset only,
-gated on <code>IsSyncRequest == false</code>.</li>
+<code>OnLongOperationStarted</code> / <code>OnLongOperationEnded</code> fire for long-running operations
+(Reset, Save, Load, SaveUser, EventCorrect), gated on <code>IsSyncRequest == false</code>. For
+Reset: started → recovery sleep → ended (via <code>ResetCoordinator</code>). For others: started
+(after wire send) → reply wait → ended (before user callback). The ended edge carries
+the controller error code (<code>0</code> = success).</li>
 <li><strong>Sync (<code>SendReceive</code>)</strong>: The internal wait-handle setter (installed as
 <code>OnReplyReceived</code> on the tagged duplicate) sets the SR's wait handle; SR returns the
-captured <code>AACommEventArgs</code>. No <code>OnCommsError</code> / <code>OnResetProgress</code> event is fired
-for sync requests (suppressed by tag).</li>
+captured <code>AACommEventArgs</code>. No <code>OnCommsError</code> / <code>OnLongOperationStarted</code> /
+<code>OnLongOperationEnded</code> event is fired for sync requests (suppressed by tag).</li>
 </ul>
 </li>
 <li><strong>Loop</strong>: Each dispatcher loops to its next channel message. Per-flow FIFO holds; cross-flow ordering is NOT guaranteed.</li>
@@ -251,7 +261,7 @@ other, and ordinary messages on one flow do not gate the other.</p>
 <ul>
 <li>Non-blocking; returns immediately after enqueue</li>
 <li>User callback (<code>OnReplyReceived</code>) invoked after the reply arrives, on the async dispatcher thread</li>
-<li><code>OnResetProgress</code> and <code>OnCommsError</code> events fired as applicable</li>
+<li><code>OnLongOperationStarted</code> / <code>OnLongOperationEnded</code> and <code>OnCommsError</code> events fired as applicable</li>
 <li>Suitable for multi-threaded applications and event-driven flows</li>
 <li>Flow: <code>Send()</code> → Queue → Dispatch → CommHandler → reply → callback (+ events)</li>
 </ul>
@@ -264,17 +274,25 @@ the same wait handle on session-death, enqueues to the sync dispatcher, then blo
 <li>Returns <code>AACommEventArgs</code> to the caller after the handle fires. Three return shapes:
 reply (the dominant path), <code>SyncErr Timeout</code> on safety-net expiry, <code>SyncErr Session terminated</code> when the session died (dispatcher crash, fatal comms error, concurrent
 Disconnect) before any reply arrived.</li>
-<li><code>OnCommsError</code> and <code>OnResetProgress</code> are suppressed for sync requests (the caller
+<li><code>OnCommsError</code> and the long-operation events are suppressed for sync requests (the caller
 observes errors via the return value; reset recovery timing is the caller's problem).</li>
-<li>Disconnects the API on safety-net wait expiry (preserves the documented contract).</li>
+<li><strong>Two-phase safety-net wait</strong> (<code>TimeoutMs + 100</code> each phase; pinned by
+<code>SendReceiveQueuedTimeoutTests</code>): phase 1 bounds queue residency — expiry while the
+message is still QUEUED abandons it (the dispatcher skips abandoned messages, so it
+never reaches the wire) and returns <code>SyncErr Timeout</code> <strong>without</strong> disconnecting: the
+link is not implicated by another message's slowness. Phase 2 starts when the
+dispatcher attempts the send (the clock restarts — mirroring the server, which
+enforces <code>TimeoutMs</code> from receipt): expiry after the message reached the wire does
+implicate the link and disconnects the API.</li>
 <li>Flow: <code>SendReceive()</code> → tagged sync message → Queue → Dispatch → reply → wait handle set → return</li>
 </ul>
 <p><strong>Re-entry guard</strong>: calling <code>SendReceive</code> from inside an <code>OnReplyReceived</code> callback (i.e.
 on that callback's dispatcher thread) returns an error rather than deadlocking the pipeline. Calling
 <code>Send</code> from <code>OnReplyReceived</code> is fine and is the normal way to chain async work.</p>
 <p><strong>Concurrent-call timing</strong>: a deep queue × per-message reply latency can exceed an
-individual <code>SendReceive</code>'s <code>TimeoutMs</code>. Callers issuing many concurrent SRs should pass a
-generous <code>TimeoutMs</code> that accounts for queue depth.</p>
+individual <code>SendReceive</code>'s <code>TimeoutMs</code> — such an SR returns <code>SyncErr Timeout</code> from its
+queue-residency phase (without teardown, and without being sent). Callers issuing many
+concurrent SRs should still pass a <code>TimeoutMs</code> generous enough for the expected queue depth.</p>
 <h3 id="message-queue-management">Message Queue Management</h3>
 <ul>
 <li>TWO <code>System.Threading.Channels.Channel&lt;AACommMessage&gt;</code> (unbounded, single-reader) per
@@ -288,9 +306,10 @@ the wire-send lock) enqueues the item into <code>_wireOrder</code> and calls
 After the await unblocks, the dispatcher runs the user callback on its own thread
 (NOT the receiver thread), then loops to the next message. That gate enforces per-flow
 FIFO-with-full-callback-completion WITHIN the flow.</li>
-<li>The receiver thread (single per session) routes by wire FIFO: pop the head of
-<code>_wireOrder</code>, set its <code>ReplyDone</code> with the parsed args. The dispatcher whose item just
-got args-routed wakes up and runs the callback. Receiver never invokes user code.</li>
+<li>The receiver thread (single per session) routes replies via <code>TryTakeInFlight</code> — by
+correlation id on the binary protocol, <code>_wireOrder</code> head-pop for id 0 — and sets the
+item's <code>ReplyDone</code> with the parsed args. The dispatcher whose item just got
+args-routed wakes up and runs the callback. Receiver never invokes user code.</li>
 <li>Async Reset remains a global transport interlock: once an async Reset is sent, both
 dispatchers are prevented from sending later messages until the post-Reset recovery
 window completes. Sync Reset keeps the existing contract and skips that recovery wait;
@@ -302,40 +321,93 @@ net48 — it is NOT a safe primitive on this TFM.</li>
 <li>Disconnect completes both channel writers, cancels the dispatchers' token, signals
 the in-flight TCSes (with <code>null</code> args = &quot;session torn down&quot;) so dispatchers' awaits
 unblock, drains <code>_wireOrder</code> so late replies drop cleanly, and bounds the wait for
-both dispatchers to exit. Queued messages whose dispatch was not started have their
-callbacks silently dropped (see <code>Disconnect_ClearsAsyncQueue_ReplyCallbacksMaySilentlyDrop</code>).
-<strong>In-flight</strong> async callbacks are also dropped on a fatal teardown — the dispatcher
-observes a <code>null</code> reply args, skips <code>RunUserCallback</code>, and exits. The async consumer
-observes the fatal only via the <code>OnCommsError</code> event (which the orchestrator fires
-unless suppressed — see the suppression rule on <code>CommAPI.OnCommsError</code>).</li>
+both dispatchers to exit.</li>
+<li><strong>Async terminal delivery</strong>: every accepted <code>Send</code> resolves its callback exactly once,
+even across teardown — the callback is the async caller's only per-message result
+channel (native-SDK futures resolve inside it). On teardown the <strong>in-flight</strong> async
+message gets <code>ERR Sync: Session terminated</code> (it reached the wire; controller execution
+state unknown) and <strong>queued</strong> messages get <code>PC Suite: ERR 4020</code> (never sent — same args
+as the enqueue-after-Stop race). Sync flows need neither: the SR waiter is woken by the
+session-death registration. The <code>OnCommsError</code> event remains the session-level surface
+(fired unless suppressed — see the suppression rule on <code>CommAPI.OnCommsError</code>).
+Terminal delivery is <strong>ordered behind the currently executing callback</strong>: the teardown
+drain runs on the dispatcher thread after the active callback returns (preserving
+FIFO-with-full-callback-completion — user callbacks never run concurrently within a
+flow), so a queued message's terminal callback fires only once the in-flight one's
+callback has exited. Corollary: an async callback must not block waiting for a <em>later</em>
+queued message's result — that self-deadlocks the flow, teardown included.
+Pinned by <code>SessionTeardownAsyncDeliveryTests</code>,
+<code>Disconnect_ClearsAsyncQueue_EveryReplyCallbackFiresWithError</code>, and
+<code>Disconnect_FromInsideAsyncCallback_WithQueuedFollower_FollowerGetsExactlyOneTerminalCallback</code>.</li>
 </ul>
 <h3 id="buffer-management">Buffer Management</h3>
 <ul>
 <li>Socket receive buffer: 100,000 bytes</li>
-<li>Message delimiter: <code>&gt;\r</code> (greater-than + carriage return)</li>
-<li>Internal message separator: <code>#@#</code> between message fields</li>
-<li>Wire format: <code>&lt;ConnectionData&gt;#@#&lt;MessageType&gt;#@#&lt;TimeoutMs&gt;#@#&lt;Message&gt;&gt;\r</code></li>
+<li>Wire framing differs by protocol — <code>&gt;\r</code>-terminated <code>#@#</code> envelopes (string) vs length-prefixed
+protobuf frames (binary). See <em>IPC Framing &amp; Wire Protocol</em> below.</li>
 </ul>
-<h3 id="ipc-framing">IPC Framing</h3>
-<p>TCP is a byte stream; a single recv can carry zero, one, or many complete IPC envelopes plus
-a partial tail. Both ends use a shared <code>EnvelopeAccumulator</code> (<code>AAComm/InternalServices/</code>):
-bytes go in, complete envelopes terminated by <code>&gt;\r</code> come out, partial tails persist until
-the next recv. The accumulator drops its internal buffer when fully drained so multi-MB
-RecUpload payloads don't hold their peak buffer for the life of the socket. Direct ctor
-bypass of the accumulator is guarded by a backstop in <code>SocketMessageData</code> that throws
-<code>FormatException</code> when an envelope doesn't have exactly 4 <code>#@#</code>-separated fields.</p>
-<p><strong>Hex-sigil escape for binary firmware payloads.</strong> AGM800 MAS02 firmware download sends raw
-binary bytes that may legitimately contain <code>0x3E 0x0D</code> — the IPC envelope terminator. To
-keep the on-wire IPC body ASCII-safe, the client wraps the binary chunk as
-<code>&lt;prefix&gt;@#HEX:&lt;hex-pairs&gt;\r</code> (<code>CommCommons.HexEncodedPrefix</code>); the server-side
-<code>SocketMessageData</code> ctor detects the sigil, strips it, decodes the hex pairs back to raw
-bytes, and forwards a byte-identical payload to the controller. The sigil follows the
-message-type prefix (<code>@#FW:</code>) and precedes the trailing CR, so the decoder must search by
-<code>IndexOf</code> and preserve both the prefix and the CR verbatim. See GitHub issue #18 for the
-protocol redesign that obsoletes this whole layer.</p>
+<h3 id="ipc-framing--wire-protocol">IPC Framing &amp; Wire Protocol</h3>
+<p>The wire contract — framing (string envelope vs binary length-prefix), first-byte protocol
+detection, the two-phase handshake, <code>IpcRequest</code>/<code>IpcReply</code> field semantics, correlation-id
+routing rules, ordering invariants, error codes, and the version-compatibility matrix — is
+documented once, with sequence diagrams, in <strong><code>AACommComponents/docs/ipc-contract.md</code></strong>. The
+shared wire <em>code</em> lives in <code>AAComm/Internal/Wire/</code> (namespace <code>AAComm.Internal.Wire</code>),
+file-linked one-way into the server. This section covers only the client-side behavior.</p>
+<p><strong>Negotiation (client side).</strong> <code>new CommAPI()</code> opens binary-first; the consumer does not choose
+the protocol — <code>CommAPI.Protocol</code> reports the outcome. <code>BinaryCommHandler</code> runs the two-phase
+open: phase 1 waits a 2 s window for the server's handshake ack; phase 2 waits the full open
+timeout for the real Open result. No handshake ⇒ <code>ConnectResult.ServerNotBinaryCapable</code> ⇒
+<code>ConnectionOrchestrator</code> retries with <code>CommHandler</code> (ASCII) on a <strong>fresh</strong> socket — fresh
+because the legacy server already latched the first socket to string framing on its first
+byte. <strong>Every connect re-negotiates from binary</strong> — public <code>Connect</code> and silent reconnect
+alike (<code>LowLevelConnect</code> builds a fresh binary handler whenever negotiation is enabled);
+within a live session the handler persists (post-Reset recovery doesn't reconnect the IPC
+socket). Socket death after the handshake but before the Open reply classifies promptly as
+<code>FailOpenCommHandler</code> — never an ASCII fallback (the closed-event is routed into the phase
+inbox during the open).</p>
+<p><strong>Attach classification.</strong> After a successful open the orchestrator classifies the server —
+<code>CommAPI.ServerCompat</code> (pinned by <code>ServerCompatTests</code>): <code>Current</code> (binary, version ≥ the
+<code>MinCurrentServerVersion</code> floor, 14.0.0 = binary IPC v3 — typed payloads), <code>LegacyBinary</code> (binary below the
+floor / unparseable version), <code>LegacyAscii</code> (the ASCII fallback connected). The floor
+classifies, it never rejects — a server started by an older SDK app owns the port at boot and
+must keep serving a newer client in compat mode; the client never shuts down a server it did
+not spawn. Hosts surface Legacy visibly (PCSuite shows a warning); the ASCII client pipeline
+is <strong>frozen</strong> (deprecated) and kept solely for this compat mode. String-side envelope reassembly is <code>EnvelopeAccumulator</code> (drops its
+buffer when fully drained so multi-MB RecUpload payloads don't pin their peak buffer);
+binary-side frame reassembly is <code>BinaryFramingBuffer</code>.</p>
+<p>The binary client lifts each <code>IpcReply</code> to a <code>ReceivedFrame</code> and dispatches in
+<code>Session.HandleBinaryReply</code> (Fatal → <code>OnCommsError</code>, Push → <code>OnPushMessageReceived</code>, Reply → the
+in-flight waiter). For a <code>Reply</code> it prefers <code>ContentBytes</code> (the hot HW path) and <strong>falls back to
+<code>Content</code></strong> when <code>ContentBytes</code> is empty/null, so server-generated <code>Content</code>-only replies deliver
+their text rather than an empty string. This fallback is contractual: without it on the steady-state
+path the <code>IsSingleChannelUser</code> reply read empty and every binary-client FW/FPGA download failed its
+single-client exclusivity gate.</p>
+<p><strong>Continuation-segment (contInt) decoding.</strong> RecUpload and AllStat replies are streams of
+fixed-width big-endian integers. <code>Communicator_Ethernet</code> knows the stride for every such reply and
+threads it as <code>IpcReply.SegmentWidth</code> (0 = width unknown, 4 = Int32, 8 = Int64; on-wire stride is
+<code>SegmentWidth + 1</code>), so the binary client decodes at the exact width. Only when <code>SegmentWidth == 0</code>
+does <code>BinarySegmentParser.DetectSegmentSize</code> infer the stride from content, validating the full
+pattern (length an exact multiple of the stride and every inter-value delimiter <code>,</code>). The string and
+binary decoders are pinned byte-for-byte by <code>BinaryStringPathEquivalenceTests</code>.</p>
+<p><strong>Documented limitations.</strong></p>
+<ul>
+<li><code>BinaryCommHandler</code> falls back to ASCII only on a missing handshake (an old ASCII-only server). A
+genuine open failure against a binary-capable server (e.g. controller unreachable) does <strong>not</strong> fall
+back — it surfaces the real <code>ConnectResult</code>.</li>
+<li>The width-0 contInt heuristic's only residual ambiguity is a 2-segment stride-5 buffer — moot for
+every known contInt reply, since all are width-threaded and bypass the heuristic.</li>
+<li>Unvalidated 3-byte <code>ERR</code> (S5) and bare <code>+</code> passthrough (CL4) are pre-existing, byte-for-byte
+identical on both pipelines, and triggered by no known firmware reply — left as-is.</li>
+<li>Outbound frames are not size-checked (CL8): the 10 MB cap is inbound-only headroom. All IPC
+payloads are bounded small (controller commands are small; a RecUpload is bounded by the
+controller's recording buffer). Add a symmetric outbound cap if the binary client is ever
+de-darkened for large/untrusted Tx.</li>
+</ul>
 <h3 id="connection-lifecycle">Connection Lifecycle</h3>
 <ol>
-<li><strong>StartAACommServer()</strong>: Launches AACommServer process (optional, auto-starts on connect)</li>
+<li><strong>StartAACommServer()</strong>: Launches (or attaches to) the AACommServer process. REQUIRED before
+connecting — <code>Connect()</code> never spawns the server; without a running AACS it fails with
+<code>AACommServerNotRunning</code></li>
 <li><strong>TestConnection()</strong>: Verifies hardware connectivity without full connection</li>
 <li><strong>Connect()</strong>: Establishes session, queries controller identity, initializes containers</li>
 <li><strong>Send()/SendReceive()</strong>: Message exchange</li>
@@ -369,10 +441,14 @@ protocol redesign that obsoletes this whole layer.</p>
 </ul>
 <h3 id="protocol-support">Protocol Support</h3>
 <ul>
-<li><strong>CAN</strong>: Binary protocol with CAN ID and data bytes (Windows only - requires Kvaser CanLib)</li>
-<li><strong>RS-232</strong>: Serial port text-based communication</li>
+<li><strong>CAN</strong>: Binary protocol with CAN ID and data bytes (requires Kvaser CANlib; Windows or Linux, macOS unsupported)</li>
+<li><strong>RS-232</strong>: Serial port text-based communication. A binary UP-download chunk (<code>UserProgramBin</code>)
+is declined with <code>PC Suite: ERR 4022</code> unless a download is active (issue <code>DownloadUPBin</code> /
+<code>DownloadUProg</code> first) — its raw bytes (embedded CRs / the <code>&gt;\r</code> pair) would otherwise fragment
+the controller's CR-delimited stream and desync the reply FIFO. Enforced on the client send path
+by <code>UpBinDownloadGate</code>; Ethernet is exempt (length-prefixed binary / hex-sigil framing is safe).</li>
 <li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk)</li>
-<li><strong>Simulator</strong>: File-based simulation for testing (when AACommServer <code>AllowSim</code> enabled)</li>
+<li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). The spawned sim is started bound to the server lifetime so an abnormal server exit can't orphan it (Windows Job Object / Linux <code>PR_SET_PDEATHSIG</code>; macOS reaping deferred — see <code>AACommServerCore/README.md</code>). The <code>firmware_sim</code> binary is built per-platform in the firmware repo; Windows ships today, linux/osx pending. The legacy file-based <code>Simulator</code> channel is removed; the <code>Simulator</code> enum survives only as the in-process echo channel for the AAComm virtual-test harness.</li>
 </ul>
 <h3 id="message-types">Message Types</h3>
 <ul>
@@ -381,16 +457,67 @@ protocol redesign that obsoletes this whole layer.</p>
 <li><strong>Binary Uploads</strong>: Firmware and user program downloads</li>
 <li><strong>Special Messages</strong>: FPGA downloads, ASCII bulk, CNC-specific bulk messages</li>
 </ul>
-<h3 id="reset-handling">Reset Handling</h3>
+<h3 id="long-operation-handling">Long-Operation Handling</h3>
+<p><code>OnLongOperationStarted(LongOperationType)</code> and <code>OnLongOperationEnded(LongOperationType, int errorCode)</code>
+fire for operations that freeze the controller firmware for a significant duration. The ended edge's
+<code>errorCode</code> is <code>0</code> on success or the controller error code (e.g. <code>22</code> = &quot;motor on&quot;) on failure, so a
+subscriber can suppress a &quot;complete&quot; message on a failed long operation. Both are suppressed for
+<code>SendReceive</code> (sync path).</p>
+<p>For the non-Reset types the <code>started</code> edge is gated by a short <strong>start-grace window</strong>
+(<code>Session.LongOpStartGraceMs</code>, 100 ms): it fires only once the reply has failed to arrive within that
+window. A reply that lands sooner means the op was not long-running — e.g. an immediate ERR 22 rejecting
+a flash Save with the motor on — so neither edge fires and the reply surfaces its own result. This stops
+a transient &quot;started&quot; notification from racing, and clobbering, an instant error reply (issue #85). The
+five operation types and their dispatch timing:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Mnemonic</th>
+<th>Timeout</th>
+<th>Event timing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reset</td>
+<td>AReset</td>
+<td>10 001 ms</td>
+<td>After reply → recovery sleep → end (<code>ResetCoordinator</code>)</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>ASave</td>
+<td>120 000 ms</td>
+<td>No reply within grace → start → reply wait → end</td>
+</tr>
+<tr>
+<td>Load</td>
+<td>ALoad</td>
+<td>120 000 ms</td>
+<td>No reply within grace → start → reply wait → end</td>
+</tr>
+<tr>
+<td>SaveUser</td>
+<td>ASaveUser</td>
+<td>3 000 ms</td>
+<td>No reply within grace → start → reply wait → end</td>
+</tr>
+<tr>
+<td>EventCorrect</td>
+<td>AEventCorrect</td>
+<td>10 000 ms</td>
+<td>No reply within grace → start → reply wait → end</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reset</strong> is the only type with a post-reply recovery sleep and dispatch gate (controller
+reboots after the reply). The after-reset wait is 3 000 ms for standard controllers,
+10 000 ms for MAS02 (<code>AfterResetWait</code> / <code>AfterResetWaitMAS02</code>). The async dispatcher
+thread sleeps inside <code>ResetCoordinator.RunPostResetWait</code>; the sync flow is parked at
+<code>_resetDispatchGate</code> for the same window. Skipped entirely for sync <code>SendReceive</code> of a
+Reset (the caller manages reset timing).</p>
 <ul>
-<li><strong>OnResetProgress</strong> event: Fires on reset start/complete for async <code>Send</code> only.
-Suppressed for <code>SendReceive</code> (sync caller manages reset timing).</li>
-<li><strong>Extended timeout</strong>: 10+ seconds for controller reset (10001ms standard controller, varies by type)</li>
-<li><strong>After-reset wait</strong>: 3000ms for standard controllers, 10000ms for MAS02 (<code>AfterResetWait</code> /
-<code>AfterResetWaitMAS02</code>). The async dispatcher thread sleeps between
-<code>OnResetProgress(true)</code> and <code>OnResetProgress(false)</code> (inside <code>ResetCoordinator.RunPostResetWait</code>);
-the sync flow is parked at <code>_resetDispatchGate</code> for the same window. Skipped entirely
-for sync <code>SendReceive</code> of a Reset (the caller manages reset timing).</li>
 <li><strong>Reconnection</strong>: Automatic reconnection after Ethernet reset</li>
 <li><strong>State preservation</strong>: Connection data maintained across reset</li>
 <li><strong>Post-reset disconnect transparency</strong>: After a controller-rebooting step (FW DL EOF, FPGA
@@ -406,10 +533,9 @@ indicate genuine connectivity failure.</li>
 <ul>
 <li><strong>Default timeout</strong>: 2000ms for standard messages</li>
 <li><strong>Reset timeout</strong>: 10001ms (standard controller), varies by controller type</li>
-<li><strong>Firmware download</strong>: 6000ms</li>
-<li><strong>User program download</strong>: 3000ms</li>
-<li><strong>Open channel</strong>: 1000ms (RS-232/CAN), 10000ms (Ethernet), 20000ms (Simulator)</li>
-<li>All timeouts configurable per-message via <code>TimeoutMs</code> property</li>
+<li><strong>Firmware download</strong>: 6000ms; UP-bin chunk: 10000ms (<code>TimeoutMs.DownloadUPBin</code>; text-mode UP lines use the default)</li>
+<li><strong>Open channel</strong>: 1000ms (RS-232/CAN), 10000ms (Ethernet), 20000ms (Simulator/Simulation)</li>
+<li>All timeouts configurable per-message via <code>TimeoutMs</code> property; the full table is in <code>AACommComponents/docs/ipc-contract.md</code></li>
 </ul>
 <h3 id="exclusive-channel-access">Exclusive Channel Access</h3>
 <ul>
@@ -437,7 +563,8 @@ The guard catches sync re-entry only — an <code>async void</code> callback tha
 continuation that resumed after an <code>await</code> is NOT rejected (out of scope: the post-await
 continuation no longer holds the dispatcher's frame).</li>
 <li><code>OnPushMessageReceived</code> invoked via <code>Task.Run</code> (no blocking of the receiver thread).
-<code>OnResetProgress</code> handler invocations are dispatched via <code>Task.Run</code>, but
+Long-operation event (<code>OnLongOperationStarted</code> / <code>OnLongOperationEnded</code>) handler
+invocations are dispatched via <code>Task.Run</code>, but
 <code>ResetCoordinator.RunPostResetWait</code> runs the recovery sleep synchronously on the async
 dispatcher thread — the async pipeline is blocked for the recovery window.
 <code>OnCommsError</code> is the deliberate exception (sync on receiver) — see the suppression
@@ -450,12 +577,13 @@ thread around the post-Reset recovery sleep</li>
 <h3 id="asynchronous-mode-event-driven">Asynchronous Mode (Event-Driven)</h3>
 <pre><code class="lang-csharp">var api = new CommAPI();
 
-// 1. Start server (optional - auto-starts if needed)
+// 1. Start (or attach to) the server — required; Connect never spawns it
 CommAPI.StartAACommServer();
 
 // 2. Subscribe to events (REQUIRED for async mode)
 api.OnCommsError += err =&gt; Console.WriteLine($&quot;Error: {err}&quot;);
-api.OnResetProgress += inProgress =&gt; Console.WriteLine($&quot;Reset: {inProgress}&quot;);
+api.OnLongOperationStarted += type         =&gt; Console.WriteLine($&quot;Long op started: {type}&quot;);
+api.OnLongOperationEnded   += (type, code) =&gt; Console.WriteLine($&quot;Long op ended: {type}, errorCode: {code}&quot;);
 
 // 3. Connect to controller
 var connData = new ConnectionData {
@@ -503,62 +631,13 @@ Console.WriteLine($&quot;System: {sysInfo.MsgReceived}&quot;);
 // 5. Disconnect
 api.Disconnect();
 </code></pre>
-<h2 id="internal-layout">Internal layout</h2>
-<p><code>CommAPI.cs</code> is a thin public facade over two internal collaborators (<code>CommHandler</code> +
-<code>ConnectionOrchestrator</code>). Production
-behavior is documented above; the file map below is the navigation aid for code work.</p>
-<pre><code class="lang-text">AAComm/
-  CommAPI.cs                              public facade — events, properties, forwarders
-  Internal/
-    Transport/
-      Session.cs                          per-connection runtime: channel, dispatcher,
-                                          in-flight slot, Send/SendReceive,
-                                          dispatcher callback re-entry guard
-                                          (IsOnReceiverThread / _inCallbackForSession),
-                                          HandleReply, NotifyInFlightFatal
-      ReplyClassifier.cs                  pure helper: classify raw line as
-                                          Fatal / Push / Reply (with content)
-      BulkReplyParser.cs                  pure helper: bulk reply normalization,
-                                          ProgErase ack detection, length-mismatch
-                                          truncation to min(queries, replies)
-      ReplyPostProcessingState.cs        state-on-message carrier: bulk-error string
-                                          and BulkIgnore per-index error map, attached
-                                          to AACommMessage.BulkPostProcessing by
-                                          CommHandler, consumed by Session.HandleReply
-    Lifecycle/
-      ConnectionOrchestrator.cs           Connect / ConnectSilent / TestConnection /
-                                          Disconnect / CloseAACommServer; owns the
-                                          connect lock and creates/destroys Sessions;
-                                          fatal teardown path
-      ResetCoordinator.cs                 post-Reset recovery block: lock, IsResetting
-                                          flag, raiseResetProgress dispatch, sleep
-                                          (AfterResetWait / AfterResetWaitMAS02)
-</code></pre>
-<p>Conventions worth knowing before editing:</p>
-<ul>
-<li><strong>Events stay on <code>CommAPI</code>. Collaborators raise via injected delegates.</strong> <code>Session</code>
-calls <code>_raiseCommsError(message)</code>, never <code>_owner.OnCommsError?.Invoke(...)</code>. Events
-are part of the public facade, not the internal seam.</li>
-<li><strong>Both <code>Session</code> and <code>ConnectionOrchestrator</code> hold an explicit <code>CommAPI</code> owner.</strong>
-This is intentional: <code>ICommHandler.SendMessage(AACommMessage, CommAPI)</code>,
-<code>ConnectHelper.*(CommAPI, ...)</code>, and the container bootstraps still take the
-concrete API. Detangling that to a narrow <code>IApiRuntimeContext</code> is a separate
-follow-up refactor.</li>
-<li><strong><code>Send</code> / <code>SendReceive</code> are wired here:</strong> <code>CommAPI.Send</code> short-circuits to
-API_NOT_CONNECTED if the orchestrator has no current session; otherwise it forwards
-to <code>Session.Send</code>. Same for <code>SendReceive</code>.</li>
-<li><strong>Fatal teardown order is contractual:</strong> <code>Session.NotifyInFlightFatal(message)</code> →
-<code>Session.Stop()</code> → <code>OnCommsError</code> (suppressed if the in-flight call was sync-tagged).
-Inverting these breaks issue-#32 sync-tag suppression — the sync waiter would wake
-via the session-cancellation fallback before the specific error reached it.</li>
-</ul>
 <h2 id="relationship-to-aacommserver">Relationship to AACommServer</h2>
-<p>AAComm is the <strong>client library</strong>, AACommServerAPI is the <strong>server middleware</strong>.</p>
+<p>AAComm is the <strong>client library</strong>, AACommServerCore is the <strong>server middleware</strong>.</p>
 <ul>
 <li><strong>AAComm</strong>: Embedded in user applications, provides high-level API</li>
-<li><strong>AACommServerAPI</strong>: Standalone process, manages hardware connections</li>
+<li><strong>AACommServerCore</strong>: Standalone process, manages hardware connections</li>
 </ul>
-<p>Multiple AAComm clients can connect to a single AACommServer instance, sharing hardware channels. See <code>AACommServerAPI/README.md</code> for the server-side architecture.</p>
+<p>Multiple AAComm clients can connect to a single AACommServer instance, sharing hardware channels. See <code>AACommServerCore/README.md</code> for the server-side architecture.</p>
 
 </article>
 

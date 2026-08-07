@@ -511,7 +511,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_ET_IP_Default" data-uid="AAComm.Services.ConnectionData.ET_IP_Default">
   ET_IP_Default
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Default Ethernet IP string (X.Y.Z.W)</p>
@@ -543,7 +543,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_ET_IP_DefaultSubnet" data-uid="AAComm.Services.ConnectionData.ET_IP_DefaultSubnet">
   ET_IP_DefaultSubnet
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Default Ethernet IP subnet string (X.Y.Z)</p>
@@ -671,7 +671,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_IsAGM800" data-uid="AAComm.Services.ConnectionData.IsAGM800">
   IsAGM800
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>specifies whether <a class="xref" href="AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_ControllerType">ControllerType</a> is <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGM800_ID">AGM800_ID</a> or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_PULSE_SYNC_ID">PULSE_SYNC_ID</a>&quot;/&gt;</p>
@@ -703,7 +703,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_IsEC" data-uid="AAComm.Services.ConnectionData.IsEC">
   IsEC
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>specifies whether <a class="xref" href="AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_ControllerType">ControllerType</a> is <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD101_EC_ID">AGD101_EC_ID</a> or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD155_EC_ID">AGD155_EC_ID</a>&quot; or <a class="xref" href="AAComm.Shared.ProductTypes.html#AAComm_Shared_ProductTypes_AGD156_EC_ID">AGD156_EC_ID</a>&quot;/&gt;</p>
@@ -959,6 +959,138 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
 
 
+  <a id="AAComm_Services_ConnectionData_SimExePath_" data-uid="AAComm.Services.ConnectionData.SimExePath*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_SimExePath" data-uid="AAComm.Services.ConnectionData.SimExePath">
+  SimExePath
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Managed simulation (<a class="xref" href="AAComm.Shared.ChannelType.html#AAComm_Shared_ChannelType_Simulation">Simulation</a>): absolute path
+to the firmware_sim executable to launch locally. Empty for non-Simulation
+channels. P3 resolves this from the selected SimVersion; here it is set
+directly by the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SimExePath { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_SimMotorProfile_" data-uid="AAComm.Services.ConnectionData.SimMotorProfile*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_SimMotorProfile" data-uid="AAComm.Services.ConnectionData.SimMotorProfile">
+  SimMotorProfile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Managed simulation: the motor/encoder/load profile (flat key=value text written to
+firmware_sim's <code>--motor</code>). Empty uses the bundled generic-PMSM default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SimMotorProfile { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_SimProduct_" data-uid="AAComm.Services.ConnectionData.SimProduct*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_SimProduct" data-uid="AAComm.Services.ConnectionData.SimProduct">
+  SimProduct
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Managed simulation: catalog product key (e.g. &quot;AGD301&quot;). Empty otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SimProduct { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_ConnectionData_SimVersion_" data-uid="AAComm.Services.ConnectionData.SimVersion*"></a>
+
+  <h3 id="AAComm_Services_ConnectionData_SimVersion" data-uid="AAComm.Services.ConnectionData.SimVersion">
+  SimVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Managed simulation: firmware-sim version (e.g. &quot;3.0.0.98&quot;). Empty otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SimVersion { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -967,7 +1099,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_Clone" data-uid="AAComm.Services.ConnectionData.Clone">
   Clone()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L330"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>a method for cloning a connection data object</p>
@@ -1000,7 +1132,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_Deserialize_System_String_" data-uid="AAComm.Services.ConnectionData.Deserialize(System.String)">
   Deserialize(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L215"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>tries to de-serialize a string, returns a ConnectionData item filled with RELEVANT data. for INTERNAL use.
@@ -1042,7 +1174,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_GetChannelKeyStr" data-uid="AAComm.Services.ConnectionData.GetChannelKeyStr">
   GetChannelKeyStr()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L309"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>returns a string describing the a unique HW channel identifier</p>
@@ -1075,7 +1207,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_GetChannelTypeStr" data-uid="AAComm.Services.ConnectionData.GetChannelTypeStr">
   GetChannelTypeStr()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>returns a string describing the CommChannelType enum</p>
@@ -1108,7 +1240,7 @@ Class ConnectionData  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAComm_Services_ConnectionData_Serialize" data-uid="AAComm.Services.ConnectionData.Serialize">
   Serialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ConnectionData.cs/#L153"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>returns serialized connection data for sending the message to Communicator. for INTERNAL use

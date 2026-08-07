@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CommAPI | Agito AAComm SDK ">
       
-      <meta name="description" content="An API for handling communication with the AACommServer executable.   The API provides low-level send/receive capabilities + special functionality.   All *synchronous* functions are mutually-locking, and should not be called from multiple threads   Proper work-flow: (see usage details at every function description)   0. subscribe to events: Reset: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnResetProgress&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;, General Error: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnCommsError&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;, Push: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnPushMessageReceived&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (TBD)   1. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.StartAACommServer(System.String)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  2. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (not mandatory, can be used to determine &amp;lt;xref href=&amp;quot;AAComm.Services.ConnectionData.ControllerType&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;)   3. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  4. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and/or &amp;lt;xref href=&amp;quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)   5. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Disconnect&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  6. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (not mandatory)">
+      <meta name="description" content="An API for handling communication with the AACommServer executable.   The API provides low-level send/receive capabilities + special functionality.   All *synchronous* functions are mutually-locking, and should not be called from multiple threads   Proper work-flow: (see usage details at every function description)   0. subscribe to events: Long operations: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnLongOperationStarted&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; / &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnLongOperationEnded&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;, General Error: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnCommsError&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;, Push: &amp;lt;xref href=&amp;quot;AAComm.CommAPI.OnPushMessageReceived&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (TBD)   1. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.StartAACommServer(System.String)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  2. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (not mandatory, can be used to determine &amp;lt;xref href=&amp;quot;AAComm.Services.ConnectionData.ControllerType&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;)   3. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  4. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and/or &amp;lt;xref href=&amp;quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)   5. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.Disconnect&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;  6. &amp;lt;xref href=&amp;quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (not mandatory)">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_CommAPI" data-uid="AAComm.CommAPI" class="text-break">
-Class CommAPI  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L25"><i class="bi bi-code-slash"></i></a>
+Class CommAPI  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -109,7 +109,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 <pre><code>Proper work-flow: (see usage details at every function description)
 </code></pre>
 <p></p>
-<pre><code>0. subscribe to events: Reset: &lt;xref href=&quot;AAComm.CommAPI.OnResetProgress&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)
+<pre><code>0. subscribe to events: Long operations: &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; / &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)
 </code></pre>
 <p></p>
 <pre><code>1. &lt;xref href=&quot;AAComm.CommAPI.StartAACommServer(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
@@ -131,7 +131,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class CommAPI : ICommService</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class CommAPI : ICommService, IDisposable</code></pre>
   </div>
 
 
@@ -149,6 +149,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
     </dd>
   </dl>
 
@@ -189,10 +190,12 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI__ctor" data-uid="AAComm.CommAPI.#ctor">
   CommAPI()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L261"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Default CTOR, for consistency.</p>
+  <div class="markdown level1 summary"><p>Default CTOR. The client negotiates the wire protocol with AACommServer at connect time:
+binary first, transparently falling back to the legacy ASCII protocol if the server is an
+old ASCII-only build. Read <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Protocol">Protocol</a> after Connect to see what was negotiated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -219,7 +222,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI_DocsAppFolder" data-uid="AAComm.CommAPI.DocsAppFolder">
   DocsAppFolder
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>the folder under &quot;(Windows)\Documents&quot; containing API and PCSuite settings and other data (i.e. controller About data)</p>
@@ -250,7 +253,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI_MaxTheoreticalNumOfAxes" data-uid="AAComm.CommAPI.MaxTheoreticalNumOfAxes">
   MaxTheoreticalNumOfAxes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>maximal theoretical number of axes</p>
@@ -286,7 +289,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI_AACommServerVersion" data-uid="AAComm.CommAPI.AACommServerVersion">
   AACommServerVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L157"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>AACommServer version, as reported by AACommServer upon <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a><p></p>
@@ -319,7 +322,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI_CurrentConnectionData" data-uid="AAComm.CommAPI.CurrentConnectionData">
   CurrentConnectionData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>API state: get current ConnectionData (NULL if not connected)</p>
@@ -351,7 +354,7 @@ Class CommAPI  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="AAComm_CommAPI_IdentityContainer" data-uid="AAComm.CommAPI.IdentityContainer">
   IdentityContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>do NOT MODIFY internal container data!!
@@ -387,11 +390,57 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
 
 
+  <a id="AAComm_CommAPI_IgnoreUserUnits_" data-uid="AAComm.CommAPI.IgnoreUserUnits*"></a>
+
+  <h3 id="AAComm_CommAPI_IgnoreUserUnits" data-uid="AAComm.CommAPI.IgnoreUserUnits">
+  IgnoreUserUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Consumer-wide override: when set to 'true', User Units scaling is disabled for ALL messages
+sent and received through this CommAPI instance.
+</code></pre>
+<p></p>
+<pre><code>This affects every caller sharing this instance — use with caution in multi-tool environments.
+</code></pre>
+<p></p>
+<pre><code>For per-message bypass, use &lt;xref href=&quot;AAComm.Services.AACommMessage.SkipUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; instead.
+</code></pre>
+<p></p>
+    <br>
+    Always reset to 'false' at <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a>.
+<p></p>
+<pre><code>When 'true', &lt;xref href=&quot;AAComm.CommAPI.GetUserUnitsEnabled(System.Char)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; always returns 'false'.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IgnoreUserUnits { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_CommAPI_IsAACommServerRunning_" data-uid="AAComm.CommAPI.IsAACommServerRunning*"></a>
 
   <h3 id="AAComm_CommAPI_IsAACommServerRunning" data-uid="AAComm.CommAPI.IsAACommServerRunning">
   IsAACommServerRunning
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>API state: is AACommServer process is currently running (static property!)
@@ -427,7 +476,7 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
   <h3 id="AAComm_CommAPI_IsConnected" data-uid="AAComm.CommAPI.IsConnected">
   IsConnected
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>API state: is API connected</p>
@@ -459,7 +508,7 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
   <h3 id="AAComm_CommAPI_IsQueueEmpty" data-uid="AAComm.CommAPI.IsQueueEmpty">
   IsQueueEmpty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>API state: returns whether messages queue is empty. May be used whether it's safe to switch from &quot;async&quot; to &quot;sync&quot; API usage.</p>
@@ -491,11 +540,11 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
   <h3 id="AAComm_CommAPI_IsResetting" data-uid="AAComm.CommAPI.IsResetting">
   IsResetting
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L132"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>API state: true while the transport is sleeping in the post-Reset recovery
-window (between <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnResetProgress">OnResetProgress</a>(true) and <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnResetProgress">OnResetProgress</a>(false)).
+window (between <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationStarted">OnLongOperationStarted</a>(<a class="xref" href="AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_Reset">Reset</a>) and <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationEnded">OnLongOperationEnded</a>).
 Useful for UI status indicators and tests that wait-for-quiet. Always false for
 <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_SendReceive_AAComm_Services_AACommMessage_">SendReceive(AACommMessage)</a> of a Reset (sync requests skip the recovery wait).</p>
 </div>
@@ -526,7 +575,7 @@ Useful for UI status indicators and tests that wait-for-quiet. Always false for
 
   <h3 id="AAComm_CommAPI_MaxNumOfAxes" data-uid="AAComm.CommAPI.MaxNumOfAxes">
   MaxNumOfAxes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>maximal theoretical number of axes</p>
@@ -558,7 +607,7 @@ Useful for UI status indicators and tests that wait-for-quiet. Always false for
 
   <h3 id="AAComm_CommAPI_MessagesContainer" data-uid="AAComm.CommAPI.MessagesContainer">
   MessagesContainer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L195"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>do NOT MODIFY internal container data!!
@@ -599,7 +648,7 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
   <h3 id="AAComm_CommAPI_MessagesInBulk" data-uid="AAComm.CommAPI.MessagesInBulk">
   MessagesInBulk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>returns max number of messages in a 'Bulk&quot; packet (50)
@@ -635,7 +684,7 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
   <h3 id="AAComm_CommAPI_NumberOfAxes" data-uid="AAComm.CommAPI.NumberOfAxes">
   NumberOfAxes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L145"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the maximal number of Axes supported by connected controller. (<a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_MaxTheoreticalNumOfAxes">MaxTheoreticalNumOfAxes</a> if not connected)</p>
@@ -663,11 +712,88 @@ NOT initialized by &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Serv
 
 
 
+  <a id="AAComm_CommAPI_Protocol_" data-uid="AAComm.CommAPI.Protocol*"></a>
+
+  <h3 id="AAComm_CommAPI_Protocol" data-uid="AAComm.CommAPI.Protocol">
+  Protocol
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wire protocol negotiated with AACommServer. Reflects the result after <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a>:
+<a class="xref" href="AAComm.Shared.ProtocolMode.html#AAComm_Shared_ProtocolMode_Binary">Binary</a> against a current server, or <a class="xref" href="AAComm.Shared.ProtocolMode.html#AAComm_Shared_ProtocolMode_Ascii">Ascii</a>
+when the client fell back to a legacy ASCII-only server (reported by
+<a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_ServerCompat">ServerCompat</a> as <a class="xref" href="AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_LegacyAscii">LegacyAscii</a>). The consumer
+does not choose the protocol — this property only reports it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProtocolMode Protocol { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.ProtocolMode.html">ProtocolMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_CommAPI_ServerCompat_" data-uid="AAComm.CommAPI.ServerCompat*"></a>
+
+  <h3 id="AAComm_CommAPI_ServerCompat" data-uid="AAComm.CommAPI.ServerCompat">
+  ServerCompat
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Classification of the AACommServer this client attached to, valid after &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+(&lt;xref href=&quot;AAComm.Shared.ServerCompat.Unknown&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; when disconnected).
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_Current">Current</a> = full feature set. The Legacy values mean the
+    client attached in <b>compat mode</b> to a server started by an older application — the
+    connection works, but features the old server lacks (correlated reply routing on
+    <a class="xref" href="AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_LegacyAscii">LegacyAscii</a>, channel-death events, newer version-gated
+    features) are silently unavailable. Hosts should surface a visible warning so the user
+    knows to upgrade the application that owns the old server.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ServerCompat ServerCompat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.ServerCompat.html">ServerCompat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_CommAPI_UserProgAdapter_" data-uid="AAComm.CommAPI.UserProgAdapter*"></a>
 
   <h3 id="AAComm_CommAPI_UserProgAdapter" data-uid="AAComm.CommAPI.UserProgAdapter">
   UserProgAdapter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L203"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>do NOT MODIFY internal container data!!
@@ -712,7 +838,7 @@ Supported according to &lt;xref href=&quot;AAComm.Services.ControllerIdentityFea
 
   <h3 id="AAComm_CommAPI_CloseAACommServer_System_Boolean_" data-uid="AAComm.CommAPI.CloseAACommServer(System.Boolean)">
   CloseAACommServer(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L451"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous function
@@ -759,7 +885,7 @@ Supported according to &lt;xref href=&quot;AAComm.Services.ControllerIdentityFea
 
   <h3 id="AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_" data-uid="AAComm.CommAPI.Connect(AAComm.Services.ConnectionData,System.Boolean)">
   Connect(ConnectionData, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L365"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous function, tries to establish a required connection
@@ -814,7 +940,7 @@ Supported according to &lt;xref href=&quot;AAComm.Services.ControllerIdentityFea
 
   <h3 id="AAComm_CommAPI_ConnectSilent_AAComm_Services_ConnectionData_" data-uid="AAComm.CommAPI.ConnectSilent(AAComm.Services.ConnectionData)">
   ConnectSilent(ConnectionData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L378"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous function, tries to establish a required connection
@@ -869,7 +995,7 @@ Supported according to &lt;xref href=&quot;AAComm.Services.ControllerIdentityFea
 
   <h3 id="AAComm_CommAPI_Disconnect" data-uid="AAComm.CommAPI.Disconnect">
   Disconnect()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L435"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous function
@@ -905,11 +1031,39 @@ Supported according to &lt;xref href=&quot;AAComm.Services.ControllerIdentityFea
 
 
 
+  <a id="AAComm_CommAPI_Dispose_" data-uid="AAComm.CommAPI.Dispose*"></a>
+
+  <h3 id="AAComm_CommAPI_Dispose" data-uid="AAComm.CommAPI.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L441"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Releases the active session — equivalent to <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Disconnect">Disconnect()</a>; lets consumers use a <code>using</code> block.
+Idempotent. Does NOT shut down the shared AACommServer process — call <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_CloseAACommServer_System_Boolean_">CloseAACommServer(bool)</a> for that.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_CommAPI_GetCanDescriptionFromParameter_" data-uid="AAComm.CommAPI.GetCanDescriptionFromParameter*"></a>
 
   <h3 id="AAComm_CommAPI_GetCanDescriptionFromParameter_System_String_" data-uid="AAComm.CommAPI.GetCanDescriptionFromParameter(System.String)">
   GetCanDescriptionFromParameter(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Instance variant of <a class="xref" href="AAComm.CommAPIWrapper.html#AAComm_CommAPIWrapper_GetCanDescriptionFromParameter_System_String_">GetCanDescriptionFromParameter(string)</a>:
@@ -944,11 +1098,87 @@ Throws on errors; requires <a class="xref" href="AAComm.CommAPI.html#AAComm_Comm
 
 
 
+  <a id="AAComm_CommAPI_GetUserUnitsEnabled_" data-uid="AAComm.CommAPI.GetUserUnitsEnabled*"></a>
+
+  <h3 id="AAComm_CommAPI_GetUserUnitsEnabled_System_Char_" data-uid="AAComm.CommAPI.GetUserUnitsEnabled(System.Char)">
+  GetUserUnitsEnabled(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets the per-axis User Units enabled state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetUserUnitsEnabled(char axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>axis to check, e.g. &quot;A&quot;</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if User Units are enabled for this axis</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_CommAPI_RefreshUserUnits_" data-uid="AAComm.CommAPI.RefreshUserUnits*"></a>
+
+  <h3 id="AAComm_CommAPI_RefreshUserUnits" data-uid="AAComm.CommAPI.RefreshUserUnits">
+  RefreshUserUnits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Re-reads the full User Units configuration (per-axis enable + every group's scaling factor and
+units name) from the controller and refreshes the in-memory scaling cache.
+</code></pre>
+<p></p>
+<pre><code>Blocking — uses synchronous &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;; call off the hot path and without parallel
+communications. Cheap no-op when the controller does not support User Units.
+</code></pre>
+<p></p>
+<pre><code>Provisioning tools call this after a bulk write that bypassed the User Units config gate
+(&lt;xref href=&quot;AAComm.Services.AACommMessage.AllowUserUnitsConfig&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;), to resync the cache that the raw write left stale.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RefreshUserUnits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_CommAPI_Send_" data-uid="AAComm.CommAPI.Send*"></a>
 
   <h3 id="AAComm_CommAPI_Send_AAComm_Services_AACommMessage_" data-uid="AAComm.CommAPI.Send(AAComm.Services.AACommMessage)">
   Send(AACommMessage)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L265"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L388"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Asynchronous function
@@ -990,7 +1220,7 @@ thread-safe
 
   <h3 id="AAComm_CommAPI_SendReceive_AAComm_Services_AACommMessage_" data-uid="AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)">
   SendReceive(AACommMessage)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L416"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous send/receive function
@@ -1010,7 +1240,8 @@ thread-safe — may be interleaved freely with &lt;xref href=&quot;AAComm.CommAP
 <pre><code>if the operation times out - AAComm state will be &quot;Disconnected&quot;
 </code></pre>
 <p></p>
-<pre><code>if Reset is sent over Ethernet - function will always timeout
+<pre><code>a sync Reset over Ethernet returns OK even when the post-reset disconnect wins the race
+against the reply — the disconnect is proof the reset took effect (see ResetReplyHelper)
 </code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1043,11 +1274,49 @@ thread-safe — may be interleaved freely with &lt;xref href=&quot;AAComm.CommAP
 
 
 
+  <a id="AAComm_CommAPI_SetUserUnitsEnabled_" data-uid="AAComm.CommAPI.SetUserUnitsEnabled*"></a>
+
+  <h3 id="AAComm_CommAPI_SetUserUnitsEnabled_System_Char_System_Boolean_" data-uid="AAComm.CommAPI.SetUserUnitsEnabled(System.Char,System.Boolean)">
+  SetUserUnitsEnabled(char, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the per-axis User Units enabled state (fire-and-forget send; does NOT validate errors).
+The enabled cache is not written here — it is updated ack-authoritatively when the controller
+confirms the change, which also raises <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnUserUnitsEnabledChanged">OnUserUnitsEnabledChanged</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetUserUnitsEnabled(char axis, bool enabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>axis to set, e.g. &quot;A&quot;</p>
+</dd>
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>enabled state to set</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_CommAPI_StartAACommServer_" data-uid="AAComm.CommAPI.StartAACommServer*"></a>
 
   <h3 id="AAComm_CommAPI_StartAACommServer_System_String_" data-uid="AAComm.CommAPI.StartAACommServer(System.String)">
   StartAACommServer(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L338"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous STATIC function
@@ -1114,7 +1383,7 @@ thread-safe — may be interleaved freely with &lt;xref href=&quot;AAComm.CommAP
 
   <h3 id="AAComm_CommAPI_TestConnection_AAComm_Services_ConnectionData_System_Boolean_" data-uid="AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData,System.Boolean)">
   TestConnection(ConnectionData, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L352"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Synchronous function, used for testing a connection
@@ -1177,7 +1446,7 @@ Note: in case connectionData.CommChannelType == RS_232, Identity[22] =&gt; RS232
 
   <h3 id="AAComm_CommAPI_OnCommsError" data-uid="AAComm.CommAPI.OnCommsError">
   OnCommsError
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Fatal communication error. If AACommServer was closed unexpectedly the string is
@@ -1211,9 +1480,113 @@ Invoked synchronously on the transport receiver thread — off-load long work vi
 
 
 
+  <h3 id="AAComm_CommAPI_OnLongOperationEnded" data-uid="AAComm.CommAPI.OnLongOperationEnded">
+  OnLongOperationEnded
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Fired when a long controller operation (Reset, Save, Load, SaveUser, EventCorrect) ends.
+</code></pre>
+<p></p>
+<pre><code>Parameters: &lt;xref href=&quot;AAComm.Shared.LongOperationType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; identifying the operation, and the controller error
+code — &lt;code&gt;0&lt;/code&gt; means no error (the operation succeeded); a non-zero value is the controller
+error code (e.g. &lt;code&gt;22&lt;/code&gt; = &quot;motor on&quot;), or an unresolved-error sentinel when the operation
+ended without a parseable reply (e.g. session teardown).
+</code></pre>
+<p></p>
+<pre><code>Fired only if the matching &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; fired: a long op whose reply
+lands within the start-grace window raises neither edge (see &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;).
+</code></pre>
+<p></p>
+<pre><code>Do NOT call API functions while handling.
+</code></pre>
+<p></p>
+<pre><code>Event is invoked in a new Task.
+</code></pre>
+<p></p>
+<pre><code>Event NOT invoked if &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method is used.
+</code></pre>
+<p></p>
+<pre><code>For Reset: NOT invoked if the Reset reply was an error, if reconnecting after reset failed, or if the API was disconnected while in reset progress.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;LongOperationType, int&gt; OnLongOperationEnded</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="AAComm.Shared.LongOperationType.html">LongOperationType</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_CommAPI_OnLongOperationStarted" data-uid="AAComm.CommAPI.OnLongOperationStarted">
+  OnLongOperationStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Fired when a long controller operation (Reset, Save, Load, SaveUser, EventCorrect) begins.
+</code></pre>
+<p></p>
+<pre><code>Parameter: &lt;xref href=&quot;AAComm.Shared.LongOperationType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; identifying the operation.
+</code></pre>
+<p></p>
+<pre><code>For Save/Load/SaveUser/EventCorrect: NOT fired when the controller replies within a short
+start-grace window — such a reply means the op was not long-running (e.g. an immediate ERR 22
+rejecting a flash Save while the motor is on), and the reply surfaces its own result; the
+matching &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; is suppressed too.
+</code></pre>
+<p></p>
+<pre><code>Do NOT call API functions while handling.
+</code></pre>
+<p></p>
+<pre><code>Event is invoked in a new Task.
+</code></pre>
+<p></p>
+<pre><code>Event NOT invoked if &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method is used.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;LongOperationType&gt; OnLongOperationStarted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="AAComm.Shared.LongOperationType.html">LongOperationType</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h3 id="AAComm_CommAPI_OnPushMessageReceived" data-uid="AAComm.CommAPI.OnPushMessageReceived">
   OnPushMessageReceived
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Raised when an unsolicited &quot;push&quot; message is received from the controller.
@@ -1246,34 +1619,22 @@ so code re-entry and thread-safety should be considered.</p>
 
 
 
-  <h3 id="AAComm_CommAPI_OnResetProgress" data-uid="AAComm.CommAPI.OnResetProgress">
-  OnResetProgress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_CommAPI_OnUserUnitsEnabledChanged" data-uid="AAComm.CommAPI.OnUserUnitsEnabledChanged">
+  OnUserUnitsEnabledChanged
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>Fired when a Reset message is handled. 
-</code></pre>
-<p></p>
-<pre><code>Parameter: true for reset started, false for reset ended.
-</code></pre>
-<p></p>
-<pre><code>do NOT call API functions while handling.
-</code></pre>
-<p></p>
-<pre><code>Event is invoked in a new Task
-Event NOT invoked, if &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method is used
-</code></pre>
-<p></p>
-<pre><code>ResetDone NOT invoked, if failed reconnecting after reset
-</code></pre>
-<p></p>
-<pre><code>ResetDone NOT invoked, if API was disconnected while in reset progress
-</code></pre>
+  <div class="markdown level1 summary"><p>Raised after the controller confirms (OK reply) a per-axis User Units enable/disable change,
+regardless of the path that sent it (API, Terminal, …). Fires only on an actual transition.
+The cache behind <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_GetUserUnitsEnabled_System_Char_">GetUserUnitsEnabled(char)</a> is updated synchronously on the receiver
+thread <em>before</em> this fires, so handlers should re-read it rather than rely on event ordering.
+Invoked on a background <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> (like <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_OnPushMessageReceived">OnPushMessageReceived</a>);
+consider re-entrancy and thread-safety. Args: (axis, isEnabled).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Action&lt;bool&gt; OnResetProgress</code></pre>
+    <pre><code class="lang-csharp hljs">public event Action&lt;char, bool&gt; OnUserUnitsEnabledChanged</code></pre>
   </div>
 
 
@@ -1283,7 +1644,7 @@ Event NOT invoked, if &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Serv
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1297,7 +1658,7 @@ Event NOT invoked, if &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Serv
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L25" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/CommAPI.cs/#L27" class="edit-link">Edit this page</a>
         </div>
 
 

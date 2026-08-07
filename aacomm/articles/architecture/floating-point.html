@@ -88,10 +88,12 @@
 <li><strong>int / long</strong> — returned as-is</li>
 <li><strong>null metadata</strong> (unknown parameter) — returned as-is (safe fallback)</li>
 </ul>
-<p><code>FloatHelper.ResolveFromCCC(int ccc, long rawVal, ControllerMessagesContainer dataContainer, bool doubleSupported, bool floatSupport)</code> resolves via Complex CAN Code: parses CCC -&gt; looks up MessageData -&gt; delegates to <code>ResolveFloatingPoint</code>.</p>
+<p><code>FloatHelper.ResolveFromCCC(int ccc, long rawVal, IMessagesContainer dataContainer, bool doubleSupported, bool floatSupport)</code> resolves via Complex CAN Code: parses CCC -&gt; looks up MessageData -&gt; delegates to <code>ResolveFloatingPoint</code>.</p>
 <p>Throws <code>FormatException</code> on NaN or Infinity.</p>
 <h3 id="float-hole-protection">Float Hole Protection</h3>
 <p>AllStat_64bit protocols (AllStat, Logger, Scope, ConFltSnap, ProgSnap) never transmit 32-bit float bit patterns. They either send raw integers or 64-bit doubles. These protocols pass <code>floatSupport: false</code>, which blocks the <code>IntToFloat</code> path and prevents garbage values when <code>doubleSupported=false</code> and a parameter has float metadata. RecUpload and ParamAbout pass <code>floatSupport: true</code>.</p>
+<h3 id="firmware-side-userunits-recording-header">Firmware-Side UserUnits (Recording Header)</h3>
+<p>The per-vector <code>UserUnits</code> integer stored in the recording header (<code>VectorDataContainer.UserUnits</code>, read from <code>GetUserUnitsIndex(i)</code>) is part of a parallel firmware-level scaling system. It is mutually exclusive with the PCSuite UU feature at the firmware level. This value is preserved as metadata in <code>RecParamHeader</code> and AGF files but is NOT used for PCSuite UU scaling. PCSuite UU factors are looked up dynamically via <code>CommAPI.GetUserUnitsEnabled()</code> + <code>ControllerMessagesContainer.TryGetUserUnitAxis()</code> through the centralized <code>FloatHelper.ApplyUserUnits()</code> method.</p>
 <h3 id="double-support-flags">Double Support Flags</h3>
 <p>Two independent flags control double support for different protocol groups:</p>
 <table>
@@ -125,6 +127,7 @@
 <th>floatSupport</th>
 <th>Auto-resolved</th>
 <th>Rx-path resolved</th>
+<th>UU-scaled</th>
 </tr>
 </thead>
 <tbody>
@@ -135,6 +138,7 @@
 <td><code>true</code></td>
 <td>Yes</td>
 <td>No</td>
+<td>Yes (<code>ApplyUserUnits</code> in <code>ReadRecParamsData</code>)</td>
 </tr>
 <tr>
 <td><strong>LoggerUpload</strong></td>
@@ -143,6 +147,7 @@
 <td><code>false</code></td>
 <td>Yes</td>
 <td>No</td>
+<td>Yes (via <code>PacketDataParser</code>)</td>
 </tr>
 <tr>
 <td><strong>ScopeUpload</strong></td>
@@ -151,6 +156,7 @@
 <td><code>false</code></td>
 <td>Yes</td>
 <td>No</td>
+<td>Yes (via <code>PacketDataParser</code>)</td>
 </tr>
 <tr>
 <td><strong>AllStat</strong></td>
@@ -159,6 +165,7 @@
 <td><code>false</code></td>
 <td>Yes</td>
 <td>Yes</td>
+<td>Yes (<code>ApplyUserUnits</code> in <code>Resolve</code>)</td>
 </tr>
 <tr>
 <td><strong>ParamAbout</strong></td>
@@ -167,6 +174,7 @@
 <td><code>true</code></td>
 <td>Yes (inline)</td>
 <td>Yes</td>
+<td>Yes (via <code>ConvertReplyToFloatIfNeed</code> factor)</td>
 </tr>
 <tr>
 <td><strong>ConFltSnapVal</strong></td>
@@ -175,6 +183,7 @@
 <td><code>false</code></td>
 <td>No (PCSuite UI)</td>
 <td>No</td>
+<td>Yes (PCSuite <code>FaultDataView</code>)</td>
 </tr>
 <tr>
 <td><strong>ProgSnapVal</strong></td>
@@ -183,6 +192,7 @@
 <td><code>false</code></td>
 <td>No (PCSuite UI)</td>
 <td>No</td>
+<td>Yes (PCSuite <code>UPDataView</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -190,7 +200,7 @@
 <p>Both use <code>PacketDataParser</code> for the common wire format: <code>nPackets, [header, val1, val2, ...], ..., 0</code>. Header is packet ID (Logger) or Time (Scope). Resolution is applied per value using the caller-provided <code>MessageData</code> list.</p>
 <p>PCSuite adapts these containers into its UI models. The CSV import path in <code>LoggerData</code> bypasses AAComm resolution (values are already resolved in the file).</p>
 <h3 id="allstat">AllStat</h3>
-<p><code>AllStatInterpreter</code> requires a connected <code>CommAPI</code> (constructor delegates validation to <code>RecParamsResolver.ValidateAPI</code>). Every field in <code>AllStatAxisData</code> is resolved via mnemonic lookup against the controller's <code>MessagesContainer</code> — float/double fields get bit-pattern conversion, integer fields pass through as <code>double</code>. The <code>AllStatData</code> struct is shared with <code>AACommNative</code> (C++) via <code>#if __cplusplus</code> preprocessor directives.</p>
+<p><code>AllStatInterpreter</code> requires a connected <code>CommAPI</code> (constructor delegates validation to <code>RecParamsResolver.ValidateAPI</code>). Every field in <code>AllStatAxisData</code> is resolved via mnemonic lookup against the controller's <code>MessagesContainer</code> — float/double fields get bit-pattern conversion, integer fields pass through as <code>double</code>.</p>
 <h3 id="rx-path-resolution-convertreplytofloatifneed">Rx-Path Resolution (ConvertReplyToFloatIfNeed)</h3>
 <p><code>FloatHelper.ConvertReplyToFloatIfNeed</code> is the inline Rx-path resolver for all message replies. It intercepts raw controller replies before delivery to the caller and converts IEEE 754 bit patterns to floating-point values. This ensures that even low-level <code>SendReceive()</code> consumers (e.g., PCSuite Terminal) receive properly resolved data.</p>
 <p><strong>Resolved in the Rx path:</strong></p>

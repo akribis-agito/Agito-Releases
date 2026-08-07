@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_AACommDataRecManagerSync" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync" class="text-break">
-Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -158,7 +158,7 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync__ctor" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.#ctor">
   AACommDataRecManagerSync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>default CTOR for the synchronous wrapper of <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html">AACommDataRecManager</a></p>
@@ -187,23 +187,23 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.CommAPI)">
-  ForceTrigger(CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_AAComm_Interfaces_ICommService_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.Interfaces.ICommService)">
+  ForceTrigger(ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_AAComm_CommAPI_">ForceTrigger(CommAPI)</a><p></p>
-<p>NOTE: a 'sleep' may be required between 'ForceTrigger' and <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_CommAPI_System_String__">UploadRecData(CommAPI, out string)</a> calls</p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_AAComm_Interfaces_ICommService_">ForceTrigger(ICommService)</a><p></p>
+<p>NOTE: a 'sleep' may be required between 'ForceTrigger' and <a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_Interfaces_ICommService_System_String__">UploadRecData(ICommService, out string)</a> calls</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ForceTrigger(CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public string ForceTrigger(ICommService api)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
   </dl>
@@ -227,17 +227,17 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)">
-  SendRecordingParams(RecordingSetupContainer, CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_Interfaces_ICommService_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.Interfaces.ICommService)">
+  SendRecordingParams(RecordingSetupContainer, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_">SendRecordingParams(RecordingSetupContainer, CommAPI)</a></p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_Interfaces_ICommService_">SendRecordingParams(RecordingSetupContainer, ICommService)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SendRecordingParams(RecordingSetupContainer recSetup, CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public string SendRecordingParams(RecordingSetupContainer recSetup, ICommService api)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -245,7 +245,7 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
     <dt><code>recSetup</code> <a class="xref" href="AAComm.Extensions.RecData.RecordingSetupContainer.html">RecordingSetupContainer</a></dt>
     <dd><p>recording setup</p>
 </dd>
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
   </dl>
@@ -269,22 +269,22 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.CommAPI)">
-  StartRecording(CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_AAComm_Interfaces_ICommService_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.Interfaces.ICommService)">
+  StartRecording(ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_AAComm_CommAPI_">StartRecording(CommAPI)</a></p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_AAComm_Interfaces_ICommService_">StartRecording(ICommService)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StartRecording(CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public string StartRecording(ICommService api)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
   </dl>
@@ -308,22 +308,22 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.CommAPI)">
-  StopRecording(CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_AAComm_Interfaces_ICommService_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.Interfaces.ICommService)">
+  StopRecording(ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_AAComm_CommAPI_">StopRecording(CommAPI)</a></p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_AAComm_Interfaces_ICommService_">StopRecording(ICommService)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StopRecording(CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public string StopRecording(ICommService api)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
   </dl>
@@ -347,22 +347,22 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_CommAPI_System_String__" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI,System.String@)">
-  UploadRecData(CommAPI, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_Interfaces_ICommService_System_String__" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.Interfaces.ICommService,System.String@)">
+  UploadRecData(ICommService, out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_AAComm_CommAPI_">UploadRecData(CommAPI)</a></p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_AAComm_Interfaces_ICommService_">UploadRecData(ICommService)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RecordingDataContainer UploadRecData(CommAPI api, out string error)</code></pre>
+    <pre><code class="lang-csharp hljs">public RecordingDataContainer UploadRecData(ICommService api, out string error)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
     <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
@@ -389,17 +389,17 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 
   <a id="AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)">
-  WaitForRecToEnd(uint, CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_System_UInt32_AAComm_Interfaces_ICommService_" data-uid="AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.Interfaces.ICommService)">
+  WaitForRecToEnd(uint, ICommService)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_">WaitForRecToEnd(uint, CommAPI)</a></p>
+  <div class="markdown level1 summary"><p><a class="xref" href="AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_System_UInt32_AAComm_Interfaces_ICommService_">WaitForRecToEnd(uint, ICommService)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string WaitForRecToEnd(uint timeoutMs, CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public string WaitForRecToEnd(uint timeoutMs, ICommService api)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -407,7 +407,7 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
     <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
     <dd><p>the maximum allowed time to wait for the recording to complete</p>
 </dd>
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
   </dl>
@@ -433,7 +433,7 @@ Class AACommDataRecManagerSync  <a class="header-action link-secondary" title="V
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/AACommDataRecManagerSync.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

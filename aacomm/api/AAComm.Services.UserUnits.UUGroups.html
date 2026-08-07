@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AAComm | Agito AAComm SDK </title>
+      <title>Enum UUGroups | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AAComm | Agito AAComm SDK ">
+      <meta name="title" content="Enum UUGroups | Agito AAComm SDK ">
       
-      
+      <meta name="description" content="User Units groups enumerator (support might be partial by a given product)">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_UserUnits_UUGroups.md&amp;value=---%0Auid%3A%20AAComm.Services.UserUnits.UUGroups%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,64 +84,79 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AAComm">
+        <article data-uid="AAComm.Services.UserUnits.UUGroups">
 
-  <h1 id="AAComm" data-uid="AAComm" class="text-break">Namespace AAComm</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
-      <dd><pre><code>An API for handling communication with the AACommServer executable.
-</code></pre>
-<p></p>
-<pre><code>The API provides low-level send/receive capabilities + special functionality.
-</code></pre>
-<p></p>
-<pre><code>All *synchronous* functions are mutually-locking, and should not be called from multiple threads
-</code></pre>
-<p></p>
-<pre><code>Proper work-flow: (see usage details at every function description)
-</code></pre>
-<p></p>
-<pre><code>0. subscribe to events: Long operations: &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; / &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)
-</code></pre>
-<p></p>
-<pre><code>1. &lt;xref href=&quot;AAComm.CommAPI.StartAACommServer(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
 
-2. &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory, can be used to determine &lt;xref href=&quot;AAComm.Services.ConnectionData.ControllerType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;)
-</code></pre>
-<p></p>
-<pre><code>3. &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
 
-4. &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and/or &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)
-</code></pre>
-<p></p>
-<pre><code>5. &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;
+  <h1 id="AAComm_Services_UserUnits_UUGroups" data-uid="AAComm.Services.UserUnits.UUGroups" class="text-break">
+Enum UUGroups  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitsEnums.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h1>
 
-6. &lt;xref href=&quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory)
-</code></pre>
-<p></p>
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a>.<a class="xref" href="AAComm.Services.UserUnits.html">UserUnits</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>User Units groups enumerator (support might be partial by a given product)</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum UUGroups</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="AAComm_Services_UserUnits_UUGroups_Acc"><code>Acc = 6</code></dt>
+  
+  <dd><p>Acceleration</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.CommAPIWrapper.html">CommAPIWrapper</a></dt>
-      <dd><pre><code>this class is used to wrap the CommAPI as a singleton
-</code></pre>
-<p></p>
-<pre><code>useful for single-user API usage scenario
-</code></pre>
+    <dt id="AAComm_Services_UserUnits_UUGroups_Frc"><code>Frc = 7</code></dt>
+  
+  <dd><p>Force</p>
 </dd>
-    </dl>
+    <dt id="AAComm_Services_UserUnits_UUGroups_Pos"><code>Pos = 0</code></dt>
+  
+  <dd><p>Position</p>
+</dd>
+    <dt id="AAComm_Services_UserUnits_UUGroups_PosAux"><code>PosAux = 1</code></dt>
+  
+  <dd><p>Auxiliary Position</p>
+</dd>
+    <dt id="AAComm_Services_UserUnits_UUGroups_PosPD"><code>PosPD = 2</code></dt>
+  
+  <dd><p>Pusle-Direction Position</p>
+</dd>
+    <dt id="AAComm_Services_UserUnits_UUGroups_Vel"><code>Vel = 3</code></dt>
+  
+  <dd><p>Velocity</p>
+</dd>
+    <dt id="AAComm_Services_UserUnits_UUGroups_VelAux"><code>VelAux = 4</code></dt>
+  
+  <dd><p>Auxiliary Velocity</p>
+</dd>
+    <dt id="AAComm_Services_UserUnits_UUGroups_VelPD"><code>VelPD = 5</code></dt>
+  
+  <dd><p>Pulse-Direction Velocity</p>
+</dd>
+  </dl>
+
 
 
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/UserUnits/UserUnitsEnums.cs/#L83" class="edit-link">Edit this page</a>
         </div>
 
 

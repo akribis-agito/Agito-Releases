@@ -116,6 +116,19 @@ references:
   isSpec: "True"
   fullName: AAComm.CommAPI.Disconnect
   nameWithType: CommAPI.Disconnect
+- uid: AAComm.CommAPI.Dispose
+  name: Dispose()
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_Dispose
+  commentId: M:AAComm.CommAPI.Dispose
+  fullName: AAComm.CommAPI.Dispose()
+  nameWithType: CommAPI.Dispose()
+- uid: AAComm.CommAPI.Dispose*
+  name: Dispose
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_Dispose_
+  commentId: Overload:AAComm.CommAPI.Dispose
+  isSpec: "True"
+  fullName: AAComm.CommAPI.Dispose
+  nameWithType: CommAPI.Dispose
 - uid: AAComm.CommAPI.DocsAppFolder
   name: DocsAppFolder
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_DocsAppFolder
@@ -138,6 +151,22 @@ references:
   isSpec: "True"
   fullName: AAComm.CommAPI.GetCanDescriptionFromParameter
   nameWithType: CommAPI.GetCanDescriptionFromParameter
+- uid: AAComm.CommAPI.GetUserUnitsEnabled(System.Char)
+  name: GetUserUnitsEnabled(char)
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_GetUserUnitsEnabled_System_Char_
+  commentId: M:AAComm.CommAPI.GetUserUnitsEnabled(System.Char)
+  name.vb: GetUserUnitsEnabled(Char)
+  fullName: AAComm.CommAPI.GetUserUnitsEnabled(char)
+  fullName.vb: AAComm.CommAPI.GetUserUnitsEnabled(Char)
+  nameWithType: CommAPI.GetUserUnitsEnabled(char)
+  nameWithType.vb: CommAPI.GetUserUnitsEnabled(Char)
+- uid: AAComm.CommAPI.GetUserUnitsEnabled*
+  name: GetUserUnitsEnabled
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_GetUserUnitsEnabled_
+  commentId: Overload:AAComm.CommAPI.GetUserUnitsEnabled
+  isSpec: "True"
+  fullName: AAComm.CommAPI.GetUserUnitsEnabled
+  nameWithType: CommAPI.GetUserUnitsEnabled
 - uid: AAComm.CommAPI.IdentityContainer
   name: IdentityContainer
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_IdentityContainer
@@ -151,6 +180,19 @@ references:
   isSpec: "True"
   fullName: AAComm.CommAPI.IdentityContainer
   nameWithType: CommAPI.IdentityContainer
+- uid: AAComm.CommAPI.IgnoreUserUnits
+  name: IgnoreUserUnits
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_IgnoreUserUnits
+  commentId: P:AAComm.CommAPI.IgnoreUserUnits
+  fullName: AAComm.CommAPI.IgnoreUserUnits
+  nameWithType: CommAPI.IgnoreUserUnits
+- uid: AAComm.CommAPI.IgnoreUserUnits*
+  name: IgnoreUserUnits
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_IgnoreUserUnits_
+  commentId: Overload:AAComm.CommAPI.IgnoreUserUnits
+  isSpec: "True"
+  fullName: AAComm.CommAPI.IgnoreUserUnits
+  nameWithType: CommAPI.IgnoreUserUnits
 - uid: AAComm.CommAPI.IsAACommServerRunning
   name: IsAACommServerRunning
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_IsAACommServerRunning
@@ -267,18 +309,56 @@ references:
   commentId: E:AAComm.CommAPI.OnCommsError
   fullName: AAComm.CommAPI.OnCommsError
   nameWithType: CommAPI.OnCommsError
+- uid: AAComm.CommAPI.OnLongOperationEnded
+  name: OnLongOperationEnded
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationEnded
+  commentId: E:AAComm.CommAPI.OnLongOperationEnded
+  fullName: AAComm.CommAPI.OnLongOperationEnded
+  nameWithType: CommAPI.OnLongOperationEnded
+- uid: AAComm.CommAPI.OnLongOperationStarted
+  name: OnLongOperationStarted
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_OnLongOperationStarted
+  commentId: E:AAComm.CommAPI.OnLongOperationStarted
+  fullName: AAComm.CommAPI.OnLongOperationStarted
+  nameWithType: CommAPI.OnLongOperationStarted
 - uid: AAComm.CommAPI.OnPushMessageReceived
   name: OnPushMessageReceived
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_OnPushMessageReceived
   commentId: E:AAComm.CommAPI.OnPushMessageReceived
   fullName: AAComm.CommAPI.OnPushMessageReceived
   nameWithType: CommAPI.OnPushMessageReceived
-- uid: AAComm.CommAPI.OnResetProgress
-  name: OnResetProgress
-  href: api/AAComm.CommAPI.html#AAComm_CommAPI_OnResetProgress
-  commentId: E:AAComm.CommAPI.OnResetProgress
-  fullName: AAComm.CommAPI.OnResetProgress
-  nameWithType: CommAPI.OnResetProgress
+- uid: AAComm.CommAPI.OnUserUnitsEnabledChanged
+  name: OnUserUnitsEnabledChanged
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_OnUserUnitsEnabledChanged
+  commentId: E:AAComm.CommAPI.OnUserUnitsEnabledChanged
+  fullName: AAComm.CommAPI.OnUserUnitsEnabledChanged
+  nameWithType: CommAPI.OnUserUnitsEnabledChanged
+- uid: AAComm.CommAPI.Protocol
+  name: Protocol
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_Protocol
+  commentId: P:AAComm.CommAPI.Protocol
+  fullName: AAComm.CommAPI.Protocol
+  nameWithType: CommAPI.Protocol
+- uid: AAComm.CommAPI.Protocol*
+  name: Protocol
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_Protocol_
+  commentId: Overload:AAComm.CommAPI.Protocol
+  isSpec: "True"
+  fullName: AAComm.CommAPI.Protocol
+  nameWithType: CommAPI.Protocol
+- uid: AAComm.CommAPI.RefreshUserUnits
+  name: RefreshUserUnits()
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_RefreshUserUnits
+  commentId: M:AAComm.CommAPI.RefreshUserUnits
+  fullName: AAComm.CommAPI.RefreshUserUnits()
+  nameWithType: CommAPI.RefreshUserUnits()
+- uid: AAComm.CommAPI.RefreshUserUnits*
+  name: RefreshUserUnits
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_RefreshUserUnits_
+  commentId: Overload:AAComm.CommAPI.RefreshUserUnits
+  isSpec: "True"
+  fullName: AAComm.CommAPI.RefreshUserUnits
+  nameWithType: CommAPI.RefreshUserUnits
 - uid: AAComm.CommAPI.Send(AAComm.Services.AACommMessage)
   name: Send(AACommMessage)
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_Send_AAComm_Services_AACommMessage_
@@ -305,6 +385,35 @@ references:
   isSpec: "True"
   fullName: AAComm.CommAPI.SendReceive
   nameWithType: CommAPI.SendReceive
+- uid: AAComm.CommAPI.ServerCompat
+  name: ServerCompat
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_ServerCompat
+  commentId: P:AAComm.CommAPI.ServerCompat
+  fullName: AAComm.CommAPI.ServerCompat
+  nameWithType: CommAPI.ServerCompat
+- uid: AAComm.CommAPI.ServerCompat*
+  name: ServerCompat
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_ServerCompat_
+  commentId: Overload:AAComm.CommAPI.ServerCompat
+  isSpec: "True"
+  fullName: AAComm.CommAPI.ServerCompat
+  nameWithType: CommAPI.ServerCompat
+- uid: AAComm.CommAPI.SetUserUnitsEnabled(System.Char,System.Boolean)
+  name: SetUserUnitsEnabled(char, bool)
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_SetUserUnitsEnabled_System_Char_System_Boolean_
+  commentId: M:AAComm.CommAPI.SetUserUnitsEnabled(System.Char,System.Boolean)
+  name.vb: SetUserUnitsEnabled(Char, Boolean)
+  fullName: AAComm.CommAPI.SetUserUnitsEnabled(char, bool)
+  fullName.vb: AAComm.CommAPI.SetUserUnitsEnabled(Char, Boolean)
+  nameWithType: CommAPI.SetUserUnitsEnabled(char, bool)
+  nameWithType.vb: CommAPI.SetUserUnitsEnabled(Char, Boolean)
+- uid: AAComm.CommAPI.SetUserUnitsEnabled*
+  name: SetUserUnitsEnabled
+  href: api/AAComm.CommAPI.html#AAComm_CommAPI_SetUserUnitsEnabled_
+  commentId: Overload:AAComm.CommAPI.SetUserUnitsEnabled
+  isSpec: "True"
+  fullName: AAComm.CommAPI.SetUserUnitsEnabled
+  nameWithType: CommAPI.SetUserUnitsEnabled
 - uid: AAComm.CommAPI.StartAACommServer(System.String)
   name: StartAACommServer(string)
   href: api/AAComm.CommAPI.html#AAComm_CommAPI_StartAACommServer_System_String_
@@ -1828,12 +1937,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.CancelUpload
   nameWithType: AACommDataRecManager.CancelUpload
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.CommAPI)
-  name: ForceTrigger(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.ForceTrigger(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.Interfaces.ICommService)
+  name: ForceTrigger(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.ForceTrigger(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.ForceTrigger*
   name: ForceTrigger
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_ForceTrigger_
@@ -1945,12 +2054,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.OnWaitForRecToEnd
   nameWithType: AACommDataRecManager.OnWaitForRecToEnd
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)
-  name: SendRecordingParams(RecordingSetupContainer, CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer, AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.SendRecordingParams(RecordingSetupContainer, CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.Interfaces.ICommService)
+  name: SendRecordingParams(RecordingSetupContainer, ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer, AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.SendRecordingParams(RecordingSetupContainer, ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams*
   name: SendRecordingParams
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_SendRecordingParams_
@@ -1958,12 +2067,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.SendRecordingParams
   nameWithType: AACommDataRecManager.SendRecordingParams
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.CommAPI)
-  name: StartRecording(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.StartRecording(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.Interfaces.ICommService)
+  name: StartRecording(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.StartRecording(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording*
   name: StartRecording
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StartRecording_
@@ -1971,12 +2080,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.StartRecording
   nameWithType: AACommDataRecManager.StartRecording
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.CommAPI)
-  name: StopRecording(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.StopRecording(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.Interfaces.ICommService)
+  name: StopRecording(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.StopRecording(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording*
   name: StopRecording
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_StopRecording_
@@ -1984,12 +2093,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.StopRecording
   nameWithType: AACommDataRecManager.StopRecording
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.CommAPI)
-  name: UploadRecData(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.UploadRecData(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.Interfaces.ICommService)
+  name: UploadRecData(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.UploadRecData(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData*
   name: UploadRecData
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecData_
@@ -1997,12 +2106,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecData
   nameWithType: AACommDataRecManager.UploadRecData
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.CommAPI)
-  name: UploadRecDataNonblocking(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecDataNonblocking_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.UploadRecDataNonblocking(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.Interfaces.ICommService)
+  name: UploadRecDataNonblocking(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecDataNonblocking_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.UploadRecDataNonblocking(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking*
   name: UploadRecDataNonblocking
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_UploadRecDataNonblocking_
@@ -2010,15 +2119,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManager.UploadRecDataNonblocking
   nameWithType: AACommDataRecManager.UploadRecDataNonblocking
-- uid: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)
-  name: WaitForRecToEnd(uint, CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)
-  name.vb: WaitForRecToEnd(UInteger, CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(uint, AAComm.CommAPI)
-  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(UInteger, AAComm.CommAPI)
-  nameWithType: AACommDataRecManager.WaitForRecToEnd(uint, CommAPI)
-  nameWithType.vb: AACommDataRecManager.WaitForRecToEnd(UInteger, CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(System.UInt32,AAComm.Interfaces.ICommService)
+  name: WaitForRecToEnd(uint, ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_System_UInt32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(System.UInt32,AAComm.Interfaces.ICommService)
+  name.vb: WaitForRecToEnd(UInteger, ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(uint, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd(UInteger, AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManager.WaitForRecToEnd(uint, ICommService)
+  nameWithType.vb: AACommDataRecManager.WaitForRecToEnd(UInteger, ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManager.WaitForRecToEnd*
   name: WaitForRecToEnd
   href: api/AAComm.Extensions.RecData.AACommDataRecManager.html#AAComm_Extensions_RecData_AACommDataRecManager_WaitForRecToEnd_
@@ -2051,12 +2160,12 @@ references:
   fullName.vb: AAComm.Extensions.RecData.AACommDataRecManagerSync.New
   nameWithType: AACommDataRecManagerSync.AACommDataRecManagerSync
   nameWithType.vb: AACommDataRecManagerSync.New
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.CommAPI)
-  name: ForceTrigger(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.CommAPI)
-  nameWithType: AACommDataRecManagerSync.ForceTrigger(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.Interfaces.ICommService)
+  name: ForceTrigger(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManagerSync.ForceTrigger(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger*
   name: ForceTrigger
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_ForceTrigger_
@@ -2064,12 +2173,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.ForceTrigger
   nameWithType: AACommDataRecManagerSync.ForceTrigger
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)
-  name: SendRecordingParams(RecordingSetupContainer, CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer, AAComm.CommAPI)
-  nameWithType: AACommDataRecManagerSync.SendRecordingParams(RecordingSetupContainer, CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.Interfaces.ICommService)
+  name: SendRecordingParams(RecordingSetupContainer, ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_AAComm_Extensions_RecData_RecordingSetupContainer_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer,AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams(AAComm.Extensions.RecData.RecordingSetupContainer, AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManagerSync.SendRecordingParams(RecordingSetupContainer, ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams*
   name: SendRecordingParams
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_SendRecordingParams_
@@ -2077,12 +2186,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.SendRecordingParams
   nameWithType: AACommDataRecManagerSync.SendRecordingParams
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.CommAPI)
-  name: StartRecording(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.CommAPI)
-  nameWithType: AACommDataRecManagerSync.StartRecording(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.Interfaces.ICommService)
+  name: StartRecording(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManagerSync.StartRecording(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording*
   name: StartRecording
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StartRecording_
@@ -2090,12 +2199,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StartRecording
   nameWithType: AACommDataRecManagerSync.StartRecording
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.CommAPI)
-  name: StopRecording(CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.CommAPI)
-  nameWithType: AACommDataRecManagerSync.StopRecording(CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.Interfaces.ICommService)
+  name: StopRecording(ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.Interfaces.ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording(AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManagerSync.StopRecording(ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording*
   name: StopRecording
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_StopRecording_
@@ -2103,15 +2212,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.StopRecording
   nameWithType: AACommDataRecManagerSync.StopRecording
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI,System.String@)
-  name: UploadRecData(CommAPI, out string)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_CommAPI_System_String__
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI,System.String@)
-  name.vb: UploadRecData(CommAPI, String)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI, out string)
-  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.CommAPI, String)
-  nameWithType: AACommDataRecManagerSync.UploadRecData(CommAPI, out string)
-  nameWithType.vb: AACommDataRecManagerSync.UploadRecData(CommAPI, String)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.Interfaces.ICommService,System.String@)
+  name: UploadRecData(ICommService, out string)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_AAComm_Interfaces_ICommService_System_String__
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.Interfaces.ICommService,System.String@)
+  name.vb: UploadRecData(ICommService, String)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.Interfaces.ICommService, out string)
+  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData(AAComm.Interfaces.ICommService, String)
+  nameWithType: AACommDataRecManagerSync.UploadRecData(ICommService, out string)
+  nameWithType.vb: AACommDataRecManagerSync.UploadRecData(ICommService, String)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData*
   name: UploadRecData
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_UploadRecData_
@@ -2119,15 +2228,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.UploadRecData
   nameWithType: AACommDataRecManagerSync.UploadRecData
-- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)
-  name: WaitForRecToEnd(uint, CommAPI)
-  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_System_UInt32_AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.CommAPI)
-  name.vb: WaitForRecToEnd(UInteger, CommAPI)
-  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(uint, AAComm.CommAPI)
-  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(UInteger, AAComm.CommAPI)
-  nameWithType: AACommDataRecManagerSync.WaitForRecToEnd(uint, CommAPI)
-  nameWithType.vb: AACommDataRecManagerSync.WaitForRecToEnd(UInteger, CommAPI)
+- uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.Interfaces.ICommService)
+  name: WaitForRecToEnd(uint, ICommService)
+  href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_System_UInt32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(System.UInt32,AAComm.Interfaces.ICommService)
+  name.vb: WaitForRecToEnd(UInteger, ICommService)
+  fullName: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(uint, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd(UInteger, AAComm.Interfaces.ICommService)
+  nameWithType: AACommDataRecManagerSync.WaitForRecToEnd(uint, ICommService)
+  nameWithType.vb: AACommDataRecManagerSync.WaitForRecToEnd(UInteger, ICommService)
 - uid: AAComm.Extensions.RecData.AACommDataRecManagerSync.WaitForRecToEnd*
   name: WaitForRecToEnd
   href: api/AAComm.Extensions.RecData.AACommDataRecManagerSync.html#AAComm_Extensions_RecData_AACommDataRecManagerSync_WaitForRecToEnd_
@@ -2141,15 +2250,15 @@ references:
   commentId: T:AAComm.Extensions.RecData.LoggerDataContainer
   fullName: AAComm.Extensions.RecData.LoggerDataContainer
   nameWithType: LoggerDataContainer
-- uid: AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)
-  name: LoggerDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, CommAPI)
-  href: api/AAComm.Extensions.RecData.LoggerDataContainer.html#AAComm_Extensions_RecData_LoggerDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)
-  name.vb: New(AACommEventArgs, IReadOnlyList(Of MessageData), CommAPI)
-  fullName: AAComm.Extensions.RecData.LoggerDataContainer.LoggerDataContainer(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList<AAComm.Services.MessageData>, AAComm.CommAPI)
-  fullName.vb: AAComm.Extensions.RecData.LoggerDataContainer.New(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList(Of AAComm.Services.MessageData), AAComm.CommAPI)
-  nameWithType: LoggerDataContainer.LoggerDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, CommAPI)
-  nameWithType.vb: LoggerDataContainer.New(AACommEventArgs, IReadOnlyList(Of MessageData), CommAPI)
+- uid: AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])
+  name: LoggerDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, ICommService, char[])
+  href: api/AAComm.Extensions.RecData.LoggerDataContainer.html#AAComm_Extensions_RecData_LoggerDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_Interfaces_ICommService_System_Char___
+  commentId: M:AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])
+  name.vb: New(AACommEventArgs, IReadOnlyList(Of MessageData), ICommService, Char())
+  fullName: AAComm.Extensions.RecData.LoggerDataContainer.LoggerDataContainer(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList<AAComm.Services.MessageData>, AAComm.Interfaces.ICommService, char[])
+  fullName.vb: AAComm.Extensions.RecData.LoggerDataContainer.New(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList(Of AAComm.Services.MessageData), AAComm.Interfaces.ICommService, Char())
+  nameWithType: LoggerDataContainer.LoggerDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, ICommService, char[])
+  nameWithType.vb: LoggerDataContainer.New(AACommEventArgs, IReadOnlyList(Of MessageData), ICommService, Char())
 - uid: AAComm.Extensions.RecData.LoggerDataContainer.#ctor*
   name: LoggerDataContainer
   href: api/AAComm.Extensions.RecData.LoggerDataContainer.html#AAComm_Extensions_RecData_LoggerDataContainer__ctor_
@@ -2273,15 +2382,15 @@ references:
   commentId: T:AAComm.Extensions.RecData.RecParamsResolver
   fullName: AAComm.Extensions.RecData.RecParamsResolver
   nameWithType: RecParamsResolver
-- uid: AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.CommAPI,System.Int32)
-  name: RecParamsResolver(CommAPI, int)
-  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver__ctor_AAComm_CommAPI_System_Int32_
-  commentId: M:AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.CommAPI,System.Int32)
-  name.vb: New(CommAPI, Integer)
-  fullName: AAComm.Extensions.RecData.RecParamsResolver.RecParamsResolver(AAComm.CommAPI, int)
-  fullName.vb: AAComm.Extensions.RecData.RecParamsResolver.New(AAComm.CommAPI, Integer)
-  nameWithType: RecParamsResolver.RecParamsResolver(CommAPI, int)
-  nameWithType.vb: RecParamsResolver.New(CommAPI, Integer)
+- uid: AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.Interfaces.ICommService,System.Int32)
+  name: RecParamsResolver(ICommService, int)
+  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver__ctor_AAComm_Interfaces_ICommService_System_Int32_
+  commentId: M:AAComm.Extensions.RecData.RecParamsResolver.#ctor(AAComm.Interfaces.ICommService,System.Int32)
+  name.vb: New(ICommService, Integer)
+  fullName: AAComm.Extensions.RecData.RecParamsResolver.RecParamsResolver(AAComm.Interfaces.ICommService, int)
+  fullName.vb: AAComm.Extensions.RecData.RecParamsResolver.New(AAComm.Interfaces.ICommService, Integer)
+  nameWithType: RecParamsResolver.RecParamsResolver(ICommService, int)
+  nameWithType.vb: RecParamsResolver.New(ICommService, Integer)
 - uid: AAComm.Extensions.RecData.RecParamsResolver.#ctor*
   name: RecParamsResolver
   href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver__ctor_
@@ -2334,6 +2443,38 @@ references:
   isSpec: "True"
   fullName: AAComm.Extensions.RecData.RecParamsResolver.GetRecUploadNext
   nameWithType: RecParamsResolver.GetRecUploadNext
+- uid: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex(System.Int32)
+  name: GetTriggerIndex(int)
+  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver_GetTriggerIndex_System_Int32_
+  commentId: M:AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex(System.Int32)
+  name.vb: GetTriggerIndex(Integer)
+  fullName: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex(int)
+  fullName.vb: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex(Integer)
+  nameWithType: RecParamsResolver.GetTriggerIndex(int)
+  nameWithType.vb: RecParamsResolver.GetTriggerIndex(Integer)
+- uid: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex*
+  name: GetTriggerIndex
+  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver_GetTriggerIndex_
+  commentId: Overload:AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex
+  isSpec: "True"
+  fullName: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerIndex
+  nameWithType: RecParamsResolver.GetTriggerIndex
+- uid: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex(System.Int32)
+  name: GetTriggerLogicIndex(int)
+  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver_GetTriggerLogicIndex_System_Int32_
+  commentId: M:AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex(System.Int32)
+  name.vb: GetTriggerLogicIndex(Integer)
+  fullName: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex(int)
+  fullName.vb: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex(Integer)
+  nameWithType: RecParamsResolver.GetTriggerLogicIndex(int)
+  nameWithType.vb: RecParamsResolver.GetTriggerLogicIndex(Integer)
+- uid: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex*
+  name: GetTriggerLogicIndex
+  href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver_GetTriggerLogicIndex_
+  commentId: Overload:AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex
+  isSpec: "True"
+  fullName: AAComm.Extensions.RecData.RecParamsResolver.GetTriggerLogicIndex
+  nameWithType: RecParamsResolver.GetTriggerLogicIndex
 - uid: AAComm.Extensions.RecData.RecParamsResolver.HeaderV1(System.Int32)
   name: HeaderV1(int)
   href: api/AAComm.Extensions.RecData.RecParamsResolver.html#AAComm_Extensions_RecData_RecParamsResolver_HeaderV1_System_Int32_
@@ -2732,15 +2873,15 @@ references:
   commentId: T:AAComm.Extensions.RecData.ScopeDataContainer
   fullName: AAComm.Extensions.RecData.ScopeDataContainer
   nameWithType: ScopeDataContainer
-- uid: AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)
-  name: ScopeDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, CommAPI)
-  href: api/AAComm.Extensions.RecData.ScopeDataContainer.html#AAComm_Extensions_RecData_ScopeDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_CommAPI_
-  commentId: M:AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)
-  name.vb: New(AACommEventArgs, IReadOnlyList(Of MessageData), CommAPI)
-  fullName: AAComm.Extensions.RecData.ScopeDataContainer.ScopeDataContainer(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList<AAComm.Services.MessageData>, AAComm.CommAPI)
-  fullName.vb: AAComm.Extensions.RecData.ScopeDataContainer.New(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList(Of AAComm.Services.MessageData), AAComm.CommAPI)
-  nameWithType: ScopeDataContainer.ScopeDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, CommAPI)
-  nameWithType.vb: ScopeDataContainer.New(AACommEventArgs, IReadOnlyList(Of MessageData), CommAPI)
+- uid: AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])
+  name: ScopeDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, ICommService, char[])
+  href: api/AAComm.Extensions.RecData.ScopeDataContainer.html#AAComm_Extensions_RecData_ScopeDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_Interfaces_ICommService_System_Char___
+  commentId: M:AAComm.Extensions.RecData.ScopeDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])
+  name.vb: New(AACommEventArgs, IReadOnlyList(Of MessageData), ICommService, Char())
+  fullName: AAComm.Extensions.RecData.ScopeDataContainer.ScopeDataContainer(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList<AAComm.Services.MessageData>, AAComm.Interfaces.ICommService, char[])
+  fullName.vb: AAComm.Extensions.RecData.ScopeDataContainer.New(AAComm.Services.AACommEventArgs, System.Collections.Generic.IReadOnlyList(Of AAComm.Services.MessageData), AAComm.Interfaces.ICommService, Char())
+  nameWithType: ScopeDataContainer.ScopeDataContainer(AACommEventArgs, IReadOnlyList<MessageData>, ICommService, char[])
+  nameWithType.vb: ScopeDataContainer.New(AACommEventArgs, IReadOnlyList(Of MessageData), ICommService, Char())
 - uid: AAComm.Extensions.RecData.ScopeDataContainer.#ctor*
   name: ScopeDataContainer
   href: api/AAComm.Extensions.RecData.ScopeDataContainer.html#AAComm_Extensions_RecData_ScopeDataContainer__ctor_
@@ -2828,15 +2969,33 @@ references:
   commentId: T:AAComm.Extensions.RecData.TriggerContainer
   fullName: AAComm.Extensions.RecData.TriggerContainer
   nameWithType: TriggerContainer
-- uid: AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.CommAPI,System.Int32,System.String,System.Double,System.Int64,System.Double)
-  name: TriggerContainer(CommAPI, int, string, double, long, double)
-  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_CommAPI_System_Int32_System_String_System_Double_System_Int64_System_Double_
-  commentId: M:AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.CommAPI,System.Int32,System.String,System.Double,System.Int64,System.Double)
-  name.vb: New(CommAPI, Integer, String, Double, Long, Double)
-  fullName: AAComm.Extensions.RecData.TriggerContainer.TriggerContainer(AAComm.CommAPI, int, string, double, long, double)
-  fullName.vb: AAComm.Extensions.RecData.TriggerContainer.New(AAComm.CommAPI, Integer, String, Double, Long, Double)
-  nameWithType: TriggerContainer.TriggerContainer(CommAPI, int, string, double, long, double)
-  nameWithType.vb: TriggerContainer.New(CommAPI, Integer, String, Double, Long, Double)
+- uid: AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.Int32,System.Double,System.Int64,System.Double)
+  name: TriggerContainer(ICommService, int, int, double, long, double)
+  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_Interfaces_ICommService_System_Int32_System_Int32_System_Double_System_Int64_System_Double_
+  commentId: M:AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.Int32,System.Double,System.Int64,System.Double)
+  name.vb: New(ICommService, Integer, Integer, Double, Long, Double)
+  fullName: AAComm.Extensions.RecData.TriggerContainer.TriggerContainer(AAComm.Interfaces.ICommService, int, int, double, long, double)
+  fullName.vb: AAComm.Extensions.RecData.TriggerContainer.New(AAComm.Interfaces.ICommService, Integer, Integer, Double, Long, Double)
+  nameWithType: TriggerContainer.TriggerContainer(ICommService, int, int, double, long, double)
+  nameWithType.vb: TriggerContainer.New(ICommService, Integer, Integer, Double, Long, Double)
+- uid: AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.String,System.Double,System.Int64,System.Double)
+  name: TriggerContainer(ICommService, int, string, double, long, double)
+  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_Interfaces_ICommService_System_Int32_System_String_System_Double_System_Int64_System_Double_
+  commentId: M:AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.String,System.Double,System.Int64,System.Double)
+  name.vb: New(ICommService, Integer, String, Double, Long, Double)
+  fullName: AAComm.Extensions.RecData.TriggerContainer.TriggerContainer(AAComm.Interfaces.ICommService, int, string, double, long, double)
+  fullName.vb: AAComm.Extensions.RecData.TriggerContainer.New(AAComm.Interfaces.ICommService, Integer, String, Double, Long, Double)
+  nameWithType: TriggerContainer.TriggerContainer(ICommService, int, string, double, long, double)
+  nameWithType.vb: TriggerContainer.New(ICommService, Integer, String, Double, Long, Double)
+- uid: AAComm.Extensions.RecData.TriggerContainer.#ctor(System.Int32,System.Double,System.Int64,System.Double)
+  name: TriggerContainer(int, double, long, double)
+  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer__ctor_System_Int32_System_Double_System_Int64_System_Double_
+  commentId: M:AAComm.Extensions.RecData.TriggerContainer.#ctor(System.Int32,System.Double,System.Int64,System.Double)
+  name.vb: New(Integer, Double, Long, Double)
+  fullName: AAComm.Extensions.RecData.TriggerContainer.TriggerContainer(int, double, long, double)
+  fullName.vb: AAComm.Extensions.RecData.TriggerContainer.New(Integer, Double, Long, Double)
+  nameWithType: TriggerContainer.TriggerContainer(int, double, long, double)
+  nameWithType.vb: TriggerContainer.New(Integer, Double, Long, Double)
 - uid: AAComm.Extensions.RecData.TriggerContainer.#ctor*
   name: TriggerContainer
   href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer__ctor_
@@ -2847,6 +3006,22 @@ references:
   fullName.vb: AAComm.Extensions.RecData.TriggerContainer.New
   nameWithType: TriggerContainer.TriggerContainer
   nameWithType.vb: TriggerContainer.New
+- uid: AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver,System.Int32)
+  name: GetDownloadCommands(RecParamsResolver, int)
+  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer_GetDownloadCommands_AAComm_Extensions_RecData_RecParamsResolver_System_Int32_
+  commentId: M:AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver,System.Int32)
+  name.vb: GetDownloadCommands(RecParamsResolver, Integer)
+  fullName: AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver, int)
+  fullName.vb: AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver, Integer)
+  nameWithType: TriggerContainer.GetDownloadCommands(RecParamsResolver, int)
+  nameWithType.vb: TriggerContainer.GetDownloadCommands(RecParamsResolver, Integer)
+- uid: AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands*
+  name: GetDownloadCommands
+  href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer_GetDownloadCommands_
+  commentId: Overload:AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands
+  isSpec: "True"
+  fullName: AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands
+  nameWithType: TriggerContainer.GetDownloadCommands
 - uid: AAComm.Extensions.RecData.TriggerContainer.Mask
   name: Mask
   href: api/AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer_Mask
@@ -2959,6 +3134,19 @@ references:
   fullName.vb: AAComm.Extensions.RecData.TriggersDataContainer.New
   nameWithType: TriggersDataContainer.TriggersDataContainer
   nameWithType.vb: TriggersDataContainer.New
+- uid: AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver)
+  name: GetDownloadCommands(RecParamsResolver)
+  href: api/AAComm.Extensions.RecData.TriggersDataContainer.html#AAComm_Extensions_RecData_TriggersDataContainer_GetDownloadCommands_AAComm_Extensions_RecData_RecParamsResolver_
+  commentId: M:AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver)
+  fullName: AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver)
+  nameWithType: TriggersDataContainer.GetDownloadCommands(RecParamsResolver)
+- uid: AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands*
+  name: GetDownloadCommands
+  href: api/AAComm.Extensions.RecData.TriggersDataContainer.html#AAComm_Extensions_RecData_TriggersDataContainer_GetDownloadCommands_
+  commentId: Overload:AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands
+  isSpec: "True"
+  fullName: AAComm.Extensions.RecData.TriggersDataContainer.GetDownloadCommands
+  nameWithType: TriggersDataContainer.GetDownloadCommands
 - uid: AAComm.Extensions.RecData.TriggersDataContainer.Triggers
   name: Triggers
   href: api/AAComm.Extensions.RecData.TriggersDataContainer.html#AAComm_Extensions_RecData_TriggersDataContainer_Triggers
@@ -3123,6 +3311,22 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.ICommService.GetCanDescriptionFromParameter
   nameWithType: ICommService.GetCanDescriptionFromParameter
+- uid: AAComm.Interfaces.ICommService.GetUserUnitsEnabled(System.Char)
+  name: GetUserUnitsEnabled(char)
+  href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_GetUserUnitsEnabled_System_Char_
+  commentId: M:AAComm.Interfaces.ICommService.GetUserUnitsEnabled(System.Char)
+  name.vb: GetUserUnitsEnabled(Char)
+  fullName: AAComm.Interfaces.ICommService.GetUserUnitsEnabled(char)
+  fullName.vb: AAComm.Interfaces.ICommService.GetUserUnitsEnabled(Char)
+  nameWithType: ICommService.GetUserUnitsEnabled(char)
+  nameWithType.vb: ICommService.GetUserUnitsEnabled(Char)
+- uid: AAComm.Interfaces.ICommService.GetUserUnitsEnabled*
+  name: GetUserUnitsEnabled
+  href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_GetUserUnitsEnabled_
+  commentId: Overload:AAComm.Interfaces.ICommService.GetUserUnitsEnabled
+  isSpec: "True"
+  fullName: AAComm.Interfaces.ICommService.GetUserUnitsEnabled
+  nameWithType: ICommService.GetUserUnitsEnabled
 - uid: AAComm.Interfaces.ICommService.IdentityContainer
   name: IdentityContainer
   href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_IdentityContainer
@@ -3162,6 +3366,19 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.ICommService.MessagesContainer
   nameWithType: ICommService.MessagesContainer
+- uid: AAComm.Interfaces.ICommService.MessagesInBulk
+  name: MessagesInBulk
+  href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_MessagesInBulk
+  commentId: P:AAComm.Interfaces.ICommService.MessagesInBulk
+  fullName: AAComm.Interfaces.ICommService.MessagesInBulk
+  nameWithType: ICommService.MessagesInBulk
+- uid: AAComm.Interfaces.ICommService.MessagesInBulk*
+  name: MessagesInBulk
+  href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_MessagesInBulk_
+  commentId: Overload:AAComm.Interfaces.ICommService.MessagesInBulk
+  isSpec: "True"
+  fullName: AAComm.Interfaces.ICommService.MessagesInBulk
+  nameWithType: ICommService.MessagesInBulk
 - uid: AAComm.Interfaces.ICommService.Send(AAComm.Services.AACommMessage)
   name: Send(AACommMessage)
   href: api/AAComm.Interfaces.ICommService.html#AAComm_Interfaces_ICommService_Send_AAComm_Services_AACommMessage_
@@ -3207,6 +3424,19 @@ references:
   commentId: T:AAComm.Interfaces.IIdentityContainer
   fullName: AAComm.Interfaces.IIdentityContainer
   nameWithType: IIdentityContainer
+- uid: AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate
+  name: CurrentLoopSampleRate
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_CurrentLoopSampleRate
+  commentId: P:AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate
+  fullName: AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate
+  nameWithType: IIdentityContainer.CurrentLoopSampleRate
+- uid: AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate*
+  name: CurrentLoopSampleRate
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_CurrentLoopSampleRate_
+  commentId: Overload:AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate
+  nameWithType: IIdentityContainer.CurrentLoopSampleRate
 - uid: AAComm.Interfaces.IIdentityContainer.Features_01
   name: Features_01
   href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_Features_01
@@ -3220,6 +3450,19 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.IIdentityContainer.Features_01
   nameWithType: IIdentityContainer.Features_01
+- uid: AAComm.Interfaces.IIdentityContainer.Features_02
+  name: Features_02
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_Features_02
+  commentId: P:AAComm.Interfaces.IIdentityContainer.Features_02
+  fullName: AAComm.Interfaces.IIdentityContainer.Features_02
+  nameWithType: IIdentityContainer.Features_02
+- uid: AAComm.Interfaces.IIdentityContainer.Features_02*
+  name: Features_02
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_Features_02_
+  commentId: Overload:AAComm.Interfaces.IIdentityContainer.Features_02
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IIdentityContainer.Features_02
+  nameWithType: IIdentityContainer.Features_02
 - uid: AAComm.Interfaces.IIdentityContainer.IsCiMaster
   name: IsCiMaster
   href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_IsCiMaster
@@ -3246,6 +3489,32 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.IIdentityContainer.IsEtherCAT
   nameWithType: IIdentityContainer.IsEtherCAT
+- uid: AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints
+  name: MaxDataRecordingPoints
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_MaxDataRecordingPoints
+  commentId: P:AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints
+  fullName: AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints
+  nameWithType: IIdentityContainer.MaxDataRecordingPoints
+- uid: AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints*
+  name: MaxDataRecordingPoints
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_MaxDataRecordingPoints_
+  commentId: Overload:AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints
+  nameWithType: IIdentityContainer.MaxDataRecordingPoints
+- uid: AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors
+  name: MaxNumOfRecVectors
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_MaxNumOfRecVectors
+  commentId: P:AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors
+  fullName: AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors
+  nameWithType: IIdentityContainer.MaxNumOfRecVectors
+- uid: AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors*
+  name: MaxNumOfRecVectors
+  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_MaxNumOfRecVectors_
+  commentId: Overload:AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors
+  nameWithType: IIdentityContainer.MaxNumOfRecVectors
 - uid: AAComm.Interfaces.IIdentityContainer.NumberOfAxes
   name: NumberOfAxes
   href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_NumberOfAxes
@@ -3291,6 +3560,35 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.IMessagesContainer.AllMnemonics
   nameWithType: IMessagesContainer.AllMnemonics
+- uid: AAComm.Interfaces.IMessagesContainer.CanCodeToData
+  name: CanCodeToData
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_CanCodeToData
+  commentId: P:AAComm.Interfaces.IMessagesContainer.CanCodeToData
+  fullName: AAComm.Interfaces.IMessagesContainer.CanCodeToData
+  nameWithType: IMessagesContainer.CanCodeToData
+- uid: AAComm.Interfaces.IMessagesContainer.CanCodeToData*
+  name: CanCodeToData
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_CanCodeToData_
+  commentId: Overload:AAComm.Interfaces.IMessagesContainer.CanCodeToData
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IMessagesContainer.CanCodeToData
+  nameWithType: IMessagesContainer.CanCodeToData
+- uid: AAComm.Interfaces.IMessagesContainer.Contains(System.String)
+  name: Contains(string)
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_Contains_System_String_
+  commentId: M:AAComm.Interfaces.IMessagesContainer.Contains(System.String)
+  name.vb: Contains(String)
+  fullName: AAComm.Interfaces.IMessagesContainer.Contains(string)
+  fullName.vb: AAComm.Interfaces.IMessagesContainer.Contains(String)
+  nameWithType: IMessagesContainer.Contains(string)
+  nameWithType.vb: IMessagesContainer.Contains(String)
+- uid: AAComm.Interfaces.IMessagesContainer.Contains*
+  name: Contains
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_Contains_
+  commentId: Overload:AAComm.Interfaces.IMessagesContainer.Contains
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IMessagesContainer.Contains
+  nameWithType: IMessagesContainer.Contains
 - uid: AAComm.Interfaces.IMessagesContainer.GetDataFromMnemonic(System.String)
   name: GetDataFromMnemonic(string)
   href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_GetDataFromMnemonic_System_String_
@@ -3307,103 +3605,54 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.IMessagesContainer.GetDataFromMnemonic
   nameWithType: IMessagesContainer.GetDataFromMnemonic
+- uid: AAComm.Interfaces.IMessagesContainer.IsInitialized
+  name: IsInitialized
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_IsInitialized
+  commentId: P:AAComm.Interfaces.IMessagesContainer.IsInitialized
+  fullName: AAComm.Interfaces.IMessagesContainer.IsInitialized
+  nameWithType: IMessagesContainer.IsInitialized
+- uid: AAComm.Interfaces.IMessagesContainer.IsInitialized*
+  name: IsInitialized
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_IsInitialized_
+  commentId: Overload:AAComm.Interfaces.IMessagesContainer.IsInitialized
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IMessagesContainer.IsInitialized
+  nameWithType: IMessagesContainer.IsInitialized
+- uid: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)
+  name: TryGetUserUnitAxis(char, int)
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_TryGetUserUnitAxis_System_Char_System_Int32_
+  commentId: M:AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)
+  name.vb: TryGetUserUnitAxis(Char, Integer)
+  fullName: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis(char, int)
+  fullName.vb: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis(Char, Integer)
+  nameWithType: IMessagesContainer.TryGetUserUnitAxis(char, int)
+  nameWithType.vb: IMessagesContainer.TryGetUserUnitAxis(Char, Integer)
+- uid: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis*
+  name: TryGetUserUnitAxis
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_TryGetUserUnitAxis_
+  commentId: Overload:AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitAxis
+  nameWithType: IMessagesContainer.TryGetUserUnitAxis
+- uid: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  name: TryGetUserUnitsGroup(UUGroups)
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_TryGetUserUnitsGroup_AAComm_Services_UserUnits_UUGroups_
+  commentId: M:AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  fullName: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  nameWithType: IMessagesContainer.TryGetUserUnitsGroup(UUGroups)
+- uid: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup*
+  name: TryGetUserUnitsGroup
+  href: api/AAComm.Interfaces.IMessagesContainer.html#AAComm_Interfaces_IMessagesContainer_TryGetUserUnitsGroup_
+  commentId: Overload:AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup
+  isSpec: "True"
+  fullName: AAComm.Interfaces.IMessagesContainer.TryGetUserUnitsGroup
+  nameWithType: IMessagesContainer.TryGetUserUnitsGroup
 - uid: AAComm.Services
   name: AAComm.Services
   href: api/AAComm.Services.html
   commentId: N:AAComm.Services
   fullName: AAComm.Services
   nameWithType: AAComm.Services
-- uid: AAComm.Services.AACommAxisHelper
-  name: AACommAxisHelper
-  href: api/AAComm.Services.AACommAxisHelper.html
-  commentId: T:AAComm.Services.AACommAxisHelper
-  fullName: AAComm.Services.AACommAxisHelper
-  nameWithType: AACommAxisHelper
-- uid: AAComm.Services.AACommAxisHelper.AAxis
-  name: AAxis
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_AAxis
-  commentId: F:AAComm.Services.AACommAxisHelper.AAxis
-  fullName: AAComm.Services.AACommAxisHelper.AAxis
-  nameWithType: AACommAxisHelper.AAxis
-- uid: AAComm.Services.AACommAxisHelper.PAxis
-  name: PAxis
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_PAxis
-  commentId: F:AAComm.Services.AACommAxisHelper.PAxis
-  fullName: AAComm.Services.AACommAxisHelper.PAxis
-  nameWithType: AACommAxisHelper.PAxis
-- uid: AAComm.Services.AACommAxisHelper.ToAxis(System.Int32)
-  name: ToAxis(int)
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxis_System_Int32_
-  commentId: M:AAComm.Services.AACommAxisHelper.ToAxis(System.Int32)
-  name.vb: ToAxis(Integer)
-  fullName: AAComm.Services.AACommAxisHelper.ToAxis(int)
-  fullName.vb: AAComm.Services.AACommAxisHelper.ToAxis(Integer)
-  nameWithType: AACommAxisHelper.ToAxis(int)
-  nameWithType.vb: AACommAxisHelper.ToAxis(Integer)
-- uid: AAComm.Services.AACommAxisHelper.ToAxis*
-  name: ToAxis
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxis_
-  commentId: Overload:AAComm.Services.AACommAxisHelper.ToAxis
-  isSpec: "True"
-  fullName: AAComm.Services.AACommAxisHelper.ToAxis
-  nameWithType: AACommAxisHelper.ToAxis
-- uid: AAComm.Services.AACommAxisHelper.ToAxisChar(System.String)
-  name: ToAxisChar(string)
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisChar_System_String_
-  commentId: M:AAComm.Services.AACommAxisHelper.ToAxisChar(System.String)
-  name.vb: ToAxisChar(String)
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisChar(string)
-  fullName.vb: AAComm.Services.AACommAxisHelper.ToAxisChar(String)
-  nameWithType: AACommAxisHelper.ToAxisChar(string)
-  nameWithType.vb: AACommAxisHelper.ToAxisChar(String)
-- uid: AAComm.Services.AACommAxisHelper.ToAxisChar*
-  name: ToAxisChar
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisChar_
-  commentId: Overload:AAComm.Services.AACommAxisHelper.ToAxisChar
-  isSpec: "True"
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisChar
-  nameWithType: AACommAxisHelper.ToAxisChar
-- uid: AAComm.Services.AACommAxisHelper.ToAxisIdx(System.Char)
-  name: ToAxisIdx(char)
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisIdx_System_Char_
-  commentId: M:AAComm.Services.AACommAxisHelper.ToAxisIdx(System.Char)
-  name.vb: ToAxisIdx(Char)
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisIdx(char)
-  fullName.vb: AAComm.Services.AACommAxisHelper.ToAxisIdx(Char)
-  nameWithType: AACommAxisHelper.ToAxisIdx(char)
-  nameWithType.vb: AACommAxisHelper.ToAxisIdx(Char)
-- uid: AAComm.Services.AACommAxisHelper.ToAxisIdx(System.String)
-  name: ToAxisIdx(string)
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisIdx_System_String_
-  commentId: M:AAComm.Services.AACommAxisHelper.ToAxisIdx(System.String)
-  name.vb: ToAxisIdx(String)
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisIdx(string)
-  fullName.vb: AAComm.Services.AACommAxisHelper.ToAxisIdx(String)
-  nameWithType: AACommAxisHelper.ToAxisIdx(string)
-  nameWithType.vb: AACommAxisHelper.ToAxisIdx(String)
-- uid: AAComm.Services.AACommAxisHelper.ToAxisIdx*
-  name: ToAxisIdx
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisIdx_
-  commentId: Overload:AAComm.Services.AACommAxisHelper.ToAxisIdx
-  isSpec: "True"
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisIdx
-  nameWithType: AACommAxisHelper.ToAxisIdx
-- uid: AAComm.Services.AACommAxisHelper.ToAxisStr(System.Int32)
-  name: ToAxisStr(int)
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisStr_System_Int32_
-  commentId: M:AAComm.Services.AACommAxisHelper.ToAxisStr(System.Int32)
-  name.vb: ToAxisStr(Integer)
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisStr(int)
-  fullName.vb: AAComm.Services.AACommAxisHelper.ToAxisStr(Integer)
-  nameWithType: AACommAxisHelper.ToAxisStr(int)
-  nameWithType.vb: AACommAxisHelper.ToAxisStr(Integer)
-- uid: AAComm.Services.AACommAxisHelper.ToAxisStr*
-  name: ToAxisStr
-  href: api/AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_ToAxisStr_
-  commentId: Overload:AAComm.Services.AACommAxisHelper.ToAxisStr
-  isSpec: "True"
-  fullName: AAComm.Services.AACommAxisHelper.ToAxisStr
-  nameWithType: AACommAxisHelper.ToAxisStr
 - uid: AAComm.Services.AACommEventArgs
   name: AACommEventArgs
   href: api/AAComm.Services.AACommEventArgs.html
@@ -3556,6 +3805,24 @@ references:
   fullName.vb: AAComm.Services.AACommMessage.New(System.EventHandler(Of AAComm.Services.AACommEventArgs), String, AAComm.Shared.MessageType, Integer)
   nameWithType: AACommMessage.AACommMessage(EventHandler<AACommEventArgs>, string, MessageType, int)
   nameWithType.vb: AACommMessage.New(EventHandler(Of AACommEventArgs), String, MessageType, Integer)
+- uid: AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)
+  name: AACommMessage(EventHandler<AACommEventArgs>, string, MessageType, int, bool)
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_AAComm_Shared_MessageType_System_Int32_System_Boolean_
+  commentId: M:AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)
+  name.vb: New(EventHandler(Of AACommEventArgs), String, MessageType, Integer, Boolean)
+  fullName: AAComm.Services.AACommMessage.AACommMessage(System.EventHandler<AAComm.Services.AACommEventArgs>, string, AAComm.Shared.MessageType, int, bool)
+  fullName.vb: AAComm.Services.AACommMessage.New(System.EventHandler(Of AAComm.Services.AACommEventArgs), String, AAComm.Shared.MessageType, Integer, Boolean)
+  nameWithType: AACommMessage.AACommMessage(EventHandler<AACommEventArgs>, string, MessageType, int, bool)
+  nameWithType.vb: AACommMessage.New(EventHandler(Of AACommEventArgs), String, MessageType, Integer, Boolean)
+- uid: AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,System.Boolean)
+  name: AACommMessage(EventHandler<AACommEventArgs>, string, bool)
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_System_Boolean_
+  commentId: M:AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,System.Boolean)
+  name.vb: New(EventHandler(Of AACommEventArgs), String, Boolean)
+  fullName: AAComm.Services.AACommMessage.AACommMessage(System.EventHandler<AAComm.Services.AACommEventArgs>, string, bool)
+  fullName.vb: AAComm.Services.AACommMessage.New(System.EventHandler(Of AAComm.Services.AACommEventArgs), String, Boolean)
+  nameWithType: AACommMessage.AACommMessage(EventHandler<AACommEventArgs>, string, bool)
+  nameWithType.vb: AACommMessage.New(EventHandler(Of AACommEventArgs), String, Boolean)
 - uid: AAComm.Services.AACommMessage.#ctor(System.String)
   name: AACommMessage(string)
   href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_System_String_
@@ -3574,6 +3841,24 @@ references:
   fullName.vb: AAComm.Services.AACommMessage.New(String, AAComm.Shared.MessageType, Integer)
   nameWithType: AACommMessage.AACommMessage(string, MessageType, int)
   nameWithType.vb: AACommMessage.New(String, MessageType, Integer)
+- uid: AAComm.Services.AACommMessage.#ctor(System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)
+  name: AACommMessage(string, MessageType, int, bool)
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_System_String_AAComm_Shared_MessageType_System_Int32_System_Boolean_
+  commentId: M:AAComm.Services.AACommMessage.#ctor(System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)
+  name.vb: New(String, MessageType, Integer, Boolean)
+  fullName: AAComm.Services.AACommMessage.AACommMessage(string, AAComm.Shared.MessageType, int, bool)
+  fullName.vb: AAComm.Services.AACommMessage.New(String, AAComm.Shared.MessageType, Integer, Boolean)
+  nameWithType: AACommMessage.AACommMessage(string, MessageType, int, bool)
+  nameWithType.vb: AACommMessage.New(String, MessageType, Integer, Boolean)
+- uid: AAComm.Services.AACommMessage.#ctor(System.String,System.Boolean)
+  name: AACommMessage(string, bool)
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_System_String_System_Boolean_
+  commentId: M:AAComm.Services.AACommMessage.#ctor(System.String,System.Boolean)
+  name.vb: New(String, Boolean)
+  fullName: AAComm.Services.AACommMessage.AACommMessage(string, bool)
+  fullName.vb: AAComm.Services.AACommMessage.New(String, Boolean)
+  nameWithType: AACommMessage.AACommMessage(string, bool)
+  nameWithType.vb: AACommMessage.New(String, Boolean)
 - uid: AAComm.Services.AACommMessage.#ctor*
   name: AACommMessage
   href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage__ctor_
@@ -3584,6 +3869,19 @@ references:
   fullName.vb: AAComm.Services.AACommMessage.New
   nameWithType: AACommMessage.AACommMessage
   nameWithType.vb: AACommMessage.New
+- uid: AAComm.Services.AACommMessage.AllowUserUnitsConfig
+  name: AllowUserUnitsConfig
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_AllowUserUnitsConfig
+  commentId: P:AAComm.Services.AACommMessage.AllowUserUnitsConfig
+  fullName: AAComm.Services.AACommMessage.AllowUserUnitsConfig
+  nameWithType: AACommMessage.AllowUserUnitsConfig
+- uid: AAComm.Services.AACommMessage.AllowUserUnitsConfig*
+  name: AllowUserUnitsConfig
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_AllowUserUnitsConfig_
+  commentId: Overload:AAComm.Services.AACommMessage.AllowUserUnitsConfig
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMessage.AllowUserUnitsConfig
+  nameWithType: AACommMessage.AllowUserUnitsConfig
 - uid: AAComm.Services.AACommMessage.IsSpecialEthernetOnly(System.String)
   name: IsSpecialEthernetOnly(string)
   href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_IsSpecialEthernetOnly_System_String_
@@ -3600,6 +3898,19 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.AACommMessage.IsSpecialEthernetOnly
   nameWithType: AACommMessage.IsSpecialEthernetOnly
+- uid: AAComm.Services.AACommMessage.LongOpType
+  name: LongOpType
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_LongOpType
+  commentId: P:AAComm.Services.AACommMessage.LongOpType
+  fullName: AAComm.Services.AACommMessage.LongOpType
+  nameWithType: AACommMessage.LongOpType
+- uid: AAComm.Services.AACommMessage.LongOpType*
+  name: LongOpType
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_LongOpType_
+  commentId: Overload:AAComm.Services.AACommMessage.LongOpType
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMessage.LongOpType
+  nameWithType: AACommMessage.LongOpType
 - uid: AAComm.Services.AACommMessage.Message
   name: Message
   href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_Message
@@ -3655,22 +3966,19 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.AACommMessage.SetTimeoutMs
   nameWithType: AACommMessage.SetTimeoutMs
-- uid: AAComm.Services.AACommMessage.StartsWithPAxis(System.String)
-  name: StartsWithPAxis(string)
-  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_StartsWithPAxis_System_String_
-  commentId: M:AAComm.Services.AACommMessage.StartsWithPAxis(System.String)
-  name.vb: StartsWithPAxis(String)
-  fullName: AAComm.Services.AACommMessage.StartsWithPAxis(string)
-  fullName.vb: AAComm.Services.AACommMessage.StartsWithPAxis(String)
-  nameWithType: AACommMessage.StartsWithPAxis(string)
-  nameWithType.vb: AACommMessage.StartsWithPAxis(String)
-- uid: AAComm.Services.AACommMessage.StartsWithPAxis*
-  name: StartsWithPAxis
-  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_StartsWithPAxis_
-  commentId: Overload:AAComm.Services.AACommMessage.StartsWithPAxis
+- uid: AAComm.Services.AACommMessage.SkipUserUnits
+  name: SkipUserUnits
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_SkipUserUnits
+  commentId: P:AAComm.Services.AACommMessage.SkipUserUnits
+  fullName: AAComm.Services.AACommMessage.SkipUserUnits
+  nameWithType: AACommMessage.SkipUserUnits
+- uid: AAComm.Services.AACommMessage.SkipUserUnits*
+  name: SkipUserUnits
+  href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_SkipUserUnits_
+  commentId: Overload:AAComm.Services.AACommMessage.SkipUserUnits
   isSpec: "True"
-  fullName: AAComm.Services.AACommMessage.StartsWithPAxis
-  nameWithType: AACommMessage.StartsWithPAxis
+  fullName: AAComm.Services.AACommMessage.SkipUserUnits
+  nameWithType: AACommMessage.SkipUserUnits
 - uid: AAComm.Services.AACommMessage.TimeoutMs
   name: TimeoutMs
   href: api/AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_TimeoutMs
@@ -3684,6 +3992,292 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.AACommMessage.TimeoutMs
   nameWithType: AACommMessage.TimeoutMs
+- uid: AAComm.Services.AACommMnemonicHelper
+  name: AACommMnemonicHelper
+  href: api/AAComm.Services.AACommMnemonicHelper.html
+  commentId: T:AAComm.Services.AACommMnemonicHelper
+  fullName: AAComm.Services.AACommMnemonicHelper
+  nameWithType: AACommMnemonicHelper
+- uid: AAComm.Services.AACommMnemonicHelper.AAxis
+  name: AAxis
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_AAxis
+  commentId: F:AAComm.Services.AACommMnemonicHelper.AAxis
+  fullName: AAComm.Services.AACommMnemonicHelper.AAxis
+  nameWithType: AACommMnemonicHelper.AAxis
+- uid: AAComm.Services.AACommMnemonicHelper.ActiveAxis
+  name: ActiveAxis
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ActiveAxis
+  commentId: F:AAComm.Services.AACommMnemonicHelper.ActiveAxis
+  fullName: AAComm.Services.AACommMnemonicHelper.ActiveAxis
+  nameWithType: AACommMnemonicHelper.ActiveAxis
+- uid: AAComm.Services.AACommMnemonicHelper.AllAxes
+  name: AllAxes
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_AllAxes
+  commentId: F:AAComm.Services.AACommMnemonicHelper.AllAxes
+  fullName: AAComm.Services.AACommMnemonicHelper.AllAxes
+  nameWithType: AACommMnemonicHelper.AllAxes
+- uid: AAComm.Services.AACommMnemonicHelper.ArrayIndex(System.String)
+  name: ArrayIndex(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ArrayIndex_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.ArrayIndex(System.String)
+  name.vb: ArrayIndex(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.ArrayIndex(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.ArrayIndex(String)
+  nameWithType: AACommMnemonicHelper.ArrayIndex(string)
+  nameWithType.vb: AACommMnemonicHelper.ArrayIndex(String)
+- uid: AAComm.Services.AACommMnemonicHelper.ArrayIndex*
+  name: ArrayIndex
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ArrayIndex_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.ArrayIndex
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.ArrayIndex
+  nameWithType: AACommMnemonicHelper.ArrayIndex
+- uid: AAComm.Services.AACommMnemonicHelper.ContainsOIC(System.String,System.String)
+  name: ContainsOIC(string, string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ContainsOIC_System_String_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.ContainsOIC(System.String,System.String)
+  name.vb: ContainsOIC(String, String)
+  fullName: AAComm.Services.AACommMnemonicHelper.ContainsOIC(string, string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.ContainsOIC(String, String)
+  nameWithType: AACommMnemonicHelper.ContainsOIC(string, string)
+  nameWithType.vb: AACommMnemonicHelper.ContainsOIC(String, String)
+- uid: AAComm.Services.AACommMnemonicHelper.ContainsOIC*
+  name: ContainsOIC
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ContainsOIC_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.ContainsOIC
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.ContainsOIC
+  nameWithType: AACommMnemonicHelper.ContainsOIC
+- uid: AAComm.Services.AACommMnemonicHelper.EndsWithOIC(System.String,System.String)
+  name: EndsWithOIC(string, string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_EndsWithOIC_System_String_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.EndsWithOIC(System.String,System.String)
+  name.vb: EndsWithOIC(String, String)
+  fullName: AAComm.Services.AACommMnemonicHelper.EndsWithOIC(string, string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.EndsWithOIC(String, String)
+  nameWithType: AACommMnemonicHelper.EndsWithOIC(string, string)
+  nameWithType.vb: AACommMnemonicHelper.EndsWithOIC(String, String)
+- uid: AAComm.Services.AACommMnemonicHelper.EndsWithOIC*
+  name: EndsWithOIC
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_EndsWithOIC_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.EndsWithOIC
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.EndsWithOIC
+  nameWithType: AACommMnemonicHelper.EndsWithOIC
+- uid: AAComm.Services.AACommMnemonicHelper.EqualsOIC(System.String,System.String)
+  name: EqualsOIC(string, string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_EqualsOIC_System_String_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.EqualsOIC(System.String,System.String)
+  name.vb: EqualsOIC(String, String)
+  fullName: AAComm.Services.AACommMnemonicHelper.EqualsOIC(string, string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.EqualsOIC(String, String)
+  nameWithType: AACommMnemonicHelper.EqualsOIC(string, string)
+  nameWithType.vb: AACommMnemonicHelper.EqualsOIC(String, String)
+- uid: AAComm.Services.AACommMnemonicHelper.EqualsOIC*
+  name: EqualsOIC
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_EqualsOIC_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.EqualsOIC
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.EqualsOIC
+  nameWithType: AACommMnemonicHelper.EqualsOIC
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfAssignment(System.String)
+  name: IndexOfAssignment(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfAssignment_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.IndexOfAssignment(System.String)
+  name.vb: IndexOfAssignment(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfAssignment(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.IndexOfAssignment(String)
+  nameWithType: AACommMnemonicHelper.IndexOfAssignment(string)
+  nameWithType.vb: AACommMnemonicHelper.IndexOfAssignment(String)
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfAssignment*
+  name: IndexOfAssignment
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfAssignment_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.IndexOfAssignment
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfAssignment
+  nameWithType: AACommMnemonicHelper.IndexOfAssignment
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfEquality(System.String)
+  name: IndexOfEquality(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfEquality_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.IndexOfEquality(System.String)
+  name.vb: IndexOfEquality(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfEquality(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.IndexOfEquality(String)
+  nameWithType: AACommMnemonicHelper.IndexOfEquality(string)
+  nameWithType.vb: AACommMnemonicHelper.IndexOfEquality(String)
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfEquality*
+  name: IndexOfEquality
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfEquality_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.IndexOfEquality
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfEquality
+  nameWithType: AACommMnemonicHelper.IndexOfEquality
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd(System.String)
+  name: IndexOfMnemonicEnd(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfMnemonicEnd_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd(System.String)
+  name.vb: IndexOfMnemonicEnd(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd(String)
+  nameWithType: AACommMnemonicHelper.IndexOfMnemonicEnd(string)
+  nameWithType.vb: AACommMnemonicHelper.IndexOfMnemonicEnd(String)
+- uid: AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd*
+  name: IndexOfMnemonicEnd
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IndexOfMnemonicEnd_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.IndexOfMnemonicEnd
+  nameWithType: AACommMnemonicHelper.IndexOfMnemonicEnd
+- uid: AAComm.Services.AACommMnemonicHelper.IsAxisInRange(System.Char,AAComm.Interfaces.IIdentityContainer)
+  name: IsAxisInRange(char, IIdentityContainer)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IsAxisInRange_System_Char_AAComm_Interfaces_IIdentityContainer_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.IsAxisInRange(System.Char,AAComm.Interfaces.IIdentityContainer)
+  name.vb: IsAxisInRange(Char, IIdentityContainer)
+  fullName: AAComm.Services.AACommMnemonicHelper.IsAxisInRange(char, AAComm.Interfaces.IIdentityContainer)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.IsAxisInRange(Char, AAComm.Interfaces.IIdentityContainer)
+  nameWithType: AACommMnemonicHelper.IsAxisInRange(char, IIdentityContainer)
+  nameWithType.vb: AACommMnemonicHelper.IsAxisInRange(Char, IIdentityContainer)
+- uid: AAComm.Services.AACommMnemonicHelper.IsAxisInRange*
+  name: IsAxisInRange
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_IsAxisInRange_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.IsAxisInRange
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.IsAxisInRange
+  nameWithType: AACommMnemonicHelper.IsAxisInRange
+- uid: AAComm.Services.AACommMnemonicHelper.Mnemonic(System.String)
+  name: Mnemonic(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_Mnemonic_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.Mnemonic(System.String)
+  name.vb: Mnemonic(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.Mnemonic(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.Mnemonic(String)
+  nameWithType: AACommMnemonicHelper.Mnemonic(string)
+  nameWithType.vb: AACommMnemonicHelper.Mnemonic(String)
+- uid: AAComm.Services.AACommMnemonicHelper.Mnemonic*
+  name: Mnemonic
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_Mnemonic_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.Mnemonic
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.Mnemonic
+  nameWithType: AACommMnemonicHelper.Mnemonic
+- uid: AAComm.Services.AACommMnemonicHelper.PAxis
+  name: PAxis
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_PAxis
+  commentId: F:AAComm.Services.AACommMnemonicHelper.PAxis
+  fullName: AAComm.Services.AACommMnemonicHelper.PAxis
+  nameWithType: AACommMnemonicHelper.PAxis
+- uid: AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex(System.String)
+  name: RemoveArrayIndex(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_RemoveArrayIndex_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex(System.String)
+  name.vb: RemoveArrayIndex(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex(String)
+  nameWithType: AACommMnemonicHelper.RemoveArrayIndex(string)
+  nameWithType.vb: AACommMnemonicHelper.RemoveArrayIndex(String)
+- uid: AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex*
+  name: RemoveArrayIndex
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_RemoveArrayIndex_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.RemoveArrayIndex
+  nameWithType: AACommMnemonicHelper.RemoveArrayIndex
+- uid: AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex(System.String,System.String@,System.Int32@)
+  name: SeparateArrayIndex(string, out string, out int)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_SeparateArrayIndex_System_String_System_String__System_Int32__
+  commentId: M:AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex(System.String,System.String@,System.Int32@)
+  name.vb: SeparateArrayIndex(String, String, Integer)
+  fullName: AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex(string, out string, out int)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex(String, String, Integer)
+  nameWithType: AACommMnemonicHelper.SeparateArrayIndex(string, out string, out int)
+  nameWithType.vb: AACommMnemonicHelper.SeparateArrayIndex(String, String, Integer)
+- uid: AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex*
+  name: SeparateArrayIndex
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_SeparateArrayIndex_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.SeparateArrayIndex
+  nameWithType: AACommMnemonicHelper.SeparateArrayIndex
+- uid: AAComm.Services.AACommMnemonicHelper.SplitMessage(System.String,System.String@,System.String@,System.Int32@)
+  name: SplitMessage(string, out string, out string, out int)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_SplitMessage_System_String_System_String__System_String__System_Int32__
+  commentId: M:AAComm.Services.AACommMnemonicHelper.SplitMessage(System.String,System.String@,System.String@,System.Int32@)
+  name.vb: SplitMessage(String, String, String, Integer)
+  fullName: AAComm.Services.AACommMnemonicHelper.SplitMessage(string, out string, out string, out int)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.SplitMessage(String, String, String, Integer)
+  nameWithType: AACommMnemonicHelper.SplitMessage(string, out string, out string, out int)
+  nameWithType.vb: AACommMnemonicHelper.SplitMessage(String, String, String, Integer)
+- uid: AAComm.Services.AACommMnemonicHelper.SplitMessage*
+  name: SplitMessage
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_SplitMessage_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.SplitMessage
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.SplitMessage
+  nameWithType: AACommMnemonicHelper.SplitMessage
+- uid: AAComm.Services.AACommMnemonicHelper.StartsWithOIC(System.String,System.String)
+  name: StartsWithOIC(string, string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_StartsWithOIC_System_String_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.StartsWithOIC(System.String,System.String)
+  name.vb: StartsWithOIC(String, String)
+  fullName: AAComm.Services.AACommMnemonicHelper.StartsWithOIC(string, string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.StartsWithOIC(String, String)
+  nameWithType: AACommMnemonicHelper.StartsWithOIC(string, string)
+  nameWithType.vb: AACommMnemonicHelper.StartsWithOIC(String, String)
+- uid: AAComm.Services.AACommMnemonicHelper.StartsWithOIC*
+  name: StartsWithOIC
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_StartsWithOIC_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.StartsWithOIC
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.StartsWithOIC
+  nameWithType: AACommMnemonicHelper.StartsWithOIC
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxis(System.Int32)
+  name: ToAxis(int)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxis_System_Int32_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.ToAxis(System.Int32)
+  name.vb: ToAxis(Integer)
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxis(int)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.ToAxis(Integer)
+  nameWithType: AACommMnemonicHelper.ToAxis(int)
+  nameWithType.vb: AACommMnemonicHelper.ToAxis(Integer)
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxis*
+  name: ToAxis
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxis_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.ToAxis
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxis
+  nameWithType: AACommMnemonicHelper.ToAxis
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxisChar(System.String)
+  name: ToAxisChar(string)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxisChar_System_String_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.ToAxisChar(System.String)
+  name.vb: ToAxisChar(String)
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxisChar(string)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.ToAxisChar(String)
+  nameWithType: AACommMnemonicHelper.ToAxisChar(string)
+  nameWithType.vb: AACommMnemonicHelper.ToAxisChar(String)
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxisChar*
+  name: ToAxisChar
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxisChar_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.ToAxisChar
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxisChar
+  nameWithType: AACommMnemonicHelper.ToAxisChar
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxisIdx(System.Char)
+  name: ToAxisIdx(char)
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxisIdx_System_Char_
+  commentId: M:AAComm.Services.AACommMnemonicHelper.ToAxisIdx(System.Char)
+  name.vb: ToAxisIdx(Char)
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxisIdx(char)
+  fullName.vb: AAComm.Services.AACommMnemonicHelper.ToAxisIdx(Char)
+  nameWithType: AACommMnemonicHelper.ToAxisIdx(char)
+  nameWithType.vb: AACommMnemonicHelper.ToAxisIdx(Char)
+- uid: AAComm.Services.AACommMnemonicHelper.ToAxisIdx*
+  name: ToAxisIdx
+  href: api/AAComm.Services.AACommMnemonicHelper.html#AAComm_Services_AACommMnemonicHelper_ToAxisIdx_
+  commentId: Overload:AAComm.Services.AACommMnemonicHelper.ToAxisIdx
+  isSpec: "True"
+  fullName: AAComm.Services.AACommMnemonicHelper.ToAxisIdx
+  nameWithType: AACommMnemonicHelper.ToAxisIdx
 - uid: AAComm.Services.AACommVerifySingleClient
   name: AACommVerifySingleClient
   href: api/AAComm.Services.AACommVerifySingleClient.html
@@ -4076,15 +4670,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.CanDescriptionBuilder.GetCanDescription
   nameWithType: CanDescriptionBuilder.GetCanDescription
-- uid: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Services.ControllerMessagesContainer)
-  name: GetCanDescriptionFromParameter(string, int, ControllerMessagesContainer)
-  href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_System_String_System_Int32_AAComm_Services_ControllerMessagesContainer_
-  commentId: M:AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Services.ControllerMessagesContainer)
-  name.vb: GetCanDescriptionFromParameter(String, Integer, ControllerMessagesContainer)
-  fullName: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(string, int, AAComm.Services.ControllerMessagesContainer)
-  fullName.vb: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(String, Integer, AAComm.Services.ControllerMessagesContainer)
-  nameWithType: CanDescriptionBuilder.GetCanDescriptionFromParameter(string, int, ControllerMessagesContainer)
-  nameWithType.vb: CanDescriptionBuilder.GetCanDescriptionFromParameter(String, Integer, ControllerMessagesContainer)
+- uid: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Interfaces.IMessagesContainer)
+  name: GetCanDescriptionFromParameter(string, int, IMessagesContainer)
+  href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_System_String_System_Int32_AAComm_Interfaces_IMessagesContainer_
+  commentId: M:AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(System.String,System.Int32,AAComm.Interfaces.IMessagesContainer)
+  name.vb: GetCanDescriptionFromParameter(String, Integer, IMessagesContainer)
+  fullName: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(string, int, AAComm.Interfaces.IMessagesContainer)
+  fullName.vb: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter(String, Integer, AAComm.Interfaces.IMessagesContainer)
+  nameWithType: CanDescriptionBuilder.GetCanDescriptionFromParameter(string, int, IMessagesContainer)
+  nameWithType.vb: CanDescriptionBuilder.GetCanDescriptionFromParameter(String, Integer, IMessagesContainer)
 - uid: AAComm.Services.CanDescriptionBuilder.GetCanDescriptionFromParameter*
   name: GetCanDescriptionFromParameter
   href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetCanDescriptionFromParameter_
@@ -4124,15 +4718,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.CanDescriptionBuilder.GetCanMessageFromMessageIDE
   nameWithType: CanDescriptionBuilder.GetCanMessageFromMessageIDE
-- uid: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Services.ControllerMessagesContainer)
-  name: GetParameterFromCanDescription(int, ControllerMessagesContainer)
-  href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_System_Int32_AAComm_Services_ControllerMessagesContainer_
-  commentId: M:AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Services.ControllerMessagesContainer)
-  name.vb: GetParameterFromCanDescription(Integer, ControllerMessagesContainer)
-  fullName: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(int, AAComm.Services.ControllerMessagesContainer)
-  fullName.vb: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(Integer, AAComm.Services.ControllerMessagesContainer)
-  nameWithType: CanDescriptionBuilder.GetParameterFromCanDescription(int, ControllerMessagesContainer)
-  nameWithType.vb: CanDescriptionBuilder.GetParameterFromCanDescription(Integer, ControllerMessagesContainer)
+- uid: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Interfaces.IMessagesContainer)
+  name: GetParameterFromCanDescription(int, IMessagesContainer)
+  href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_System_Int32_AAComm_Interfaces_IMessagesContainer_
+  commentId: M:AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(System.Int32,AAComm.Interfaces.IMessagesContainer)
+  name.vb: GetParameterFromCanDescription(Integer, IMessagesContainer)
+  fullName: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(int, AAComm.Interfaces.IMessagesContainer)
+  fullName.vb: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription(Integer, AAComm.Interfaces.IMessagesContainer)
+  nameWithType: CanDescriptionBuilder.GetParameterFromCanDescription(int, IMessagesContainer)
+  nameWithType.vb: CanDescriptionBuilder.GetParameterFromCanDescription(Integer, IMessagesContainer)
 - uid: AAComm.Services.CanDescriptionBuilder.GetParameterFromCanDescription*
   name: GetParameterFromCanDescription
   href: api/AAComm.Services.CanDescriptionBuilder.html#AAComm_Services_CanDescriptionBuilder_GetParameterFromCanDescription_
@@ -4571,6 +5165,58 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ConnectionData.Serialize
   nameWithType: ConnectionData.Serialize
+- uid: AAComm.Services.ConnectionData.SimExePath
+  name: SimExePath
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimExePath
+  commentId: P:AAComm.Services.ConnectionData.SimExePath
+  fullName: AAComm.Services.ConnectionData.SimExePath
+  nameWithType: ConnectionData.SimExePath
+- uid: AAComm.Services.ConnectionData.SimExePath*
+  name: SimExePath
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimExePath_
+  commentId: Overload:AAComm.Services.ConnectionData.SimExePath
+  isSpec: "True"
+  fullName: AAComm.Services.ConnectionData.SimExePath
+  nameWithType: ConnectionData.SimExePath
+- uid: AAComm.Services.ConnectionData.SimMotorProfile
+  name: SimMotorProfile
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimMotorProfile
+  commentId: P:AAComm.Services.ConnectionData.SimMotorProfile
+  fullName: AAComm.Services.ConnectionData.SimMotorProfile
+  nameWithType: ConnectionData.SimMotorProfile
+- uid: AAComm.Services.ConnectionData.SimMotorProfile*
+  name: SimMotorProfile
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimMotorProfile_
+  commentId: Overload:AAComm.Services.ConnectionData.SimMotorProfile
+  isSpec: "True"
+  fullName: AAComm.Services.ConnectionData.SimMotorProfile
+  nameWithType: ConnectionData.SimMotorProfile
+- uid: AAComm.Services.ConnectionData.SimProduct
+  name: SimProduct
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimProduct
+  commentId: P:AAComm.Services.ConnectionData.SimProduct
+  fullName: AAComm.Services.ConnectionData.SimProduct
+  nameWithType: ConnectionData.SimProduct
+- uid: AAComm.Services.ConnectionData.SimProduct*
+  name: SimProduct
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimProduct_
+  commentId: Overload:AAComm.Services.ConnectionData.SimProduct
+  isSpec: "True"
+  fullName: AAComm.Services.ConnectionData.SimProduct
+  nameWithType: ConnectionData.SimProduct
+- uid: AAComm.Services.ConnectionData.SimVersion
+  name: SimVersion
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimVersion
+  commentId: P:AAComm.Services.ConnectionData.SimVersion
+  fullName: AAComm.Services.ConnectionData.SimVersion
+  nameWithType: ConnectionData.SimVersion
+- uid: AAComm.Services.ConnectionData.SimVersion*
+  name: SimVersion
+  href: api/AAComm.Services.ConnectionData.html#AAComm_Services_ConnectionData_SimVersion_
+  commentId: Overload:AAComm.Services.ConnectionData.SimVersion
+  isSpec: "True"
+  fullName: AAComm.Services.ConnectionData.SimVersion
+  nameWithType: ConnectionData.SimVersion
 - uid: AAComm.Services.ControllerErrorInterpreter
   name: ControllerErrorInterpreter
   href: api/AAComm.Services.ControllerErrorInterpreter.html
@@ -6257,6 +6903,19 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ControllerMessagesContainer.IsInitialized
   nameWithType: ControllerMessagesContainer.IsInitialized
+- uid: AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen(AAComm.Services.UserUnits.UUGroups)
+  name: MaxUserUnitNameLen(UUGroups)
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_MaxUserUnitNameLen_AAComm_Services_UserUnits_UUGroups_
+  commentId: M:AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen(AAComm.Services.UserUnits.UUGroups)
+  fullName: AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen(AAComm.Services.UserUnits.UUGroups)
+  nameWithType: ControllerMessagesContainer.MaxUserUnitNameLen(UUGroups)
+- uid: AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen*
+  name: MaxUserUnitNameLen
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_MaxUserUnitNameLen_
+  commentId: Overload:AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen
+  isSpec: "True"
+  fullName: AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen
+  nameWithType: ControllerMessagesContainer.MaxUserUnitNameLen
 - uid: AAComm.Services.ControllerMessagesContainer.MessageCategory
   name: ControllerMessagesContainer.MessageCategory
   href: api/AAComm.Services.ControllerMessagesContainer.MessageCategory.html
@@ -6347,12 +7006,120 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ControllerMessagesContainer.SetToUseDefaults
   nameWithType: ControllerMessagesContainer.SetToUseDefaults
+- uid: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)
+  name: TryGetUserUnitAxis(char, int)
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TryGetUserUnitAxis_System_Char_System_Int32_
+  commentId: M:AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)
+  name.vb: TryGetUserUnitAxis(Char, Integer)
+  fullName: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis(char, int)
+  fullName.vb: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis(Char, Integer)
+  nameWithType: ControllerMessagesContainer.TryGetUserUnitAxis(char, int)
+  nameWithType.vb: ControllerMessagesContainer.TryGetUserUnitAxis(Char, Integer)
+- uid: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis*
+  name: TryGetUserUnitAxis
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TryGetUserUnitAxis_
+  commentId: Overload:AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis
+  isSpec: "True"
+  fullName: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis
+  nameWithType: ControllerMessagesContainer.TryGetUserUnitAxis
+- uid: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  name: TryGetUserUnitsGroup(UUGroups)
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TryGetUserUnitsGroup_AAComm_Services_UserUnits_UUGroups_
+  commentId: M:AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  fullName: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)
+  nameWithType: ControllerMessagesContainer.TryGetUserUnitsGroup(UUGroups)
+- uid: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup*
+  name: TryGetUserUnitsGroup
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TryGetUserUnitsGroup_
+  commentId: Overload:AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup
+  isSpec: "True"
+  fullName: AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup
+  nameWithType: ControllerMessagesContainer.TryGetUserUnitsGroup
+- uid: AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI,AAComm.Services.UserUnits.UUGroups,System.Char,System.String,System.Double)
+  name: TrySetUnitsSync(CommAPI, UUGroups, char, string, double)
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TrySetUnitsSync_AAComm_CommAPI_AAComm_Services_UserUnits_UUGroups_System_Char_System_String_System_Double_
+  commentId: M:AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI,AAComm.Services.UserUnits.UUGroups,System.Char,System.String,System.Double)
+  name.vb: TrySetUnitsSync(CommAPI, UUGroups, Char, String, Double)
+  fullName: AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI, AAComm.Services.UserUnits.UUGroups, char, string, double)
+  fullName.vb: AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI, AAComm.Services.UserUnits.UUGroups, Char, String, Double)
+  nameWithType: ControllerMessagesContainer.TrySetUnitsSync(CommAPI, UUGroups, char, string, double)
+  nameWithType.vb: ControllerMessagesContainer.TrySetUnitsSync(CommAPI, UUGroups, Char, String, Double)
+- uid: AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync*
+  name: TrySetUnitsSync
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_TrySetUnitsSync_
+  commentId: Overload:AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync
+  isSpec: "True"
+  fullName: AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync
+  nameWithType: ControllerMessagesContainer.TrySetUnitsSync
+- uid: AAComm.Services.ControllerMessagesContainer.UserUnitsSupported
+  name: UserUnitsSupported
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_UserUnitsSupported
+  commentId: P:AAComm.Services.ControllerMessagesContainer.UserUnitsSupported
+  fullName: AAComm.Services.ControllerMessagesContainer.UserUnitsSupported
+  nameWithType: ControllerMessagesContainer.UserUnitsSupported
+- uid: AAComm.Services.ControllerMessagesContainer.UserUnitsSupported*
+  name: UserUnitsSupported
+  href: api/AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_UserUnitsSupported_
+  commentId: Overload:AAComm.Services.ControllerMessagesContainer.UserUnitsSupported
+  isSpec: "True"
+  fullName: AAComm.Services.ControllerMessagesContainer.UserUnitsSupported
+  nameWithType: ControllerMessagesContainer.UserUnitsSupported
 - uid: AAComm.Services.FloatHelper
   name: FloatHelper
   href: api/AAComm.Services.FloatHelper.html
   commentId: T:AAComm.Services.FloatHelper
   fullName: AAComm.Services.FloatHelper
   nameWithType: FloatHelper
+- uid: AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)
+  name: ApplyUserUnits(double, char, int, ICommService)
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ApplyUserUnits_System_Double_System_Char_System_Int32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)
+  name.vb: ApplyUserUnits(Double, Char, Integer, ICommService)
+  fullName: AAComm.Services.FloatHelper.ApplyUserUnits(double, char, int, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Services.FloatHelper.ApplyUserUnits(Double, Char, Integer, AAComm.Interfaces.ICommService)
+  nameWithType: FloatHelper.ApplyUserUnits(double, char, int, ICommService)
+  nameWithType.vb: FloatHelper.ApplyUserUnits(Double, Char, Integer, ICommService)
+- uid: AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)
+  name: ApplyUserUnits(double, int, ICommService)
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ApplyUserUnits_System_Double_System_Int32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Services.FloatHelper.ApplyUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)
+  name.vb: ApplyUserUnits(Double, Integer, ICommService)
+  fullName: AAComm.Services.FloatHelper.ApplyUserUnits(double, int, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Services.FloatHelper.ApplyUserUnits(Double, Integer, AAComm.Interfaces.ICommService)
+  nameWithType: FloatHelper.ApplyUserUnits(double, int, ICommService)
+  nameWithType.vb: FloatHelper.ApplyUserUnits(Double, Integer, ICommService)
+- uid: AAComm.Services.FloatHelper.ApplyUserUnits*
+  name: ApplyUserUnits
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ApplyUserUnits_
+  commentId: Overload:AAComm.Services.FloatHelper.ApplyUserUnits
+  isSpec: "True"
+  fullName: AAComm.Services.FloatHelper.ApplyUserUnits
+  nameWithType: FloatHelper.ApplyUserUnits
+- uid: AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)
+  name: RemoveUserUnits(double, char, int, ICommService)
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_RemoveUserUnits_System_Double_System_Char_System_Int32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Char,System.Int32,AAComm.Interfaces.ICommService)
+  name.vb: RemoveUserUnits(Double, Char, Integer, ICommService)
+  fullName: AAComm.Services.FloatHelper.RemoveUserUnits(double, char, int, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Services.FloatHelper.RemoveUserUnits(Double, Char, Integer, AAComm.Interfaces.ICommService)
+  nameWithType: FloatHelper.RemoveUserUnits(double, char, int, ICommService)
+  nameWithType.vb: FloatHelper.RemoveUserUnits(Double, Char, Integer, ICommService)
+- uid: AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)
+  name: RemoveUserUnits(double, int, ICommService)
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_RemoveUserUnits_System_Double_System_Int32_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Services.FloatHelper.RemoveUserUnits(System.Double,System.Int32,AAComm.Interfaces.ICommService)
+  name.vb: RemoveUserUnits(Double, Integer, ICommService)
+  fullName: AAComm.Services.FloatHelper.RemoveUserUnits(double, int, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Services.FloatHelper.RemoveUserUnits(Double, Integer, AAComm.Interfaces.ICommService)
+  nameWithType: FloatHelper.RemoveUserUnits(double, int, ICommService)
+  nameWithType.vb: FloatHelper.RemoveUserUnits(Double, Integer, ICommService)
+- uid: AAComm.Services.FloatHelper.RemoveUserUnits*
+  name: RemoveUserUnits
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_RemoveUserUnits_
+  commentId: Overload:AAComm.Services.FloatHelper.RemoveUserUnits
+  isSpec: "True"
+  fullName: AAComm.Services.FloatHelper.RemoveUserUnits
+  nameWithType: FloatHelper.RemoveUserUnits
 - uid: AAComm.Services.FloatHelper.ResolveFloatingPoint(AAComm.Services.MessageData,System.Int64,System.Boolean,System.Boolean)
   name: ResolveFloatingPoint(MessageData, long, bool, bool)
   href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ResolveFloatingPoint_AAComm_Services_MessageData_System_Int64_System_Boolean_System_Boolean_
@@ -6369,15 +7136,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.FloatHelper.ResolveFloatingPoint
   nameWithType: FloatHelper.ResolveFloatingPoint
-- uid: AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Services.ControllerMessagesContainer,System.Boolean,System.Boolean)
-  name: ResolveFromCCC(int, long, ControllerMessagesContainer, bool, bool)
-  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ResolveFromCCC_System_Int32_System_Int64_AAComm_Services_ControllerMessagesContainer_System_Boolean_System_Boolean_
-  commentId: M:AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Services.ControllerMessagesContainer,System.Boolean,System.Boolean)
-  name.vb: ResolveFromCCC(Integer, Long, ControllerMessagesContainer, Boolean, Boolean)
-  fullName: AAComm.Services.FloatHelper.ResolveFromCCC(int, long, AAComm.Services.ControllerMessagesContainer, bool, bool)
-  fullName.vb: AAComm.Services.FloatHelper.ResolveFromCCC(Integer, Long, AAComm.Services.ControllerMessagesContainer, Boolean, Boolean)
-  nameWithType: FloatHelper.ResolveFromCCC(int, long, ControllerMessagesContainer, bool, bool)
-  nameWithType.vb: FloatHelper.ResolveFromCCC(Integer, Long, ControllerMessagesContainer, Boolean, Boolean)
+- uid: AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Interfaces.IMessagesContainer,System.Boolean,System.Boolean)
+  name: ResolveFromCCC(int, long, IMessagesContainer, bool, bool)
+  href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ResolveFromCCC_System_Int32_System_Int64_AAComm_Interfaces_IMessagesContainer_System_Boolean_System_Boolean_
+  commentId: M:AAComm.Services.FloatHelper.ResolveFromCCC(System.Int32,System.Int64,AAComm.Interfaces.IMessagesContainer,System.Boolean,System.Boolean)
+  name.vb: ResolveFromCCC(Integer, Long, IMessagesContainer, Boolean, Boolean)
+  fullName: AAComm.Services.FloatHelper.ResolveFromCCC(int, long, AAComm.Interfaces.IMessagesContainer, bool, bool)
+  fullName.vb: AAComm.Services.FloatHelper.ResolveFromCCC(Integer, Long, AAComm.Interfaces.IMessagesContainer, Boolean, Boolean)
+  nameWithType: FloatHelper.ResolveFromCCC(int, long, IMessagesContainer, bool, bool)
+  nameWithType.vb: FloatHelper.ResolveFromCCC(Integer, Long, IMessagesContainer, Boolean, Boolean)
 - uid: AAComm.Services.FloatHelper.ResolveFromCCC*
   name: ResolveFromCCC
   href: api/AAComm.Services.FloatHelper.html#AAComm_Services_FloatHelper_ResolveFromCCC_
@@ -6718,45 +7485,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.MessageData.DefaultValue
   nameWithType: MessageData.DefaultValue
-- uid: AAComm.Services.MessageData.DefaultValueInt
-  name: DefaultValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueInt
-  commentId: P:AAComm.Services.MessageData.DefaultValueInt
-  fullName: AAComm.Services.MessageData.DefaultValueInt
-  nameWithType: MessageData.DefaultValueInt
-- uid: AAComm.Services.MessageData.DefaultValueInt*
-  name: DefaultValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueInt_
-  commentId: Overload:AAComm.Services.MessageData.DefaultValueInt
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.DefaultValueInt
-  nameWithType: MessageData.DefaultValueInt
-- uid: AAComm.Services.MessageData.DefaultValueLong
-  name: DefaultValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueLong
-  commentId: P:AAComm.Services.MessageData.DefaultValueLong
-  fullName: AAComm.Services.MessageData.DefaultValueLong
-  nameWithType: MessageData.DefaultValueLong
-- uid: AAComm.Services.MessageData.DefaultValueLong*
-  name: DefaultValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueLong_
-  commentId: Overload:AAComm.Services.MessageData.DefaultValueLong
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.DefaultValueLong
-  nameWithType: MessageData.DefaultValueLong
-- uid: AAComm.Services.MessageData.DefaultValueStr
-  name: DefaultValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueStr
-  commentId: P:AAComm.Services.MessageData.DefaultValueStr
-  fullName: AAComm.Services.MessageData.DefaultValueStr
-  nameWithType: MessageData.DefaultValueStr
-- uid: AAComm.Services.MessageData.DefaultValueStr*
-  name: DefaultValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DefaultValueStr_
-  commentId: Overload:AAComm.Services.MessageData.DefaultValueStr
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.DefaultValueStr
-  nameWithType: MessageData.DefaultValueStr
 - uid: AAComm.Services.MessageData.DynamicPtr
   name: DynamicPtr
   href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_DynamicPtr
@@ -6799,6 +7527,38 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.MessageData.GetCanMessage
   nameWithType: MessageData.GetCanMessage
+- uid: AAComm.Services.MessageData.GetDescription(System.Char)
+  name: GetDescription(char)
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_GetDescription_System_Char_
+  commentId: M:AAComm.Services.MessageData.GetDescription(System.Char)
+  name.vb: GetDescription(Char)
+  fullName: AAComm.Services.MessageData.GetDescription(char)
+  fullName.vb: AAComm.Services.MessageData.GetDescription(Char)
+  nameWithType: MessageData.GetDescription(char)
+  nameWithType.vb: MessageData.GetDescription(Char)
+- uid: AAComm.Services.MessageData.GetDescription*
+  name: GetDescription
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_GetDescription_
+  commentId: Overload:AAComm.Services.MessageData.GetDescription
+  isSpec: "True"
+  fullName: AAComm.Services.MessageData.GetDescription
+  nameWithType: MessageData.GetDescription
+- uid: AAComm.Services.MessageData.GetUserUnitsData(System.Char,System.Double@,System.Double@,System.Double@,System.Double@,System.String@)
+  name: GetUserUnitsData(char, out double, out double, out double, out double, out string)
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_GetUserUnitsData_System_Char_System_Double__System_Double__System_Double__System_Double__System_String__
+  commentId: M:AAComm.Services.MessageData.GetUserUnitsData(System.Char,System.Double@,System.Double@,System.Double@,System.Double@,System.String@)
+  name.vb: GetUserUnitsData(Char, Double, Double, Double, Double, String)
+  fullName: AAComm.Services.MessageData.GetUserUnitsData(char, out double, out double, out double, out double, out string)
+  fullName.vb: AAComm.Services.MessageData.GetUserUnitsData(Char, Double, Double, Double, Double, String)
+  nameWithType: MessageData.GetUserUnitsData(char, out double, out double, out double, out double, out string)
+  nameWithType.vb: MessageData.GetUserUnitsData(Char, Double, Double, Double, Double, String)
+- uid: AAComm.Services.MessageData.GetUserUnitsData*
+  name: GetUserUnitsData
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_GetUserUnitsData_
+  commentId: Overload:AAComm.Services.MessageData.GetUserUnitsData
+  isSpec: "True"
+  fullName: AAComm.Services.MessageData.GetUserUnitsData
+  nameWithType: MessageData.GetUserUnitsData
 - uid: AAComm.Services.MessageData.Implemented
   name: Implemented
   href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_Implemented
@@ -6994,45 +7754,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.MessageData.MaxValue
   nameWithType: MessageData.MaxValue
-- uid: AAComm.Services.MessageData.MaxValueInt
-  name: MaxValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueInt
-  commentId: P:AAComm.Services.MessageData.MaxValueInt
-  fullName: AAComm.Services.MessageData.MaxValueInt
-  nameWithType: MessageData.MaxValueInt
-- uid: AAComm.Services.MessageData.MaxValueInt*
-  name: MaxValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueInt_
-  commentId: Overload:AAComm.Services.MessageData.MaxValueInt
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MaxValueInt
-  nameWithType: MessageData.MaxValueInt
-- uid: AAComm.Services.MessageData.MaxValueLong
-  name: MaxValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueLong
-  commentId: P:AAComm.Services.MessageData.MaxValueLong
-  fullName: AAComm.Services.MessageData.MaxValueLong
-  nameWithType: MessageData.MaxValueLong
-- uid: AAComm.Services.MessageData.MaxValueLong*
-  name: MaxValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueLong_
-  commentId: Overload:AAComm.Services.MessageData.MaxValueLong
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MaxValueLong
-  nameWithType: MessageData.MaxValueLong
-- uid: AAComm.Services.MessageData.MaxValueStr
-  name: MaxValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueStr
-  commentId: P:AAComm.Services.MessageData.MaxValueStr
-  fullName: AAComm.Services.MessageData.MaxValueStr
-  nameWithType: MessageData.MaxValueStr
-- uid: AAComm.Services.MessageData.MaxValueStr*
-  name: MaxValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MaxValueStr_
-  commentId: Overload:AAComm.Services.MessageData.MaxValueStr
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MaxValueStr
-  nameWithType: MessageData.MaxValueStr
 - uid: AAComm.Services.MessageData.MinValue
   name: MinValue
   href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValue
@@ -7046,45 +7767,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.MessageData.MinValue
   nameWithType: MessageData.MinValue
-- uid: AAComm.Services.MessageData.MinValueInt
-  name: MinValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueInt
-  commentId: P:AAComm.Services.MessageData.MinValueInt
-  fullName: AAComm.Services.MessageData.MinValueInt
-  nameWithType: MessageData.MinValueInt
-- uid: AAComm.Services.MessageData.MinValueInt*
-  name: MinValueInt
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueInt_
-  commentId: Overload:AAComm.Services.MessageData.MinValueInt
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MinValueInt
-  nameWithType: MessageData.MinValueInt
-- uid: AAComm.Services.MessageData.MinValueLong
-  name: MinValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueLong
-  commentId: P:AAComm.Services.MessageData.MinValueLong
-  fullName: AAComm.Services.MessageData.MinValueLong
-  nameWithType: MessageData.MinValueLong
-- uid: AAComm.Services.MessageData.MinValueLong*
-  name: MinValueLong
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueLong_
-  commentId: Overload:AAComm.Services.MessageData.MinValueLong
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MinValueLong
-  nameWithType: MessageData.MinValueLong
-- uid: AAComm.Services.MessageData.MinValueStr
-  name: MinValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueStr
-  commentId: P:AAComm.Services.MessageData.MinValueStr
-  fullName: AAComm.Services.MessageData.MinValueStr
-  nameWithType: MessageData.MinValueStr
-- uid: AAComm.Services.MessageData.MinValueStr*
-  name: MinValueStr
-  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_MinValueStr_
-  commentId: Overload:AAComm.Services.MessageData.MinValueStr
-  isSpec: "True"
-  fullName: AAComm.Services.MessageData.MinValueStr
-  nameWithType: MessageData.MinValueStr
 - uid: AAComm.Services.MessageData.Mnemonic
   name: Mnemonic
   href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_Mnemonic
@@ -7202,6 +7884,129 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.MessageData.ToString
   nameWithType: MessageData.ToString
+- uid: AAComm.Services.MessageData.UserUnits
+  name: UserUnits
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_UserUnits
+  commentId: P:AAComm.Services.MessageData.UserUnits
+  fullName: AAComm.Services.MessageData.UserUnits
+  nameWithType: MessageData.UserUnits
+- uid: AAComm.Services.MessageData.UserUnits*
+  name: UserUnits
+  href: api/AAComm.Services.MessageData.html#AAComm_Services_MessageData_UserUnits_
+  commentId: Overload:AAComm.Services.MessageData.UserUnits
+  isSpec: "True"
+  fullName: AAComm.Services.MessageData.UserUnits
+  nameWithType: MessageData.UserUnits
+- uid: AAComm.Services.MessageDataValueExtensions
+  name: MessageDataValueExtensions
+  href: api/AAComm.Services.MessageDataValueExtensions.html
+  commentId: T:AAComm.Services.MessageDataValueExtensions
+  fullName: AAComm.Services.MessageDataValueExtensions
+  nameWithType: MessageDataValueExtensions
+- uid: AAComm.Services.MessageDataValueExtensions.DefaultValueInt(AAComm.Services.MessageData)
+  name: DefaultValueInt(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueInt_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.DefaultValueInt(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.DefaultValueInt(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.DefaultValueInt(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.DefaultValueInt*
+  name: DefaultValueInt
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueInt_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.DefaultValueInt
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.DefaultValueInt
+  nameWithType: MessageDataValueExtensions.DefaultValueInt
+- uid: AAComm.Services.MessageDataValueExtensions.DefaultValueLong(AAComm.Services.MessageData)
+  name: DefaultValueLong(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueLong_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.DefaultValueLong(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.DefaultValueLong(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.DefaultValueLong(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.DefaultValueLong*
+  name: DefaultValueLong
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueLong_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.DefaultValueLong
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.DefaultValueLong
+  nameWithType: MessageDataValueExtensions.DefaultValueLong
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueInt(AAComm.Services.MessageData)
+  name: MaxValueInt(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueInt_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MaxValueInt(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueInt(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MaxValueInt(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueInt*
+  name: MaxValueInt
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueInt_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MaxValueInt
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueInt
+  nameWithType: MessageDataValueExtensions.MaxValueInt
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueLong(AAComm.Services.MessageData)
+  name: MaxValueLong(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueLong_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MaxValueLong(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueLong(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MaxValueLong(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueLong*
+  name: MaxValueLong
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueLong_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MaxValueLong
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueLong
+  nameWithType: MessageDataValueExtensions.MaxValueLong
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueStr(AAComm.Services.MessageData)
+  name: MaxValueStr(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueStr_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MaxValueStr(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueStr(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MaxValueStr(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MaxValueStr*
+  name: MaxValueStr
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueStr_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MaxValueStr
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MaxValueStr
+  nameWithType: MessageDataValueExtensions.MaxValueStr
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueInt(AAComm.Services.MessageData)
+  name: MinValueInt(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueInt_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MinValueInt(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueInt(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MinValueInt(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueInt*
+  name: MinValueInt
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueInt_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MinValueInt
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueInt
+  nameWithType: MessageDataValueExtensions.MinValueInt
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueLong(AAComm.Services.MessageData)
+  name: MinValueLong(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueLong_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MinValueLong(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueLong(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MinValueLong(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueLong*
+  name: MinValueLong
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueLong_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MinValueLong
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueLong
+  nameWithType: MessageDataValueExtensions.MinValueLong
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueStr(AAComm.Services.MessageData)
+  name: MinValueStr(MessageData)
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueStr_AAComm_Services_MessageData_
+  commentId: M:AAComm.Services.MessageDataValueExtensions.MinValueStr(AAComm.Services.MessageData)
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueStr(AAComm.Services.MessageData)
+  nameWithType: MessageDataValueExtensions.MinValueStr(MessageData)
+- uid: AAComm.Services.MessageDataValueExtensions.MinValueStr*
+  name: MinValueStr
+  href: api/AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MinValueStr_
+  commentId: Overload:AAComm.Services.MessageDataValueExtensions.MinValueStr
+  isSpec: "True"
+  fullName: AAComm.Services.MessageDataValueExtensions.MinValueStr
+  nameWithType: MessageDataValueExtensions.MinValueStr
 - uid: AAComm.Services.NumberFormatter
   name: NumberFormatter
   href: api/AAComm.Services.NumberFormatter.html
@@ -8260,6 +9065,328 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.UserProgVarsAdapter.TaskNames
   nameWithType: UserProgVarsAdapter.TaskNames
+- uid: AAComm.Services.UserUnits
+  name: AAComm.Services.UserUnits
+  href: api/AAComm.Services.UserUnits.html
+  commentId: N:AAComm.Services.UserUnits
+  fullName: AAComm.Services.UserUnits
+  nameWithType: AAComm.Services.UserUnits
+- uid: AAComm.Services.UserUnits.UUErrors
+  name: UUErrors
+  href: api/AAComm.Services.UserUnits.UUErrors.html
+  commentId: T:AAComm.Services.UserUnits.UUErrors
+  fullName: AAComm.Services.UserUnits.UUErrors
+  nameWithType: UUErrors
+- uid: AAComm.Services.UserUnits.UUErrors.ErrorReadingData
+  name: ErrorReadingData
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_ErrorReadingData
+  commentId: F:AAComm.Services.UserUnits.UUErrors.ErrorReadingData
+  fullName: AAComm.Services.UserUnits.UUErrors.ErrorReadingData
+  nameWithType: UUErrors.ErrorReadingData
+- uid: AAComm.Services.UserUnits.UUErrors.ErrorWritingData
+  name: ErrorWritingData
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_ErrorWritingData
+  commentId: F:AAComm.Services.UserUnits.UUErrors.ErrorWritingData
+  fullName: AAComm.Services.UserUnits.UUErrors.ErrorWritingData
+  nameWithType: UUErrors.ErrorWritingData
+- uid: AAComm.Services.UserUnits.UUErrors.FW_FaultDuplicatedParameter
+  name: FW_FaultDuplicatedParameter
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_FW_FaultDuplicatedParameter
+  commentId: F:AAComm.Services.UserUnits.UUErrors.FW_FaultDuplicatedParameter
+  fullName: AAComm.Services.UserUnits.UUErrors.FW_FaultDuplicatedParameter
+  nameWithType: UUErrors.FW_FaultDuplicatedParameter
+- uid: AAComm.Services.UserUnits.UUErrors.InvalidFactor
+  name: InvalidFactor
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_InvalidFactor
+  commentId: F:AAComm.Services.UserUnits.UUErrors.InvalidFactor
+  fullName: AAComm.Services.UserUnits.UUErrors.InvalidFactor
+  nameWithType: UUErrors.InvalidFactor
+- uid: AAComm.Services.UserUnits.UUErrors.InvalidName
+  name: InvalidName
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_InvalidName
+  commentId: F:AAComm.Services.UserUnits.UUErrors.InvalidName
+  fullName: AAComm.Services.UserUnits.UUErrors.InvalidName
+  nameWithType: UUErrors.InvalidName
+- uid: AAComm.Services.UserUnits.UUErrors.InvalidState
+  name: InvalidState
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_InvalidState
+  commentId: F:AAComm.Services.UserUnits.UUErrors.InvalidState
+  fullName: AAComm.Services.UserUnits.UUErrors.InvalidState
+  nameWithType: UUErrors.InvalidState
+- uid: AAComm.Services.UserUnits.UUErrors.NoUserUnits
+  name: NoUserUnits
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_NoUserUnits
+  commentId: F:AAComm.Services.UserUnits.UUErrors.NoUserUnits
+  fullName: AAComm.Services.UserUnits.UUErrors.NoUserUnits
+  nameWithType: UUErrors.NoUserUnits
+- uid: AAComm.Services.UserUnits.UUErrors.NotConnected
+  name: NotConnected
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_NotConnected
+  commentId: F:AAComm.Services.UserUnits.UUErrors.NotConnected
+  fullName: AAComm.Services.UserUnits.UUErrors.NotConnected
+  nameWithType: UUErrors.NotConnected
+- uid: AAComm.Services.UserUnits.UUErrors.Success
+  name: Success
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_Success
+  commentId: F:AAComm.Services.UserUnits.UUErrors.Success
+  fullName: AAComm.Services.UserUnits.UUErrors.Success
+  nameWithType: UUErrors.Success
+- uid: AAComm.Services.UserUnits.UUErrors.Unsupported
+  name: Unsupported
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_Unsupported
+  commentId: F:AAComm.Services.UserUnits.UUErrors.Unsupported
+  fullName: AAComm.Services.UserUnits.UUErrors.Unsupported
+  nameWithType: UUErrors.Unsupported
+- uid: AAComm.Services.UserUnits.UUErrors.UnsupportedAxis
+  name: UnsupportedAxis
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_UnsupportedAxis
+  commentId: F:AAComm.Services.UserUnits.UUErrors.UnsupportedAxis
+  fullName: AAComm.Services.UserUnits.UUErrors.UnsupportedAxis
+  nameWithType: UUErrors.UnsupportedAxis
+- uid: AAComm.Services.UserUnits.UUErrors.UnsupportedGroup
+  name: UnsupportedGroup
+  href: api/AAComm.Services.UserUnits.UUErrors.html#AAComm_Services_UserUnits_UUErrors_UnsupportedGroup
+  commentId: F:AAComm.Services.UserUnits.UUErrors.UnsupportedGroup
+  fullName: AAComm.Services.UserUnits.UUErrors.UnsupportedGroup
+  nameWithType: UUErrors.UnsupportedGroup
+- uid: AAComm.Services.UserUnits.UUGroups
+  name: UUGroups
+  href: api/AAComm.Services.UserUnits.UUGroups.html
+  commentId: T:AAComm.Services.UserUnits.UUGroups
+  fullName: AAComm.Services.UserUnits.UUGroups
+  nameWithType: UUGroups
+- uid: AAComm.Services.UserUnits.UUGroups.Acc
+  name: Acc
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_Acc
+  commentId: F:AAComm.Services.UserUnits.UUGroups.Acc
+  fullName: AAComm.Services.UserUnits.UUGroups.Acc
+  nameWithType: UUGroups.Acc
+- uid: AAComm.Services.UserUnits.UUGroups.Frc
+  name: Frc
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_Frc
+  commentId: F:AAComm.Services.UserUnits.UUGroups.Frc
+  fullName: AAComm.Services.UserUnits.UUGroups.Frc
+  nameWithType: UUGroups.Frc
+- uid: AAComm.Services.UserUnits.UUGroups.Pos
+  name: Pos
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_Pos
+  commentId: F:AAComm.Services.UserUnits.UUGroups.Pos
+  fullName: AAComm.Services.UserUnits.UUGroups.Pos
+  nameWithType: UUGroups.Pos
+- uid: AAComm.Services.UserUnits.UUGroups.PosAux
+  name: PosAux
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_PosAux
+  commentId: F:AAComm.Services.UserUnits.UUGroups.PosAux
+  fullName: AAComm.Services.UserUnits.UUGroups.PosAux
+  nameWithType: UUGroups.PosAux
+- uid: AAComm.Services.UserUnits.UUGroups.PosPD
+  name: PosPD
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_PosPD
+  commentId: F:AAComm.Services.UserUnits.UUGroups.PosPD
+  fullName: AAComm.Services.UserUnits.UUGroups.PosPD
+  nameWithType: UUGroups.PosPD
+- uid: AAComm.Services.UserUnits.UUGroups.Vel
+  name: Vel
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_Vel
+  commentId: F:AAComm.Services.UserUnits.UUGroups.Vel
+  fullName: AAComm.Services.UserUnits.UUGroups.Vel
+  nameWithType: UUGroups.Vel
+- uid: AAComm.Services.UserUnits.UUGroups.VelAux
+  name: VelAux
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_VelAux
+  commentId: F:AAComm.Services.UserUnits.UUGroups.VelAux
+  fullName: AAComm.Services.UserUnits.UUGroups.VelAux
+  nameWithType: UUGroups.VelAux
+- uid: AAComm.Services.UserUnits.UUGroups.VelPD
+  name: VelPD
+  href: api/AAComm.Services.UserUnits.UUGroups.html#AAComm_Services_UserUnits_UUGroups_VelPD
+  commentId: F:AAComm.Services.UserUnits.UUGroups.VelPD
+  fullName: AAComm.Services.UserUnits.UUGroups.VelPD
+  nameWithType: UUGroups.VelPD
+- uid: AAComm.Services.UserUnits.UUMnemonics
+  name: UUMnemonics
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html
+  commentId: T:AAComm.Services.UserUnits.UUMnemonics
+  fullName: AAComm.Services.UserUnits.UUMnemonics
+  nameWithType: UUMnemonics
+- uid: AAComm.Services.UserUnits.UUMnemonics.FactorSuffix
+  name: FactorSuffix
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_FactorSuffix
+  commentId: F:AAComm.Services.UserUnits.UUMnemonics.FactorSuffix
+  fullName: AAComm.Services.UserUnits.UUMnemonics.FactorSuffix
+  nameWithType: UUMnemonics.FactorSuffix
+- uid: AAComm.Services.UserUnits.UUMnemonics.GroupSuffix
+  name: GroupSuffix
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_GroupSuffix
+  commentId: F:AAComm.Services.UserUnits.UUMnemonics.GroupSuffix
+  fullName: AAComm.Services.UserUnits.UUMnemonics.GroupSuffix
+  nameWithType: UUMnemonics.GroupSuffix
+- uid: AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig(System.String)
+  name: IsUserUnitsConfig(string)
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_IsUserUnitsConfig_System_String_
+  commentId: M:AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig(System.String)
+  name.vb: IsUserUnitsConfig(String)
+  fullName: AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig(string)
+  fullName.vb: AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig(String)
+  nameWithType: UUMnemonics.IsUserUnitsConfig(string)
+  nameWithType.vb: UUMnemonics.IsUserUnitsConfig(String)
+- uid: AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig*
+  name: IsUserUnitsConfig
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_IsUserUnitsConfig_
+  commentId: Overload:AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UUMnemonics.IsUserUnitsConfig
+  nameWithType: UUMnemonics.IsUserUnitsConfig
+- uid: AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig(System.String)
+  name: MessageAssignsUserUnitsConfig(string)
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_MessageAssignsUserUnitsConfig_System_String_
+  commentId: M:AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig(System.String)
+  name.vb: MessageAssignsUserUnitsConfig(String)
+  fullName: AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig(string)
+  fullName.vb: AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig(String)
+  nameWithType: UUMnemonics.MessageAssignsUserUnitsConfig(string)
+  nameWithType.vb: UUMnemonics.MessageAssignsUserUnitsConfig(String)
+- uid: AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig*
+  name: MessageAssignsUserUnitsConfig
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_MessageAssignsUserUnitsConfig_
+  commentId: Overload:AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UUMnemonics.MessageAssignsUserUnitsConfig
+  nameWithType: UUMnemonics.MessageAssignsUserUnitsConfig
+- uid: AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment(System.String,System.Char@,System.Boolean@)
+  name: TryParseUserUnitsEnAssignment(string, out char, out bool)
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_TryParseUserUnitsEnAssignment_System_String_System_Char__System_Boolean__
+  commentId: M:AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment(System.String,System.Char@,System.Boolean@)
+  name.vb: TryParseUserUnitsEnAssignment(String, Char, Boolean)
+  fullName: AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment(string, out char, out bool)
+  fullName.vb: AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment(String, Char, Boolean)
+  nameWithType: UUMnemonics.TryParseUserUnitsEnAssignment(string, out char, out bool)
+  nameWithType.vb: UUMnemonics.TryParseUserUnitsEnAssignment(String, Char, Boolean)
+- uid: AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment*
+  name: TryParseUserUnitsEnAssignment
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_TryParseUserUnitsEnAssignment_
+  commentId: Overload:AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UUMnemonics.TryParseUserUnitsEnAssignment
+  nameWithType: UUMnemonics.TryParseUserUnitsEnAssignment
+- uid: AAComm.Services.UserUnits.UUMnemonics.UnitsSuffix
+  name: UnitsSuffix
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_UnitsSuffix
+  commentId: F:AAComm.Services.UserUnits.UUMnemonics.UnitsSuffix
+  fullName: AAComm.Services.UserUnits.UUMnemonics.UnitsSuffix
+  nameWithType: UUMnemonics.UnitsSuffix
+- uid: AAComm.Services.UserUnits.UUMnemonics.UserUnitsEn
+  name: UserUnitsEn
+  href: api/AAComm.Services.UserUnits.UUMnemonics.html#AAComm_Services_UserUnits_UUMnemonics_UserUnitsEn
+  commentId: F:AAComm.Services.UserUnits.UUMnemonics.UserUnitsEn
+  fullName: AAComm.Services.UserUnits.UUMnemonics.UserUnitsEn
+  nameWithType: UUMnemonics.UserUnitsEn
+- uid: AAComm.Services.UserUnits.UserUnitAxis
+  name: UserUnitAxis
+  href: api/AAComm.Services.UserUnits.UserUnitAxis.html
+  commentId: T:AAComm.Services.UserUnits.UserUnitAxis
+  fullName: AAComm.Services.UserUnits.UserUnitAxis
+  nameWithType: UserUnitAxis
+- uid: AAComm.Services.UserUnits.UserUnitAxis.Factor
+  name: Factor
+  href: api/AAComm.Services.UserUnits.UserUnitAxis.html#AAComm_Services_UserUnits_UserUnitAxis_Factor
+  commentId: P:AAComm.Services.UserUnits.UserUnitAxis.Factor
+  fullName: AAComm.Services.UserUnits.UserUnitAxis.Factor
+  nameWithType: UserUnitAxis.Factor
+- uid: AAComm.Services.UserUnits.UserUnitAxis.Factor*
+  name: Factor
+  href: api/AAComm.Services.UserUnits.UserUnitAxis.html#AAComm_Services_UserUnits_UserUnitAxis_Factor_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitAxis.Factor
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitAxis.Factor
+  nameWithType: UserUnitAxis.Factor
+- uid: AAComm.Services.UserUnits.UserUnitAxis.Units
+  name: Units
+  href: api/AAComm.Services.UserUnits.UserUnitAxis.html#AAComm_Services_UserUnits_UserUnitAxis_Units
+  commentId: P:AAComm.Services.UserUnits.UserUnitAxis.Units
+  fullName: AAComm.Services.UserUnits.UserUnitAxis.Units
+  nameWithType: UserUnitAxis.Units
+- uid: AAComm.Services.UserUnits.UserUnitAxis.Units*
+  name: Units
+  href: api/AAComm.Services.UserUnits.UserUnitAxis.html#AAComm_Services_UserUnits_UserUnitAxis_Units_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitAxis.Units
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitAxis.Units
+  nameWithType: UserUnitAxis.Units
+- uid: AAComm.Services.UserUnits.UserUnitGroup
+  name: UserUnitGroup
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html
+  commentId: T:AAComm.Services.UserUnits.UserUnitGroup
+  fullName: AAComm.Services.UserUnits.UserUnitGroup
+  nameWithType: UserUnitGroup
+- uid: AAComm.Services.UserUnits.UserUnitGroup.AxisUnits(System.Char)
+  name: AxisUnits(char)
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_AxisUnits_System_Char_
+  commentId: M:AAComm.Services.UserUnits.UserUnitGroup.AxisUnits(System.Char)
+  name.vb: AxisUnits(Char)
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.AxisUnits(char)
+  fullName.vb: AAComm.Services.UserUnits.UserUnitGroup.AxisUnits(Char)
+  nameWithType: UserUnitGroup.AxisUnits(char)
+  nameWithType.vb: UserUnitGroup.AxisUnits(Char)
+- uid: AAComm.Services.UserUnits.UserUnitGroup.AxisUnits*
+  name: AxisUnits
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_AxisUnits_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitGroup.AxisUnits
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.AxisUnits
+  nameWithType: UserUnitGroup.AxisUnits
+- uid: AAComm.Services.UserUnits.UserUnitGroup.Group
+  name: Group
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_Group
+  commentId: P:AAComm.Services.UserUnits.UserUnitGroup.Group
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.Group
+  nameWithType: UserUnitGroup.Group
+- uid: AAComm.Services.UserUnits.UserUnitGroup.Group*
+  name: Group
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_Group_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitGroup.Group
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.Group
+  nameWithType: UserUnitGroup.Group
+- uid: AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics
+  name: GroupMnemonics
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_GroupMnemonics
+  commentId: P:AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics
+  nameWithType: UserUnitGroup.GroupMnemonics
+- uid: AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics*
+  name: GroupMnemonics
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_GroupMnemonics_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.GroupMnemonics
+  nameWithType: UserUnitGroup.GroupMnemonics
+- uid: AAComm.Services.UserUnits.UserUnitGroup.HasUnits
+  name: HasUnits
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_HasUnits
+  commentId: P:AAComm.Services.UserUnits.UserUnitGroup.HasUnits
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.HasUnits
+  nameWithType: UserUnitGroup.HasUnits
+- uid: AAComm.Services.UserUnits.UserUnitGroup.HasUnits*
+  name: HasUnits
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_HasUnits_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitGroup.HasUnits
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.HasUnits
+  nameWithType: UserUnitGroup.HasUnits
+- uid: AAComm.Services.UserUnits.UserUnitGroup.Name
+  name: Name
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_Name
+  commentId: P:AAComm.Services.UserUnits.UserUnitGroup.Name
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.Name
+  nameWithType: UserUnitGroup.Name
+- uid: AAComm.Services.UserUnits.UserUnitGroup.Name*
+  name: Name
+  href: api/AAComm.Services.UserUnits.UserUnitGroup.html#AAComm_Services_UserUnits_UserUnitGroup_Name_
+  commentId: Overload:AAComm.Services.UserUnits.UserUnitGroup.Name
+  isSpec: "True"
+  fullName: AAComm.Services.UserUnits.UserUnitGroup.Name
+  nameWithType: UserUnitGroup.Name
 - uid: AAComm.Services.XmlHandler
   name: XmlHandler
   href: api/AAComm.Services.XmlHandler.html
@@ -9107,6 +10234,12 @@ references:
   commentId: F:AAComm.Shared.ChannelType.RS_232
   fullName: AAComm.Shared.ChannelType.RS_232
   nameWithType: ChannelType.RS_232
+- uid: AAComm.Shared.ChannelType.Simulation
+  name: Simulation
+  href: api/AAComm.Shared.ChannelType.html#AAComm_Shared_ChannelType_Simulation
+  commentId: F:AAComm.Shared.ChannelType.Simulation
+  fullName: AAComm.Shared.ChannelType.Simulation
+  nameWithType: ChannelType.Simulation
 - uid: AAComm.Shared.ChannelType.Simulator
   name: Simulator
   href: api/AAComm.Shared.ChannelType.html#AAComm_Shared_ChannelType_Simulator
@@ -9197,6 +10330,12 @@ references:
   commentId: F:AAComm.Shared.ConnectResult.CANLibMissing
   fullName: AAComm.Shared.ConnectResult.CANLibMissing
   nameWithType: ConnectResult.CANLibMissing
+- uid: AAComm.Shared.ConnectResult.CanNotConnected
+  name: CanNotConnected
+  href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_CanNotConnected
+  commentId: F:AAComm.Shared.ConnectResult.CanNotConnected
+  fullName: AAComm.Shared.ConnectResult.CanNotConnected
+  nameWithType: ConnectResult.CanNotConnected
 - uid: AAComm.Shared.ConnectResult.ChannelInExclusiveCommsMode
   name: ChannelInExclusiveCommsMode
   href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_ChannelInExclusiveCommsMode
@@ -9383,6 +10522,24 @@ references:
   commentId: F:AAComm.Shared.ConnectResult.RequiredConnectionUnavailable
   fullName: AAComm.Shared.ConnectResult.RequiredConnectionUnavailable
   nameWithType: ConnectResult.RequiredConnectionUnavailable
+- uid: AAComm.Shared.ConnectResult.ServerNotBinaryCapable
+  name: ServerNotBinaryCapable
+  href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_ServerNotBinaryCapable
+  commentId: F:AAComm.Shared.ConnectResult.ServerNotBinaryCapable
+  fullName: AAComm.Shared.ConnectResult.ServerNotBinaryCapable
+  nameWithType: ConnectResult.ServerNotBinaryCapable
+- uid: AAComm.Shared.ConnectResult.SimLaunchFailed
+  name: SimLaunchFailed
+  href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_SimLaunchFailed
+  commentId: F:AAComm.Shared.ConnectResult.SimLaunchFailed
+  fullName: AAComm.Shared.ConnectResult.SimLaunchFailed
+  nameWithType: ConnectResult.SimLaunchFailed
+- uid: AAComm.Shared.ConnectResult.SimNoPort
+  name: SimNoPort
+  href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_SimNoPort
+  commentId: F:AAComm.Shared.ConnectResult.SimNoPort
+  fullName: AAComm.Shared.ConnectResult.SimNoPort
+  nameWithType: ConnectResult.SimNoPort
 - uid: AAComm.Shared.ConnectResult.SimNotEnabled
   name: SimNotEnabled
   href: api/AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_SimNotEnabled
@@ -9531,15 +10688,15 @@ references:
   commentId: T:AAComm.Shared.DataRecParams
   fullName: AAComm.Shared.DataRecParams
   nameWithType: DataRecParams
-- uid: AAComm.Shared.DataRecParams.CalculateActualGapValue(System.Double,AAComm.CommAPI)
-  name: CalculateActualGapValue(double, CommAPI)
-  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateActualGapValue_System_Double_AAComm_CommAPI_
-  commentId: M:AAComm.Shared.DataRecParams.CalculateActualGapValue(System.Double,AAComm.CommAPI)
-  name.vb: CalculateActualGapValue(Double, CommAPI)
-  fullName: AAComm.Shared.DataRecParams.CalculateActualGapValue(double, AAComm.CommAPI)
-  fullName.vb: AAComm.Shared.DataRecParams.CalculateActualGapValue(Double, AAComm.CommAPI)
-  nameWithType: DataRecParams.CalculateActualGapValue(double, CommAPI)
-  nameWithType.vb: DataRecParams.CalculateActualGapValue(Double, CommAPI)
+- uid: AAComm.Shared.DataRecParams.CalculateActualGapValue(System.Double,AAComm.Interfaces.ICommService)
+  name: CalculateActualGapValue(double, ICommService)
+  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateActualGapValue_System_Double_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Shared.DataRecParams.CalculateActualGapValue(System.Double,AAComm.Interfaces.ICommService)
+  name.vb: CalculateActualGapValue(Double, ICommService)
+  fullName: AAComm.Shared.DataRecParams.CalculateActualGapValue(double, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Shared.DataRecParams.CalculateActualGapValue(Double, AAComm.Interfaces.ICommService)
+  nameWithType: DataRecParams.CalculateActualGapValue(double, ICommService)
+  nameWithType.vb: DataRecParams.CalculateActualGapValue(Double, ICommService)
 - uid: AAComm.Shared.DataRecParams.CalculateActualGapValue*
   name: CalculateActualGapValue
   href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateActualGapValue_
@@ -9547,15 +10704,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Shared.DataRecParams.CalculateActualGapValue
   nameWithType: DataRecParams.CalculateActualGapValue
-- uid: AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,AAComm.CommAPI)
-  name: CalculateLengthValue(double, double, CommAPI)
-  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateLengthValue_System_Double_System_Double_AAComm_CommAPI_
-  commentId: M:AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,AAComm.CommAPI)
-  name.vb: CalculateLengthValue(Double, Double, CommAPI)
-  fullName: AAComm.Shared.DataRecParams.CalculateLengthValue(double, double, AAComm.CommAPI)
-  fullName.vb: AAComm.Shared.DataRecParams.CalculateLengthValue(Double, Double, AAComm.CommAPI)
-  nameWithType: DataRecParams.CalculateLengthValue(double, double, CommAPI)
-  nameWithType.vb: DataRecParams.CalculateLengthValue(Double, Double, CommAPI)
+- uid: AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,AAComm.Interfaces.ICommService)
+  name: CalculateLengthValue(double, double, ICommService)
+  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateLengthValue_System_Double_System_Double_AAComm_Interfaces_ICommService_
+  commentId: M:AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,AAComm.Interfaces.ICommService)
+  name.vb: CalculateLengthValue(Double, Double, ICommService)
+  fullName: AAComm.Shared.DataRecParams.CalculateLengthValue(double, double, AAComm.Interfaces.ICommService)
+  fullName.vb: AAComm.Shared.DataRecParams.CalculateLengthValue(Double, Double, AAComm.Interfaces.ICommService)
+  nameWithType: DataRecParams.CalculateLengthValue(double, double, ICommService)
+  nameWithType.vb: DataRecParams.CalculateLengthValue(Double, Double, ICommService)
 - uid: AAComm.Shared.DataRecParams.CalculateLengthValue*
   name: CalculateLengthValue
   href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateLengthValue_
@@ -9563,15 +10720,15 @@ references:
   isSpec: "True"
   fullName: AAComm.Shared.DataRecParams.CalculateLengthValue
   nameWithType: DataRecParams.CalculateLengthValue
-- uid: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List{System.String},AAComm.CommAPI,System.Int32)
-  name: ParamsToRecParamArray(List<string>, CommAPI, int)
-  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_ParamsToRecParamArray_System_Collections_Generic_List_System_String__AAComm_CommAPI_System_Int32_
-  commentId: M:AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List{System.String},AAComm.CommAPI,System.Int32)
-  name.vb: ParamsToRecParamArray(List(Of String), CommAPI, Integer)
-  fullName: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List<string>, AAComm.CommAPI, int)
-  fullName.vb: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List(Of String), AAComm.CommAPI, Integer)
-  nameWithType: DataRecParams.ParamsToRecParamArray(List<string>, CommAPI, int)
-  nameWithType.vb: DataRecParams.ParamsToRecParamArray(List(Of String), CommAPI, Integer)
+- uid: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List{System.String},AAComm.Interfaces.ICommService,System.Int32)
+  name: ParamsToRecParamArray(List<string>, ICommService, int)
+  href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_ParamsToRecParamArray_System_Collections_Generic_List_System_String__AAComm_Interfaces_ICommService_System_Int32_
+  commentId: M:AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List{System.String},AAComm.Interfaces.ICommService,System.Int32)
+  name.vb: ParamsToRecParamArray(List(Of String), ICommService, Integer)
+  fullName: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List<string>, AAComm.Interfaces.ICommService, int)
+  fullName.vb: AAComm.Shared.DataRecParams.ParamsToRecParamArray(System.Collections.Generic.List(Of String), AAComm.Interfaces.ICommService, Integer)
+  nameWithType: DataRecParams.ParamsToRecParamArray(List<string>, ICommService, int)
+  nameWithType.vb: DataRecParams.ParamsToRecParamArray(List(Of String), ICommService, Integer)
 - uid: AAComm.Shared.DataRecParams.ParamsToRecParamArray*
   name: ParamsToRecParamArray
   href: api/AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_ParamsToRecParamArray_
@@ -9687,6 +10844,42 @@ references:
   commentId: F:AAComm.Shared.DataRecParams.RecUploadS
   fullName: AAComm.Shared.DataRecParams.RecUploadS
   nameWithType: DataRecParams.RecUploadS
+- uid: AAComm.Shared.LongOperationType
+  name: LongOperationType
+  href: api/AAComm.Shared.LongOperationType.html
+  commentId: T:AAComm.Shared.LongOperationType
+  fullName: AAComm.Shared.LongOperationType
+  nameWithType: LongOperationType
+- uid: AAComm.Shared.LongOperationType.EventCorrect
+  name: EventCorrect
+  href: api/AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_EventCorrect
+  commentId: F:AAComm.Shared.LongOperationType.EventCorrect
+  fullName: AAComm.Shared.LongOperationType.EventCorrect
+  nameWithType: LongOperationType.EventCorrect
+- uid: AAComm.Shared.LongOperationType.Load
+  name: Load
+  href: api/AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_Load
+  commentId: F:AAComm.Shared.LongOperationType.Load
+  fullName: AAComm.Shared.LongOperationType.Load
+  nameWithType: LongOperationType.Load
+- uid: AAComm.Shared.LongOperationType.Reset
+  name: Reset
+  href: api/AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_Reset
+  commentId: F:AAComm.Shared.LongOperationType.Reset
+  fullName: AAComm.Shared.LongOperationType.Reset
+  nameWithType: LongOperationType.Reset
+- uid: AAComm.Shared.LongOperationType.Save
+  name: Save
+  href: api/AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_Save
+  commentId: F:AAComm.Shared.LongOperationType.Save
+  fullName: AAComm.Shared.LongOperationType.Save
+  nameWithType: LongOperationType.Save
+- uid: AAComm.Shared.LongOperationType.SaveUser
+  name: SaveUser
+  href: api/AAComm.Shared.LongOperationType.html#AAComm_Shared_LongOperationType_SaveUser
+  commentId: F:AAComm.Shared.LongOperationType.SaveUser
+  fullName: AAComm.Shared.LongOperationType.SaveUser
+  nameWithType: LongOperationType.SaveUser
 - uid: AAComm.Shared.MessageType
   name: MessageType
   href: api/AAComm.Shared.MessageType.html
@@ -9973,6 +11166,54 @@ references:
   commentId: F:AAComm.Shared.ProductTypes.PULSE_SYNC_ID
   fullName: AAComm.Shared.ProductTypes.PULSE_SYNC_ID
   nameWithType: ProductTypes.PULSE_SYNC_ID
+- uid: AAComm.Shared.ProtocolMode
+  name: ProtocolMode
+  href: api/AAComm.Shared.ProtocolMode.html
+  commentId: T:AAComm.Shared.ProtocolMode
+  fullName: AAComm.Shared.ProtocolMode
+  nameWithType: ProtocolMode
+- uid: AAComm.Shared.ProtocolMode.Ascii
+  name: Ascii
+  href: api/AAComm.Shared.ProtocolMode.html#AAComm_Shared_ProtocolMode_Ascii
+  commentId: F:AAComm.Shared.ProtocolMode.Ascii
+  fullName: AAComm.Shared.ProtocolMode.Ascii
+  nameWithType: ProtocolMode.Ascii
+- uid: AAComm.Shared.ProtocolMode.Binary
+  name: Binary
+  href: api/AAComm.Shared.ProtocolMode.html#AAComm_Shared_ProtocolMode_Binary
+  commentId: F:AAComm.Shared.ProtocolMode.Binary
+  fullName: AAComm.Shared.ProtocolMode.Binary
+  nameWithType: ProtocolMode.Binary
+- uid: AAComm.Shared.ServerCompat
+  name: ServerCompat
+  href: api/AAComm.Shared.ServerCompat.html
+  commentId: T:AAComm.Shared.ServerCompat
+  fullName: AAComm.Shared.ServerCompat
+  nameWithType: ServerCompat
+- uid: AAComm.Shared.ServerCompat.Current
+  name: Current
+  href: api/AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_Current
+  commentId: F:AAComm.Shared.ServerCompat.Current
+  fullName: AAComm.Shared.ServerCompat.Current
+  nameWithType: ServerCompat.Current
+- uid: AAComm.Shared.ServerCompat.LegacyAscii
+  name: LegacyAscii
+  href: api/AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_LegacyAscii
+  commentId: F:AAComm.Shared.ServerCompat.LegacyAscii
+  fullName: AAComm.Shared.ServerCompat.LegacyAscii
+  nameWithType: ServerCompat.LegacyAscii
+- uid: AAComm.Shared.ServerCompat.LegacyBinary
+  name: LegacyBinary
+  href: api/AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_LegacyBinary
+  commentId: F:AAComm.Shared.ServerCompat.LegacyBinary
+  fullName: AAComm.Shared.ServerCompat.LegacyBinary
+  nameWithType: ServerCompat.LegacyBinary
+- uid: AAComm.Shared.ServerCompat.Unknown
+  name: Unknown
+  href: api/AAComm.Shared.ServerCompat.html#AAComm_Shared_ServerCompat_Unknown
+  commentId: F:AAComm.Shared.ServerCompat.Unknown
+  fullName: AAComm.Shared.ServerCompat.Unknown
+  nameWithType: ServerCompat.Unknown
 - uid: AAComm.Shared.TimeoutMs
   name: TimeoutMs
   href: api/AAComm.Shared.TimeoutMs.html
@@ -10100,8 +11341,11 @@ references:
   name: AAComm - Getting Started
   href: articles/getting-started/aacomm.html
 - uid: getting-started-aacommpy
-  name: Python Bindings (AACommPy)
+  name: Python Client (AACommPy)
   href: articles/getting-started/aacommpy.html
+- uid: getting-started-native-c-sdk
+  name: Native C SDK (aacomm.h)
+  href: articles/getting-started/native-c-sdk.html
 - uid: release-notes-aacomm
   name: AAComm Changelog
   href: articles/release-notes/aacomm-changelog.html

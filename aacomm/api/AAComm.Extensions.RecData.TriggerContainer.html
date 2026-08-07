@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_TriggerContainer" data-uid="AAComm.Extensions.RecData.TriggerContainer" class="text-break">
-Class TriggerContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class TriggerContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,12 +159,80 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <a id="AAComm_Extensions_RecData_TriggerContainer__ctor_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_CommAPI_System_Int32_System_String_System_Double_System_Int64_System_Double_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.CommAPI,System.Int32,System.String,System.Double,System.Int64,System.Double)">
-  TriggerContainer(CommAPI, int, string, double, long, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_Interfaces_ICommService_System_Int32_System_Int32_System_Double_System_Int64_System_Double_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.Int32,System.Double,System.Int64,System.Double)">
+  TriggerContainer(ICommService, int, int, double, long, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>The API object passed in CTOR must be connected!
+  <div class="markdown level1 summary"><pre><code>Rx-path constructor: converts trigger values FROM controller units TO user units.
+</code></pre>
+<p></p>
+<pre><code>Used when parsing trigger setup from controller upload or recording header.
+</code></pre>
+<p></p>
+<pre><code>Applies &lt;xref href=&quot;AAComm.Services.FloatHelper.ApplyUserUnits(System.Double%2cSystem.Int32%2cAAComm.Interfaces.ICommService)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to scale values to display units.
+</code></pre>
+<p></p>
+<pre><code>Counterpart to the string-based Tx-path constructor which divides by factor.
+</code></pre>
+<p></p>
+<pre><code>Backwards-compatibility validation (double support, 64-bit masks) is intentionally skipped:
+values originate from the controller and are already in a valid format.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriggerContainer(ICommService api, int trigType, int trigSrcCCC, double trigVal, long trigMask, double trigValMax)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd><p>CONNECTED instance of <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a> class</p>
+</dd>
+    <dt><code>trigType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the type of the trigger (RecTrigTyp)</p>
+</dd>
+    <dt><code>trigSrcCCC</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>complex CAN code of the trigger source parameter</p>
+</dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>trigger value in controller units</p>
+</dd>
+    <dt><code>trigMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>trigger mask</p>
+</dd>
+    <dt><code>trigValMax</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>trigger max value in controller units</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_TriggerContainer__ctor_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_TriggerContainer__ctor_AAComm_Interfaces_ICommService_System_Int32_System_String_System_Double_System_Int64_System_Double_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor(AAComm.Interfaces.ICommService,System.Int32,System.String,System.Double,System.Int64,System.Double)">
+  TriggerContainer(ICommService, int, string, double, long, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Tx-path constructor: converts trigger values FROM user units TO controller units.
+</code></pre>
+<p></p>
+<pre><code>The trigger source parameter determines the UU group and axis for factor lookup.
+</code></pre>
+<p></p>
+<pre><code>The API object passed in CTOR must be connected!
 </code></pre>
 <p></p>
 <pre><code>In case of incorrect arguments given, exception will be thrown
@@ -173,29 +241,73 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TriggerContainer(CommAPI api, int trigType, string trigMnemonic, double trigVal, long trigMask, double trigValMax = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public TriggerContainer(ICommService api, int trigType, string trigParam, double trigVal, long trigMask, double trigValMax = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>CONNECTED instance of <a class="xref" href="AAComm.CommAPI.html">CommAPI</a> class</p>
 </dd>
     <dt><code>trigType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>the type of the trigger (RecTrigTyp)</p>
 </dd>
-    <dt><code>trigMnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>trigger parameter full massage ([Axis][Mnemonic][index], &quot;AVel[2]&quot;)</p>
+    <dt><code>trigParam</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>trigger parameter full message ([Axis][Mnemonic][index], &quot;AVel[2]&quot;)</p>
 </dd>
     <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>trigger value</p>
+    <dd><p>trigger value in user units (display value)</p>
 </dd>
     <dt><code>trigMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
     <dd><p>trigger mask</p>
 </dd>
     <dt><code>trigValMax</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>trigger max value, relevant for some of the triggers</p>
+    <dd><p>trigger max value in user units, relevant for some trigger types</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Extensions_RecData_TriggerContainer__ctor_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_TriggerContainer__ctor_System_Int32_System_Double_System_Int64_System_Double_" data-uid="AAComm.Extensions.RecData.TriggerContainer.#ctor(System.Int32,System.Double,System.Int64,System.Double)">
+  TriggerContainer(int, double, long, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Sourceless constructor for trigger types with no source parameter (None, ManuallyForced).
+</code></pre>
+<p></p>
+<pre><code>No API needed, no UU scaling — no source parameter means no UU factor.
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.Extensions.RecData.TriggerContainer.html#AAComm_Extensions_RecData_TriggerContainer_GetDownloadCommands_AAComm_Extensions_RecData_RecParamsResolver_System_Int32_">GetDownloadCommands(RecParamsResolver, int)</a> works uniformly with this constructor.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriggerContainer(int trigType, double trigVal, long trigMask, double trigValMax)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trigType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>trigVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>trigMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+    <dt><code>trigValMax</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -217,7 +329,7 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_Mask" data-uid="AAComm.Extensions.RecData.TriggerContainer.Mask">
   Mask
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The mask of the trigger (RecTrigMask)</p>
@@ -249,7 +361,7 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_MaxValue" data-uid="AAComm.Extensions.RecData.TriggerContainer.MaxValue">
   MaxValue
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximum value of trigger, relevant for some of the triggers type (RecTrigValMax)</p>
@@ -281,10 +393,10 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_SrcCCC" data-uid="AAComm.Extensions.RecData.TriggerContainer.SrcCCC">
   SrcCCC
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The complex can code of the trigger parameter</p>
+  <div class="markdown level1 summary"><p>The complex CAN code of the trigger parameter</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -313,10 +425,10 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_SrcMnemonic" data-uid="AAComm.Extensions.RecData.TriggerContainer.SrcMnemonic">
   SrcMnemonic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Full massage of the parameter (for example: AVel[2])</p>
+  <div class="markdown level1 summary"><p>Full parameter, including axis and array index if any (for example: AVel[2])</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -345,7 +457,7 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_Type" data-uid="AAComm.Extensions.RecData.TriggerContainer.Type">
   Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The type of the trigger (RecTrigTyp)</p>
@@ -377,7 +489,7 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAComm_Extensions_RecData_TriggerContainer_Value" data-uid="AAComm.Extensions.RecData.TriggerContainer.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The value of the trigger (RecTrigVal)</p>
@@ -405,11 +517,63 @@ Class TriggerContainer  <a class="header-action link-secondary" title="View sour
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_RecData_TriggerContainer_GetDownloadCommands_" data-uid="AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands*"></a>
+
+  <h3 id="AAComm_Extensions_RecData_TriggerContainer_GetDownloadCommands_AAComm_Extensions_RecData_RecParamsResolver_System_Int32_" data-uid="AAComm.Extensions.RecData.TriggerContainer.GetDownloadCommands(AAComm.Extensions.RecData.RecParamsResolver,System.Int32)">
+  GetDownloadCommands(RecParamsResolver, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Returns recording trigger download commands for the controller.
+</code></pre>
+<p></p>
+<pre><code>Values are in controller units (converted from user units in constructor).
+</code></pre>
+<p></p>
+<pre><code>Recording trigger parameters always use axis &quot;A&quot; prefix (not motor-axis-related).
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; GetDownloadCommands(RecParamsResolver resolver, int trigID)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>resolver</code> <a class="xref" href="AAComm.Extensions.RecData.RecParamsResolver.html">RecParamsResolver</a></dt>
+    <dd><p>recording parameters resolver for header version and RecSysID</p>
+</dd>
+    <dt><code>trigID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>1-based trigger ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/TriggerContainer.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

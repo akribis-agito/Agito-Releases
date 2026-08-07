@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Services_AACommMessage" data-uid="AAComm.Services.AACommMessage" class="text-break">
-Class AACommMessage  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L20"><i class="bi bi-code-slash"></i></a>
+Class AACommMessage  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -176,7 +176,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String)">
   AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>IMPLICIT Constructor for ASYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method 
@@ -215,7 +215,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_AAComm_Shared_MessageType_System_Int32_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,AAComm.Shared.MessageType,System.Int32)">
   AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string, MessageType, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L192"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>ADVANCED!!
@@ -265,9 +265,91 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
 
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_AAComm_Shared_MessageType_System_Int32_System_Boolean_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)">
+  AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string, MessageType, int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ADVANCED!! EXPLICIT constructor for ASYNCHRONOUS <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Send_AAComm_Services_AACommMessage_">Send(AACommMessage)</a> method, with User Units bypass</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(EventHandler&lt;AACommEventArgs&gt; onReplyReceived, string message, MessageType messageType, int timeoutMs, bool skipUserUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onReplyReceived</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>messageType</code> <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></dt>
+    <dd></dd>
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>skipUserUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_EventHandler_AAComm_Services_AACommEventArgs__System_String_System_Boolean_" data-uid="AAComm.Services.AACommMessage.#ctor(System.EventHandler{AAComm.Services.AACommEventArgs},System.String,System.Boolean)">
+  AACommMessage(EventHandler&lt;AACommEventArgs&gt;, string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>IMPLICIT Constructor for ASYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method, with User Units bypass
+</code></pre>
+<p></p>
+    <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_MessageType">MessageType</a> and <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_TimeoutMs">TimeoutMs</a> are set automatically, according to the message being sent
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(EventHandler&lt;AACommEventArgs&gt; onReplyReceived, string message, bool skipUserUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onReplyReceived</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd><p>the event handler to be called, when reply is received <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_OnReplyReceived">OnReplyReceived</a> (can be 'null')</p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+    <dt><code>skipUserUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>when 'true', User Units scaling is bypassed for this message</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
   <h3 id="AAComm_Services_AACommMessage__ctor_System_String_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String)">
   AACommMessage(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L180"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>IMPLICIT Constructor for SYNCHRONOUS &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method
@@ -303,7 +385,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage__ctor_System_String_AAComm_Shared_MessageType_System_Int32_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String,AAComm.Shared.MessageType,System.Int32)">
   AACommMessage(string, MessageType, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L210"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>ADVANCED!!
@@ -348,15 +430,164 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
 
 
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_String_AAComm_Shared_MessageType_System_Int32_System_Boolean_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String,AAComm.Shared.MessageType,System.Int32,System.Boolean)">
+  AACommMessage(string, MessageType, int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ADVANCED!! EXPLICIT constructor for SYNCHRONOUS <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_SendReceive_AAComm_Services_AACommMessage_">SendReceive(AACommMessage)</a> method, with User Units bypass</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(string message, MessageType messageType, int timeoutMs, bool skipUserUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>messageType</code> <a class="xref" href="AAComm.Shared.MessageType.html">MessageType</a></dt>
+    <dd></dd>
+    <dt><code>timeoutMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>skipUserUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage__ctor_" data-uid="AAComm.Services.AACommMessage.#ctor*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage__ctor_System_String_System_Boolean_" data-uid="AAComm.Services.AACommMessage.#ctor(System.String,System.Boolean)">
+  AACommMessage(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>IMPLICIT Constructor for SYNCHRONOUS <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_SendReceive_AAComm_Services_AACommMessage_">SendReceive(AACommMessage)</a> method, with User Units bypass</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AACommMessage(string message, bool skipUserUnits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the message to be sent</p>
+</dd>
+    <dt><code>skipUserUnits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>when 'true', User Units scaling is bypassed for this message</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="AAComm_Services_AACommMessage_AllowUserUnitsConfig_" data-uid="AAComm.Services.AACommMessage.AllowUserUnitsConfig*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_AllowUserUnitsConfig" data-uid="AAComm.Services.AACommMessage.AllowUserUnitsConfig">
+  AllowUserUnitsConfig
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>ADVANCED / provisioning use. When 'true', this message is permitted to &lt;b&gt;assign&lt;/b&gt; User Units
+factor/units config parameters (&lt;code&gt;*UnitFct&lt;/code&gt;, &lt;code&gt;*UnitUnt[]&lt;/code&gt;), which the Tx-build gate
+otherwise rejects (&lt;xref href=&quot;AAComm.Services.ControllerErrorInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; code 4023) — those are API-only,
+written through &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI%2cAAComm.Services.UserUnits.UUGroups%2cSystem.Char%2cSystem.String%2cSystem.Double)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
+</code></pre>
+<p></p>
+<pre><code>A caller that sets this MUST resync the in-memory scaling afterwards via
+&lt;xref href=&quot;AAComm.CommAPI.RefreshUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;; a raw write changes the controller but leaves the adapter
+cache stale. Used by the sanctioned User Units write path and by PCSuite provisioning tools that
+bulk-write a full parameter set. Default 'false'. Does not affect queries or non-UU params.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowUserUnitsConfig { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_AACommMessage_LongOpType_" data-uid="AAComm.Services.AACommMessage.LongOpType*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_LongOpType" data-uid="AAComm.Services.AACommMessage.LongOpType">
+  LongOpType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Non-null when this message triggers a long controller operation (Reset, Save, Load, etc.).
+Set automatically by the implicit constructor from <span class="xref">AAComm.InternalServices.MsgTypeHelper</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LongOperationType? LongOpType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Shared.LongOperationType.html">LongOperationType</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="AAComm_Services_AACommMessage_Message_" data-uid="AAComm.Services.AACommMessage.Message*"></a>
 
   <h3 id="AAComm_Services_AACommMessage_Message" data-uid="AAComm.Services.AACommMessage.Message">
   Message
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>the message to be sent to controller</p>
@@ -388,7 +619,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage_MessageType" data-uid="AAComm.Services.AACommMessage.MessageType">
   MessageType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>indicates a special message type, automatically resolved</p>
@@ -420,7 +651,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage_OnReplyReceived" data-uid="AAComm.Services.AACommMessage.OnReplyReceived">
   OnReplyReceived
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>the event handler to be called, when reply is received. Use with <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Send_AAComm_Services_AACommMessage_">Send(AACommMessage)</a><p></p>
@@ -449,11 +680,50 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
 
 
+  <a id="AAComm_Services_AACommMessage_SkipUserUnits_" data-uid="AAComm.Services.AACommMessage.SkipUserUnits*"></a>
+
+  <h3 id="AAComm_Services_AACommMessage_SkipUserUnits" data-uid="AAComm.Services.AACommMessage.SkipUserUnits">
+  SkipUserUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>when set to 'true', User Units scaling is bypassed for this message (both Tx and Rx paths).
+</code></pre>
+<p></p>
+<pre><code>use when the caller requires raw controller values, without User Units conversion.
+</code></pre>
+<p></p>
+<pre><code>unlike &lt;xref href=&quot;AAComm.CommAPI.IgnoreUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, this flag affects only this specific message.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SkipUserUnits { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_Services_AACommMessage_TimeoutMs_" data-uid="AAComm.Services.AACommMessage.TimeoutMs*"></a>
 
   <h3 id="AAComm_Services_AACommMessage_TimeoutMs" data-uid="AAComm.Services.AACommMessage.TimeoutMs">
   TimeoutMs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>message timeout, automatically resolved, can be overridden using <a class="xref" href="AAComm.Services.AACommMessage.html#AAComm_Services_AACommMessage_SetTimeoutMs_System_Int32_">SetTimeoutMs(int)</a></p>
@@ -489,7 +759,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage_IsSpecialEthernetOnly_System_String_" data-uid="AAComm.Services.AACommMessage.IsSpecialEthernetOnly(System.String)">
   IsSpecialEthernetOnly(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L252"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>ADVANCED!!
@@ -536,7 +806,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
   <h3 id="AAComm_Services_AACommMessage_SetTimeoutMs_System_Int32_" data-uid="AAComm.Services.AACommMessage.SetTimeoutMs(System.Int32)">
   SetTimeoutMs(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L240"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>ADVANCED!!
@@ -568,50 +838,11 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
 
 
 
-  <a id="AAComm_Services_AACommMessage_StartsWithPAxis_" data-uid="AAComm.Services.AACommMessage.StartsWithPAxis*"></a>
-
-  <h3 id="AAComm_Services_AACommMessage_StartsWithPAxis_System_String_" data-uid="AAComm.Services.AACommMessage.StartsWithPAxis(System.String)">
-  StartsWithPAxis(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L156"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Helper function to checks whether a message starts with <a class="xref" href="AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_PAxis">PAxis</a> (case insensitive)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StartsWithPAxis(string msg)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>msg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>parameter to check</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>whether the string starts with <a class="xref" href="AAComm.Services.AACommAxisHelper.html#AAComm_Services_AACommAxisHelper_PAxis">PAxis</a></p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMessage.cs/#L21" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_LoggerDataContainer" data-uid="AAComm.Extensions.RecData.LoggerDataContainer" class="text-break">
-Class LoggerDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L32"><i class="bi bi-code-slash"></i></a>
+Class LoggerDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,9 +159,9 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
 
   <a id="AAComm_Extensions_RecData_LoggerDataContainer__ctor_" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.#ctor*"></a>
 
-  <h3 id="AAComm_Extensions_RecData_LoggerDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_CommAPI_" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.CommAPI)">
-  LoggerDataContainer(AACommEventArgs, IReadOnlyList&lt;MessageData&gt;, CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Extensions_RecData_LoggerDataContainer__ctor_AAComm_Services_AACommEventArgs_System_Collections_Generic_IReadOnlyList_AAComm_Services_MessageData__AAComm_Interfaces_ICommService_System_Char___" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.#ctor(AAComm.Services.AACommEventArgs,System.Collections.Generic.IReadOnlyList{AAComm.Services.MessageData},AAComm.Interfaces.ICommService,System.Char[])">
+  LoggerDataContainer(AACommEventArgs, IReadOnlyList&lt;MessageData&gt;, ICommService, char[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parses a LoggerUpload response and resolves floating-point values.</p>
@@ -169,7 +169,7 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LoggerDataContainer(AACommEventArgs e, IReadOnlyList&lt;MessageData&gt; paramsData, CommAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public LoggerDataContainer(AACommEventArgs e, IReadOnlyList&lt;MessageData&gt; paramsData, ICommService api, char[] paramAxes)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -180,8 +180,11 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
     <dt><code>paramsData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>&gt;</dt>
     <dd><p>per-parameter MessageData for floating-point resolution, matching the logged parameter order</p>
 </dd>
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
-    <dd><p>connected CommAPI instance (used for double-precision support detection)</p>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
+    <dd><p>connected comm service (used for double-precision support detection)</p>
+</dd>
+    <dt><code>paramAxes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
+    <dd><p>per-parameter axis characters for User Units resolution, matching the logged parameter order</p>
 </dd>
   </dl>
 
@@ -204,7 +207,7 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
 
   <h3 id="AAComm_Extensions_RecData_LoggerDataContainer_LastPacketId" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.LastPacketId">
   LastPacketId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The ID of the last packet in the response (0 if no packets)</p>
@@ -236,7 +239,7 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
 
   <h3 id="AAComm_Extensions_RecData_LoggerDataContainer_PacketCount" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.PacketCount">
   PacketCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of packets in the response</p>
@@ -268,7 +271,7 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
 
   <h3 id="AAComm_Extensions_RecData_LoggerDataContainer_Packets" data-uid="AAComm.Extensions.RecData.LoggerDataContainer.Packets">
   Packets
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parsed and resolved logger packets</p>
@@ -300,7 +303,7 @@ Class LoggerDataContainer  <a class="header-action link-secondary" title="View s
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L32" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/LoggerDataContainer.cs/#L33" class="edit-link">Edit this page</a>
         </div>
 
 

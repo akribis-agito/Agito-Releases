@@ -22,7 +22,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.CommAPI",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"1\">An API for handling communication with the AACommServer executable.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"4\">The API provides low-level send/receive capabilities + special functionality.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"7\">All *synchronous* functions are mutually-locking, and should not be called from multiple threads\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"10\">Proper work-flow: (see usage details at every function description)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"13\">0. subscribe to events: Reset: &lt;xref href=&quot;AAComm.CommAPI.OnResetProgress&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"16\">1. &lt;xref href=&quot;AAComm.CommAPI.StartAACommServer(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n2. &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory, can be used to determine &lt;xref href=&quot;AAComm.Services.ConnectionData.ControllerType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"21\">3. &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n4. &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and/or &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"26\">5. &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n6. &lt;xref href=&quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory)\n</code></pre>\n<p></p>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"1\">An API for handling communication with the AACommServer executable.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"4\">The API provides low-level send/receive capabilities + special functionality.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"7\">All *synchronous* functions are mutually-locking, and should not be called from multiple threads\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"10\">Proper work-flow: (see usage details at every function description)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"13\">0. subscribe to events: Long operations: &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationStarted&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; / &lt;xref href=&quot;AAComm.CommAPI.OnLongOperationEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, General Error: &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, Push: &lt;xref href=&quot;AAComm.CommAPI.OnPushMessageReceived&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (TBD)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"16\">1. &lt;xref href=&quot;AAComm.CommAPI.StartAACommServer(System.String)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n2. &lt;xref href=&quot;AAComm.CommAPI.TestConnection(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory, can be used to determine &lt;xref href=&quot;AAComm.Services.ConnectionData.ControllerType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"21\">3. &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n4. &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and/or &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (both safe from any thread, in any combination — independent FIFO pipelines for ordinary messages)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPI.yml\" sourcestartlinenumber=\"26\">5. &lt;xref href=&quot;AAComm.CommAPI.Disconnect&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\n6. &lt;xref href=&quot;AAComm.CommAPI.CloseAACommServer(System.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (not mandatory)\n</code></pre>\n<p></p>\n"
     },
     {
       "type": "ManagedReference",
@@ -106,7 +106,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommDownloadFW",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"10\">NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"10\">NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"13\">NOTE: FW download is NOT supported over CAN — download over Ethernet (AGM800) or RS-232 (serial)\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -446,20 +446,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AAComm.Services.AACommAxisHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AAComm.Services.AACommAxisHelper.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AAComm.Services.AACommAxisHelper",
-      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommAxisHelper.yml\" sourcestartlinenumber=\"1\">a helper class for controller parameters Axis manipulations</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.AACommEventArgs.yml",
       "output": {
         ".html": {
@@ -499,6 +485,20 @@
       "IsMRef": true,
       "Title": "AAComm.Services.AACommMessage",
       "Summary": "<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"1\">This class describes the message sent to AAComm &lt;xref href=&quot;AAComm.CommAPI.Send(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.CommAPI.SendReceive(AAComm.Services.AACommMessage)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; methods\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"4\">Two CTOR sets are available: for the synchronous SendReceive() function, and the asynchronous Send() function\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"7\">Every CTOR set has 2 &quot;sub-types&quot; regarding &lt;xref href=&quot;AAComm.Services.AACommMessage.MessageType&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Services.AACommMessage.TimeoutMs&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nThe 'implicit' CTOR resolves these parameters automatically from the &lt;xref href=&quot;AAComm.Services.AACommMessage.Message&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; argument\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"12\">The 'explicit' CTOR expects the user to specify these arguments. For expert use only.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMessage.yml\" sourcestartlinenumber=\"15\">To use the &quot;Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessage&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special CNCA Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNC&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special CNCB Bulk Message&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.BulkMessageCNCB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special Bulk Message for CNCA&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulk&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\nTo use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'explicit' CTOR, set MessageType to &lt;xref href=&quot;AAComm.Shared.MessageType.SpecialBulkB&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and Timeout to &lt;xref href=&quot;AAComm.Shared.TimeoutMs.Default&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.AACommMnemonicHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.AACommMnemonicHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.AACommMnemonicHelper",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.AACommMnemonicHelper.yml\" sourcestartlinenumber=\"1\">SDK helper for controller-message string manipulation: axis letters, mnemonics,\narray indexes and assignment separation, plus ordinal-ignore-case string helpers.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.AACommMnemonicHelper.yml\" sourcestartlinenumber=\"5\">Controller messages have the shape &lt;code&gt;&lt;axis-letter&gt;&lt;Mnemonic&gt;[index]=value&lt;/code&gt;\n(e.g. &lt;code&gt;&quot;APos&quot;&lt;/code&gt;, &lt;code&gt;&quot;BGain[3]=5&quot;&lt;/code&gt;).\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -582,7 +582,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Services.COMTools",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"1\">a helper class for listing relevant (or ALL) COM ports\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"4\">Windows .NET ONLY!!! (returns empty list on .NET 6.0, etc.)\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"1\">a helper class for listing relevant (or ALL) COM ports.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.COMTools.yml\" sourcestartlinenumber=\"4\">Cross-platform: USB-serial enumeration via the Windows registry on Windows\nand udev &lt;code&gt;/dev/serial/by-id&lt;/code&gt; on Linux — no WMI dependency. (macOS, which has\nno udev by-id path, falls through to an empty list; no native macOS build exists yet.)\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -796,6 +796,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.MessageDataValueExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.MessageDataValueExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.MessageDataValueExtensions",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.MessageDataValueExtensions.yml\" sourcestartlinenumber=\"1\">string / integral accessors for <xref href=\"AAComm.Services.MessageData\" data-throw-if-not-resolved=\"false\"></xref> Min/Max/Default values,\nformatted according to the parameter type</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.NumberFormatter.yml",
       "output": {
         ".html": {
@@ -1006,6 +1020,90 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UUErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UUErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UUErrors",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UUErrors.yml\" sourcestartlinenumber=\"1\">User Units operations error codes</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UUGroups.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UUGroups.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UUGroups",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UUGroups.yml\" sourcestartlinenumber=\"1\">User Units groups enumerator (support might be partial by a given product)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UUMnemonics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UUMnemonics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UUMnemonics",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UUMnemonics.yml\" sourcestartlinenumber=\"1\">User Units mnemonic suffixes used by the controller for UU configuration parameters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UserUnitAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UserUnitAxis.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UserUnitAxis",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UserUnitAxis.yml\" sourcestartlinenumber=\"1\">contains the scaling factor and units for a single axis</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UserUnitGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UserUnitGroup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UserUnitGroup",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UserUnitGroup.yml\" sourcestartlinenumber=\"1\">a class describing a group of user units</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.XmlHandler.TextNodeData.yml",
       "output": {
         ".html": {
@@ -1058,7 +1156,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.AllStatAxisData",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"1\">Container for AllStat data, per axis. Used by &lt;xref href=&quot;AAComm.Services.AllStatInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"4\">Shared between AAComm (C#) and AACommNative (C++) via preprocessor directives.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"7\">Groups (wire order per axis):\n 1  (13): MotorOn, InjectType, Pos, Vel_1, PosErr, VelErr, MotionStat, ConFlt, MotionReason, StatReg, LimitStat, HomingStat, DInPort\n 2  (10): Vel_2, Vel_3, Vel_4, MotorCurr, ScheduleSet, MotionSamples_1, MotionSamples_2, MotionSamples_3, InTargetStat, ComtStatus_1\n 3  (16): ProgStat_1..8, ProgErr_1..8\n 4  (17): FifoStatus_1..5, CNCAStatus_1..12\n 5   (7): CiStatus_1..7\n 6 (15+): Ia, Ib, Id, Iq, Va, Vb, Vc, AInPort_1..4, VBus, VLogic, PwrTemp, [MotorTemp (FW&gt;=1.3.0)], Time\n 7   (6): PosRef, VelRef, CurrRef, dPosRef, CNCAPosRef, CNCAdPosRef\n 8   (7): LockEn, LockCntr, LockVal, EventOn, EventCntr, EventNextPos, EventSelect\n 9   (5): UserParam_1..5\n10   (2): DInPortHigh, BoardTemp\nPlease refer to the user manual for more information.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"1\">Container for AllStat data, per axis. Used by &lt;xref href=&quot;AAComm.Services.AllStatInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.AllStatAxisData.yml\" sourcestartlinenumber=\"4\">Groups (wire order per axis):\n 1  (13): MotorOn, InjectType, Pos, Vel_1, PosErr, VelErr, MotionStat, ConFlt, MotionReason, StatReg, LimitStat, HomingStat, DInPort\n 2  (10): Vel_2, Vel_3, Vel_4, MotorCurr, ScheduleSet, MotionSamples_1, MotionSamples_2, MotionSamples_3, InTargetStat, ComtStatus_1\n 3  (16): ProgStat_1..8, ProgErr_1..8\n 4  (17): FifoStatus_1..5, CNCAStatus_1..12\n 5   (7): CiStatus_1..7\n 6 (15+): Ia, Ib, Id, Iq, Va, Vb, Vc, AInPort_1..4, VBus, VLogic, PwrTemp, [MotorTemp (FW&gt;=1.3.0)], Time\n 7   (6): PosRef, VelRef, CurrRef, dPosRef, CNCAPosRef, CNCAdPosRef\n 8   (7): LockEn, LockCntr, LockVal, EventOn, EventCntr, EventNextPos, EventSelect\n 9   (5): UserParam_1..5\n10   (2): DInPortHigh, BoardTemp\nPlease refer to the user manual for more information.\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -1086,7 +1184,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.ChannelType",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ChannelType.yml\" sourcestartlinenumber=\"1\">connection data communication channel types\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ChannelType.yml\" sourcestartlinenumber=\"4\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ChannelType.yml\" sourcestartlinenumber=\"1\">connection data communication channel types.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1100,7 +1198,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.ConnectResult",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ConnectResult.yml\" sourcestartlinenumber=\"1\">enum to indicate the result of calling AAComm functions\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ConnectResult.yml\" sourcestartlinenumber=\"4\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ConnectResult.yml\" sourcestartlinenumber=\"1\">enum to indicate the result of calling AAComm functions.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1128,7 +1226,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.ConnectionDataDefaults",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ConnectionDataDefaults.yml\" sourcestartlinenumber=\"1\">commons class with &lt;xref href=&quot;AAComm.Services.ConnectionData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; defaults\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ConnectionDataDefaults.yml\" sourcestartlinenumber=\"4\">shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++\n</code></pre>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ConnectionDataDefaults.yml\" sourcestartlinenumber=\"1\">commons class with <xref href=\"AAComm.Services.ConnectionData\" data-throw-if-not-resolved=\"false\"></xref> defaults.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1146,6 +1244,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.LongOperationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.LongOperationType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.LongOperationType",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.LongOperationType.yml\" sourcestartlinenumber=\"1\">Identifies controller operations that freeze firmware for a significant duration,\nused by <xref href=\"AAComm.CommAPI.OnLongOperationStarted\" data-throw-if-not-resolved=\"false\"></xref> / <xref href=\"AAComm.CommAPI.OnLongOperationEnded\" data-throw-if-not-resolved=\"false\"></xref> to bracket the busy window.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Shared.MessageType.yml",
       "output": {
         ".html": {
@@ -1156,7 +1268,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.MessageType",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"1\">enum to indicate special messages types for communication over CAN and Ethernet\n</code></pre>\n<p></p>\n    <xref href=\"AAComm.Services.AACommMessage\" data-throw-if-not-resolved=\"false\"></xref> for details.\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"6\">disregarded for RS-232 channel\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"9\">shared enum for AAComm and AACommNative!\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"1\">enum to indicate special messages types for communication over CAN and Ethernet\n</code></pre>\n<p></p>\n    <xref href=\"AAComm.Services.AACommMessage\" data-throw-if-not-resolved=\"false\"></xref> for details.\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.MessageType.yml\" sourcestartlinenumber=\"6\">disregarded for RS-232 channel\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -1174,6 +1286,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ProtocolMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ProtocolMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ProtocolMode",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.ProtocolMode.yml\" sourcestartlinenumber=\"1\">Wire protocol used between AAComm and AACommServer for a connection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.ServerCompat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.ServerCompat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.ServerCompat",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"1\">Classification of the AACommServer this client attached to, reported by\n&lt;xref href=&quot;AAComm.CommAPI.ServerCompat&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; after a successful &lt;code&gt;Connect&lt;/code&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"5\">The version floor CLASSIFIES the attach, it never rejects: a legacy server still\nconnects (compat mode), because a new client must coexist with a server started by an\nolder SDK application on the same machine — but the degraded mode is queryable here\ninstead of silent. A client must never shut down a server it did not spawn.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Shared.TimeoutMs.yml",
       "output": {
         ".html": {
@@ -1184,7 +1324,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.TimeoutMs",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.TimeoutMs.yml\" sourcestartlinenumber=\"1\">commons class with timeouts\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.TimeoutMs.yml\" sourcestartlinenumber=\"4\">shared for AAComm and AACommNative: items are members of the C# class, and global when included from C++\n</code></pre>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.TimeoutMs.yml\" sourcestartlinenumber=\"1\">commons class with timeout constants.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1329,6 +1469,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/getting-started/aacommpy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/native-c-sdk.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/native-c-sdk.html"
         }
       },
       "version": ""

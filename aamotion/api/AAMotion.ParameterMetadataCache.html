@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_ParameterMetadataCache" data-uid="AAMotion.ParameterMetadataCache" class="text-break">
-Class ParameterMetadataCache  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L17"><i class="bi bi-code-slash"></i></a>
+Class ParameterMetadataCache  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,7 +159,7 @@ Uses ConcurrentDictionary for thread-safe read operations</p>
 
   <h3 id="AAMotion_ParameterMetadataCache_IsInitialized" data-uid="AAMotion.ParameterMetadataCache.IsInitialized">
   IsInitialized
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if cache is initialized
@@ -196,10 +196,12 @@ Thread-safe read using volatile field</p>
 
   <h3 id="AAMotion_ParameterMetadataCache_Clear" data-uid="AAMotion.ParameterMetadataCache.Clear">
   Clear()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Clear cache</p>
+  <div class="markdown level1 summary"><p>Clear cache. NOT called on disconnect — the cache is process-wide, and clearing it
+while other controllers are live degrades their reads to default-int (a real
+float-corruption defect). Connect refreshes via <a class="xref" href="AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_Initialize_AAComm_CommAPI_">Initialize(CommAPI)</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -223,7 +225,7 @@ Thread-safe read using volatile field</p>
 
   <h3 id="AAMotion_ParameterMetadataCache_GetParameterType_AAMotion_eKeyword_AAMotion_CommAPIInterface_" data-uid="AAMotion.ParameterMetadataCache.GetParameterType(AAMotion.eKeyword,AAMotion.CommAPIInterface)">
   GetParameterType(eKeyword, CommAPIInterface)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get parameter type string description (includes fallback logic)
@@ -266,7 +268,7 @@ Returns: &quot;'int' 32 bit&quot;, &quot;'float' 32 bit&quot;, &quot;'double' 64
 
   <h3 id="AAMotion_ParameterMetadataCache_GetTypeInfo_AAMotion_eKeyword_" data-uid="AAMotion.ParameterMetadataCache.GetTypeInfo(AAMotion.eKeyword)">
   GetTypeInfo(eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get type information - O(1) dictionary lookup
@@ -304,11 +306,13 @@ Thread-safe read operation using ConcurrentDictionary</p>
 
   <h3 id="AAMotion_ParameterMetadataCache_Initialize_AAComm_CommAPI_" data-uid="AAMotion.ParameterMetadataCache.Initialize(AAComm.CommAPI)">
   Initialize(CommAPI)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initialize cache - called once on connection
-Uses double-check locking to ensure thread safety</p>
+  <div class="markdown level1 summary"><p>(Re)build the cache from the given connection's message metadata — called on every
+connect, so a reconnect to a different product refreshes the types. The rebuild
+happens into a fresh dictionary swapped in atomically; concurrent readers see the
+old snapshot until the swap.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -337,7 +341,7 @@ Uses double-check locking to ensure thread safety</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L18" class="edit-link">Edit this page</a>
         </div>
 
 

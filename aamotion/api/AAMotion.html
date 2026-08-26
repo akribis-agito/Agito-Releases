@@ -227,6 +227,14 @@ Provides high-speed data recording functionality with trigger support.</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.html">OpticalCouplingLightFinding</a></dt>
+      <dd><p>Optical coupling light-finding algorithm interface v3.0 (2026-07-09)
+Lightweight workflow: 2 steps - parameter configuration, then start
+Process types: spiral scan (ScanCode=1), single-axis scan (ScanCode=5)
+Status queries: 602 (coupling result), 650 (error code), 736 (last sample index)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ParameterMetadataCache.html">ParameterMetadataCache</a></dt>
       <dd><p>Parameter metadata cache - avoids repeated XML queries
 Initialized once on connection, subsequent O(1) dictionary lookup
@@ -243,6 +251,26 @@ Uses ConcurrentDictionary for thread-safe read operations</p>
 <li>double/long: requires additional commands to get full 64-bit value</li>
 <li>Automatically detects type and converts (based on XML metadata or cache)</li>
 </ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.SingleAxisConfig.html">SingleAxisConfig</a></dt>
+      <dd><p>Single axis scan parameter configuration</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.SingleAxisScanResult.html">SingleAxisScanResult</a></dt>
+      <dd><p>Single axis scan result data</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.SpiralConfig.html">SpiralConfig</a></dt>
+      <dd><p>Spiral scan parameter configuration</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.SpiralScanResult.html">SpiralScanResult</a></dt>
+      <dd><p>Spiral scan result data</p>
 </dd>
     </dl>
     <h3 id="structs">
@@ -369,12 +397,30 @@ Enums
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.CouplingResult.html">OpticalCouplingLightFinding.CouplingResult</a></dt>
+      <dd><p>Coupling result (AGenData[602])</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.ErrorCode.html">OpticalCouplingLightFinding.ErrorCode</a></dt>
+      <dd><p>Error codes (AGenData[650])</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.ScanType.html">OpticalCouplingLightFinding.ScanType</a></dt>
+      <dd><p>Process type</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.StatReg.html">StatReg</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
-      <dd></dd>
+      <dd><p>Enumeration of all motion controller keywords that can be accessed via AAMotion.
+Keywords represent parameters and status values on the controller, such as position,
+velocity, current, motion status, and configuration settings.</p>
+</dd>
     </dl>
 
 

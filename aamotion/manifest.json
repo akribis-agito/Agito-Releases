@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/DEV/actions-runner/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aamotion",
+  "source_base_path": "C:/DEV/actions-runner-agd155ec/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aamotion",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -344,6 +344,62 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.EnumPropertyHelper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.AAMotionParametersDownload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.AAMotionParametersDownload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions.AAMotionParametersDownload",
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"1\">Asynchronously downloads (writes) controller parameters from a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"4\">&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected\ncontroller, then sends each as a SET command.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"11\">Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"14\">After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.AAMotionParametersUpload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.AAMotionParametersUpload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions.AAMotionParametersUpload",
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"1\">Asynchronously uploads (saves) controller parameters to a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"4\">&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,\nfirmware/FPGA version, date, checksum) to a plain ASCII .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"11\">Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.ParamHandlingSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.ParamHandlingSummary.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions.ParamHandlingSummary",
+      "Summary": "<p sourcefile=\"api/AAMotion.Extensions.ParamHandlingSummary.yml\" sourcestartlinenumber=\"1\">Summary of a parameter upload or download operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions",
       "Summary": null
     },
     {
@@ -740,6 +796,62 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.OpticalCouplingLightFinding.CouplingResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.OpticalCouplingLightFinding.CouplingResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.OpticalCouplingLightFinding.CouplingResult",
+      "Summary": "<p sourcefile=\"api/AAMotion.OpticalCouplingLightFinding.CouplingResult.yml\" sourcestartlinenumber=\"1\">Coupling result (AGenData[602])</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.OpticalCouplingLightFinding.ErrorCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.OpticalCouplingLightFinding.ErrorCode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.OpticalCouplingLightFinding.ErrorCode",
+      "Summary": "<p sourcefile=\"api/AAMotion.OpticalCouplingLightFinding.ErrorCode.yml\" sourcestartlinenumber=\"1\">Error codes (AGenData[650])</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.OpticalCouplingLightFinding.ScanType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.OpticalCouplingLightFinding.ScanType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.OpticalCouplingLightFinding.ScanType",
+      "Summary": "<p sourcefile=\"api/AAMotion.OpticalCouplingLightFinding.ScanType.yml\" sourcestartlinenumber=\"1\">Process type</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.OpticalCouplingLightFinding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.OpticalCouplingLightFinding.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.OpticalCouplingLightFinding",
+      "Summary": "<p sourcefile=\"api/AAMotion.OpticalCouplingLightFinding.yml\" sourcestartlinenumber=\"1\">Optical coupling light-finding algorithm interface v3.0 (2026-07-09)\nLightweight workflow: 2 steps - parameter configuration, then start\nProcess types: spiral scan (ScanCode=1), single-axis scan (ScanCode=5)\nStatus queries: 602 (coupling result), 650 (error code), 736 (last sample index)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAMotion.ParameterMetadataCache.yml",
       "output": {
         ".html": {
@@ -768,6 +880,62 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.SingleAxisConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.SingleAxisConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.SingleAxisConfig",
+      "Summary": "<p sourcefile=\"api/AAMotion.SingleAxisConfig.yml\" sourcestartlinenumber=\"1\">Single axis scan parameter configuration</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.SingleAxisScanResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.SingleAxisScanResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.SingleAxisScanResult",
+      "Summary": "<p sourcefile=\"api/AAMotion.SingleAxisScanResult.yml\" sourcestartlinenumber=\"1\">Single axis scan result data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.SpiralConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.SpiralConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.SpiralConfig",
+      "Summary": "<p sourcefile=\"api/AAMotion.SpiralConfig.yml\" sourcestartlinenumber=\"1\">Spiral scan parameter configuration</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.SpiralScanResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.SpiralScanResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.SpiralScanResult",
+      "Summary": "<p sourcefile=\"api/AAMotion.SpiralScanResult.yml\" sourcestartlinenumber=\"1\">Spiral scan result data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAMotion.StatReg.yml",
       "output": {
         ".html": {
@@ -792,7 +960,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.eKeyword",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AAMotion.eKeyword.yml\" sourcestartlinenumber=\"1\">Enumeration of all motion controller keywords that can be accessed via AAMotion.\nKeywords represent parameters and status values on the controller, such as position,\nvelocity, current, motion status, and configuration settings.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -837,6 +1005,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/getting-started/aamotion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/native-c-sdk.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/native-c-sdk.html"
         }
       },
       "version": ""

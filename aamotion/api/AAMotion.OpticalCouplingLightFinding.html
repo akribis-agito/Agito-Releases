@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class OpticalCouplingLightFinding | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class OpticalCouplingLightFinding | Agito AAMotion SDK ">
+      
+      <meta name="description" content="Optical coupling light-finding algorithm interface v3.0 (2026-07-09) Lightweight workflow: 2 steps - parameter configuration, then start Process types: spiral scan (ScanCode=1), single-axis scan (ScanCode=5) Status queries: 602 (coupling result), 650 (error code), 736 (last sample index)">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAMotion_OpticalCouplingLightFinding.md&amp;value=---%0Auid%3A%20AAMotion.OpticalCouplingLightFinding%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAMotion.OpticalCouplingLightFinding">
+
+
+
+  <h1 id="AAMotion_OpticalCouplingLightFinding" data-uid="AAMotion.OpticalCouplingLightFinding" class="text-break">
+Class OpticalCouplingLightFinding  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Optical coupling light-finding algorithm interface v3.0 (2026-07-09)
+Lightweight workflow: 2 steps - parameter configuration, then start
+Process types: spiral scan (ScanCode=1), single-axis scan (ScanCode=5)
+Status queries: 602 (coupling result), 650 (error code), 736 (last sample index)</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OpticalCouplingLightFinding</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">OpticalCouplingLightFinding</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding__ctor_" data-uid="AAMotion.OpticalCouplingLightFinding.#ctor*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding__ctor_AAMotion_MotionController_" data-uid="AAMotion.OpticalCouplingLightFinding.#ctor(AAMotion.MotionController)">
+  OpticalCouplingLightFinding(MotionController)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the optical coupling light-finding algorithm interface.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OpticalCouplingLightFinding(MotionController controller)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>controller</code> <a class="xref" href="AAMotion.MotionController.html">MotionController</a></dt>
+    <dd><p>Motion controller instance</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPower_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPower" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPower">
+  Channel1PeakPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[700] - Channel1PeakPower: Channel 1 peak power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel1PeakPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPowerIndex">
+  Channel1PeakPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L578"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[708] - Channel1PeakPowerIndex: Channel 1 peak power index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel1PeakPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPowerPos_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPowerPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel1PeakPowerPos" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PeakPowerPos">
+  Channel1PeakPowerPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L558"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[704] - Channel1PeakPowerPos: Channel 1 peak power position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel1PeakPowerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPower_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPower" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPower">
+  Channel2PeakPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L543"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[701] - Channel2PeakPower: Channel 2 peak power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel2PeakPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPowerIndex">
+  Channel2PeakPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L583"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[709] - Channel2PeakPowerIndex: Channel 2 peak power index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel2PeakPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPowerPos_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPowerPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel2PeakPowerPos" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PeakPowerPos">
+  Channel2PeakPowerPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L563"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[705] - Channel2PeakPowerPos: Channel 2 peak power position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel2PeakPowerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPower_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPower" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPower">
+  Channel3PeakPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L548"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[702] - Channel3PeakPower: Channel 3 peak power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel3PeakPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPowerIndex">
+  Channel3PeakPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L588"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[710] - Channel3PeakPowerIndex: Channel 3 peak power index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel3PeakPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPowerPos_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPowerPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel3PeakPowerPos" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PeakPowerPos">
+  Channel3PeakPowerPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L568"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[706] - Channel3PeakPowerPos: Channel 3 peak power position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel3PeakPowerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPower_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPower" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPower">
+  Channel4PeakPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L553"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[703] - Channel4PeakPower: Channel 4 peak power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel4PeakPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPowerIndex">
+  Channel4PeakPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L593"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[711] - Channel4PeakPowerIndex: Channel 4 peak power index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel4PeakPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPowerPos_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPowerPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel4PeakPowerPos" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PeakPowerPos">
+  Channel4PeakPowerPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L573"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[707] - Channel4PeakPowerPos: Channel 4 peak power position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Channel4PeakPowerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_CouplingAxis_" data-uid="AAMotion.OpticalCouplingLightFinding.CouplingAxis*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_CouplingAxis" data-uid="AAMotion.OpticalCouplingLightFinding.CouplingAxis">
+  CouplingAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L286"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[510] - CouplingAxis: coupling axis index; 0=axis A, 1=axis B, 2=axis C</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CouplingAxis { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_CouplingResultCode_" data-uid="AAMotion.OpticalCouplingLightFinding.CouplingResultCode*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_CouplingResultCode" data-uid="AAMotion.OpticalCouplingLightFinding.CouplingResultCode">
+  CouplingResultCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L386"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[602] - CouplingResultCode: Coupling result code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OpticalCouplingLightFinding.CouplingResult CouplingResultCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.html">OpticalCouplingLightFinding</a>.<a class="xref" href="AAMotion.OpticalCouplingLightFinding.CouplingResult.html">CouplingResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_EmrgStop_" data-uid="AAMotion.OpticalCouplingLightFinding.EmrgStop*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_EmrgStop" data-uid="AAMotion.OpticalCouplingLightFinding.EmrgStop">
+  EmrgStop
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[501] - EmrgStop: emergency stop; sending a non-zero value triggers an emergency stop and exits coupling logic</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int EmrgStop { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ErrCode_" data-uid="AAMotion.OpticalCouplingLightFinding.ErrCode*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ErrCode" data-uid="AAMotion.OpticalCouplingLightFinding.ErrCode">
+  ErrCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L707"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[650] - ErrCode: Error code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OpticalCouplingLightFinding.ErrorCode ErrCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.html">OpticalCouplingLightFinding</a>.<a class="xref" href="AAMotion.OpticalCouplingLightFinding.ErrorCode.html">ErrorCode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_FiberArrayWidth_" data-uid="AAMotion.OpticalCouplingLightFinding.FiberArrayWidth*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_FiberArrayWidth" data-uid="AAMotion.OpticalCouplingLightFinding.FiberArrayWidth">
+  FiberArrayWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[506] - FiberArrayWidth: fiber array width, &gt;=0, unit: count</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FiberArrayWidth { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_FlatZoneDecay_" data-uid="AAMotion.OpticalCouplingLightFinding.FlatZoneDecay*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_FlatZoneDecay" data-uid="AAMotion.OpticalCouplingLightFinding.FlatZoneDecay">
+  FlatZoneDecay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L354"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[509] - FlatZoneDecay: flat-zone decay gradient value, [0 : 50000)
+0 means flat-zone return mode disabled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FlatZoneDecay { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_HasError_" data-uid="AAMotion.OpticalCouplingLightFinding.HasError*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_HasError" data-uid="AAMotion.OpticalCouplingLightFinding.HasError">
+  HasError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L819"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine whether there is an error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasError { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_IsSuccess_" data-uid="AAMotion.OpticalCouplingLightFinding.IsSuccess*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_IsSuccess" data-uid="AAMotion.OpticalCouplingLightFinding.IsSuccess">
+  IsSuccess
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L814"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine whether the coupling is successful</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSuccess { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_LastSampleIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.LastSampleIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_LastSampleIndex" data-uid="AAMotion.OpticalCouplingLightFinding.LastSampleIndex">
+  LastSampleIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[736] - LastSampleIndex: Last sample array index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastSampleIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_LevelingAngle_" data-uid="AAMotion.OpticalCouplingLightFinding.LevelingAngle*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_LevelingAngle" data-uid="AAMotion.OpticalCouplingLightFinding.LevelingAngle">
+  LevelingAngle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L613"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[817] - LevelingAngle: Leveling angle, θ = value / 1000 degrees</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double LevelingAngle { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxPower_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxPower" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPower">
+  MaxPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L402"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[603] - MaxPower: Maximum optical power (analog value)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerIndex">
+  MaxPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[611] - MaxPowerIndex: Index of maximum optical power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxPowerXPos_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerXPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxPowerXPos" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerXPos">
+  MaxPowerXPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[605] - MaxPowerXPos: X position of maximum optical power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPowerXPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxPowerYPos_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerYPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxPowerYPos" data-uid="AAMotion.OpticalCouplingLightFinding.MaxPowerYPos">
+  MaxPowerYPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L412"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[606] - MaxPowerYPos: Y position of maximum optical power</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPowerYPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxRtnSpeed_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxRtnSpeed*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxRtnSpeed" data-uid="AAMotion.OpticalCouplingLightFinding.MaxRtnSpeed">
+  MaxRtnSpeed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[518] - MaxRtnSpeed: maximum return speed, &gt; 0
+Maximum return speed after scanning</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxRtnSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_MaxScanSpeed_" data-uid="AAMotion.OpticalCouplingLightFinding.MaxScanSpeed*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_MaxScanSpeed" data-uid="AAMotion.OpticalCouplingLightFinding.MaxScanSpeed">
+  MaxScanSpeed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L334"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[517] - MaxScanSpeed: maximum scan speed, &gt; 0
+Maximum scan sampling speed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxScanSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_NumOfAInPort_" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfAInPort*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_NumOfAInPort" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfAInPort">
+  NumOfAInPort
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[511] - NumOfAInPort: optical power analog input channel(s)
+Spiral scan: 1, 2, 4, 8 (0b0001~0b1000, low bit to high bit for AI1~AI4)
+Single-axis scan: 3, 5, 11, 6, 12, 14 (select 2 analog channels)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfAInPort { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_NumOfXAxis_" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfXAxis*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_NumOfXAxis" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfXAxis">
+  NumOfXAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[521] - NumOfXAxis: spiral X-axis index; 0~2 maps to axis A~C</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfXAxis { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_NumOfYAxis_" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfYAxis*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_NumOfYAxis" data-uid="AAMotion.OpticalCouplingLightFinding.NumOfYAxis">
+  NumOfYAxis
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[522] - NumOfYAxis: spiral Y-axis index; 0~2 maps to axis A~C</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NumOfYAxis { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_OptimalCoeff_" data-uid="AAMotion.OpticalCouplingLightFinding.OptimalCoeff*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_OptimalCoeff" data-uid="AAMotion.OpticalCouplingLightFinding.OptimalCoeff">
+  OptimalCoeff
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[508] - OptimalCoeff: optimal coefficient, [0 : 1000]
+Recommended value is 300~800; larger value gives higher balance weight, smaller value gives higher peak weight</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OptimalCoeff { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_PowerTh_" data-uid="AAMotion.OpticalCouplingLightFinding.PowerTh*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_PowerTh" data-uid="AAMotion.OpticalCouplingLightFinding.PowerTh">
+  PowerTh
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[531] - PowerTh: optical power threshold PTh, PTh &gt;= 0
+=0 means threshold check disabled; &gt;0 means threshold check enabled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PowerTh { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Rec_Sample_Index_" data-uid="AAMotion.OpticalCouplingLightFinding.Rec_Sample_Index*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Rec_Sample_Index" data-uid="AAMotion.OpticalCouplingLightFinding.Rec_Sample_Index">
+  Rec_Sample_Index
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[600] - Rec_Sample_Index: Current motion sample index (backward compatible alias)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Rec_Sample_Index { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SamplingInterval_" data-uid="AAMotion.OpticalCouplingLightFinding.SamplingInterval*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SamplingInterval" data-uid="AAMotion.OpticalCouplingLightFinding.SamplingInterval">
+  SamplingInterval
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[513] - SamplingInterval: sampling interval, &gt;=1, unit: count</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SamplingInterval { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SamplingTimesPerPoint_" data-uid="AAMotion.OpticalCouplingLightFinding.SamplingTimesPerPoint*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SamplingTimesPerPoint" data-uid="AAMotion.OpticalCouplingLightFinding.SamplingTimesPerPoint">
+  SamplingTimesPerPoint
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[512] - SamplingTimesPerPoint: samples per point, [1 : 5], default max is 5</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SamplingTimesPerPoint { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ScanCode_" data-uid="AAMotion.OpticalCouplingLightFinding.ScanCode*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ScanCode" data-uid="AAMotion.OpticalCouplingLightFinding.ScanCode">
+  ScanCode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[500] - ScanCode: selects process logic and starts the light-finding process
+=1 spiral scan, =5 single-axis scan</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ScanCode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ScanEndDistance_" data-uid="AAMotion.OpticalCouplingLightFinding.ScanEndDistance*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ScanEndDistance" data-uid="AAMotion.OpticalCouplingLightFinding.ScanEndDistance">
+  ScanEndDistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[515] - ScanEndDistance: scan end distance, !=0
+Relative to current distance; sign determines direction</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ScanEndDistance { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ScanStartDistance_" data-uid="AAMotion.OpticalCouplingLightFinding.ScanStartDistance*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ScanStartDistance" data-uid="AAMotion.OpticalCouplingLightFinding.ScanStartDistance">
+  ScanStartDistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L314"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[514] - ScanStartDistance: scan start distance, !=0
+Relative to current distance; sign determines direction</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ScanStartDistance { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisMaxPowerIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisMaxPowerIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisMaxPowerIndex" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisMaxPowerIndex">
+  SingleAxisMaxPowerIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L533"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[613] - SingleAxisMaxPowerIndex: Global max power index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SingleAxisMaxPowerIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisMaxPowerPos_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisMaxPowerPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisMaxPowerPos" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisMaxPowerPos">
+  SingleAxisMaxPowerPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L528"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[604] - SingleAxisMaxPowerPos: Global max power axis position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SingleAxisMaxPowerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralAngleCoeff_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralAngleCoeff*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralAngleCoeff" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralAngleCoeff">
+  SpiralAngleCoeff
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[528] - SpiralAngleCoeff: spiral unit rotation angle coefficient A
+=0 for uniform arc-length sampling</p>
+<blockquote>
+<p>=8 for uniform angle sampling</p>
+</blockquote>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralAngleCoeff { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralDir_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralDir*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralDir" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralDir">
+  SpiralDir
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[525] - SpiralDir: spiral direction; &gt;=0 counterclockwise, &lt;0 clockwise</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralDir { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralMaxRadius_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralMaxRadius*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralMaxRadius" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralMaxRadius">
+  SpiralMaxRadius
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[534] - SpiralMaxRadius: spiral scan maximum radius, R &gt;= 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralMaxRadius { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralPitch_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralPitch*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralPitch" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralPitch">
+  SpiralPitch
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[526] - SpiralPitch: spiral pitch coefficient, Pitch &gt;= 1
+Also represents sampling interval</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralPitch { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralRtnSpeed_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralRtnSpeed*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralRtnSpeed" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralRtnSpeed">
+  SpiralRtnSpeed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L263"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[530] - SpiralRtnSpeed: spiral maximum return speed Speedrmax, &gt; 0
+Maximum return speed after scanning; acceleration defaults to 10x</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralRtnSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralScanSpeed_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralScanSpeed*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralScanSpeed" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralScanSpeed">
+  SpiralScanSpeed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[529] - SpiralScanSpeed: spiral maximum scan speed Speedsmax, &gt; 0
+Maximum scan sampling speed; acceleration defaults to 10x</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SpiralScanSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionIndex_" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionIndex*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionIndex" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionIndex">
+  TwoChannelIntersectionIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L608"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[771] - TwoChannelIntersectionIndex: Two channel intersection index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TwoChannelIntersectionIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionPos_" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionPos*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionPos" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionPos">
+  TwoChannelIntersectionPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L603"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[770] - TwoChannelIntersectionPos: Two channel intersection position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TwoChannelIntersectionPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionPower_" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionPower*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_TwoChannelIntersectionPower" data-uid="AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionPower">
+  TwoChannelIntersectionPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[769] - TwoChannelIntersectionPower: Two channel intersection power value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TwoChannelIntersectionPower { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ApplySingleAxisConfig_" data-uid="AAMotion.OpticalCouplingLightFinding.ApplySingleAxisConfig*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ApplySingleAxisConfig_AAMotion_SingleAxisConfig_" data-uid="AAMotion.OpticalCouplingLightFinding.ApplySingleAxisConfig(AAMotion.SingleAxisConfig)">
+  ApplySingleAxisConfig(SingleAxisConfig)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L758"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Apply single axis scan configuration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplySingleAxisConfig(SingleAxisConfig config)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>config</code> <a class="xref" href="AAMotion.SingleAxisConfig.html">SingleAxisConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ApplySpiralConfig_" data-uid="AAMotion.OpticalCouplingLightFinding.ApplySpiralConfig*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ApplySpiralConfig_AAMotion_SpiralConfig_" data-uid="AAMotion.OpticalCouplingLightFinding.ApplySpiralConfig(AAMotion.SpiralConfig)">
+  ApplySpiralConfig(SpiralConfig)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L740"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Apply spiral scan configuration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplySpiralConfig(SpiralConfig config)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>config</code> <a class="xref" href="AAMotion.SpiralConfig.html">SpiralConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel1PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel1PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel1PowerArray(System.Int32,System.Int32)">
+  Channel1PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L459"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[6000~8499] - Channel1PowerArray: Channel 1 optical power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] Channel1PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 6000~8499</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 6000~8499</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 1 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel2PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel2PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel2PowerArray(System.Int32,System.Int32)">
+  Channel2PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[8500~10999] - Channel2PowerArray: Channel 2 optical power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] Channel2PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 8500~10999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 8500~10999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 2 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel3PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel3PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel3PowerArray(System.Int32,System.Int32)">
+  Channel3PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L493"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[11000~13499] - Channel3PowerArray: Channel 3 optical power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] Channel3PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 11000~13499</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 11000~13499</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 3 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_Channel4PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_Channel4PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.Channel4PowerArray(System.Int32,System.Int32)">
+  Channel4PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L510"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[13500~15999] - Channel4PowerArray: Channel 4 optical power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] Channel4PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 13500~15999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 13500~15999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 4 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_EmergencyStop_" data-uid="AAMotion.OpticalCouplingLightFinding.EmergencyStop*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_EmergencyStop" data-uid="AAMotion.OpticalCouplingLightFinding.EmergencyStop">
+  EmergencyStop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L732"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trigger emergency stop</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EmergencyStop()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_GetSingleAxisScanResult_" data-uid="AAMotion.OpticalCouplingLightFinding.GetSingleAxisScanResult*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_GetSingleAxisScanResult" data-uid="AAMotion.OpticalCouplingLightFinding.GetSingleAxisScanResult">
+  GetSingleAxisScanResult()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L792"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get single axis scan result object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SingleAxisScanResult GetSingleAxisScanResult()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.SingleAxisScanResult.html">SingleAxisScanResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_GetSpiralScanResult_" data-uid="AAMotion.OpticalCouplingLightFinding.GetSpiralScanResult*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_GetSpiralScanResult" data-uid="AAMotion.OpticalCouplingLightFinding.GetSpiralScanResult">
+  GetSpiralScanResult()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L775"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get spiral scan result object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SpiralScanResult GetSpiralScanResult()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.SpiralScanResult.html">SpiralScanResult</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_ReadRange_" data-uid="AAMotion.OpticalCouplingLightFinding.ReadRange*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_ReadRange_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.ReadRange(System.Int32,System.Int32)">
+  ReadRange(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L837"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] ReadRange(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel1PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel1PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel1PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel1PowerArray(System.Int32,System.Int32)">
+  SingleAxisChannel1PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L638"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[4000~6999] - SingleAxisChannel1PowerArray: Single-axis channel 1 power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SingleAxisChannel1PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 4000~6999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 4000~6999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 1 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel2PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel2PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel2PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel2PowerArray(System.Int32,System.Int32)">
+  SingleAxisChannel2PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L655"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[7000~9999] - SingleAxisChannel2PowerArray: Single-axis channel 2 power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SingleAxisChannel2PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 7000~9999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 7000~9999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 2 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel3PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel3PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel3PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel3PowerArray(System.Int32,System.Int32)">
+  SingleAxisChannel3PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L672"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[10000~12999] - SingleAxisChannel3PowerArray: Single-axis channel 3 power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SingleAxisChannel3PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 10000~12999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 10000~12999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 3 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel4PowerArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel4PowerArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisChannel4PowerArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisChannel4PowerArray(System.Int32,System.Int32)">
+  SingleAxisChannel4PowerArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L689"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[13000~15999] - SingleAxisChannel4PowerArray: Single-axis channel 4 power data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SingleAxisChannel4PowerArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 13000~15999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 13000~15999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Channel 4 power array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SingleAxisPosArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisPosArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SingleAxisPosArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SingleAxisPosArray(System.Int32,System.Int32)">
+  SingleAxisPosArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L621"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[1000~3999] - SingleAxisPosArray: Single-axis scan position data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SingleAxisPosArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 1000~3999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 1000~3999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Axis position array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralXPosArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralXPosArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralXPosArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralXPosArray(System.Int32,System.Int32)">
+  SpiralXPosArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[1000~3499] - SpiralXPosArray: Spiral scan X position data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SpiralXPosArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 1000~3499</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 1000~3499</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>X position array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SpiralYPosArray_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralYPosArray*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SpiralYPosArray_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SpiralYPosArray(System.Int32,System.Int32)">
+  SpiralYPosArray(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>AGenData[3500~5999] - SpiralYPosArray: Spiral scan Y position data array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] SpiralYPosArray(int startIndex, int endIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, 3500~5999</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, 3500~5999</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>Y position array</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_StartSingleAxisScan_" data-uid="AAMotion.OpticalCouplingLightFinding.StartSingleAxisScan*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_StartSingleAxisScan" data-uid="AAMotion.OpticalCouplingLightFinding.StartSingleAxisScan">
+  StartSingleAxisScan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L724"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the single-axis scan light-finding process (2 steps: parameter configuration → start)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartSingleAxisScan()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_StartSpiralScan_" data-uid="AAMotion.OpticalCouplingLightFinding.StartSpiralScan*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_StartSpiralScan" data-uid="AAMotion.OpticalCouplingLightFinding.StartSpiralScan">
+  StartSpiralScan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L716"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Start the spiral scan light-finding process (2 steps: parameter configuration → start)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartSpiralScan()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_OpticalCouplingLightFinding_SyncAllGenData_" data-uid="AAMotion.OpticalCouplingLightFinding.SyncAllGenData*"></a>
+
+  <h3 id="AAMotion_OpticalCouplingLightFinding_SyncAllGenData_System_Int32_System_Int32_" data-uid="AAMotion.OpticalCouplingLightFinding.SyncAllGenData(System.Int32,System.Int32)">
+  SyncAllGenData(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L828"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Batch sync all AGenData to the local cache
+After calling, you can directly use the properties to quickly read without sending commands repeatedly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SyncAllGenData(int startIndex = 1, int endIndex = 16000)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Start index, default is 1</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>End index, default is 16000</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of actually updated data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/OpticalCouplingLightFinding.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

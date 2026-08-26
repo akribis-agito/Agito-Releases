@@ -460,7 +460,7 @@ Index 11: CNC FIFO member axes
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ArcXY(int xPos, int yPos, int iPos, int jPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+    <pre><code class="lang-csharp hljs">bool ArcXY(int xPos, int yPos, int iPos, int jPos, int dir, int velCruise, int velEnd, int additionalCycles)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -484,9 +484,9 @@ Index 11: CNC FIFO member axes
     <dd><p>CNC cruise velocity</p>
 </dd>
     <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+    <dd><p>CNC end velocity, set to 0 if additionalCycles is not 0</p>
 </dd>
-    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>additionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Additional cycles</p>
 </dd>
   </dl>
@@ -577,7 +577,7 @@ Index 11: CNC FIFO member axes
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ArcXZ(int xPos, int zPos, int iPos, int kPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+    <pre><code class="lang-csharp hljs">bool ArcXZ(int xPos, int zPos, int iPos, int kPos, int dir, int velCruise, int velEnd, int additionalCycles)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -601,9 +601,9 @@ Index 11: CNC FIFO member axes
     <dd><p>CNC cruise velocity</p>
 </dd>
     <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+    <dd><p>CNC end velocity, set to 0 if additionalCycles is not 0</p>
 </dd>
-    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>additionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Additional cycles</p>
 </dd>
   </dl>
@@ -694,7 +694,7 @@ Index 11: CNC FIFO member axes
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ArcYZ(int yPos, int zPos, int jPos, int kPos, int dir, int velCruise, int velEnd, int addtionalCycles)</code></pre>
+    <pre><code class="lang-csharp hljs">bool ArcYZ(int yPos, int zPos, int jPos, int kPos, int dir, int velCruise, int velEnd, int additionalCycles)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -718,9 +718,9 @@ Index 11: CNC FIFO member axes
     <dd><p>CNC cruise velocity</p>
 </dd>
     <dt><code>velEnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>CNC end velocity, set to 0 if addtionalCycles is not 0</p>
+    <dd><p>CNC end velocity, set to 0 if additionalCycles is not 0</p>
 </dd>
-    <dt><code>addtionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>additionalCycles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Additional cycles</p>
 </dd>
   </dl>
@@ -746,10 +746,13 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_AutoCorner_AAMotion_AxisRef_" data-uid="AAMotion.IGroupAxis.AutoCorner(AAMotion.AxisRef)">
   AutoCorner(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L401"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Auto corner</p>
+  <div class="markdown level1 summary"><p>Auto corner — inserts a corner smoothing arc between the current 2-axis Linear
+segment and the next one. The controller validates that the corner plane has
+exactly 2 involved axes, directly follows a 2-axis Linear segment, and that the
+axis mask matches that segment's axes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -760,7 +763,8 @@ Index 11: CNC FIFO member axes
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
-    <dd><p>Axis reference</p>
+    <dd><p>The two axes of the corner plane (e.g. <code>AxisRef.A | AxisRef.B</code>),
+which must equal the involved axes of the preceding 2-axis Linear segment.</p>
 </dd>
   </dl>
 
@@ -1100,7 +1104,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_IsCNCCompleted_AAMotion_AxisRef_" data-uid="AAMotion.IGroupAxis.IsCNCCompleted(AAMotion.AxisRef)">
   IsCNCCompleted(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L482"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determine whether the CNC movement has been completed</p>
@@ -1519,7 +1523,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_MultiWriteGenData_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteGenData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   MultiWriteGenData(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L431"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Multi-channel write to GenData</p>
@@ -1570,7 +1574,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_MultiWriteGenDataWait_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteGenDataWait(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   MultiWriteGenDataWait(int, int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L457"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Multi-channel write to GenData and wait</p>
@@ -1630,7 +1634,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_MultiWriteUserParam_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParam(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   MultiWriteUserParam(AxisRef, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L443"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Multi-channel write to UserParam</p>
@@ -1684,7 +1688,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_MultiWriteUserParamWait_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IGroupAxis.MultiWriteUserParamWait(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   MultiWriteUserParamWait(AxisRef, int, int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L472"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Multi-channel write to UserParam and wait</p>
@@ -1813,7 +1817,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_RunCNCProgramFromFile_System_String_" data-uid="AAMotion.IGroupAxis.RunCNCProgramFromFile(System.String)">
   RunCNCProgramFromFile(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L477"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Carry out the movement using the CNC program generated by PCSuite</p>
@@ -1945,7 +1949,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_SetMaxAccelParams_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="AAMotion.IGroupAxis.SetMaxAccelParams(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
   SetMaxAccelParams(int?, int?, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L420"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set maximum acceleration parameters</p>
@@ -1990,7 +1994,7 @@ Index 11: CNC FIFO member axes
 
   <h3 id="AAMotion_IGroupAxis_SetMaxVelJumpParams_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_" data-uid="AAMotion.IGroupAxis.SetMaxVelJumpParams(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32)">
   SetMaxVelJumpParams(int?, int?, int?, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IGroupAxis.cs/#L411"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set maximum velocity jump parameters</p>

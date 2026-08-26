@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Native C SDK (aamotion.h) | Agito AAMotion SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Native C SDK (aamotion.h) | Agito AAMotion SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aamotion/articles/getting-started/native-c-sdk.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="getting-started-native-c-sdk-aamotion">
+<h1 id="aamotion-native-sdk">AAMotion Native SDK</h1>
+
+<p>A native <strong>C ABI</strong> over the high-level AAMotion client — drive an Agito motion controller from C,
+C++, Python, or any language with a C FFI, with <strong>no .NET runtime on the target</strong>. The library is
+NativeAOT-compiled per platform and ships as a single shared library plus two headers. It replaces
+the retired Windows-only C++/CLI <code>AAMotionCPP</code> + <code>AGAAMotion</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Library</th>
+<th>Link with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows x64</td>
+<td><code>aamotion.dll</code></td>
+<td><code>aamotion.lib</code> (import lib)</td>
+</tr>
+<tr>
+<td>Linux x64</td>
+<td><code>libaamotion.so</code></td>
+<td><code>-laamotion</code></td>
+</tr>
+<tr>
+<td>macOS x64 / arm64</td>
+<td><code>libaamotion.dylib</code></td>
+<td><code>-laamotion</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every platform ships the same two headers: <strong><code>aamotion.h</code></strong> (the API) and <strong><code>aamotion_enums.h</code></strong>
+(<code>aamotion_controller_type_t</code> / <code>aamotion_axis_ref_t</code> and the status/descriptor enums, generated from the AAMotion C# enums —
+the single source of truth). <code>aamotion.h</code> is the authoritative per-function reference; this guide is
+the conceptual overview.</p>
+<blockquote>
+<p>Status: validated on <strong>win-x64</strong> against a live AGM800 (connect, reads, motor on/off, relative /
+absolute / jog motion, GenData read/write, IO, and the enum/error description getters all exercised
+under NativeAOT). linux-x64 builds and packs in CI; macOS builds are pending a build runner.</p>
+</blockquote>
+<p><strong>Getting the library</strong></p>
+<ul>
+<li><strong>.NET (P/Invoke):</strong> add the <code>Agito.AAMotion.Native</code> NuGet — <code>aamotion.dll</code> / <code>libaamotion.so</code>
+lands next to your build output automatically; <code>[DllImport(&quot;aamotion&quot;)]</code>.</li>
+<li><strong>C / C++:</strong> take the C/C++ archive (the <code>include/</code> headers + per-RID native libs, the
+<code>AACommServerNative</code> AACS daemon, and a sample). The session opens a server implicitly on
+first connect, so keep the daemon beside the library; no .NET runtime is required on the
+target.</li>
+<li><strong>Python / other FFI:</strong> drop the platform library beside your script and <code>ctypes.CDLL</code> it (it is
+inside both artifacts above). A <code>ctypes</code>-over-native <code>AAMotionPy</code> wheel is a possible future
+consumer of this channel — not built yet.</li>
+<li><strong>From source:</strong> build each RID on its own OS (NativeAOT cannot cross-compile) with
+<code>dotnet publish -r &lt;rid&gt;</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Distribution note:</strong> the <code>Agito.AAMotion.Native</code> NuGet and the C/C++ archive (win-x64 +
+linux-x64) ship on the public <code>Software/AAMotion-Native</code> release line at
+<a href="https://github.com/akribis-agito/Agito-Releases/releases">https://github.com/akribis-agito/Agito-Releases/releases</a>, alongside each managed
+<code>Agito.AAMotion</code> release. They are <strong>not on nuget.org</strong> — the C ABI is exact-match gated pre-1.0
+and the package carries only the RIDs above. The package version is locked to the managed
+<code>Agito.AAMotion</code>.</p>
+</blockquote>
+<hr>
+<h2 id="architecture-in-one-paragraph">Architecture in one paragraph</h2>
+<p>The SDK is a <strong>client</strong>, exactly like the AAComm native SDK. It wraps the managed net8 AAMotion
+client, which in turn talks to <strong>AACS</strong> (the AAComm server) — a separate, shared process that owns the
+actual controller connection. <code>aamotion_initialize</code> brings up / attaches to a local AACS automatically (the
+managed connect path spawns or locates it), then <code>aamotion_connect</code> opens a controller channel through it. AACS
+is not embedded in the SDK; it is resolved/launched as its own process. AAMotion is the <strong>motion</strong>
+layer (motor on/off, point-to-point and interpolated moves, homing, IO, force, vector, PEG, CNC
+groups, program control); for raw controller-message traffic the AAComm native SDK is the lower layer.</p>
+<hr>
+<h2 id="quick-start--c--c">Quick start — C / C++</h2>
+<pre><code class="lang-c">#include &quot;aamotion.h&quot;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    /* aamotion_initialize brings up / attaches to AACS and builds a controller of the given type.
+       AAMOTION_CONTROLLER_TYPE_AGM800 == 10 (the ProductTypes ID, from aamotion_enums.h). */
+    aamotion_controller c = aamotion_initialize(AAMOTION_CONTROLLER_TYPE_AGM800);
+    if (!c) return 1;
+
+    /* aamotion_connect to the controller through AACS. fastArk / enableAutoReconnect are 0/1 flags. */
+    if (aamotion_connect(c, &quot;172.1.1.101&quot;, 0, 0))                     /* factory-default address */
+    {
+        aamotion_motor_on(c, AAMOTION_AXIS_REF_A);                       /* AAMOTION_AXIS_REF_A == 1 */
+        aamotion_move_relative(c, AAMOTION_AXIS_REF_A, 10000, 5000, 100000, 100000); /* dist, speed, accel, decel */
+
+        char reply[256];
+        if (aamotion_send_command_string(c, &quot;APos&quot;, reply, (int)sizeof(reply)))
+            printf(&quot;APos -&gt; %s\n&quot;, reply);
+
+        aamotion_motor_off(c, AAMOTION_AXIS_REF_A);
+    }
+
+    aamotion_disconnect(c);   /* closes the link AND frees the handle */
+    aamotion_release(c);      /* safe even after aamotion_disconnect — Free is null/double-free tolerant */
+    return 0;
+}
+</code></pre>
+<p>Build (Windows, from a <em>x64 Native Tools</em> prompt or after <code>vcvars64</code>):</p>
+<pre><code class="lang-bat">cl /nologo sample.c /I path\to\include /link path\to\aamotion.lib
+:: aamotion.dll must sit next to the .exe or on PATH at run time
+</code></pre>
+<p>Build (Linux / macOS):</p>
+<pre><code class="lang-sh">cc sample.c -I path/to/include -L path/to/lib -laamotion -o sample
+LD_LIBRARY_PATH=path/to/lib ./sample        # macOS: DYLD_LIBRARY_PATH
+</code></pre>
+<hr>
+<h2 id="quick-start--python-ctypes">Quick start — Python (<code>ctypes</code>)</h2>
+<p>No bindings package required — load the shared library directly. Set <code>restype</code> / <code>argtypes</code> so the
+opaque handle and the <code>bool</code>/buffer arguments marshal correctly. At the ABI a C <code>bool</code> is a 1-byte
+<code>0</code>/<code>1</code>, so declare it <code>ctypes.c_bool</code>.</p>
+<pre><code class="lang-python">import ctypes
+
+lib = ctypes.CDLL(&quot;./libaamotion.so&quot;)          # &quot;aamotion.dll&quot; on Windows, &quot;libaamotion.dylib&quot; on macOS
+
+# Opaque handle is void*. aamotion_initialize takes a aamotion_controller_type_t int and returns the handle.
+lib.aamotion_initialize.restype  = ctypes.c_void_p
+lib.aamotion_initialize.argtypes = [ctypes.c_int]
+lib.aamotion_connect.restype  = ctypes.c_bool
+lib.aamotion_connect.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_bool, ctypes.c_bool]
+lib.aamotion_motor_on.argtypes      = [ctypes.c_void_p, ctypes.c_int]
+lib.aamotion_motor_on.restype       = ctypes.c_bool
+lib.aamotion_move_relative.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int]
+lib.aamotion_move_relative.restype  = ctypes.c_bool
+lib.aamotion_send_command_string.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int]
+lib.aamotion_send_command_string.restype  = ctypes.c_bool
+
+AGM800 = 10        # AAMOTION_CONTROLLER_TYPE_AGM800
+AXIS_A = 1         # AAMOTION_AXIS_REF_A
+
+c = lib.aamotion_initialize(AGM800)
+if c and lib.aamotion_connect(c, b&quot;172.1.1.101&quot;, False, False):   # factory-default address
+    lib.aamotion_motor_on(c, AXIS_A)
+    lib.aamotion_move_relative(c, AXIS_A, 10000, 5000, 100000, 100000)   # dist, speed, accel, decel
+
+    buf = ctypes.create_string_buffer(256)
+    if lib.aamotion_send_command_string(c, b&quot;APos&quot;, buf, 256):
+        print(&quot;APos -&gt;&quot;, buf.value.decode())
+
+    lib.aamotion_motor_off(c, AXIS_A)
+
+lib.aamotion_disconnect(c)      # closes the link AND frees the handle
+lib.aamotion_release(c)         # safe after aamotion_disconnect
+</code></pre>
+<p>To receive controller error events, declare the matching <code>CFUNCTYPE</code> and register it. <strong>Keep a Python
+reference to the <code>CFUNCTYPE</code> instance for as long as it can fire</strong> — if it is garbage-collected the
+library calls a freed trampoline:</p>
+<pre><code class="lang-python">ERROR_CB = ctypes.CFUNCTYPE(None, ctypes.c_int, ctypes.c_char_p, ctypes.c_char_p)
+
+def _on_error(code, message, exception):
+    print(&quot;error&quot;, code,
+          message.decode() if message else &quot;&quot;,
+          exception.decode() if exception else &quot;&quot;)
+
+error_cb = ERROR_CB(_on_error)          # keep this alive for the session
+
+lib.aamotion_set_error_occurred_handler.argtypes = [ctypes.c_void_p, ERROR_CB]
+lib.aamotion_set_error_occurred_handler(c, error_cb)
+</code></pre>
+<hr>
+<h2 id="core-contracts">Core contracts</h2>
+<h3 id="handle-lifecycle">Handle lifecycle</h3>
+<p><code>aamotion_initialize(controllerType)</code> returns an opaque <code>aamotion_controller</code> handle (a token from an internal
+handle table mapping to a managed AAMotion <code>aamotion_controller</code> — never a raw pointer, so a stale or
+forged handle resolves to nothing instead of undefined behavior), or <code>NULL</code> on failure — including
+an unknown controller type and an AACS that could not be spawned/reached. <strong>One handle owns at most
+one controller connection.</strong> Free it with <strong><code>aamotion_release(h)</code></strong> — or <code>aamotion_disconnect(h)</code>, which closes the link <em>and</em> frees the
+handle. The teardown is null- and double-free-tolerant: the C++/CLI predecessor's contract of calling
+both <code>aamotion_disconnect</code> (which frees) and a later <code>aamotion_release</code> is safe, and a <code>NULL</code>/stale handle degrades
+gracefully (every export returns <code>false</code>/<code>0</code> rather than crashing). For concurrent controllers, create
+multiple handles.</p>
+<p>The optical-coupling API adds a second opaque handle, <code>aamotion_optical_coupling</code>, built from a controller handle
+with <code>aamotion_optical_coupling_create(h)</code> and freed with <code>aamotion_optical_coupling_release(oc)</code>. It does not own the
+controller connection — release it before releasing the controller handle it was created from.</p>
+<h3 id="the-connect-sequence">The connect sequence</h3>
+<ol>
+<li><strong><code>aamotion_initialize(controllerType)</code></strong> — builds the controller and brings up / attaches to AACS. Pass a
+<code>aamotion_controller_type_t</code> value from <code>aamotion_enums.h</code> (e.g. <code>AAMOTION_CONTROLLER_TYPE_AGM800</code> = 10) — these are the
+product-type IDs, <strong>not</strong> ordinals.</li>
+<li><strong><code>aamotion_connect(h, deviceAddress, fastArk, enableAutoReconnect)</code></strong> — opens the controller channel
+through AACS (e.g. the factory-default Ethernet IP <code>&quot;172.1.1.101&quot;</code>). <code>fastArk</code> / <code>enableAutoReconnect</code> are
+<code>bool</code>. Returns <code>true</code> on success.</li>
+<li><strong><code>aamotion_is_connected(h)</code></strong> — <code>true</code> while the channel is open <strong>and</strong> (for IP-connected controllers) the device answers an ICMP ping the call performs synchronously; with auto-reconnect enabled a failed probe runs a full reconnect attempt inline (seconds to tens of seconds worst case, 5 s cooldown). Not a cheap flag read — budget polling accordingly.</li>
+<li><strong><code>aamotion_disconnect(h)</code></strong> — closes the channel and frees the handle; or <strong><code>aamotion_release(h)</code></strong> to free without a
+prior disconnect.</li>
+</ol>
+<h3 id="bool-and-result-conventions"><code>bool</code> and result conventions</h3>
+<p>Most exports return a C <code>bool</code> — <strong><code>true</code> on success, <code>false</code> on failure</strong> (a 1-byte <code>0</code>/<code>1</code> at the
+ABI). A <code>NULL</code> handle, a <code>NULL</code> string argument, an unresolvable/stale handle, or an internal exception
+all map to <code>false</code>/<code>0</code> — exceptions never cross the boundary. This bool-return convention is
+deliberately different from <code>aacomm.*</code>'s uniform <code>aacomm_status</code> return: <code>aamotion.*</code> keeps the
+success/failure contract of the retired <code>AGAAMotion</code> wrapper it replaces, so the two SDKs are each
+internally consistent rather than mutually identical.</p>
+<p><strong><code>int</code>-returning getters</strong> (<code>aamotion_read_gen_data</code>, <code>aamotion_get_d_out_port</code>,
+<code>aamotion_get_d_in_port</code>, and the whole Slow-Logger and optical-coupling read families) return the
+controller value directly — and return <code>0</code> on <strong>any</strong> failure (bad handle, not connected, controller
+ERR), indistinguishable from a legitimate <code>0</code>. When that matters, read via
+<code>aamotion_send_command_string</code> and check its <code>bool</code> instead.</p>
+<p><strong><code>void</code> fire-and-forget setters</strong> (the <code>aamotion_force_curr_set_*</code> family, the PEG/lock setters,
+<code>aamotion_set_vector_param</code>, the two-speed <code>aamotion_move_*_two_speed</code> non-wait variants, …) give no
+success feedback at all — mirroring <code>AGAAMotion</code>'s void contract. Failures still surface through the
+error callback; use it (or a follow-up read) when you need confirmation of a setter.</p>
+<p>Per-axis <code>int axis</code>
+arguments take an <code>aamotion_axis_ref_t</code> bit value (<code>AAMOTION_AXIS_REF_A</code> = 1, <code>AAMOTION_AXIS_REF_B</code> = 2, … combinable). A plain <code>int</code>
+speed/accel/decel is passed verbatim — <code>0</code> is a literal <code>0</code>, not &quot;use default&quot;.</p>
+<h3 id="strings-the-fixed-buffer-contract">Strings: the fixed-buffer contract</h3>
+<p>Output strings are UTF-8. The string functions — <code>aamotion_send_command_string</code> / <code>aamotion_send_bulk_command_string</code>, the
+<code>Get*Des</code> enum-description getters, and <code>aamotion_get_error_description_by_code</code> — take a caller-supplied writable
+buffer plus its size (<code>char* buf, int size</code>): the result is written <strong>truncated to fit and always
+NUL-terminated</strong>. The <code>Get*</code> description getters return <code>true</code> when a non-empty description was written,
+<code>false</code> (writing nothing) on an unknown value, empty result, or <code>NULL</code>/zero buffer. <code>aamotion_send_bulk_command_string</code>
+is Ethernet-only.</p>
+<h3 id="the-error-callback">The error callback</h3>
+<p>Register a session-level error handler with:</p>
+<pre><code class="lang-c">typedef void (*aamotion_error_occurred_cb)(int errorCode, const char* message, const char* exception);
+void aamotion_set_error_occurred_handler(aamotion_controller h, aamotion_error_occurred_cb cb);
+void aamotion_clear_error_occurred_handler(aamotion_controller h);
+</code></pre>
+<p>The callback fires <strong>on AAMotion's firing thread</strong>, never on your calling thread — keep it <strong>short and
+thread-safe</strong>; marshal real work to your own thread/queue. The <code>const char*</code> arguments (<code>message</code>,
+<code>exception</code>) are <strong>owned by the library and valid only for the duration of the call</strong> — copy them if
+you need them later; do not free them. Only one handler is held per handle; a later
+<code>aamotion_set_error_occurred_handler</code> replaces the earlier one, and <code>aamotion_clear_error_occurred_handler</code> removes it.</p>
+<h3 id="enum-and-error-descriptions">Enum and error descriptions</h3>
+<p>The <code>Get*Des(int value, char* buf, int size)</code> family maps an integer value of the matching enum in
+<code>aamotion_enums.h</code> to its human-readable description (e.g. <code>aamotion_get_con_flt_des(1003, …)</code> →
+&quot;Encoder disconnected&quot;). <code>aamotion_get_error_description_by_code(int errorCode, …)</code> resolves a controller error
+code. Both follow the fixed-buffer contract above.</p>
+<hr>
+<h2 id="api-reference">API reference</h2>
+<p><code>aamotion.h</code> is the authoritative per-function reference. The 200 exports (199 motion functions +
+<code>aamotion_abi_version</code>) group as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lifecycle</td>
+<td><code>aamotion_initialize</code>, <code>aamotion_connect</code>, <code>aamotion_disconnect</code>, <code>aamotion_is_connected</code>, <code>aamotion_try_reconnect</code>, <code>aamotion_release</code>, <code>aamotion_init</code>, <code>aamotion_shutdown</code></td>
+</tr>
+<tr>
+<td>Raw command pass-through</td>
+<td><code>aamotion_send_command_string</code>, <code>aamotion_send_bulk_command_string</code></td>
+</tr>
+<tr>
+<td>Axis control</td>
+<td><code>aamotion_motor_on</code>, <code>aamotion_motor_off</code>, <code>aamotion_begin</code>, <code>aamotion_move_relative</code></td>
+</tr>
+<tr>
+<td>Advanced motion</td>
+<td><code>aamotion_auto_phase</code>, <code>aamotion_is_auto_phase</code>, <code>aamotion_move_abs</code>, <code>aamotion_move_abs_repetitive</code>, <code>aamotion_move_abs_repetitive_and_wait</code>, <code>aamotion_move_rel_repetitive</code>, <code>aamotion_move_rel_repetitive_and_wait</code>, <code>aamotion_move_abs_two_speed</code>, <code>aamotion_move_abs_two_speed_and_wait</code>, <code>aamotion_move_rel_two_speed</code>, <code>aamotion_move_rel_two_speed_and_wait</code>, <code>aamotion_jog</code></td>
+</tr>
+<tr>
+<td>Homing</td>
+<td><code>aamotion_home</code>, <code>aamotion_home_with_options</code>, <code>aamotion_home_to_hard_stop</code>, <code>aamotion_home_from_file</code>, <code>aamotion_is_homed</code></td>
+</tr>
+<tr>
+<td>aamotion_stop</td>
+<td><code>aamotion_stop</code>, <code>aamotion_stop_rep</code>, <code>aamotion_abort</code>, <code>aamotion_event_correct</code></td>
+</tr>
+<tr>
+<td>Data read/write</td>
+<td><code>aamotion_read_gen_data</code>, <code>aamotion_write_gen_data</code>, <code>aamotion_multi_write_gen_data</code>, <code>aamotion_multi_write_gen_data_wait</code>, <code>aamotion_gen_data_wait</code>, <code>aamotion_group_write_user_param</code>, <code>aamotion_multi_write_user_param</code>, <code>aamotion_multi_write_user_param_wait</code>, <code>aamotion_user_param_wait</code></td>
+</tr>
+<tr>
+<td>Error handling</td>
+<td><code>aamotion_set_error_occurred_handler</code>, <code>aamotion_clear_error_occurred_handler</code></td>
+</tr>
+<tr>
+<td>Descriptions</td>
+<td><code>aamotion_get_error_description_by_code</code>, <code>aamotion_get_motion_stat_des</code>, <code>aamotion_get_motion_reason_des</code>, <code>aamotion_get_stat_reg_des</code>, <code>aamotion_get_homing_stat_des</code>, <code>aamotion_get_in_target_stat_des</code>, <code>aamotion_get_con_flt_des</code>, <code>aamotion_get_enc_type_des</code>, <code>aamotion_get_motion_mode_des</code>, <code>aamotion_get_map_type_des</code>, <code>aamotion_get_operation_mode_des</code>, <code>aamotion_get_motor_on_des</code>, <code>aamotion_get_inject_type_des</code></td>
+</tr>
+<tr>
+<td>Program control</td>
+<td><code>aamotion_prog_run</code>, <code>aamotion_auto_exec</code>, <code>aamotion_prog_reset</code>, <code>aamotion_prog_halt</code>, <code>aamotion_prog_halt_all</code></td>
+</tr>
+<tr>
+<td>Group / CNC control</td>
+<td><code>aamotion_cnc_begin</code>, <code>aamotion_pause</code>, <code>aamotion_resume</code>, <code>aamotion_clear_buffer</code>, <code>aamotion_group_stop</code>, <code>aamotion_run_cnc_program_from_file</code>, <code>aamotion_is_cnc_completed</code></td>
+</tr>
+<tr>
+<td>Linear interpolation</td>
+<td><code>aamotion_linear_absolute</code>, <code>aamotion_linear_absolute_x/Y/Z/XY/XZ/YZ/XYZ</code>, <code>aamotion_linear_absolute4_axis</code>, <code>aamotion_linear_absolute6_axis</code>, <code>aamotion_linear_absolute_multi_axis</code>, <code>aamotion_linear_absolute_t/XT/YT/ZT/XYT/XZT/YZT/XYZT</code></td>
+</tr>
+<tr>
+<td>Arc interpolation</td>
+<td><code>aamotion_arc_xy</code>, <code>aamotion_arc_xy_with_cycles</code>, <code>aamotion_arc_xz</code>, <code>aamotion_arc_xz_with_cycles</code>, <code>aamotion_arc_yz</code>, <code>aamotion_arc_yz_with_cycles</code>, <code>aamotion_arc_xt</code>, <code>aamotion_arc_yt</code>, <code>aamotion_arc_zt</code></td>
+</tr>
+<tr>
+<td>Motion / profile setup</td>
+<td><code>aamotion_set_motion_profile</code>, <code>aamotion_set_corner_params</code>, <code>aamotion_set_start_positions</code>, <code>aamotion_set_start_positions_abc</code>, <code>aamotion_set_curr_positions</code>, <code>aamotion_auto_corner</code>, <code>aamotion_set_max_vel_jump_params</code>, <code>aamotion_set_max_accel_params</code>, <code>aamotion_delay</code></td>
+</tr>
+<tr>
+<td>aamotion_ci_connect / CiGroup</td>
+<td><code>aamotion_ci_connect</code>, <code>aamotion_ci_disconnect</code>, <code>aamotion_ci_group_d_out_set_bit</code>, <code>aamotion_ci_group_d_out_clear_bit</code>, <code>aamotion_ci_group_d_out_toggle_bit</code>, <code>aamotion_write_i_ci_group_d_out_port</code></td>
+</tr>
+<tr>
+<td>Digital IO</td>
+<td><code>aamotion_write_d_out_port</code>, <code>aamotion_group_d_out_set_bit</code>, <code>aamotion_group_d_out_clear_bit</code>, <code>aamotion_group_d_out_toggle_bit</code>, <code>aamotion_d_out_set_bit</code>, <code>aamotion_d_out_clear_bit</code>, <code>aamotion_d_out_toggle_bit</code>, <code>aamotion_get_d_out_port</code>, <code>aamotion_get_d_in_port</code></td>
+</tr>
+<tr>
+<td>PEG</td>
+<td><code>aamotion_set_single_event_peg</code>, <code>aamotion_set_event_fixed_gap_peg</code>, <code>aamotion_event_enable</code>, <code>aamotion_event_dis_enable</code>, <code>aamotion_set_event_table_begin_index</code>, <code>aamotion_set_event_table_end_index</code>, <code>aamotion_set_event_table_select</code>, <code>aamotion_set_event_table_value</code></td>
+</tr>
+<tr>
+<td>Lock</td>
+<td><code>aamotion_set_lock</code>, <code>aamotion_lock_enable</code>, <code>aamotion_lock_dis_enable</code></td>
+</tr>
+<tr>
+<td>Force</td>
+<td><code>aamotion_go_to_force_mode</code>, <code>aamotion_go_to_curr_mode</code>, <code>aamotion_go_to_pos_mode</code>, <code>aamotion_set_position</code>, <code>aamotion_force_curr_set_force_cmd_source</code>, <code>aamotion_force_curr_set_curr_mode_sw_trig_src</code>, <code>aamotion_force_curr_set_force_tune_pid</code>, <code>aamotion_force_curr_set_motion</code>, <code>aamotion_force_curr_set_slow_approach</code>, <code>aamotion_force_curr_set_retract_motion</code>, <code>aamotion_force_curr_set_pos_th_for_auto_sw_to_pos_mode</code></td>
+</tr>
+<tr>
+<td>Vector</td>
+<td><code>aamotion_stop_vec</code>, <code>aamotion_vector_pause</code>, <code>aamotion_vector_continue</code>, <code>aamotion_vector_linear</code>, <code>aamotion_vector_linear_with_mask</code>, <code>aamotion_vector_arc</code>, <code>aamotion_set_vector_param</code></td>
+</tr>
+<tr>
+<td>Slow logger</td>
+<td><code>aamotion_get_logger_on</code>, <code>aamotion_set_logger_on</code>, <code>aamotion_get_logger_gap</code>, <code>aamotion_set_logger_gap</code>, <code>aamotion_get_logger_full_mode</code>, <code>aamotion_set_logger_full_mode</code>, <code>aamotion_get_logger_params</code>, <code>aamotion_set_logger_params</code>, <code>aamotion_configure_slow_logger</code>, <code>aamotion_get_logger_state</code>, <code>aamotion_get_logger_status</code>, <code>aamotion_get_logger_about</code>, <code>aamotion_get_logger_free_space</code>, <code>aamotion_get_logger_pushed_packets</code>, <code>aamotion_get_logger_lost_packets</code>, <code>aamotion_logger_upload</code></td>
+</tr>
+<tr>
+<td>Optical coupling</td>
+<td><code>aamotion_optical_coupling_create</code>, <code>aamotion_optical_coupling_release</code>, <code>aamotion_optical_coupling_apply_spiral_config</code>, <code>aamotion_optical_coupling_apply_single_axis_config</code>, <code>aamotion_optical_coupling_start_spiral_scan</code>, <code>aamotion_optical_coupling_start_single_axis_scan</code>, <code>aamotion_optical_coupling_emergency_stop</code>, <code>aamotion_optical_coupling_sync_all_gen_data</code>, <code>aamotion_optical_coupling_read_range</code>, <code>aamotion_optical_coupling_is_success</code>, <code>aamotion_optical_coupling_has_error</code>, <code>aamotion_optical_coupling_get_error_code</code>, <code>aamotion_optical_coupling_get_coupling_result</code>, <code>aamotion_optical_coupling_get_last_sample_index</code>, <code>aamotion_optical_coupling_get_leveling_angle</code>, <code>aamotion_optical_coupling_get_max_power</code>, <code>aamotion_optical_coupling_get_max_power_x_pos</code>, <code>aamotion_optical_coupling_get_max_power_y_pos</code>, <code>aamotion_optical_coupling_get_spiral_x_pos_array</code>, <code>aamotion_optical_coupling_get_spiral_y_pos_array</code>, <code>OpticalCoupling_GetChannel1/2/3/4PowerArray</code>, <code>aamotion_optical_coupling_get_single_axis_pos_array</code>, <code>aamotion_optical_coupling_get_single_axis_max_power_pos</code>, <code>OpticalCoupling_GetSingleAxisChannel1/2/3/4PowerArray</code>, <code>aamotion_optical_coupling_get_two_channel_intersection_pos</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>aamotion_controller_type_t</code>, <code>aamotion_axis_ref_t</code>, and the status/descriptor enums (<code>aamotion_motion_stat_t</code>, <code>aamotion_motion_reason_t</code>,
+<code>aamotion_stat_reg_t</code>, <code>aamotion_homing_stat_t</code>, <code>aamotion_in_target_stat_t</code>, <code>aamotion_con_flt_t</code>, <code>aamotion_enc_type_t</code>, <code>aamotion_motion_mode_t</code>, <code>aamotion_map_type_t</code>,
+<code>aamotion_operation_mode_t</code>, <code>aamotion_motor_on_t</code>, <code>aamotion_inject_type_t</code>) are defined in <code>aamotion_enums.h</code>; the optical-coupling
+enums (<code>OpticalCouplingScanType</code>, <code>OpticalCouplingResult</code>, <code>OpticalCouplingErrorCode</code>) are hand-written
+in <code>aamotion.h</code> itself. The status/descriptor enums carry a <code>_t</code> suffix so they don't collide with the
+like-named ABI functions (e.g. the <code>aamotion_motor_on()</code> export vs the <code>aamotion_motor_on_t</code> enum). Always build against the
+headers that ship with your library.</p>
+<hr>
+<h2 id="abi-versioning--stability">ABI versioning &amp; stability</h2>
+<pre><code class="lang-c">int32_t aamotion_abi_version(void);
+</code></pre>
+<p>The SDK carries <strong>two</strong> version numbers, for two different purposes:</p>
+<ul>
+<li><strong>Package version</strong> — the SemVer of the <code>aamotion.*</code> library / <code>Agito.AAMotion.Native</code> NuGet,
+<strong>version-locked</strong> to the managed <code>Agito.AAMotion</code> (<code>$(AAMotionVersion)</code>; the native package
+ships on its own release line off the back of each managed release — see
+<code>AAComm/docs/native-aot-sdk.md</code>). This is what you pin in a package reference.</li>
+<li><strong><code>aamotion_abi_version()</code></strong> — a soname-style <strong>breaking-generation number</strong>, the C-ABI contract.
+It is bumped <strong>only on a breaking change</strong>: a changed or removed export signature, a
+callback-signature change, or changed semantics. <strong>Additive changes — new exports, new enum
+values — never bump it</strong> (they cannot break a compiled consumer). It returns its value directly
+(it cannot fail) and takes no handle; the same value is the <code>AAMOTION_ABI_VERSION</code> macro in the
+generated <code>aamotion_enums.h</code>. Generation <strong>1</strong> is the first shipped ABI (pre-release increments
+carried no compatibility meaning and were reset).</li>
+</ul>
+<p><strong>Consumer rule — exact-match gate.</strong> Call <code>aamotion_abi_version()</code> once at load and reject a
+library whose value does not equal <code>AAMOTION_ABI_VERSION</code> from the headers your binding was built
+against — coherent with the bump policy, because the number only moves when your binary genuinely
+cannot run. The committed <code>include/aamotion.abi.txt</code> records the exact export surface for the
+generation; <code>aamotion_enums.h</code> and the manifest are generated from the C# source and CI diff-gated,
+while <code>aamotion.h</code> is <strong>hand-maintained</strong> — the manifest diff is what forces it to be updated in
+review. Always build against the <code>aamotion.h</code> that ships with the library you load.</p>
+<hr>
+<h2 id="release-notes">Release notes</h2>
+<p><code>CHANGELOG.md</code> — package version tracks <code>Agito.AAMotion</code> in lockstep; the
+C-ABI contract is the separate <code>aamotion_abi_version()</code> integer described above.</p>
+<h2 id="see-also">See also</h2>
+<p>In the repo (<code>AACommComponents/</code>):</p>
+<ul>
+<li><code>AAMotionNative/include/aamotion.h</code> — the authoritative C ABI (per-function; also in the sdk zip).</li>
+<li><code>AAMotionNative/include/aamotion_enums.h</code> — generated <code>aamotion_controller_type_t</code> / <code>aamotion_axis_ref_t</code> / status enums.</li>
+<li><code>AAComm/docs/native-aot-sdk.md</code> — the native-channel design, architecture, and status (§Motion layer).</li>
+<li><code>AACommNative/README.md</code> — the lower-level AAComm native SDK (raw controller messaging).</li>
+<li><code>docs/changelog-template.md</code> — the changelog shape every shipped component keeps.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aamotion/articles/getting-started/native-c-sdk.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -75,7 +75,7 @@
 
 <p><strong>AAMotion</strong> is a C# .NET API for advanced motion controller communication and control, designed for high-performance and flexible integration with industrial motion systems.</p>
 <ul>
-<li>📚 <strong>API documentation:</strong> <a href="https://akribis-agito.github.io/PC-Toolsets-Releases/aamotion/">https://akribis-agito.github.io/PC-Toolsets-Releases/aamotion/</a></li>
+<li>📚 <strong>API documentation:</strong> <a href="https://akribis-agito.github.io/Agito-Releases/aamotion/">https://akribis-agito.github.io/Agito-Releases/aamotion/</a></li>
 <li>🌐 <strong>Vendor:</strong> <a href="https://agito-akribis.com">https://agito-akribis.com</a></li>
 </ul>
 <h2 id="overview">Overview</h2>
@@ -117,7 +117,7 @@ namespace ConsoleApp1
     { 
         static void Main(string[] args) 
         { 
-            const string ip = &quot;172.1.1.101&quot;; 
+            const string ip = &quot;172.1.1.101&quot;; // the controller's factory default
             MotionController controller = AAMotionAPI.Initialize(ControllerType.AGM800);
             try
             {
@@ -146,11 +146,14 @@ namespace ConsoleApp1
             }
             finally
             {
-                // Ensure proper shutdown
                 AAMotionAPI.MotorOff(controller, AxisRef.B);
                 Console.WriteLine($&quot;MotorOff status for Axis A: {controller.GetAxis(AxisRef.A).MotorOn}&quot;);
-                controller.Shutdown();
-                Console.WriteLine(&quot;AACommServer has been shut down.&quot;);
+
+                // Release THIS controller's resources. The shared AACommServer keeps running
+                // for other clients; controller.Shutdown() would request a server shutdown,
+                // which the server honors only when this is its last client — call it only
+                // when you own the machine's comms lifecycle.
+                controller.Dispose();
             }
         }
     }
@@ -160,7 +163,7 @@ namespace ConsoleApp1
 <h2 id="api-documentation">API Documentation</h2>
 <p>API documentation is available via IntelliSense. XML doc comments are included with the NuGet package.</p>
 <h2 id="release-notes">Release Notes</h2>
-<p>See <a href="https://akribis-agito.github.io/PC-Toolsets-Releases/aamotion/articles/release-notes/aamotion-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
+<p>See <a href="https://akribis-agito.github.io/Agito-Releases/aamotion/articles/release-notes/aamotion-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
 <h2 id="license">License</h2>
 <p>This software is <strong>proprietary</strong>. All rights reserved. Contact Agito for licensing and usage terms.</p>
 <hr>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AAComm.Services.UserUnits | Agito AAComm SDK </title>
+      <title>Namespace AAComm.Services.Diagnostics | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AAComm.Services.UserUnits | Agito AAComm SDK ">
+      <meta name="title" content="Namespace AAComm.Services.Diagnostics | Agito AAComm SDK ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AAComm.Services.UserUnits">
+        <article data-uid="AAComm.Services.Diagnostics">
 
-  <h1 id="AAComm_Services_UserUnits" data-uid="AAComm.Services.UserUnits" class="text-break">Namespace AAComm.Services.UserUnits</h1>
+  <h1 id="AAComm_Services_Diagnostics" data-uid="AAComm.Services.Diagnostics" class="text-break">Namespace AAComm.Services.Diagnostics</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,41 +95,21 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UUMnemonics.html">UUMnemonics</a></dt>
-      <dd><p>User Units mnemonic suffixes used by the controller for UU configuration parameters.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitAxis.html">UserUnitAxis</a></dt>
-      <dd><p>contains the scaling factor and units for a single axis</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitGroup.html">UserUnitGroup</a></dt>
-      <dd><p>a class describing a group of user units</p>
-</dd>
-    </dl>
-    <h3 id="structs">
-Structs
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitsData.html">UserUnitsData</a></dt>
-      <dd><p>A parameter's Min / Max / Default values with the 'User Units' scaling applied
-(when defined for the axis — otherwise the raw values with Factor = 1, Units = &quot;&quot;).
-Returned by <a class="xref" href="AAComm.Services.MessageData.html#AAComm_Services_MessageData_GetUserUnitsData_System_Char_">GetUserUnitsData(char)</a>.</p>
-</dd>
-    </dl>
-    <h3 id="enums">
-Enums
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UUErrors.html">UUErrors</a></dt>
-      <dd><p>User Units operations error codes</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAComm.Services.UserUnits.UUGroups.html">UUGroups</a></dt>
-      <dd><p>User Units groups enumerator (support might be partial by a given product)</p>
+      <dt><a class="xref" href="AAComm.Services.Diagnostics.AACommDebugLog.html">AACommDebugLog</a></dt>
+      <dd><p>Process-wide, zero-config, always-on diagnostic log for the AAComm client — the client-side
+counterpart of AACommServer's debug log. Session-lifecycle events (construction, connect
+outcomes, sync-timeout expiries, FATALs, disconnects) accumulate in an in-memory ring;
+healthy steady state does zero file IO. A severe event (sync phase-2 teardown, FATAL,
+comms error) snapshots the ring to
+<code>%LocalAppData%\PCSuite\AAComm_DebugLogs{yyyy_MM_dd_HH-mm-ss}<em>{process}</em>{pid}_{trigger}.log</code>
+off the hot path (debounced, 5 s), because a library in the customer's process has no
+reliable exit hook to save on. Never per-message traffic — that is the AACommServer comm
+log's job.</p>
+<p></p>
+<p>Every line is tagged <code>HH:mm:ss.fff [api#N/conn#M] text</code>: <code>api#N</code> identifies the
+<a class="xref" href="AAComm.CommAPI.html">CommAPI</a> instance, <code>conn#M</code> its successive channel opens; the connect line
+carries the full endpoint (and the socket's local port, which AACommServer's log can join
+against its per-client <code>UserId</code>).</p>
 </dd>
     </dl>
 

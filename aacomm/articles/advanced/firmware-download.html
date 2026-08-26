@@ -91,6 +91,9 @@ character) / <code>ERR 15</code> (unexpected byte count). Use Ethernet or RS-232
 <strong>RS-232</strong> on both the String and Binary IPC protocols (<code>Agd301HardwareTests</code>,
 goldens <code>AGD301orAGC301_2D05_V3.0.42.hex</code> + <code>AGD301_for_BissC_and_SinCos_v2.7.2.dat</code>).
 FPGA download requires normal mode — it rejects BOOT.</p>
+<p>The complete gate matrix per download path — product, transport, exact-address and subnet
+rules, boot mode, file targets, version compatibility — with the CI-rig consequences is
+<code>docs/ci-cd/fw-fpga-download-constraints.md</code>.</p>
 <h2 id="backward-compatibility">Backward Compatibility</h2>
 <ul>
 <li><strong>No .ver file</strong>: AGM800 firmware download proceeds without validation

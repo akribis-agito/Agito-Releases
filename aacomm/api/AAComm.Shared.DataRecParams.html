@@ -761,6 +761,51 @@ Class DataRecParams  <a class="header-action link-secondary" title="View source"
 
 
 
+  <a id="AAComm_Shared_DataRecParams_CalculateActualGapValue_" data-uid="AAComm.Shared.DataRecParams.CalculateActualGapValue*"></a>
+
+  <h3 id="AAComm_Shared_DataRecParams_CalculateActualGapValue_System_Double_System_Int32_" data-uid="AAComm.Shared.DataRecParams.CalculateActualGapValue(System.Double,System.Int32)">
+  CalculateActualGapValue(double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/DataRecParams.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>THE single source of the gap formula: gap value (in controller samples) for a
+requested gap in ms at an explicit current-loop sample rate. The connected
+<a class="xref" href="AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateActualGapValue_System_Double_AAComm_Interfaces_ICommService_">CalculateActualGapValue(double, ICommService)</a> overload and PCSuite
+Core's <code>RecGapCalculator</code> both delegate here, so the math has one home.
+api-free (no connection needed). Never below 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int CalculateActualGapValue(double gap, int currentLoopSampleRate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>requested gap, in milliseconds</p>
+</dd>
+    <dt><code>currentLoopSampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>current-loop sample rate, in Hz</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAComm_Shared_DataRecParams_CalculateLengthValue_" data-uid="AAComm.Shared.DataRecParams.CalculateLengthValue*"></a>
 
   <h3 id="AAComm_Shared_DataRecParams_CalculateLengthValue_System_Double_System_Double_AAComm_Interfaces_ICommService_" data-uid="AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,AAComm.Interfaces.ICommService)">
@@ -804,6 +849,52 @@ Class DataRecParams  <a class="header-action link-secondary" title="View source"
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>actual length value to be sent to controller</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Shared_DataRecParams_CalculateLengthValue_" data-uid="AAComm.Shared.DataRecParams.CalculateLengthValue*"></a>
+
+  <h3 id="AAComm_Shared_DataRecParams_CalculateLengthValue_System_Double_System_Double_System_Int32_" data-uid="AAComm.Shared.DataRecParams.CalculateLengthValue(System.Double,System.Double,System.Int32)">
+  CalculateLengthValue(double, double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/DataRecParams.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>THE single source of the length formula: recorded samples per vector for a
+requested gap + duration at an explicit current-loop sample rate (see
+<a class="xref" href="AAComm.Shared.DataRecParams.html#AAComm_Shared_DataRecParams_CalculateActualGapValue_System_Double_System_Int32_">CalculateActualGapValue(double, int)</a>). api-free. Never below 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int CalculateLengthValue(double gap, double duration, int currentLoopSampleRate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>requested gap, in milliseconds</p>
+</dd>
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>requested recording duration, in seconds</p>
+</dd>
+    <dt><code>currentLoopSampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>current-loop sample rate, in Hz</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
   </dl>
 
 

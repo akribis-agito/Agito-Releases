@@ -347,22 +347,34 @@ Class XmlHandler  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <a id="AAComm_Services_XmlHandler_SaveXml_" data-uid="AAComm.Services.XmlHandler.SaveXml*"></a>
+  <a id="AAComm_Services_XmlHandler_TrySaveXml_" data-uid="AAComm.Services.XmlHandler.TrySaveXml*"></a>
 
-  <h3 id="AAComm_Services_XmlHandler_SaveXml" data-uid="AAComm.Services.XmlHandler.SaveXml">
-  SaveXml()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/XmlHandler.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_XmlHandler_TrySaveXml_System_Exception__" data-uid="AAComm.Services.XmlHandler.TrySaveXml(System.Exception@)">
+  TrySaveXml(out Exception)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/XmlHandler.cs/#L155"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>saves the XML file</p>
+  <div class="markdown level1 summary"><p>Saves the XML file, retrying while another writer holds it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SaveXml()</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TrySaveXml(out Exception error)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>What stopped the final attempt, or <code>null</code> once the save succeeded.</p>
+</dd>
+  </dl>
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the document reached disk.</p>
+</dd>
+  </dl>
 
 
 

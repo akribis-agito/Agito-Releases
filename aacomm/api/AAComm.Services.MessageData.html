@@ -151,6 +151,9 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
       <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueLong_AAComm_Services_MessageData_">MessageDataValueExtensions.DefaultValueLong(MessageData)</a>
   </div>
   <div>
+      <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_DefaultValueStr_AAComm_Services_MessageData_">MessageDataValueExtensions.DefaultValueStr(MessageData)</a>
+  </div>
+  <div>
       <a class="xref" href="AAComm.Services.MessageDataValueExtensions.html#AAComm_Services_MessageDataValueExtensions_MaxValueInt_AAComm_Services_MessageData_">MessageDataValueExtensions.MaxValueInt(MessageData)</a>
   </div>
   <div>
@@ -1090,7 +1093,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UserUnitGroup UserUnits { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UserUnitGroup UserUnits { get; }</code></pre>
   </div>
 
 
@@ -1118,7 +1121,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_GetCanMessage_System_String_System_Int32_" data-uid="AAComm.Services.MessageData.GetCanMessage(System.String,System.Int32)">
   GetCanMessage(string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L296"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L288"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>get complex CAN message, that includes Axis, keyword, and array index (if applicable)</p>
@@ -1160,7 +1163,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_GetDescription_System_Char_" data-uid="AAComm.Services.MessageData.GetDescription(System.Char)">
   GetDescription(char)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L303"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>textual description of the parameter: mnemonic, CAN code, type, access, axis related, user units, min/max/default values, etc.</p>
@@ -1195,8 +1198,8 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <a id="AAComm_Services_MessageData_GetUserUnitsData_" data-uid="AAComm.Services.MessageData.GetUserUnitsData*"></a>
 
-  <h3 id="AAComm_Services_MessageData_GetUserUnitsData_System_Char_System_Double__System_Double__System_Double__System_Double__System_String__" data-uid="AAComm.Services.MessageData.GetUserUnitsData(System.Char,System.Double@,System.Double@,System.Double@,System.Double@,System.String@)">
-  GetUserUnitsData(char, out double, out double, out double, out double, out string)
+  <h3 id="AAComm_Services_MessageData_GetUserUnitsData_System_Char_" data-uid="AAComm.Services.MessageData.GetUserUnitsData(System.Char)">
+  GetUserUnitsData(char)
   <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L269"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -1209,25 +1212,20 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void GetUserUnitsData(char axis, out double min, out double max, out double def, out double factor, out string units)</code></pre>
+    <pre><code class="lang-csharp hljs">public UserUnitsData GetUserUnitsData(char axis)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
     <dd></dd>
-    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>def</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>factor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>units</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
   </dl>
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.UserUnits.UserUnitsData.html">UserUnitsData</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -1243,7 +1241,7 @@ Class MessageData  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAComm_Services_MessageData_ToString" data-uid="AAComm.Services.MessageData.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L358"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/MessageData.cs/#L352"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>returns the parameter description without trying to resolve per-axis User Units

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Diagnostic Debug Logs | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Diagnostic Debug Logs | Agito AAComm SDK ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/diagnostics.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="architecture-diagnostics">
+<h1 id="diagnostic-debug-logs--client-server-and-how-they-join">Diagnostic Debug Logs — client, server, and how they join</h1>
+
+<p>The SDK's always-on diagnostic layer: what the AAComm client and AACommServer record about
+session lifecycle, where the files land, and the procedure that correlates the two logs for a
+single connection. This is the spec for the <em>diagnostic</em> logs only — the AACommServer <strong>comm
+log</strong> (per-channel message traffic, saved from the server UI) and PCSuite's Serilog session
+log (the <code>PCSuite_DebugLogs</code> sibling) are separate facilities.</p>
+<h2 id="design-constraints">Design constraints</h2>
+<ul>
+<li><strong>Zero-config, always-on.</strong> AAComm runs inside customer processes; a diagnostic that must be
+enabled first never exists when the incident happens.</li>
+<li><strong>Zero steady-state file IO.</strong> Entries accumulate in an in-memory ring; a healthy process
+never touches the disk. Only a <em>severe</em> event (or an explicit flush) writes a file.</li>
+<li><strong>No per-message traffic.</strong> Message-level logging is the AACommServer comm log's job; the
+<code>SendReceive</code>/<code>Send</code> hot paths gain no logging on the success path.</li>
+<li><strong>No wire change.</strong> The client↔server correlation works purely from what each side already
+sees on its own socket.</li>
+</ul>
+<h2 id="folder-layout">Folder layout</h2>
+<p>One folder per producer, all under <code>%LocalAppData%\PCSuite\</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Producer</th>
+<th>Written when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AAComm_DebugLogs\</code></td>
+<td>AAComm client (<code>AACommDebugLog</code>)</td>
+<td>severe event or <code>Flush()</code></td>
+</tr>
+<tr>
+<td><code>AACommServer_DebugLogs\</code></td>
+<td>AACommServer (<code>GlobalLogger</code>); sniffer captures under <code>Sniffer\</code></td>
+<td>shutdown save, flush verb, implicit-shutdown save</td>
+</tr>
+<tr>
+<td><code>PCSuite_DebugLogs\</code></td>
+<td>PCSuite exes (Serilog session log)</td>
+<td>continuously (buffered)</td>
+</tr>
+</tbody>
+</table>
+<p>All debug-log folders prune independently on a file-count cap of <strong>200</strong>; when a save finds
+the folder over the cap, the oldest files are deleted down to the newest <strong>100</strong> (half the
+cap), so the prune fires rarely rather than on every save.</p>
+<p>Local application data — not Documents — is deliberate: Documents redirects to OneDrive, whose
+sync locks capture files and contends with snapshot IO under connect/close churn.</p>
+<h2 id="client-log--aacommservicesdiagnosticsaacommdebuglog">Client log — <code>AAComm.Services.Diagnostics.AACommDebugLog</code></h2>
+<p>Static, process-wide, shared by every <code>CommAPI</code> instance in the process.</p>
+<h3 id="line-format-and-identity-tags">Line format and identity tags</h3>
+<pre><code>HH:mm:ss.fff [api#N/conn#M] text
+</code></pre>
+<ul>
+<li><code>api#N</code> — the <code>CommAPI</code> instance, numbered in construction order (assigned in the designated
+constructor every overload funnels into).</li>
+<li><code>conn#M</code> — that instance's successive successful channel opens. Before the first open the
+tag is just <code>api#N</code>.</li>
+<li>The <strong>connect line</strong> is the one line whose tag also carries the endpoint:
+<code>[api#1/conn#1→Ethernet 172.1.1.101:5000]</code>. Every later line is tag-only, so a reader greps
+the endpoint once and then follows the short tag.</li>
+<li>The ring's first entry is a one-time header:
+<code>=== AAComm diagnostic log — process &lt;name&gt; (PID &lt;pid&gt;), path &lt;exe path&gt;, AAComm &lt;version&gt;, started &lt;timestamp&gt; ===</code></li>
+</ul>
+<h3 id="recorded-events">Recorded events</h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Line (shape)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Construction</td>
+<td><code>CommAPI constructed</code></td>
+</tr>
+<tr>
+<td>Channel open (per successful open, incl. test opens)</td>
+<td><code>channel open (local 127.0.0.1:54321), ServerCompat=Current</code> — the tag carries the endpoint; <code>local</code> is the client→AACS socket's local end, the join key (see below)</td>
+</tr>
+<tr>
+<td><code>TestConnection</code> / <code>Connect</code> / <code>ConnectSilent</code> outcome</td>
+<td><code>Connect(Ethernet 172.1.1.101:5000) → Success in 812 ms, ServerCompat=Current</code> — result, elapsed, endpoint, and the compat the <em>attempt</em> classified (captured before teardown can reset it; <code>TestConnection</code> always tears down before this line is written)</td>
+</tr>
+<tr>
+<td>Sync phase-1 expiry (queue abandon, <strong>no teardown</strong>)</td>
+<td><code>sync phase-1 expiry: abandoned in queue after 203 ms (queued-behind-live budget, TimeoutMs=100): &quot;APos&quot;</code> — the budget branch is <code>queued-behind-live</code> (<code>TimeoutMs + 100</code>) or <code>idle+starvation</code> (<code>TimeoutMs + 5000</code>)</td>
+</tr>
+<tr>
+<td>Sync phase-2 expiry (<strong>teardown</strong>)</td>
+<td><code>sync phase-2 expiry: no reply 402 ms after dispatch at 14:03:07.101 (budget TimeoutMs 100 + 100 + grace 200 = 400 ms): &quot;APos&quot; → teardown</code> — message text truncated to 64 chars. This line is what discriminates phase-1 vs phase-2 in the field</td>
+</tr>
+<tr>
+<td>Server FATAL frame received</td>
+<td><code>server FATAL received: &lt;content&gt;</code> (ASCII and binary pipelines both)</td>
+</tr>
+<tr>
+<td>Any comms error / FATAL reaching teardown</td>
+<td><code>comms error/FATAL: &lt;message&gt; → teardown</code> (the funnel — covers socket death paths that never produce a FATAL frame)</td>
+</tr>
+<tr>
+<td>Disconnect</td>
+<td><code>disconnect (&lt;reason&gt;)</code> — <code>explicit</code>, <code>sync-timeout</code>, <code>fatal</code>, <code>close-server</code>, <code>test-connection complete</code>, or <code>connect failed: &lt;ConnectResult&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="flush-on-severity">Flush-on-severity</h3>
+<p>A library in the customer's process has no reliable exit hook, so severity <em>is</em> the flush
+trigger. Ring: 10 000 entries, oldest 10 % evicted on overflow.</p>
+<ul>
+<li><strong>Triggers</strong>: sync phase-2 teardown (<code>SyncTimeout</code>), FATAL / comms error (<code>Fatal</code>), and the
+public on-demand <code>AACommDebugLog.Flush()</code> (<code>Flush</code>, synchronous).</li>
+<li><strong>File</strong>: <code>{yyyy_MM_dd_HH-mm-ss}_{process}_{pid}_{trigger}.log</code> — a snapshot of the ring,
+which is <em>not</em> cleared, so successive snapshots overlap and logging continues.</li>
+<li><strong>Off the hot path</strong>: severity snapshots are written on the ThreadPool; the file path
+(directory included) is resolved at trigger time, so a concurrent directory change cannot
+redirect the write or its prune.</li>
+<li><strong>Debounce</strong>: 5 s — multiple severe events inside the window produce one file (a phase-2
+teardown and the FATAL it provokes do not double-write).</li>
+</ul>
+<h3 id="host-bridge--aacommdebuglogsink">Host bridge — <code>AACommDebugLog.Sink</code></h3>
+<p><code>Action&lt;string, string&gt;</code> (source, formatted line): every event line is mirrored to it
+synchronously, source = the line's identity tag (the connect line's tag carries <code>→endpoint</code>,
+so hosts routing on source should prefix-match; the one-time header is ring-only). Mirrors
+<code>GlobalLogger.GlobalDebugLog</code> on the server side; hosts use it to fold AAComm diagnostics
+into their own session log. <code>Sink</code> and <code>Flush()</code> are the only public surface.</p>
+<h2 id="server-log--aacommservercoregloballogger">Server log — <code>AACommServerCore.GlobalLogger</code></h2>
+<p>Same mechanics (the ring/file core is one source file, owned by AAComm and compiled into
+AACommServerCore as a linked source — separate assemblies, separate state, so a chatty client
+can never evict server entries), different policy:</p>
+<ul>
+<li>Line format: <code>yyyy-MM-dd HH:mm:ss [Debug|Fault|UnhandledException] &lt;source&gt; : &lt;message&gt;</code>.</li>
+<li>Files in <code>AACommServer_DebugLogs\</code>: <code>{stamp}_Debug.log</code> (the once-on-shutdown save),
+<code>{stamp}_Flush.log</code> (on-demand snapshot — the client's fire-and-forget
+<code>CommAPI.FlushDebugLog()</code> verb or the server UI), <code>{stamp}_ImplicitShutdown.log</code> (the
+abnormal last-client-death save).</li>
+<li><code>GlobalDebugLog</code> feeds the server UI's live debug list; <code>LogDebug</code> lines land in both the UI
+list and the ring.</li>
+</ul>
+<h2 id="joining-the-two-logs">Joining the two logs</h2>
+<p>AACommServer identifies clients only by <code>UserId</code>; the client never learns its <code>UserId</code>. The
+join key is the client→AACS TCP socket, which both sides see from opposite ends:</p>
+<ul>
+<li><strong>Client side</strong> — the connect line logs the socket's <em>local</em> end:
+<code>14:02:59.310 [api#1/conn#1→Ethernet 172.1.1.101:5000] channel open (local 127.0.0.1:54321), ServerCompat=Current</code></li>
+<li><strong>Server side</strong> — on every client Open, one debug line binds <code>UserId</code> to the socket's
+<em>remote</em> end (the same address:port):
+<code>2026-08-24 14:02:59 [Debug] OnAACommRequest() UserId=7 : Open request for 'ET_172.1.1.101' from client endpoint 127.0.0.1:54321</code></li>
+</ul>
+<p>Procedure, starting from either side:</p>
+<ol>
+<li>In the client snapshot, find the <code>channel open</code> line for the session of interest → take
+the <code>local</code> endpoint (<code>127.0.0.1:54321</code>).</li>
+<li>Grep the server's debug log for that endpoint → the line names the <code>UserId</code> (<code>7</code>).</li>
+<li>Filter the server log by <code>UserId=7</code> — every server-side event for that client (malformed
+frames, tx overflow, implicit-shutdown bookkeeping) now correlates with the client's
+<code>api#N/conn#M</code> timeline. The reverse direction starts from a <code>UserId</code> and greps the
+endpoint in the client snapshots.</li>
+</ol>
+<p>Caveats: ephemeral ports are unique per live connection but recycle over time — on long-uptime
+machines disambiguate by timestamp proximity; each reconnect is a new <code>conn#M</code> and a new local
+port, so the join is per-connection, not per-process.</p>
+<h2 id="worked-example--attributing-a-sync-timeout-teardown">Worked example — attributing a sync-timeout teardown</h2>
+<p>The failure this layer exists for: an application reports &quot;AAComm disconnected&quot;, the server
+log shows only an unexplained client close. With the snapshots:</p>
+<pre><code>14:03:06.694 [api#1/conn#1] sync phase-2 expiry: no reply 402 ms after dispatch at
+             14:03:06.291 (budget TimeoutMs 100 + 100 + grace 200 = 400 ms): &quot;APos&quot; → teardown
+14:03:06.697 [api#1/conn#1] disconnect (sync-timeout)
+</code></pre>
+<p>tells support: the message reached the wire (phase 2, not a queue abandon), the full grace was
+spent, the client — not the controller protocol — initiated the close, and the
+<code>{...}_SyncTimeout.log</code> filename alone already names the trigger. The join procedure then
+locates the same seconds in the server log under the bound <code>UserId</code> to see what the server
+observed (e.g. queueing behind another client's long operation).</p>
+<h2 id="known-limitations">Known limitations</h2>
+<ul>
+<li>The header's process path is best-effort (<code>Process.MainModule</code> can be inaccessible under
+permission/bitness constraints; the header then says <code>unknown</code>).</li>
+<li>The client ring is process-global: snapshots interleave all <code>CommAPI</code> instances (that is
+what the <code>api#N</code> tag is for).</li>
+<li>File IO failures are silently swallowed on the client (a diagnostic must never take the
+host down); the server side falls back to the Windows Event Log as before.</li>
+<li>The local-port half of the join key is available only from the real socket-backed
+transports; test doubles log the connect line without it.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/diagnostics.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

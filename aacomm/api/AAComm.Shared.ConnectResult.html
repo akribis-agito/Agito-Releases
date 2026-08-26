@@ -146,7 +146,11 @@ Enum ConnectResult  <a class="header-action link-secondary" title="View source" 
 </dd>
     <dt id="AAComm_Shared_ConnectResult_AACS_ResolveWrongOS"><code>AACS_ResolveWrongOS = 41</code></dt>
   
-  <dd><p>41 - Auto-locating AACommServer is not supported on non-Windows platforms. Please specify the full file path at StartAACommServer() function call</p>
+  <dd><p>41 - No AACommServer could be auto-located. Off Windows the search is the application
+directory and the working directory only — there is no install-location convention to
+fall back on — so place AACommServerNative beside your application, or pass its full
+path to StartAACommServer(). .NET Framework clients are Windows-only and get this
+result for any non-Windows platform.</p>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_AACS_SocketConnectException"><code>AACS_SocketConnectException = 37</code></dt>
   
@@ -179,15 +183,15 @@ surfaced via &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if
   
   <dd><p>4 - <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_Connect_AAComm_Services_ConnectionData_System_Boolean_">Connect(ConnectionData, bool)</a> method was invoked while already connected. Disconnect first.</p>
 </dd>
-    <dt id="AAComm_Shared_ConnectResult_CANLibMissing"><code>CANLibMissing = 17</code></dt>
-  
-  <dd><p>17 - environment error - the native Kvaser CAN library (canlib32.dll) is missing or failed to load</p>
-</dd>
-    <dt id="AAComm_Shared_ConnectResult_CanNotConnected"><code>CanNotConnected = 48</code></dt>
+    <dt id="AAComm_Shared_ConnectResult_CANDeviceNotConnected"><code>CANDeviceNotConnected = 48</code></dt>
   
   <dd><p>48 - connection error - no Kvaser CAN device detected on the AACommServer host (canlib
 enumerates only virtual channels). Distinct from <a class="xref" href="AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_CANLibMissing">CANLibMissing</a> (the canlib
 driver is absent) — here the driver is present but no physical Kvaser interface is connected.</p>
+</dd>
+    <dt id="AAComm_Shared_ConnectResult_CANLibMissing"><code>CANLibMissing = 17</code></dt>
+  
+  <dd><p>17 - environment error - the native Kvaser CAN library (canlib32.dll) is missing or failed to load</p>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_ChannelInExclusiveCommsMode"><code>ChannelInExclusiveCommsMode = 33</code></dt>
   

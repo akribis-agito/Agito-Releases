@@ -115,16 +115,20 @@ guide is the conceptual overview.</p>
 <li><strong>.NET (P/Invoke):</strong> add the <code>Agito.AAComm.Native</code> NuGet — <code>aacomm.dll</code> / <code>libaacomm.so</code> lands
 next to your build output automatically; <code>[DllImport(&quot;aacomm&quot;)]</code>.</li>
 <li><strong>C / C++:</strong> take the <code>agito-aacomm-native-sdk-&lt;version&gt;.zip</code> archive (the <code>include/</code> headers +
-per-RID native libs + <code>sample.c</code>).</li>
+per-RID native libs, the <code>AACommServerNative</code> AACS daemon, and <code>sample.c</code>). Pass the daemon's
+path to <code>aacomm_start_server</code> — it is the whole server side, so nothing else needs installing
+and no .NET runtime is required on the target.</li>
 <li><strong>Python / other FFI:</strong> drop the platform library beside your script and <code>dlopen</code>/<code>ctypes.CDLL</code> it
 (it is inside both artifacts above).</li>
 <li><strong>From source:</strong> see <code>packaging/README.md</code> in the repo (NativeAOT can't cross-compile —
 build each RID on its own OS).</li>
 </ul>
 <blockquote>
-<p><strong>Distribution note:</strong> the <code>Agito.AAComm.Native</code> NuGet and the sdk zip are currently produced as
-internal build artifacts (win-x64 + linux-x64) and are <strong>not yet published to nuget.org</strong> — obtain
-them from Agito. The package version is locked to the managed <code>Agito.AAComm</code>.</p>
+<p><strong>Distribution note:</strong> the <code>Agito.AAComm.Native</code> NuGet and the sdk zip (win-x64 + linux-x64) ship
+on the public <code>Software/AAComm-Native</code> release line at
+<a href="https://github.com/akribis-agito/Agito-Releases/releases">https://github.com/akribis-agito/Agito-Releases/releases</a>, alongside each managed <code>Agito.AAComm</code>
+release. They are <strong>not on nuget.org</strong> — the C ABI is exact-match gated pre-1.0 and the package
+carries only the RIDs above. The package version is locked to the managed <code>Agito.AAComm</code>.</p>
 </blockquote>
 <hr>
 <h2 id="architecture-in-one-paragraph">Architecture in one paragraph</h2>
@@ -690,7 +694,7 @@ C# enum — do not edit). <code>0</code> is success.</p>
 <td>AACS is too old to negotiate the binary protocol</td>
 </tr>
 <tr>
-<td><code>AACOMM_RESULT_CAN_NOT_CONNECTED</code></td>
+<td><code>AACOMM_RESULT_CANDEVICE_NOT_CONNECTED</code></td>
 <td>48</td>
 <td>Kvaser driver is installed but no physical CAN interface is connected (distinct from <code>CANLIB_MISSING</code>=17, where the driver itself is absent)</td>
 </tr>
@@ -833,9 +837,11 @@ is valid only for the duration of the call.</p>
 <p>The SDK carries <strong>two</strong> version numbers, for two different purposes:</p>
 <ul>
 <li><strong>Package version</strong> — the SemVer of the <code>aacomm.*</code> library / <code>Agito.AAComm.Native</code> NuGet,
-<strong>version-locked</strong> to the managed <code>Agito.AAComm</code> (<code>$(AACommVersion)</code>; the native package is not
-co-published with managed releases — see the distribution note above). This is what you pin in a
-package reference; release history is in the SDK's <code>CHANGELOG.md</code> (shipped in the C/C++ archive).</li>
+<strong>version-locked</strong> to the managed <code>Agito.AAComm</code> (<code>$(AACommVersion)</code>; the native package ships on
+its own release line off the back of each managed release — see the distribution note above).
+This is what you pin in a
+package reference; release history is in <code>CHANGELOG.md</code> (shipped in the C/C++
+archive).</li>
 <li><strong><code>aacomm_abi_version()</code></strong> — a soname-style <strong>breaking-generation number</strong>, the C-ABI contract.
 It is bumped <strong>only on a breaking change</strong>: a changed or removed export signature, a struct
 layout change, a callback-signature change, or changed status-code semantics. <strong>Additive

@@ -126,7 +126,7 @@ that need controller identity metadata without depending on the concrete contain
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_CurrentLoopSampleRate" data-uid="AAComm.Interfaces.IIdentityContainer.CurrentLoopSampleRate">
   CurrentLoopSampleRate
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Identity[13] — current-loop sample rate (Hz). Used for recording time-axis math.</p>
@@ -158,7 +158,7 @@ that need controller identity metadata without depending on the concrete contain
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_Features_01" data-uid="AAComm.Interfaces.IIdentityContainer.Features_01">
   Features_01
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bit-wise interpretation of the controller's &quot;New Features 1&quot; identity word. Used by
@@ -192,7 +192,7 @@ behaviours such as the User Program message adapter.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_Features_02" data-uid="AAComm.Interfaces.IIdentityContainer.Features_02">
   Features_02
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Bit-wise interpretation of the controller's &quot;New Features 2&quot; identity word.
@@ -226,7 +226,7 @@ recording pipeline.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_IsCiMaster" data-uid="AAComm.Interfaces.IIdentityContainer.IsCiMaster">
   IsCiMaster
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if the connected controller is a CI Master device (e.g., AGM800).</p>
@@ -258,7 +258,7 @@ recording pipeline.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_IsEtherCAT" data-uid="AAComm.Interfaces.IIdentityContainer.IsEtherCAT">
   IsEtherCAT
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if the connected controller speaks EtherCAT.</p>
@@ -290,7 +290,7 @@ recording pipeline.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_MaxDataRecordingPoints" data-uid="AAComm.Interfaces.IIdentityContainer.MaxDataRecordingPoints">
   MaxDataRecordingPoints
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Identity[14] — maximum number of recording points the controller supports.</p>
@@ -322,7 +322,7 @@ recording pipeline.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_MaxNumOfRecVectors" data-uid="AAComm.Interfaces.IIdentityContainer.MaxNumOfRecVectors">
   MaxNumOfRecVectors
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Identity[15] — maximum number of vectors supported for parallel recording.</p>
@@ -331,6 +331,38 @@ recording pipeline.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int MaxNumOfRecVectors { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAComm_Interfaces_IIdentityContainer_NumOfMotorAxes_" data-uid="AAComm.Interfaces.IIdentityContainer.NumOfMotorAxes*"></a>
+
+  <h3 id="AAComm_Interfaces_IIdentityContainer_NumOfMotorAxes" data-uid="AAComm.Interfaces.IIdentityContainer.NumOfMotorAxes">
+  NumOfMotorAxes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of axes that support a motor (on a CI Master, the servo-axis count; else <a class="xref" href="AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_NumberOfAxes">NumberOfAxes</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int NumOfMotorAxes { get; }</code></pre>
   </div>
 
 
@@ -386,7 +418,7 @@ recording pipeline.</p>
 
   <h3 id="AAComm_Interfaces_IIdentityContainer_UP_NumOfThreads" data-uid="AAComm.Interfaces.IIdentityContainer.UP_NumOfThreads">
   UP_NumOfThreads
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Interfaces/IIdentityContainer.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of User Program threads supported by the connected controller.</p>

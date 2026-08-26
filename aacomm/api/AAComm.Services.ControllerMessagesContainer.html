@@ -177,7 +177,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer__ctor" data-uid="AAComm.Services.ControllerMessagesContainer.#ctor">
   ControllerMessagesContainer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L171"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>reads default messages from internal resource, and sets the container to use them
@@ -215,7 +215,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_AllMnemonics" data-uid="AAComm.Services.ControllerMessagesContainer.AllMnemonics">
   AllMnemonics
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>SORTED list of all mnemonics supported by the controller (as read from the controller &quot;About&quot; data)</p>
@@ -247,7 +247,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_CanCodeToData" data-uid="AAComm.Services.ControllerMessagesContainer.CanCodeToData">
   CanCodeToData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>dictionary of CAN code vs. message data (<a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>)</p>
@@ -255,7 +255,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, MessageData&gt; CanCodeToData { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;int, MessageData&gt; CanCodeToData { get; }</code></pre>
   </div>
 
 
@@ -264,7 +264,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -279,7 +279,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_CategoriesList" data-uid="AAComm.Services.ControllerMessagesContainer.CategoriesList">
   CategoriesList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>list of all messages categories (as read from the controller &quot;About&quot; data)</p>
@@ -311,7 +311,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_InitErr" data-uid="AAComm.Services.ControllerMessagesContainer.InitErr">
   InitErr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>contains summary of initialization error <a class="xref" href="AAComm.Services.ControllerMessagesContainer.html#AAComm_Services_ControllerMessagesContainer_IsInitialized">IsInitialized</a>, empty if initialized OK</p>
@@ -343,7 +343,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_IsInitialized" data-uid="AAComm.Services.ControllerMessagesContainer.IsInitialized">
   IsInitialized
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>specifies whether the container is initialized</p>
@@ -375,7 +375,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_MnemonicAsIsToData" data-uid="AAComm.Services.ControllerMessagesContainer.MnemonicAsIsToData">
   MnemonicAsIsToData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>dictionary of mnemonic as read from controller &quot;About&quot; vs. message data (<a class="xref" href="AAComm.Services.MessageData.html">MessageData</a>)</p>
@@ -407,7 +407,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_UserUnitsSupported" data-uid="AAComm.Services.ControllerMessagesContainer.UserUnitsSupported">
   UserUnitsSupported
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>specifies whether the User Units feature is supported by connected controller</p>
@@ -443,7 +443,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_Contains_System_String_" data-uid="AAComm.Services.ControllerMessagesContainer.Contains(System.String)">
   Contains(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L255"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>a method to check whether the specified mnemonic is supported by the controller (case insensitive)</p>
@@ -482,7 +482,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_GetDataFromMnemonic_System_String_" data-uid="AAComm.Services.ControllerMessagesContainer.GetDataFromMnemonic(System.String)">
   GetDataFromMnemonic(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L248"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>a method to (safely) get the MessageData &lt;xref href=&quot;AAComm.Services.MessageData&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; associated with certain controller mnemonic
@@ -525,7 +525,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_InitContainerFromFile_System_String_" data-uid="AAComm.Services.ControllerMessagesContainer.InitContainerFromFile(System.String)">
   InitContainerFromFile(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>initializes the container with messages data described within a XML file
@@ -568,7 +568,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_MaxUserUnitNameLen_AAComm_Services_UserUnits_UUGroups_" data-uid="AAComm.Services.ControllerMessagesContainer.MaxUserUnitNameLen(AAComm.Services.UserUnits.UUGroups)">
   MaxUserUnitNameLen(UUGroups)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>the maximum length of the units name in the group, '0' if not supported</p>
@@ -607,7 +607,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_SetToUseDefaults" data-uid="AAComm.Services.ControllerMessagesContainer.SetToUseDefaults">
   SetToUseDefaults()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L260"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>initializes the container with default messages data
@@ -638,7 +638,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_TryGetUserUnitAxis_System_Char_System_Int32_" data-uid="AAComm.Services.ControllerMessagesContainer.TryGetUserUnitAxis(System.Char,System.Int32)">
   TryGetUserUnitAxis(char, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>checks whether the specified axis and parameter (CAN code) are supported by the User Units feature
@@ -684,7 +684,7 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <h3 id="AAComm_Services_ControllerMessagesContainer_TryGetUserUnitsGroup_AAComm_Services_UserUnits_UUGroups_" data-uid="AAComm.Services.ControllerMessagesContainer.TryGetUserUnitsGroup(AAComm.Services.UserUnits.UUGroups)">
   TryGetUserUnitsGroup(UUGroups)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L209"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>returns a COPY of the User Units group by the specified key, or NULL if not found</p>
@@ -721,9 +721,9 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 
   <a id="AAComm_Services_ControllerMessagesContainer_TrySetUnitsSync_" data-uid="AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync*"></a>
 
-  <h3 id="AAComm_Services_ControllerMessagesContainer_TrySetUnitsSync_AAComm_CommAPI_AAComm_Services_UserUnits_UUGroups_System_Char_System_String_System_Double_" data-uid="AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI,AAComm.Services.UserUnits.UUGroups,System.Char,System.String,System.Double)">
-  TrySetUnitsSync(CommAPI, UUGroups, char, string, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAComm_Services_ControllerMessagesContainer_TrySetUnitsSync_AAComm_Interfaces_ICommService_AAComm_Services_UserUnits_UUGroups_System_Char_System_String_System_Double_" data-uid="AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.Interfaces.ICommService,AAComm.Services.UserUnits.UUGroups,System.Char,System.String,System.Double)">
+  TrySetUnitsSync(ICommService, UUGroups, char, string, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerMessagesContainer.cs/#L230"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>attempts to set the requested user units group 'units name' and 'scaling factor' values to the controller
@@ -735,12 +735,12 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UUErrors TrySetUnitsSync(CommAPI api, UUGroups group, char axis, string uuName, double uuFactor)</code></pre>
+    <pre><code class="lang-csharp hljs">public UUErrors TrySetUnitsSync(ICommService api, UUGroups group, char axis, string uuName, double uuFactor)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dt><code>api</code> <a class="xref" href="AAComm.Interfaces.ICommService.html">ICommService</a></dt>
     <dd><p>the AAComm API instance to use, must be &quot;connected&quot;</p>
 </dd>
     <dt><code>group</code> <a class="xref" href="AAComm.Services.UserUnits.UUGroups.html">UUGroups</a></dt>

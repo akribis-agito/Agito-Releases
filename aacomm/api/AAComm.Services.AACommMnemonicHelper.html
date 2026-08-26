@@ -196,12 +196,12 @@ array indexes and assignment separation, plus ordinal-ignore-case string helpers
   <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>'active axis' placeholder used by host tools (&quot;?&quot; resolves to the currently selected axis)</p>
+  <div class="markdown level1 summary"><p>'active axis' placeholder used by host tools ('?' resolves to the currently selected axis)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ActiveAxis = &quot;?&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const char ActiveAxis = &#39;?&#39;</code></pre>
   </div>
 
 
@@ -209,7 +209,7 @@ array indexes and assignment separation, plus ordinal-ignore-case string helpers
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
     <dd></dd>
   </dl>
 
@@ -311,123 +311,6 @@ array indexes and assignment separation, plus ordinal-ignore-case string helpers
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_AACommMnemonicHelper_ContainsOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.ContainsOIC*"></a>
-
-  <h3 id="AAComm_Services_AACommMnemonicHelper_ContainsOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.ContainsOIC(System.String,System.String)">
-  ContainsOIC(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L68"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>returns whether the string contains input arg., StringComparison.OrdinalIgnoreCase</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool ContainsOIC(this string s, string o)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_AACommMnemonicHelper_EndsWithOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.EndsWithOIC*"></a>
-
-  <h3 id="AAComm_Services_AACommMnemonicHelper_EndsWithOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.EndsWithOIC(System.String,System.String)">
-  EndsWithOIC(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L83"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>returns whether the string ends with input arg., StringComparison.OrdinalIgnoreCase</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool EndsWithOIC(this string s, string o)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_AACommMnemonicHelper_EqualsOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.EqualsOIC*"></a>
-
-  <h3 id="AAComm_Services_AACommMnemonicHelper_EqualsOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.EqualsOIC(System.String,System.String)">
-  EqualsOIC(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>returns whether the string equals input arg., StringComparison.OrdinalIgnoreCase</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool EqualsOIC(this string s, string o)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -753,45 +636,6 @@ removes index and equality (checks for '[', '=', ',')</p>
     <dt><code>mnemonic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>arrIdx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AAComm_Services_AACommMnemonicHelper_StartsWithOIC_" data-uid="AAComm.Services.AACommMnemonicHelper.StartsWithOIC*"></a>
-
-  <h3 id="AAComm_Services_AACommMnemonicHelper_StartsWithOIC_System_String_System_String_" data-uid="AAComm.Services.AACommMnemonicHelper.StartsWithOIC(System.String,System.String)">
-  StartsWithOIC(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/AACommMnemonicHelper.cs/#L78"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>returns whether the string starts with input arg., StringComparison.OrdinalIgnoreCase</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StartsWithOIC(this string s, string o)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

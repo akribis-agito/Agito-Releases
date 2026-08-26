@@ -75,7 +75,8 @@
 
 <p>A small, Pythonic, <strong>runtime-free</strong> client for Agito <strong>AAComm</strong> motion controllers.</p>
 <p><code>aacommpy</code> drives a controller through the native <code>aacomm.*</code> C library and a bundled native
-<code>AACommServerNative</code> daemon — both NativeAOT, <strong>zero .NET runtime, no Python.NET, no NuGet</strong>. <code>pip install</code> and connect.</p>
+<code>AACommServerNative</code> daemon — both NativeAOT, <strong>zero .NET runtime, no Python.NET, no NuGet</strong>. <code>pip install</code> and connect. Samples use <code>172.1.1.101</code>, the controller's factory-default address —
+substitute yours.</p>
 <pre><code class="lang-python">import aacommpy
 from aacommpy import Ethernet
 
@@ -248,21 +249,19 @@ builds a platform wheel.</p>
 <h2 id="tests">Tests</h2>
 <pre><code class="lang-bash">pip install pytest
 pytest aacommpy/tests -m &quot;not hardware&quot;        # pure-Python unit tests, no hardware
-# hardware smoke (needs the rig + native binaries via the env vars above):
-$env:AACOMM_HARDWARE_IP=&quot;172.1.1.101&quot;; pytest aacommpy/tests -m hardware
+# hardware smoke (needs a reachable controller + native binaries via the env vars above):
+$env:AACOMM_RIG_AGM800=&quot;172.1.1.101&quot;; pytest aacommpy/tests -m hardware
 </code></pre>
-<h2 id="notes--not-yet-in-v1">Notes / not yet in v1</h2>
+<h2 id="notes">Notes</h2>
 <ul>
 <li>Firmware, FPGA, and user-program download are supported: <code>Client.download_firmware(conn, fw_path)</code>,
 <code>Client.download_fpga(conn, fpga_path, ver_path)</code> (Ethernet / RS-232; never CAN), and
 <code>Client.download_user_program(path)</code> (on an already-connected client).</li>
-<li>linux/macOS wheels and a CLI are roadmap items.</li>
+<li>Wheels are built per host RID — NativeAOT cannot cross-compile, so a release publishes the
+platforms whose build hosts exist. win-x64 today.</li>
 </ul>
-<h2 id="migrating-from-1x">Migrating from 1.x</h2>
-<p>2.0 is a clean break: the old pythonnet/.NET object model (<code>CommAPI</code>, <code>Services.ConnectionData</code>,
-<code>Shared.ChannelType</code>, <code>AACommMessage</code>) is gone. Replace <code>api.SendReceive(AACommMessage(&quot;APos&quot;))</code> with
-<code>c.query(&quot;APos&quot;)</code>, <code>Services.ConnectionData()</code> field-setting with <code>Ethernet(...)</code>/<code>Serial(...)</code>/<code>Can(...)</code>,
-and <code>.MsgReceived</code> with <code>Reply.text</code>. No <code>install</code>/<code>dotnetfw</code> CLI — there is no .NET to manage.</p>
+<h2 id="release-notes">Release notes</h2>
+<p><code>CHANGELOG.md</code> — the wheel is versioned independently of the <code>Agito.AAComm</code> NuGet.</p>
 
 </article>
 

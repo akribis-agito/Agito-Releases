@@ -726,6 +726,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Diagnostics.AACommDebugLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Diagnostics.AACommDebugLog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Diagnostics.AACommDebugLog",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Diagnostics.AACommDebugLog.yml\" sourcestartlinenumber=\"1\">Process-wide, zero-config, always-on diagnostic log for the AAComm client — the client-side\ncounterpart of AACommServer's debug log. Session-lifecycle events (construction, connect\noutcomes, sync-timeout expiries, FATALs, disconnects) accumulate in an in-memory ring;\nhealthy steady state does zero file IO. A severe event (sync phase-2 teardown, FATAL,\ncomms error) snapshots the ring to\n<code>%LocalAppData%\\PCSuite\\AAComm_DebugLogs{yyyy_MM_dd_HH-mm-ss}<em sourcefile=\"api/AAComm.Services.Diagnostics.AACommDebugLog.yml\" sourcestartlinenumber=\"6\">{process}</em>{pid}_{trigger}.log</code>\noff the hot path (debounced, 5 s), because a library in the customer's process has no\nreliable exit hook to save on. Never per-message traffic — that is the AACommServer comm\nlog's job.</p>\n<p></p>\n<p sourcefile=\"api/AAComm.Services.Diagnostics.AACommDebugLog.yml\" sourcestartlinenumber=\"13\">Every line is tagged <code>HH:mm:ss.fff [api#N/conn#M] text</code>: <code>api#N</code> identifies the\n<xref href=\"AAComm.CommAPI\" data-throw-if-not-resolved=\"false\"></xref> instance, <code>conn#M</code> its successive channel opens; the connect line\ncarries the full endpoint (and the socket's local port, which AACommServer's log can join\nagainst its per-client <code>UserId</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Diagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Diagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Diagnostics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.FloatHelper.yml",
       "output": {
         ".html": {
@@ -1090,6 +1118,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.UserUnits.UserUnitsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.UserUnits.UserUnitsData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.UserUnits.UserUnitsData",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.UserUnits.UserUnitsData.yml\" sourcestartlinenumber=\"1\">A parameter's Min / Max / Default values with the 'User Units' scaling applied\n(when defined for the axis — otherwise the raw values with Factor = 1, Units = &quot;&quot;).\nReturned by <xref href=\"AAComm.Services.MessageData.GetUserUnitsData(System.Char)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.UserUnits.yml",
       "output": {
         ".html": {
@@ -1406,6 +1448,16 @@
         },
         ".json": {
           "relative_path": "articles/advanced/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/architecture/diagnostics.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/architecture/diagnostics.html"
         }
       },
       "version": ""

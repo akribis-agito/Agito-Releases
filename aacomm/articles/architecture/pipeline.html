@@ -276,14 +276,26 @@ reply (the dominant path), <code>SyncErr Timeout</code> on safety-net expiry, <c
 Disconnect) before any reply arrived.</li>
 <li><code>OnCommsError</code> and the long-operation events are suppressed for sync requests (the caller
 observes errors via the return value; reset recovery timing is the caller's problem).</li>
-<li><strong>Two-phase safety-net wait</strong> (<code>TimeoutMs + 100</code> each phase; pinned by
-<code>SendReceiveQueuedTimeoutTests</code>): phase 1 bounds queue residency — expiry while the
-message is still QUEUED abandons it (the dispatcher skips abandoned messages, so it
-never reaches the wire) and returns <code>SyncErr Timeout</code> <strong>without</strong> disconnecting: the
-link is not implicated by another message's slowness. Phase 2 starts when the
-dispatcher attempts the send (the clock restarts — mirroring the server, which
-enforces <code>TimeoutMs</code> from receipt): expiry after the message reached the wire does
-implicate the link and disconnects the API.</li>
+<li><strong>Two-phase safety-net wait</strong> (pinned by <code>SendReceiveQueuedTimeoutTests</code>): phase 1
+bounds queue residency — expiry while the message is still QUEUED abandons it (the
+dispatcher skips abandoned messages, so it never reaches the wire) and returns
+<code>SyncErr Timeout</code> <strong>without</strong> disconnecting: the link is not implicated by another
+message's slowness. Phase 2 starts when the dispatcher attempts the send (the clock
+restarts — mirroring the server, which arms <code>TimeoutMs</code> when it dequeues the request to the controller) and runs for
+<code>TimeoutMs + 100 + StarvationToleranceMs</code>: the server arms <code>TimeoutMs</code> when it dequeues
+the request to the controller and FATALs on controller silence itself, so what phase 2
+charges above the budget is never controller slowness — it is the reply's client-side
+ThreadPool completion hops (IOCP receive → TCS continuation → waiter wake), or
+server-side queue time behind another client's long operation. A reply landing inside
+the grace is returned normally; expiry with the grace also spent means the SERVER is
+unresponsive — the link is implicated and the API disconnects.</li>
+<li><strong>Phase 1's budget depends on what the wire is doing</strong>, re-read each 50 ms slice.
+Queued behind a live message, it is <code>TimeoutMs + 100</code> — a fast cached read must stay
+responsive behind a slow write. Wire idle and still not dispatched, it is
+<code>TimeoutMs + 5000</code>: the only thing that can delay dispatch then is <code>DispatchLoop</code>, a
+<code>Task.Run</code> continuation, not getting a ThreadPool thread. That is the client host being
+busy and says nothing about the controller, so charging it to <code>TimeoutMs</code> is what made a
+loaded machine report <code>FailControllerType</code> against a controller answering in 0-2 ms.</li>
 <li>Flow: <code>SendReceive()</code> → tagged sync message → Queue → Dispatch → reply → wait handle set → return</li>
 </ul>
 <p><strong>Re-entry guard</strong>: calling <code>SendReceive</code> from inside an <code>OnReplyReceived</code> callback (i.e.
@@ -439,6 +451,17 @@ connecting — <code>Connect()</code> never spawns the server; without a running
 <li><strong>Automatic cleanup</strong>: API auto-disconnects on fatal errors</li>
 <li><strong>Exception handling</strong>: TCP socket errors converted to events</li>
 </ul>
+<h3 id="diagnostics">Diagnostics</h3>
+<p><code>AAComm.Services.Diagnostics.AACommDebugLog</code> is a process-wide, zero-config, always-on
+diagnostic log — the client-side counterpart of AACommServer's debug log. Session-lifecycle
+events only (construction, connect outcomes, sync phase-1 queue abandon vs phase-2 teardown,
+server FATALs, disconnects with their reason), each line tagged <code>HH:mm:ss.fff [api#N/conn#M]</code>,
+accumulate in an in-memory ring with zero steady-state file IO; a severe event snapshots the
+ring to <code>%LocalAppData%\PCSuite\AAComm_DebugLogs</code>. Public surface: <code>AACommDebugLog.Sink</code>
+(host bridge) and <code>Flush()</code>. The full spec — line shapes, flush-on-severity semantics, the
+server-side <code>GlobalLogger</code> counterpart over the same linked mechanics core, and the
+local-port ↔ <code>UserId</code> procedure that joins the client and server log files — is
+<code>diagnostics-srs.md</code>.</p>
 <h3 id="protocol-support">Protocol Support</h3>
 <ul>
 <li><strong>CAN</strong>: Binary protocol with CAN ID and data bytes (requires Kvaser CANlib; Windows or Linux, macOS unsupported)</li>

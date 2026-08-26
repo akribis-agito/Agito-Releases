@@ -518,7 +518,7 @@ To use the &quot;Special Bulk Message for CNCB&quot; functionality: use the 'exp
   <div class="markdown level1 summary"><pre><code>ADVANCED / provisioning use. When 'true', this message is permitted to &lt;b&gt;assign&lt;/b&gt; User Units
 factor/units config parameters (&lt;code&gt;*UnitFct&lt;/code&gt;, &lt;code&gt;*UnitUnt[]&lt;/code&gt;), which the Tx-build gate
 otherwise rejects (&lt;xref href=&quot;AAComm.Services.ControllerErrorInterpreter&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; code 4023) — those are API-only,
-written through &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.CommAPI%2cAAComm.Services.UserUnits.UUGroups%2cSystem.Char%2cSystem.String%2cSystem.Double)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
+written through &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.TrySetUnitsSync(AAComm.Interfaces.ICommService%2cAAComm.Services.UserUnits.UUGroups%2cSystem.Char%2cSystem.String%2cSystem.Double)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
 </code></pre>
 <p></p>
 <pre><code>A caller that sets this MUST resync the in-memory scaling afterwards via
@@ -693,7 +693,7 @@ Set automatically by the implicit constructor from <span class="xref">AAComm.Int
 <pre><code>use when the caller requires raw controller values, without User Units conversion.
 </code></pre>
 <p></p>
-<pre><code>unlike &lt;xref href=&quot;AAComm.CommAPI.IgnoreUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, this flag affects only this specific message.
+<pre><code>unlike &lt;xref href=&quot;AAComm.CommAPI.SkipUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, this flag affects only this specific message.
 </code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>

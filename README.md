@@ -92,3 +92,4 @@ The `gh-pages` branch serves <https://akribis-agito.github.io/Agito-Releases/>:
 | `latest.json` | PCSuite update manifest (polled by the app's update check) |
 | `aacomm/` | AAComm API documentation |
 | `aamotion/` | AAMotion API documentation |
+| `release-notes/<yyyy-mm>/` | Human-readable release notes for a release train (features, fixes, downloads) — e.g. `release-notes/2026-08/` |

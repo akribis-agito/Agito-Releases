@@ -22,8 +22,10 @@ version. Product-level detail lives inside `index.json`, not in the tag.
 | `Software/PCSuite/vX.Y.Z` | `Software/PCSuite/v17.2.0` | PCSuite installer, Agito edition |
 | `Software/PCSuite-MVG/vX.Y.Z` | `Software/PCSuite-MVG/v17.2.0` | PCSuite installer, MVG edition |
 
-Every release additionally carries `SHA256SUMS.txt` covering **all** of its
-assets, and an `index.json` describing them.
+Every release additionally carries `SHA256SUMS.txt` and an `index.json` describing
+its assets. On the `Software/*` lines `SHA256SUMS.txt` covers every asset on the page,
+`index.json` included; on the `Firmware/*` and `FPGA/*` lines it covers the product
+assets and not `index.json`.
 
 ## `index.json`
 
@@ -67,6 +69,31 @@ current scheme (`FPGA/v5.4.2` onward).
 ```bash
 sha256sum -c SHA256SUMS.txt
 ```
+
+That proves a download is intact. To prove Akribis published it, check the signature
+over the sums. The `Software/*` lines carry `SHA256SUMS.txt.asc`, a detached OpenPGP
+signature; the `Firmware/*` and `FPGA/*` lines are not signed.
+
+```bash
+gpg --import akribis-release-key.asc        # once; the key is in this repository
+gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt
+sha256sum -c SHA256SUMS.txt
+```
+
+The key is **Akribis Release Signing <releases@akribis-sys.com>**, fingerprint
+
+```
+106B A776 B31F 11E9 CF6B  3C4C 18FF 1AD0 C66E C1AE
+```
+
+A good result prints `Good signature from "Akribis Release Signing ..."` and a
+`Primary key fingerprint:` line — **that line must match the fingerprint above.**
+GPG also prints `WARNING: This key is not certified with a trusted signature!` for
+any key you have not personally certified; that warning is expected and does not
+mean the check failed. The fingerprint comparison is the check.
+
+Signatures are made by a signing subkey, so the `Subkey fingerprint:` line can
+change when the subkey is rotated. The primary fingerprint above does not.
 
 Firmware `.ver` files carry the image MD5 and a **product family** string
 (`Type:AGD301/AGC301`) — the family, not the product name. Product names come

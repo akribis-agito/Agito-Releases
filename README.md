@@ -75,13 +75,13 @@ over the sums. The `Software/*` lines carry `SHA256SUMS.txt.asc`, a detached Ope
 signature; the `Firmware/*` and `FPGA/*` lines are not signed.
 
 ```bash
-gpg --locate-keys releases@akribis-sys.com   # once - fetches the key from keys.openpgp.org
+gpg --keyserver hkps://keys.openpgp.org --recv-keys 106BA776B31F11E9CF6B3C4C18FF1AD0C66EC1AE
 gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt
 sha256sum -c SHA256SUMS.txt
 ```
 
-If that machine cannot reach a keyserver, the same key is in this repository and can be
-imported from the file instead:
+That fetches the key once, by fingerprint. If the machine cannot reach a keyserver, the same
+key is in this repository and can be imported from the file instead:
 
 ```bash
 gpg --import akribis-release-key.asc

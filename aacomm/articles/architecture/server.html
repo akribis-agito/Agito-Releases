@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -217,7 +217,7 @@ dispatch until the first Open commits a communicator and a user, so the window i
 <li>Fatal errors (timeout, connection loss) close the channel and notify <strong>every</strong> user of it:
 in-flight/queued users get the fatal as their reply; passive users are notified too — as a
 <code>CHANNEL_EVENT</code> frame for binary clients that declared the capability on Open, or the
-legacy fatal shape otherwise. Client sockets stay open across the fatal — best-effort
+legacy fatal shape otherwise. Client sockets close after the fatal flushes — best-effort
 with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; see
 <code>AACommComponents/docs/ipc-contract.md</code> §Fatal broadcast).</li>
 <li>Unsent messages cleared on user disconnect</li>
@@ -227,7 +227,7 @@ with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; s
 <ul>
 <li><strong>CAN Bus</strong>: Kvaser CANlib-based communication (Windows or Linux)</li>
 <li><strong>RS-232</strong>: Serial port communication</li>
-<li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk; the Simulation channel carries bulk too)</li>
+<li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk)</li>
 <li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). The legacy file-based <code>Simulator</code> channel is removed; the <code>Simulator</code> enum survives only as the in-process echo channel for the AAComm virtual-test harness.</li>
 </ul>
 <h3 id="spawned-child-lifetime">Spawned-child lifetime</h3>
@@ -350,7 +350,7 @@ Linux/macOS) via <code>PcapDetector</code>.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

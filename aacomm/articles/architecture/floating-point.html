@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -78,11 +78,6 @@
 <p><strong>Limitation</strong>: Resolution only applies when data is obtained through the Extension mechanism, or for protocols that have Rx-path resolution (see below). If an unsupported upload command is issued directly via <code>CommAPI.Send()</code> — such as from PCSuite Terminal — the raw response is <strong>not</strong> resolved. The consumer receives unprocessed bit-masked values.</p>
 <p>ConFltSnapVal and ProgSnapVal cannot be auto-resolved via an Extension mechanism because the snapshot source parameters (ConFltSnapSrc / ProgSnapSrc) are user-configurable — the parameter types are unknown until the CCC sources are queried at runtime.</p>
 <p><strong>TODO</strong>: Consider an Extension-level auto-resolve path for protocols currently resolved only by PCSuite UI code (ConFltSnapVal, ProgSnapVal). This would require querying snapshot source CCCs as part of the Extension flow.</p>
-<h2 id="number-text">Number text</h2>
-<p>Every value crosses the AAComm boundary as text — <code>AACommEventArgs</code> carries a reply only as <code>MsgReceived</code> — so each read is a format-then-reparse round trip. Both halves are pinned to <code>CultureInfo.InvariantCulture</code>: '.' as the decimal separator, never a group separator, matching the controller's own ASCII protocol.</p>
-<p><strong>Formatting.</strong> Every floating-point value AAComm emits as text goes through <code>WireNumber.ToWire</code> (<code>AAComm.Internal.Wire</code>): scaled replies and <code>ParamAbout</code> bounds from <code>FloatHelper</code>, the resolved AllStat values in <code>AllStatInterpreter</code>, the User Units factor written by <code>TrySetUnitsSync</code>, the recording-trigger download commands in <code>TriggerContainer</code>. It picks the shortest fixed-precision invariant form that parses back to the same value — G15 else G17 for <code>double</code>, G7 else G9 for <code>float</code> — so two guarantees hold <strong>by construction</strong>: the text round-trips to the identical value (checked per value, not assumed), and it is byte-identical on every target framework, because every target runs that same selection over specifiers that are themselves target-stable. Neither holds for <code>&quot;R&quot;</code>, which is shortest-round-trippable on .NET 8/10, a documented round-trip hazard on 64-bit .NET Framework, and disagrees between the two for 16-significant-digit values; a bare <code>ToString()</code> is worse still — 15-digit lossy on .NET Framework 4.8. Integral wire tokens and the legacy <code>FirmwareVersionStr</code>/<code>FPGAVersionStr</code> are likewise rendered with <code>CultureInfo.InvariantCulture</code>, so a negative value never carries the U+2212 minus sign that ICU uses for sv-SE, fi-FI, nb-NO, et-EE and lt-LT — the reply text is truncated to bytes one char at a time, which would turn <code>-12345</code> into <code>\x1212345</code>.</p>
-<p><strong>Parsing.</strong> Every controller-supplied number parses with an explicit <code>NumberStyles.Float | NumberStyles.AllowThousands</code> and the invariant culture: the assignment value in <code>CanMessageParser</code>, the factor read back in <code>UserUnitGroup</code>, the About-data bounds in <code>MessageData</code>, and — one layer up — <code>AAMotion.MotionController</code>'s <code>ReadGenDataF</code>/<code>D</code> and <code>ReadUserParamF</code>/<code>D</code>. The transmit seam in <code>PayloadBuilder</code> is the one deliberate exception: it reads the outgoing assignment with plain <code>NumberStyles.Float</code>, no <code>AllowThousands</code>, because a <code>,</code> is an assignment separator in the controller's own grammar — reading <code>1,5</code> as one thousand five hundred there would rewrite a command the parser rejects into one it accepts.</p>
-<p><strong>Consumers must do the same.</strong> A reply reaches the caller as text; parsing it in the current culture reads an invariant <code>0.01</code> as 1 on a comma-decimal locale, or throws.</p>
 <h2 id="resolution">Resolution</h2>
 <p>Core logic lives in <code>FloatHelper</code> (<code>AAComm.Services</code>) — public static class, callable directly by all consumers.</p>
 <p><code>FloatHelper.ResolveFloatingPoint(MessageData md, long val, bool doubleSupported, bool floatSupport)</code> determines the correct conversion based on the parameter's <code>MessageData</code> type:</p>
@@ -98,98 +93,7 @@
 <h3 id="float-hole-protection">Float Hole Protection</h3>
 <p>AllStat_64bit protocols (AllStat, Logger, Scope, ConFltSnap, ProgSnap) never transmit 32-bit float bit patterns. They either send raw integers or 64-bit doubles. These protocols pass <code>floatSupport: false</code>, which blocks the <code>IntToFloat</code> path and prevents garbage values when <code>doubleSupported=false</code> and a parameter has float metadata. RecUpload and ParamAbout pass <code>floatSupport: true</code>.</p>
 <h3 id="firmware-side-userunits-recording-header">Firmware-Side UserUnits (Recording Header)</h3>
-<p>The per-vector <code>UserUnits</code> integer stored in the recording header (<code>VectorDataContainer.UserUnits</code>, read from <code>GetUserUnitsIndex(i)</code>) is part of a parallel firmware-level scaling system. It is mutually exclusive with the PCSuite UU feature at the firmware level. This value is preserved as metadata in <code>RecParamHeader</code> and AGF files but is NOT used for PCSuite UU scaling. PCSuite UU factors are looked up dynamically through the centralized <code>FloatHelper.ResolveUserUnitsFactor()</code> — <code>CommAPI.GetUserUnitsEnabled()</code> + <code>ControllerMessagesContainer.TryGetUserUnitAxis()</code>, plus the per-message <code>AACommMessage.SkipUserUnits</code> opt-out — which <code>FloatHelper.ApplyUserUnits()</code> wraps for the callers that only need to multiply.</p>
-<h3 id="user-units-embedded-vs-global">User Units: Embedded vs Global</h3>
-<p>Firmware declares two independent user-units systems. They are one declaration each of two different things, not two declarations of one — different membership between them is by design.</p>
-<table>
-<thead>
-<tr>
-<th>System</th>
-<th>Declared by</th>
-<th>Who converts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Embedded</strong></td>
-<td>the <code>bInUserUnits</code> field of each keyword's <code>KW_ROW</code> attribute row — <code>USER_UNITS</code> / <code>AUX_USER_UNITS</code> / <code>PD_USER_UNITS</code> / <code>SCALING</code> / <code>NO_USER_UNITS</code> / <code>FUNC_UNITS</code> (<code>Firmware-Main:CommonC/AG300_CTL01Params.c</code>)</td>
-<td>the <strong>controller</strong>, on the comm path, by the per-axis <code>UsrUnits</code> / <code>AuxUsrUnits</code> / <code>PDUsrUnits</code> ratio — live values reach AAComm already converted; the <code>About</code> table and <code>ParamAbout</code> report a <code>SCALING</code> parameter's <strong>bounds</strong> raw, in the controller's internal unit, and <code>MessageData</code> / <code>FloatHelper.ResolveParamAbout</code> divide them by <code>ScalingFact</code> once</td>
-</tr>
-<tr>
-<td><strong>Global</strong></td>
-<td>the <code>gl*UnitGroup[]</code> CAN-code arrays (<code>Firmware-Main:CommonC/AG300_CTL01UtilityFuncs.c</code>)</td>
-<td><strong>AAComm</strong>, on the Tx and Rx paths, from the group membership and per-axis factor it reads at connect</td>
-</tr>
-</tbody>
-</table>
-<p><strong>For the SDK the group arrays are authoritative.</strong> <code>UserUnitsAdapter.RefreshSync</code> reads the <code>UnitGrp[]</code> membership arrays, the <code>UnitFct</code> factor and the <code>UnitUnt[]</code> unit names, and nothing else. The keyword flag describes controller behaviour and is not an AAComm input — deriving a parameter's AAComm units contract from it gives the wrong answer. The two sets differ (one firmware revision flags 92 <code>KW_ROW</code> rows for the embedded system while the eight group arrays hold 80 CAN codes between them) and they move independently, so treat the counts as an illustration, never as a number to rely on.</p>
-<p>The systems are mutually exclusive per parameter and firmware enforces it: <code>CheckGlobalUserUnitsConflict</code> (<code>Firmware-Main:CommonC/AG300_CTL01Interpreter.c</code>) rejects an assign or a read with error 338, <code>GLOBAL_VS_EMBEDDED_USERUNITS_CONFLICT</code>, when the keyword is flagged for the embedded system, its embedded ratio is non-default, its CAN code is in the Global group array matching that flag, and <code>UserUnitsEn</code> is set for that axis.</p>
-<p>EtherCAT controllers implement the embedded system only: <code>Firmware-Ethercat:Source/Params.c</code> declares the embedded flags and the <code>UsrUnits</code> / <code>AuxUsrUnits</code> / <code>PDUsrUnits</code> parameters, but no <code>UserUnitsEn</code>, no group arrays and no factor parameters. <code>RefreshSync</code> bails with <code>UUErrors.NoUserUnits</code> and the Global layer never engages.</p>
-<p>PCSuite's view of the Global system, group by group: <code>PCSuite/Core/Configuration/UserUnits/user-units.md</code>.</p>
-<h3 id="user-units-transmit-seam">User Units Transmit Seam</h3>
-<p><code>PayloadBuilder</code> applies the Global system on the way out, <strong>above the transport branch</strong> — the same step in
-<code>BuildPayload</code> (string IPC) and <code>BuildTypedPayload</code> (binary IPC), run before either asks which channel it is
-on. An assignment is divided by the factor of its own parameter (<code>FloatHelper.ResolveUserUnitsFactor</code>, the
-lookup the receive path uses) and re-rendered with <code>WireNumber.ToWire</code>; the API-only config gate
-(<code>*UnitFct</code> / <code>*UnitUnt[]</code>, error 4023, bypassed per message by <code>AACommMessage.AllowUserUnitsConfig</code>) rejects
-there too. <code>CanMessageParser</code> reads the assignment as-is — the text reaching it is already in controller units.</p>
-<p>The seam resolves the command from a copy with every space removed — the tokenisation <code>CanMessageParser</code>
-itself uses, so <code>APos =1.5</code> is the same write as <code>APos=1.5</code> and meets the same gate and the same factor. A
-command it rewrites crosses in that normalised form; one it does not rewrite crosses byte-for-byte as the
-caller wrote it.</p>
-<p>A command the seam cannot resolve — a query, an unknown mnemonic — crosses untouched: the CCC builder owns
-its error (<code>MnemonicNotFound</code> for an unknown one), and on the bare-ASCII transports there is no error to
-raise. Two rules follow from where the gate sits:</p>
-<ul>
-<li><strong>An assignment to a User Units config parameter is rejected 4023 before the value is validated.</strong> A
-malformed, out-of-range or wrong-form value on a real <code>*UnitFct</code> / <code>*UnitUnt[]</code> reports 4023 rather than
-the parser's 8/9/14/25 — the gate must not depend on a validation the bare-ASCII transports never run.</li>
-<li>A value the seam cannot read as a finite number (<code>1e400</code>, <code>Infinity</code>, <code>NaN</code>, <code>1,5</code>) is left exactly as
-written for the CCC builder to judge, never rendered onto the wire in a rewritten form.</li>
-<li><strong>An assignment to a firmware-integral parameter (<code>ParamType</code> 0 or 3 — <code>MessageData.IsInt</code> /
-<code>IsLong</code>) crosses as an integer, rounded to-even in controller counts, on every transport.</strong> The
-rounding belongs here, below the division: rounding a display value above the seam rounds in the
-wrong space (at a <code>0.01 mm/count</code> factor it quantises to 100 counts, not 1). <code>CanMessageParser</code>
-already rounds that way when it packs a CCC frame, so the seam only closes the gap the string
-transports leave — <code>244.39 / 0.01</code> is <code>24438.999999999996</code>, which used to reach an RS-232
-controller as that text while the same command inside a CCC frame carried 24439. The rule applies
-at factor 1 too, because the caller's value is a display value and may carry a fraction the
-firmware cannot hold. Float and double parameters keep their fraction, and a value that is already
-integral is not a rewrite — the command crosses with its original bytes.</li>
-</ul>
-<p>What a message type does is an explicit table, not a consequence of which branch reaches the CCC builder:</p>
-<table>
-<thead>
-<tr>
-<th>Message type</th>
-<th>Transmit User Units</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Regular</code>, <code>ResetRequest</code>, <code>EraseUserProg</code>, <code>Continuous</code></td>
-<td>scaled once, above the transport branch</td>
-</tr>
-<tr>
-<td><code>EthernetASCII</code></td>
-<td>scaled once for the single-command key (<code>A</code>), after the key char is set aside; the ASCII-bulk keys (<code>L</code>, <code>I</code>) carry a <code>;</code>-joined list this seam does not parse and cross raw</td>
-</tr>
-<tr>
-<td><code>BulkMessage</code>, <code>BulkMessageIgnore</code></td>
-<td>scaled per sub-message inside the bulk segment loop, so a rejected segment keeps the halt-on-error / <code>ADoNothing</code> semantics</td>
-</tr>
-<tr>
-<td><code>Firmware</code>, <code>UserProgram</code>, <code>UserProgramBin</code>, <code>SpecialBulk</code>, <code>SpecialBulkB</code>, <code>BulkMessageCNC</code>, <code>BulkMessageCNCB</code>, <code>InternalAACS</code></td>
-<td>raw in both directions — scaling a download payload corrupts it</td>
-</tr>
-</tbody>
-</table>
-<p>The recording download opts out per message: <code>AACommDataRecManager</code> sends its parameter batch with
-<code>skipUserUnits: true</code>, because <code>TriggerContainer</code>'s Tx constructor has already de-scaled <code>RecTrigVal</code> /
-<code>RecTrigValMax</code> and a second pass would square the factor.</p>
-<h3 id="user-units-cache-lifetime">User Units Cache Lifetime</h3>
-<p>The Global User-Units factors are read from the controller and cached in <code>ControllerMessagesContainer.UserUnits</code>. The cache is populated by <code>CommAPI.Connect</code>, cleared by <code>Disconnect</code>, and re-read after a controller reboot the session survives — a completed <code>MessageType.ResetRequest</code>, sync or async (<code>Session.SendReceive</code> / <code>Session.RunUserCallback</code>). A reset that came back an error leaves the cached values in place; a re-read that cannot reach the controller clears them rather than leaving the pre-reset factors behind. The firmware / FPGA download EOF steps also reboot the controller, but those flows end in <code>CommAPI.Disconnect</code>, which clears the cache on the way out. A refresh rebuilds the configuration off to the side and publishes it in one swap, so a reply being scaled on the receiver thread meanwhile resolves against the complete old configuration or the complete new one — never a half-filled cache.</p>
-<p>A raw write to <code>*UnitFct</code> / <code>*UnitUnt</code> that bypasses the config gate (<code>AACommMessage.AllowUserUnitsConfig</code>) does not update the cache — provisioning tools resync it with <code>CommAPI.RefreshUserUnits()</code>.</p>
+<p>The per-vector <code>UserUnits</code> integer stored in the recording header (<code>VectorDataContainer.UserUnits</code>, read from <code>GetUserUnitsIndex(i)</code>) is part of a parallel firmware-level scaling system. It is mutually exclusive with the PCSuite UU feature at the firmware level. This value is preserved as metadata in <code>RecParamHeader</code> and AGF files but is NOT used for PCSuite UU scaling. PCSuite UU factors are looked up dynamically via <code>CommAPI.GetUserUnitsEnabled()</code> + <code>ControllerMessagesContainer.TryGetUserUnitAxis()</code> through the centralized <code>FloatHelper.ApplyUserUnits()</code> method.</p>
 <h3 id="double-support-flags">Double Support Flags</h3>
 <p>Two independent flags control double support for different protocol groups:</p>
 <table>
@@ -261,7 +165,7 @@ integral is not a rewrite — the command crosses with its original bytes.</li>
 <td><code>false</code></td>
 <td>Yes</td>
 <td>Yes</td>
-<td>Yes (<code>Resolve</code>, per value's own parameter)</td>
+<td>Yes (<code>ApplyUserUnits</code> in <code>Resolve</code>)</td>
 </tr>
 <tr>
 <td><strong>ParamAbout</strong></td>
@@ -270,7 +174,7 @@ integral is not a rewrite — the command crosses with its original bytes.</li>
 <td><code>true</code></td>
 <td>Yes (inline)</td>
 <td>Yes</td>
-<td>Yes (factor of the <strong>queried</strong> parameter, not of <code>ParamAbout</code>)</td>
+<td>Yes (via <code>ConvertReplyToFloatIfNeed</code> factor)</td>
 </tr>
 <tr>
 <td><strong>ConFltSnapVal</strong></td>
@@ -303,7 +207,7 @@ integral is not a rewrite — the command crosses with its original bytes.</li>
 <ul>
 <li><strong>Single-value parameters</strong>: float (<code>IntToFloat</code>) and double (<code>LongToDouble</code>) based on <code>MessageData</code> type. Note: the single-value path dispatches purely on <code>MessageData.IsFloat</code>/<code>IsDouble</code> — it does NOT check the <code>doubleSupported</code>/<code>floatSupport</code> flags.</li>
 <li><strong>ParamAbout</strong>: multi-value <code>State,MIN,MAX,DEFAULT</code> — delegated to <code>FloatHelper.ResolveParamAbout</code></li>
-<li><strong>AllStat</strong>: multi-value comma-separated longs per axis/group — delegated to <code>AllStatInterpreter.ResolveRawReply</code>. Uses the static mnemonic arrays and the private <code>Resolve()</code> instance method to convert each value in group order. Bit-pattern conversion runs only when <code>AllStat_64bit_Supported</code>; User Units scaling is applied either way, matching the structured <code>ParseAllStatData</code> path.</li>
+<li><strong>AllStat</strong>: multi-value comma-separated longs per axis/group — delegated to <code>AllStatInterpreter.ResolveRawReply</code>. Uses the static mnemonic arrays and the private <code>Resolve()</code> instance method to convert each value in group order. Returns reply unchanged if <code>!AllStat_64bit_Supported</code>.</li>
 </ul>
 <p><strong>NOT resolved in the Rx path</strong> (CAN code unknown at Rx flow time):</p>
 <ul>
@@ -318,7 +222,7 @@ integral is not a rewrite — the command crosses with its original bytes.</li>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/floating-point.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

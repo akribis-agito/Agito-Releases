@@ -950,20 +950,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AAComm.Services.PushData.AACommPushMsgPushEvents.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AAComm.Services.PushData.AACommPushMsgPushEvents",
-      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"1\">SOURCE == 2 (push events):</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"3\">For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)\nwith fixed-size event records.</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"6\">Binary packet structure (after the header, before the records):</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"7\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"7\">uint8 n: number of event records</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"8\">uint16 missed: events dropped since the last successful flush</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"9\">uint16 freeRows: remaining free rows in the controller's event queue</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"10\">uint16 reserved: zero</li>\n</ul>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"12\">Then n times, exactly 50 bytes each:</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"13\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"13\">uint8 type: event type</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"14\">uint8 axis: axis or port, <xref href=\"AAComm.Services.PushData.PushEventRecord.NoAxis\" data-throw-if-not-resolved=\"false\"></xref> when controller-wide</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"15\">uint32 timeSec: seconds since power-on</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"16\">uint32 timeTick: sub-second tick</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"17\">double data1..data5: type-specific values</li>\n</ul>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"19\">DATA is validated by arithmetic: it must be exactly 7 + 50n bytes. The packet\nterminator ('&gt;' CR) may follow it, because the binary IPC path delivers the\ncontroller's bytes untrimmed.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgUP.yml",
       "output": {
         ".html": {
@@ -989,20 +975,6 @@
       "IsMRef": true,
       "Title": "AAComm.Services.PushData.PrintfMessage",
       "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.PrintfMessage.yml\" sourcestartlinenumber=\"1\">Represents a single printf message within a push packet.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/AAComm.Services.PushData.PushEventRecord.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/AAComm.Services.PushData.PushEventRecord.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "AAComm.Services.PushData.PushEventRecord",
-      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.PushEventRecord.yml\" sourcestartlinenumber=\"1\">One event record of a push-events packet (<xref href=\"AAComm.Services.PushData.PushSources.PushEvents\" data-throw-if-not-resolved=\"false\"></xref>, VERSION_DATA 1).\nThe meaning of <xref href=\"AAComm.Services.PushData.PushEventRecord.Data1\" data-throw-if-not-resolved=\"false\"></xref>..<xref href=\"AAComm.Services.PushData.PushEventRecord.Data5\" data-throw-if-not-resolved=\"false\"></xref> depends on <xref href=\"AAComm.Services.PushData.PushEventRecord.Type\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",

@@ -3554,19 +3554,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Interfaces.IIdentityContainer.NumberOfAxes
   nameWithType: IIdentityContainer.NumberOfAxes
-- uid: AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth
-  name: PushEventQueueDepth
-  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_PushEventQueueDepth
-  commentId: P:AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth
-  fullName: AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth
-  nameWithType: IIdentityContainer.PushEventQueueDepth
-- uid: AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth*
-  name: PushEventQueueDepth
-  href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_PushEventQueueDepth_
-  commentId: Overload:AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth
-  isSpec: "True"
-  fullName: AAComm.Interfaces.IIdentityContainer.PushEventQueueDepth
-  nameWithType: IIdentityContainer.PushEventQueueDepth
 - uid: AAComm.Interfaces.IIdentityContainer.UP_NumOfThreads
   name: UP_NumOfThreads
   href: api/AAComm.Interfaces.IIdentityContainer.html#AAComm_Interfaces_IIdentityContainer_UP_NumOfThreads
@@ -5927,19 +5914,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ControllerIdentityContainer.ProductType
   nameWithType: ControllerIdentityContainer.ProductType
-- uid: AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth
-  name: PushEventQueueDepth
-  href: api/AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_PushEventQueueDepth
-  commentId: P:AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth
-  fullName: AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth
-  nameWithType: ControllerIdentityContainer.PushEventQueueDepth
-- uid: AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth*
-  name: PushEventQueueDepth
-  href: api/AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_PushEventQueueDepth_
-  commentId: Overload:AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth
-  isSpec: "True"
-  fullName: AAComm.Services.ControllerIdentityContainer.PushEventQueueDepth
-  nameWithType: ControllerIdentityContainer.PushEventQueueDepth
 - uid: AAComm.Services.ControllerIdentityContainer.ReadIdentity(AAComm.CommAPI)
   name: ReadIdentity(CommAPI)
   href: api/AAComm.Services.ControllerIdentityContainer.html#AAComm_Services_ControllerIdentityContainer_ReadIdentity_AAComm_CommAPI_
@@ -6511,19 +6485,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.ControllerIdentityFeature_02.LockSrcZero_Supported
   nameWithType: ControllerIdentityFeature_02.LockSrcZero_Supported
-- uid: AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported
-  name: PushEvents_Supported
-  href: api/AAComm.Services.ControllerIdentityFeature_02.html#AAComm_Services_ControllerIdentityFeature_02_PushEvents_Supported
-  commentId: P:AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported
-  fullName: AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported
-  nameWithType: ControllerIdentityFeature_02.PushEvents_Supported
-- uid: AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported*
-  name: PushEvents_Supported
-  href: api/AAComm.Services.ControllerIdentityFeature_02.html#AAComm_Services_ControllerIdentityFeature_02_PushEvents_Supported_
-  commentId: Overload:AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported
-  isSpec: "True"
-  fullName: AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported
-  nameWithType: ControllerIdentityFeature_02.PushEvents_Supported
 - uid: AAComm.Services.ControllerIdentityVersions
   name: ControllerIdentityVersions
   href: api/AAComm.Services.ControllerIdentityVersions.html
@@ -8560,51 +8521,6 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.PushData.AACommPushMsgError.ToString
   nameWithType: AACommPushMsgError.ToString
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents
-  name: AACommPushMsgPushEvents
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html
-  commentId: T:AAComm.Services.PushData.AACommPushMsgPushEvents
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents
-  nameWithType: AACommPushMsgPushEvents
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.Events
-  name: Events
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_Events
-  commentId: P:AAComm.Services.PushData.AACommPushMsgPushEvents.Events
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.Events
-  nameWithType: AACommPushMsgPushEvents.Events
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.Events*
-  name: Events
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_Events_
-  commentId: Overload:AAComm.Services.PushData.AACommPushMsgPushEvents.Events
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.Events
-  nameWithType: AACommPushMsgPushEvents.Events
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows
-  name: FreeRows
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_FreeRows
-  commentId: P:AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows
-  nameWithType: AACommPushMsgPushEvents.FreeRows
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows*
-  name: FreeRows
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_FreeRows_
-  commentId: Overload:AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.FreeRows
-  nameWithType: AACommPushMsgPushEvents.FreeRows
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.Missed
-  name: Missed
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_Missed
-  commentId: P:AAComm.Services.PushData.AACommPushMsgPushEvents.Missed
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.Missed
-  nameWithType: AACommPushMsgPushEvents.Missed
-- uid: AAComm.Services.PushData.AACommPushMsgPushEvents.Missed*
-  name: Missed
-  href: api/AAComm.Services.PushData.AACommPushMsgPushEvents.html#AAComm_Services_PushData_AACommPushMsgPushEvents_Missed_
-  commentId: Overload:AAComm.Services.PushData.AACommPushMsgPushEvents.Missed
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.AACommPushMsgPushEvents.Missed
-  nameWithType: AACommPushMsgPushEvents.Missed
 - uid: AAComm.Services.PushData.AACommPushMsgUP
   name: AACommPushMsgUP
   href: api/AAComm.Services.PushData.AACommPushMsgUP.html
@@ -8721,147 +8637,12 @@ references:
   isSpec: "True"
   fullName: AAComm.Services.PushData.PrintfMessage.TimeTick
   nameWithType: PrintfMessage.TimeTick
-- uid: AAComm.Services.PushData.PushEventRecord
-  name: PushEventRecord
-  href: api/AAComm.Services.PushData.PushEventRecord.html
-  commentId: T:AAComm.Services.PushData.PushEventRecord
-  fullName: AAComm.Services.PushData.PushEventRecord
-  nameWithType: PushEventRecord
-- uid: AAComm.Services.PushData.PushEventRecord.Axis
-  name: Axis
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Axis
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Axis
-  fullName: AAComm.Services.PushData.PushEventRecord.Axis
-  nameWithType: PushEventRecord.Axis
-- uid: AAComm.Services.PushData.PushEventRecord.Axis*
-  name: Axis
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Axis_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Axis
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Axis
-  nameWithType: PushEventRecord.Axis
-- uid: AAComm.Services.PushData.PushEventRecord.Data1
-  name: Data1
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data1
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Data1
-  fullName: AAComm.Services.PushData.PushEventRecord.Data1
-  nameWithType: PushEventRecord.Data1
-- uid: AAComm.Services.PushData.PushEventRecord.Data1*
-  name: Data1
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data1_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Data1
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Data1
-  nameWithType: PushEventRecord.Data1
-- uid: AAComm.Services.PushData.PushEventRecord.Data2
-  name: Data2
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data2
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Data2
-  fullName: AAComm.Services.PushData.PushEventRecord.Data2
-  nameWithType: PushEventRecord.Data2
-- uid: AAComm.Services.PushData.PushEventRecord.Data2*
-  name: Data2
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data2_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Data2
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Data2
-  nameWithType: PushEventRecord.Data2
-- uid: AAComm.Services.PushData.PushEventRecord.Data3
-  name: Data3
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data3
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Data3
-  fullName: AAComm.Services.PushData.PushEventRecord.Data3
-  nameWithType: PushEventRecord.Data3
-- uid: AAComm.Services.PushData.PushEventRecord.Data3*
-  name: Data3
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data3_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Data3
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Data3
-  nameWithType: PushEventRecord.Data3
-- uid: AAComm.Services.PushData.PushEventRecord.Data4
-  name: Data4
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data4
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Data4
-  fullName: AAComm.Services.PushData.PushEventRecord.Data4
-  nameWithType: PushEventRecord.Data4
-- uid: AAComm.Services.PushData.PushEventRecord.Data4*
-  name: Data4
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data4_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Data4
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Data4
-  nameWithType: PushEventRecord.Data4
-- uid: AAComm.Services.PushData.PushEventRecord.Data5
-  name: Data5
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data5
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Data5
-  fullName: AAComm.Services.PushData.PushEventRecord.Data5
-  nameWithType: PushEventRecord.Data5
-- uid: AAComm.Services.PushData.PushEventRecord.Data5*
-  name: Data5
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data5_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Data5
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Data5
-  nameWithType: PushEventRecord.Data5
-- uid: AAComm.Services.PushData.PushEventRecord.NoAxis
-  name: NoAxis
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_NoAxis
-  commentId: F:AAComm.Services.PushData.PushEventRecord.NoAxis
-  fullName: AAComm.Services.PushData.PushEventRecord.NoAxis
-  nameWithType: PushEventRecord.NoAxis
-- uid: AAComm.Services.PushData.PushEventRecord.TimeSec
-  name: TimeSec
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_TimeSec
-  commentId: P:AAComm.Services.PushData.PushEventRecord.TimeSec
-  fullName: AAComm.Services.PushData.PushEventRecord.TimeSec
-  nameWithType: PushEventRecord.TimeSec
-- uid: AAComm.Services.PushData.PushEventRecord.TimeSec*
-  name: TimeSec
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_TimeSec_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.TimeSec
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.TimeSec
-  nameWithType: PushEventRecord.TimeSec
-- uid: AAComm.Services.PushData.PushEventRecord.TimeTick
-  name: TimeTick
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_TimeTick
-  commentId: P:AAComm.Services.PushData.PushEventRecord.TimeTick
-  fullName: AAComm.Services.PushData.PushEventRecord.TimeTick
-  nameWithType: PushEventRecord.TimeTick
-- uid: AAComm.Services.PushData.PushEventRecord.TimeTick*
-  name: TimeTick
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_TimeTick_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.TimeTick
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.TimeTick
-  nameWithType: PushEventRecord.TimeTick
-- uid: AAComm.Services.PushData.PushEventRecord.Type
-  name: Type
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Type
-  commentId: P:AAComm.Services.PushData.PushEventRecord.Type
-  fullName: AAComm.Services.PushData.PushEventRecord.Type
-  nameWithType: PushEventRecord.Type
-- uid: AAComm.Services.PushData.PushEventRecord.Type*
-  name: Type
-  href: api/AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Type_
-  commentId: Overload:AAComm.Services.PushData.PushEventRecord.Type
-  isSpec: "True"
-  fullName: AAComm.Services.PushData.PushEventRecord.Type
-  nameWithType: PushEventRecord.Type
 - uid: AAComm.Services.PushData.PushSources
   name: PushSources
   href: api/AAComm.Services.PushData.PushSources.html
   commentId: T:AAComm.Services.PushData.PushSources
   fullName: AAComm.Services.PushData.PushSources
   nameWithType: PushSources
-- uid: AAComm.Services.PushData.PushSources.PushEvents
-  name: PushEvents
-  href: api/AAComm.Services.PushData.PushSources.html#AAComm_Services_PushData_PushSources_PushEvents
-  commentId: F:AAComm.Services.PushData.PushSources.PushEvents
-  fullName: AAComm.Services.PushData.PushSources.PushEvents
-  nameWithType: PushSources.PushEvents
 - uid: AAComm.Services.PushData.PushSources.Unknown
   name: Unknown
   href: api/AAComm.Services.PushData.PushSources.html#AAComm_Services_PushData_PushSources_Unknown

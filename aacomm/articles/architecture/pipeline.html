@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/pipeline.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/pipeline.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -448,7 +448,7 @@ connecting — <code>Connect()</code> never spawns the server; without a running
 <ul>
 <li><strong>OnCommsError</strong> event: Fatal errors (timeout, connection loss, AACommServer crash)</li>
 <li><strong>ConnectResult</strong> enum: Detailed error codes for all operations</li>
-<li><strong>Automatic cleanup</strong>: API auto-disconnects on fatal errors — the session the FATAL was raised for. The in-flight sync waiter is woken before that teardown runs, so a caller that expects the failure and reconnects at once (the EC firmware flasher after the password that drops the drive into BOOT) may already own a successor session; the late teardown leaves it alone and raises no <code>OnCommsError</code></li>
+<li><strong>Automatic cleanup</strong>: API auto-disconnects on fatal errors</li>
 <li><strong>Exception handling</strong>: TCP socket errors converted to events</li>
 </ul>
 <h3 id="diagnostics">Diagnostics</h3>
@@ -476,7 +476,7 @@ by <code>UpBinDownloadGate</code>; Ethernet is exempt (length-prefixed binary / 
 <h3 id="message-types">Message Types</h3>
 <ul>
 <li><strong>Regular Messages</strong>: Text-based commands with parameters</li>
-<li><strong>Bulk Messages</strong>: batch sending on Ethernet and Simulation channels (up to 50 messages per bulk)</li>
+<li><strong>Bulk Messages</strong>: Ethernet-only batch sending (up to 50 messages per bulk)</li>
 <li><strong>Binary Uploads</strong>: Firmware and user program downloads</li>
 <li><strong>Special Messages</strong>: FPGA downloads, ASCII bulk, CNC-specific bulk messages</li>
 </ul>
@@ -551,11 +551,6 @@ the markers; <code>Session.SendReceive</code> masks the race for sync <code>ARes
 see the success shape regardless of which signal arrived first. The helper is only
 meaningful AFTER the reset-triggering step has been issued — before, the same markers
 indicate genuine connectivity failure.</li>
-<li><strong>User Units re-read</strong>: the controller can come back on different <code>*UnitFct</code> / <code>UserUnitsEn</code>
-values, so a completed Reset re-reads the User Units cache
-(<code>ControllerMessagesContainer.ReadUserUnitsSync</code>) — the sync flow before <code>SendReceive</code> returns,
-the async flow on the dispatcher thread after the recovery wait and before the reply callback.
-A Reset that returned an error leaves the cache alone. See <code>AAComm/docs/floating-point.md</code>.</li>
 </ul>
 <h3 id="timeout-configuration">Timeout Configuration</h3>
 <ul>
@@ -670,7 +665,7 @@ api.Disconnect();
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/pipeline.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/pipeline.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

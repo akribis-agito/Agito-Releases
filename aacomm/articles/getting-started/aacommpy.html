@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,7 +86,7 @@ with aacommpy.connect(Ethernet(&quot;172.1.1.101&quot;)) as c:
     c.set(&quot;AVel[1]&quot;, 1000)                # assign a parameter
     fut = c.send(&quot;AReset&quot;)                # async -&gt; concurrent.futures.Future
     fut.result(timeout=15)
-    c.on_push_bytes(lambda payload: print(&quot;push:&quot;, payload.hex()))
+    c.on_push(lambda msg: print(&quot;push:&quot;, msg))
 </code></pre>
 <h2 id="install">Install</h2>
 <pre><code class="lang-bash">pip install aacommpy
@@ -148,12 +148,8 @@ first; other platforms as their wheels land.)</p>
 <td>Query / request per-axis user-units enable (e.g. <code>axis=&quot;A&quot;</code>).</td>
 </tr>
 <tr>
-<td><code>Client.on_push_bytes(cb)</code></td>
-<td>Register a push-message handler receiving the payload as <code>bytes</code>, exactly as AAComm holds it — binary-safe (push-events records are mostly zero bytes); on the binary IPC dialect the packet's trailing <code>&gt;\r</code> terminator is included. <code>b&quot;&quot;</code> = no payload to hand over (empty DATA, or an unparseable packet).</td>
-</tr>
-<tr>
 <td><code>Client.on_push / on_error / on_longop_started / on_longop_ended(cb)</code></td>
-<td>Register session-event callbacks. <code>on_push</code> receives the message's text form, which is empty for the binary-payload push sources — use <code>on_push_bytes</code> for the payload.</td>
+<td>Register session-event callbacks.</td>
 </tr>
 <tr>
 <td><code>Client.test_connection(conn) -&gt; ConnectResult</code> · <code>connect</code> · <code>disconnect</code> · <code>is_connected</code> · <code>close_server</code> · <code>close</code></td>
@@ -270,7 +266,7 @@ platforms whose build hosts exist. win-x64 today.</li>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

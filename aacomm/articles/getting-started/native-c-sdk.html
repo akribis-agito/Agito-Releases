@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -308,7 +308,7 @@ allocate, then call again. The copy is truncated to fit and always NUL-terminate
 cached, so re-fetch it with <strong><code>aacomm_last_reply</code></strong> (which does <strong>not</strong> re-send the command).
 <code>out_required</code> may be NULL if you don't need the size.</p>
 <h3 id="callbacks-and-threading">Callbacks and threading</h3>
-<p>The callbacks — reply (<code>aacomm_send</code>), <code>error</code>, <code>push</code>, <code>push_bytes</code>, <code>longop_started</code>, <code>longop_ended</code> — are invoked
+<p>The callbacks — reply (<code>aacomm_send</code>), <code>error</code>, <code>push</code>, <code>longop_started</code>, <code>longop_ended</code> — are invoked
 <strong>on the library's firing thread</strong>, never on your calling thread. Keep them <strong>short and thread-safe</strong>:
 marshal work to your own thread/queue rather than blocking inside the callback. Each takes an opaque
 <code>void* user_data</code> that is passed straight through. Precise firing thread per callback:</p>
@@ -338,13 +338,7 @@ marshal work to your own thread/queue rather than blocking inside the callback. 
 <td><code>push</code></td>
 <td><code>aacomm_set_push_callback</code></td>
 <td>the thread pool</td>
-<td>the push message's text form as a C string — empty for both push sources the protocol defines (printf, push events), whose DATA is binary</td>
-</tr>
-<tr>
-<td><code>push_bytes</code></td>
-<td><code>aacomm_set_push_bytes_callback</code></td>
-<td>the thread pool</td>
-<td>the push message's payload bytes as <code>(const uint8_t* data, size_t len)</code> — everything after the ASCII envelope header, exactly as AAComm's <code>BinaryData</code> holds it; not a C string (NULs and bytes above <code>0x7F</code> preserved). On the binary IPC dialect, the only one carrying push events, the trailing <code>&gt;</code> CR packet terminator is included (<code>n</code> records = <code>7 + 50n + 2</code> bytes). <code>(NULL, 0)</code> when the library has no payload to hand over — an empty DATA section, or a packet it could not parse. Fires beside <code>push</code> when both are set</td>
+<td>ASCII push payload</td>
 </tr>
 <tr>
 <td><code>longop_started</code> / <code>longop_ended</code></td>
@@ -354,8 +348,8 @@ marshal work to your own thread/queue rather than blocking inside the callback. 
 </tr>
 </tbody>
 </table>
-<p>The <code>const char*</code> passed to a callback — and the <code>push_bytes</code> <code>data</code> pointer — is <strong>owned by the
-library and valid only for the duration of the call</strong> — copy it if you need it later; do not free it. Re-entrancy: do <strong>not</strong> call
+<p>The <code>const char*</code> passed to a callback is <strong>owned by the library and valid only for the duration of
+the call</strong> — copy it if you need it later; do not free it. Re-entrancy: do <strong>not</strong> call
 <code>aacomm_send_receive</code> from inside a callback — it fails fast with an in-band error reply instead of
 blocking (from a reply callback it is rejected outright; by the time the error callback fires the
 connection is already torn down, so it reports not-connected). Issue follow-up traffic from your own
@@ -820,7 +814,7 @@ C# enum — do not edit). <code>0</code> is success.</p>
 </tr>
 <tr>
 <td>Async + events</td>
-<td><code>aacomm_send</code>, <code>aacomm_set_error_callback</code>, <code>aacomm_set_push_callback</code>, <code>aacomm_set_push_bytes_callback</code>, <code>aacomm_set_longop_started_callback</code>, <code>aacomm_set_longop_ended_callback</code></td>
+<td><code>aacomm_send</code>, <code>aacomm_set_error_callback</code>, <code>aacomm_set_push_callback</code>, <code>aacomm_set_longop_started_callback</code>, <code>aacomm_set_longop_ended_callback</code></td>
 </tr>
 <tr>
 <td>Recording + firmware/FPGA/user-program</td>
@@ -952,7 +946,6 @@ reply arrives, as <code>reply_cb(const char* reply, int32_t is_error, void* user
 fire-and-forget. <code>timeout_ms &gt; 0</code> overrides the default. <code>user_data</code> is passed through verbatim.</p>
 <pre><code class="lang-c">int32_t aacomm_set_error_callback(aacomm_handle h, aacomm_error_cb cb, void* user_data);
 int32_t aacomm_set_push_callback(aacomm_handle h, aacomm_push_cb cb, void* user_data);
-int32_t aacomm_set_push_bytes_callback(aacomm_handle h, aacomm_push_bytes_cb cb, void* user_data);
 int32_t aacomm_set_longop_started_callback(aacomm_handle h, aacomm_longop_started_cb cb, void* user_data);
 int32_t aacomm_set_longop_ended_callback(aacomm_handle h, aacomm_longop_ended_cb cb, void* user_data);
 </code></pre>
@@ -963,8 +956,7 @@ registration replaces the earlier one. Callback signatures and firing threads ar
 invocation.</p>
 <ul>
 <li><code>aacomm_error_cb</code> — <code>void cb(const char* error, void* user_data)</code> — fatal comms error.</li>
-<li><code>aacomm_push_cb</code> — <code>void cb(const char* message, void* user_data)</code> — controller push message as a C string (its text form — empty for the binary-payload push sources).</li>
-<li><code>aacomm_push_bytes_cb</code> — <code>void cb(const uint8_t* data, size_t len, void* user_data)</code> — the same push as its payload bytes, exactly as AAComm's <code>BinaryData</code> holds them (everything after the ASCII envelope header; on the binary IPC dialect that includes the trailing <code>&gt;</code> CR packet terminator). Not a C string — NULs and bytes above <code>0x7F</code> are preserved. <code>(NULL, 0)</code> when there is no payload to hand over: an empty DATA section, or a packet the library could not parse. Both push callbacks fire when both are registered.</li>
+<li><code>aacomm_push_cb</code> — <code>void cb(const char* message, void* user_data)</code> — controller push message.</li>
 <li><code>aacomm_longop_started_cb</code> — <code>void cb(int32_t op_type, void* user_data)</code> — <code>op_type</code> is <code>aacomm_long_operation_type</code>.</li>
 <li><code>aacomm_longop_ended_cb</code> — <code>void cb(int32_t op_type, int32_t error_code, void* user_data)</code> — <code>error_code</code> <code>0</code> means success.</li>
 </ul>
@@ -984,7 +976,7 @@ against — the value is bumped on any breaking change.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/native-c-sdk.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

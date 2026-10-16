@@ -20,7 +20,8 @@ version. Product-level detail lives inside `index.json`, not in the tag.
 | `FPGA/vX.Y.Z` | `FPGA/v5.4.2` | FPGA bitstreams, all products: `.pof`/`.rpd`, `.dat`/`.jed`, `.bit`/`.hdf` + `.ver` per product |
 | `Software/AAComm/vX.Y.Z` | `Software/AAComm/v13.0.0` | AAComm / AAMotion SDK packages |
 | `Software/PCSuite/vX.Y.Z` | `Software/PCSuite/v17.2.0` | PCSuite installer, Agito edition |
-| `Software/PCSuite-MVG/vX.Y.Z` | `Software/PCSuite-MVG/v17.2.0` | PCSuite installer, MVG edition |
+
+Client editions of PCSuite (MVG, YuWei) are not published here: each client has its own private release repository.
 
 Every release additionally carries `SHA256SUMS.txt` and an `index.json` describing
 its assets. On the `Software/*` lines `SHA256SUMS.txt` covers every asset on the page,

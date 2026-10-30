@@ -114,7 +114,7 @@ Uses magic markers embedded in the Zynq binary format.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Extensions.AACommDownloadFPGAEtherCat.html">AACommDownloadFPGAEtherCat</a></dt>
-      <dd><pre><code>Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)
+      <dd><pre><code>Service class used for downloading FPGA to controller (NOT in BOOT mode)
 </code></pre>
 <p></p>
 <pre><code>When starting the DL process, the API state must be NOT connected.
@@ -136,6 +136,12 @@ When starting the DL process, the API state must be NOT connected.
 <pre><code>Process ends with API state: Disconnected (success or error)
 </code></pre>
 <p></p>
+<pre><code>Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.
+</code></pre>
+<p></p>
+<pre><code>Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.
+</code></pre>
+<p></p>
 <pre><code>Process can't be canceled in the middle.
 </code></pre>
 </dd>
@@ -154,7 +160,7 @@ When starting the DL process, the API state must be NOT connected.
 <pre><code>NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets
 </code></pre>
 <p></p>
-<pre><code>NOTE: FW download is NOT supported over CAN — download over Ethernet (AGM800) or RS-232 (serial)
+<pre><code>NOTE: FW download is NOT supported over CAN — download over Ethernet or RS-232 (serial)
 </code></pre>
 </dd>
     </dl>

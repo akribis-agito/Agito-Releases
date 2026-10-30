@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,7 +86,7 @@ with aacommpy.connect(Ethernet(&quot;172.1.1.101&quot;)) as c:
     c.set(&quot;AVel[1]&quot;, 1000)                # assign a parameter
     fut = c.send(&quot;AReset&quot;)                # async -&gt; concurrent.futures.Future
     fut.result(timeout=15)
-    c.on_push(lambda msg: print(&quot;push:&quot;, msg))
+    c.on_push_bytes(lambda payload: print(&quot;push:&quot;, payload.hex()))
 </code></pre>
 <h2 id="install">Install</h2>
 <pre><code class="lang-bash">pip install aacommpy
@@ -133,7 +133,7 @@ first; other platforms as their wheels land.)</p>
 </tr>
 <tr>
 <td><code>Client.download_firmware(conn, fw_path, *, ver_path=None, password=&quot;160412&quot;, verify_currents=False, target=0, timeout_ms=180000, on_progress=None)</code></td>
-<td>Flash firmware; blocks until done. Ethernet (AGM800) / RS-232 only — never CAN.</td>
+<td>Flash firmware; blocks until done. Ethernet / RS-232 only — never CAN.</td>
 </tr>
 <tr>
 <td><code>Client.download_fpga(conn, fpga_path, ver_path, *, password=&quot;160412&quot;, timeout_ms=180000, on_progress=None)</code></td>
@@ -148,8 +148,12 @@ first; other platforms as their wheels land.)</p>
 <td>Query / request per-axis user-units enable (e.g. <code>axis=&quot;A&quot;</code>).</td>
 </tr>
 <tr>
+<td><code>Client.on_push_bytes(cb)</code></td>
+<td>Register a push-message handler receiving the payload as <code>bytes</code>, exactly as AAComm holds it — binary-safe (push-events records are mostly zero bytes); on the binary IPC dialect the packet's trailing <code>&gt;\r</code> terminator is included. <code>b&quot;&quot;</code> = no payload to hand over (empty DATA, or an unparseable packet).</td>
+</tr>
+<tr>
 <td><code>Client.on_push / on_error / on_longop_started / on_longop_ended(cb)</code></td>
-<td>Register session-event callbacks.</td>
+<td>Register session-event callbacks. <code>on_push</code> receives the message's text form, which is empty for the binary-payload push sources — use <code>on_push_bytes</code> for the payload.</td>
 </tr>
 <tr>
 <td><code>Client.test_connection(conn) -&gt; ConnectResult</code> · <code>connect</code> · <code>disconnect</code> · <code>is_connected</code> · <code>close_server</code> · <code>close</code></td>
@@ -157,6 +161,20 @@ first; other platforms as their wheels land.)</p>
 </tr>
 </tbody>
 </table>
+<h3 id="array-download">Array download</h3>
+<pre><code class="lang-python">with aacommpy.connect(Ethernet(&quot;172.1.1.101&quot;)) as c:
+    result = c.download_array(&quot;AGenData&quot;, 1, [1, 2, 3, 4, 5])
+    print(result.transport, result.applied_count, result.first_failed_index)
+</code></pre>
+<p><code>Client.supports_array_stream</code> reports whether stream transport is available; ask it
+rather than probing with a trial download. Integer-only input uses the exact 64-bit path; a list
+containing floats uses the floating-point path. <code>result.outcome_known</code> is false after a timeout, disconnect, or malformed reply
+because some values may already have been applied. The SDK does not automatically retry that case.
+<code>ArrayDownloadStatus.REJECTED</code> means nothing was sent: the server refused the download, or
+an element's index or value is outside the keyword's table (<code>first_failed_index</code> names it).
+On <code>PROTOCOL_ERROR</code>, <code>result.stream_error</code> names the stream error
+(<code>ArrayStreamError.CRC_MISMATCH</code> is reported only after every element was applied, so read
+the array back).</p>
 <h3 id="recording">Recording</h3>
 <pre><code class="lang-python">import aacommpy
 from aacommpy import Ethernet, Trigger
@@ -194,7 +212,7 @@ finally:
 <p>The session must <strong>not</strong> be connected — the engine opens its own connection and leaves it
 disconnected. The controller type is auto-discovered so the AGM800 <code>.bin</code> path is chosen (pass
 <code>controller_type=</code> on the connection if the controller may be in BOOT mode). <code>ver_path</code> is the
-optional <code>.ver</code> validation file (AGM800 flashes without it). Runs over <strong>Ethernet (AGM800)</strong> or
+optional <code>.ver</code> validation file (AGM800 flashes without it). Runs over <strong>Ethernet</strong> or
 <strong>RS-232</strong> — CAN is rejected. <code>download_firmware</code> blocks until the flash completes (default 3-minute
 bound) and raises <code>AACommError</code> on any failure; <code>on_progress</code> reports <code>permille</code> 0–1000 (status
 lines arrive with <code>permille == -1</code>). <strong>Destructive</strong> — it reboots the controller.</p>
@@ -266,7 +284,7 @@ platforms whose build hosts exist. win-x64 today.</li>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacommpy.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

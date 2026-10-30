@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacomm.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacomm.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -81,24 +81,32 @@
 <h2 id="overview">Overview</h2>
 <p>AAComm provides a robust interface for communicating with motion controllers from .NET applications. It is designed for both high-level and low-level control, supporting multiple communication channels and controller types.</p>
 <ul>
-<li><strong>Supported platforms:</strong> Windows 7 or later</li>
-<li><strong>Supported frameworks:</strong> .NET Framework 4.8, .NET 8.0</li>
-<li><strong>Required files:</strong> <code>AAComm.dll</code> plus the bundled server matching your framework — .NET Framework 4.8: the <code>aacommserver\</code> folder (the <code>AACommServer.exe</code> WPF host with its full closure); .NET 8.0: <code>AACommServerNative.exe</code> (self-contained native host, <strong>win-x64</strong>). The NuGet package copies the right one to your output automatically — do <strong>not</strong> hand-assemble a partial server file set (a net48 server under a net8 consumer crashes on launch). No Linux/macOS sidecar ships yet: a non-Windows .NET 8 consumer must supply its own host-native AACS build and pass its full path to <code>StartAACommServer</code> — the copied <code>AACommServerNative.exe</code> is the Windows artifact, not a host-native server.</li>
+<li><strong>Supported platforms:</strong> Windows 10 or later (Windows 7 SP1 or later on the .NET Framework 4.8 build)</li>
+<li><strong>Supported frameworks:</strong> .NET Framework 4.8, .NET 8, .NET 10; class libraries can target .NET Standard 2.0</li>
+<li><strong>Required files:</strong> <code>AAComm.dll</code> plus the bundled server matching your framework — .NET Framework 4.8: the <code>aacommserver\</code> folder (the <code>AACommServer.exe</code> WPF host with its full closure); .NET 8 and .NET 10: <code>AACommServerNative.exe</code> (self-contained native host, <strong>win-x64</strong>). The NuGet package copies the right one to your output automatically — do <strong>not</strong> hand-assemble a partial server file set (a net48 server under a net8 consumer crashes on launch). No Linux/macOS sidecar ships yet: a non-Windows .NET 8/10 consumer must supply its own host-native AACS build and pass its full path to <code>StartAACommServer</code> — the copied <code>AACommServerNative.exe</code> is the Windows artifact, not a host-native server.</li>
 <li><strong>Documentation:</strong> API documentation is available via IntelliSense (XML doc comments included with the package).</li>
 </ul>
+<h2 id="managed-firmware-simulation">Managed firmware simulation</h2>
+<p>For <code>ChannelType.Simulation</code>, set <code>ConnectionData.SimExePath</code> and, when known, its <code>ControllerType</code>. When the caller has no known identity or explicit supply, the server reads the sibling <code>sim.info</code> product ID before its first probe. It writes an explicit <code>vbus_v</code> from the verified product supply table: 308.941 V for AGD155/AGD155-EC, 310.497 V for AGD156-EC, 48.057 V for AGD101-EC, and 47.998 V for AGD200/AGC300, AGD301/AGC301 and AGM800/AGM800-EC.</p>
+<p>An explicit <code>vbus_v</code> in <code>SimMotorProfile</code> takes precedence over that nominal value; the other profile keys are retained. A blank profile gets the generic PMSM motor with the selected product's supply. An unknown product requires a profile with an explicit finite positive supply, such as <code>vbus_v=325.123</code>. Missing, malformed, non-finite or non-positive supplies are refused before the simulator launches. There is no generic48V or firmware-default fallback. The normal controller-type check remains in force.</p>
+<p>Server-side profile editors can call <code>AACommServerCore.Comms.SimProfileWriter.DefaultText(double)</code> with an explicit voltage, or <code>Resolve</code> / <code>Write</code> with a known product ID and an optional caller voltage. Existing explicit profile values take precedence. The parameterless <code>DefaultText()</code> refuses because it has no supply identity.</p>
+<p>Motor profile keys use the firmware's ASCII space/tab syntax. Physical lines are limited to254UTF-8 bytes so the firmware's fixed buffer cannot expose a hidden second record. An initial explicit global supply is also written as a headerless seed, ensuring every possible axis has a supply even when the firmware interprets a group header differently for different axis counts. Other profile content is retained.</p>
+<p>The simulator package must retain its complete <code>starter.par</code> beside its executable. Before a fresh managed launch the server derives the selected motor's complete <code>agito.par</code> from that template in the actual memory folder, including its encoder resolution, pole pairs and operating settings. The physical <code>motor.txt</code> is written there too. An existing runtime parameter file and sibling user program are preserved; an ephemeral connection receives a fresh configuration that is removed with its scratch folder. Opening the channel sends no firmware requests: normal <code>Load()</code> restores the runtime file, including deliberately saved motor type zero and custom gains.</p>
+<p>To explicitly reconfigure a disconnected persistent simulation, call <code>AAComm.Services.SimParameterFile.Configure(exePath, motorProfile, memoryFolder, productId)</code>. This replaces <code>motor.txt</code> and <code>agito.par</code> while retaining other memory files. Supply a known product or an explicit valid bus voltage. Missing, empty, duplicate or incomplete starter settings and invalid active encoder values are refused before replacing saved parameters. Parameter generation accepts canonical <code>[global]</code>, <code>[all]</code> and <code>[A]</code> through <code>[L]</code> motor sections, including lowercase axis letters. The two files are replaced separately; after a filesystem error, complete a successful reconfiguration before launching the simulation.</p>
 <h2 id="system-requirements">System Requirements</h2>
 <ul>
-<li>Microsoft Windows 7 or later</li>
-<li>.NET Framework 4.8 or .NET 8.0</li>
-<li>Visual Studio 2019 or later (other IDEs may be used, but are not officially supported)</li>
+<li>Microsoft Windows 10 or later; Windows 7 SP1 or later for the .NET Framework 4.8 build</li>
+<li>.NET Framework 4.8, .NET 8 or .NET 10</li>
+<li>Visual Studio 2022 or later (other IDEs may be used, but are not officially supported)</li>
 </ul>
 <h2 id="installation">Installation</h2>
-<p>Install the NuGet package from <a href="https://www.nuget.org/">nuget.org</a>:
-<code>.dotnet add package Agito.AAComm</code>
-Or via the NuGet Package Manager in Visual Studio.</p>
+<p>Install the NuGet package from <a href="https://www.nuget.org/">nuget.org</a>:</p>
+<pre><code class="lang-bash">dotnet add package Agito.AAComm
+</code></pre>
+<p>Or via the NuGet Package Manager in Visual Studio.</p>
 <blockquote>
 <p><strong>Note:</strong><br>
-The bundled server is copied to your output directory automatically by the NuGet package — the <code>aacommserver\</code> folder for .NET Framework consumers, <code>AACommServerNative.exe</code> for .NET 8.0 consumers. For a manual (non-NuGet) deployment, copy that complete server payload as-is; never mix the net48 server into a net8 output.</p>
+The bundled server is copied to your output directory automatically by the NuGet package — the <code>aacommserver\</code> folder for .NET Framework consumers, <code>AACommServerNative.exe</code> for .NET 8 and .NET 10 consumers. For a manual (non-NuGet) deployment, copy that complete server payload as-is; never mix the net48 server into a net8 output.</p>
 </blockquote>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
@@ -141,6 +149,14 @@ if (res != ConnectResult.Success)
 var msgRes = api.SendReceive(new AACommMessage(&quot;APos&quot;));
 Console.WriteLine($&quot;SYNC: APos = {msgRes.MsgReceived}&quot;);
 
+ArrayDownloadResult download = api.DownloadArray(
+    &quot;BPVAJList&quot;,
+    firstIndex: 1,
+    values: new double[] { 197, 8, 1, 1000, -200, 3000, -4000 });
+Console.WriteLine(
+    $&quot;{download.Transport}: {download.AppliedCount}/{download.ReceivedCount}, &quot; +
+    $&quot;failed index={download.FirstFailedIndex}, stream error={download.StreamError}&quot;);
+
 api.Send(new AACommMessage(OnReceive, &quot;APos&quot;));
 //wait for async response at OnReceive callback
 
@@ -167,11 +183,20 @@ void OnReceive(object sender, AACommEventArgs e)
 <p>This software is licensed under the <strong>MIT License</strong>. See the NuGet package metadata for details.</p>
 <hr>
 <p>For further information, consult the included documentation or contact Agito support.</p>
+<h2 id="connection-bound-operations">Connection-bound operations</h2>
+<p>Capture <code>api.CaptureSession()</code> once for a multi-request operation. A null handle means no connection is available. Keep that handle for every request and observe <code>ConnectionClosed</code>; disconnecting invalidates it even when the next connection uses the same endpoint. <code>SendReceive</code> never moves an old request or cleanup operation to the replacement connection. Readiness and operation results belong to the captured connection.</p>
+<p>Central-i master metadata discovery reads the live Identity[62] preload API bit0x200 before selecting a keyword cache. Capable and legacy metadata use separate cache variants under the existing product/version/build key. A failed capability inquiry does not imply an unsupported controller. Standalone controllers retain their existing discovery path.</p>
+<h3 id="coherent-hardware-event-table-observation">Coherent hardware event-table observation</h3>
+<p><code>AAComm.Services.Events.EventTableStatusReader</code> reads live status and retained errors for one axis on its captured connection. Create a new reader after reconnect. <code>ReadAsync</code> requires the verified-table Identity capability and matching LONG32 metadata, reads the specified 37 values in order (one Ethernet bulk or sequential inquiries), and accepts only equal even publication generations. It retries once immediately, with two seconds per attempt and a four-second host deadline. Unavailable results contain no cached status. The result invalidates its status when its connection closes.</p>
+<p>State, counts, session, CRCs, source/configuration generations, remote capabilities and retained error provenance are typed. <code>CaptureAgeAtPublicationMilliseconds</code> and freshness flags describe publication time; a small retained age is not current remote-health proof. Polling never acknowledges an error. Slow links may miss Running during a finite burst and subsequently observe terminal Complete. Explicit arm and final completion inquiries remain mandatory.</p>
+<p>Cancellation stops the host wait and abandons unsent inquiries. An already sent read drains its reply on its original connection; cancellation sends no remote Abort and does not establish that motion or events stopped.</p>
+<h2 id="explicit-verified-event-lifecycle">Explicit verified event lifecycle</h2>
+<p><code>EventTableClient</code> (<code>Services/Events/verified-event-tables.md</code>) provides immutable table preparation, fenced readback, explicit verified Load/Arm/Complete and Abort/acknowledgement cleanup on one captured session. It retains ambiguous ownership across cancellation or connection loss; replacement-origin recovery is unavailable without server retirement proof. AAMotion exposes the same client through <code>MotionController.CreateEventTableClient(axis)</code>.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacomm.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/getting-started/aacomm.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

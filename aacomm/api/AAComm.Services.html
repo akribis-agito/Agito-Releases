@@ -145,7 +145,7 @@ array indexes and assignment separation, plus ordinal-ignore-case string helpers
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.AACommVerifySingleClient.html">AACommVerifySingleClient</a></dt>
-      <dd><p>a helper class used to verify if the AACommServer is used by a single (the querying) client</p>
+      <dd><p>a helper class used to verify that the querying client is the only AAComm client on its connection (the AACommServer counts the clients on the channel for that IP, COM port or CAN node, not on the server or the controller)</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -173,6 +173,11 @@ array indexes and assignment separation, plus ordinal-ignore-case string helpers
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ArrayDownloadResult.html">ArrayDownloadResult</a></dt>
+      <dd><p>Structured result returned by <a class="xref" href="AAComm.CommAPI.html#AAComm_CommAPI_DownloadArray_System_String_System_Int32_System_Collections_Generic_IReadOnlyList_System_Double__System_Boolean_System_Int32_System_Boolean_">DownloadArray(string, int, IReadOnlyList&lt;double&gt;, bool, int, bool)</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.COMTools.html">COMTools</a></dt>
       <dd><pre><code>a helper class for listing relevant (or ALL) COM ports.
 </code></pre>
@@ -193,6 +198,16 @@ no udev by-id path, falls through to an empty list; no native macOS build exists
 <p></p>
 <pre><code>please refer to Controller communications protocol, or contact API provider for more information
 </code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.CiFpgaFeatures.html">CiFpgaFeatures</a></dt>
+      <dd><p>A validated per-remote FPGA capability snapshot exposed by CiIdentity.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.CommSessionHandle.html">CommSessionHandle</a></dt>
+      <dd><p>A request boundary tied to one connection, including reconnects to the same endpoint.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -272,6 +287,18 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ControllerVersionWord.html">ControllerVersionWord</a></dt>
+      <dd><pre><code>A controller firmware or FPGA version word: &lt;code&gt;Major.Minor.Patch&lt;/code&gt; plus an owner and a sub-version.
+Owner 0 with sub-version 0 is a final release; owner 0 with a sub-version N is release candidate N of the
+release; a non-zero owner is a development build.
+</code></pre>
+<p></p>
+<pre><code>Order: by &lt;code&gt;Major.Minor.Patch&lt;/code&gt;, then within one release the candidates (by sub-version) before the
+final, then the development builds (by owner, then sub-version).
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.FloatHelper.html">FloatHelper</a></dt>
       <dd><pre><code>Central floating-point resolution for hardware-uploaded data.
 </code></pre>
@@ -307,6 +334,29 @@ NOTE: CTOR will throw if failed initializing container with default messages (in
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.LockEventWriteOrder.html">LockEventWriteOrder</a></dt>
+      <dd><p>The write order a parameter restore needs under the lock/event guards of firmware that declares
+LockEventMode up to 2 (see <a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_Mode2Supported_AAComm_Services_MessageData_">Mode2Supported(MessageData)</a>). In LockEventMode 1 and 2 that firmware refuses a
+change to a lock/event dependency while LockEn or EventOn is on (error 403), and refuses LockEn/EventOn
+after a dependency changed until the offset is recomputed (404; 335 if it was never computed).</p>
+<p></p>
+<p>Per axis, when the rows touch a dependency or LockEventMode, the order becomes: LockEn and EventOn off
+(both, whether or not the rows carry them: a .par has neither, and either one armed refuses the change),
+then the other rows in their original order, then LockEventMode, then LockEventInit when the axis is in
+mode 1 at re-arm, then the rows' own LockEn/EventOn in their order, so the last one requested is the state left.
+Axes whose rows touch neither keep their rows untouched and in place.</p>
+<p></p>
+<p>The mode at re-arm is the rows' LockEventMode when they carry one, otherwise the controller's current mode
+(<a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_ReadCurrentModes_System_Collections_Generic_IList_System_String__System_Func_AAComm_Services_AACommMessage_AAComm_Services_AACommEventArgs__">ReadCurrentModes(IList&lt;string&gt;, Func&lt;AACommMessage, AACommEventArgs&gt;)</a>). An AGM800-EC enable forces mode 2 only at the next enable, so an
+AGM800-EC restored into mode 1 gets the LockEventInit like any other controller.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.LockEventWriteOrder.Plan.html">LockEventWriteOrder.Plan</a></dt>
+      <dd><p>The reordered rows, and which of them were added (not in the input).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.MessageData.html">MessageData</a></dt>
       <dd><p>this class describes and contains the different parameters every controller message has</p>
 </dd>
@@ -322,6 +372,11 @@ formatted according to the parameter type</p>
       <dd><pre><code>a service class for formatting numbers to UI display strings
 </code></pre>
 <p></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.SimParameterFile.html">SimParameterFile</a></dt>
+      <dd><p>Materializes a packaged complete starter as the selected motor's runtime agito.par.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -362,6 +417,30 @@ formatted according to the parameter type</p>
       <dt><a class="xref" href="AAComm.Services.XmlHandler.TextNodeData.html">XmlHandler.TextNodeData</a></dt>
       <dd><p>XML entry container class</p>
 </dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ArrayDownloadStatus.html">ArrayDownloadStatus</a></dt>
+      <dd><p>Final status of an array download.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ArrayDownloadTransport.html">ArrayDownloadTransport</a></dt>
+      <dd><p>Transport used for an array download.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.ArrayStreamError.html">ArrayStreamError</a></dt>
+      <dd><p>Array-stream protocol errors reported by the controller when <a class="xref" href="AAComm.Services.ArrayDownloadResult.html#AAComm_Services_ArrayDownloadResult_Status">Status</a>
+is <a class="xref" href="AAComm.Services.ArrayDownloadStatus.html#AAComm_Services_ArrayDownloadStatus_ProtocolError">ProtocolError</a>. The firmware allocates these above the
+interpreter's range so the two never collide.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.CiFeatureAvailability.html">CiFeatureAvailability</a></dt>
+      <dd></dd>
     </dl>
 
 

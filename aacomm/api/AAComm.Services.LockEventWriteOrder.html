@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class LockEventWriteOrder | Agito AAComm SDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class LockEventWriteOrder | Agito AAComm SDK ">
+      
+      <meta name="description" content="The write order a parameter restore needs under the lock/event guards of firmware that declares LockEventMode up to 2 (see ). In LockEventMode 1 and 2 that firmware refuses a change to a lock/event dependency while LockEn or EventOn is on (error 403), and refuses LockEn/EventOn after a dependency changed until the offset is recomputed (404; 335 if it was never computed).  Per axis, when the rows touch a dependency or LockEventMode, the order becomes: LockEn and EventOn off (both, whether or not the rows carry them: a .par has neither, and either one armed refuses the change), then the other rows in their original order, then LockEventMode, then LockEventInit when the axis is in mode 1 at re-arm, then the rows&#39; own LockEn/EventOn in their order, so the last one requested is the state left. Axes whose rows touch neither keep their rows untouched and in place.  The mode at re-arm is the rows&#39; LockEventMode when they carry one, otherwise the controller&#39;s current mode (). An AGM800-EC enable forces mode 2 only at the next enable, so an AGM800-EC restored into mode 1 gets the LockEventInit like any other controller.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Services_LockEventWriteOrder.md&amp;value=---%0Auid%3A%20AAComm.Services.LockEventWriteOrder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AAComm.Services.LockEventWriteOrder">
+
+
+
+  <h1 id="AAComm_Services_LockEventWriteOrder" data-uid="AAComm.Services.LockEventWriteOrder" class="text-break">
+Class LockEventWriteOrder  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAComm.html">AAComm</a>.<a class="xref" href="AAComm.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The write order a parameter restore needs under the lock/event guards of firmware that declares
+LockEventMode up to 2 (see <a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_Mode2Supported_AAComm_Services_MessageData_">Mode2Supported(MessageData)</a>). In LockEventMode 1 and 2 that firmware refuses a
+change to a lock/event dependency while LockEn or EventOn is on (error 403), and refuses LockEn/EventOn
+after a dependency changed until the offset is recomputed (404; 335 if it was never computed).</p>
+<p></p>
+<p>Per axis, when the rows touch a dependency or LockEventMode, the order becomes: LockEn and EventOn off
+(both, whether or not the rows carry them: a .par has neither, and either one armed refuses the change),
+then the other rows in their original order, then LockEventMode, then LockEventInit when the axis is in
+mode 1 at re-arm, then the rows' own LockEn/EventOn in their order, so the last one requested is the state left.
+Axes whose rows touch neither keep their rows untouched and in place.</p>
+<p></p>
+<p>The mode at re-arm is the rows' LockEventMode when they carry one, otherwise the controller's current mode
+(<a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_ReadCurrentModes_System_Collections_Generic_IList_System_String__System_Func_AAComm_Services_AACommMessage_AAComm_Services_AACommEventArgs__">ReadCurrentModes(IList&lt;string&gt;, Func&lt;AACommMessage, AACommEventArgs&gt;)</a>). An AGM800-EC enable forces mode 2 only at the next enable, so an
+AGM800-EC restored into mode 1 gets the LockEventInit like any other controller.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class LockEventWriteOrder</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">LockEventWriteOrder</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_Dependencies" data-uid="AAComm.Services.LockEventWriteOrder.Dependencies">
+  Dependencies
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The keywords whose change invalidates the lock/event offset; EncFilt, AuxEncFilt and CurrDir are not among them.
+The firmware counts AuxEncDir only with the aux source (EncSinCosHWEn=3) and VEncFact/VEncFactDen only with the
+virtual-encoder source (2); the order treats them as dependencies always, since a row can't tell which source
+the controller will have when it lands, and disarming first is harmless.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly IReadOnlyList&lt;string&gt; Dependencies</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_EcEnableLockOffsetFault" data-uid="AAComm.Services.LockEventWriteOrder.EcEnableLockOffsetFault">
+  EcEnableLockOffsetFault
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>CiA402 0x603F error code an AGM800-EC raises when Enable Operation can't learn the lock/event offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EcEnableLockOffsetFault = 29440</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_EventOn" data-uid="AAComm.Services.LockEventWriteOrder.EventOn">
+  EventOn
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string EventOn = &quot;EventOn&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_LockEn" data-uid="AAComm.Services.LockEventWriteOrder.LockEn">
+  LockEn
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string LockEn = &quot;LockEn&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_LockEventInit" data-uid="AAComm.Services.LockEventWriteOrder.LockEventInit">
+  LockEventInit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string LockEventInit = &quot;LockEventInit&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_LockEventMode" data-uid="AAComm.Services.LockEventWriteOrder.LockEventMode">
+  LockEventMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string LockEventMode = &quot;LockEventMode&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Services_LockEventWriteOrder_EnableForcesMode2_" data-uid="AAComm.Services.LockEventWriteOrder.EnableForcesMode2*"></a>
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_EnableForcesMode2_System_Int32_AAComm_Services_MessageData_" data-uid="AAComm.Services.LockEventWriteOrder.EnableForcesMode2(System.Int32,AAComm.Services.MessageData)">
+  EnableForcesMode2(int, MessageData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether Enable Operation forces LockEventMode 2 on this controller: an AGM800-EC whose firmware declares
+LockEventMode up to 2. The AGD EtherCAT drives lock locally and have no lock/event offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool EnableForcesMode2(int productType, MessageData lockEventMode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>productType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>lockEventMode</code> <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_LockEventWriteOrder_Mode2Supported_" data-uid="AAComm.Services.LockEventWriteOrder.Mode2Supported*"></a>
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_Mode2Supported_AAComm_Services_MessageData_" data-uid="AAComm.Services.LockEventWriteOrder.Mode2Supported(AAComm.Services.MessageData)">
+  Mode2Supported(MessageData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the connected firmware accepts LockEventMode 2, read from the keyword's declared maximum in the
+controller's About table (there is no separate support keyword). The 403/404 guards ship in the same
+firmware, so this is also whether a restore needs <a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_Order_System_Collections_Generic_IList_System_String__System_Func_System_String_System_Boolean__System_Func_System_Char_System_Nullable_System_Int32___">Order(IList&lt;string&gt;, Func&lt;string, bool&gt;, Func&lt;char, int?&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Mode2Supported(MessageData lockEventMode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lockEventMode</code> <a class="xref" href="AAComm.Services.MessageData.html">MessageData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_LockEventWriteOrder_Order_" data-uid="AAComm.Services.LockEventWriteOrder.Order*"></a>
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_Order_System_Collections_Generic_IList_System_String__System_Func_System_String_System_Boolean__System_Func_System_Char_System_Nullable_System_Int32___" data-uid="AAComm.Services.LockEventWriteOrder.Order(System.Collections.Generic.IList{System.String},System.Func{System.String,System.Boolean},System.Func{System.Char,System.Nullable{System.Int32}})">
+  Order(IList&lt;string&gt;, Func&lt;string, bool&gt;, Func&lt;char, int?&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reorders <code class="paramref">rows</code> (<code>&lt;axis&gt;&lt;Mnemonic&gt;=&lt;value&gt;</code>, as a .par holds them).
+Pure; the caller decides whether the controller has the guards at all (<a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_Mode2Supported_AAComm_Services_MessageData_">Mode2Supported(MessageData)</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static LockEventWriteOrder.Plan Order(IList&lt;string&gt; rows, Func&lt;string, bool&gt; isSupported = null, Func&lt;char, int?&gt; currentMode = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rows</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The rows to order; the result keeps every one of them exactly once.</p>
+</dd>
+    <dt><code>isSupported</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>Whether the controller has a keyword (<code>LockEn</code>, <code>EventOn</code>, <code>LockEventInit</code>); an unsupported one is never added. Null means all are.</p>
+</dd>
+    <dt><code>currentMode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?&gt;</dt>
+    <dd><p>The controller's current LockEventMode for an axis, or null when unknown; consulted only
+for a touched axis whose rows carry no LockEventMode (see <a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_ReadCurrentModes_System_Collections_Generic_IList_System_String__System_Func_AAComm_Services_AACommMessage_AAComm_Services_AACommEventArgs__">ReadCurrentModes(IList&lt;string&gt;, Func&lt;AACommMessage, AACommEventArgs&gt;)</a>).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAComm.Services.LockEventWriteOrder.html">LockEventWriteOrder</a>.<a class="xref" href="AAComm.Services.LockEventWriteOrder.Plan.html">Plan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAComm_Services_LockEventWriteOrder_ReadCurrentModes_" data-uid="AAComm.Services.LockEventWriteOrder.ReadCurrentModes*"></a>
+
+  <h3 id="AAComm_Services_LockEventWriteOrder_ReadCurrentModes_System_Collections_Generic_IList_System_String__System_Func_AAComm_Services_AACommMessage_AAComm_Services_AACommEventArgs__" data-uid="AAComm.Services.LockEventWriteOrder.ReadCurrentModes(System.Collections.Generic.IList{System.String},System.Func{AAComm.Services.AACommMessage,AAComm.Services.AACommEventArgs})">
+  ReadCurrentModes(IList&lt;string&gt;, Func&lt;AACommMessage, AACommEventArgs&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads the current LockEventMode (<code>&lt;axis&gt;LockEventMode</code>) of each axis whose rows touch a lock/event
+dependency but carry no LockEventMode row, for <a class="xref" href="AAComm.Services.LockEventWriteOrder.html#AAComm_Services_LockEventWriteOrder_Order_System_Collections_Generic_IList_System_String__System_Func_System_String_System_Boolean__System_Func_System_Char_System_Nullable_System_Int32___">Order(IList&lt;string&gt;, Func&lt;string, bool&gt;, Func&lt;char, int?&gt;)</a>'s <code>currentMode</code>. An axis whose read
+failed (an error reply, a reply that isn't a number, or a throw) maps to null: without its mode the
+LockEventInit decision can't be made, so the caller writes nothing. <code class="paramref">sendReceive</code> is a
+synchronous send; never call this from a reply callback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;char, int?&gt; ReadCurrentModes(IList&lt;string&gt; rows, Func&lt;AACommMessage, AACommEventArgs&gt; sendReceive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rows</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>sendReceive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="AAComm.Services.AACommMessage.html">AACommMessage</a>, <a class="xref" href="AAComm.Services.AACommEventArgs.html">AACommEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/LockEventWriteOrder.cs/#L23" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; Agito. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

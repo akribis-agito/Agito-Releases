@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Firmware Download | Agito AAComm SDK </title>
+      <title>Firmware &amp; FPGA Download | Agito AAComm SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Firmware Download | Agito AAComm SDK ">
+      <meta name="title" content="Firmware &amp; FPGA Download | Agito AAComm SDK ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -78,9 +78,12 @@
 or <strong>RS-232</strong> — never CAN (see Transport support). AGM800 binary (<code>.bin</code>) firmware
 is validated via embedded magic markers and an optional <code>.ver</code> file, at parity
 with the non-AGM800 (<code>.hex</code> FW + <code>.dat</code> FPGA) products.</p>
+<p>The surface lives in <code>AAComm/Extensions/</code>: <code>AACommFwInfo</code> validates the file set
+(<code>ValidateFwFiles</code>) and delegates AGM800 <code>.bin</code> parsing to <code>AACommBinFwInfo</code>, while
+<code>AACommDownloadFW</code> and <code>AACommDownloadFPGA</code> run the packet loops.</p>
 <h2 id="transport-support">Transport support</h2>
-<p>FW download runs over <strong>Ethernet</strong> (AGM800 family — Ethernet only) or <strong>RS-232</strong>
-(non-AGM800 products). It is <strong>NOT supported over CAN</strong> — <code>AACommDownloadFW</code>
+<p>FW download runs over <strong>Ethernet</strong> (AGM800 family — Ethernet only; an AGM800-EC ESI download also
+over the firmware-sim <code>Simulation</code> channel) or <strong>RS-232</strong>. It is <strong>NOT supported over CAN</strong> — <code>AACommDownloadFW</code>
 (<code>StartDownloading</code>/<code>StartDownloadingSafe</code>) rejects a CAN <code>ConnectionData</code> up
 front with <em>&quot;Firmware download is not supported over CAN…&quot;</em>. The controller's
 CAN boot-loader FW-data contract is owned by the C2000 flash kernel at
@@ -89,15 +92,95 @@ path, so a CAN attempt fails controller-side with <code>ERR 43</code> (unexpecte
 character) / <code>ERR 15</code> (unexpected byte count). Use Ethernet or RS-232.</p>
 <p>The AGD301 FW (<code>.hex</code>) and FPGA (<code>.dat</code>) download paths are HW-validated over
 <strong>RS-232</strong> on both the String and Binary IPC protocols (<code>Agd301HardwareTests</code>,
-goldens <code>AGD301orAGC301_2D05_V3.0.42.hex</code> + <code>AGD301_for_BissC_and_SinCos_v2.7.2.dat</code>).
+goldens <code>AGD301orAGC301_2D05_V3.0.42.hex</code> + <code>AGD301_for_BissC_and_SinCos_v2.7.2.dat</code>); the FW <code>.hex</code>
+also flashes over Ethernet (the office rig's AGD301 at <code>172.1.1.105</code>, by <code>aacomm.cli flash</code>).
 FPGA download requires normal mode — it rejects BOOT.</p>
 <p>The complete gate matrix per download path — product, transport, exact-address and subnet
 rules, boot mode, file targets, version compatibility — with the CI-rig consequences is
 <code>docs/ci-cd/fw-fpga-download-constraints.md</code>.</p>
+<h2 id="download-paths">Download paths</h2>
+<p><code>AACommDownloadFW</code> picks its path from the connection's product and the target the caller passes:</p>
+<table>
+<thead>
+<tr>
+<th>Connection</th>
+<th>Target</th>
+<th>Path</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGM400, AGM800, Pulse-Sync, AGM800-EC</td>
+<td><code>Legacy</code></td>
+<td><code>DownloadFW_MAS02</code>: 700-byte MAS02 packets</td>
+<td><code>.bin</code> firmware</td>
+</tr>
+<tr>
+<td>AGM800-EC</td>
+<td><code>EC_ESI</code></td>
+<td><code>DownloadFW</code>: <code>DownloadESI</code>, then the image as Intel-HEX lines</td>
+<td><code>.bin</code> SII image</td>
+</tr>
+<tr>
+<td>AGD101-EC, AGD155-EC, AGD156-EC</td>
+<td><code>EC_MCU1</code> / <code>EC_CM</code> / <code>EC_ESI</code></td>
+<td><code>DownloadFW</code>: <code>DownloadFW</code> / <code>DownloadCM</code> / <code>DownloadESI</code>, then Intel-HEX lines</td>
+<td><code>.hex</code>; <code>.bin</code> ESI image for <code>EC_ESI</code></td>
+</tr>
+<tr>
+<td>legacy products</td>
+<td><code>Legacy</code></td>
+<td><code>DownloadFW</code>: <code>DownloadFW</code>, then the <code>.hex</code> lines</td>
+<td><code>.hex</code></td>
+</tr>
+</tbody>
+</table>
+<p>An AGM800-EC SII image and an AGM800-EC firmware image are both <code>.bin</code> files, so the target is the
+caller's to assert — AAComm never infers ESI from the file, but refuses an <code>EC_ESI</code> file larger than the
+16 KiB an ESI image can address, or one that carries firmware identity markers — an SII image does
+neither. The ESI download runs on the controller's
+firmware without a boot jump, and connects in full so the controller's own keyword table resolves
+<code>DownloadESI</code>. An AGM400, AGM800 or Pulse-Sync connection asked for <code>EC_ESI</code> is refused before anything
+is sent. Every gate per path is in <code>docs/ci-cd/fw-fpga-download-constraints.md</code>.</p>
+<h2 id="remote-fpga-identity-checks">Remote FPGA identity checks</h2>
+<p><code>AACommDownloadFPGARemote</code> downloads a remote <code>.rpd</code> over the AGM800 family's Ethernet
+connection, including AGM800-EC. <code>AACommRemoteFpgaInfo</code> reads the adjacent seven-line
+<code>.ver</code> in this order: FPGA Version, FPGA Size, Remote Type, Remote SubType, Remote
+Variant, Amplifier Version, Comm Version. The metadata is not a payload checksum.</p>
+<p>For AGA155 (type <code>1</code>, subtype <code>0x0150</code>), compact Remote Variant codes <code>0x3</code>, <code>0x6</code>,
+and <code>0xA</code> identify 2A03, 2A06, and 2A10 and match <code>CIIdentity[23]</code>. Amplifier Version
+codes <code>0x1</code>, <code>0x2</code>, and <code>0x3</code> identify hardware Variant37, Variant47, and Variant46
+and match <code>CIIdentity[21]</code>. Comm Version is <code>NA</code>; 8K maps to identity size <code>2</code>.
+Marketing strings such as <code>2A06</code> are parsed as hexadecimal values, never normalized
+to the compact codes: select matching compact metadata with compact-identity images.</p>
+<p>Normal downloads reject known identity mismatches. For controlled engineering
+comparisons only, set <code>AACommRemoteFpgaInfo.AllowAga155CurrentRatingMismatch = true</code>
+to permit current code <strong>6 to 10 or 10 to 6</strong> on a matching AGA155 target. It defaults
+to false and preserves type, subtype, FPGA size, hardware revision, and communication
+revision checks. It neither permits current code 3 mismatches nor grants an unknown
+identity override. <code>AllowForce</code> retains its separate unknown (<code>0</code>/<code>NA</code>) semantics;
+it does not bypass known mismatches. Both options together preserve the other guards.
+Firmware that does not expose index 23 retains the legacy download path, without
+variant validation; enabling the option does not prove that validation occurred.</p>
+<h3 id="remote-image-transitions">Remote image transitions</h3>
+<p>The remote download verifies fresh dual-configuration <code>MSM_CS</code> state: boot (<code>3</code> or
+<code>4</code>) before erase/data writes, and primary (<code>2</code> or <code>5</code>) before reporting success.
+Transition preparation, reconnect acknowledgements and state-read transactions
+are checked; a successful <code>CIConnect</code> or cached identity alone is insufficient.</p>
+<p>Only an exact <code>ERR 151</code> reply to the final reconfiguration trigger, after successful
+preparation, is treated as uncertain completion. <code>OnStatus</code> retains the original
+command/error context, then the service makes one reconnect attempt after its
+image-start delay and reads the requested image state. Failed or malformed replies,
+an unconnected target or a wrong image terminate the download. Ordinary offline/flash
+errors and other trigger errors remain terminal. Erase and data transfer are never
+automatically repeated. The existing file, identity, force/current-rating, exclusive
+channel and per-axis access guards apply throughout; the local FPGA path and generic
+low-level <code>CIConnect</code> contract are unchanged.</p>
 <h2 id="backward-compatibility">Backward Compatibility</h2>
 <ul>
-<li><strong>No .ver file</strong>: AGM800 firmware download proceeds without validation
-(same behavior as before)</li>
+<li><strong>No .ver file</strong>: AGM800 firmware download proceeds without validation, except
+that an identity-marked image whose product differs from the connection's, when either one is AGM800-EC, is refused</li>
 <li><strong>.ver file exists</strong>: Performs MD5 checksum, version, and product type
 validation before download</li>
 </ul>
@@ -178,17 +261,43 @@ integers. <code>&quot;IDNT&quot;</code> (0x49444E54) appears as bytes <code>54 4
 Line 2: MD5      (optional)  e.g. &quot;MD5:XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX-XX&quot;
 Line 3: Type     (optional)  e.g. &quot;Type:AGM800&quot;
 </code></pre>
-<p>Valid Type values: <code>AGM800</code>, <code>CiG1-MAS02</code>, <code>MAS02</code></p>
+<p>Valid Type values (prefix match, case-insensitive) depend on the connected product:</p>
+<table>
+<thead>
+<tr>
+<th>Connection</th>
+<th>Accepted <code>Type:</code></th>
+<th>Refused</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGM800-EC (16)</td>
+<td><code>AGM800-EC</code></td>
+<td>everything else</td>
+</tr>
+<tr>
+<td>AGM400 (6), AGM800 (10), PULSE_SYNC (15)</td>
+<td><code>AGM800</code>, <code>CiG1-MAS02</code>, <code>MAS02</code></td>
+<td>everything else, <code>AGM800-EC</code> included</td>
+</tr>
+</tbody>
+</table>
+<p>AGM800-EC is its own image family: its image and the AGM800 image are not
+interchangeable, although both are <code>.bin</code> files of the same format.</p>
 <h2 id="validation-steps-when-ver-file-exists">Validation Steps (when .ver file exists)</h2>
 <ol>
 <li><strong>MD5 checksum</strong> verification (if <code>MD5:</code> line present)</li>
 <li><strong>Version match</strong> between .ver and binary identity data (if binary
 contains identity markers)</li>
-<li><strong>Product type</strong> validation (if <code>Type:</code> line present) — two independent checks:
+<li><strong>Product type</strong> validation — two independent checks:
 <ul>
-<li><strong>Binary identity</strong>: AGM800 family product-type IDs (6=AGM400, 10=AGM800,
-15=PULSE_SYNC) are considered compatible</li>
-<li><strong>Type string</strong>: only <code>AGM800</code>, <code>CiG1-MAS02</code>, <code>MAS02</code> are accepted. Note:
+<li><strong>Binary identity</strong> (if the binary contains identity markers): product-type
+IDs 6=AGM400, 10=AGM800 and 15=PULSE_SYNC share one image and are considered
+compatible, checked when the <code>.ver</code> has a version line; 16=AGM800-EC matches
+only itself, checked with or without a <code>.ver</code></li>
+<li><strong>Type string</strong> (if a <code>Type:</code> line is present): only the values the table
+above lists for the connected product are accepted. Note:
 <code>Pulse-Sync</code> is NOT a valid Type string even though product type 15 passes
 the binary identity check</li>
 </ul>
@@ -210,40 +319,13 @@ round-trip — see <code>architecture.md</code> (IPC Framing).</p>
 <h3 id="post-reset-disconnect-tolerance">Post-Reset Disconnect Tolerance</h3>
 <p>Both FW and FPGA download use <code>ResetReplyHelper.IsExpectedPostResetDisconnect</code>
 after the final packet/batch to handle the race where the controller resets
-before the OK reply arrives. Disconnect-style replies (<code>ERR 4021</code>, <code>ERR 4020</code>,
+before the OK reply arrives. Disconnect-style replies (<code>ERR 4021</code>, <code>ERR 4020</code>, <code>ERR 4025</code>,
 channel-fatal) are accepted as success for the last step.</p>
-<h2 id="files">Files</h2>
-<p><strong>Added:</strong></p>
-<ul>
-<li><code>AACommComponents/AAComm/Extensions/AACommBinFwInfo.cs</code></li>
-</ul>
-<p><strong>Modified:</strong></p>
-<ul>
-<li><code>AACommComponents/AAComm/Extensions/AACommFwInfo.cs</code>
-<ul>
-<li>Constructor parses AGM800 .bin files via <code>AACommBinFwInfo</code></li>
-<li><code>DataValid</code> property: private setter</li>
-<li><code>ValidateFwFiles</code> enhanced for AGM800 with optional .ver file</li>
-<li><code>ProductTypeStr</code> returns <code>&quot;AGM800&quot;</code> for all AGM800 family types</li>
-</ul>
-</li>
-<li><code>AACommComponents/AAComm/Extensions/AACommDownloadFW.cs</code>
-<ul>
-<li>MAS02 packets wrapped with <code>@#HEX:</code> sigil for IPC-safe binary transport</li>
-<li><code>TriageFwReply</code> helper for post-reset disconnect tolerance</li>
-</ul>
-</li>
-<li><code>AACommComponents/AAComm/Extensions/AACommDownloadFPGA.cs</code>
-<ul>
-<li>EOF reply uses <code>ResetReplyHelper.IsExpectedPostResetDisconnect</code></li>
-</ul>
-</li>
-</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/advanced/firmware-download.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

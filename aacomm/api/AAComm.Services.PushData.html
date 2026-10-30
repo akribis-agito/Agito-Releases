@@ -116,6 +116,31 @@ Holds the original raw bytes and the exception for logging/debugging.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.PushData.AACommPushMsgPushEvents.html">AACommPushMsgPushEvents</a></dt>
+      <dd><p>SOURCE == 2 (push events):</p>
+<p>For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)
+with fixed-size event records.</p>
+<p>Binary packet structure (after the header, before the records):</p>
+<ul>
+<li>uint8 n: number of event records</li>
+<li>uint16 missed: events dropped since the last successful flush</li>
+<li>uint16 freeRows: remaining free rows in the controller's event queue</li>
+<li>uint16 reserved: zero</li>
+</ul>
+<p>Then n times, exactly 50 bytes each:</p>
+<ul>
+<li>uint8 type: event type</li>
+<li>uint8 axis: axis or port, <a class="xref" href="AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_NoAxis">NoAxis</a> when controller-wide</li>
+<li>uint32 timeSec: seconds since power-on</li>
+<li>uint32 timeTick: sub-second tick</li>
+<li>double data1..data5: type-specific values</li>
+</ul>
+<p>DATA is validated by arithmetic: it must be exactly 7 + 50n bytes. The packet
+terminator ('&gt;' CR) may follow it, because the binary IPC path delivers the
+controller's bytes untrimmed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.PushData.AACommPushMsgUP.html">AACommPushMsgUP</a></dt>
       <dd><p>SOURCE == 1 (User Program):</p>
 <p>For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)
@@ -140,6 +165,12 @@ with multiple printf messages.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Services.PushData.PrintfMessage.html">PrintfMessage</a></dt>
       <dd><p>Represents a single printf message within a push packet.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Services.PushData.PushEventRecord.html">PushEventRecord</a></dt>
+      <dd><p>One event record of a push-events packet (<a class="xref" href="AAComm.Services.PushData.PushSources.html#AAComm_Services_PushData_PushSources_PushEvents">PushEvents</a>, VERSION_DATA 1).
+The meaning of <a class="xref" href="AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data1">Data1</a>..<a class="xref" href="AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Data5">Data5</a> depends on <a class="xref" href="AAComm.Services.PushData.PushEventRecord.html#AAComm_Services_PushData_PushEventRecord_Type">Type</a>.</p>
 </dd>
     </dl>
     <h3 id="enums">

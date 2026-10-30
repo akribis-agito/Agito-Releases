@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -145,7 +145,7 @@
 <li><strong>TCP Connect</strong>: AAComm client establishes TCP connection to AACommServer</li>
 <li><strong>Connection Handling</strong>: <code>ServerSocketWrapper</code> created with unique <code>UserId</code></li>
 <li><strong>Request Received</strong>: Client sends Open/Message/Close request</li>
-<li><strong>Request Processing</strong>: <code>AACommServerModel.OnAACommRequest()</code> deserializes and routes message</li>
+<li><strong>Request Processing</strong>: <code>AACommServerModel.ProcessClientReceive()</code> deserializes and routes message</li>
 <li><strong>Channel Routing</strong>: Message routed to appropriate <code>ChannelHandler</code> by <code>ChannelKey</code></li>
 <li><strong>Message Queuing</strong>: <code>ChannelHandler.Send()</code> enqueues the message</li>
 <li><strong>Hardware Send</strong>: <code>ChannelHandler.PumpLocked()</code> dequeues the next message (one in-flight per channel), starts the timeout timer, and sends via <code>ICommunicator</code></li>
@@ -172,6 +172,13 @@
 <li>Clients can request exclusive channel access via <code>StartExclusiveAccess()</code></li>
 <li>Other users' messages rejected with <code>CHANNEL_IS_EXCLUSIVE</code> error</li>
 <li>Prevents concurrent access during critical operations</li>
+</ul>
+<h3 id="fault-injection">Fault Injection</h3>
+<ul>
+<li>Opt-in: <code>AACommServerModel.AllowFaultInjection</code>, set by a host started with <code>--allow-fault-injection</code> (both <code>AACommServer</code> and <code>AACommServerNative</code>). Without it every <code>FaultArm</code> / <code>FaultClear</code> / <code>FaultList</code> internal request is answered <code>ERR fault injection is disabled on this server; ...</code></li>
+<li>A rule (<code>Faults/FaultInjector.cs</code>, wire form <code>AAComm/Internal/Wire/FaultWire.cs</code>) is armed per controller (channel key) through an <code>InternalAACS</code> request and outlives the channel. <code>ChannelHandler.PumpLocked</code> consults it just before a request goes to the communicator: the matching request is answered <code>ERR &lt;n&gt;</code> locally, or sent nowhere so the channel times out</li>
+<li>Matches CCC frames only — typed <code>Regular</code> / <code>Bulk</code> / <code>BulkIgnore</code> payloads on Ethernet, Simulation and CAN channels — by axis, CAN code, array index, and whether the frame carries a value. In a bulk frame the faulted element is failed the way the controller fails one (halt-on-error stops there; ignore-errors carries on with a <code>DoNothing</code> in its place)</li>
+<li>Armed from <code>aacomm.cli fault</code>; see <code>AAComm.Cli/README.md</code></li>
 </ul>
 <h3 id="timeout-management">Timeout Management</h3>
 <ul>
@@ -217,7 +224,7 @@ dispatch until the first Open commits a communicator and a user, so the window i
 <li>Fatal errors (timeout, connection loss) close the channel and notify <strong>every</strong> user of it:
 in-flight/queued users get the fatal as their reply; passive users are notified too — as a
 <code>CHANNEL_EVENT</code> frame for binary clients that declared the capability on Open, or the
-legacy fatal shape otherwise. Client sockets close after the fatal flushes — best-effort
+legacy fatal shape otherwise. Client sockets stay open across the fatal — best-effort
 with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; see
 <code>AACommComponents/docs/ipc-contract.md</code> §Fatal broadcast).</li>
 <li>Unsent messages cleared on user disconnect</li>
@@ -227,15 +234,15 @@ with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; s
 <ul>
 <li><strong>CAN Bus</strong>: Kvaser CANlib-based communication (Windows or Linux)</li>
 <li><strong>RS-232</strong>: Serial port communication</li>
-<li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk)</li>
-<li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). The legacy file-based <code>Simulator</code> channel is removed; the <code>Simulator</code> enum survives only as the in-process echo channel for the AAComm virtual-test harness.</li>
+<li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk; the Simulation channel carries bulk too)</li>
+<li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). A temporary connection uses a fresh scratch folder that is removed on disconnect. <code>ConnectionData.SimMemoryFolder</code> selects a persistent working directory that is created when needed and retained. Before startup a missing runtime <code>agito.par</code> is derived from the executable's sibling complete <code>starter.par</code> for the selected motor; an existing parameter file and user program are retained. The resolved physical profile is written as <code>motor.txt</code> in that same working directory. The host sets <code>AGITO_FLASH_FILE</code> to a path in this folder, which selects the firmware memory directory for normal parameter/program loading and saving. When <code>%LOCALAPPDATA%\PCSuite\HostGcc\bin\gcc.exe</code> exists (the host gcc PCSuite downloads, <code>agito-host-gcc-14.2.0-r3.zip</code> of the <code>Software/HostGcc/v14.2.0-r3</code> release on <code>akribis-agito/Agito-Releases</code>) and the server's own environment does not set <code>AGITO_DRAW_GCC</code>, the host sets it to that file, so the sim compiles a downloaded Draw scheme with it. Opening the channel sends no firmware requests; normal parameter loading preserves saved motor type zero and custom gains in RAM. The legacy file-based <code>Simulator</code> channel is removed; its enum remains for the virtual-test echo channel.</li>
 </ul>
 <h3 id="spawned-child-lifetime">Spawned-child lifetime</h3>
 <p>A spawned <code>firmware_sim</code> is started bound to the server process by <code>ChildProcessReaper.StartReaped</code>, so it is reaped when the server dies for <strong>any</strong> reason — including a hard crash or external kill, where the graceful <code>Shutdown()</code>/<code>Dispose()</code> teardown never runs. The mechanism is per-OS:</p>
 <ul>
 <li><strong>Windows</strong> — a kill-on-close Job Object (<code>JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE</code>): the child is assigned to a process-wide job; when the server's last job handle closes, the OS terminates the job. Kernel-enforced.</li>
 <li><strong>Linux</strong> — <code>prctl(PR_SET_PDEATHSIG, SIGKILL)</code>, applied by launching the child through <code>setpriv --pdeathsig</code> (util-linux) since .NET has no pre-exec hook. The death-signal is keyed to the <em>forking task</em>, so the fork runs on a process-lifetime spawner thread (else a transient caller thread exiting would SIGKILL a healthy sim). Logged no-op fallback if setpriv is absent.</li>
-<li><strong>macOS</strong> — deferred with the osx native build (issue #101); the crash-safe equivalent is a <code>kqueue NOTE_EXIT</code> babysitter. Graceful <code>Dispose</code>/<code>Close</code> still reaps the child; only an abnormal server exit can orphan it.</li>
+<li><strong>macOS</strong> — a detached <code>/bin/sh</code> babysitter launched beside the child: once a second it checks that its own parent is still the server (a zombie server still answers <code>kill -0</code>, but macOS reparents its children to launchd the moment it exits) and that the child's pid still carries the same start time (a recycled pid is never killed), and SIGKILLs the child once the server is gone, exiting as soon as either side dies so it never lingers. It drops its inherited stdio, so a parent reading the server's output to EOF is not held open. The child itself starts normally, so graceful <code>Dispose</code>/<code>Close</code> reaps it directly. Reap latency is up to two seconds; a <code>kqueue NOTE_EXIT</code> babysitter is the upgrade if that ever matters.</li>
 </ul>
 <p>The IPC listen socket is also made non-inheritable (<code>HandleInheritance</code>) so a spawned child (started with <code>bInheritHandles=TRUE</code> for stdio redirect) never inherits it and pins the IPC port after the server exits — Windows-only, since .NET Core already creates non-inheritable sockets on Linux/macOS.</p>
 <h2 id="internal-layout--seams">Internal layout &amp; seams</h2>
@@ -350,7 +357,7 @@ Linux/macOS) via <code>PcapDetector</code>.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/aacomm/articles/architecture/server.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

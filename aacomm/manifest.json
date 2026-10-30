@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/DEV/actions-runner-agd155ec/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aacomm",
+  "source_base_path": "C:/DEV/actions-runner/_work/PC-Toolsets/PC-Toolsets/AACommComponents/AACommDocs/aacomm",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -37,6 +37,496 @@
       "IsMRef": true,
       "Title": "AAComm.CommAPIWrapper",
       "Summary": "<pre><code sourcefile=\"api/AAComm.CommAPIWrapper.yml\" sourcestartlinenumber=\"1\">this class is used to wrap the CommAPI as a singleton\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.CommAPIWrapper.yml\" sourcestartlinenumber=\"4\">useful for single-user API usage scenario\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Acknowledgement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Acknowledgement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Acknowledgement",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Acknowledgement.yml\" sourcestartlinenumber=\"1\">Who accepted the risk of an attempt, and when.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.AcquisitionSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.AcquisitionSource.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.AcquisitionSource",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.AcquisitionSource.yml\" sourcestartlinenumber=\"1\">The transport or protocol path, and the name of what was read.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Attempt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Attempt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Attempt",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Attempt.yml\" sourcestartlinenumber=\"1\">One run of one operation. Observations, evidence and restore steps link to it.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.AttemptStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.AttemptStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.AttemptStatus",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.AttemptStatus.yml\" sourcestartlinenumber=\"1\">How an attempt as a whole ended.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Capture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Capture.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Capture",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Capture.yml\" sourcestartlinenumber=\"1\">When a value was captured, in the clock named by <xref href=\"AAComm.Commissioning.Capture.Domain\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningIssue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningIssue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningIssue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningIssueCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningIssueCode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningIssueCode",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.CommissioningIssueCode.yml\" sourcestartlinenumber=\"1\">Why a report is internally inconsistent.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningKeys.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningKeys",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.CommissioningKeys.yml\" sourcestartlinenumber=\"1\">Quantity keys the validator knows the shape of.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningReport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningReport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningReport",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.CommissioningReport.yml\" sourcestartlinenumber=\"1\">A versioned record of what a commissioning or discovery pass observed. It states what each\nvalue means and how it was obtained; it does not establish physical identity, loaded bytes,\npermission to actuate or hardware qualification.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningValidation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningValidation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningValidation",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.CommissioningValidation.yml\" sourcestartlinenumber=\"1\">Outcome of <xref href=\"AAComm.Commissioning.CommissioningValidator.Validate(AAComm.Commissioning.CommissioningReport)\" data-throw-if-not-resolved=\"false\"></xref>. A clean result says the report\nagrees with itself; it says nothing about the rig.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.CommissioningValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.CommissioningValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.CommissioningValidator",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.CommissioningValidator.yml\" sourcestartlinenumber=\"1\">Checks a <xref href=\"AAComm.Commissioning.CommissioningReport\" data-throw-if-not-resolved=\"false\"></xref> for internal contradictions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Declaration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Declaration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Declaration",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Declaration.yml\" sourcestartlinenumber=\"1\">An expected artifact or source, kept apart from anything observed at runtime.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.DeclarationKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.DeclarationKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.DeclarationKind",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.DeclarationKind.yml\" sourcestartlinenumber=\"1\">What an expected declaration names.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.EvidenceCompleteness.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.EvidenceCompleteness.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.EvidenceCompleteness",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.EvidenceCompleteness.yml\" sourcestartlinenumber=\"1\">Whether the evidence file holds the whole acquisition.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.EvidenceKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.EvidenceKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.EvidenceKind",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.EvidenceKind.yml\" sourcestartlinenumber=\"1\">What an evidence file is.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.EvidenceRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.EvidenceRef.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.EvidenceRef",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.EvidenceRef.yml\" sourcestartlinenumber=\"1\">A file held outside the report. The report never infers that it exists.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Limit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Limit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Limit",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Limit.yml\" sourcestartlinenumber=\"1\">A limit an attempt declared before acting.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Observation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Observation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Observation",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Observation.yml\" sourcestartlinenumber=\"1\">One value, or the explicit absence of one, obtained by one attempt.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.ObservationOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.ObservationOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.ObservationOutcome",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.ObservationOutcome.yml\" sourcestartlinenumber=\"1\">How an observation ended. Only <xref href=\"AAComm.Commissioning.ObservationOutcome.Succeeded\" data-throw-if-not-resolved=\"false\"></xref> carries a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.ObservationValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.ObservationValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.ObservationValue",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.ObservationValue.yml\" sourcestartlinenumber=\"1\">A scalar. Exactly one member is set. <xref href=\"AAComm.Commissioning.ObservationValue.Integer\" data-throw-if-not-resolved=\"false\"></xref> is a signed 64-bit value kept\nexactly; <xref href=\"AAComm.Commissioning.ObservationValue.Real\" data-throw-if-not-resolved=\"false\"></xref> must be finite. A quantity that is an exact count is an Integer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.PassiveCollectionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.PassiveCollectionRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.PassiveCollectionRequest",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.PassiveCollectionRequest.yml\" sourcestartlinenumber=\"1\">What to collect: caller-supplied ids and the port/axis/encoder links to read through.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.PassiveEncoderRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.PassiveEncoderRole.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.PassiveEncoderRole",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.PassiveEncoderRole.yml\" sourcestartlinenumber=\"1\">The explicitly requested feedback role; labels and port names never select it.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.PassiveEncoderSelection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.PassiveEncoderSelection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.PassiveEncoderSelection",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.PassiveEncoderSelection.yml\" sourcestartlinenumber=\"1\">Opts one request mapping's scope into passive absolute-encoder metadata collection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.PassiveKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.PassiveKeys.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.PassiveKeys",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.PassiveKeys.yml\" sourcestartlinenumber=\"1\">Quantity keys the passive collector records, beside <xref href=\"AAComm.Commissioning.CommissioningKeys\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.PassiveMetadataCollector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.PassiveMetadataCollector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.PassiveMetadataCollector",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.PassiveMetadataCollector.yml\" sourcestartlinenumber=\"1\">Reads metadata the shared AAComm interfaces already expose into a\n<xref href=\"AAComm.Commissioning.CommissioningReport\" data-throw-if-not-resolved=\"false\"></xref>, with ordinary parameter reads only: no setting write,\nprotocol query, recorder arm, motor enable, Save or reset.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.RestoreKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.RestoreKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.RestoreKind",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.RestoreKind.yml\" sourcestartlinenumber=\"1\">What a restore step puts back.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.RestoreOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.RestoreOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.RestoreOutcome",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.RestoreOutcome.yml\" sourcestartlinenumber=\"1\">How a restore step ended.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.RestoreStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.RestoreStep.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.RestoreStep",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.RestoreStep.yml\" sourcestartlinenumber=\"1\">A step that puts a changed setting or the motor state back, with its readback.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.Scope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.Scope.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.Scope",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.Scope.yml\" sourcestartlinenumber=\"1\">Where a value applies. A remote port name and a controller axis are separate identifiers;\nan encoder is addressed through an axis.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.ScopeMapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.ScopeMapping.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.ScopeMapping",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.ScopeMapping.yml\" sourcestartlinenumber=\"1\">A declared or reported link between a remote port, an axis and an encoder.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.SourceKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.SourceKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.SourceKind",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.SourceKind.yml\" sourcestartlinenumber=\"1\">The transport or protocol path that produced a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.StepEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.StepEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.StepEffect",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.StepEffect.yml\" sourcestartlinenumber=\"1\">What an attempt does to the rig.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.TimeDomain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.TimeDomain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.TimeDomain",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.TimeDomain.yml\" sourcestartlinenumber=\"1\">The clock a capture time is stated in.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.ValueOrigin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.ValueOrigin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning.ValueOrigin",
+      "Summary": "<p sourcefile=\"api/AAComm.Commissioning.ValueOrigin.yml\" sourcestartlinenumber=\"1\">What a value means, independent of how it reached the caller.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Commissioning.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Commissioning.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Commissioning",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -78,7 +568,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommDownloadFPGAEtherCat",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"1\">Service class used for downloading FPGA to controller (NOT in BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGAEtherCat.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -92,7 +582,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommDownloadFPGARemote",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"4\">Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)\nWhen starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"8\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"11\">Process can't be canceled in the middle.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"4\">Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)\nWhen starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"8\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"11\">Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"14\">Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"17\">Process can't be canceled in the middle.\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -106,7 +596,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommDownloadFW",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"10\">NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"13\">NOTE: FW download is NOT supported over CAN — download over Ethernet (AGM800) or RS-232 (serial)\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FW to controller (in regular or BOOT mode)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"4\">When starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"7\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"10\">NOTE: non - AGM800 products do NOT support flashing FW on other than 172.1.1 subnets\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFW.yml\" sourcestartlinenumber=\"13\">NOTE: FW download is NOT supported over CAN — download over Ethernet or RS-232 (serial)\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -274,7 +764,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.RecData.RecordingDataContainer",
-      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.RecordingDataContainer.yml\" sourcestartlinenumber=\"1\">An object that contains all the data of a recording (setup and recorded data points)</p>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.RecData.RecordingDataContainer.yml\" sourcestartlinenumber=\"1\">Contains recording setup and decoded data points. Nonempty wire payloads require\nresolved vectors and complete interleaved frames; otherwise decoding throws <xref href=\"System.FormatException\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -512,7 +1002,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Services.AACommVerifySingleClient",
-      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommVerifySingleClient.yml\" sourcestartlinenumber=\"1\">a helper class used to verify if the AACommServer is used by a single (the querying) client</p>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Services.AACommVerifySingleClient.yml\" sourcestartlinenumber=\"1\">a helper class used to verify that the querying client is the only AAComm client on its connection (the AACommServer counts the clients on the channel for that IP, COM port or CAN node, not on the server or the controller)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -572,6 +1062,62 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ArrayDownloadResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ArrayDownloadResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ArrayDownloadResult",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ArrayDownloadResult.yml\" sourcestartlinenumber=\"1\">Structured result returned by <xref href=\"AAComm.CommAPI.DownloadArray(System.String%2cSystem.Int32%2cSystem.Collections.Generic.IReadOnlyList%7bSystem.Double%7d%2cSystem.Boolean%2cSystem.Int32%2cSystem.Boolean)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ArrayDownloadStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ArrayDownloadStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ArrayDownloadStatus",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ArrayDownloadStatus.yml\" sourcestartlinenumber=\"1\">Final status of an array download.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ArrayDownloadTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ArrayDownloadTransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ArrayDownloadTransport",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ArrayDownloadTransport.yml\" sourcestartlinenumber=\"1\">Transport used for an array download.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ArrayStreamError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ArrayStreamError.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ArrayStreamError",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ArrayStreamError.yml\" sourcestartlinenumber=\"1\">Array-stream protocol errors reported by the controller when <xref href=\"AAComm.Services.ArrayDownloadResult.Status\" data-throw-if-not-resolved=\"false\"></xref>\nis <xref href=\"AAComm.Services.ArrayDownloadStatus.ProtocolError\" data-throw-if-not-resolved=\"false\"></xref>. The firmware allocates these above the\ninterpreter's range so the two never collide.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.COMTools.yml",
       "output": {
         ".html": {
@@ -597,6 +1143,48 @@
       "IsMRef": true,
       "Title": "AAComm.Services.CanDescriptionBuilder",
       "Summary": "<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"1\">a helper class, used for building CAN/Ethernet description codes and the other way around\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"4\">used at very specific cases, i.e. user program.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.CanDescriptionBuilder.yml\" sourcestartlinenumber=\"7\">please refer to Controller communications protocol, or contact API provider for more information\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.CiFeatureAvailability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.CiFeatureAvailability.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.CiFeatureAvailability",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.CiFpgaFeatures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.CiFpgaFeatures.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.CiFpgaFeatures",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.CiFpgaFeatures.yml\" sourcestartlinenumber=\"1\">A validated per-remote FPGA capability snapshot exposed by CiIdentity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.CommSessionHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.CommSessionHandle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.CommSessionHandle",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.CommSessionHandle.yml\" sourcestartlinenumber=\"1\">A request boundary tied to one connection, including reconnects to the same endpoint.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -726,6 +1314,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.ControllerVersionWord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.ControllerVersionWord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.ControllerVersionWord",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Services.ControllerVersionWord.yml\" sourcestartlinenumber=\"1\">A controller firmware or FPGA version word: &lt;code&gt;Major.Minor.Patch&lt;/code&gt; plus an owner and a sub-version.\nOwner 0 with sub-version 0 is a final release; owner 0 with a sub-version N is release candidate N of the\nrelease; a non-zero owner is a development build.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.ControllerVersionWord.yml\" sourcestartlinenumber=\"6\">Order: by &lt;code&gt;Major.Minor.Patch&lt;/code&gt;, then within one release the candidates (by sub-version) before the\nfinal, then the development builds (by owner, then sub-version).\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.Diagnostics.AACommDebugLog.yml",
       "output": {
         ".html": {
@@ -750,6 +1352,258 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Services.Diagnostics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableCapabilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableCapabilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableCapabilities",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableCapabilities.yml\" sourcestartlinenumber=\"1\">Remote capabilities in the observed publication; no remote probe or write is implied.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableClient",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableClient.yml\" sourcestartlinenumber=\"1\">Explicit verified-table lifecycle on one captured connection. Commission alignment first.\nOwnership is process-local across controller product/serial/axis aliases. Dispose sends no\ncleanup; ambiguous writes retain a reservation until explicit same-origin recovery succeeds.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableDefinition",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableDefinition.yml\" sourcestartlinenumber=\"1\">Immutable1..2048-entry upload definition. Targets remain in caller order and raw master units.\nSource mapping, alignment, remote-frame overflow and first-ahead admission remain controller checks.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableEntry",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableEntry.yml\" sourcestartlinenumber=\"1\">One original master-frame target, width and three-output selection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableError.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableError",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableError.yml\" sourcestartlinenumber=\"1\">Immutable retained error context. Reading this object acknowledges nothing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableErrorCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableErrorCode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableErrorCode",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableErrorCode.yml\" sourcestartlinenumber=\"1\">Normalized controller failure. Original transport and remote details remain available.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableFailure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableFailure.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableFailure",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableFailure.yml\" sourcestartlinenumber=\"1\">First host-side failure retained through explicit cleanup; no remote ACK is implied.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableObservation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableObservation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableObservation",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableObservation.yml\" sourcestartlinenumber=\"1\">A bounded observation result; Status is null unless Outcome is Available.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableObservationOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableObservationOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableObservationOutcome",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableObservationOutcome.yml\" sourcestartlinenumber=\"1\">Outcome of a bounded observation; unavailable never carries cached status.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableOutcome",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableOutcome.yml\" sourcestartlinenumber=\"1\">Result of one explicit lifecycle request; cancellation never confirms remote Abort.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTablePhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTablePhase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTablePhase",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTablePhase.yml\" sourcestartlinenumber=\"1\">Phase in which a retained failure originated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTablePulseResolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTablePulseResolution.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTablePulseResolution",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTablePulseResolution.yml\" sourcestartlinenumber=\"1\">EventPulseRes encoding. Width values use the selected unit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableRealizedEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableRealizedEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableRealizedEntry",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableRealizedEntry.yml\" sourcestartlinenumber=\"1\">Digital width realization at an advertised clock; this is not a measured output width.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableResult",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableResult.yml\" sourcestartlinenumber=\"1\">Immutable outcome and original controller diagnostic publication, when available.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableState",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableState.yml\" sourcestartlinenumber=\"1\">Controller and remote transaction lifecycle, independent of host upload progress.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableStatus",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableStatus.yml\" sourcestartlinenumber=\"1\">One coherent controller publication. Freshness and capture age describe publication time,\nnot current remote health. Explicit arm and completion inquiries are still required.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.EventTableStatusReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.EventTableStatusReader.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events.EventTableStatusReader",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.Events.EventTableStatusReader.yml\" sourcestartlinenumber=\"1\">Reads live EventStatus/EventError through one connection. Each of at most two immediate\nattempts has a two-second deadline and exactly37 ordered scalar inquiries (one bulk when\nsupported). Safety churn can make both attempts unavailable. No cache, latch, clear or write.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.Events.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.Events",
       "Summary": null
     },
     {
@@ -807,6 +1661,34 @@
       "IsMRef": true,
       "Title": "AAComm.Services.LocaleProvider",
       "Summary": "<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"1\">Singleton object that provides localized Error and Status strings\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"4\">Currently supported languages: &quot;en-US&quot;, &quot;zh-CN&quot;\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Services.LocaleProvider.yml\" sourcestartlinenumber=\"7\">Use &lt;xref href=&quot;AAComm.Services.LocaleProvider.GetError(System.Int32)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for localized Controller Errors strings\n</code></pre>\n<p></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.LockEventWriteOrder.Plan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.LockEventWriteOrder.Plan.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.LockEventWriteOrder.Plan",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.LockEventWriteOrder.Plan.yml\" sourcestartlinenumber=\"1\">The reordered rows, and which of them were added (not in the input).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.LockEventWriteOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.LockEventWriteOrder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.LockEventWriteOrder",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.LockEventWriteOrder.yml\" sourcestartlinenumber=\"1\">The write order a parameter restore needs under the lock/event guards of firmware that declares\nLockEventMode up to 2 (see <xref href=\"AAComm.Services.LockEventWriteOrder.Mode2Supported(AAComm.Services.MessageData)\" data-throw-if-not-resolved=\"false\"></xref>). In LockEventMode 1 and 2 that firmware refuses a\nchange to a lock/event dependency while LockEn or EventOn is on (error 403), and refuses LockEn/EventOn\nafter a dependency changed until the offset is recomputed (404; 335 if it was never computed).</p>\n<p></p>\n<p sourcefile=\"api/AAComm.Services.LockEventWriteOrder.yml\" sourcestartlinenumber=\"8\">Per axis, when the rows touch a dependency or LockEventMode, the order becomes: LockEn and EventOn off\n(both, whether or not the rows carry them: a .par has neither, and either one armed refuses the change),\nthen the other rows in their original order, then LockEventMode, then LockEventInit when the axis is in\nmode 1 at re-arm, then the rows' own LockEn/EventOn in their order, so the last one requested is the state left.\nAxes whose rows touch neither keep their rows untouched and in place.</p>\n<p></p>\n<p sourcefile=\"api/AAComm.Services.LockEventWriteOrder.yml\" sourcestartlinenumber=\"16\">The mode at re-arm is the rows' LockEventMode when they carry one, otherwise the controller's current mode\n(<xref href=\"AAComm.Services.LockEventWriteOrder.ReadCurrentModes(System.Collections.Generic.IList%7bSystem.String%7d%2cSystem.Func%7bAAComm.Services.AACommMessage%2cAAComm.Services.AACommEventArgs%7d)\" data-throw-if-not-resolved=\"false\"></xref>). An AGM800-EC enable forces mode 2 only at the next enable, so an\nAGM800-EC restored into mode 1 gets the LockEventInit like any other controller.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -950,6 +1832,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.AACommPushMsgPushEvents.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.AACommPushMsgPushEvents",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"1\">SOURCE == 2 (push events):</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"3\">For VERSION_DATA = 1, the DATA section contains raw binary data (little-endian)\nwith fixed-size event records.</p>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"6\">Binary packet structure (after the header, before the records):</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"7\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"7\">uint8 n: number of event records</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"8\">uint16 missed: events dropped since the last successful flush</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"9\">uint16 freeRows: remaining free rows in the controller's event queue</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"10\">uint16 reserved: zero</li>\n</ul>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"12\">Then n times, exactly 50 bytes each:</p>\n<ul sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"13\">\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"13\">uint8 type: event type</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"14\">uint8 axis: axis or port, <xref href=\"AAComm.Services.PushData.PushEventRecord.NoAxis\" data-throw-if-not-resolved=\"false\"></xref> when controller-wide</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"15\">uint32 timeSec: seconds since power-on</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"16\">uint32 timeTick: sub-second tick</li>\n<li sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"17\">double data1..data5: type-specific values</li>\n</ul>\n<p sourcefile=\"api/AAComm.Services.PushData.AACommPushMsgPushEvents.yml\" sourcestartlinenumber=\"19\">DATA is validated by arithmetic: it must be exactly 7 + 50n bytes. The packet\nterminator ('&gt;' CR) may follow it, because the binary IPC path delivers the\ncontroller's bytes untrimmed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.PushData.AACommPushMsgUP.yml",
       "output": {
         ".html": {
@@ -978,6 +1874,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.PushData.PushEventRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.PushData.PushEventRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.PushData.PushEventRecord",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.PushData.PushEventRecord.yml\" sourcestartlinenumber=\"1\">One event record of a push-events packet (<xref href=\"AAComm.Services.PushData.PushSources.PushEvents\" data-throw-if-not-resolved=\"false\"></xref>, VERSION_DATA 1).\nThe meaning of <xref href=\"AAComm.Services.PushData.PushEventRecord.Data1\" data-throw-if-not-resolved=\"false\"></xref>..<xref href=\"AAComm.Services.PushData.PushEventRecord.Data5\" data-throw-if-not-resolved=\"false\"></xref> depends on <xref href=\"AAComm.Services.PushData.PushEventRecord.Type\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.PushData.PushSources.yml",
       "output": {
         ".html": {
@@ -1003,6 +1913,20 @@
       "IsMRef": true,
       "Title": "AAComm.Services.PushData",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.SimParameterFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.SimParameterFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.SimParameterFile",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.SimParameterFile.yml\" sourcestartlinenumber=\"1\">Materializes a packaged complete starter as the selected motor's runtime agito.par.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1352,7 +2276,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Shared.ServerCompat",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"1\">Classification of the AACommServer this client attached to, reported by\n&lt;xref href=&quot;AAComm.CommAPI.ServerCompat&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; after a successful &lt;code&gt;Connect&lt;/code&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"5\">The version floor CLASSIFIES the attach, it never rejects: a legacy server still\nconnects (compat mode), because a new client must coexist with a server started by an\nolder SDK application on the same machine — but the degraded mode is queryable here\ninstead of silent. A client must never shut down a server it did not spawn.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"1\">Classification of the AACommServer this client attached to, reported by\n&lt;xref href=&quot;AAComm.CommAPI.ServerCompat&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; after a successful &lt;code&gt;Connect&lt;/code&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Shared.ServerCompat.yml\" sourcestartlinenumber=\"5\">The version floor CLASSIFIES the attach, it never rejects: a legacy server still\nconnects (compat mode), because a new client must coexist with a server started by an\nolder SDK application on the same machine — but the degraded mode is queryable here\ninstead of silent.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Shared.SimSupplyVoltage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Shared.SimSupplyVoltage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Shared.SimSupplyVoltage",
+      "Summary": "<p sourcefile=\"api/AAComm.Shared.SimSupplyVoltage.yml\" sourcestartlinenumber=\"1\">Nominal simulator supplies, keyed by product identity.</p>\n"
     },
     {
       "type": "ManagedReference",

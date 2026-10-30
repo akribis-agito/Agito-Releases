@@ -130,7 +130,8 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html">RecordingDataContainer</a></dt>
-      <dd><p>An object that contains all the data of a recording (setup and recorded data points)</p>
+      <dd><p>Contains recording setup and decoded data points. Nonempty wire payloads require
+resolved vectors and complete interleaved frames; otherwise decoding throws <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">

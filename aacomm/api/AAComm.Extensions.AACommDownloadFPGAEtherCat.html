@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AACommDownloadFPGAEtherCat | Agito AAComm SDK ">
       
-      <meta name="description" content="Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)   When starting the DL process, the API state must be NOT connected.   Process ends with API state: Disconnected (success or error)">
+      <meta name="description" content="Service class used for downloading FPGA to controller (NOT in BOOT mode)   When starting the DL process, the API state must be NOT connected.   Process ends with API state: Disconnected (success or error)">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/aacomm/v14.0.0/apiSpec/new?filename=AAComm_Extensions_AACommDownloadFPGAEtherCat.md&amp;value=---%0Auid%3A%20AAComm.Extensions.AACommDownloadFPGAEtherCat%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Extensions_AACommDownloadFPGAEtherCat.md&amp;value=---%0Auid%3A%20AAComm.Extensions.AACommDownloadFPGAEtherCat%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_AACommDownloadFPGAEtherCat" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat" class="text-break">
-Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
   <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><pre><code>Asynchronous service class used for downloading FPGA to controller (NOT in BOOT mode)
+  <div class="markdown summary"><pre><code>Service class used for downloading FPGA to controller (NOT in BOOT mode)
 </code></pre>
 <p></p>
 <pre><code>When starting the DL process, the API state must be NOT connected.
@@ -164,7 +164,7 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGAEtherCat_OnDownloadStarted" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat.OnDownloadStarted">
   OnDownloadStarted
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>this event is invoked when FPGA data download is started</p>
@@ -196,10 +196,20 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGAEtherCat_OnProcessEnded" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat.OnProcessEnded">
   OnProcessEnded
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>indicated the end of the FPGA DL process. String parameters indicates status. Empty for success, error description otherwise.</p>
+  <div class="markdown level1 summary"><pre><code>indicated the end of the FPGA DL process. String parameters indicates status. Empty for success, error description otherwise.
+</code></pre>
+<p></p>
+<pre><code>The process ends by resetting the controller, and this is invoked once the controller accepts a connection again, so a handler may reconnect at once.
+</code></pre>
+<p></p>
+<pre><code>Also invoked, with an error description, for a refused call; a refusal raised before this call connects disconnects no &lt;xref href=&quot;AAComm.CommAPI&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, a failure after its own &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; succeeded closes only the connection it opened, and neither ends a download already running on this instance.
+</code></pre>
+<p></p>
+<pre><code>An exception thrown by an OnProcessEnded handler at the end of a download propagates to the caller of &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGAEtherCat.StartDownloading(AAComm.CommAPI%2cAAComm.Services.ConnectionData%2cSystem.String%2cSystem.Byte%5b%5d)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
+</code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -228,10 +238,10 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGAEtherCat_OnProgress" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat.OnProgress">
   OnProgress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>reports the binary data download progress, in fractions of 1000(!) (for fluent progress bar, if need)</p>
+  <div class="markdown level1 summary"><p>reports the binary data download progress, 0 to 100</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -260,7 +270,7 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGAEtherCat_OnStatus" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat.OnStatus">
   OnStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the current status of FPGA DL process as string</p>
@@ -296,13 +306,16 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGAEtherCat_StartDownloading_AAComm_CommAPI_AAComm_Services_ConnectionData_System_String_System_Byte___" data-uid="AAComm.Extensions.AACommDownloadFPGAEtherCat.StartDownloading(AAComm.CommAPI,AAComm.Services.ConnectionData,System.String,System.Byte[])">
   StartDownloading(CommAPI, ConnectionData, string, byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>asynchronous function, starts downloading FPGA
+  <div class="markdown level1 summary"><pre><code>runs the download on the calling thread and returns when it has ended
 </code></pre>
 <p></p>
 <pre><code>the API object must be NOT connected!
+</code></pre>
+<p></p>
+<pre><code>An exception thrown by an &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGAEtherCat.OnProcessEnded&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; handler at the end of a download propagates to the caller of StartDownloading.
 </code></pre>
 <p></p>
 </div>
@@ -324,7 +337,7 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
     <dd><p>the password for the FPGA download (contact API provider for more info)</p>
 </dd>
     <dt><code>binaryData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd><p>the FPGA binary data to download</p>
+    <dd><p>the FPGA binary data to download; must be non-null and a non-empty whole number of 4-byte words; anything else is refused before connecting</p>
 </dd>
   </dl>
 
@@ -343,7 +356,7 @@ Class AACommDownloadFPGAEtherCat  <a class="header-action link-secondary" title=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGAEtherCat.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

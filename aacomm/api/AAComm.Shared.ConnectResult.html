@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/aacomm/v14.0.0/apiSpec/new?filename=AAComm_Shared_ConnectResult.md&amp;value=---%0Auid%3A%20AAComm.Shared.ConnectResult%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Shared_ConnectResult.md&amp;value=---%0Auid%3A%20AAComm.Shared.ConnectResult%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -90,7 +90,7 @@
 
 
   <h1 id="AAComm_Shared_ConnectResult" data-uid="AAComm.Shared.ConnectResult" class="text-break">
-Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Shared/ConnectResult.cs/#L119"><i class="bi bi-code-slash"></i></a>
+Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -199,13 +199,10 @@ driver is absent) — here the driver is present but no physical Kvaser interfac
 </dd>
     <dt id="AAComm_Shared_ConnectResult_CorruptAboutFile"><code>CorruptAboutFile = 2</code></dt>
   
-  <dd><pre><code>2 - indicates a problem with reading/parsing the controller &quot;About&quot; data.
+  <dd><pre><code>2 - the controller's About data failed to parse, or its keyword count disagrees with AIdentity[21], on a fresh read.
 </code></pre>
 <p></p>
-<pre><code>it's possible to try call the &lt;xref href=&quot;AAComm.CommAPI.Connect(AAComm.Services.ConnectionData%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; method with &quot;forceAboutData = true&quot;
-</code></pre>
-<p></p>
-<pre><code>See &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitErr&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for &quot;corruption&quot; reason
+<pre><code>See &lt;xref href=&quot;AAComm.Services.ControllerMessagesContainer.InitErr&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for the parse failure reason
 </code></pre>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_DuplicateUserUnit"><code>DuplicateUserUnit = 34</code></dt>
@@ -292,7 +289,8 @@ driver is absent) — here the driver is present but no physical Kvaser interfac
   
   <dd><p>25 - connection error - Failed reading ProgInfo</p>
 </dd>
-    <dt id="AAComm_Shared_ConnectResult_FwInfoMismatch"><code>FwInfoMismatch = 18</code></dt>
+    <dt id="AAComm_Shared_ConnectResult_FwInfoMismatch"><code>[Obsolete(&quot;Connect no longer returns this value: the About cache is kept per firmware build.&quot;)]
+FwInfoMismatch = 18</code></dt>
   
   <dd><p>18 - indicates a mismatch between local and controller FwInfo data</p>
 </dd>
@@ -331,10 +329,15 @@ ack, so the server is a legacy ASCII-only build. Consumed by
 <span class="xref">AAComm.Internal.Lifecycle.ConnectionOrchestrator</span> to fall back to ASCII on a
 fresh socket; never returned from a public Connect.</p>
 </dd>
+    <dt id="AAComm_Shared_ConnectResult_SimExeNotFound"><code>SimExeNotFound = 51</code></dt>
+  
+  <dd><p>51 - Managed simulation: <code>ConnectionData.SimExePath</code> is empty or names no file
+on the AACommServer host.</p>
+</dd>
     <dt id="AAComm_Shared_ConnectResult_SimLaunchFailed"><code>SimLaunchFailed = 49</code></dt>
   
   <dd><p>49 - Managed simulation: the firmware_sim executable could not be launched
-(missing/invalid path, or the process failed to start).</p>
+(invalid simulation settings, or the process failed to start). The cause is in the AACommServer log.</p>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_SimNoPort"><code>SimNoPort = 50</code></dt>
   
@@ -349,6 +352,11 @@ loopback port (&quot;PORT=&lt;n&gt;&quot;) within the timeout.</p>
   
   <dd><p>DEPRECATED!!! 27 - connection error - Only one 'Simulation' channel is supported</p>
 </dd>
+    <dt id="AAComm_Shared_ConnectResult_SimStarterParMissing"><code>SimStarterParMissing = 52</code></dt>
+  
+  <dd><p>52 - Managed simulation: no <code>starter.par</code> next to the firmware_sim executable, so the
+simulation's parameter file cannot be created. A packaged simulation ships one.</p>
+</dd>
     <dt id="AAComm_Shared_ConnectResult_Success"><code>Success = 0</code></dt>
   
   <dd><p>0 - indicates operation successful</p>
@@ -360,7 +368,7 @@ loopback port (&quot;PORT=&lt;n&gt;&quot;) within the timeout.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Shared/ConnectResult.cs/#L119" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L124" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RecordingDataContainer | Agito AAComm SDK ">
       
-      <meta name="description" content="An object that contains all the data of a recording (setup and recorded data points)">
+      <meta name="description" content="Contains recording setup and decoded data points. Nonempty wire payloads require resolved vectors and complete interleaved frames; otherwise decoding throws .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/aacomm/v14.0.0/apiSpec/new?filename=AAComm_Extensions_RecData_RecordingDataContainer.md&amp;value=---%0Auid%3A%20AAComm.Extensions.RecData.RecordingDataContainer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAComm_Extensions_RecData_RecordingDataContainer.md&amp;value=---%0Auid%3A%20AAComm.Extensions.RecData.RecordingDataContainer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_RecData_RecordingDataContainer" data-uid="AAComm.Extensions.RecData.RecordingDataContainer" class="text-break">
-Class RecordingDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class RecordingDataContainer  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
   <dl><dt>Assembly</dt><dd>AAComm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>An object that contains all the data of a recording (setup and recorded data points)</p>
+  <div class="markdown summary"><p>Contains recording setup and decoded data points. Nonempty wire payloads require
+resolved vectors and complete interleaved frames; otherwise decoding throws <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -157,7 +158,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_ControllerSampleRate" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.ControllerSampleRate">
   ControllerSampleRate
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Controller sample rate at the time of recording</p>
@@ -189,7 +190,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_IndexOfFirstElement" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.IndexOfFirstElement">
   IndexOfFirstElement
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Index of the first recorded element in the circular buffer</p>
@@ -221,7 +222,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_IndexOfLastElement" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.IndexOfLastElement">
   IndexOfLastElement
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Index of the last recorded element in the circular buffer</p>
@@ -253,7 +254,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_IndexOfTriggerLocation" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.IndexOfTriggerLocation">
   IndexOfTriggerLocation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Index of the trigger location in the circular buffer</p>
@@ -285,7 +286,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_RecGap" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.RecGap">
   RecGap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The gap of the recording (# counts per recorded data point)</p>
@@ -317,10 +318,10 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_RecLength" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.RecLength">
   RecLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Length of the recording (# recorded data points per vector)</p>
+  <div class="markdown level1 summary"><p>Requested recording length from the header; actual complete frames may differ.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -349,10 +350,11 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_RecTimeSec" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.RecTimeSec">
   RecTimeSec
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>A list of the recorded time points (in seconds), according to <a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html#AAComm_Extensions_RecData_RecordingDataContainer_RecGap">RecGap</a> and <a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html#AAComm_Extensions_RecData_RecordingDataContainer_RecLength">RecLength</a></p>
+  <div class="markdown level1 summary"><p>Time grid (seconds) generated from <a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html#AAComm_Extensions_RecData_RecordingDataContainer_RecGap">RecGap</a> and requested <a class="xref" href="AAComm.Extensions.RecData.RecordingDataContainer.html#AAComm_Extensions_RecData_RecordingDataContainer_RecLength">RecLength</a>;
+its count can differ from the actual number of values in each vector.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -381,7 +383,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_Triggers" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.Triggers">
   Triggers
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An object describing the triggers defined for the recording</p>
@@ -413,7 +415,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAComm_Extensions_RecData_RecordingDataContainer_VectorsData" data-uid="AAComm.Extensions.RecData.RecordingDataContainer.VectorsData">
   VectorsData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A list of objects describing recorded parameters and the recorded data</p>
@@ -445,7 +447,7 @@ Class RecordingDataContainer  <a class="header-action link-secondary" title="Vie
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/aacomm/v14.0.0/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/RecData/RecordingDataContainer.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

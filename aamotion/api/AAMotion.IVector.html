@@ -131,12 +131,12 @@ Interface IVector  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 summary"><p>Target distance of the vector path</p>
 <p>(always positive, for status reporting only; use each axis's RelTrgt or AbsTrgt to define motion).</p>  
 <a class="xref" href="AAMotion.IVector.html#AAMotion_IVector_VecArcCenter">VecArcCenter</a>,<a class="xref" href="AAMotion.IVector.html#AAMotion_IVector_VecArcDir">VecArcDir</a>,<a class="xref" href="AAMotion.IVector.html#AAMotion_IVector_VecEncRatio">VecEncRatio</a>
-The return type depends on the controller's ParamType: int, float, double, or long.
+The value is a double and carries any User-Units scaling AAComm applied to the reply.
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecAbsTrgt { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecAbsTrgt { get; }</code></pre>
   </div>
 
 
@@ -145,7 +145,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -168,7 +168,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecAccel { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecAccel { get; set; }</code></pre>
   </div>
 
 
@@ -177,7 +177,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -201,7 +201,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecArcCenter { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecArcCenter { get; set; }</code></pre>
   </div>
 
 
@@ -210,7 +210,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -266,7 +266,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecDecel { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecDecel { get; set; }</code></pre>
   </div>
 
 
@@ -275,7 +275,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -298,7 +298,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecEmrgDec { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecEmrgDec { get; set; }</code></pre>
   </div>
 
 
@@ -307,7 +307,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -322,10 +322,11 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecEncRatio" data-uid="AAMotion.IVector.VecEncRatio">
   VecEncRatio
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Encoder resolution compensation ratio, scaled by each axis's resolution, actual ratio = value/256, range 256(1)~25600(100).</p>
+<p>Reported by AGD200-class firmware only; an AGM800 does not carry this mnemonic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -354,7 +355,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecJerk" data-uid="AAMotion.IVector.VecJerk">
   VecJerk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion jerk (rate of change of acceleration), defines the time to build up acceleration (or deceleration), in milliseconds.</p>
@@ -362,7 +363,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecJerk { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">int VecJerk { get; set; }</code></pre>
   </div>
 
 
@@ -371,7 +372,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -386,7 +387,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecMemberAxes" data-uid="AAMotion.IVector.VecMemberAxes">
   VecMemberAxes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Axes participating in vector motion (bitwise definition).</p>
@@ -418,7 +419,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecMotionStat" data-uid="AAMotion.IVector.VecMotionStat">
   VecMotionStat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion status (read-only).</p>
@@ -450,7 +451,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecNumCircles" data-uid="AAMotion.IVector.VecNumCircles">
   VecNumCircles
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Additional number of circles for vector arc motion.</p>
@@ -482,7 +483,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecPause" data-uid="AAMotion.IVector.VecPause">
   VecPause
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Vector pause flag,
@@ -518,7 +519,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecPosFDef" data-uid="AAMotion.IVector.VecPosFDef">
   VecPosFDef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector position filter (read-only).</p>
@@ -526,7 +527,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; VecPosFDef { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; VecPosFDef { get; }</code></pre>
   </div>
 
 
@@ -535,7 +536,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -550,7 +551,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecPosFOn" data-uid="AAMotion.IVector.VecPosFOn">
   VecPosFOn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector position filter switch.</p>
@@ -582,7 +583,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecPosRef" data-uid="AAMotion.IVector.VecPosRef">
   VecPosRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector current position reference</p>
@@ -591,7 +592,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecPosRef { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecPosRef { get; }</code></pre>
   </div>
 
 
@@ -600,7 +601,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -615,7 +616,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecSpeed" data-uid="AAMotion.IVector.VecSpeed">
   VecSpeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion speed.</p>
@@ -623,7 +624,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecSpeed { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecSpeed { get; set; }</code></pre>
   </div>
 
 
@@ -632,7 +633,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -647,7 +648,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VecType" data-uid="AAMotion.IVector.VecType">
   VecType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion type</p>
@@ -689,7 +690,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic VecdPosRef { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VecdPosRef { get; }</code></pre>
   </div>
 
 
@@ -698,7 +699,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -715,9 +716,9 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <a id="AAMotion_IVector_SetVectorParam_" data-uid="AAMotion.IVector.SetVectorParam*"></a>
 
-  <h3 id="AAMotion_IVector_SetVectorParam_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IVector.SetVectorParam(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-  SetVectorParam(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_IVector_SetVectorParam_System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.SetVectorParam(System.Double,System.Double,System.Double,System.Double,System.Int32)">
+  SetVectorParam(double, double, double, double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L267"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Set vector motion parameters.  
@@ -728,21 +729,21 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetVectorParam(int speed, int accel, int decel, int emrgdec, int smooth)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetVectorParam(double speed, double accel, double decel, double emrgdec, int smooth)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector motion speed.</p>
 </dd>
-    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector acceleration.</p>
 </dd>
-    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector deceleration.</p>
 </dd>
-    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector emergency deceleration.</p>
 </dd>
     <dt><code>smooth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -765,7 +766,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_StopVec" data-uid="AAMotion.IVector.StopVec">
   StopVec()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop vector motion.</p>
@@ -796,9 +797,9 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <a id="AAMotion_IVector_VectorArc_" data-uid="AAMotion.IVector.VectorArc*"></a>
 
-  <h3 id="AAMotion_IVector_VectorArc_AAMotion_AxisRef_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IVector.VectorArc(AAMotion.AxisRef,AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-  VectorArc(AxisRef, AxisRef, int, int, int, int, int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L190"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_IVector_VectorArc_AAMotion_AxisRef_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.VectorArc(AAMotion.AxisRef,AAMotion.AxisRef,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+  VectorArc(AxisRef, AxisRef, double, double, double, double, int, int, double, double, double, double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L256"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute arc vector motion.</p>
@@ -809,7 +810,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool VectorArc(AxisRef axis1, AxisRef axis2, int center1, int center2, int pos1, int pos2, int dir, int circles, int speed, int accel, int decel, int emrgdec, int smooth)</code></pre>
+    <pre><code class="lang-csharp hljs">bool VectorArc(AxisRef axis1, AxisRef axis2, double center1, double center2, double pos1, double pos2, int dir, int circles, double speed, double accel, double decel, double emrgdec, int smooth)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -820,16 +821,16 @@ The return type depends on the controller's ParamType: int, float, double, or lo
     <dt><code>axis2</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
     <dd><p>Second axis.</p>
 </dd>
-    <dt><code>center1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>center1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Center point of the first axis.</p>
 </dd>
-    <dt><code>center2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>center2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Center point of the second axis.</p>
 </dd>
-    <dt><code>pos1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>pos1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Target position of the first axis.</p>
 </dd>
-    <dt><code>pos2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>pos2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Target position of the second axis.</p>
 </dd>
     <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -838,16 +839,16 @@ The return type depends on the controller's ParamType: int, float, double, or lo
     <dt><code>circles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Number of circles for vector motion.</p>
 </dd>
-    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector motion speed.</p>
 </dd>
-    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector acceleration.</p>
 </dd>
-    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector deceleration.</p>
 </dd>
-    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector emergency deceleration.</p>
 </dd>
     <dt><code>smooth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -868,6 +869,27 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
 
 
+  <h4 class="section" id="AAMotion_IVector_VectorArc_AAMotion_AxisRef_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>A vector move requires its axes to agree on their User Units. One <code>VecSpeed</code>,
+<code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target
+is in that axis's own units, which only means something if they measure the same quantity:
+every axis must carry the same unit <i>name</i> in the position, velocity and acceleration
+groups. Different scaling factors under one name are fine — two encoder resolutions on the
+same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no
+common vector length, and an axis with User Units off is on controller counts, which does not
+match a scaled one.</p>
+<p>Every member is checked in all three groups; the axis this call was made on is one of them.</p>
+<p>A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code>
+reaches H), and the axis this call was made on must be one of them and the lowest: it carries the
+profile and receives <code>Begin</code>,
+and the controller rejects any other shape. A call that breaks that is refused before anything is
+written — it returns <code>false</code> and raises <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a>.</p>
+<p>Axes that disagree make the call return <code>false</code> and command nothing — before any
+parameter is read from or written to the controller — and raise
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> with code -1, the name of the method called, and a
+message naming the axes and the group. Setting <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_UseUserUnits">UseUserUnits</a> to
+false puts every axis back on controller counts, which always matches.</p>
+</div>
 
 
 
@@ -876,7 +898,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VectorContinue" data-uid="AAMotion.IVector.VectorContinue">
   VectorContinue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Continue vector motion.   
@@ -910,9 +932,9 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <a id="AAMotion_IVector_VectorLinear_" data-uid="AAMotion.IVector.VectorLinear*"></a>
 
-  <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32___" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[])">
-  VectorLinear(AxisRef, int, int, int, int, int, params int[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Double___" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double[])">
+  VectorLinear(AxisRef, double, double, double, double, int, params double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L213"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform linear vector motion.</p>
@@ -923,7 +945,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool VectorLinear(AxisRef axisMask, int speed, int accel, int decel, int emrgdec, int smooth, params int[] pos)</code></pre>
+    <pre><code class="lang-csharp hljs">bool VectorLinear(AxisRef axisMask, double speed, double accel, double decel, double emrgdec, int smooth, params double[] pos)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -931,22 +953,22 @@ The return type depends on the controller's ParamType: int, float, double, or lo
     <dt><code>axisMask</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
     <dd><p>Axis mask.</p>
 </dd>
-    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector motion speed.</p>
 </dd>
-    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector acceleration.</p>
 </dd>
-    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector deceleration.</p>
 </dd>
-    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector emergency deceleration.</p>
 </dd>
     <dt><code>smooth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Vector smoothing factor.</p>
 </dd>
-    <dt><code>pos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dt><code>pos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
     <dd><p>Array of absolute target positions.</p>
 </dd>
   </dl>
@@ -964,15 +986,38 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
 
 
+  <h4 class="section" id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Double____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>A vector move requires its axes to agree on their User Units. One <code>VecSpeed</code>,
+<code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target
+is in that axis's own units, which only means something if they measure the same quantity:
+every axis must carry the same unit <i>name</i> in the position, velocity and acceleration
+groups. Different scaling factors under one name are fine — two encoder resolutions on the
+same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no
+common vector length, and an axis with User Units off is on controller counts, which does not
+match a scaled one.</p>
+<p>Every member is checked in all three groups; the axis this call was made on is one of them.</p>
+<p>A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code>
+reaches H), and the axis this call was made on must be one of them and the lowest: it carries the
+profile and receives <code>Begin</code>,
+and the controller rejects any other shape. A call that breaks that is refused before anything is
+written — it returns <code>false</code> and raises <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a>.</p>
+<p><code class="paramref">pos</code> carries one position per mask bit, in axis order; a shorter array is
+refused the same way, before the first write.</p>
+<p>Axes that disagree make the call return <code>false</code> and command nothing — before any
+parameter is read from or written to the controller — and raise
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> with code -1, the name of the method called, and a
+message naming the axes and the group. Setting <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_UseUserUnits">UseUserUnits</a> to
+false puts every axis back on controller counts, which always matches.</p>
+</div>
 
 
 
 
   <a id="AAMotion_IVector_VectorLinear_" data-uid="AAMotion.IVector.VectorLinear*"></a>
 
-  <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-  VectorLinear(AxisRef, int?, int?, int?, int?, int?, int?, int?, int?, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Double,System.Double,System.Double,System.Double,System.Int32)">
+  VectorLinear(AxisRef, double?, double?, double?, double?, double?, double?, double?, double?, double, double, double, double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L174"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform linear vector motion.</p>
@@ -983,7 +1028,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool VectorLinear(AxisRef axisRef, int? aPos, int? bPos, int? cPos, int? dPos, int? ePos, int? fPos, int? gPos, int? hPos, int speed, int accel, int decel, int emrgdec, int smooth)</code></pre>
+    <pre><code class="lang-csharp hljs">bool VectorLinear(AxisRef axisRef, double? aPos, double? bPos, double? cPos, double? dPos, double? ePos, double? fPos, double? gPos, double? hPos, double speed, double accel, double decel, double emrgdec, int smooth)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -991,40 +1036,40 @@ The return type depends on the controller's ParamType: int, float, double, or lo
     <dt><code>axisRef</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
     <dd><p>The axis object that initiates the vector motion (should be the axis with the lowest index among the participating axes).</p>
 </dd>
-    <dt><code>aPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>aPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis A, optional.</p>
 </dd>
-    <dt><code>bPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>bPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis B, optional.</p>
 </dd>
-    <dt><code>cPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>cPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis C, optional.</p>
 </dd>
-    <dt><code>dPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>dPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis D, optional.</p>
 </dd>
-    <dt><code>ePos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>ePos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis E, optional.</p>
 </dd>
-    <dt><code>fPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>fPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis F, optional.</p>
 </dd>
-    <dt><code>gPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>gPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis G, optional.</p>
 </dd>
-    <dt><code>hPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><code>hPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Absolute target position of axis H, optional.</p>
 </dd>
-    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>speed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector motion speed.</p>
 </dd>
-    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>accel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector acceleration.</p>
 </dd>
-    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>decel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector deceleration.</p>
 </dd>
-    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>emrgdec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Vector emergency deceleration.</p>
 </dd>
     <dt><code>smooth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -1045,6 +1090,27 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
 
 
+  <h4 class="section" id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Double_System_Double_System_Double_System_Double_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>A vector move requires its axes to agree on their User Units. One <code>VecSpeed</code>,
+<code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target
+is in that axis's own units, which only means something if they measure the same quantity:
+every axis must carry the same unit <i>name</i> in the position, velocity and acceleration
+groups. Different scaling factors under one name are fine — two encoder resolutions on the
+same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no
+common vector length, and an axis with User Units off is on controller counts, which does not
+match a scaled one.</p>
+<p>Every member is checked in all three groups; the axis this call was made on is one of them.</p>
+<p>A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code>
+reaches H), and the axis this call was made on must be one of them and the lowest: it carries the
+profile and receives <code>Begin</code>,
+and the controller rejects any other shape. A call that breaks that is refused before anything is
+written — it returns <code>false</code> and raises <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a>.</p>
+<p>Axes that disagree make the call return <code>false</code> and command nothing — before any
+parameter is read from or written to the controller — and raise
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> with code -1, the name of the method called, and a
+message naming the axes and the group. Setting <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_UseUserUnits">UseUserUnits</a> to
+false puts every axis back on controller counts, which always matches.</p>
+</div>
 
 
 
@@ -1053,7 +1119,7 @@ The return type depends on the controller's ParamType: int, float, double, or lo
 
   <h3 id="AAMotion_IVector_VectorPause" data-uid="AAMotion.IVector.VectorPause">
   VectorPause()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Pause vector motion.  

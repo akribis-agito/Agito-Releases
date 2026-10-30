@@ -157,7 +157,7 @@ Class AAMotionConfig  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAMotion_AAMotionConfig_FastReadCacheRefreshIntervalMs" data-uid="AAMotion.AAMotionConfig.FastReadCacheRefreshIntervalMs">
   FastReadCacheRefreshIntervalMs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>When FastReadCache is enabled, this interval controls how often data is refreshed from the controller.
@@ -190,7 +190,7 @@ Default: 1ms</p>
 
   <h3 id="AAMotion_AAMotionConfig_FastReadEnabled" data-uid="AAMotion.AAMotionConfig.FastReadEnabled">
   FastReadEnabled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Global switch to enable/disable fast read cache for all controllers.
@@ -222,51 +222,6 @@ Default: false (disabled for backward compatibility).</p>
   <div class="markdown level1 remarks"><p>Set to true before or after connecting to enable fast cached reads.
 The cache is automatically populated with common parameters (A/B/C axes) on connection.</p>
 </div>
-
-
-
-
-  <a id="AAMotion_AAMotionConfig_UseNativeDataTypes_" data-uid="AAMotion.AAMotionConfig.UseNativeDataTypes*"></a>
-
-  <h3 id="AAMotion_AAMotionConfig_UseNativeDataTypes" data-uid="AAMotion.AAMotionConfig.UseNativeDataTypes">
-  UseNativeDataTypes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L51"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Control the behavior of the data type of the dynamic properties returned values</p>
-<p>false (default)：Backward compatibility mode</p>
-<ul>
-<li>float parameter returns int (rounded)</li>
-<li>long parameter returns int if it is in the int range, otherwise returns long</li>
-<li>Ensure type compatibility for old code</li>
-</ul>
-<p>true：Native type mode</p>
-<ul>
-<li>float parameter returns the real float value</li>
-<li>double parameter returns double value</li>
-<li>long parameter returns long value</li>
-<li>Ensure full precision for new code</li>
-</ul>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool UseNativeDataTypes { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
 
 
 

@@ -90,7 +90,7 @@
 
 
   <h1 id="AAMotion_MotionMode" data-uid="AAMotion.MotionMode" class="text-break">
-Enum MotionMode  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L378"><i class="bi bi-code-slash"></i></a>
+Enum MotionMode  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L436"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -143,6 +143,10 @@ Enum MotionMode  <a class="header-action link-secondary" title="View source" hre
   
   <dd><p>FIFO Motion</p>
 </dd>
+    <dt id="AAMotion_MotionMode_FIFOPositionTracking"><code>FIFOPositionTracking = 19</code></dt>
+  
+  <dd><p>FIFO Position Tracking: The axis follows the position targets pushed into its position-tracking FIFO, one every FIFOPosCycle samples, with the reference between targets interpolated as FIFOPosType sets.</p>
+</dd>
     <dt id="AAMotion_MotionMode_FollowerPositionReference"><code>FollowerPositionReference = 10</code></dt>
   
   <dd><p>Follower Position Reference</p>
@@ -175,6 +179,10 @@ Enum MotionMode  <a class="header-action link-secondary" title="View source" hre
   
   <dd><p>Joystick Indirect Motion (analog signal as speed reference, analyzer customizable)</p>
 </dd>
+    <dt id="AAMotion_MotionMode_MultiAxisPVAJ"><code>MultiAxisPVAJ = 23</code></dt>
+  
+  <dd><p>Multi-axis PVAJ: Begin starts every axis in this mode as one group, each on its own PVAJList, and is refused unless every member is armed, motor on and not in motion. Stop and Abort act on the whole group.</p>
+</dd>
     <dt id="AAMotion_MotionMode_PTP"><code>PTP = 1</code></dt>
   
   <dd><p>PTP: Point-to-point motion, moves to the position specified by RelTrgt or AbsTrgt (if RelTrgt=0, then AbsTrgt). Parameters are controlled by Accel, Speed, Decel, and Jerk.</p>
@@ -183,6 +191,10 @@ Enum MotionMode  <a class="header-action link-secondary" title="View source" hre
   
   <dd><p>PTP Repeat: Reciprocating motion between current and target position, waits RptWait time at each end, use StopRep to stop.</p>
 </dd>
+    <dt id="AAMotion_MotionMode_PVAJ"><code>PVAJ = 22</code></dt>
+  
+  <dd><p>PVAJ: The axis follows its PVAJList, one position, velocity, acceleration and jerk per point. Begin is refused until the list has passed PVAJValidate and PVAJArm is 1.</p>
+</dd>
     <dt id="AAMotion_MotionMode_PulseDirDirect"><code>PulseDirDirect = 3</code></dt>
   
   <dd><p>Pulse/Direction Direct Mode: Position loop reference is directly from pulse/direction input.</p>
@@ -190,6 +202,14 @@ Enum MotionMode  <a class="header-action link-secondary" title="View source" hre
     <dt id="AAMotion_MotionMode_PulseDirIndirect"><code>PulseDirIndirect = 4</code></dt>
   
   <dd><p>Pulse/Direction Indirect Mode: Pulses are accumulated to the target, the analyzer generates a smooth trajectory according to Accel, Decel, Speed, and Jerk.</p>
+</dd>
+    <dt id="AAMotion_MotionMode_SinePTP"><code>SinePTP = 20</code></dt>
+  
+  <dd><p>Sine PTP: Single point-to-point motion on a sinusoidal acceleration profile (AXM sine planner), driven by Speed, Accel, Decel, JerkInAcc and JerkInDec, with an optional pre-cruise phase.</p>
+</dd>
+    <dt id="AAMotion_MotionMode_SinePTPRepeat"><code>SinePTPRepeat = 21</code></dt>
+  
+  <dd><p>Sine PTP Repeat: Reciprocating motion on a sinusoidal acceleration profile, stopped with StopRep.</p>
 </dd>
     <dt id="AAMotion_MotionMode_SplineBufferMotion"><code>SplineBufferMotion = 18</code></dt>
   
@@ -206,7 +226,7 @@ Enum MotionMode  <a class="header-action link-secondary" title="View source" hre
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L378" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L436" class="edit-link">Edit this page</a>
         </div>
 
 

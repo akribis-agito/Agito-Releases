@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ICiGroupAxis | Agito AAMotion SDK ">
       
-      
+      <meta name="description" content="The Central-I group surface:  plus the CNCB parameters and the segment builders that push onto the second CNC buffer.  Its CNC segment members take their arguments in controller counts on the same terms as  - a raw SpecialBulk payload the Global User Units seam does not scale, so the whole-number  signatures are the contract rather than a missing retype.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_ICiGroupAxis" data-uid="AAMotion.ICiGroupAxis" class="text-break">
-Interface ICiGroupAxis  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L2"><i class="bi bi-code-slash"></i></a>
+Interface ICiGroupAxis  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,13 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>The Central-I group surface: <a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> plus the CNCB parameters and the segment
+builders that push onto the second CNC buffer.</p>
+<p></p>
+<p>Its CNC segment members take their arguments in controller counts on the same terms as
+<a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> - a raw <code>SpecialBulk</code> payload the Global User Units seam does not
+scale, so the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the contract rather than a missing retype.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -120,7 +126,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
       <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAPercents">IGroupAxis.CNCAPercents</a>
     </div>
     <div>
-      <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAEncRatio">IGroupAxis.CNCAEncRatio</a>
+      <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCACumPosRef">IGroupAxis.CNCACumPosRef</a>
     </div>
     <div>
       <a class="xref" href="AAMotion.IGroupAxis.html#AAMotion_IGroupAxis_CNCAStatus">IGroupAxis.CNCAStatus</a>
@@ -275,7 +281,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBAbsTrgt" data-uid="AAMotion.ICiGroupAxis.CNCBAbsTrgt">
   CNCBAbsTrgt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB absolute target position</p>
@@ -283,7 +289,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBAbsTrgt { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBAbsTrgt { get; }</code></pre>
   </div>
 
 
@@ -292,7 +298,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -307,7 +313,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBAccel" data-uid="AAMotion.ICiGroupAxis.CNCBAccel">
   CNCBAccel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB acceleration</p>
@@ -315,7 +321,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBAccel { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBAccel { get; }</code></pre>
   </div>
 
 
@@ -324,7 +330,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -339,7 +345,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBDecel" data-uid="AAMotion.ICiGroupAxis.CNCBDecel">
   CNCBDecel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB deceleration</p>
@@ -347,7 +353,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBDecel { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBDecel { get; }</code></pre>
   </div>
 
 
@@ -356,7 +362,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -371,7 +377,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBEmrgDec" data-uid="AAMotion.ICiGroupAxis.CNCBEmrgDec">
   CNCBEmrgDec
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB emergency deceleration</p>
@@ -379,7 +385,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBEmrgDec { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBEmrgDec { get; set; }</code></pre>
   </div>
 
 
@@ -388,7 +394,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -403,7 +409,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBEndSpeed" data-uid="AAMotion.ICiGroupAxis.CNCBEndSpeed">
   CNCBEndSpeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB end speed</p>
@@ -411,7 +417,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBEndSpeed { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBEndSpeed { get; }</code></pre>
   </div>
 
 
@@ -420,7 +426,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -435,7 +441,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBJerk" data-uid="AAMotion.ICiGroupAxis.CNCBJerk">
   CNCBJerk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB jerk</p>
@@ -443,7 +449,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBJerk { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBJerk { get; }</code></pre>
   </div>
 
 
@@ -452,7 +458,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -467,7 +473,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBPause" data-uid="AAMotion.ICiGroupAxis.CNCBPause">
   CNCBPause
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB pause</p>
@@ -499,7 +505,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBPercents" data-uid="AAMotion.ICiGroupAxis.CNCBPercents">
   CNCBPercents
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB percentage scale factor</p>
@@ -531,7 +537,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBPosRef" data-uid="AAMotion.ICiGroupAxis.CNCBPosRef">
   CNCBPosRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB position reference</p>
@@ -539,7 +545,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBPosRef { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBPosRef { get; }</code></pre>
   </div>
 
 
@@ -548,7 +554,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -563,7 +569,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBSpeed" data-uid="AAMotion.ICiGroupAxis.CNCBSpeed">
   CNCBSpeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB speed</p>
@@ -571,7 +577,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBSpeed { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBSpeed { get; }</code></pre>
   </div>
 
 
@@ -580,7 +586,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -595,7 +601,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBSpeedPer" data-uid="AAMotion.ICiGroupAxis.CNCBSpeedPer">
   CNCBSpeedPer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB speed percentage</p>
@@ -627,7 +633,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBStatus" data-uid="AAMotion.ICiGroupAxis.CNCBStatus">
   CNCBStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB status array</p>
@@ -635,7 +641,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; CNCBStatus { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; CNCBStatus { get; }</code></pre>
   </div>
 
 
@@ -644,7 +650,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -659,7 +665,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBVel" data-uid="AAMotion.ICiGroupAxis.CNCBVel">
   CNCBVel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB velocity array</p>
@@ -667,7 +673,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; CNCBVel { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; CNCBVel { get; }</code></pre>
   </div>
 
 
@@ -676,7 +682,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -691,7 +697,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CNCBdPosRef" data-uid="AAMotion.ICiGroupAxis.CNCBdPosRef">
   CNCBdPosRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>CNCB position reference derivative</p>
@@ -699,7 +705,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int CNCBdPosRef { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double CNCBdPosRef { get; }</code></pre>
   </div>
 
 
@@ -708,7 +714,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -727,7 +733,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_Arc_AAMotion_AxisRef_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.Arc(AAMotion.AxisRef,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   Arc(AxisRef, int, int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L301"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute CNC arc motion with flexible axis selection using mask</p>
@@ -790,7 +796,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_ArcXT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.ArcXT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ArcXT(int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L261"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute XT-axis CNC arc motion</p>
@@ -847,7 +853,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_ArcYT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.ArcYT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ArcYT(int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L266"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L274"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute YT-axis CNC arc motion</p>
@@ -904,7 +910,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_ArcZT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.ArcZT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ArcZT(int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L287"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute ZT-axis CNC arc motion</p>
@@ -961,7 +967,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CiGroupDOutClearBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.ICiGroupAxis.CiGroupDOutClearBit(AAMotion.AxisRef,System.Int32)">
   CiGroupDOutClearBit(AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L324"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Clear Central-I digital output bit</p>
@@ -978,7 +984,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
     <dd><p>Axis reference</p>
 </dd>
     <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Bit mask</p>
+    <dd><p>The output number, 1-based, not a mask: the member folds it to <code>1 &lt;&lt; (n - 1)</code>. Output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1003,7 +1009,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CiGroupDOutSetBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.ICiGroupAxis.CiGroupDOutSetBit(AAMotion.AxisRef,System.Int32)">
   CiGroupDOutSetBit(AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L316"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set Central-I digital output bit</p>
@@ -1020,7 +1026,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
     <dd><p>Axis reference</p>
 </dd>
     <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Bit mask</p>
+    <dd><p>The output number, 1-based, not a mask: the member folds it to <code>1 &lt;&lt; (n - 1)</code>. Output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1045,7 +1051,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_CiGroupDOutToggleBit_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.ICiGroupAxis.CiGroupDOutToggleBit(AAMotion.AxisRef,System.Int32)">
   CiGroupDOutToggleBit(AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L332"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Toggle Central-I digital output bit</p>
@@ -1062,7 +1068,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
     <dd><p>Axis reference</p>
 </dd>
     <dt><code>bitMask</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Bit mask</p>
+    <dd><p>The output number, 1-based, not a mask: the member folds it to <code>1 &lt;&lt; (n - 1)</code>. Output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1087,7 +1093,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsolute_AAMotion_AxisRef_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsolute(AAMotion.AxisRef,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
   LinearAbsolute(AxisRef, int?, int?, int?, int?, int?, int?, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute multi-axis CNC absolute position linear motion (using axis mask)</p>
@@ -1150,7 +1156,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsolute_AAMotion_AxisRef_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsolute(AAMotion.AxisRef,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
   LinearAbsolute(AxisRef, int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute 12-axis CNC absolute position linear motion (using axis mask)</p>
@@ -1231,7 +1237,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsolute_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsolute(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
   LinearAbsolute(int?, int?, int?, int?, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute 4-axis CNC absolute position linear motion</p>
@@ -1285,7 +1291,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsolute_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsolute(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
   LinearAbsolute(int?, int?, int?, int?, int?, int?, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute 6-axis CNC absolute position linear motion</p>
@@ -1345,7 +1351,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsolute_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsolute(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,System.Int32)">
   LinearAbsolute(int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int?, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute 12-axis CNC absolute position linear motion</p>
@@ -1423,7 +1429,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteT_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteT(System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteT(int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L173"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute T-axis CNC absolute position linear motion</p>
@@ -1468,7 +1474,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteXT_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteXT(System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteXT(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L183"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute XT-axis CNC absolute position linear motion</p>
@@ -1516,7 +1522,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteXYT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteXYT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteXYT(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L214"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute XYT-axis CNC absolute position linear motion</p>
@@ -1567,7 +1573,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteXYZT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteXYZT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteXYZT(int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L248"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute XYZT-axis CNC absolute position linear motion</p>
@@ -1621,7 +1627,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteXZT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteXZT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteXZT(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute XZT-axis CNC absolute position linear motion</p>
@@ -1672,7 +1678,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteYT_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteYT(System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteYT(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute YT-axis CNC absolute position linear motion</p>
@@ -1720,7 +1726,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteYZT_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteYZT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteYZT(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L236"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute YZT-axis CNC absolute position linear motion</p>
@@ -1771,7 +1777,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_LinearAbsoluteZT_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.ICiGroupAxis.LinearAbsoluteZT(System.Int32,System.Int32,System.Int32,System.Int32)">
   LinearAbsoluteZT(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L203"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute ZT-axis CNC absolute position linear motion</p>
@@ -1819,7 +1825,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_ICiGroupAxis_WriteDOutPort_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.ICiGroupAxis.WriteDOutPort(AAMotion.AxisRef,System.Int32)">
   WriteDOutPort(AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L308"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write digital output port value for the specified axis</p>
@@ -1861,7 +1867,7 @@ Interface ICiGroupAxis  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L2" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiGroupAxis.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

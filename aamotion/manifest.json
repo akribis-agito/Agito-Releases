@@ -54,6 +54,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AAMotionAPI.SinePtpMotionConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AAMotionAPI.SinePtpMotionConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AAMotionAPI.SinePtpMotionConfig",
+      "Summary": "<p sourcefile=\"api/AAMotion.AAMotionAPI.SinePtpMotionConfig.yml\" sourcestartlinenumber=\"1\">The complete kinematic parameter set of one AXM Sine PTP motion (MotionMode 20/21).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAMotion.AAMotionAPI.yml",
       "output": {
         ".html": {
@@ -106,7 +120,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.AAValueArray<T>",
-      "Summary": "<p sourcefile=\"api/AAMotion.AAValueArray-1.yml\" sourcestartlinenumber=\"1\">Base array wrapper - provides index validation, event triggering and other basic functionality\nUsed for low-level arrays (event-driven) that communicate with controller</p>\n"
+      "Summary": "<p sourcefile=\"api/AAMotion.AAValueArray-1.yml\" sourcestartlinenumber=\"1\">Base array wrapper - provides index validation, event triggering and other basic functionality\nUsed for low-level arrays (event-driven) that communicate with controller.\n<xref href=\"AAMotion.AAValueArray%601.Value\" data-throw-if-not-resolved=\"false\"></xref> (on a single-valued parameter), the indexer and enumeration are controller round trips, so the debug\nview shows the slot's identity only.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -208,6 +222,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.AGM800EC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.AGM800EC.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.AGM800EC",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAMotion.AxisRef.yml",
       "output": {
         ".html": {
@@ -292,6 +320,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ControllerCommandException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ControllerCommandException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ControllerCommandException",
+      "Summary": "<p sourcefile=\"api/AAMotion.ControllerCommandException.yml\" sourcestartlinenumber=\"1\">A command the controller refused, or answered with a reply the SDK could not read as a value.</p>\n<p></p>\n<p sourcefile=\"api/AAMotion.ControllerCommandException.yml\" sourcestartlinenumber=\"5\">It is raised by the members that answer with the value itself and so have nowhere to report a\nfailure — the typed properties, <xref href=\"AAMotion.MotionController.GetValue(AAMotion.AxisRef%2cAAMotion.eKeyword%2cSystem.Int32)\" data-throw-if-not-resolved=\"false\"></xref> — where a 0 is\nindistinguishable from the controller genuinely reporting 0.\n<xref href=\"AAMotion.ISingleAxis.TryRead(AAMotion.eKeyword%2cSystem.Double%40)\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"AAMotion.ISingleAxis.TryReadArray(AAMotion.eKeyword%2cSystem.Int32%2cSystem.Double%40)\" data-throw-if-not-resolved=\"false\"></xref> and\n<xref href=\"AAMotion.MotionController.TryGetValue(AAMotion.AxisRef%2cAAMotion.eKeyword%2cSystem.Double%40%2cSystem.Int32)\" data-throw-if-not-resolved=\"false\"></xref> report the same failure as <code>false</code> and never\nthrow. Either way the failed read is recorded in <xref href=\"AAMotion.MotionController.LastReadError\" data-throw-if-not-resolved=\"false\"></xref>\nand counted by <xref href=\"AAMotion.MotionController.ReadFailures\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n<p></p>\n<p sourcefile=\"api/AAMotion.ControllerCommandException.yml\" sourcestartlinenumber=\"15\">A typed property <b>set</b> the controller refuses raises it as well, with <xref href=\"AAMotion.ControllerCommandException.Command\" data-throw-if-not-resolved=\"false\"></xref>\ncarrying the assignment exactly as sent (<code>ASpeed=1000</code>) — a dropped write leaves the next\nread answering the old value, with nothing at the call site to say so. A failed write is\ndeliberately <b>not</b> recorded in <xref href=\"AAMotion.MotionController.LastReadError\" data-throw-if-not-resolved=\"false\"></xref> and not counted\nby <xref href=\"AAMotion.MotionController.ReadFailures\" data-throw-if-not-resolved=\"false\"></xref>: both are the read record, by name and by their\nown contract, so a consumer reading them keeps being told about reads and nothing else. There\nis no <code>TrySet</code> — catch this, or subscribe to <xref href=\"AAMotion.MotionController.ErrorOccurred\" data-throw-if-not-resolved=\"false\"></xref>,\nwhich is raised for the refusal as before.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAMotion.ControllerType.yml",
       "output": {
         ".html": {
@@ -358,7 +400,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.Extensions.AAMotionParametersDownload",
-      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"1\">Asynchronously downloads (writes) controller parameters from a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"4\">&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected\ncontroller, then sends each as a SET command.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"11\">Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"14\">After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"1\">Asynchronously downloads (writes) controller parameters from a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"4\">&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected\ncontroller, then sends each as a SET command.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"11\">Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersDownload.yml\" sourcestartlinenumber=\"14\">After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -372,7 +414,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.Extensions.AAMotionParametersUpload",
-      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"1\">Asynchronously uploads (saves) controller parameters to a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"4\">&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,\nfirmware/FPGA version, date, checksum) to a plain ASCII .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"11\">Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"1\">Asynchronously uploads (saves) controller parameters to a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"4\">&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,\nfirmware/FPGA version, date, checksum) to a plain ASCII .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAMotion.Extensions.AAMotionParametersUpload.yml\" sourcestartlinenumber=\"11\">Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.ParamConversion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.ParamConversion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions.ParamConversion",
+      "Summary": "<p sourcefile=\"api/AAMotion.Extensions.ParamConversion.yml\" sourcestartlinenumber=\"1\">One download row whose value was rewritten before it was sent.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -387,6 +443,20 @@
       "IsMRef": true,
       "Title": "AAMotion.Extensions.ParamHandlingSummary",
       "Summary": "<p sourcefile=\"api/AAMotion.Extensions.ParamHandlingSummary.yml\" sourcestartlinenumber=\"1\">Summary of a parameter upload or download operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.Extensions.ParamRejection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.Extensions.ParamRejection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.Extensions.ParamRejection",
+      "Summary": "<p sourcefile=\"api/AAMotion.Extensions.ParamRejection.yml\" sourcestartlinenumber=\"1\">One entry the controller refused, or a download skipped, as it was sent (or read) and as it was answered.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -415,6 +485,20 @@
       "IsMRef": true,
       "Title": "AAMotion.FastReadCache",
       "Summary": "<p sourcefile=\"api/AAMotion.FastReadCache.yml\" sourcestartlinenumber=\"1\">Fast read cache for high-performance data reading.\nThis cache stores parameter values that are refreshed periodically (default 1ms)\nand allows instant read access without sending commands to the controller.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.HomingDefStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.HomingDefStep.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.HomingDefStep",
+      "Summary": "<p sourcefile=\"api/AAMotion.HomingDefStep.yml\" sourcestartlinenumber=\"1\">One step of <xref href=\"AAMotion.ISingleAxis.HomingDef\" data-throw-if-not-resolved=\"false\"></xref>. The array is 20 steps of 10 slots: slot 1\nholds the step type and slots 2-10 are that type's nine parameters, whose meaning depends on\nit — a speed, an acceleration, a position offset or a timeout in current-loop samples.</p>\n<p></p>\n<xref href=\"AAMotion.ISingleAxis.HomingDef\" data-throw-if-not-resolved=\"false\"></xref> remains the escape hatch for a firmware step type this\nSDK does not name.\n"
     },
     {
       "type": "ManagedReference",
@@ -456,7 +540,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.ICiGroupAxis",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AAMotion.ICiGroupAxis.yml\" sourcestartlinenumber=\"1\">The Central-I group surface: <xref href=\"AAMotion.IGroupAxis\" data-throw-if-not-resolved=\"false\"></xref> plus the CNCB parameters and the segment\nbuilders that push onto the second CNC buffer.</p>\n<p></p>\n<p sourcefile=\"api/AAMotion.ICiGroupAxis.yml\" sourcestartlinenumber=\"6\">Its CNC segment members take their arguments in controller counts on the same terms as\n<xref href=\"AAMotion.IGroupAxis\" data-throw-if-not-resolved=\"false\"></xref> - a raw <code>SpecialBulk</code> payload the Global User Units seam does not\nscale, so the whole-number <xref href=\"System.Int32\" data-throw-if-not-resolved=\"false\"></xref> signatures are the contract rather than a missing retype.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -512,7 +596,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.IECAM",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AAMotion.IECAM.yml\" sourcestartlinenumber=\"1\">The electronic-cam surface: the table registers, and the helpers that fill a table and run it.</p>\n<p></p>\n<p sourcefile=\"api/AAMotion.IECAM.yml\" sourcestartlinenumber=\"5\">Its <xref href=\"System.Int32\" data-throw-if-not-resolved=\"false\"></xref> arguments are controller quantities in counts - <code>GenData</code> element\nindices, cycle counts, a master keyword code, and the table entries themselves, which the\ncontroller consumes as counts. Nothing on this surface converts units, so the whole-number\nsignatures are the contract rather than a missing retype.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -526,7 +610,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.IGroupAxis",
-      "Summary": "<p sourcefile=\"api/AAMotion.IGroupAxis.yml\" sourcestartlinenumber=\"1\">IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>\n"
+      "Summary": "<p sourcefile=\"api/AAMotion.IGroupAxis.yml\" sourcestartlinenumber=\"1\">IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>\n<p></p>\n<p sourcefile=\"api/AAMotion.IGroupAxis.yml\" sourcestartlinenumber=\"5\">Every CNC segment member takes its arguments in controller counts. A segment is pushed as a raw\n<code>SpecialBulk</code> payload, which the Global User Units seam does not scale, so a caller converts\nfrom its own display units first and the whole-number <xref href=\"System.Int32\" data-throw-if-not-resolved=\"false\"></xref> signatures are the\ncontract rather than a missing retype.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -778,7 +862,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.Node",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/AAMotion.Node.yml\" sourcestartlinenumber=\"1\">Every value property on a node is a controller round trip, so a debugger expanding one would\nsend a read per member — and with the receiver frozen for evaluation, hang on the first.\nThe debug view shows identity only.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -876,7 +960,21 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAMotion.ParameterTypeConverter",
-      "Summary": "<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"1\">Parameter type converter - handles type conversion for controller parameters</p>\n<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"3\">Core functionality:</p>\n<ul sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">All data in controller is stored as int (32-bit)</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"5\">float: uses IEEE 754 encoding in int</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"6\">double/long: requires additional commands to get full 64-bit value</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"7\">Automatically detects type and converts (based on XML metadata or cache)</li>\n</ul>\n"
+      "Summary": "<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"1\">Parameter type converter - handles type conversion for controller parameters.</p>\n<p sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"3\">Core functionality:</p>\n<ul sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"4\">The value slot is a <xref href=\"System.Double\" data-throw-if-not-resolved=\"false\"></xref> and holds the parameter's value as the caller sees\nit, including any User Units scaling AAComm has applied to the reply</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"6\">Replies are read as decimal numbers and writes are rendered back with the same invariant\nwire text, so a scaled integral parameter keeps its fraction in both directions</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"8\">A write carries the display value whole; AAComm's transmit seam divides it by the User\nUnits factor and rounds a firmware-integral parameter in controller counts, so rounding\nhappens once, below the scaling, on every transport</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"11\">long: read with a separate command rather than from the slot; the controller's 64-bit\nparameters stay inside +/-2^51, which a double holds exactly</li>\n<li sourcefile=\"api/AAMotion.ParameterTypeConverter.yml\" sourcestartlinenumber=\"13\">Type detection comes from XML metadata or the cache; use <xref href=\"AAMotion.ParameterTypeConverter.ToInt32Register(System.Double)\" data-throw-if-not-resolved=\"false\"></xref> for\nbit arithmetic on a register-shaped parameter</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.ReadError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.ReadError.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.ReadError",
+      "Summary": "<p sourcefile=\"api/AAMotion.ReadError.yml\" sourcestartlinenumber=\"1\">One failed parameter read: the controller's error code (or -1 for a reply that was not\na number), the keyword and the exact command sent, the formatted error text, and when it happened (UTC).</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -947,6 +1045,20 @@
       "IsMRef": true,
       "Title": "AAMotion.StatReg",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAMotion.UserProgramPrintMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAMotion.UserProgramPrintMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAMotion.UserProgramPrintMessage",
+      "Summary": "<p sourcefile=\"api/AAMotion.UserProgramPrintMessage.yml\" sourcestartlinenumber=\"1\">One formatted message from a user-program <code>printf</code> push (FW v5+, AGM800 Ethernet).\nWire fields (<xref href=\"AAMotion.UserProgramPrintMessage.TimeSec\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"AAMotion.UserProgramPrintMessage.TimeTick\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"AAMotion.UserProgramPrintMessage.Thread\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"AAMotion.UserProgramPrintMessage.Message\" data-throw-if-not-resolved=\"false\"></xref>)\nplus Console-friendly <xref href=\"AAMotion.UserProgramPrintMessage.Timestamp\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"AAMotion.UserProgramPrintMessage.DisplayText\" data-throw-if-not-resolved=\"false\"></xref> matching a\nPCSuite User Program Console row.</p>\n"
     },
     {
       "type": "ManagedReference",

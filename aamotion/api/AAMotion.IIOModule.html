@@ -146,7 +146,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- New firmware (float type): Float deadband values in millivolts.
 </code></pre>
 <p></p>
-<pre><code>Returns dynamic type to support both int (old firmware) and float (new firmware).
+<pre><code>Each element is a double, whatever the controller's parameter type.
 </code></pre>
 <p></p>
     <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInOffSet">AInOffSet</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInGain">AInGain</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInFilt">AInFilt</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInPort">AInPort</a>
@@ -154,7 +154,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic AInDB { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AADynamicValueArray AInDB { get; }</code></pre>
   </div>
 
 
@@ -163,7 +163,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -193,7 +193,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- New firmware (float type): Direct float coefficient values.
 </code></pre>
 <p></p>
-<pre><code>Returns dynamic type to support both int (old firmware) and float (new firmware).
+<pre><code>Each element is a double, whatever the controller's parameter type.
 </code></pre>
 <p></p>
     <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInOffSet">AInOffSet</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInDB">AInDB</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInGain">AInGain</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInPort">AInPort</a>
@@ -201,7 +201,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic AInFilt { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AADynamicValueArray AInFilt { get; }</code></pre>
   </div>
 
 
@@ -210,7 +210,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -237,7 +237,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- New firmware (float type): Direct float value. When gain is 1, AInGain=1.0.
 </code></pre>
 <p></p>
-<pre><code>Returns dynamic type to support both int (old firmware) and float (new firmware).
+<pre><code>Each element is a double, whatever the controller's parameter type.
 </code></pre>
 <p></p>
     <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInOffSet">AInOffSet</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInDB">AInDB</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInFilt">AInFilt</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInPort">AInPort</a>
@@ -245,7 +245,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic AInGain { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AADynamicValueArray AInGain { get; }</code></pre>
   </div>
 
 
@@ -254,7 +254,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -315,7 +315,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; AInMode { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AInMode { get; }</code></pre>
   </div>
 
 
@@ -324,7 +324,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -354,7 +354,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- New firmware (float type): Float offset values in millivolts.
 </code></pre>
 <p></p>
-<pre><code>Returns dynamic type to support both int (old firmware) and float (new firmware).
+<pre><code>Each element is a double, whatever the controller's parameter type.
 </code></pre>
 <p></p>
     <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInDB">AInDB</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInGain">AInGain</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInFilt">AInFilt</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInPort">AInPort</a>
@@ -362,7 +362,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic AInOffSet { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AADynamicValueArray AInOffSet { get; }</code></pre>
   </div>
 
 
@@ -371,7 +371,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -404,7 +404,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- New firmware (float type): Float values representing actual voltage/processed values.
 </code></pre>
 <p></p>
-<pre><code>Returns dynamic type to support both int (old firmware) and float (new firmware).
+<pre><code>Each element is a double, whatever the controller's parameter type.
 </code></pre>
 <p></p>
     <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInFilt">AInFilt</a>, <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInDB">AInDB</a>, <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInGain">AInGain</a>, <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AInOffSet">AInOffSet</a>
@@ -412,7 +412,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">dynamic AInPort { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AADynamicValueArray AInPort { get; }</code></pre>
   </div>
 
 
@@ -421,7 +421,49 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADynamicValueArray.html">AADynamicValueArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_IIOModule_AOutGain_" data-uid="AAMotion.IIOModule.AOutGain*"></a>
+
+  <h3 id="AAMotion_IIOModule_AOutGain" data-uid="AAMotion.IIOModule.AOutGain">
+  AOutGain
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Analog output gain, a plain multiplier: AOutGain[i] scales the i-th analog output together
+with the parameter selected by AOutMode.
+</code></pre>
+<p></p>
+<pre><code>Reported by firmware with float analog IO. Firmware without it reports &lt;xref href=&quot;AAMotion.IIOModule.AOutShifts&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+at the same CAN code instead — a different parameter, not another name for this one — and on
+such a controller reading or writing an output, AOutGain[i] with i from 1, raises
+&lt;xref href=&quot;System.IndexOutOfRangeException&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; before anything is sent.
+</code></pre>
+<p></p>
+    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutShifts">AOutShifts</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutMode">AOutMode</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutPort">AOutPort</a>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AOutGain { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -457,12 +499,12 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>- Bits 16~31 (16 bits): Array index (ignored if not used)
 </code></pre>
 <p></p>
-    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutPort">AOutPort</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutOffset">AOutOffset</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutShifts">AOutShifts</a>
+    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutPort">AOutPort</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutOffset">AOutOffset</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutGain">AOutGain</a>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; AOutMode { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AOutMode { get; }</code></pre>
   </div>
 
 
@@ -471,7 +513,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -499,7 +541,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; AOutOffset { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AOutOffset { get; }</code></pre>
   </div>
 
 
@@ -508,7 +550,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -523,7 +565,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_AOutPort" data-uid="AAMotion.IIOModule.AOutPort">
   AOutPort
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L250"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Direct analog output (unit: mV).
@@ -532,12 +574,12 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 <pre><code>When AOutMode[i]=0, the value of AOutPort[i] is directly output to the i-th analog output.
 </code></pre>
 <p></p>
-    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutMode">AOutMode</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutShifts">AOutShifts</a>
+    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutMode">AOutMode</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutGain">AOutGain</a>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; AOutPort { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AOutPort { get; }</code></pre>
   </div>
 
 
@@ -546,7 +588,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -561,24 +603,26 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_AOutShifts" data-uid="AAMotion.IIOModule.AOutShifts">
   AOutShifts
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L244"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>Analog output shift factor.
+  <div class="markdown level1 summary"><pre><code>Analog output shift exponent: the i-th analog output is scaled by 2^AOutShifts[i], so a
+negative value divides and a positive one multiplies.
 </code></pre>
 <p></p>
-<pre><code>AOutShifts[i] is used to adjust the dynamic range of the i-th analog output (in conjunction with the parameter monitored by AOutMode).
+<pre><code>Reported by firmware without float analog IO. Firmware with it reports &lt;xref href=&quot;AAMotion.IIOModule.AOutGain&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
+at the same CAN code instead, which carries a plain multiplier rather than an exponent — the
+two are not interchangeable, and 2 here means x4 where 2 there means x2. On a controller that
+reports AOutGain reading or writing an output, AOutShifts[i] with i from 1, raises
+&lt;xref href=&quot;System.IndexOutOfRangeException&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; before anything is sent.
 </code></pre>
 <p></p>
-<pre><code>If AOutShifts is negative, right shift (divide by 2 to the power of |AOutShifts|); if positive, left shift (multiply by 2 to the power of AOutShifts).
-</code></pre>
-<p></p>
-    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutMode">AOutMode</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutPort">AOutPort</a>
+    <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutGain">AOutGain</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutMode">AOutMode</a> , <a class="xref" href="AAMotion.IIOModule.html#AAMotion_IIOModule_AOutPort">AOutPort</a>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; AOutShifts { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; AOutShifts { get; }</code></pre>
   </div>
 
 
@@ -587,7 +631,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -602,7 +646,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_BiDirConfig" data-uid="AAMotion.IIOModule.BiDirConfig">
   BiDirConfig
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L255"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Input bidirectional differential direction configuration.
@@ -831,7 +875,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; DInMode { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; DInMode { get; }</code></pre>
   </div>
 
 
@@ -840,7 +884,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1038,7 +1082,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; DOutMode { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; DOutMode { get; }</code></pre>
   </div>
 
 
@@ -1047,7 +1091,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1154,7 +1198,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; DOutSelect { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; DOutSelect { get; }</code></pre>
   </div>
 
 
@@ -1163,7 +1207,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1223,7 +1267,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_DOutClearBit_System_Int32_" data-uid="AAMotion.IIOModule.DOutClearBit(System.Int32)">
   DOutClearBit(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L267"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Clear the specified digital output bit
@@ -1240,7 +1284,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Index of the digital output bit to clear</p>
+    <dd><p>Index of the digital output bit to clear: 1-based output number, as the controller's <code>DOutPortSBit[n]</code> takes it: output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1265,7 +1309,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_DOutSetBit_System_Int32_" data-uid="AAMotion.IIOModule.DOutSetBit(System.Int32)">
   DOutSetBit(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Set the specified digital output bit
@@ -1282,7 +1326,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Index of the digital output bit to set</p>
+    <dd><p>Index of the digital output bit to set: 1-based output number, as the controller's <code>DOutPortSBit[n]</code> takes it: output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1307,7 +1351,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_DOutToggleBit_System_Int32_" data-uid="AAMotion.IIOModule.DOutToggleBit(System.Int32)">
   DOutToggleBit(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L285"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Toggle the specified digital output bit
@@ -1324,7 +1368,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Index of the digital output bit to toggle</p>
+    <dd><p>Index of the digital output bit to toggle: 1-based output number, as the controller's <code>DOutPortSBit[n]</code> takes it: output <code>n</code> is the bit <code>GetDOutPort(n - 1)</code> reads</p>
 </dd>
   </dl>
 
@@ -1349,7 +1393,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_GetDInPort_System_Int32_" data-uid="AAMotion.IIOModule.GetDInPort(System.Int32)">
   GetDInPort(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L298"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current state of a specific digital input bit</p>
@@ -1363,7 +1407,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>0-based bit index (0-31)</p>
+    <dd><p>0-based register bit (0-31), the same origin as <code>GetDOutPort</code></p>
 </dd>
   </dl>
 
@@ -1388,7 +1432,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
 
   <h3 id="AAMotion_IIOModule_GetDOutPort_System_Int32_" data-uid="AAMotion.IIOModule.GetDOutPort(System.Int32)">
   GetDOutPort(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IIOModule.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current state of a specific digital output bit</p>
@@ -1402,7 +1446,7 @@ Interface IIOModule  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>0-based bit index (0-31)</p>
+    <dd><p>0-based register bit (0-31): output <code>n</code>, as <code>DOutSetBit</code> numbers it, is bit <code>n - 1</code></p>
 </dd>
   </dl>
 

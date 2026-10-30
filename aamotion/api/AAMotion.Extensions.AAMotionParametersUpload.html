@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AAMotionParametersUpload | Agito AAMotion SDK ">
       
-      <meta name="description" content="Asynchronously uploads (saves) controller parameters to a .par file.   &amp;quot;Upload&amp;quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.   Mirrors the PCSuite &amp;quot;Parameters Upload&amp;quot; tool: queries every supported parameter, writes them with header (product type, firmware/FPGA version, date, checksum) to a plain ASCII .par file.   Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.">
+      <meta name="description" content="Asynchronously uploads (saves) controller parameters to a .par file.   &amp;quot;Upload&amp;quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.   Mirrors the PCSuite &amp;quot;Parameters Upload&amp;quot; tool: queries every supported parameter, writes them with header (product type, firmware/FPGA version, date, checksum) to a plain ASCII .par file.   Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_Extensions_AAMotionParametersUpload" data-uid="AAMotion.Extensions.AAMotionParametersUpload" class="text-break">
-Class AAMotionParametersUpload  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L47"><i class="bi bi-code-slash"></i></a>
+Class AAMotionParametersUpload  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -107,7 +107,7 @@ Class AAMotionParametersUpload  <a class="header-action link-secondary" title="V
 firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 </code></pre>
 <p></p>
-<pre><code>Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
 </code></pre>
 </div>
   <div class="markdown conceptual"></div>
@@ -168,7 +168,7 @@ firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersUpload_OnDone" data-uid="AAMotion.Extensions.AAMotionParametersUpload.OnDone">
   OnDone
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Reports upload completion.
@@ -207,10 +207,12 @@ firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersUpload_OnProgress" data-uid="AAMotion.Extensions.AAMotionParametersUpload.OnProgress">
   OnProgress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reports upload progress, value 0-100.</p>
+  <div class="markdown level1 summary"><p>Reports upload progress, value 0-100. A throw from it is reported in <a class="xref" href="AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_OnDone">OnDone</a>'s
+error: while replies are still arriving it aborts the upload; on the final 100% call it comes
+after the .par file is written.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -243,7 +245,7 @@ firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersUpload_Upload_AAMotion_MotionController_System_String_" data-uid="AAMotion.Extensions.AAMotionParametersUpload.Upload(AAMotion.MotionController,System.String)">
   Upload(MotionController, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts the upload process. The call is non-blocking — completion and progress are reported via the callbacks.</p>
@@ -279,7 +281,7 @@ firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L47" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L96" class="edit-link">Edit this page</a>
         </div>
 
 

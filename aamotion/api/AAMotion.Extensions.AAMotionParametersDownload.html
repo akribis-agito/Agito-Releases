@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AAMotionParametersDownload | Agito AAMotion SDK ">
       
-      <meta name="description" content="Asynchronously downloads (writes) controller parameters from a .par file.   &amp;quot;Download&amp;quot; in this context follows the PCSuite convention: a local .par file&#39;s contents are written to the controller.   Mirrors the PCSuite &amp;quot;Parameters Download&amp;quot; tool: reads the .par file, validates parameters against the connected controller, then sends each as a SET command.   Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.   After successful download, optionally sends &amp;quot;Save&amp;quot; plus per-axis &amp;quot;CalcFilters&amp;quot; to persist parameters to flash.">
+      <meta name="description" content="Asynchronously downloads (writes) controller parameters from a .par file.   &amp;quot;Download&amp;quot; in this context follows the PCSuite convention: a local .par file&#39;s contents are written to the controller.   Mirrors the PCSuite &amp;quot;Parameters Download&amp;quot; tool: reads the .par file, validates parameters against the connected controller, then sends each as a SET command.   Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.   After successful download, optionally sends &amp;quot;Save&amp;quot; plus per-axis &amp;quot;CalcFilters&amp;quot; to persist parameters to flash.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_Extensions_AAMotionParametersDownload" data-uid="AAMotion.Extensions.AAMotionParametersDownload" class="text-break">
-Class AAMotionParametersDownload  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L236"><i class="bi bi-code-slash"></i></a>
+Class AAMotionParametersDownload  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L293"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -107,7 +107,7 @@ Class AAMotionParametersDownload  <a class="header-action link-secondary" title=
 controller, then sends each as a SET command.
 </code></pre>
 <p></p>
-<pre><code>Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
 </code></pre>
 <p></p>
 <pre><code>After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.
@@ -171,7 +171,7 @@ controller, then sends each as a SET command.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersDownload_OnDone" data-uid="AAMotion.Extensions.AAMotionParametersDownload.OnDone">
   OnDone
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L305"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Reports download completion.
@@ -210,10 +210,11 @@ controller, then sends each as a SET command.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersDownload_OnProgress" data-uid="AAMotion.Extensions.AAMotionParametersDownload.OnProgress">
   OnProgress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L299"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reports download progress, value 0-100.</p>
+  <div class="markdown level1 summary"><p>Reports download progress, value 0-100. A throw from it is reported in <a class="xref" href="AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_OnDone">OnDone</a>'s
+error; while replies are still arriving it aborts the download.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -246,7 +247,7 @@ controller, then sends each as a SET command.
 
   <h3 id="AAMotion_Extensions_AAMotionParametersDownload_Download_AAMotion_MotionController_System_String_System_Boolean_" data-uid="AAMotion.Extensions.AAMotionParametersDownload.Download(AAMotion.MotionController,System.String,System.Boolean)">
   Download(MotionController, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L313"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts the download process. The call is non-blocking — completion and progress are reported via the callbacks.</p>
@@ -285,7 +286,7 @@ controller, then sends each as a SET command.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L236" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L293" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_MotionController" data-uid="AAMotion.MotionController" class="text-break">
-Class MotionController  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class MotionController  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -193,7 +193,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController__ctor" data-uid="AAMotion.MotionController.#ctor">
   MotionController()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L302"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -222,7 +222,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_AxisList" data-uid="AAMotion.MotionController.AxisList">
   AxisList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the list of all axes.
@@ -257,7 +257,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_GroupCiList" data-uid="AAMotion.MotionController.GroupCiList">
   GroupCiList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the list of all Ci group axes.
@@ -292,7 +292,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_GroupList" data-uid="AAMotion.MotionController.GroupList">
   GroupList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the list of all group axes.
@@ -327,7 +327,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_IOList" data-uid="AAMotion.MotionController.IOList">
   IOList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the list of all IO modules.
@@ -367,10 +367,13 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_AutoReconnectEnabled" data-uid="AAMotion.MotionController.AutoReconnectEnabled">
   AutoReconnectEnabled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets whether auto-reconnect is enabled.</p>
+  <div class="markdown level1 summary"><p>Gets the <code>enableAutoReconnect</code> flag last passed to any <code>Connect</code> overload that takes
+one, or to <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConnectSimulation_System_String_System_String_System_String_System_String_System_Boolean_">ConnectSimulation(string, string, string, string, bool)</a>.
+Currently inert: nothing reads it automatically. Call <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_CheckConnection">CheckConnection()</a> (to probe)
+and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> (to recover) deliberately instead of relying on this flag.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -399,7 +402,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_BoardTemp" data-uid="AAMotion.MotionController.BoardTemp">
   BoardTemp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L323"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L649"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the board temperature (°C). Only supported by some products.
@@ -455,7 +458,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int BoardTemp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double BoardTemp { get; }</code></pre>
   </div>
 
 
@@ -464,7 +467,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -479,7 +482,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_CANAddr" data-uid="AAMotion.MotionController.CANAddr">
   CANAddr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L523"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the CAN address.</p>
@@ -511,7 +514,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_CANBaud" data-uid="AAMotion.MotionController.CANBaud">
   CANBaud
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L539"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets or sets the CAN baud rate.
@@ -568,7 +571,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_CommAPI" data-uid="AAMotion.MotionController.CommAPI">
   CommAPI
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the underlying AAComm &lt;xref href=&quot;AAMotion.MotionController.CommAPI&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; instance for direct low-level communication.
@@ -607,7 +610,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_CounterDown" data-uid="AAMotion.MotionController.CounterDown">
   CounterDown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L508"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the down counter array.
@@ -624,7 +627,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; CounterDown { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; CounterDown { get; }</code></pre>
   </div>
 
 
@@ -633,7 +636,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -648,7 +651,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_CounterUp" data-uid="AAMotion.MotionController.CounterUp">
   CounterUp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L501"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the up counter array. 
@@ -665,7 +668,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; CounterUp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; CounterUp { get; }</code></pre>
   </div>
 
 
@@ -674,7 +677,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -689,7 +692,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_DCDC" data-uid="AAMotion.MotionController.DCDC">
   DCDC
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L519"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the DCDC value array.
@@ -719,7 +722,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; DCDC { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; DCDC { get; }</code></pre>
   </div>
 
 
@@ -728,7 +731,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -743,7 +746,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_DebugData" data-uid="AAMotion.MotionController.DebugData">
   DebugData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L547"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>This parameter is for development team use only. Using this parameter may result in unexpected behavior.</p>
@@ -751,7 +754,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; DebugData { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; DebugData { get; }</code></pre>
   </div>
 
 
@@ -760,7 +763,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -775,7 +778,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_ErrLog" data-uid="AAMotion.MotionController.ErrLog">
   ErrLog
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L566"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the error log array. ErrLog[1] stores the error code, ErrLog[2] stores the error occurrence time (seconds since last power on).
@@ -796,7 +799,7 @@ Provides high-speed data recording functionality with trigger support.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; ErrLog { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; ErrLog { get; }</code></pre>
   </div>
 
 
@@ -805,7 +808,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -820,7 +823,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_FPGAVersion" data-uid="AAMotion.MotionController.FPGAVersion">
   FPGAVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L609"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the FPGA version.</p>
@@ -852,7 +855,7 @@ Provides high-speed data recording functionality with trigger support.</p>
 
   <h3 id="AAMotion_MotionController_FastReadCache" data-uid="AAMotion.MotionController.FastReadCache">
   FastReadCache
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L386"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L714"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the FastReadCache instance for high-performance cached reads.
@@ -885,7 +888,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h3 id="AAMotion_MotionController_FirmwareVersion" data-uid="AAMotion.MotionController.FirmwareVersion">
   FirmwareVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L605"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the firmware version.</p>
@@ -917,7 +920,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h3 id="AAMotion_MotionController_GenData" data-uid="AAMotion.MotionController.GenData">
   GenData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L552"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>GenData is an array assigned for user general data.
@@ -929,7 +932,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; GenData { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; GenData { get; }</code></pre>
   </div>
 
 
@@ -938,7 +941,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -953,7 +956,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h3 id="AAMotion_MotionController_GenDataD" data-uid="AAMotion.MotionController.GenDataD">
   GenDataD
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L557"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>GenDataD - Double precision array for user general data.</p>
@@ -961,7 +964,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic GenDataD { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AADoubleArray GenDataD { get; }</code></pre>
   </div>
 
 
@@ -970,7 +973,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="AAMotion.AADoubleArray.html">AADoubleArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -985,7 +988,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h3 id="AAMotion_MotionController_Identity" data-uid="AAMotion.MotionController.Identity">
   Identity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L494"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets controller identity information array containing hardware, firmware and manufacturing details.
@@ -1051,7 +1054,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; Identity { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; Identity { get; }</code></pre>
   </div>
 
 
@@ -1060,7 +1063,7 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1075,19 +1078,18 @@ Use this to enable fast read mode for frequently accessed parameters.</p>
 
   <h3 id="AAMotion_MotionController_IsConnected" data-uid="AAMotion.MotionController.IsConnected">
   IsConnected
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L576"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>Gets whether the controller is connected and physically reachable.
+  <div class="markdown level1 summary"><pre><code>Gets whether the controller reports itself connected. Cheap, non-blocking and free of side
+effects — a plain read of the comm layer's own logical state, safe to call from a WPF
+binding, a debugger watch window, or a tight poll loop.
 </code></pre>
 <p></p>
-<pre><code>If auto-reconnect is enabled and connection is lost, automatically attempts to reconnect.
-</code></pre>
-<p></p>
-<pre><code>When the controller was connected via a real IP address, this property actively probes it via
-ICMP ping on each access, so it detects cable-pull and network partition events the raw TCP
-socket cannot surface on its own. For non-IP connections (Simulator, serial, CAN) — where ICMP
-says nothing — it reports the logical connection state.
+<pre><code>This does &lt;b&gt;not&lt;/b&gt; probe physical reachability and cannot on its own detect a pulled cable
+or a network partition — the raw socket can stay logically open for a while after the
+physical link is gone. Call &lt;xref href=&quot;AAMotion.MotionController.CheckConnection&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to actively verify reachability via
+ICMP, and &lt;xref href=&quot;AAMotion.MotionController.TryReconnect(System.String%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to recover a link that has actually gone down.
 </code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1117,10 +1119,13 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LastKnownAddress" data-uid="AAMotion.MotionController.LastKnownAddress">
   LastKnownAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the last known connection address.</p>
+  <div class="markdown level1 summary"><p>Gets the last known connection address: the device address for an Ethernet link, or the
+<code>firmware_sim.exe</code> path for one opened by <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConnectSimulation_System_String_System_String_System_String_System_String_System_Boolean_">ConnectSimulation(string, string, string, string, bool)</a>. Callers that
+need an address parse it — a value that is not an IP is a simulation link, which
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> cannot recover.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1145,19 +1150,25 @@ says nothing — it reports the logical connection state.
 
 
 
-  <a id="AAMotion_MotionController_LoggerAbout_" data-uid="AAMotion.MotionController.LoggerAbout*"></a>
+  <a id="AAMotion_MotionController_LastReadError_" data-uid="AAMotion.MotionController.LastReadError*"></a>
 
-  <h3 id="AAMotion_MotionController_LoggerAbout" data-uid="AAMotion.MotionController.LoggerAbout">
-  LoggerAbout
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_MotionController_LastReadError" data-uid="AAMotion.MotionController.LastReadError">
+  LastReadError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L219"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets controller slow logger metadata.</p>
+  <div class="markdown level1 summary"><p>The most recent failed parameter read on this controller — a typed property, <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_">GetValue(AxisRef, eKeyword, int)</a>,
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryGetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Double__System_Int32_">TryGetValue(AxisRef, eKeyword, out double, int)</a>, <a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_TryRead_AAMotion_eKeyword_System_Double__">TryRead(eKeyword, out double)</a>, a raw register read such as
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadGenDataD_System_Int32_">ReadGenDataD(int)</a>, or a motion wait's poll — or null when
+none has failed since the last successful connect. A later successful read does not clear it;
+compare its <a class="xref" href="AAMotion.ReadError.html#AAMotion_ReadError_Timestamp">Timestamp</a> against the call in question, or watch
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>. <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> is raised for a read the controller refused,
+but not for a reply that is not a number — that draws no controller error to report.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; LoggerAbout { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ReadError LastReadError { get; }</code></pre>
   </div>
 
 
@@ -1166,7 +1177,39 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.ReadError.html">ReadError</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_MotionController_LoggerAbout_" data-uid="AAMotion.MotionController.LoggerAbout*"></a>
+
+  <h3 id="AAMotion_MotionController_LoggerAbout" data-uid="AAMotion.MotionController.LoggerAbout">
+  LoggerAbout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets controller slow logger metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; LoggerAbout { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1181,7 +1224,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerFreeSpace" data-uid="AAMotion.MotionController.LoggerFreeSpace">
   LoggerFreeSpace
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the free space in logger (LoggerStatus[2]).</p>
@@ -1213,7 +1256,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerFullMod" data-uid="AAMotion.MotionController.LoggerFullMod">
   LoggerFullMod
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the logger &quot;FIFO full&quot; mode. 0 = pause logging until FIFO is not full, 1 = overwrite oldest data packet in FIFO.</p>
@@ -1245,7 +1288,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerGap" data-uid="AAMotion.MotionController.LoggerGap">
   LoggerGap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the logger gap (sampling interval). Logger sampling time, 16 samples per group (approximately 1.0 ms per group).</p>
@@ -1277,7 +1320,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerLostPackets" data-uid="AAMotion.MotionController.LoggerLostPackets">
   LoggerLostPackets
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of lost packets (LoggerStatus[5]).</p>
@@ -1309,7 +1352,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerOn" data-uid="AAMotion.MotionController.LoggerOn">
   LoggerOn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the logger on/off state. 1 = enabled, 0 = disabled.</p>
@@ -1341,7 +1384,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerParams" data-uid="AAMotion.MotionController.LoggerParams">
   LoggerParams
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the logger parameters array (1-40). There are 8 groups total: indices 1-5 are group 1, 6-10 are group 2, etc.</p>
@@ -1349,7 +1392,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; LoggerParams { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; LoggerParams { get; }</code></pre>
   </div>
 
 
@@ -1358,7 +1401,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1373,7 +1416,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerPushedPackets" data-uid="AAMotion.MotionController.LoggerPushedPackets">
   LoggerPushedPackets
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of pushed packets from controller (LoggerStatus[4]).</p>
@@ -1405,7 +1448,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerState" data-uid="AAMotion.MotionController.LoggerState">
   LoggerState
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the logger state (LoggerStatus[3]).</p>
@@ -1437,7 +1480,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_LoggerStatus" data-uid="AAMotion.MotionController.LoggerStatus">
   LoggerStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the logger status array. LoggerStatus[2] contains the remaining available space in the logger.</p>
@@ -1445,7 +1488,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; LoggerStatus { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; LoggerStatus { get; }</code></pre>
   </div>
 
 
@@ -1454,7 +1497,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1469,7 +1512,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_MotorTemp" data-uid="AAMotion.MotionController.MotorTemp">
   MotorTemp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L342"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L668"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the motor temperature in Celsius.
@@ -1488,7 +1531,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MotorTemp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double MotorTemp { get; }</code></pre>
   </div>
 
 
@@ -1497,7 +1540,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -1512,7 +1555,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_ProgError" data-uid="AAMotion.MotionController.ProgError">
   ProgError
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L623"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the interpreter errors.
@@ -1531,7 +1574,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; ProgError { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; ProgError { get; }</code></pre>
   </div>
 
 
@@ -1540,39 +1583,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="AAMotion_MotionController_ProgHaltAll_" data-uid="AAMotion.MotionController.ProgHaltAll*"></a>
-
-  <h3 id="AAMotion_MotionController_ProgHaltAll" data-uid="AAMotion.MotionController.ProgHaltAll">
-  ProgHaltAll
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L166"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Halt all the currently active user program threads.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; ProgHaltAll { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1587,7 +1598,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_ProgStat" data-uid="AAMotion.MotionController.ProgStat">
   ProgStat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L290"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L616"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Gets the program status.
@@ -1606,7 +1617,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AAValueArray&lt;int&gt; ProgStat { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AAValueArray&lt;double&gt; ProgStat { get; }</code></pre>
   </div>
 
 
@@ -1615,7 +1626,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1630,7 +1641,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_PwrTemp" data-uid="AAMotion.MotionController.PwrTemp">
   PwrTemp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L335"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L661"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>PwrTemp returns the temperature in Celsius measured on the power generating part of the product.</p>
@@ -1638,7 +1649,39 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PwrTemp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double PwrTemp { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_MotionController_ReadFailures_" data-uid="AAMotion.MotionController.ReadFailures*"></a>
+
+  <h3 id="AAMotion_MotionController_ReadFailures" data-uid="AAMotion.MotionController.ReadFailures">
+  ReadFailures
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>How many parameter reads have failed on this controller since the last successful connect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadFailures { get; }</code></pre>
   </div>
 
 
@@ -1662,7 +1705,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_Time" data-uid="AAMotion.MotionController.Time">
   Time
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L627"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Time is a read only parameter that holds the time in seconds since power on.</p>
@@ -1690,19 +1733,41 @@ says nothing — it reports the logical connection state.
 
 
 
-  <a id="AAMotion_MotionController_VBus_" data-uid="AAMotion.MotionController.VBus*"></a>
+  <a id="AAMotion_MotionController_UseUserUnits_" data-uid="AAMotion.MotionController.UseUserUnits*"></a>
 
-  <h3 id="AAMotion_MotionController_VBus" data-uid="AAMotion.MotionController.VBus">
-  VBus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_MotionController_UseUserUnits" data-uid="AAMotion.MotionController.UseUserUnits">
+  UseUserUnits
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>VBus returns the reading of the bus voltage in Millivolts.</p>
+  <div class="markdown level1 summary"><pre><code>Gets or sets whether this controller expresses values in the connected controller's Global
+User Units. Set it to &lt;code&gt;false&lt;/code&gt; to keep every read and write in raw controller counts —
+the escape hatch for an integration written against a counts-based API. Default &lt;code&gt;true&lt;/code&gt;.
+</code></pre>
+<p></p>
+<pre><code>The setting survives connect and reconnect, so it can be configured before connecting: the
+communication layer clears its own opt-out on every successful connect, and this controller
+re-applies the value last assigned here once the connect succeeds.
+</code></pre>
+<p></p>
+<pre><code>Instance-wide, not call-wide — it forwards to &lt;xref href=&quot;AAComm.CommAPI.SkipUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, so two
+controllers sharing one &lt;xref href=&quot;AAComm.CommAPI&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; share the setting. To bypass the scaling for
+a single message, use &lt;xref href=&quot;AAComm.Services.AACommMessage.SkipUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; instead.
+</code></pre>
+<p></p>
+<pre><code>What is read back is what the communication layer will actually do, so a direct write to
+&lt;xref href=&quot;AAComm.CommAPI.SkipUserUnits&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; is visible here — but only a value assigned through
+this property is remembered, and only that is re-applied at the next connect.
+</code></pre>
+<p></p>
+<pre><code>Opting out does not unlock raw User Units configuration writes: a direct assignment to a
+&lt;code&gt;*UnitFct&lt;/code&gt; or &lt;code&gt;*UnitUnt&lt;/code&gt; parameter stays rejected either way.
+</code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int VBus { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool UseUserUnits { get; set; }</code></pre>
   </div>
 
 
@@ -1711,7 +1776,39 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_MotionController_VBus_" data-uid="AAMotion.MotionController.VBus*"></a>
+
+  <h3 id="AAMotion_MotionController_VBus" data-uid="AAMotion.MotionController.VBus">
+  VBus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L653"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>VBus returns the reading of the bus voltage in Millivolts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double VBus { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -1726,7 +1823,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_VLogic" data-uid="AAMotion.MotionController.VLogic">
   VLogic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L331"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L657"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>VLogic returns the current reading of the logic supply voltage. The nominal supply voltage is 5V. If the actual supply voltage is above or below the designated limits (hard coded) the motor is disabled</p>
@@ -1734,7 +1831,7 @@ says nothing — it reports the logical connection state.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int VLogic { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double VLogic { get; }</code></pre>
   </div>
 
 
@@ -1743,7 +1840,7 @@ says nothing — it reports the logical connection state.
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -1762,7 +1859,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_BulkCommandParser_System_Int32_System_String_" data-uid="AAMotion.MotionController.BulkCommandParser(System.Int32,System.String)">
   BulkCommandParser(int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L833"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1171"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parses a bulk command string response and returns the specified index value.</p>
@@ -1800,11 +1897,60 @@ says nothing — it reports the logical connection state.
 
 
 
+  <a id="AAMotion_MotionController_CheckConnection_" data-uid="AAMotion.MotionController.CheckConnection*"></a>
+
+  <h3 id="AAMotion_MotionController_CheckConnection" data-uid="AAMotion.MotionController.CheckConnection">
+  CheckConnection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L591"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Actively probes physical reachability via ICMP ping and returns the result. Unlike
+&lt;xref href=&quot;AAMotion.MotionController.IsConnected&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;, this always sends a probe and can block for up to ~1 second — call
+it deliberately (a background timer, a manual health check), never from a binding or a
+property-style hot path.
+</code></pre>
+<p></p>
+<pre><code>Two independent probes are sent; either succeeding counts as reachable, so a single blocked
+or rate-limited ICMP packet is not mistaken for a dead link.
+</code></pre>
+<p></p>
+<pre><code>For a connection made over a non-IP channel (Simulation, serial, CAN), or before any address is
+known, ICMP has nothing to probe and this reports the logical state instead — the same value
+&lt;xref href=&quot;AAMotion.MotionController.IsConnected&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; would return.
+</code></pre>
+<p></p>
+<pre><code>This never disconnects or reconnects anything by itself. Call &lt;xref href=&quot;AAMotion.MotionController.TryReconnect(System.String%2cSystem.Boolean)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; to
+recover a link this reports as down.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CheckConnection()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAMotion_MotionController_CloseAACommServer_" data-uid="AAMotion.MotionController.CloseAACommServer*"></a>
 
   <h3 id="AAMotion_MotionController_CloseAACommServer" data-uid="AAMotion.MotionController.CloseAACommServer">
   CloseAACommServer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L844"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Closes the AAComm server.</p>
@@ -1827,11 +1973,52 @@ says nothing — it reports the logical connection state.
 
 
 
+  <a id="AAMotion_MotionController_CommitMotion_" data-uid="AAMotion.MotionController.CommitMotion*"></a>
+
+  <h3 id="AAMotion_MotionController_CommitMotion_AAMotion_AxisRef_" data-uid="AAMotion.MotionController.CommitMotion(AAMotion.AxisRef)">
+  CommitMotion(AxisRef)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Commit the Sine PTP parameters written to every axis in <code class="paramref">axes</code> in one synchronised step:
+the controller validates them all, recalculates each, and splices every new profile onto its running motion
+together. <code class="paramref">axes</code> is a mask (<code>AxisRef.A | AxisRef.B</code>); the whole commit is refused when
+any axis it names is not in a Sine PTP motion. <a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_CommitMotion">CommitMotion()</a> is the one-axis form.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CommitMotion(AxisRef axes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axes</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the controller accepted the commit; a rejection is reported through <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAMotion_MotionController_ConfigureDataLogger_" data-uid="AAMotion.MotionController.ConfigureDataLogger*"></a>
 
   <h3 id="AAMotion_MotionController_ConfigureDataLogger_AAMotion_MotionController_DataLoggerConfiguration_" data-uid="AAMotion.MotionController.ConfigureDataLogger(AAMotion.MotionController.DataLoggerConfiguration)">
   ConfigureDataLogger(DataLoggerConfiguration)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L174"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Configures and starts a data recording session.</p>
@@ -1870,7 +2057,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___" data-uid="AAMotion.MotionController.ConfigureSlowLogger(System.Int32,System.Int32,System.Object[])">
   ConfigureSlowLogger(int, int, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convenience helper to configure slow logger parameters in one call.</p>
@@ -1891,7 +2078,7 @@ says nothing — it reports the logical connection state.
 </dd>
     <dt><code>parameterSpecifications</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
     <dd><p>Parameters to capture. Supported values:</p>
-<ul><li>string such as "CPos", "AVel[2]" - specify axis and keyword (e.g., "CPos" for C-axis Pos, "AVel[2]" for A-axis Vel array index 2)</li><li>int CAN code (direct assignment) - use <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetKeywordCANCode_AAMotion_eKeyword_AAMotion_AxisRef_System_Int32_">GetKeywordCANCode(eKeyword, AxisRef, int)</a> to get CAN codes</li><li><a class="xref" href="AAMotion.MotionController.SlowLoggerParameter.html">MotionController.SlowLoggerParameter</a> describing Axis/Keyword/Array index - strongly-typed parameter specification</li></ul>
+<ul><li>string such as "CPos", "AVel[2]" - specify axis and keyword (e.g., "CPos" for C-axis Pos, "AVel[2]" for A-axis Vel array index 2)</li><li>An array parameter needs its index and a scalar takes none; the other shape is refused with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>, as the fast recorder refuses it</li><li>int CAN code (direct assignment) - use <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetKeywordCANCode_AAMotion_eKeyword_AAMotion_AxisRef_System_Int32_">GetKeywordCANCode(eKeyword, AxisRef, int)</a> to get CAN codes</li><li><a class="xref" href="AAMotion.MotionController.SlowLoggerParameter.html">MotionController.SlowLoggerParameter</a> describing Axis/Keyword/Array index - strongly-typed parameter specification</li></ul>
 </dd>
   </dl>
 
@@ -1910,7 +2097,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_Connect_System_String_System_Boolean_System_Boolean_" data-uid="AAMotion.MotionController.Connect(System.String,System.Boolean,System.Boolean)">
   Connect(string, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L814"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connects to the controller using an IP address.</p>
@@ -1930,7 +2117,9 @@ says nothing — it reports the logical connection state.
     <dd><p>Optional: A boolean indicating whether to not wait for acknowledgment. Default is true, no response.</p>
 </dd>
     <dt><code>enableAutoReconnect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Optional: A boolean indicating whether to enable automatic reconnection. Default is false.</p>
+    <dd><p>Optional: recorded on <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_AutoReconnectEnabled">AutoReconnectEnabled</a>, but currently
+has no automatic effect — call <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_CheckConnection">CheckConnection()</a> / <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> yourself.
+Default is false.</p>
 </dd>
   </dl>
 
@@ -1955,7 +2144,7 @@ says nothing — it reports the logical connection state.
 
   <h3 id="AAMotion_MotionController_Connect_System_String_System_Int32_System_Boolean_System_Boolean_" data-uid="AAMotion.MotionController.Connect(System.String,System.Int32,System.Boolean,System.Boolean)">
   Connect(string, int, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L505"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L833"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connects to the controller using an IP address and port.</p>
@@ -1978,7 +2167,9 @@ says nothing — it reports the logical connection state.
     <dd><p>Optional: A boolean indicating whether to not wait for acknowledgment. Default is true, no response.</p>
 </dd>
     <dt><code>enableAutoReconnect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Optional: A boolean indicating whether to enable automatic reconnection. Default is false.</p>
+    <dd><p>Optional: recorded on <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_AutoReconnectEnabled">AutoReconnectEnabled</a>, but currently
+has no automatic effect — call <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_CheckConnection">CheckConnection()</a> / <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> yourself.
+Default is false.</p>
 </dd>
   </dl>
 
@@ -1999,34 +2190,57 @@ says nothing — it reports the logical connection state.
 
 
 
-  <a id="AAMotion_MotionController_ConnectSimulator_" data-uid="AAMotion.MotionController.ConnectSimulator*"></a>
+  <a id="AAMotion_MotionController_ConnectSimulation_" data-uid="AAMotion.MotionController.ConnectSimulation*"></a>
 
-  <h3 id="AAMotion_MotionController_ConnectSimulator_System_Int32_" data-uid="AAMotion.MotionController.ConnectSimulator(System.Int32)">
-  ConnectSimulator(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L534"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_MotionController_ConnectSimulation_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="AAMotion.MotionController.ConnectSimulation(System.String,System.String,System.String,System.String,System.Boolean)">
+  ConnectSimulation(string, string, string, string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L876"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Connects to the Simulator channel of the AACommServer.
-Requires AACommServer to have AllowSim enabled and SimParamsFile configured.
-Simulator mode allows testing AAMotion commands without real hardware.</p>
+  <div class="markdown level1 summary"><p>Connects to a locally spawned firmware simulation over the managed
+<span class="xref">AAComm.Shared.ChannelType.Simulation</span> channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ConnectSimulator(int controllerType)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool ConnectSimulation(string simExePath, string simProduct = &quot;&quot;, string simVersion = &quot;&quot;, string simMotorProfile = &quot;&quot;, bool enableAutoReconnect = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>controllerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The simulated controller type (e.g. AGD301_AGC301_ID for AGD301, AGM800_ID for AGM800).</p>
+    <dt><code>simExePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Absolute path to <code>firmware_sim.exe</code>. The SDK does not ship this
+binary — the caller must supply a path to an installed or bundled copy (for example under a
+PCSuite <code>Simulations/&lt;product&gt;/&lt;version&gt;/</code> folder). A sibling <code>sim.info</code>
+is not read by this API.</p>
+</dd>
+    <dt><code>simProduct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional catalog product key (e.g. <code>AGM800</code>, <code>AGD301</code>).
+A name the catalog resolves also declares the controller type, so the connect verifies it against
+the sim rather than first discovering it with a probe that spawns a whole sim child of its own —
+and a declared type the sim disagrees with fails the connect. A name the catalog does not resolve
+leaves the type to that probe, as omitting it does — among them the <a class="xref" href="AAMotion.ControllerType.html">ControllerType</a>
+member names <code>AGD155EC</code>, <code>AGD101EC</code>, <code>AGD156EC</code> and <code>AGM800EC</code>, since this takes the catalog
+spelling (<code>AGD155-EC</code>) rather than the enum's.</p>
+</dd>
+    <dt><code>simVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional firmware-sim version label (e.g. <code>5.0.0</code>).</p>
+</dd>
+    <dt><code>simMotorProfile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional motor/encoder profile (flat <code>key=value</code> text passed
+to the sim's <code>--motor</code>); empty uses the bundled generic default.</p>
+</dd>
+    <dt><code>enableAutoReconnect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Recorded on <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_AutoReconnectEnabled">AutoReconnectEnabled</a>, and inert on a
+simulation link: <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> cannot recover one (see the remarks).</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if connection is successful; otherwise false.</p>
+    <dd><p><code>true</code> when the server spawned the sim and the connect succeeded; otherwise
+<code>false</code>.</p>
 </dd>
   </dl>
 
@@ -2036,42 +2250,45 @@ Simulator mode allows testing AAMotion commands without real hardware.</p>
 
 
 
+  <h4 class="section" id="AAMotion_MotionController_ConnectSimulation_System_String_System_String_System_String_System_String_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>AACommServer must already be running (<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_Init">Init()</a>). On success it launches
+<code class="paramref">simExePath</code>, configures the motor, and bridges loopback; on
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_Disconnect">Disconnect()</a> it reaps the child process. <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> is Ethernet-only
+and cannot recover a simulation link: to reopen one, call <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_Disconnect">Disconnect()</a> first and then
+this method. This method does not tear down a link it finds open, and the connect short-circuits
+on one, so calling it alone on a wedged session returns <code>false</code> without reopening anything —
+though <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastKnownAddress">LastKnownAddress</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_AutoReconnectEnabled">AutoReconnectEnabled</a> are recorded before
+the attempt, so a failed call still updates them.</p>
+</div>
 
 
 
 
-  <a id="AAMotion_MotionController_ConnectSimulator_" data-uid="AAMotion.MotionController.ConnectSimulator*"></a>
+  <a id="AAMotion_MotionController_CreateEventTableClient_" data-uid="AAMotion.MotionController.CreateEventTableClient*"></a>
 
-  <h3 id="AAMotion_MotionController_ConnectSimulator_System_Int32_System_Int32_" data-uid="AAMotion.MotionController.ConnectSimulator(System.Int32,System.Int32)">
-  ConnectSimulator(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L560"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_MotionController_CreateEventTableClient_System_Char_" data-uid="AAMotion.MotionController.CreateEventTableClient(System.Char)">
+  CreateEventTableClient(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Connects to the Simulator channel of the AACommServer with retry support.
-Requires AACommServer to have AllowSim enabled and SimParamsFile configured.
-Simulator mode allows testing AAMotion commands without real hardware.</p>
+  <div class="markdown level1 summary"><p>Creates an explicit verified-event client bound to this connection and axis.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ConnectSimulator(int controllerType, int retryCount)</code></pre>
+    <pre><code class="lang-csharp hljs">public EventTableClient CreateEventTableClient(char axis)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>controllerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The simulated controller type (e.g. AGD301_AGC301_ID for AGD301, AGM800_ID for AGM800).</p>
-</dd>
-    <dt><code>retryCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Number of retry attempts on failure (e.g. when About data mismatch occurs).</p>
-</dd>
+    <dt><code>axis</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if connection is successful; otherwise false.</p>
-</dd>
+    <dt><span class="xref">EventTableClient</span></dt>
+    <dd></dd>
   </dl>
 
 
@@ -2088,7 +2305,7 @@ Simulator mode allows testing AAMotion commands without real hardware.</p>
 
   <h3 id="AAMotion_MotionController_DisableFastReadCache" data-uid="AAMotion.MotionController.DisableFastReadCache">
   DisableFastReadCache()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L405"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L733"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disables the fast read cache.</p>
@@ -2115,7 +2332,7 @@ Simulator mode allows testing AAMotion commands without real hardware.</p>
 
   <h3 id="AAMotion_MotionController_Disconnect" data-uid="AAMotion.MotionController.Disconnect">
   Disconnect()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L582"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L925"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disconnects from the controller.</p>
@@ -2148,7 +2365,7 @@ Simulator mode allows testing AAMotion commands without real hardware.</p>
 
   <h3 id="AAMotion_MotionController_Dispose" data-uid="AAMotion.MotionController.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L700"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Releases resources used by the controller. Does not shut down the shared
@@ -2176,7 +2393,7 @@ AACommServer — call <a class="xref" href="AAMotion.MotionController.html#AAMot
 
   <h3 id="AAMotion_MotionController_EnableFastReadCache_System_Int32_" data-uid="AAMotion.MotionController.EnableFastReadCache(System.Int32)">
   EnableFastReadCache(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L396"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L724"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Enables the fast read cache with the specified refresh interval.
@@ -2213,10 +2430,13 @@ When enabled, registered parameters are read from cache instead of sending comma
 
   <h3 id="AAMotion_MotionController_EnsureAACommServerRunning_System_String_" data-uid="AAMotion.MotionController.EnsureAACommServerRunning(System.String)">
   EnsureAACommServerRunning(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1024"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1390"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks if the AACommServer is running. If not, attempts to start it (waits up to 5 seconds).</p>
+  <div class="markdown level1 summary"><p>Ensures an AACommServer is serving its port, starting <code class="paramref">serverExePath</code> if none is,
+and reports whether one is serving when it returns. Readiness is the port, so a server of any build
+— <code>AACommServer</code> or <code>AACommServerNative</code> — counts, and a process that has not bound its
+port yet does not.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2227,14 +2447,15 @@ When enabled, registered parameters are read from cache instead of sending comma
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>serverExePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The absolute path of the AACommServer executable file.</p>
+    <dd><p>The absolute path of the AACommServer executable to start. A null or
+empty path starts nothing: the answer is then whether one is already serving.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Returns true if AACommServer is already running or successfully started; otherwise returns false.</p>
+    <dd><p>True if an AACommServer is serving the port.</p>
 </dd>
   </dl>
 
@@ -2252,7 +2473,7 @@ When enabled, registered parameters are read from cache instead of sending comma
 
   <h3 id="AAMotion_MotionController_Finalize" data-uid="AAMotion.MotionController.Finalize">
   ~MotionController()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L466"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Finalizer safety net for an undisposed controller: best-effort disconnect of THIS
@@ -2283,7 +2504,7 @@ finalizer taking it down under live siblings was a real defect. Suppressed by
 
   <h3 id="AAMotion_MotionController_ForceDataLoggerTrigger" data-uid="AAMotion.MotionController.ForceDataLoggerTrigger">
   ForceDataLoggerTrigger()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L278"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Forces a trigger event manually (for testing or immediate triggering).</p>
@@ -2316,7 +2537,7 @@ finalizer taking it down under live siblings was a real defect. Suppressed by
 
   <h3 id="AAMotion_MotionController_GenerateCsvFile_AAMotion_MotionController_DataLoggerResult_System_String_" data-uid="AAMotion.MotionController.GenerateCsvFile(AAMotion.MotionController.DataLoggerResult,System.String)">
   GenerateCsvFile(DataLoggerResult, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L700"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L702"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a CSV file and saves all recorded DataLogger data.</p>
@@ -2360,7 +2581,7 @@ If a directory path is provided, a timestamped file name is generated in that di
 
   <h3 id="AAMotion_MotionController_GetAxis_AAMotion_AxisRef_" data-uid="AAMotion.MotionController.GetAxis(AAMotion.AxisRef)">
   GetAxis(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L351"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L677"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the single axis control interface for the specified axis.</p>
@@ -2399,7 +2620,7 @@ If a directory path is provided, a timestamped file name is generated in that di
 
   <h3 id="AAMotion_MotionController_GetCacheAgeMs_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.MotionController.GetCacheAgeMs(AAMotion.AxisRef,AAMotion.eKeyword)">
   GetCacheAgeMs(AxisRef, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L440"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L776"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the age of a cached value in milliseconds.</p>
@@ -2441,7 +2662,7 @@ If a directory path is provided, a timestamped file name is generated in that di
 
   <h3 id="AAMotion_MotionController_GetCiGroup_AAMotion_AxisRef_" data-uid="AAMotion.MotionController.GetCiGroup(AAMotion.AxisRef)">
   GetCiGroup(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L369"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L695"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the interface for the specified Ci group axis.</p>
@@ -2480,7 +2701,7 @@ If a directory path is provided, a timestamped file name is generated in that di
 
   <h3 id="AAMotion_MotionController_GetDataLoggerTotalDataCount_System_Int32__" data-uid="AAMotion.MotionController.GetDataLoggerTotalDataCount(System.Int32@)">
   GetDataLoggerTotalDataCount(out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L537"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L539"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the total available data count (ARecDataA[1]).</p>
@@ -2519,7 +2740,7 @@ If a directory path is provided, a timestamped file name is generated in that di
 
   <h3 id="AAMotion_MotionController_GetDataRecordingCapacity_System_Int32__System_Int32__" data-uid="AAMotion.MotionController.GetDataRecordingCapacity(System.Int32@,System.Int32@)">
   GetDataRecordingCapacity(out int, out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L472"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L473"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the maximum data recording capacity information from the controller.</p>
@@ -2566,11 +2787,12 @@ maximum RecLength per parameter = 100000 / 3 ≈ 33333 data points</p>
 
   <h3 id="AAMotion_MotionController_GetDataRecordingStatus_System_Int32__" data-uid="AAMotion.MotionController.GetDataRecordingStatus(System.Int32@)">
   GetDataRecordingStatus(out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L498"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L500"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current recording status (ARecStat[1] or ARecStat for AGD155).
-Status values: 0 = Not started, 1 = Recording, 2 = Data ready, &gt;=4 = Recording complete</p>
+A status below 4 is a recording that is not complete (armed on its trigger, or running); 4 and above is
+complete and its data can be uploaded. <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_WaitForDataRecordingToEnd_System_UInt32_">WaitForDataRecordingToEnd(uint)</a> polls on that boundary.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2609,7 +2831,7 @@ Status values: 0 = Not started, 1 = Recording, 2 = Data ready, &gt;=4 = Recordin
 
   <h3 id="AAMotion_MotionController_GetDefaultTimeout" data-uid="AAMotion.MotionController.GetDefaultTimeout">
   GetDefaultTimeout()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L624"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L968"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current default communication timeout time.</p>
@@ -2642,7 +2864,7 @@ Status values: 0 = Not started, 1 = Recording, 2 = Data ready, &gt;=4 = Recordin
 
   <h3 id="AAMotion_MotionController_GetGroup_AAMotion_AxisRef_" data-uid="AAMotion.MotionController.GetGroup(AAMotion.AxisRef)">
   GetGroup(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L363"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L689"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the interface for the specified group axis.</p>
@@ -2681,7 +2903,7 @@ Status values: 0 = Not started, 1 = Recording, 2 = Data ready, &gt;=4 = Recordin
 
   <h3 id="AAMotion_MotionController_GetIO_AAMotion_AxisRef_" data-uid="AAMotion.MotionController.GetIO(AAMotion.AxisRef)">
   GetIO(AxisRef)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L357"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L683"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the interface for the specified IO module.</p>
@@ -2720,7 +2942,7 @@ Status values: 0 = Not started, 1 = Recording, 2 = Data ready, &gt;=4 = Recordin
 
   <h3 id="AAMotion_MotionController_GetKeywordCANCode_AAMotion_eKeyword_" data-uid="AAMotion.MotionController.GetKeywordCANCode(AAMotion.eKeyword)">
   GetKeywordCANCode(eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L411"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the base CAN code for the specified keyword (without axis number and array index).
@@ -2760,7 +2982,7 @@ For example: Pos returns 2, BPos also returns 1026 (the base code for Pos).</p>
 
   <h3 id="AAMotion_MotionController_GetKeywordCANCode_AAMotion_eKeyword_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.MotionController.GetKeywordCANCode(AAMotion.eKeyword,AAMotion.AxisRef,System.Int32)">
   GetKeywordCANCode(eKeyword, AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L340"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L440"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the complete CAN code for the specified keyword + axis + optional array index.
@@ -2806,7 +3028,7 @@ Includes base code, axis offset, and array index information.</p>
 
   <h3 id="AAMotion_MotionController_GetKeywordCANCode_System_String_" data-uid="AAMotion.MotionController.GetKeywordCANCode(System.String)">
   GetKeywordCANCode(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L323"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L423"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the base CAN code for the specified keyword string (without axis number and array index).
@@ -2846,7 +3068,7 @@ For example: &quot;Pos&quot; returns 2. The input string should not contain axis
 
   <h3 id="AAMotion_MotionController_GetKeywordCANCode_System_String_AAMotion_AxisRef_System_Int32_" data-uid="AAMotion.MotionController.GetKeywordCANCode(System.String,AAMotion.AxisRef,System.Int32)">
   GetKeywordCANCode(string, AxisRef, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L357"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L457"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the complete CAN code for the specified keyword string + axis + optional array index.</p>
@@ -2891,7 +3113,7 @@ For example: &quot;Pos&quot; returns 2. The input string should not contain axis
 
   <h3 id="AAMotion_MotionController_GetParameterType_AAMotion_eKeyword_" data-uid="AAMotion.MotionController.GetParameterType(AAMotion.eKeyword)">
   GetParameterType(eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1014"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1376"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the parameter type string for a given keyword (uses cache for better performance).
@@ -2927,11 +3149,107 @@ Returns &quot;'int' 32 bit&quot;, &quot;'float' 32 bit&quot;, &quot;'double' 64 
 
 
 
+  <a id="AAMotion_MotionController_GetUserUnits_" data-uid="AAMotion.MotionController.GetUserUnits*"></a>
+
+  <h3 id="AAMotion_MotionController_GetUserUnits_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.MotionController.GetUserUnits(AAMotion.AxisRef,AAMotion.eKeyword)">
+  GetUserUnits(AxisRef, eKeyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The units <code class="paramref">keyword</code> reads and writes in on <code class="paramref">axis</code> through this
+controller: the controller's unit name and factor when Global User Units are enabled on the axis and
+the parameter is in one of its groups, otherwise an empty name and factor 1 — controller counts.
+Never null: the counts answer is the identity scaling, and it is also what an unknown keyword, an axis
+with User Units off, and a controller opted out through <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_UseUserUnits">UseUserUnits</a> return. Check
+<code>Factor == 1</code> before treating a value as counts — a scaled axis may carry no unit name.
+<code class="paramref">axis</code> names one axis; a combined mask is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UserUnitAxis GetUserUnits(AxisRef axis, eKeyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UserUnitAxis</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="AAMotion_MotionController_GetValue_" data-uid="AAMotion.MotionController.GetValue*"></a>
+
+  <h3 id="AAMotion_MotionController_GetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.MotionController.GetValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32)">
+  GetValue(AxisRef, eKeyword, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The value <code class="paramref">keyword</code> holds on <code class="paramref">axis</code>, read through the controller,
+in the units that axis reads it in — <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetUserUnits_AAMotion_AxisRef_AAMotion_eKeyword_">GetUserUnits(AxisRef, eKeyword)</a> says which, and answers counts when
+nothing scales it. <code class="paramref">index</code> 0 reads a scalar parameter; 1 and up read one element of
+an array parameter, in the parameter's own indexing — an array parameter has no reading at 0, and a
+scalar one none at 1. Keyed by keyword so a caller can read a parameter it knows only by name, rather
+than through the member that happens to expose it. <code class="paramref">axis</code> names one axis; a combined
+mask is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>, and so is a keyword the message table flags as a
+controller command — reading one would SEND it. An index the parameter does not have throws.
+A read the controller refuses, or answers with something that is not a number, is a
+<a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a>; <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryGetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Double__System_Int32_">TryGetValue(AxisRef, eKeyword, out double, int)</a> reports the same failure
+as <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetValue(AxisRef axis, eKeyword keyword, int index = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAMotion_MotionController_Init_" data-uid="AAMotion.MotionController.Init*"></a>
 
   <h3 id="AAMotion_MotionController_Init" data-uid="AAMotion.MotionController.Init">
   Init()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L602"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L946"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Opens the AACommServer.</p>
@@ -2958,7 +3276,7 @@ Returns &quot;'int' 32 bit&quot;, &quot;'float' 32 bit&quot;, &quot;'double' 64 
 
   <h3 id="AAMotion_MotionController_LoggerUpload" data-uid="AAMotion.MotionController.LoggerUpload">
   LoggerUpload()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L313"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Uploads slow logger data from the controller.</p>
@@ -2984,7 +3302,8 @@ Returns &quot;'int' 32 bit&quot;, &quot;'float' 32 bit&quot;, &quot;'double' 64 
 
 
   <h4 class="section" id="AAMotion_MotionController_LoggerUpload_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Data Format:</p>
+  <div class="markdown level1 remarks"><p><b>Raw:</b> the controller's reply text exactly as received — no float resolution and no User Units scaling. For resolved, scaled values call <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LoggerUpload_System_Object___">LoggerUpload(params object[])</a> with the specifications given to <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___">ConfigureSlowLogger(int, int, params object[])</a>.</p>
+<p>Data Format:</p>
 <p>The response string contains comma-separated integer values with the following structure:</p>
 <ul><li>First value: Number of data packets in this upload response</li><li>For each data packet (repeated):</li><li>
   <ul><li>Controller timestamp (in units of loggerGap * 16)</li><li>Parameter values (in the order configured by LoggerParams)</li></ul>
@@ -3003,11 +3322,66 @@ Returns &quot;'int' 32 bit&quot;, &quot;'float' 32 bit&quot;, &quot;'double' 64 
 
 
 
+  <a id="AAMotion_MotionController_LoggerUpload_" data-uid="AAMotion.MotionController.LoggerUpload*"></a>
+
+  <h3 id="AAMotion_MotionController_LoggerUpload_System_Object___" data-uid="AAMotion.MotionController.LoggerUpload(System.Object[])">
+  LoggerUpload(params object[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Uploads the logger data and resolves it against the parameters the caller configured — the same
+specifications <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___">ConfigureSlowLogger(int, int, params object[])</a> took, in the same order — so every value comes back
+resolved and scaled the way every other read does. AAMotion keeps no record of the configuration;
+the caller supplies it. A <code>null</code> specification is skipped, as <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___">ConfigureSlowLogger(int, int, params object[])</a>
+skips it. An error reply raises <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> and yields no packets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LoggerDataContainer LoggerUpload(params object[] parameterSpecifications)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameterSpecifications</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">LoggerDataContainer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>A specification names no parameter this controller knows — a shape
+outside the three forms, or a CAN code missing from its message list, which
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___">ConfigureSlowLogger(int, int, params object[])</a> writes unchecked. Raised through <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> first;
+nothing is sent.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>The reply does not carry one value per specification — the caller
+passed a different count than it configured — or a value cannot be decoded; also a name whose index is
+malformed (no closing <code>]</code>, a non-numeric index), from the same parser <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ConfigureSlowLogger_System_Int32_System_Int32_System_Object___">ConfigureSlowLogger(int, int, params object[])</a> uses.</p>
+</dd>
+  </dl>
+
+
+
   <a id="AAMotion_MotionController_ReadDataLoggerIncrementalData_" data-uid="AAMotion.MotionController.ReadDataLoggerIncrementalData*"></a>
 
   <h3 id="AAMotion_MotionController_ReadDataLoggerIncrementalData_System_Int32__" data-uid="AAMotion.MotionController.ReadDataLoggerIncrementalData(System.Int32@)">
   ReadDataLoggerIncrementalData(out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L572"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L574"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads incremental data from the controller (ARecDataA[3]).
@@ -3047,7 +3421,7 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadGenData_System_Int32_" data-uid="AAMotion.MotionController.ReadGenData(System.Int32)">
   ReadGenData(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L870"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1208"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads a value from the GenData array at the specified index.</p>
@@ -3068,7 +3442,7 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The value at GenData[index]. Returns 0 if the operation fails.</p>
+    <dd><p>The value at GenData[index]. A failed read throws <a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a>.</p>
 </dd>
   </dl>
 
@@ -3086,10 +3460,11 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadGenDataD_System_Int32_" data-uid="AAMotion.MotionController.ReadGenDataD(System.Int32)">
   ReadGenDataD(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L897"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1248"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Reads a value from the GenDataD array at the specified index.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3099,13 +3474,15 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Index in the GenDataD array (1-based).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The value at GenDataD[index].</p>
+</dd>
   </dl>
 
 
@@ -3115,6 +3492,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -3122,10 +3507,11 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadGenDataF_System_Int32_" data-uid="AAMotion.MotionController.ReadGenDataF(System.Int32)">
   ReadGenDataF(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L892"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1238"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Reads a value from the GenDataF array at the specified index.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3135,13 +3521,15 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Index in the GenDataF array (1-based).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
+    <dd><p>The value at GenDataF[index].</p>
+</dd>
   </dl>
 
 
@@ -3151,6 +3539,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -3158,10 +3554,11 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadUserParam_System_Int32_" data-uid="AAMotion.MotionController.ReadUserParam(System.Int32)">
   ReadUserParam(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L902"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1258"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Reads a value from the UserParam array at the specified index.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3171,13 +3568,15 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Index in the UserParam array (1-based).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>The value at UserParam[index].</p>
+</dd>
   </dl>
 
 
@@ -3187,6 +3586,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -3194,10 +3601,11 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadUserParamD_System_Int32_" data-uid="AAMotion.MotionController.ReadUserParamD(System.Int32)">
   ReadUserParamD(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L912"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1278"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Reads a value from the UserParamD array at the specified index.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3207,13 +3615,15 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Index in the UserParamD array (1-based).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The value at UserParamD[index].</p>
+</dd>
   </dl>
 
 
@@ -3223,6 +3633,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -3230,10 +3648,11 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_ReadUserParamF_System_Int32_" data-uid="AAMotion.MotionController.ReadUserParamF(System.Int32)">
   ReadUserParamF(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L907"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Reads a value from the UserParamF array at the specified index.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3243,13 +3662,15 @@ This is used for streaming data reading while recording is in progress.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>Index in the UserParamF array (1-based).</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
+    <dd><p>The value at UserParamF[index].</p>
+</dd>
   </dl>
 
 
@@ -3259,6 +3680,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -3266,7 +3695,7 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_RecordData_AAMotion_MotionController_DataLoggerConfiguration_AAMotion_MotionController_DataLoggerResult__System_Boolean_System_UInt32_" data-uid="AAMotion.MotionController.RecordData(AAMotion.MotionController.DataLoggerConfiguration,AAMotion.MotionController.DataLoggerResult@,System.Boolean,System.UInt32)">
   RecordData(DataLoggerConfiguration, out DataLoggerResult, bool, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L609"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L611"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convenience method to perform a complete recording cycle: configure, start, wait, and upload.</p>
@@ -3314,10 +3743,14 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_RefreshCacheNow" data-uid="AAMotion.MotionController.RefreshCacheNow">
   RefreshCacheNow()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L765"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Forces an immediate refresh of all cached values.</p>
+  <div class="markdown level1 summary"><p>Forces an immediate refresh of all cached values. Does nothing while another refresh is
+in flight: it neither waits for that refresh nor raises <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a>.
+An exception thrown by a <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a> or
+<a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshCompleted">RefreshCompleted</a> subscriber is reported on
+<a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshError">RefreshError</a> instead of propagating.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -3341,7 +3774,7 @@ This is used for streaming data reading while recording is in progress.</p>
 
   <h3 id="AAMotion_MotionController_RegisterCacheKeywords_AAMotion_AxisRef_AAMotion_eKeyword___" data-uid="AAMotion.MotionController.RegisterCacheKeywords(AAMotion.AxisRef,AAMotion.eKeyword[])">
   RegisterCacheKeywords(AxisRef, params eKeyword[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L421"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L753"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Registers keywords to be cached for a specific axis.
@@ -3376,6 +3809,13 @@ controller.EnableFastReadCache(10); // Enable with 10ms refresh</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>One of <code class="paramref">keywords</code> is a controller command; the refresh would send it at the
+configured interval for as long as the cache runs. Nothing is registered.</p>
+</dd>
+  </dl>
 
 
 
@@ -3383,7 +3823,7 @@ controller.EnableFastReadCache(10); // Enable with 10ms refresh</p>
 
   <h3 id="AAMotion_MotionController_SendBulkCommandString_System_String_System_String__" data-uid="AAMotion.MotionController.SendBulkCommandString(System.String,System.String@)">
   SendBulkCommandString(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L803"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1141"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sends a bulk command string to the controller.</p>
@@ -3425,7 +3865,7 @@ controller.EnableFastReadCache(10); // Enable with 10ms refresh</p>
 
   <h3 id="AAMotion_MotionController_SendCommandString_System_String_System_String__" data-uid="AAMotion.MotionController.SendCommandString(System.String,System.String@)">
   SendCommandString(string, out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L790"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sends a raw command string to the controller.</p>
@@ -3467,7 +3907,7 @@ controller.EnableFastReadCache(10); // Enable with 10ms refresh</p>
 
   <h3 id="AAMotion_MotionController_SetDefaultTimeout_System_Int32_" data-uid="AAMotion.MotionController.SetDefaultTimeout(System.Int32)">
   SetDefaultTimeout(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L612"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L956"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the default communication timeout time.</p>
@@ -3504,7 +3944,7 @@ Special operations (such as MotorOn) will still use their specific timeout times
 
   <h3 id="AAMotion_MotionController_Shutdown" data-uid="AAMotion.MotionController.Shutdown">
   Shutdown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L942"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Closes the AACommServer.</p>
@@ -3531,7 +3971,7 @@ Special operations (such as MotorOn) will still use their specific timeout times
 
   <h3 id="AAMotion_MotionController_StartDataRecording" data-uid="AAMotion.MotionController.StartDataRecording">
   StartDataRecording()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L223"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Starts data recording.
@@ -3565,7 +4005,7 @@ AGD155 and AGD155-EC require RecStart[1] command syntax (firmware v2.3+).</p>
 
   <h3 id="AAMotion_MotionController_StartUploadDataLoggerDataNonblocking_System_Action_AAMotion_MotionController_DataLoggerResult__System_Action_System_Int32__System_Action_System_String__System_Int32_" data-uid="AAMotion.MotionController.StartUploadDataLoggerDataNonblocking(System.Action{AAMotion.MotionController.DataLoggerResult},System.Action{System.Int32},System.Action{System.String},System.Int32)">
   StartUploadDataLoggerDataNonblocking(Action&lt;DataLoggerResult&gt;, Action&lt;int&gt;, Action&lt;string&gt;, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L418"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L419"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Asynchronous non-blocking upload: Uploads recorded data using the RecUploadNext protocol.
@@ -3615,7 +4055,7 @@ On completion, triggers OnUploadRecData event; On error, triggers OnError event.
 
   <h3 id="AAMotion_MotionController_StopDataRecording" data-uid="AAMotion.MotionController.StopDataRecording">
   StopDataRecording()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L261"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stops data recording.</p>
@@ -3644,11 +4084,58 @@ On completion, triggers OnUploadRecData event; On error, triggers OnError event.
 
 
 
+  <a id="AAMotion_MotionController_TryGetValue_" data-uid="AAMotion.MotionController.TryGetValue*"></a>
+
+  <h3 id="AAMotion_MotionController_TryGetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Double__System_Int32_" data-uid="AAMotion.MotionController.TryGetValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Double@,System.Int32)">
+  TryGetValue(AxisRef, eKeyword, out double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_">GetValue(AxisRef, eKeyword, int)</a> that reports whether the read succeeded instead of throwing on a
+failure. Always a controller round trip, never the FastReadCache. False — with
+<code class="paramref">value</code> 0 — when the controller replied with an error or with something that
+is not a number; <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> then names the failure and <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>
+is incremented. The argument checks are <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_">GetValue(AxisRef, eKeyword, int)</a>'s and throw the same way.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(AxisRef axis, eKeyword keyword, out double value, int index = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
+    <dd></dd>
+    <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="AAMotion_MotionController_TryReconnect_" data-uid="AAMotion.MotionController.TryReconnect*"></a>
 
   <h3 id="AAMotion_MotionController_TryReconnect_System_String_System_Boolean_" data-uid="AAMotion.MotionController.TryReconnect(System.String,System.Boolean)">
   TryReconnect(string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L662"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1006"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Attempts to reconnect to the controller if disconnected.
@@ -3692,7 +4179,7 @@ Includes retry logic with multiple attempts.</p>
 
   <h3 id="AAMotion_MotionController_UploadDataLoggerData_AAMotion_MotionController_DataLoggerResult__" data-uid="AAMotion.MotionController.UploadDataLoggerData(AAMotion.MotionController.DataLoggerResult@)">
   UploadDataLoggerData(out DataLoggerResult)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L314"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Uploads the recorded data from the controller.</p>
@@ -3731,7 +4218,7 @@ Includes retry logic with multiple attempts.</p>
 
   <h3 id="AAMotion_MotionController_UploadDataLoggerDataNonblocking_AAMotion_MotionController_DataLoggerResult__System_Action_System_Int32__System_Int32_" data-uid="AAMotion.MotionController.UploadDataLoggerDataNonblocking(AAMotion.MotionController.DataLoggerResult@,System.Action{System.Int32},System.Int32)">
   UploadDataLoggerDataNonblocking(out DataLoggerResult, Action&lt;int&gt;, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L346"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Non-blocking upload: Uploads recorded data using the RecUploadNext protocol.
@@ -3779,7 +4266,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WaitForDataRecordingToEnd_System_UInt32_" data-uid="AAMotion.MotionController.WaitForDataRecordingToEnd(System.UInt32)">
   WaitForDataRecordingToEnd(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/DataLogger.cs/#L296"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Waits for recording to complete.</p>
@@ -3818,7 +4305,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteGenData_System_Int32_System_Int32_" data-uid="AAMotion.MotionController.WriteGenData(System.Int32,System.Int32)">
   WriteGenData(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L852"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1190"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Writes a value to the GenData array at the specified index.</p>
@@ -3860,7 +4347,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteGenDataD_System_Int32_System_Double_" data-uid="AAMotion.MotionController.WriteGenDataD(System.Int32,System.Double)">
   WriteGenDataD(int, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L876"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1214"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -3898,7 +4385,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteGenDataF_System_Int32_System_Single_" data-uid="AAMotion.MotionController.WriteGenDataF(System.Int32,System.Single)">
   WriteGenDataF(int, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L872"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1210"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -3936,7 +4423,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteUserParam_System_Int32_System_Int32_" data-uid="AAMotion.MotionController.WriteUserParam(System.Int32,System.Int32)">
   WriteUserParam(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L880"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -3974,7 +4461,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteUserParamD_System_Int32_System_Double_" data-uid="AAMotion.MotionController.WriteUserParamD(System.Int32,System.Double)">
   WriteUserParamD(int, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L888"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1226"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -4012,7 +4499,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_WriteUserParamF_System_Int32_System_Single_" data-uid="AAMotion.MotionController.WriteUserParamF(System.Int32,System.Single)">
   WriteUserParamF(int, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L884"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L1222"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -4053,7 +4540,7 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
   <h3 id="AAMotion_MotionController_ErrorOccurred" data-uid="AAMotion.MotionController.ErrorOccurred">
   ErrorOccurred
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Event triggered when an error occurs.
@@ -4086,10 +4573,49 @@ Suitable for multi-controller parallel upload scenarios, greatly improving overa
 
 
 
+  <h3 id="AAMotion_MotionController_UserProgramPrintReceived" data-uid="AAMotion.MotionController.UserProgramPrintReceived">
+  UserProgramPrintReceived
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/Standard/MotionController.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raised once per formatted line from a user-program <code>printf</code> push (FW v5+, AGM800 Ethernet).
+Each <a class="xref" href="AAMotion.UserProgramPrintMessage.html">UserProgramPrintMessage</a> carries wire fields plus Console-friendly
+<a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_Timestamp">Timestamp</a> and <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_DisplayText">DisplayText</a>.
+Other push sources are ignored. Delivery is on a background thread (same as AAComm push).
+Adding the first handler while connected queries <code>ATime</code> once for the wall-clock boot;
+the same query runs on connect when a handler is already subscribed.
+A successful <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryReconnect_System_String_System_Boolean_">TryReconnect(string, bool)</a> that rebuilt the link reopens delivery and re-queries
+<code>ATime</code> when a handler is still subscribed; the already-connected short-circuit only
+reactivates delivery.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;UserProgramPrintMessage&gt; UserProgramPrintReceived</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="AAMotion.UserProgramPrintMessage.html">UserProgramPrintMessage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/SlowLogger.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -90,7 +90,7 @@
 
 
   <h1 id="AAMotion_eKeyword" data-uid="AAMotion.eKeyword" class="text-break">
-Enum eKeyword  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L24"><i class="bi bi-code-slash"></i></a>
+Enum eKeyword  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -150,6 +150,12 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>Analog input port array.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_AOutGain"><code>AOutGain = 221</code></dt>
+  
+  <dd><p>Analog output gain: a multiplier on the i-th analog output. Reported by firmware with float
+analog IO; firmware without it reports <a class="xref" href="AAMotion.eKeyword.html#AAMotion_eKeyword_AOutShifts">AOutShifts</a> at the same CAN code instead,
+which is a different parameter rather than a different name for this one.</p>
+</dd>
     <dt id="AAMotion_eKeyword_AOutMode"><code>AOutMode = 220</code></dt>
   
   <dd><p>Analog output mode.</p>
@@ -162,9 +168,13 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>Analog output port value.</p>
 </dd>
-    <dt id="AAMotion_eKeyword_AOutShifts"><code>AOutShifts = 221</code></dt>
+    <dt id="AAMotion_eKeyword_AOutShifts"><code>AOutShifts = 2221</code></dt>
   
-  <dd><p>Analog output shift bits.</p>
+  <dd><p>Analog output shift exponent: the i-th analog output is scaled by 2^value, so a negative
+value divides. Reported by firmware without float analog IO; firmware with it reports
+<a class="xref" href="AAMotion.eKeyword.html#AAMotion_eKeyword_AOutGain">AOutGain</a>, a plain multiplier, at this parameter's CAN code (221) instead.</p>
+<p>This member's number is an identifier above every CAN code a controller reports, because
+the code it would otherwise carry belongs to <a class="xref" href="AAMotion.eKeyword.html#AAMotion_eKeyword_AOutGain">AOutGain</a>. Nothing reads the number.</p>
 </dd>
     <dt id="AAMotion_eKeyword_AbsTrgt"><code>AbsTrgt = 134</code></dt>
   
@@ -242,6 +252,10 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>CNC group A acceleration.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_CNCACumPosRef"><code>CNCACumPosRef = 468</code></dt>
+  
+  <dd><p>CNC group A cumulative position reference.</p>
+</dd>
     <dt id="AAMotion_eKeyword_CNCADecel"><code>CNCADecel = 459</code></dt>
   
   <dd><p>CNC group A deceleration.</p>
@@ -257,10 +271,6 @@ velocity, current, motion status, and configuration settings.</p>
     <dt id="AAMotion_eKeyword_CNCAEncFactNu"><code>CNCAEncFactNu = 708</code></dt>
   
   <dd><p>CNC group A encoder ratio numerator.</p>
-</dd>
-    <dt id="AAMotion_eKeyword_CNCAEncRatio"><code>CNCAEncRatio = 468</code></dt>
-  
-  <dd><p>CNC group A encoder ratio.</p>
 </dd>
     <dt id="AAMotion_eKeyword_CNCAEndSegMod"><code>CNCAEndSegMod = 472</code></dt>
   
@@ -578,6 +588,14 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>Error log array. ErrLog[1]: error code, ErrLog[2]: time since power-on.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_EventAbort"><code>EventAbort = 962</code></dt>
+  
+  <dd><p>Request remote table abort; acceptance is not confirmation.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_EventAckErr"><code>EventAckErr = 963</code></dt>
+  
+  <dd><p>Explicitly acknowledge the retained event error occurrence.</p>
+</dd>
     <dt id="AAMotion_eKeyword_EventBegPos"><code>EventBegPos = 181</code></dt>
   
   <dd><p>Event begin position.</p>
@@ -590,9 +608,17 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>Event end position.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_EventError"><code>EventError = 965</code></dt>
+  
+  <dd><p>Retained event error context; reading does not acknowledge it.</p>
+</dd>
     <dt id="AAMotion_eKeyword_EventGap"><code>EventGap = 182</code></dt>
   
   <dd><p>Event gap distance.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_EventLoad"><code>EventLoad = 961</code></dt>
+  
+  <dd><p>Request asynchronous preload and stored-RAM verification.</p>
 </dd>
     <dt id="AAMotion_eKeyword_EventNextPos"><code>EventNextPos = 319</code></dt>
   
@@ -613,6 +639,10 @@ velocity, current, motion status, and configuration settings.</p>
     <dt id="AAMotion_eKeyword_EventSelect"><code>EventSelect = 317</code></dt>
   
   <dd><p>Event select bits.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_EventStatus"><code>EventStatus = 964</code></dt>
+  
+  <dd><p>Live published event-table status; coherent readers validate its generation.</p>
 </dd>
     <dt id="AAMotion_eKeyword_EventTable"><code>EventTable = 316</code></dt>
   
@@ -637,6 +667,10 @@ velocity, current, motion status, and configuration settings.</p>
     <dt id="AAMotion_eKeyword_EventTableSrc"><code>EventTableSrc = 313</code></dt>
   
   <dd><p>Event table source selection.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_EventTableWid"><code>EventTableWid = 960</code></dt>
+  
+  <dd><p>Per-entry hardware event width, using EventPulseRes units.</p>
 </dd>
     <dt id="AAMotion_eKeyword_EventType"><code>EventType = 180</code></dt>
   
@@ -694,13 +728,13 @@ velocity, current, motion status, and configuration settings.</p>
   
   <dd><p>Force reference value.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_ForceRefFOn"><code>ForceRefFOn = 579</code></dt>
+  
+  <dd><p>Force reference filter enable (0 disabled, 1 enabled).</p>
+</dd>
     <dt id="AAMotion_eKeyword_ForceRefFilt"><code>ForceRefFilt = 586</code></dt>
   
   <dd><p>Force reference filter.</p>
-</dd>
-    <dt id="AAMotion_eKeyword_ForceRelFOn"><code>ForceRelFOn = 579</code></dt>
-  
-  <dd><p>Force release enable.</p>
 </dd>
     <dt id="AAMotion_eKeyword_ForceVelFFW"><code>ForceVelFFW = 580</code></dt>
   
@@ -737,10 +771,6 @@ velocity, current, motion status, and configuration settings.</p>
     <dt id="AAMotion_eKeyword_GantryVelKi"><code>GantryVelKi = 657</code></dt>
   
   <dd><p>Gantry velocity integral gain.</p>
-</dd>
-    <dt id="AAMotion_eKeyword_GantryYawRef"><code>GantryYawRef = 651</code></dt>
-  
-  <dd><p>Gantry yaw reference.</p>
 </dd>
     <dt id="AAMotion_eKeyword_GenData"><code>GenData = 237</code></dt>
   
@@ -854,9 +884,25 @@ Index 16: Number of axes.</p>
   
   <dd><p>Motion jerk (time to reach target acceleration) in seconds.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_JerkInAcc"><code>JerkInAcc = 565</code></dt>
+  
+  <dd><p>Maximum jerk during acceleration, used by the Sine PTP planner.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_JerkInDec"><code>JerkInDec = 566</code></dt>
+  
+  <dd><p>Maximum jerk during deceleration, used by the Sine PTP planner.</p>
+</dd>
     <dt id="AAMotion_eKeyword_LimitsStat"><code>LimitsStat = 49</code></dt>
   
   <dd><p>Limit switch status bits: bit 0 = reverse limit, bit 1 = forward limit.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_LockBMapTabB"><code>LockBMapTabB = 959</code></dt>
+  
+  <dd><p>Lock table before error mapping, second half - the LockValTabB rows, each taken before the error map is applied. Only on CI-master builds (the AGM800) with CFG_CI_LOCK_FIFO=1; entries are 32-bit, like LockValTable.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_LockBMapTable"><code>LockBMapTable = 958</code></dt>
+  
+  <dd><p>Lock table before error mapping - the LockValTable rows, each taken before the error map is applied. Only on CI-master builds (the AGM800) with CFG_CI_LOCK_FIFO=1; entries are 32-bit, like LockValTable.</p>
 </dd>
     <dt id="AAMotion_eKeyword_LockCntr"><code>LockCntr = 172</code></dt>
   
@@ -870,6 +916,10 @@ Index 16: Number of axes.</p>
   
   <dd><p>Lock source input number.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_LockTimeTabB"><code>LockTimeTabB = 479</code></dt>
+  
+  <dd><p>Lock time table, second half - indexed like LockValTabB.</p>
+</dd>
     <dt id="AAMotion_eKeyword_LockTimeTable"><code>LockTimeTable = 387</code></dt>
   
   <dd><p>Lock time table array.</p>
@@ -877,6 +927,14 @@ Index 16: Number of axes.</p>
     <dt id="AAMotion_eKeyword_LockVal"><code>LockVal = 173</code></dt>
   
   <dd><p>Lock value - latest position when lock input changed.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_LockValBefMap"><code>LockValBefMap = 957</code></dt>
+  
+  <dd><p>Lock value before error mapping - the same capture as LockVal, taken before the error map is applied.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_LockValTabB"><code>LockValTabB = 478</code></dt>
+  
+  <dd><p>Lock value table, second half - LockCntr values past LockValTable's last index (its MaxArrayIndex, LOCK_TABLE_ARRAY_SIZE - 1) land here, at index LockCntr - that last index.</p>
 </dd>
     <dt id="AAMotion_eKeyword_LockValTable"><code>LockValTable = 386</code></dt>
   
@@ -1030,7 +1088,7 @@ Index 16: Number of axes.</p>
   
   <dd><p>Modulo mode revolution value for rotary axes.</p>
 </dd>
-    <dt id="AAMotion_eKeyword_ModeSwitchPos"><code>ModeSwitchPos = 483</code></dt>
+    <dt id="AAMotion_eKeyword_ModeSwitchPos"><code>ModeSwitchPos = 438</code></dt>
   
   <dd><p>Mode switch position.</p>
 </dd>
@@ -1122,6 +1180,10 @@ Index 16: Number of axes.</p>
   
   <dd><p>Position filter enable/disable.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_PosKi"><code>PosKi = 714</code></dt>
+  
+  <dd><p>Position-loop integral gain (array of control sets).</p>
+</dd>
     <dt id="AAMotion_eKeyword_PosPosFlag"><code>PosPosFlag = 328</code></dt>
   
   <dd><p>Position-to-position flag threshold.</p>
@@ -1133,6 +1195,18 @@ Index 16: Number of axes.</p>
     <dt id="AAMotion_eKeyword_PosRef"><code>PosRef = 24</code></dt>
   
   <dd><p>Position reference generated by the internal profiler in user units.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PreCruAbsTrgt"><code>PreCruAbsTrgt = 841</code></dt>
+  
+  <dd><p>Absolute target at which the cruise phase of a Sine PTP motion begins.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PreCruRelTrgt"><code>PreCruRelTrgt = 842</code></dt>
+  
+  <dd><p>Relative target at which the cruise phase of a Sine PTP motion begins.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PreCruiseSpd"><code>PreCruiseSpd = 843</code></dt>
+  
+  <dd><p>Maximum speed of the Sine PTP pre-cruise phase; 0 disables the pre-cruise phase.</p>
 </dd>
     <dt id="AAMotion_eKeyword_ProgError"><code>ProgError = 199</code></dt>
   
@@ -1190,15 +1264,15 @@ Index 16: Number of axes.</p>
   
   <dd><p>Reverse software position limit.</p>
 </dd>
-    <dt id="AAMotion_eKeyword_RptCounter"><code>RptCounter = 714</code></dt>
+    <dt id="AAMotion_eKeyword_RptCounter"><code>RptCounter = 732</code></dt>
   
   <dd><p>Repeat counter.</p>
 </dd>
-    <dt id="AAMotion_eKeyword_RptCycles"><code>RptCycles = 713</code></dt>
+    <dt id="AAMotion_eKeyword_RptCycles"><code>RptCycles = 731</code></dt>
   
   <dd><p>Repeat cycles count.</p>
 </dd>
-    <dt id="AAMotion_eKeyword_RptMode"><code>RptMode = 712</code></dt>
+    <dt id="AAMotion_eKeyword_RptMode"><code>RptMode = 730</code></dt>
   
   <dd><p>Repeat mode selection.</p>
 </dd>
@@ -1328,7 +1402,8 @@ Index 16: Number of axes.</p>
 </dd>
     <dt id="AAMotion_eKeyword_VecEncRatio"><code>VecEncRatio = 632</code></dt>
   
-  <dd><p>Vector encoder ratio.</p>
+  <dd><p>Vector encoder ratio. Reported by AGD200-class firmware; absent on an AGM800, where
+this code carries MasterFactDen instead.</p>
 </dd>
     <dt id="AAMotion_eKeyword_VecJerk"><code>VecJerk = 639</code></dt>
   
@@ -1408,8 +1483,16 @@ All values in user units per second.</p>
 
   <h2 id="AAMotion_eKeyword_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>Each keyword corresponds to a parameter on the motion controller that can be
-read or written using the AAMotion API. The keyword IDs are sequential integers
-that map to the controller's internal parameter table.</p>
+read or written using the AAMotion API.</p>
+<p>A member's NUMBER is an opaque identifier, not the controller's CAN code. A keyword is
+resolved by its member NAME against the message table the connected controller reports,
+so the number never reaches the wire. The numbers began as one product's CAN codes and
+most still match, but a code is firmware- and product-specific: an AGM800 reports
+RptCounter as 732 where an AGD200 reports 714, and one number cannot be both. Read a
+parameter's real code from the controller with MotionController.GetKeywordCANCode.</p>
+<p>Membership is not a promise either. A controller carries the parameters its firmware
+defines, so a member may name a mnemonic the connected controller does not have — reads
+and writes of it both throw ControllerCommandException.</p>
 <p>Keywords are divided into several categories:</p>
 <ul>
 <li>Position/Encoder: Pos, AuxPos, PDPos, IndexPos, etc.</li>
@@ -1425,7 +1508,7 @@ that map to the controller's internal parameter table.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L34" class="edit-link">Edit this page</a>
         </div>
 
 

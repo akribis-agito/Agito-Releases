@@ -118,6 +118,11 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAMotionAPI.SinePtpMotionConfig.html">AAMotionAPI.SinePtpMotionConfig</a></dt>
+      <dd><p>The complete kinematic parameter set of one AXM Sine PTP motion (MotionMode 20/21).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.AAMotionConfig.html">AAMotionConfig</a></dt>
       <dd><p>Global configuration class to control the behavior of AAMotion</p>
 </dd>
@@ -135,7 +140,9 @@ Classes
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray&lt;T&gt;</a></dt>
       <dd><p>Base array wrapper - provides index validation, event triggering and other basic functionality
-Used for low-level arrays (event-driven) that communicate with controller</p>
+Used for low-level arrays (event-driven) that communicate with controller.
+<a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_Value">Value</a> (on a single-valued parameter), the indexer and enumeration are controller round trips, so the debug
+view shows the slot's identity only.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -167,6 +174,10 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AGM800EC.html">AGM800EC</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.CachedParameterTypeInfo.html">CachedParameterTypeInfo</a></dt>
       <dd><p>Cached parameter type information</p>
 </dd>
@@ -174,6 +185,28 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.CommAPIInterface.html">CommAPIInterface</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+      <dd><p>A command the controller refused, or answered with a reply the SDK could not read as a value.</p>
+<p></p>
+<p>It is raised by the members that answer with the value itself and so have nowhere to report a
+failure — the typed properties, <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_GetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_">GetValue(AxisRef, eKeyword, int)</a> — where a 0 is
+indistinguishable from the controller genuinely reporting 0.
+<a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_TryRead_AAMotion_eKeyword_System_Double__">TryRead(eKeyword, out double)</a>, <a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_TryReadArray_AAMotion_eKeyword_System_Int32_System_Double__">TryReadArray(eKeyword, int, out double)</a> and
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_TryGetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Double__System_Int32_">TryGetValue(AxisRef, eKeyword, out double, int)</a> report the same failure as <code>false</code> and never
+throw. Either way the failed read is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a>
+and counted by <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+<p></p>
+<p>A typed property <b>set</b> the controller refuses raises it as well, with <a class="xref" href="AAMotion.ControllerCommandException.html#AAMotion_ControllerCommandException_Command">Command</a>
+carrying the assignment exactly as sent (<code>ASpeed=1000</code>) — a dropped write leaves the next
+read answering the old value, with nothing at the call site to say so. A failed write is
+deliberately <b>not</b> recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and not counted
+by <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>: both are the read record, by name and by their
+own contract, so a consumer reading them keeps being told about reads and nothing else. There
+is no <code>TrySet</code> — catch this, or subscribe to <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a>,
+which is raised for the refusal as before.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.DynamicArrayFactory.html">DynamicArrayFactory</a></dt>
@@ -190,6 +223,16 @@ Centralizes array wrapper creation logic for better maintainability</p>
       <dd><p>Fast read cache for high-performance data reading.
 This cache stores parameter values that are refreshed periodically (default 1ms)
 and allows instant read access without sending commands to the controller.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.HomingDefStep.html">HomingDefStep</a></dt>
+      <dd><p>One step of <a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomingDef">HomingDef</a>. The array is 20 steps of 10 slots: slot 1
+holds the step type and slots 2-10 are that type's nine parameters, whose meaning depends on
+it — a speed, an acceleration, a position offset or a timeout in current-loop samples.</p>
+<p></p>
+<a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomingDef">HomingDef</a> remains the escape hatch for a firmware step type this
+SDK does not name.
 </dd>
     </dl>
     <dl class="jumplist">
@@ -224,7 +267,10 @@ Provides high-speed data recording functionality with trigger support.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.Node.html">Node</a></dt>
-      <dd></dd>
+      <dd><p>Every value property on a node is a controller round trip, so a debugger expanding one would
+send a read per member — and with the receiver frozen for evaluation, hang on the first.
+The debug view shows identity only.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.OpticalCouplingLightFinding.html">OpticalCouplingLightFinding</a></dt>
@@ -243,14 +289,27 @@ Uses ConcurrentDictionary for thread-safe read operations</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ParameterTypeConverter.html">ParameterTypeConverter</a></dt>
-      <dd><p>Parameter type converter - handles type conversion for controller parameters</p>
+      <dd><p>Parameter type converter - handles type conversion for controller parameters.</p>
 <p>Core functionality:</p>
 <ul>
-<li>All data in controller is stored as int (32-bit)</li>
-<li>float: uses IEEE 754 encoding in int</li>
-<li>double/long: requires additional commands to get full 64-bit value</li>
-<li>Automatically detects type and converts (based on XML metadata or cache)</li>
+<li>The value slot is a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> and holds the parameter's value as the caller sees
+it, including any User Units scaling AAComm has applied to the reply</li>
+<li>Replies are read as decimal numbers and writes are rendered back with the same invariant
+wire text, so a scaled integral parameter keeps its fraction in both directions</li>
+<li>A write carries the display value whole; AAComm's transmit seam divides it by the User
+Units factor and rounds a firmware-integral parameter in controller counts, so rounding
+happens once, below the scaling, on every transport</li>
+<li>long: read with a separate command rather than from the slot; the controller's 64-bit
+parameters stay inside +/-2^51, which a double holds exactly</li>
+<li>Type detection comes from XML metadata or the cache; use <a class="xref" href="AAMotion.ParameterTypeConverter.html#AAMotion_ParameterTypeConverter_ToInt32Register_System_Double_">ToInt32Register(double)</a> for
+bit arithmetic on a register-shaped parameter</li>
 </ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ReadError.html">ReadError</a></dt>
+      <dd><p>One failed parameter read: the controller's error code (or -1 for a reply that was not
+a number), the keyword and the exact command sent, the formatted error text, and when it happened (UTC).</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -273,6 +332,14 @@ Uses ConcurrentDictionary for thread-safe read operations</p>
       <dd><p>Spiral scan result data</p>
 </dd>
     </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.UserProgramPrintMessage.html">UserProgramPrintMessage</a></dt>
+      <dd><p>One formatted message from a user-program <code>printf</code> push (FW v5+, AGM800 Ethernet).
+Wire fields (<a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_TimeSec">TimeSec</a>, <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_TimeTick">TimeTick</a>, <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_Thread">Thread</a>, <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_Message">Message</a>)
+plus Console-friendly <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_Timestamp">Timestamp</a> and <a class="xref" href="AAMotion.UserProgramPrintMessage.html#AAMotion_UserProgramPrintMessage_DisplayText">DisplayText</a> matching a
+PCSuite User Program Console row.</p>
+</dd>
+    </dl>
     <h3 id="structs">
 Structs
 </h3>
@@ -290,7 +357,13 @@ Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ICiGroupAxis.html">ICiGroupAxis</a></dt>
-      <dd></dd>
+      <dd><p>The Central-I group surface: <a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> plus the CNCB parameters and the segment
+builders that push onto the second CNC buffer.</p>
+<p></p>
+<p>Its CNC segment members take their arguments in controller counts on the same terms as
+<a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> - a raw <code>SpecialBulk</code> payload the Global User Units seam does not
+scale, so the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the contract rather than a missing retype.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ICiIOModule.html">ICiIOModule</a></dt>
@@ -306,11 +379,22 @@ Interfaces
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.IECAM.html">IECAM</a></dt>
-      <dd></dd>
+      <dd><p>The electronic-cam surface: the table registers, and the helpers that fill a table and run it.</p>
+<p></p>
+<p>Its <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> arguments are controller quantities in counts - <code>GenData</code> element
+indices, cycle counts, a master keyword code, and the table entries themselves, which the
+controller consumes as counts. Nothing on this surface converts units, so the whole-number
+signatures are the contract rather than a missing retype.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a></dt>
       <dd><p>IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>
+<p></p>
+<p>Every CNC segment member takes its arguments in controller counts. A segment is pushed as a raw
+<code>SpecialBulk</code> payload, which the Global User Units seam does not scale, so a caller converts
+from its own display units first and the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the
+contract rather than a missing retype.</p>
 </dd>
     </dl>
     <dl class="jumplist">

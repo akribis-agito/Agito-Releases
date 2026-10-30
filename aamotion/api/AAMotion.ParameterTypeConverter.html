@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ParameterTypeConverter | Agito AAMotion SDK ">
       
-      <meta name="description" content="Parameter type converter - handles type conversion for controller parameters Core functionality:  All data in controller is stored as int (32-bit) float: uses IEEE 754 encoding in int double/long: requires additional commands to get full 64-bit value Automatically detects type and converts (based on XML metadata or cache)">
+      <meta name="description" content="Parameter type converter - handles type conversion for controller parameters. Core functionality:  The value slot is a  and holds the parameter&#39;s value as the caller sees it, including any User Units scaling AAComm has applied to the reply Replies are read as decimal numbers and writes are rendered back with the same invariant wire text, so a scaled integral parameter keeps its fraction in both directions A write carries the display value whole; AAComm&#39;s transmit seam divides it by the User Units factor and rounds a firmware-integral parameter in controller counts, so rounding happens once, below the scaling, on every transport long: read with a separate command rather than from the slot; the controller&#39;s 64-bit parameters stay inside +/-2^51, which a double holds exactly Type detection comes from XML metadata or the cache; use  for bit arithmetic on a register-shaped parameter">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_ParameterTypeConverter" data-uid="AAMotion.ParameterTypeConverter" class="text-break">
-Class ParameterTypeConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L218"><i class="bi bi-code-slash"></i></a>
+Class ParameterTypeConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L227"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,13 +97,20 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
   <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Parameter type converter - handles type conversion for controller parameters</p>
+  <div class="markdown summary"><p>Parameter type converter - handles type conversion for controller parameters.</p>
 <p>Core functionality:</p>
 <ul>
-<li>All data in controller is stored as int (32-bit)</li>
-<li>float: uses IEEE 754 encoding in int</li>
-<li>double/long: requires additional commands to get full 64-bit value</li>
-<li>Automatically detects type and converts (based on XML metadata or cache)</li>
+<li>The value slot is a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> and holds the parameter's value as the caller sees
+it, including any User Units scaling AAComm has applied to the reply</li>
+<li>Replies are read as decimal numbers and writes are rendered back with the same invariant
+wire text, so a scaled integral parameter keeps its fraction in both directions</li>
+<li>A write carries the display value whole; AAComm's transmit seam divides it by the User
+Units factor and rounds a firmware-integral parameter in controller counts, so rounding
+happens once, below the scaling, on every transport</li>
+<li>long: read with a separate command rather than from the slot; the controller's 64-bit
+parameters stay inside +/-2^51, which a double holds exactly</li>
+<li>Type detection comes from XML metadata or the cache; use <a class="xref" href="AAMotion.ParameterTypeConverter.html#AAMotion_ParameterTypeConverter_ToInt32Register_System_Double_">ToInt32Register(double)</a> for
+bit arithmetic on a register-shaped parameter</li>
 </ul>
 </div>
   <div class="markdown conceptual"></div>
@@ -160,19 +167,23 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 </h2>
 
 
-  <a id="AAMotion_ParameterTypeConverter_ConvertStringToRawInt_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawInt*"></a>
+  <a id="AAMotion_ParameterTypeConverter_ConvertStringToRawValue_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawValue*"></a>
 
-  <h3 id="AAMotion_ParameterTypeConverter_ConvertStringToRawInt_AAMotion_eKeyword_System_String_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawInt(AAMotion.eKeyword,System.String)">
-  ConvertStringToRawInt(eKeyword, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L726"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_ParameterTypeConverter_ConvertStringToRawValue_AAMotion_eKeyword_System_String_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawValue(AAMotion.eKeyword,System.String)">
+  ConvertStringToRawValue(eKeyword, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L677"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Convert controller returned string to internal int representation</p>
+  <div class="markdown level1 summary"><p>Convert a controller reply to the internal value representation. Every reply is read as a
+decimal number: AAComm hands back the User-Units product of an integral parameter without
+rounding, so an integer-only parse turns a scaled reply into 0. A reply that is not a
+finite number resolves to 0 — it has no numeric meaning, and the frameworks disagree both
+on whether an overflowing literal parses at all and on what a non-finite double narrows to.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int ConvertStringToRawInt(eKeyword keyword, string value)</code></pre>
+    <pre><code class="lang-csharp hljs">public static double ConvertStringToRawValue(eKeyword keyword, string value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -185,7 +196,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -201,24 +212,25 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <a id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite*"></a>
 
-  <h3 id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite(AAMotion.eKeyword,System.Int32)">
-  ConvertValueForWrite(eKeyword, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L705"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_AAMotion_eKeyword_System_Double_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite(AAMotion.eKeyword,System.Double)">
+  ConvertValueForWrite(eKeyword, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L665"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Convert internal int value to string format for sending to controller</p>
+  <div class="markdown level1 summary"><p>Convert an internal value to the string form sent to the controller: the shortest
+invariant text that parses back to the same value, identical on every target framework.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ConvertValueForWrite(eKeyword keyword, int rawValue)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string ConvertValueForWrite(eKeyword keyword, double rawValue)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
     <dd></dd>
-    <dt><code>rawValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>rawValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -242,15 +254,17 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_GetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32)">
   GetArray(AxisRef, CommAPIInterface, eKeyword, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L628"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L580"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Read array element value (automatic type conversion)</p>
+  <div class="markdown level1 summary"><p>Read array element value (automatic type conversion).
+A keyword in <span class="xref">AAMotion.ParameterTypeConverter.CommandKeywords</span> is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>: the composed
+element read is itself the command — <code>AProgHalt[1]</code> halts user-program thread 1.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static dynamic GetArray(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword, int index)</code></pre>
+    <pre><code class="lang-csharp hljs">public static double GetArray(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword, int index)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -267,7 +281,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -285,10 +299,12 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_GetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32)">
   GetDoubleArray(AxisRef, CommAPIInterface, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L669"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L633"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Read Double array element (for GenDataD)</p>
+  <div class="markdown level1 summary"><p>Read Double array element (for GenDataD).
+A name in <span class="xref">AAMotion.ParameterTypeConverter.CommandKeywords</span> is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>: this path sends
+the composed element read outright, without consulting the keyword registry.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -321,6 +337,15 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read, or replied with
+something that is not a number. Carries its error code, the keyword and the command exactly as
+sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_LastReadError">LastReadError</a> and
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ReadFailures">ReadFailures</a>.</p>
+</dd>
+  </dl>
 
 
 
@@ -328,15 +353,17 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_GetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_" data-uid="AAMotion.ParameterTypeConverter.GetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword)">
   GetSmartValue(AxisRef, CommAPIInterface, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L464"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L429"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Read parameter value (automatically detects type and converts)</p>
+  <div class="markdown level1 summary"><p>Read parameter value (automatically detects type and converts).
+A keyword in <span class="xref">AAMotion.ParameterTypeConverter.CommandKeywords</span> is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>: reading one
+would SEND it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static dynamic GetSmartValue(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword)</code></pre>
+    <pre><code class="lang-csharp hljs">public static double GetSmartValue(AxisRef axis, CommAPIInterface commApiInterface, eKeyword keyword)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -351,7 +378,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -362,6 +389,17 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>The keyword is an int, float or double array
+parameter the SDK sizes, which has no single value; nothing is sent. Read an element instead.</p>
+</dd>
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the read. A 64-bit
+(<code>long</code>) array keyword is read unindexed, which the controller refuses with ERR 24.</p>
+</dd>
+  </dl>
 
 
 
@@ -369,7 +407,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_SetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32,System.Object)">
   SetArray(AxisRef, CommAPIInterface, eKeyword, int, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L601"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write array element value (automatic type conversion)</p>
@@ -409,7 +447,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_SetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32,System.Object)">
   SetDoubleArray(AxisRef, CommAPIInterface, string, int, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L686"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L646"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write Double array element (for GenDataD)</p>
@@ -442,6 +480,13 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the write. Carries its
+error code, the keyword and the command exactly as sent, assignment included.</p>
+</dd>
+  </dl>
 
 
 
@@ -449,7 +494,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
   <h3 id="AAMotion_ParameterTypeConverter_SetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Object)">
   SetSmartValue(AxisRef, CommAPIInterface, eKeyword, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L540"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L491"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write parameter value (automatic type conversion)</p>
@@ -480,6 +525,59 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>The keyword is an int, float or double array
+parameter the SDK sizes, which has no single value; nothing is sent. Write an element instead.</p>
+</dd>
+    <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
+    <dd><p>The controller refused the write. A 64-bit
+(<code>long</code>) array keyword is written unindexed, which the controller refuses with ERR 24.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="AAMotion_ParameterTypeConverter_ToInt32Register_" data-uid="AAMotion.ParameterTypeConverter.ToInt32Register*"></a>
+
+  <h3 id="AAMotion_ParameterTypeConverter_ToInt32Register_System_Double_" data-uid="AAMotion.ParameterTypeConverter.ToInt32Register(System.Double)">
+  ToInt32Register(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L696"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The controller's 32-bit two's-complement view of a slot value, for bit arithmetic on a
+register-shaped parameter such as a digital-output port or a status word. A value outside
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> wraps modulo 2^32 — the bits the controller itself holds — rather than
+taking the runtime's unspecified out-of-range <code>(int)</code> conversion, which saturates on
+.NET 10 and yields <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32.minvalue">MinValue</a> on .NET Framework and .NET 8. Non-finite values,
+which have no bit pattern to fold, resolve to 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ToInt32Register(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 
 
@@ -487,7 +585,7 @@ Class ParameterTypeConverter  <a class="header-action link-secondary" title="Vie
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L218" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L227" class="edit-link">Edit this page</a>
         </div>
 
 

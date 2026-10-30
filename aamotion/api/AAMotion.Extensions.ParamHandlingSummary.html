@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_Extensions_ParamHandlingSummary" data-uid="AAMotion.Extensions.ParamHandlingSummary" class="text-break">
-Class ParamHandlingSummary  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Class ParamHandlingSummary  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_Canceled" data-uid="AAMotion.Extensions.ParamHandlingSummary.Canceled">
   Canceled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>True if the operation was canceled by the caller (reserved for future use).</p>
@@ -189,7 +189,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_Checksum" data-uid="AAMotion.Extensions.ParamHandlingSummary.Checksum">
   Checksum
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>File checksum (upload only). '0' if not available.</p>
@@ -217,11 +217,44 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
 
 
+  <a id="AAMotion_Extensions_ParamHandlingSummary_Conversions_" data-uid="AAMotion.Extensions.ParamHandlingSummary.Conversions*"></a>
+
+  <h3 id="AAMotion_Extensions_ParamHandlingSummary_Conversions" data-uid="AAMotion.Extensions.ParamHandlingSummary.Conversions">
+  Conversions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Every download row whose value was rewritten before sending, as read and as sent (download only).
+Empty when none was.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;ParamConversion&gt; Conversions { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAMotion.Extensions.ParamConversion.html">ParamConversion</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAMotion_Extensions_ParamHandlingSummary_ElapsedSeconds_" data-uid="AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds*"></a>
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_ElapsedSeconds" data-uid="AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds">
   ElapsedSeconds
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wall-clock time of the entire handling, in seconds.</p>
@@ -253,7 +286,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_ErrorCount" data-uid="AAMotion.Extensions.ParamHandlingSummary.ErrorCount">
   ErrorCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of parameters that produced an error reply.</p>
@@ -285,7 +318,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_FPGAVersion" data-uid="AAMotion.Extensions.ParamHandlingSummary.FPGAVersion">
   FPGAVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Controller FPGA version string (upload only).</p>
@@ -317,7 +350,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_FirmwareVersion" data-uid="AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion">
   FirmwareVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Controller firmware version string (upload only).</p>
@@ -349,7 +382,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_ProductType" data-uid="AAMotion.Extensions.ParamHandlingSummary.ProductType">
   ProductType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Controller product type ID, as reported by <span class="xref">AAComm.Services.ControllerIdentityContainer.ProductType</span>.</p>
@@ -377,14 +410,53 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
 
 
+  <a id="AAMotion_Extensions_ParamHandlingSummary_Rejections_" data-uid="AAMotion.Extensions.ParamHandlingSummary.Rejections*"></a>
+
+  <h3 id="AAMotion_Extensions_ParamHandlingSummary_Rejections" data-uid="AAMotion.Extensions.ParamHandlingSummary.Rejections">
+  Rejections
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Every entry that was skipped or whose reply was classified as an error. Empty when there were none.</p>
+<p></p>
+<p>On a download the first <a class="xref" href="AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_SkippedCount">SkippedCount</a> entries are the skipped rows, each answered by
+a <code>PC Suite: ERR</code> reason in the controller's place, because they are all added before
+anything is sent; the entries after them are controller replies, in send order.</p>
+<p></p>
+<p>Not every one reached the controller: a client-side gate (User Units configuration, say)
+refuses some before the wire and answers in the controller's place.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;ParamRejection&gt; Rejections { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="AAMotion.Extensions.ParamRejection.html">ParamRejection</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAMotion_Extensions_ParamHandlingSummary_SkippedCount_" data-uid="AAMotion.Extensions.ParamHandlingSummary.SkippedCount*"></a>
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_SkippedCount" data-uid="AAMotion.Extensions.ParamHandlingSummary.SkippedCount">
   SkippedCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Parameters that were skipped (download only, e.g. unsupported by connected controller).</p>
+  <div class="markdown level1 summary"><p>Parameters that were skipped (download only: lines the reader dropped, entries the connected controller does not support, and withheld rows). Each one is named in <a class="xref" href="AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Rejections">Rejections</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -413,7 +485,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_SuccessCount" data-uid="AAMotion.Extensions.ParamHandlingSummary.SuccessCount">
   SuccessCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of parameters processed without error.</p>
@@ -445,7 +517,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 
   <h3 id="AAMotion_Extensions_ParamHandlingSummary_TotalCount" data-uid="AAMotion.Extensions.ParamHandlingSummary.TotalCount">
   TotalCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Total number of parameters processed (or attempted).</p>
@@ -477,7 +549,7 @@ Class ParamHandlingSummary  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/AAMotionParametersHandler.cs/#L20" class="edit-link">Edit this page</a>
         </div>
 
 

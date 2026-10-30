@@ -77,8 +77,137 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr>
-<h2 id="1100---2026-08-26">[11.0.0] - 2026-08-26</h2>
+<h2 id="1200---2026-10-30">[12.0.0] - 2026-10-30</h2>
 <h3 id="-breaking">⚠️ Breaking</h3>
+<ul>
+<li>The 11.0.0 → 12.0.0 upgrade page walks the whole release for a consumer — every break with the diagnostic it raises, the changes that raise none, and compiled before/after samples. It is published with the 12.0.0 release as <a href="https://github.com/akribis-agito/Agito-Releases/releases/download/Software/AAMotion/v12.0.0/aamotion-12-change-disclosure.html"><code>aamotion-12-change-disclosure.html</code></a>; download and open it in a browser, as GitHub serves an <code>.html</code> release asset as a file rather than rendering it.</li>
+<li>Requires <code>Agito.AAComm</code> 15.x (see its changelog for the breaking communication-layer changes: the <code>IIdentityContainer</code> member, <code>MessagesInBulk</code> on a Simulation channel, the <code>AllStatInterpreter</code> input contract).</li>
+<li>The <code>AssemblyVersion</code> is pinned to <code>12.0.0.0</code> for the whole 12.x line (package and file version keep the full number). <strong>.NET Framework consumers must recompile</strong> against 12.0.0 — a binary built against <code>11.0.0.0</code> does not bind, and no binding redirect bridges the identity change. .NET 8/10 consumers see no difference.</li>
+<li><strong>A type of yours that implements one of the seven retyped interfaces</strong> — <code>ISingleAxis</code>, <code>IVector</code>, <code>IIOModule</code>, <code>IECAM</code>, <code>IGroupAxis</code>, <code>ICiGroupAxis</code> or <code>ICiSlave</code>; a wrapper, an adapter, a test double — no longer satisfies it until every affected member carries the new type: 73 members lose <code>dynamic</code>, 59 properties move from <code>int</code> to <code>double</code>, 56 array members move from <code>AAValueArray&lt;int&gt;</code> to <code>AAValueArray&lt;double&gt;</code>, the four gantry gains become per-set <code>AAValueArray&lt;double&gt;</code> members and 34 methods widen their parameters — 226 members, none of them counted twice. The compiler reports each unsatisfied member at the class declaration, so this surfaces as one wall of errors on that type rather than at call sites.</li>
+<li>Parameter values are now carried as <strong><code>double</code></strong> end to end. Every array property that was <code>AAValueArray&lt;int&gt;</code> — <code>Identity</code>, <code>GenData</code>, <code>ErrLog</code>, <code>DInMode</code>, <code>HomingDef</code>, <code>LoggerParams</code>, <code>LoggerStatus</code>, <code>EventTable</code> and the rest, on <code>ISingleAxis</code>, <code>IIOModule</code>, <code>IGroupAxis</code>, <code>IVector</code>, <code>IECAM</code>, <code>ICiSlave</code>, <code>ICiGroupAxis</code> and <code>MotionController</code> — is now <code>AAValueArray&lt;double&gt;</code>, and yields the parameter's exact value instead of a rounded <code>int</code>. Assigning an element into an <code>int</code> needs an explicit cast.</li>
+<li><strong><code>dynamic</code> is gone from the AAMotion surface.</strong> Every <code>dynamic</code> member is now statically typed: the value properties (<code>Pos</code>, <code>AuxPos</code>, <code>PosRef</code>, <code>Speed</code>, <code>Accel</code>, <code>Decel</code>, <code>MaxVel</code>, <code>MaxAcc</code>, <code>Force</code>, <code>MotorCurr</code>, <code>ContCL</code>, <code>Ia</code>…<code>Vq</code>, the <code>Vec*</code> members on <code>IVector</code>, …) are <strong><code>double</code></strong>; the array-valued ones (<code>ISingleAxis.Vel</code>, <code>ISingleAxis.AInGain</code>, and <code>IIOModule.AInPort</code> / <code>AInFilt</code> / <code>AInOffSet</code> / <code>AInDB</code> / <code>AInGain</code>) are <strong><code>AADynamicValueArray</code></strong>; <code>MotionController.GenDataD</code> is <strong><code>AADoubleArray</code></strong>. Code that relied on late binding — calling a member the static type does not have, or letting a <code>dynamic</code> convert silently to <code>int</code> — no longer compiles, and a narrowing conversion now needs an explicit <code>(int)</code>. In exchange the members are IntelliSense-visible and bind at compile time.</li>
+<li><strong>Quantity-carrying properties are <code>double</code>; modes, indices, counts, bitmasks and millisecond durations keep their integer type (<code>int</code>, or <code>uint</code> for the homing timeouts).</strong> The properties that moved from <code>int</code> to <code>double</code> are the positions and distances (<code>MasterPos</code>, <code>PosErr</code>, <code>RelTrgt</code>, <code>MaxPosErr</code>, <code>InTargetTol</code>, <code>LockVal</code>, <code>ModRev</code>, <code>AuxModRev</code>, <code>ComtAng</code>, <code>EventNextPos</code>, <code>EventBegPos</code>, <code>EventEndPos</code>, <code>EventGap</code>, <code>SpeedChgPos</code>, <code>CurrPosTh</code>, <code>CurrPosErrTh</code>, <code>PosPosTh</code>, <code>ForcePosErrTh</code>, <code>RetractTarget</code>, <code>MapErrOffset</code>, <code>MapErrOffRamp</code>, <code>MapErrOnStep</code>, <code>CNCAPosRef</code>, <code>CNCAdPosRef</code>, <code>CNCBAbsTrgt</code>, <code>CNCBPosRef</code>, <code>CNCBdPosRef</code>), the velocities and profile magnitudes (<code>StuckVel</code>, <code>SpeedChgNew</code>, <code>RetractSpeed</code>, <code>CNCASpeed</code>, <code>CNCBSpeed</code>, <code>CNCBEndSpeed</code>, <code>CNCBAccel</code>, <code>CNCBDecel</code>, <code>CNCBJerk</code>, <code>CNCAEmrgDec</code>, <code>CNCBEmrgDec</code>), the gains and force parameters (<code>ForceGain</code>, <code>ForceKi</code>, <code>ForceKd</code>, <code>ForceFFW</code>, <code>ForceVelFFW</code>, <code>ForceRefFilt</code>, <code>MaxForceErr</code>, <code>MaxForceErrOL</code>, <code>ForceAInTh</code>, <code>CurrCurrTh</code>, <code>CurrAInTh</code>), and the voltages and temperatures (<code>VBus</code>, <code>VLogic</code>, <code>MinVBus</code>, <code>MaxVBus</code>, <code>MaxVBusAbs</code>, <code>RegenOn</code>, <code>RegenOff</code>, <code>BoardTemp</code>, <code>PwrTemp</code>, <code>MotorTemp</code>, <code>MaxPwrTemp</code>). A caller that stored one in an <code>int</code> must widen it or add a cast; one reading a scaled User-Units axis now receives the fractional value instead of a truncated one. Status, mode and configuration properties (<code>MotionStat</code>, <code>StatReg</code>, <code>ConFlt</code>, <code>LimitsStat</code>, <code>MotorOn</code>, <code>MotorType</code>, <code>EncType</code>, <code>EncRes</code>, <code>EncDir</code>, <code>UsrUnits</code>, <code>EmulRat</code>, <code>ProtectMask</code>, <code>InTargetTime</code>, <code>StuckTime</code>, <code>RptWait</code>, <code>MaxVBusTime</code>, <code>PeakTime</code>, <code>MaxPWM</code>, and the <code>*Flag</code> / <code>*Dir</code> / <code>*Src</code> / <code>*Type</code> / <code>*Stat</code> / table-index members) keep <code>int</code>. The four gantry gains (<code>GantryAccFFW</code>, <code>GantryPosGain</code>, <code>GantryVelGain</code>, <code>GantryVelKi</code>) move from <code>int</code> to a per-set <code>AAValueArray&lt;double&gt;</code> instead; see the next entry.</li>
+<li><strong><code>ISingleAxis.GantryAccFFW</code>, <code>GantryPosGain</code>, <code>GantryVelGain</code> and <code>GantryVelKi</code> are per-set <code>AAValueArray&lt;double&gt;</code> members, get-only.</strong> On firmware with gain scheduling — the AGM800 — each gain holds one value per gain-scheduling set, and the controller lists it as an array of five: read or write set <code>n</code> as <code>axis.GantryPosGain[n]</code>, <code>n</code> from 1 to 5. There the member's <code>.Value</code> raises <code>InvalidOperationException</code>, as on every array member. On the AGD200 and AGD155-EC the gain is a scalar: read and write it through <code>.Value</code>. As <code>int</code> properties they sent the unindexed mnemonic, which the AGM800 refuses (ERR 24), so no set could be read or written there. Reading one into a number no longer compiles (CS0029), nor does assigning to the member (CS0200); an implementer of <code>ISingleAxis</code> must declare the four the same way. <code>GantryVelGain</code> and <code>GantryVelKi</code> are the velocity loop's proportional and integral gains; their documentation named the position loop.</li>
+<li><strong>The single-axis motion, homing, vector, PEG and force-control methods take <code>double</code>.</strong> <code>MoveAbs</code>, <code>MoveRel</code> and their <code>AndWait</code> / <code>Repetitive</code> / <code>RepetitiveCycle</code> / <code>TwoSpeed</code> variants, <code>Jog</code>, <code>SetPosition</code>, <code>Home</code>, <code>HomeToHardStop</code>, <code>HomeToIndex</code>, <code>HomeToLimitThenIndex</code>, <code>HomeToHardStopThenIndex</code>, <code>SetSingleEventPEG</code>, <code>SetEventFixedGapPEG</code>, <code>SetEventTableValue</code>, the <code>ForceCurr_Set*</code> family and <code>IVector</code>'s <code>VectorLinear</code> / <code>VectorArc</code> / <code>SetVectorParam</code> carry their position, distance, speed, acceleration, deceleration, threshold, offset, arc-centre and gain arguments as <code>double</code> / <code>double?</code> — including the ones that were <code>uint</code> on the homing methods — and <code>ForceCurr_SetForceCmdSource</code> takes <code>double[]</code> for <code>forceCurrSlope</code> and <code>forceCmdVal</code>, <code>VectorLinear</code> <code>params double[] pos</code>. Millisecond timeouts and dwell times keep their integer type (<code>uint</code> for the homing timeouts, <code>int</code> elsewhere); cycle counts, directions, sources, polarities, table indices, command hold times and the vector smoothing factor (<code>VecJerk</code>) stay <code>int</code>. <code>VecAccel</code> / <code>VecDecel</code> / <code>VecEmrgDec</code> are float registers, so <code>SetVectorParam(…, 1234.5, …)</code> used to truncate on every controller, User Units or not. The same signatures change on <code>AAMotionAPI</code> and on the Java binding. Passing an <code>int</code> literal still compiles; passing an <code>int?</code> variable still compiles too (the nullable conversion lifts); an <code>int[]</code> into a widened <code>double[]</code> parameter does not — declare it <code>double[]</code>. The <code>IGroupAxis</code> / <code>ICiGroupAxis</code> CNC path builders and the <code>IECAM</code> table helpers are deliberately unchanged: their arguments are controller counts, unaffected by Global User Units — a CNC segment crosses as a raw <code>SpecialBulk</code> payload the scaling seam leaves alone, and an ECAM table is filled with the counts the controller consumes — not display values.</li>
+<li><code>ISingleAxis.MoveAbs(dynamic position, dynamic speed = null, …)</code> is now <code>MoveAbs(double position, double? speed = null, double? accel = null, double? decel = null)</code>. The optional-argument call shape is unchanged: nullable value types replace the <code>dynamic</code> nulls rather than an overload set.</li>
+<li>The multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> overloads take <code>double accel, double speed, double decel</code> and <code>double[]</code> targets (<code>double aPos, double bPos, …</code> on the fixed-arity overloads). An <code>int[]</code> target array no longer binds — declare it <code>double[]</code>.</li>
+<li><code>ParameterTypeConverter.GetSmartValue</code> and <code>GetArray</code> return <code>double</code> instead of <code>dynamic</code>, and <code>AASmartArrayWrapper</code>'s indexer returns <code>double</code>. A 64-bit (<code>long</code>) parameter is still read with its own command rather than from the value slot; the controller's <code>long</code> parameters stay inside ±2^51, which a <code>double</code> holds exactly.</li>
+<li><code>AAMotionConfig.UseNativeDataTypes</code> is <strong>removed</strong>. It chose between a rounded <code>int</code> view and a native-type view of float/double/long parameters; the value now always arrives at full precision, so the switch has nothing left to select. Delete the assignment.</li>
+<li><code>ParameterTypeConverter.ConvertStringToRawInt(eKeyword, string)</code> is renamed <strong><code>ConvertStringToRawValue</code></strong> and returns <code>double</code>; <code>ConvertValueForWrite(eKeyword, int)</code> now takes a <code>double</code>.</li>
+<li><code>FastReadCache.GetCachedValue</code> / <code>GetCachedArrayValue</code> return <code>double?</code> instead of <code>int?</code>.</li>
+<li><strong>A multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> across axes whose Global User Units differ now returns <code>false</code> and commands nothing.</strong> These overloads apply one <code>speed</code> and one <code>accel</code> to the vector distance over every axis, so the axes have to measure the same quantity: each must carry the same unit <em>name</em> in the position, velocity and acceleration groups. <code>sqrt(dA² + dB²)</code> over a radian and a centimetre is not a length, and the single <code>speed</code> the caller passes has no unit to give it — so instead of norming incommensurable deltas and running the move, the call is refused before any parameter is read from or written to the controller, and the reason arrives on <code>MotionController.ErrorOccurred</code> as <code>(-1, &quot;&lt;method&gt;&quot;, &lt;message naming the axes and the group&gt;)</code>. Different scaling <em>factors</em> under the same unit name still match, so two encoder resolutions on one gantry are unaffected; an axis with User Units switched off is on controller counts and does not match a scaled axis. Each axis's units come from the axis itself, so passing <code>null</code> as the controller does not opt out — the call still returns <code>false</code>, only the error event is lost — and the axes must be the SDK's own (<code>GetAxis</code> / <code>AxisList</code>): a consumer's own <code>ISingleAxis</code> wrapper or mock carries no axis identity, so its units cannot be checked and the call is refused. Check an axis with <code>CommAPI.GetUserUnitsEnabled(axis)</code> and <code>CommAPI.MessagesContainer.TryGetUserUnitsGroup(group)?.AxisUnits(axis)</code>, or set <code>MotionController.UseUserUnits = false</code> to put every axis back on counts — which always matches and restores the counts-based behaviour. A machine with no Global User Units armed is unaffected.</li>
+<li><strong>A vector move across axes whose Global User Units differ now returns <code>false</code> and commands nothing.</strong> <code>IVector.VectorLinear</code> (both overloads) and <code>VectorArc</code> — and their <code>AAMotionAPI</code> equivalents — apply one <code>VecSpeed</code>/<code>VecAccel</code>/<code>VecDecel</code> across the whole move while each axis's <code>AbsTrgt</code>, and for an arc its <code>VecArcCenter</code>, is in that axis's own units. That only means something if the axes measure the same quantity, so the same rule the multi-axis <code>MoveAbs</code>/<code>MoveRel</code> overloads apply now covers the vector surface: every axis must carry the same unit <em>name</em> in the position, velocity and acceleration groups, different scaling factors under one name still match, and an axis with User Units off is on counts and does not match a scaled one. A mismatch is refused before any parameter is read from or written to the controller, and reported on <code>MotionController.ErrorOccurred</code> as <code>(-1, &quot;&lt;method&gt;&quot;, &lt;message naming the axes and the group&gt;)</code>. The profile slots are written to the axis the call was made on, which is one of the members, so it is checked as one. Set <code>MotionController.UseUserUnits = false</code> to put every axis back on counts, which always matches. A machine with no Global User Units armed is unaffected.</li>
+<li><code>ISingleAxis.GantryYawRef</code> and the <code>eKeyword.GantryYawRef</code> member are <strong>removed</strong>. Controller firmware deprecated the <code>GantryYawRef</code> keyword on 2023-11-30; every supported (post-deprecation) firmware rejects it, so the property fails against current controllers. There is no replacement — delete the calls. The sibling gantry parameters <code>GantryFdbk</code> and <code>GantryOffset</code> are unaffected.</li>
+<li><strong><code>ISingleAxis.ForceRelFOn</code> / <code>eKeyword.ForceRelFOn</code> are renamed <code>ForceRefFOn</code>.</strong> The controller's mnemonic is <code>ForceRefFOn</code> (CAN 579); the misspelled members never resolved in the message table, so every read returned 0 and every write was rejected. Rename the call sites; the C-ABI constant becomes <code>AAMOTION_KEYWORD_FORCE_REF_FON</code>.</li>
+<li><strong><code>IIOModule.AOutGain</code> is added beside <code>IIOModule.AOutShifts</code>, which is unchanged.</strong> They are two different parameters that share CAN 221 across firmware generations, not one parameter under two names. <code>AOutShifts</code> is an integer shift exponent — the output is scaled by 2^value — and is what firmware without float analog IO reports. <code>AOutGain</code> is a plain multiplier and is what firmware with it reports. So 2 means x4 on one and x2 on the other, and they are not interchangeable. Each resolves only on the firmware that carries it; on the other, reading or writing an output — <code>AOutGain[i]</code> with <code>i</code> from 1, on firmware that reports <code>AOutShifts</code>, or the reverse — raises <code>IndexOutOfRangeException</code> before anything is sent. PCSuite makes the same distinction, editing one as an integer and the other as a float.</li>
+<li><strong><code>IGroupAxis.CNCAEncRatio</code> / <code>eKeyword.CNCAEncRatio</code> are replaced by read-only <code>CNCACumPosRef</code> (<code>double</code>).</strong> CAN 468 is the controller's <code>CNCACumPosRef</code>, not an encoder ratio. The C-ABI constant becomes <code>AAMOTION_KEYWORD_CNCACUM_POS_REF</code>.</li>
+<li><strong><code>MotionStat</code> and <code>StatReg</code> are <code>[Flags]</code> enums, and <code>ISingleAxis.MotionStatEnum</code> / <code>StatRegEnum</code> return the whole register as a bit set.</strong> Every member is now the bit it names (<code>1 &lt;&lt; n</code>; a <code>None = 0</code> member is added), and a mirror reports every set bit — an unmapped one included — instead of the one member whose index happened to equal the register value, which mislabelled any multi-bit register (bits 1 and 2 read as the member numbered 6) and turned an unmatched value into <code>InMotion</code> / <code>Commutation</code>. Test a bit with a mask (<code>(axis.MotionStatEnum &amp; MotionStat.Accelerating) != 0</code>), not with <code>==</code>; code that used a member's numeric value as a bit index must use the member as the mask it now is. <code>StatReg.StepperOpenLoopStall</code> is bit 31, <code>int.MinValue</code> as an <code>int</code>. <code>EnumPropertyHelper.GetStatRegDes(0)</code> describes an empty register as &quot;No status bits set&quot; instead of &quot;Commutation&quot;, bit 0's own label.</li>
+<li><code>AAMotionAPI.ConnectSimulator</code>, <code>MotionController.ConnectSimulator</code> and <code>CommAPIInterface.ConnectSimulator</code> (both overloads of each) are <strong>removed</strong>, together with the <code>AllowSim</code> and <code>SimParamsFile</code> user settings of AACommServer. They belonged to the file-based parameter-echo simulator that was deleted from AACommServer in June 2026; since then no shipped server could accept the connection, so every call returned <code>false</code>. Delete the calls. The managed firmware simulation (<code>ChannelType.Simulation</code>) is the replacement, and <code>ConnectSimulation</code> — added in this release, see <strong>Added</strong> below — is its entry point.</li>
+<li><strong><code>OpticalCouplingLightFinding.SpiralDir</code> and <code>SpiralConfig.SpiralDir</code> are removed.</strong> They wrote <code>AGenData[525]</code>, a spiral-direction slot the controller's light-finding process no longer defines — writing it left a value on a slot the firmware may later reuse for something else, and the direction it claimed to select had no effect. There is no replacement: delete the assignment, and drop the field from any <code>SpiralConfig</code> initializer. Every other spiral parameter (<code>NumOfXAxis</code>, <code>NumOfYAxis</code>, <code>SpiralPitch</code>, <code>SpiralMaxRadius</code>, <code>SpiralAngleCoeff</code>, <code>SpiralScanSpeed</code>, <code>SpiralRtnSpeed</code>, <code>PowerTh</code>) is unchanged.</li>
+<li><code>SingleAxisConfig</code> carries <code>FlatZoneDecay</code>, <code>OptimalCoeff</code> and <code>FiberArrayWidth</code>, and <code>ApplySingleAxisConfig</code> applies them — <code>AGenData[509]</code>, <code>[508]</code> and <code>[506]</code>, the flat-zone return gradient, the peak-versus-balance weighting and the fiber-array width. They are single-axis process parameters, so a config that leaves them at their default <code>0</code> now writes three zeros where it previously wrote nothing, which turns flat-zone return mode off rather than leaving whatever a previous run set. A caller that assigned the properties directly after applying a config should move the values into the config instead. The properties themselves are unchanged.</li>
+<li><strong>No compile error — the call now throws.</strong> <code>HomeToIndex</code>, <code>HomeToLimitThenIndex</code> and <code>HomeToHardStopThenIndex</code> validate their profile arguments before arming anything: a speed, acceleration or hard-stop threshold that is not a finite positive number, or a <code>direction</code> other than <code>1</code> or <code>-1</code>, raises <code>ArgumentOutOfRangeException</code> naming the argument, and no <code>HomingDef</code> slot is written. These arguments were <code>uint</code> before the <code>double</code> retype, so the type carried the non-negativity the docs state. Such a call used to return as if it had succeeded — the firmware silently rejected the out-of-range slot (its acceleration floor is 100.0 counts/s²) and the sequence ran on whatever profile the slots already held.</li>
+<li><strong>No compile error — a multi-axis call now writes nothing.</strong> <code>WriteUserParam</code>, <code>UserParamWait</code>, <code>MultiWriteUserParam</code> and <code>MultiWriteUserParamWait</code> refuse an <code>AxisRef</code> that does not name exactly one axis A..L: the call returns <code>false</code> and raises <code>ErrorOccurred</code>, and nothing is pushed. The segment's axis field is the port index the controller subscripts <code>UserParam[]</code> with, so a multi-axis mask composed a fractional field that no wire could carry. A single-axis call composes the same segment as before, with the index now an integer field.</li>
+<li><strong>No compile error — the same number now means a different duration.</strong> Homing timeouts are applied in <strong>milliseconds</strong>, the unit the API documents. <code>Home</code>, <code>HomeToHardStop</code>, <code>HomeToIndex</code>, <code>HomeToLimitThenIndex</code> and <code>HomeToHardStopThenIndex</code> wrote the <code>HomingDef</code> timeout slots as <code>sampleRate * timeout</code>, which treats the value as seconds — a documented 15000 ms timeout became 15000 s, so a stuck homing step effectively never gave up. The slots now carry <code>round(timeout / 1000 * sampleRate)</code> samples, the same conversion the PCSuite homing tool applies. A caller that compensated by passing seconds must switch to milliseconds.</li>
+<li><strong>An <code>eKeyword</code> member's number is an opaque identifier, not the controller's CAN code.</strong> It always was in practice — a keyword is resolved by its member <em>name</em> against the message table the connected controller reports, so the number never reaches the wire — but the enum documented the numbers as CAN codes and a few had drifted from any real one. A code is also product- and firmware-specific, which no single number can express: measured on three controllers, an AGM800 reports <code>RptCounter</code> as <strong>732</strong> where an AGD200 reports <strong>714</strong>, and they agree on all 303 parameters they share. <code>ModeSwitchPos</code> moves to <strong>438</strong> and the <code>RptMode</code> / <code>RptCycles</code> / <code>RptCounter</code> trio to <strong>730</strong> / <strong>731</strong> / <strong>732</strong>, the values the current AGM800 firmware uses, and <code>PosKi</code> is added at <strong>714</strong>. <code>AOutShifts</code> moves to <strong>2221</strong>, because <strong>221</strong> now names <code>AOutGain</code>, so a stored <code>(eKeyword)221</code> means <code>AOutGain</code>. Managed behaviour is unchanged by all of this. A C consumer that stored the old numbers should recompile; one that treated a constant as a CAN code should read the real one from the controller with <code>MotionController.GetKeywordCANCode</code>.</li>
+<li><strong><code>MotionController.ProgHaltAll</code> is removed.</strong> It exposed a controller <em>command</em> as a readable property, and reading one sends it — touching <code>controller.ProgHaltAll.Value</code> halted every active user program thread instead of reporting a number. <code>ISingleAxis.ProgHaltAll()</code> is the method that has always meant to do that, and it stays.</li>
+<li><strong><code>MotionController.IsConnected</code> (and <code>AAMotionAPI.IsConnected</code>) no longer pings or reconnects.</strong> The getter used to actively probe the controller via ICMP on every read and, when auto-reconnect was armed, disconnect and reconnect the link on a failed probe — a property read could block for up to ~19 s, and a debugger watch window or a WPF binding could disconnect a healthy controller just by evaluating it. The getter is now a cheap, non-blocking read of the comm layer's own logical connection state. Call the new <code>MotionController.CheckConnection()</code> / <code>AAMotionAPI.CheckConnection(controller)</code> to actively probe reachability, and <code>TryReconnect</code> to recover a link that is actually down. <code>enableAutoReconnect</code> (<code>Connect</code>'s parameter, <code>AutoReconnectEnabled</code>) is recorded but no longer has any automatic effect.</li>
+<li><strong>A typed read that fails now throws <code>ControllerCommandException</code> instead of answering <code>0</code>.</strong> A parameter read through a typed property, through one of the <code>Is*</code> status helpers built on them, or through <code>MotionController.GetValue</code>, used to answer <code>0</code> when the controller refused the read or replied with something that is not a number — indistinguishable from the controller genuinely reporting <code>0</code>, which is what a position, a velocity and a status word all report at rest. The exception carries the controller's own error code, the keyword and the exact command text. <strong>No signature changes, so the compiler reports nothing</strong>: a poll loop that read a status property over a dead link used to spin on an invented <code>0</code> and now leaves the loop at the first failed read. <code>ISingleAxis.TryRead</code>, <code>ISingleAxis.TryReadArray</code> and <code>MotionController.TryGetValue</code> are unchanged — they report the same failure as <code>false</code> and never throw — and <code>LastReadError</code> and <code>ReadFailures</code> record the failure on both routes, throwing and reporting alike. An <code>AADoubleArray</code> element read, such as <code>MotionController.GenDataD[i]</code>, a direct <code>ParameterTypeConverter.GetDoubleArray</code> call, and the raw register reads <code>ReadGenDataF</code>, <code>ReadGenDataD</code>, <code>ReadUserParam</code>, <code>ReadUserParamF</code> and <code>ReadUserParamD</code> on <code>MotionController</code> and <code>AAMotionAPI</code> follow the same contract; they used to raise <code>InvalidOperationException</code> or <code>FormatException</code>, record nothing, and hand back a <code>NaN</code> or infinite reply as a value. <strong>A consumer catching <code>InvalidOperationException</code> around a <code>GenDataD[i]</code> or other <code>AADoubleArray</code> element read, <code>FormatException</code> / <code>InvalidOperationException</code> around a <code>ParameterTypeConverter.GetDoubleArray</code> call, or <code>FormatException</code> around one of those five register reads, must catch <code>ControllerCommandException</code> instead.</strong> Nothing new crosses the C ABI: every export already turns a managed throw into its failure status, so <code>aamotion_get_value</code> now reports <code>false</code> for a reply that is not a number where it used to hand back <code>0</code> as if it had been read.</li>
+<li><strong>A typed set the controller refuses now throws <code>ControllerCommandException</code> instead of doing nothing.</strong> Assigning to a typed property — <code>axis.Speed = 1000</code>, <code>axis.AbsTrgt</code>, <code>axis.Vel[1]</code>, <code>controller.GenData[3]</code> — used to discard the controller's answer, so a refused write left the parameter holding its old value with nothing at the call site to say so, and only a subscriber to <code>ErrorOccurred</code> ever heard about it. The exception carries the controller's own error code, the keyword, and the exact command text <strong>including the assignment</strong> (<code>ASpeed=1000</code>), so the failure names the value that did not take. <strong>No signature changes, so the compiler reports nothing.</strong> The consequence to plan for is that a call which writes several parameters before it commands anything — <code>MoveAbs</code>, <code>MoveRel</code>, <code>ConfigureSlowLogger</code> — now stops at the first refusal instead of running to the end, so an axis no longer begins on a profile the controller never took. The optical-coupling configuration is the exception and is unchanged: its properties assign through <code>MotionController.WriteGenData</code>, which catches the refusal into a <code>false</code> the setters discard, so it still runs to the end and still reports through <code>ErrorOccurred</code> once per refused slot. <code>MotionController.WriteGenData</code> reports a refused slot write as <code>false</code>, which is what its documented contract always promised. <strong>A failed write is deliberately NOT recorded in <code>LastReadError</code> and NOT counted by <code>ReadFailures</code></strong> — both are the read record, by name and by their own documentation, so a consumer polling them for stale reads keeps being told about reads and nothing else. There is no <code>TrySet</code>: catch the exception, or keep using <code>ErrorOccurred</code>, which is still raised for every refusal. The two array paths that reach the controller through <code>AASmartArrayWrapper</code>'s setter rather than the changed-value event — a long-typed array element, and <code>MotionController.GenDataD</code> — raise the same type as everything else: they used to raise <code>InvalidOperationException</code> with a message carrying no error code, so <code>catch (ControllerCommandException)</code> missed them and the payload was reachable only as text. <strong>A consumer catching <code>InvalidOperationException</code> around a <code>GenDataD[i]</code> or long-array element write must catch <code>ControllerCommandException</code> instead.</strong> Nothing new crosses the C ABI — every write export already turns a managed throw into its failure status, and the status bytes are unchanged.</li>
+<li><strong>No compile error — <code>.Value</code> on an array member now throws.</strong> An array parameter has no single value. On any <code>AAValueArray&lt;double&gt;</code> member — <code>MotionController.GenData</code>, <code>IIOModule.AInMode</code>, <code>ISingleAxis.HomingDef</code> and the rest — whose parameter the connected controller lists as an array of one or more elements, <code>.Value</code> raises <code>InvalidOperationException</code> on get and on set, before anything is sent, with a message naming the parameter and the indexes it has (<code>AInMode is an array parameter; read an element from index 1 to 4.</code>). The getter used to answer the slot's cached first element without reading the controller — <code>0</code> before any element was read — and the setter sent nothing, so a write was dropped and the next <code>.Value</code> handed it back as though the controller held it. <code>ParameterTypeConverter.GetSmartValue</code> and <code>SetSmartValue</code> go through <code>.Value</code>, so they throw the same for such a keyword, except a 64-bit (<code>long</code>) one, which they still send unindexed with its own command; the controller refuses that (ERR 24), raised as <code>ControllerCommandException</code>. Read or write an element by its index instead, from <code>StartIndex</code> to <code>EndIndex</code>: <code>io.AInMode[1]</code>, or <code>MotionController.GetValue(axis, keyword, index)</code>, which already refused index 0 on an array parameter. Nothing crosses the C ABI: <code>aamotion_get_value</code> reads through <code>GetValue</code>.</li>
+<li><strong><code>IGroupAxis.IsCNCCompleted</code> raises <code>ControllerCommandException</code> on a failed status read, on both groups.</strong> It is a poll-until-flips predicate, and a predicate has no answer for a link that did not reply, so it now raises rather than reporting a completion state it could not read. The Group B branch previously returned <code>false</code>, which left a <code>while (!IsCNCCompleted(...))</code> loop spinning forever on a dead link; Group A already raised, because it reads through the value-answering path that 12.0.0 made throw. Wrap the poll, or read the status yourself with <code>TryGetValue</code> if a failed poll is an expected outcome. The C ABI is unchanged — <code>aamotion_is_cnc_completed</code> already caught and returned <code>0</code> either way. The <code>Wait*</code> family is deliberately untouched: a wait returns whether it succeeded, and a failed read means it did not, which is the abort behaviour 12.0.0 already introduced.</li>
+</ul>
+<h3 id="added">Added</h3>
+<ul>
+<li>Add <code>MotionController.CreateEventTableClient(axis)</code> for the shared explicit verified-table lifecycle; it does not commission, move or automatically arm an axis.</li>
+<li><strong><code>AAMotionAPI.DownloadParameters</code> orders the lock/event writes</strong> for firmware with the LockEventMode 1/2 guards (Firmware-Main #1256). On such firmware the controller refuses a change to <code>EncSinCosHWEn</code>, <code>EncDir</code>, <code>VEncSrc</code> or <code>VEncOn</code> (and <code>AuxEncDir</code> with the aux source, <code>VEncFact</code>/<code>VEncFactDen</code> with the VEnc source) while <code>LockEn</code> or <code>EventOn</code> is on (<strong>ERR 403</strong>), and refuses <code>LockEn</code>/<code>EventOn</code> with a stale offset (<strong>ERR 404</strong>; ERR 335 still means LockEventInit never ran). A <code>.par</code> is written in file order, so a restore over an armed axis, or one that re-arms after changing the source, failed partway. When the controller's firmware has the guards (it declares <code>LockEventMode</code> up to 2) and an axis's rows touch a dependency or <code>LockEventMode</code>, the download now writes <code>LockEn</code> and <code>EventOn</code> = 0 first (a <code>.par</code> carries neither, as they are not flash parameters, so <strong>the restore leaves that axis's Lock and Event off</strong>), then the other rows in file order, then <code>LockEventMode</code>, then <code>LockEventInit</code> when the axis is in mode 1 at re-arm (the file's <code>LockEventMode</code> row, else the controller's current mode, which the download reads first; if that read fails nothing is written), then the file's own <code>LockEn</code>/<code>EventOn</code> rows in file order, so the last one requested is the state left. The axis letter is matched case-insensitively (<code>a</code> and <code>A</code> are one axis). The added rows are sent but not counted as written. A refused disarm counts in <code>ErrorCount</code>, is listed in <code>Rejections</code> marked as added, fails the download with a completion error, and nothing is committed. A refused <code>LockEventInit</code> (ERR 151 when the remote can't be reached, say) counts in <code>ErrorCount</code> and is listed in <code>Rejections</code>, marked to be run before enabling Lock or Event, and the download still commits: the firmware refuses to arm that axis (ERR 335 or 404) until <code>LockEventInit</code> succeeds. Firmware that declares <code>LockEventMode</code> only up to 1 has no such guards and is written in file order. Integrators who write these keywords themselves need the same order; <code>EncFilt</code>, <code>AuxEncFilt</code> and <code>CurrDir</code> are not dependencies.</li>
+<li><strong>AGM800-EC: <code>DownloadParameters</code> treats the drive like any other until its next enable</strong> (Firmware-Main #1258). The drive's EtherCAT enable forces <code>LockEventMode</code> 2 and learns the offset itself, but only at that enable, so a restore that leaves the axis in mode 1 still runs <code>LockEventInit</code> before re-arming. The disarm still comes first. On EtherCAT it also drops an armed touch probe, which the master re-arms by toggling the 0x60B8 enable bit.</li>
+<li><strong><code>MotionController.UserProgramPrintReceived</code> / <code>AAMotionAPI.SetUserProgramPrintHandler</code> / <code>ClearUserProgramPrintHandler</code></strong> — subscribe to user-program <code>printf</code> lines (FW v5+, AGM800 Ethernet) as <code>UserProgramPrintMessage</code>. Wire fields: <code>TimeSec</code>, <code>TimeTick</code>, <code>Thread</code>, <code>Message</code>. Console-friendly fields: <code>Timestamp</code> (wall clock from <code>ATime</code> boot + stamp at the current-loop sample rate) and <code>DisplayText</code> (strips a leading <code>!R!</code>/<code>!G!</code>/<code>!Y!</code>, trims trailing CR/LF, expands literal <code>\n</code>/<code>\r</code>/<code>\t</code>). <code>ATime</code> is queried once (async <code>CommAPI.Send</code>, same path as the PCSuite Console — not sync <code>SendReceive</code>, so a clock timeout cannot tear down a fresh connect) when the first handler is added while connected, or on connect / a successful <code>TryReconnect</code> that rebuilt the link when a handler is already subscribed; the first printf line seeds the boot if that query fails. Disconnect/Dispose stop delivery so a late push cannot reseed the clock; <code>TryReconnect</code> reopens delivery after a disconnect. Clearing a handler mid-packet stops further lines in that packet. Typical Console use: <code>Console.WriteLine($&quot;{m.Timestamp:yyyy-MM-dd HH:mm:ss.fff}  [T{m.Thread}]  {m.DisplayText}&quot;)</code>. Delivery rides the existing AAComm push path (<code>CommAPI.OnPushMessageReceived</code> → <code>AACommPushMsgUP</code>); no second socket on port 50010. Other push sources are ignored.</li>
+<li><strong><code>ControllerCommandException</code></strong> — the exception a failed command raises, and the only one AAMotion defines. It carries <code>ErrorCode</code> (the controller's own code, or <code>NoControllerCode</code> when the SDK detected the failure itself — a reply that is not a number), <code>Keyword</code>, <code>Command</code> (the exact text that was sent, array subscript and assigned value included) and a <code>Message</code> composed from all three, so the one line a user pastes into a bug report names the command as well as the error.</li>
+<li><strong><code>MotionController.ConnectSimulation</code> / <code>AAMotionAPI.ConnectSimulation(controller, simExePath[, …])</code></strong> — the managed firmware-simulation entry point over <code>ChannelType.Simulation</code> (#902). Pass the absolute path to a <code>firmware_sim.exe</code> on disk — a relative path is refused, because the SDK checks it against the calling process's working directory while AACommServer spawns it from its own, so a relative path that looks valid here can name a different file there. AACommServer spawns it, configures the motor, and bridges loopback. The SDK does not ship the binary and does not read a sibling <code>sim.info</code> — optional <code>simProduct</code>, <code>simVersion</code> and <code>simMotorProfile</code> parameters are forwarded when supplied. <strong>A <code>simProduct</code> the product catalog knows also declares the controller type</strong> (<code>AGM800</code>, <code>AGD155</code>, <code>AGD155-EC</code>, <code>AGD101-EC</code>, <code>AGD156-EC</code>, <code>DRV6-V3</code>, <code>Pulse-Sync</code>, <code>AGM800-EC</code>, <code>AGD301</code>, <code>AGC301</code>, <code>AGD200</code>, <code>AGC300</code>, the paired spellings <code>AGD301orAGC301</code> and <code>AGD200orAGC300</code>, the deprecated <code>AGM400</code>, and the older spellings of the ones that have them), which roughly halves the connect: discovering it instead costs a probe that spawns and reaps a whole extra <code>firmware_sim</code> child before the session's own. A declared type is verified like any other connection's, so <strong>a <code>simProduct</code> that disagrees with what the sim reports fails the connect</strong> — <code>ConnectSimulation</code> returns <code>false</code>, and the underlying <code>InvalidControllerType</code> appears in the AAComm debug log — instead of connecting to whatever the sim actually is. A name the catalog does not resolve is discovered by that probe, exactly as omitting it is — among them the four EtherCAT <code>ControllerType</code> member names (<code>AGD155EC</code> is catalogued <code>AGD155-EC</code>). Disconnect reaps the child process. <code>TryReconnect</code> remains Ethernet-only. To reopen a simulation session call <strong><code>Disconnect()</code> first, then <code>ConnectSimulation(...)</code></strong> — <code>ConnectSimulation</code> does not tear down a link it finds open, and the connect short-circuits on one, so calling it alone on a wedged session returns <code>false</code> without reopening anything. On the C ABI the sequence has an extra step, because <code>aamotion_disconnect</code> also frees the handle: disconnect, then a <strong>new</strong> <code>aamotion_initialize</code>, then <code>aamotion_connect_simulation</code>. The native SDK exposes the same path as <strong><code>aamotion_connect_simulation</code></strong>.</li>
+<li><strong><code>MotionController.CheckConnection()</code> / <code>AAMotionAPI.CheckConnection(controller)</code></strong> actively probe physical reachability via ICMP, without the side effects <code>IsConnected</code> used to have — never disconnects or reconnects by itself. Call it from a background timer or a manual health check, not from a binding or a tight loop.</li>
+<li><strong><code>ControllerType.AGM800EC</code></strong> (the product id, <code>16</code>) and the <strong><code>AGM800EC</code></strong> controller it builds. <code>AAMotionAPI.Initialize(ControllerType.AGM800EC)</code> returns an <code>AGM800EC</code>, which has the <code>AGM800</code>'s shape — axes <code>A</code>–<code>H</code>, I/O modules <code>IO_A</code>–<code>IO_L</code>, and <code>Group</code> / <code>GroupB</code>.</li>
+<li><strong><code>ISingleAxis.TryRead(keyword, out value)</code> / <code>TryReadArray(keyword, index, out value)</code> and <code>MotionController.TryGetValue(axis, keyword, out value, index = 0)</code></strong> — a read that says whether it succeeded, rather than throwing. A typed property now throws <code>ControllerCommandException</code> when the controller replies with an error or the link is dead (see the Breaking entry above); the <code>Try</code> forms return <code>false</code> instead, with <code>value</code> 0, for an error reply and for a reply that is not a number. Use them where a failed read is an expected outcome — a poll, a probe, an optional parameter — and let the typed property throw everywhere else. They are always a controller round trip in the units the axis reads in, never the FastReadCache; <code>TryGetValue</code> applies <code>GetValue</code>'s argument checks, and a command keyword is refused the same way. An implementer of <code>ISingleAxis</code> has two members more to satisfy — the same wall of errors 12.0.0 already raises on such a type.</li>
+<li><strong><code>MotionController.LastReadError</code> and <code>ReadFailures</code></strong> — the record <code>ErrorOccurred</code> never kept. <code>LastReadError</code> is the most recent failed read (a <code>ReadError</code>: the controller's error code, or -1 for a reply that was not a number; the keyword; the exact command sent, such as <code>AGenData[3]</code>; the formatted error text; and a UTC timestamp), or <code>null</code> when none has failed since the last successful connect; a later successful read does not clear it. <code>ReadFailures</code> counts every failed read since the last successful connect. Both cover every read the SDK makes for a value — the typed properties, <code>GetValue</code>, the <code>Try</code> forms, the raw register reads and the motion waits' own polls — so a loop that only checks <code>ReadFailures</code> before and after can tell a real 0 from an unanswered read. <code>ErrorOccurred</code> is raised, as before, for a read the controller refused, but not for a reply that is not a number.</li>
+<li><strong>A motion wait ends at the first failed poll.</strong> <code>MoveAbsAndWait</code>, <code>MoveRelAndWait</code> and their <code>Repetitive</code> / <code>TwoSpeed</code> variants poll <code>InTargetStat</code> live; on an error reply or a dead link the poll used to read 0 — &quot;not in target&quot; — and the wait spun to its full timeout (five minutes by default). It now returns <code>false</code> at once, and <code>LastReadError</code> names <code>InTargetStat</code> with the failure, which is how a caller tells that outcome from a timeout. The signatures are unchanged.</li>
+<li><strong>Sine PTP motion (MotionMode 20 / 21)</strong> — <code>MotionMode.SinePTP</code> and <code>MotionMode.SinePTPRepeat</code>, <code>ISingleAxis.JerkInAcc</code> / <code>JerkInDec</code>, and the optional pre-cruise phase <code>PreCruAbsTrgt</code> / <code>PreCruRelTrgt</code> / <code>PreCruiseSpd</code>. <code>ISingleAxis.CommitMotion()</code> replaces the profile of the Sine PTP motion running on that axis with the parameters written since; <code>MotionController.CommitMotion(axes)</code> and <code>AAMotionAPI.CommitMotion(controller, axes)</code> do it for several axes in one synchronised step (<code>AxisRef.A | AxisRef.B</code>), refused whole when any named axis is not in a Sine PTP motion. <code>AAMotionAPI.SinePtpBegin</code> / <code>SinePtpCommit</code> write a whole <code>SinePtpMotionConfig</code> and start or commit it. Needs firmware with the Sine PTP profiler (the AGM800); other controllers refuse MotionMode 20 and 21.</li>
+<li><strong><code>ISingleAxis.LockValBefMap</code></strong> and <code>eKeyword.LockValBefMap</code> — the lock capture before error mapping, read-only (Firmware-Main #1380). It is latched on the same lock edge as <code>LockVal</code>, but before error compensation: the map table, <code>MapErrOffset</code> and the <code>MapType</code> on/off ramp are excluded, as in <code>PosBeforeMap</code>, so it is in the same space as <code>EventPos</code>. It is read at the product's full position width, 64-bit on the AGM800 and AGM800-EC, where <code>LockVal</code> stays 32-bit, so there <code>LockVal - LockValBefMap</code> is the map correction only modulo 2^32. Only firmware that reports the <code>LockValBefMap</code> keyword carries it; on older firmware a read throws <code>ControllerCommandException</code>. It is not saved to flash, so <code>UploadParameters</code> leaves it out of a <code>.par</code>.</li>
+<li><strong><code>ISingleAxis.LockBMapTable</code></strong> and <code>eKeyword.LockBMapTable</code> (CAN 958) — the lock table before error mapping, read-only (Firmware-Main #1544): row <code>i</code> is the same capture as <code>LockValTable[i]</code>, taken before error compensation as <code>LockValBefMap</code> is for <code>LockVal</code>. It is sized from the controller's table like <code>LockValTable</code> and indexed from 1, and it is not saved to flash, so <code>UploadParameters</code> leaves it out of a <code>.par</code>. Only firmware that reports the keyword carries it: CI-master builds (the AGM800) with <code>CFG_CI_LOCK_FIFO=1</code>. Like <code>LockValTable</code>, its entries are 32-bit, so on the AGM800 they hold <code>LockValBefMap</code> modulo 2^32. On other builds, where CAN 958 is a boot-stub row, and on older firmware an indexed read throws <code>IndexOutOfRangeException</code> and sends nothing.</li>
+<li><strong><code>ISingleAxis.LockValTabB</code></strong>, <strong><code>LockTimeTabB</code></strong> and <strong><code>LockBMapTabB</code></strong> with <code>eKeyword.LockValTabB</code> (478), <code>LockTimeTabB</code> (479) and <code>LockBMapTabB</code> (959): the second half of the lock tables, read-only. The firmware stores lock <code>n</code> in <code>LockValTable[n]</code> while <code>n</code> is within it, then in <code>LockValTabB[n - LockValTable.EndIndex]</code> (<code>EndIndex</code> = LOCK_TABLE_ARRAY_SIZE - 1), and stores none past twice that <code>EndIndex</code>, while <code>LockCntr</code> keeps counting. <code>LockBMapTabB</code> is the before-map companion, only on CI-master builds (the AGM800) with <code>CFG_CI_LOCK_FIFO=1</code> (Firmware-Main #1544); its entries are 32-bit, like <code>LockValTable</code>, so on the AGM800 they hold <code>LockValBefMap</code> modulo 2^32. Each is sized from the controller's table and indexed from 1; on firmware without the keyword an indexed read throws <code>IndexOutOfRangeException</code> and sends nothing.</li>
+<li><strong>FIFO position tracking and PVAJ motion modes, and the PVAJ stop reasons</strong> — <code>MotionMode.FIFOPositionTracking</code> (19), <code>MotionMode.PVAJ</code> (22) and <code>MotionMode.MultiAxisPVAJ</code> (23), and <code>MotionReason.PVAJMemberWasStopped</code>, <code>PVAJMemberWasAborted</code>, <code>PVAJMemberRLSFLS</code> and <code>PVAJMemberGotMotorOff</code> (42–45): the axis stopped because another member of its PVAJ group was stopped, was aborted, hit a limit switch or went motor-off. <code>ISingleAxis.MotionModeEnum</code> and <code>MotionReasonEnum</code> name them, and <code>EnumPropertyHelper.GetMotionModeDes</code> / <code>GetMotionReasonDes</code> describe them instead of answering &quot;Unknown motion mode&quot; / &quot;Unknown status&quot;. The PVAJ modes need firmware with the PVAJ profiler (AGM800 5.3.0). AAMotion has no members for the PVAJ list or its <code>PVAJValidate</code> / <code>PVAJArm</code> commands.</li>
+<li><strong><code>ConFlt</code> names every controller fault the firmware reports (1055–1082)</strong> — <code>ConFlt.PositionErrorExceedsLimitOpenLoop</code>, <code>VelocityErrorExceedsLimitOpenLoop</code>, <code>ForceErrorExceedsLimitOpenLoop</code> (1055–1057), <code>Undervoltage10v5Supply</code> (1058), <code>OverCurrentMotorC</code> (1059), <code>BoardTemperatureTooHigh</code> (1060), <code>OtherGantryMemberAxisMotorOff</code> (1061), <code>FaultInputControlledStop</code> (1062), <code>OtherVectorMemberAxisMotorOff</code> (1063), <code>StallDetectedMotorOff</code> (1065), <code>VirtualEncoderMaxPulsesExceeded</code> (1066), <code>AnomalyDetected</code> (1067), <code>AbsEncoderErrorBit</code>, <code>AbsEncoderCRCError</code>, <code>AbsEncoderDisconnected</code> (1068–1070), <code>UnstableCurrentLoop</code> (1071), <code>HighPIVNoise</code> (1072), <code>CollisionDetected</code> (1073), <code>LoadEstimatorNotReady</code> (1074), <code>NoPhasingDetected</code> (1080), <code>CPUBackgroundWatchdog</code> (1081) and <code>ExternalAmplifierFault</code> (1082). <code>ISingleAxis.ConFltEnum</code> used to read <code>ConFlt.NoFault</code> for any of these, so an axis stopped by one of them looked fault-free; it now returns the fault, and <code>EnumPropertyHelper.GetConFltDes</code> describes it instead of answering &quot;Unknown fault status&quot;. 1064 is not a member: the firmware no longer raises it.</li>
+<li><code>ParamHandlingSummary.Rejections</code> — every entry the controller refused during an upload or download, in send order, each carrying the parameter as it was sent and the controller's reply (<code>ParamRejection</code>); a download lists the rows it skipped before any of those. The summary previously reported only an <code>ErrorCount</code>, so which parameters failed, and why, could not be recovered from the callback at all.</li>
+<li><code>ParamHandlingSummary.Conversions</code> — every download row whose value was rewritten before it was sent, as read and as sent (<code>ParamConversion.Parameter</code> and <code>ParamConversion.Sent</code>), so a caller can compare a readback against what the controller was given. <code>aacomm.cli params-download</code> prints each as <code>converted &lt;row as read&gt; -&gt; &lt;row as sent&gt;</code>.</li>
+<li><code>MotionController.UseUserUnits</code> — whether values cross this controller's communication layer with the Global User Units scaling applied. Reading it reports what the layer will actually do; a value assigned through it is remembered and re-applied at the next connect. Opting out does not unlock raw <code>*UnitFct</code> / <code>*UnitUnt</code> writes — those stay rejected either way.</li>
+<li><code>MotionController.GetValue(axis, keyword, index = 0)</code> — the value a parameter holds on an axis, read by keyword rather than through the member that exposes it, in the units that axis reads in (<code>GetUserUnits</code> names them). <code>index</code> 0 reads the parameter itself; 1 and up read one element of an array parameter. One axis A..L; a combined mask is an <code>ArgumentException</code>, as on <code>GetUserUnits</code>, and so is a keyword the message table flags as a controller command — reading one would send it.</li>
+<li><code>MotionController.LoggerUpload(params object[] parameterSpecifications)</code> — the logger upload resolved and scaled: pass the same specifications <code>ConfigureSlowLogger</code> took, in the same order, and get a <code>LoggerDataContainer</code> whose packets carry the packet id and the values in that order, in the units every other read uses. AAMotion keeps no record of the configuration, so the caller supplies it; an error reply raises <code>ErrorOccurred</code> and yields no packets. The parameterless <code>LoggerUpload()</code> is unchanged and returns the controller's raw text — no float resolution, no User Units scaling.</li>
+<li><code>MotionController.GetUserUnits(axis, keyword)</code> — the unit name and factor a parameter reads and writes in on an axis, as a <code>UserUnitAxis</code>: the controller's values when Global User Units are enabled on the axis and the parameter is in one of its groups, otherwise an empty name and factor <code>1</code> (controller counts) — which is also the answer for an unknown keyword, an axis with units off, and a controller opted out through <code>UseUserUnits</code>. Never <code>null</code>, so <code>Factor == 1</code> is the check for counts.</li>
+<li><code>ISingleAxis.GetHomingDefStep(int step)</code> and the <code>HomingDefStep</code> view it returns. <code>HomingDef</code> is one flat array of 20 steps of 10 slots whose slot roles depend on the step type in slot 1; the view names them — <code>Type</code> plus <code>Param1</code>…<code>Param9</code>, or the <code>[1..9]</code> indexer — so a caller no longer computes <code>(step - 1) * 10 + slot</code> by hand. <code>HomingDef</code> itself stays as the escape hatch for a step type the SDK does not name.</li>
+<li><code>ParameterTypeConverter.ToInt32Register(double)</code> — the controller's 32-bit two's-complement view of a value slot, for bit arithmetic on a port or status word now that the slot is a <code>double</code>. A plain <code>(int)</code> cast of a value above 2,147,483,647 — a <code>DOutPort</code> reported as an unsigned full-width word, say — is unspecified in C# and differs between .NET Framework and .NET 8/10; this wraps modulo 2^32, the bits the controller holds, on every framework. <code>GroupDOutSetBit</code> / <code>ClearBit</code> / <code>ToggleBit</code>, their <code>Ci</code> twins and the CNC completion poll fold through it.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>The digital-output bit API states its index conventions. <code>DOutSetBit</code> / <code>DOutClearBit</code> / <code>DOutToggleBit</code> and the group and Central-I twins take the 1-based output number the controller's <code>DOutPortSBit[n]</code> takes; <code>GetDOutPort</code> / <code>GetDInPort</code> read a 0-based register bit, so output <code>n</code> is <code>GetDOutPort(n - 1)</code>. Documentation only — no member changes behavior.</li>
+<li>A write carries the caller's value whole to AAComm, which divides it by the User Units factor and rounds a firmware-integral parameter <strong>in controller counts</strong>. AAMotion used to narrow the <em>display</em> value first — to an <code>int</code> for a 32-bit parameter, to a <code>long</code> for a 64-bit one — which quantised a scaled axis to whole units: at <code>0.01 mm/count</code>, <code>axis.AbsTrgt = 12.345</code> reached the controller as 1200 counts instead of 1234. The two setter families also disagreed, so the same fraction was rounded on <code>AbsTrgt</code> and passed through raw on <code>MaxVBus</code>. Both now behave the same, and the rounding — to-even, on the counts — happens once, in AAComm's transmit seam. An integral 64-bit assignment still crosses with its exact digits, so a <code>.par</code> round-trip above 2^53 is unaffected.</li>
+<li>The commands that render a value straight into their command text — <code>ISingleAxis.SetPosition</code>, <code>SetEventTableValue</code>, and the <code>VectorLinear</code> / <code>VectorArc</code> target and arc-centre writes — render it with the invariant wire format. They were culture-safe only for as long as those arguments were <code>int</code>.</li>
+<li>Connecting no longer retries with forced About data; a failed connect fails on the first attempt (AAComm now refreshes a stale About cache itself). The same applies to the auto-reconnect path.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>A <code>.par</code> for another product is refused.</strong> <code>DownloadParameters</code> read no product from the file, so a <code>.par</code> taken from an AGD200 wrote onto an AGM800. When the file's <code>// Controller type:</code> header names a product other than the connected controller's, nothing is sent and the completion callback gets an error naming both products. The controller's legacy names (<code>AG300-CTL02</code> for an AGD301, say) and the name <code>UploadParameters</code> writes for it are accepted; a header name no product answers to is refused the same way, and a file with no header downloads as before.</li>
+<li><strong>An integer keyword takes the rounded value on every transport.</strong> <code>DownloadParameters</code> sent an integer keyword's <code>123.5</code> as 124 over Ethernet, where AAComm's binary form rounds it, and as text over RS-232, where firmware refuses a value with a fraction or an exponent. It now rewrites the value of an integer keyword that is not already an integer literal to the integer firmware's own rounding gives (half away from zero: <code>124.5</code> is 125, <code>-2.5</code> is -3) before it is checked or sent, so both carry the same integer for a value within the keyword's range. A float keyword's value is sent as written.</li>
+<li><strong>Every row a parameter download skips is named.</strong> A line the reader dropped (no <code>=</code>, under 3 characters, an axis outside A-L) was neither counted nor named, and a row the connected controller does not support and the <code>ProductSN</code> row were counted in <code>SkippedCount</code> without a <code>Rejections</code> entry. Each now has an entry with a <code>PC Suite: ERR</code> reason and counts in <code>TotalCount</code>; they are the first <code>SkippedCount</code> entries of <code>Rejections</code>. <code>aacomm.cli params-download</code> prints every one as <code>skipped &lt;row&gt; -&gt; &lt;reason&gt;</code>.</li>
+<li><strong>Two <code>FastReadCache</code> refreshes can no longer run at once.</strong> The cache read its in-progress flag and set it a line later, so a <code>RefreshNow()</code> and the refresh timer arriving together both got through: two bulk reads went out on one connection, <code>RefreshStarted</code> fired twice for the one refresh a caller expected, and both completions re-armed the timer. The flag is now claimed in a single atomic step and freed on every way out of the refresh — including a <code>RefreshStarted</code> handler that throws, which used to leave the cache refusing every later refresh for the life of the process; such a throw is now reported on <code>RefreshError</code> like any other refresh failure. <code>IsRefreshing</code> is unchanged.</li>
+<li><strong>A <code>FastReadCache</code> whose <code>RefreshCompleted</code> handler throws keeps refreshing.</strong> The refresh raised <code>RefreshCompleted</code> before it scheduled the next one, and the refresh timer fires once per schedule, so a throwing handler stopped the periodic refresh for good: <code>IsRefreshing</code> read <code>false</code>, no error was raised, and readers kept getting the last values read. The next refresh is now scheduled first, and the handler's exception is reported on <code>RefreshError</code>, as a <code>RefreshStarted</code> handler's already was; <code>RefreshNow()</code> no longer throws it at the caller. Because the next refresh is already scheduled, it can start before a slow <code>RefreshCompleted</code> handler returns.</li>
+<li><strong>A throwing <code>UploadParameters</code> / <code>DownloadParameters</code> completion callback is called once.</strong> A callback that threw was called again with its own exception (&quot;Exception in upload completion: …&quot;, &quot;Upload failed: …&quot;, &quot;Failed reading .par file: …&quot;, &quot;Exception in download completion: …&quot;), and an upload then counted its rows a second time and wrote the <code>.par</code> again, reporting doubled <code>SuccessCount</code> / <code>ErrorCount</code>. Each upload and download now calls the callback exactly once, whatever the callback does; its exception is not reported back to it.</li>
+<li><strong>A parameter upload or download that stops partway reports the failure and saves nothing.</strong> When the bulk run ended with an error after some replies had arrived (a throwing <code>onProgress</code> callback is one way), <code>UploadParameters</code> reported success and wrote the <code>.par</code> with empty values for every row it never read, and <code>DownloadParameters</code> counted the unsent rows as written and, with <code>calcAndSave</code>, saved the partial transfer to flash. Both now report the run's error: the upload writes no file, and the download counts only the rows that were answered, never sends <code>ASave</code> / <code>CalcFilters</code> for a partial transfer, still resyncs User Units, and reports no final 100% progress. A throwing <code>onProgress</code> on the download's final 100% no longer leaves <code>onDone</code> uncalled: the exception's message is appended to the reported error.</li>
+<li><strong>A parameter download that fails before its first message reaches the wire now reports the failure.</strong> The bulk runner behind <code>DownloadParameters</code> reads the connection's bulk size and connected state at the start of a transfer, and an exception from either escaped onto the background task driving the download — <code>OnDone</code> never fired and the call went quiet. Both reads are now covered and the failure arrives on <code>OnDone</code> with the exception's message, and a download whose transfer sent nothing no longer reports every parameter as written: the completion treated an empty reply set as a clean sweep, counted the whole file as successful and then committed it to flash with <code>ASave</code>. It now reports the failure and commits nothing, as the upload path already did. The runner's one-at-a-time start guard is claimed atomically as well, so two starts on one runner cannot both proceed.</li>
+<li><strong><code>MotionController.EnsureAACommServerRunning(serverExePath)</code> starts the server through the same contract every other entry point uses, and answers on the port.</strong> It span its own process and judged “running” by the process list, so it missed <code>--headless</code>, the hidden window, the zone-check opt-out that keeps a Mark-of-the-Web executable from stopping on a modal security prompt, the lock that serialises two spawns, and the readiness poll that notices a child which died on startup; it also answered <code>true</code> for a process that had not bound its port yet, and never recognised a running <code>AACommServerNative</code>. It now delegates to <code>CommAPI.StartAACommServer</code> and reports whether a server is serving. A null or empty path starts nothing and reports whether one is already serving — delegating it would auto-locate and could start the machine-wide install the caller never named. The signature and the <code>bool</code> contract are unchanged.</li>
+<li><strong><code>TryReconnect</code> no longer tears down a healthy link on a single flaky ping.</strong> Its &quot;already connected and reachable&quot; check sent one ICMP probe; a switch or firewall that blocks or rate-limits ICMP could make a live link look dead and trigger an unnecessary disconnect/reconnect cycle. Two independent probes are now sent, and either succeeding is treated as reachable.</li>
+<li><strong>A parameter download no longer moves the controller off its own network address.</strong> <code>DownloadParameters</code> wrote <code>EthernetIP</code> and <code>EthernetMAC</code> like any other row, so a <code>.par</code> taken from one bench and written to another re-addressed the target controller and the operator lost it mid-restore. Both are the controller's identity rather than part of its configuration, so the download now withholds them whatever the file carries — the same pair PCSuite's Parameters Download window excludes. A withheld row counts as skipped, not as a failure, and is listed in <code>ParamHandlingSummary.Rejections</code> with a client-side reply naming the exclusion, so nothing is dropped silently. <code>EthernetPort</code> is not identity and is still written.</li>
+<li><strong>A parameter file round-trips: what a controller uploads, it accepts back.</strong> A <code>.par</code> holds raw controller values, but the transfer applied Global User Units scaling on the way out and could not write the User Units configuration rows at all — <code>*UnitFct</code> / <code>*UnitUnt[]</code> are refused over raw messaging, which is 1068 of the 1106 rejections a full AGM800 download still reported. Both legs now carry raw values and are permitted to write that configuration, and the scaling cache is resynced afterwards, which is the contract for that bypass. Measured on an AGM800: a self-produced <code>.par</code> downloads back with <strong>36</strong> rejections where it had 4110, and those 36 are a firmware defect fixed in FW 5.2.1.16-3 rather than anything the SDK does.</li>
+<li>Keywords the firmware refuses to carry inside a bulk packet (ERR 184 — <code>UserUnitsEn</code> is one of a set) are re-sent one at a time after the batched pass, instead of being reported as rejections. The retry keys on the reply, so it covers every keyword in that set rather than a list that goes stale.</li>
+<li><code>ProductSN</code> is no longer attempted by a download. It is writable only with elevated permission and answers ERR 328 otherwise, so it counts as skipped — the same class the connected controller does not support — rather than as a failure.</li>
+<li><strong>A parameter download no longer abandons the rest of a bulk packet at the first refused row.</strong> <code>DownloadParameters</code> batches up to 50 assignments per packet, and a plain bulk packet stops executing at its first error — so one row the controller refused silently discarded up to 49 writes behind it, and the unanswered tail was counted as a rejection per slot. A full <code>.par</code> download reported thousands of errors where only a few rows were genuinely refused, and the parameters that never reached the controller were not reported at all. Both legs now use the continue-on-error bulk packet, so every assignment is attempted and every reply is the controller's own. Firmware that does not implement that packet kind (it answers ERR 160) is detected on the first batch and the transfer falls back to the previous behaviour.</li>
+<li><strong>A <code>.par</code> saved by <code>UploadParameters</code> names the controller by product name.</strong> The header's <code>// Controller type:</code> line carried a hex product id (<code>0xA</code> for an AGM800), which PCSuite's Parameters Download cannot resolve, so it skipped the Central-i master / standalone mismatch warning for every file AAMotion wrote. The line now carries the product name PCSuite writes there for every controller it supports, so that warning applies to AAMotion's files as it does to PCSuite's own.</li>
+<li><strong>A parameter download with <code>calcAndSave</code> — the default — commits to flash.</strong> <code>DownloadParameters</code> is meant to finish with <code>ASave</code> and a <code>CalcFilters</code> per axis, and it sent neither: the commit ran on the transfer's reply callback, where AAComm refuses a synchronous send, and looked for <code>CalcFilters</code> under an axis-prefixed name the message table never carries. The completion callback still reported success, so every parameter the download wrote was gone after the next power cycle. The commit now runs off that callback, and a failure in it arrives in <code>onDone</code>'s error argument instead of being dropped.</li>
+<li>The DataLogger CSV export (<code>GenerateCsvFile</code>) is readable on a comma-decimal host: every time, value and statistics field is written with a dot decimal separator. It rendered under the host culture, so on de-DE, fr-FR and similar locales each fractional value became two columns and no reader could recover the rows.</li>
+<li><code>ConfigureSlowLogger</code> accepts the documented forty parameters and clears the fortieth slot. <code>LoggerParams</code> is a 1-based table, and the configure walked it as if it were 0-based: the fortieth parameter was refused as a forty-first, and a stale code left in slot 40 by an earlier configuration kept being logged.</li>
+<li><code>ConfigureSlowLogger</code> refuses an array parameter given without its index, and an index given on a scalar, with an <code>ArgumentException</code> and one <code>ErrorOccurred</code> — the fast recorder's verdicts, on all three specification shapes (string, CAN code, <code>SlowLoggerParameter</code>). An un-indexed array used to be accepted and logged nothing.</li>
+<li>Every vector entry point — <code>VectorLinear</code> (both overloads), <code>VectorArc</code> and their <code>AAMotionAPI</code> equivalents — refuses a call whose initiating axis is not a member of the move, or not its lowest member, before anything is written: the call returns <code>false</code> and raises <code>ErrorOccurred</code>. The controller reads the profile from the axis that receives <code>Begin</code> and rejects any other shape (errors 192 and 266), so <code>b.VectorArc(C, H, …)</code> never ran; it used to leave the profile and the members' targets on the controller before the controller refused <code>Begin</code>.</li>
+<li><code>VectorLinear</code> (both overloads) and <code>VectorArc</code> refuse a move that names an axis past H or fewer than two members, before anything is written. The controller's <code>VecMemberAxes</code> reaches H and a vector move needs two members (error 196), so such a call never ran; the refusal is now local and reported.</li>
+<li><code>VectorLinear</code> (mask overload) refuses a position array shorter than the mask's axis count before the first write. It used to notice the missing position only when its walk reached that axis, after the profile and the earlier axes — motors on — were already on the controller.</li>
+<li>The four-axis Central-I <code>LinearAbsolute(aPos, bPos, cPos, dPos, velCruise, velEnd)</code> now sends the D position. It named D in the segment header but composed only three positions, so the controller refused every call with ERR 181 and no such move ever ran. <code>ArcXT</code> / <code>ArcYT</code> / <code>ArcZT</code> had the same slip - nine fields where the arc row takes ten - and are corrected with it.</li>
+<li><code>GenDataWait</code> and <code>UserParamWait</code> now push the wait-array segment type (12). They carried the write type (9) with a wait body, which the controller refuses with ERR 181 before pushing anything; the field order was already the wait segment's, so the arguments are unchanged.</li>
+<li>Position-class values no longer read back as <strong>0</strong> on a controller with User Units enabled — the 64-bit parameters <code>Pos</code> and <code>PosRef</code>, which are re-read from the controller by their own path, included. A scaled reply for an integral parameter is a decimal number (<code>2468</code> counts at a <code>0.01 mm/count</code> factor is <code>24.68</code>), and the client parsed every reply as an integer — <code>24.68</code> failed to parse and the value became 0, so <code>a.Pos</code> read zero and any move computed from it went to the wrong place. Replies are now read as decimal numbers and carried at full precision, so a User-Units axis reports its real position. An integration that wants the raw controller counts instead can opt out per controller with the new <strong><code>MotionController.UseUserUnits</code></strong>: set it to <code>false</code> at any point, before or after <code>Connect</code>, and the controller keeps it across connects and reconnects. The opt-out is instance-wide (two controllers sharing one <code>CommAPI</code> share it) and does not unlock raw <code>*UnitFct</code> / <code>*UnitUnt</code> writes. <code>ISingleAxis.SetPosition</code> sits outside the scaling: it writes a parameter the controller declares unscaled, so its argument is always in controller counts — <code>SetPosition(axis.Pos)</code> is not a round trip on a scaled axis; divide the display value by the axis position factor, or read the position with <code>UseUserUnits = false</code> and pass that count back.</li>
+<li>Float- and double-typed parameters no longer come back as a re-interpreted bit pattern. <code>ForceGain</code>, <code>ForceKi</code>, <code>ForceKd</code> and their siblings return the value the controller reports, and writing one sends that value rather than the integer its bits happen to spell. The write is spelled as the shortest invariant text that reads back as the same value, so it no longer loses digits on .NET Framework, and the same value is spelled identically on every framework.</li>
+<li>Multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> no longer command <code>Speed = 0</code> — a move that silently never runs — when a requested component speed exceeds an axis's <code>MaxVel</code>. The profile clamp divided two <code>int</code> operands, so the quotient truncated to zero and every axis was scaled to a standstill; where it did not truncate to zero it still dropped the fraction and under-drove the whole move. The profile is now computed in double precision, with one shared scaling factor equal to the tightest axis constraint, preserving the equal-duration (PTP) relation between the axes. The same clamp turned the shared factor negative when the constraining axis travelled backwards, commanding a negative speed on the axes travelling forwards; the factor is now always a magnitude. <code>Accel</code> / <code>Decel</code> were scaled by the same clamp and are corrected with it.</li>
+<li>Multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> no longer command a negative <code>Speed</code>, <code>Accel</code> and <code>Decel</code> on an axis travelling backwards. Each axis was written its <em>signed</em> component of the profile, so the controller rejected that axis's <code>Accel</code>/<code>Decel</code> with <strong>ERR 14</strong> (&quot;Assigned value out of the range defined for this keyword&quot; — the keyword minimum is 100.0) and ran the move on whatever acceleration profile the axis happened to hold; the negative <code>Speed</code>, which the controller does accept, persisted as an axis parameter and then drove the <strong>next move on that axis that supplied no speed of its own</strong> — <code>MoveAbs</code> / <code>MoveRel</code> write <code>Speed</code> only when the argument is given, while <code>Jog</code> always writes its own. Every axis is now commanded the magnitude of its component — direction comes from the target position, as before.</li>
+<li>Multi-axis <code>AAMotionAPI.MoveRel</code> no longer overwrites the caller's distance array with the absolute positions it computes. The array passed in is left untouched, so a caller that reuses it for a second move is no longer silently moving to the wrong place.</li>
+<li><code>MotionController.ReadGenDataF</code> / <code>ReadGenDataD</code> and <code>ReadUserParamF</code> / <code>ReadUserParamD</code> now read the controller's reply in the invariant culture. The single-argument <code>float.Parse</code> / <code>double.Parse</code> they used applied the process culture with its default styles — which accept a group separator, and on a comma-decimal locale that separator is <code>.</code> — so a reply of <code>1.5</code> came back as <strong>15</strong>, a tenfold-wrong reading with no error. They now parse invariantly, matching the text AAComm emits.</li>
+<li><code>MotionController.WriteGenDataF</code> / <code>WriteGenDataD</code> and <code>WriteUserParam</code> / <code>WriteUserParamF</code> / <code>WriteUserParamD</code> now render the value they send in the invariant culture. They formatted it with the process culture, so on a comma-decimal locale <code>WriteGenDataF(1, 0.25f)</code> sent <code>AGenDataF[1] = 0,25</code> — and because the controller reads an assignment invariantly and accepts a group separator, the slot silently ended up holding <strong>25</strong>. The command was never rejected, so the wrong value went unnoticed; the slot now receives the value that was passed in, on every locale.</li>
+<li>Multi-axis <code>AAMotionAPI.MoveRel</code> no longer truncates the axis's position reference when it converts a relative move to absolute. It accumulated <code>aryTrg_Pos[i] + (int)aryAxes[i].PosRef</code> into an <code>int</code> array, so a fractional <code>PosRef</code> — what a User-Units axis reports — was dropped before the target was computed and the move landed short by up to one unit. The conversion is now done in <code>double</code>.</li>
+<li>Homing speeds, accelerations, offsets and thresholds are no longer truncated on their way into <code>HomingDef</code>. <code>Home</code>, <code>HomeToHardStop</code>, <code>HomeToIndex</code>, <code>HomeToLimitThenIndex</code> and <code>HomeToHardStopThenIndex</code> cast every profile argument to <code>int</code> before writing its slot; they now carry it whole.</li>
+<li><code>ISingleAxis.Home(string filePath)</code> reads the homing-definition file's values as decimal numbers. It parsed each <code>HomingDef[i] = value</code> line with an integer parse, so a fractional speed or acceleration in the file was skipped silently and the slot kept whatever it already held.</li>
+<li>The ECAM table generators apply the requested range before they push the points, so a generated table lands at the <code>startIndex</code> the caller asked for. <code>ECAM_CreateLinearTable</code> and <code>ECAM_CreateSinusoidalTable</code> called <code>ECAM_SetTableData</code> first, and that method takes both its destination and its length cap from the range in force at the time — so on a table that had never been ranged the push failed with an <code>IndexOutOfRangeException</code> before a single point reached the controller, and on a table reused from an earlier profile the points landed at the <em>previous</em> start index, truncated to the previous length, under a range the data never filled.</li>
+<li><code>ECAM_SetTableData</code> writes the last point of a range that ends at the final <code>GenData</code> slot. Its loop was bounded by the array's element count on a 1-based array, so the highest slot was silently skipped — a table configured as <code>1022..1024</code> on a controller whose <code>GenData</code> ends at 1024 arrived one point short. A range that starts below <code>GenData</code>'s first index is now rejected without writing anything, instead of throwing <code>IndexOutOfRangeException</code> on its first slot.</li>
+<li><code>ECAM_CreateSinusoidalTable</code> closes the sweep at any offset. The closing sample was computed from <code>sin(2π)</code>, a tiny negative residue rather than zero, so with a non-zero offset the cast landed the last point one below the first — amplitude 1000, offset 500 over 5 points ended on 499 instead of 500 — and the cam profile stepped at the seam on every cycle. The closing sample is now the opening one exactly.</li>
+<li><code>OpticalCouplingLightFinding.GetSingleAxisScanResult</code> now returns the per-channel peak indices. <code>SingleAxisScanResult.ChannelPeakPowerIndices</code> was never filled, so it came back as <code>null</code> — a <code>NullReferenceException</code> for a caller reading it alongside the peak powers and positions it sits with. It now carries channels 1-4, from the same slots the <code>Channel1..4PeakPowerIndex</code> properties read.</li>
+<li>The per-axis IO register reads keep the controller's bit pattern when bit 31 is set. <code>IIOModule.DInPort</code>, <code>DInPortHigh</code>, <code>DInLog</code>, <code>DInLogHigh</code>, <code>DInFilt</code>, <code>DOutLog</code>, <code>DOutType</code>, <code>DOutPort</code> and <code>BiDirConfig</code> narrowed the value slot with a plain cast, so a register reported as an unsigned full-width word — <code>4294967295</code>, every output asserted — read back as <code>-2147483648</code> on .NET Framework and .NET 8 and as <code>2147483647</code> on .NET 10, none of which is the register the controller holds. They now take the same 32-bit two's-complement view the group <code>DOut</code> bit helpers use, which is identical on every framework.</li>
+<li><strong>The analog outputs can be read and written again, one element per output.</strong> <code>IIOModule.AOutGain</code>, <code>AOutShifts</code>, <code>AOutOffset</code>, <code>AOutMode</code> and <code>AOutPort</code> were not sized from the controller's parameter table, so every element access — <code>io.AOutGain[i]</code> for any output, read or written, or <code>MotionController.GetValue</code> on one of them — threw <code>IndexOutOfRangeException</code> before anything was sent. <code>AOutGain[i]</code> reads and writes the i-th analog output, from 1 to the count the controller reports; read an output by its index, because on a controller that lists that parameter with one or more outputs the member's own <code>.Value</code> raises <code>InvalidOperationException</code>, as on every array member. A drive without analog outputs (AGD101-EC, AGD156-EC) lists these parameters with no elements; it connects as before, and reading or writing an output there raises <code>IndexOutOfRangeException</code> with nothing sent.</li>
+<li><strong>An array parameter the controller lists with a single element can be read and written.</strong> A parameter at max index 1 was sized as a scalar, so its element 1 threw (<code>NullReferenceException</code>, or <code>InvalidOperationException</code> through <code>IIOModule.AInGain</code>) and <strong>a write to it returned normally and sent nothing</strong>, losing the value. It is an array of one element, read and written as element 1 like any other array, and <code>GetValue(axis, keyword, 1)</code> reads it. The AGD200 (3.0.33) and AGD155-EC (1.5.0.20) tables list <code>ISingleAxis.PosFiltOn</code> and <code>MapTableB</code> to <code>MapTableE</code> this way, and the AGD101-EC and AGD156-EC can list the analog inputs so (<code>IIOModule.AInGain</code>, <code>AInMode</code>, <code>AInFilt</code>, <code>AInOffSet</code>, <code>AInDB</code>).</li>
+<li><strong>An element of a scalar parameter is refused instead of lost.</strong> On an <code>AAValueArray&lt;double&gt;</code> member whose parameter the connected controller lists as a scalar, such as <code>ISingleAxis.GantryPosGain</code> on an AGD200, its one index <code>[0]</code> and enumerating the member raise <code>InvalidOperationException</code> before anything is sent, naming the parameter (<code>GantryPosGain is a scalar parameter; read it through Value.</code>). A read of <code>[0]</code> used to raise <code>NullReferenceException</code>, and a write returned normally and sent nothing, and enumerating the member then handed the value back as though the controller held it. Read and write such a parameter through <code>.Value</code>.</li>
+<li><strong>An element of a 64-bit array parameter is read once.</strong> <code>MotionController.GetValue(axis, keyword, index)</code>, and with it <code>aamotion_get_value</code>, composed the element read through the parameter slot and then again through the 64-bit path, so a successful read of an element of <code>Vel</code>, <code>MapStartPos</code>, <code>ModeSwitchPos</code>, <code>ECAMMasterIni</code> or <code>CNCBVel</code> — the 64-bit arrays the client sizes from the AGM800's table — cost two round trips instead of one. <code>ISingleAxis.Vel[i]</code> reads through that same path and doubled with it; the other four are read once through their own members. The value is unchanged, and so are the refusals: an index the parameter does not have is still refused before anything is sent.</li>
+<li><strong><code>MotionController.GetValue(axis, keyword, index)</code> reads an element of the arrays the AGM800 lists for <code>GantryPosGain</code>, <code>GantryAccFFW</code>, <code>GantryVelGain</code>, <code>GantryVelKi</code> and <code>PosKi</code> (to 5), <code>GenDataF</code> (to 100), <code>UserParamF</code> and <code>UserParamD</code> (to 20).</strong> They were sized as scalars, so an element read raised <code>IndexOutOfRangeException</code> before anything was sent, while <code>TryGetValue</code> read it.</li>
+<li>The CNC segment builders no longer corrupt a segment on a comma-decimal locale. <code>IGroupAxis.SetMotionProfile</code>'s S-factor, and the axis index the <code>WriteUserParam</code> / <code>UserParamWait</code> / <code>MultiWriteUserParam</code> / <code>MultiWriteUserParamWait</code> builders derive from the <code>AxisRef</code> they are given, were rendered under the process culture; on de-DE, fr-FR or ru-RU the decimal comma became an extra separator inside the comma-delimited segment and shifted every field behind it into the wrong slot. Both now render in the invariant wire format, so a segment is spelled identically on every host.</li>
+<li><strong>Reading a controller command as though it were a parameter no longer runs it.</strong> <code>ProgRun</code>, <code>ProgHalt</code>, <code>ProgHaltAll</code>, <code>ProgReset</code>, <code>StopECAM</code> and <code>LoggerUpload</code> name functions the controller performs on receipt, not storage slots — so composing a read of one <em>is</em> the command: <code>ParameterTypeConverter.GetSmartValue(axis, …, eKeyword.ProgRun)</code> started the user program and reported its reply as a value, <code>GetDoubleArray(axis, …, &quot;ProgHalt&quot;, 1)</code> sent <code>AProgHalt[1]</code> and halted user-program thread 1, and <code>MotionController.RegisterCacheKeywords(axis, eKeyword.ProgRun)</code> put the command in the fast-read cache's refresh bulk, re-sending it every millisecond for as long as the cache ran. All six are now refused with an <code>ArgumentException</code> on <code>GetSmartValue</code>, <code>GetArray</code> and <code>GetDoubleArray</code> — which covers the <code>protected Node.GetSmartValue</code> a derived controller inherits — and on <code>RegisterCacheKeywords</code> / <code>FastReadCache.RegisterArrayElements</code>, before anything reaches the wire; a registration naming one is refused whole, so no keyword beside it is registered. <code>MotionController.GetValue</code> already refused them. This is not a rule that a command never answers with data: many controller commands take a parameter and reply with a value, and <code>MotionController.LoggerUpload()</code> — which retrieves the slow-logger data by sending <code>ALoggerUpload</code> itself — is unaffected.</li>
+<li><strong>Expanding a <code>MotionController</code>, an axis or a parameter array in the debugger no longer hangs the evaluation.</strong> Every value property on them is a controller round trip, so a debugger expanding one sent a read per member while it held frozen the thread that delivers the reply, and hung on the first. The debugger now shows their identity only — the kind and axis, a controller's last known address, an array's keyword and index range — and sends nothing to the controller.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The <code>MotionController.ProgHaltAll</code> <strong>property</strong>. It exposed the <code>ProgHaltAll</code> command as a readable value slot, so evaluating it — in code, or in a debugger watch expanding the controller — sent <code>AProgHaltAll</code> and halted every user program. Halt them deliberately with <code>ISingleAxis.ProgHaltAll()</code> or <code>AAMotionAPI.ProgHaltAll(controller, axis)</code>, which are unchanged.</li>
+</ul>
+<h2 id="1100---2026-08-26">[11.0.0] - 2026-08-26</h2>
+<h3 id="-breaking-1">⚠️ Breaking</h3>
 <ul>
 <li><code>AAMotion.dll</code> is now <strong>strong-named</strong> (<code>PublicKeyToken=043a10799a9b732b</code>, the same key as <code>Agito.AAComm</code> 14.x), so strong-named consumers can reference it. <strong>.NET Framework consumers must recompile</strong> against 11.0.0 — a binary built against a 10.x <code>AAMotion, PublicKeyToken=null</code> reference does not bind to the signed assembly (see the Agito.AAComm 14.0.0 changelog for the details; the same identity change and <code>AssemblyVersion</code> pinning, here <code>11.0.0.0</code>, apply). .NET 8/10 consumers see no difference.</li>
 <li>Requires <code>Agito.AAComm</code> 14.x (see its changelog for the breaking communication-layer changes — long-operation events, binary IPC v3, protocol negotiation).</li>
@@ -87,7 +216,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>AAMotionAPI.ForceCurr_SetSlowApproache</code> is renamed <strong><code>ForceCurr_SetSlowApproach</code></strong> (typo fix) — also on <code>ISingleAxis</code>, the native ABI export, and the Java binding.</li>
 <li><code>MotionController.ErrorOccurred</code> and <code>CommAPIInterface.ErrorOccurred</code> are now <code>event</code> members (were public delegate fields). <code>+=</code>/<code>-=</code> subscriptions recompile as-is; direct assignment or external invocation no longer compiles.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li><code>Connect</code> no longer returns <code>false</code> on a busy machine while the server is running. It gates on
 <code>CommAPI.IsAACommServerRunning</code>, whose loopback probe used to depend on ThreadPool scheduling and
@@ -101,7 +230,7 @@ caused a <code>KeyNotFoundException</code> on the unguarded indexer. Now resolve
 <code>GetGroup(AxisRef.A)</code> like all other CNC facade methods, and forwards the full mask to the
 wire segment. Source- and binary-compatible; no signature or ABI change.</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li><p><strong>Native <code>aamotion.*</code> C-ABI SDK</strong> (<code>Agito.AAMotion.Native</code>): a NativeAOT shared library
 (<code>aamotion.dll</code> / <code>libaamotion.so</code> / <code>libaamotion.dylib</code> + <code>aamotion.h</code>) exposing the full flat
@@ -139,7 +268,7 @@ and batch-sync <code>AGenData</code> via <code>SyncAllGenData</code>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li><code>AAMotionAPI.OpenAACommServer(string)</code> and <code>CommAPIInterface.OpenAACommServer(string)</code> now
 spawn the server through the AAComm spawn contract (headless + redirected stdin, correct
@@ -215,7 +344,7 @@ replies (<code>PC Suite: ERR …</code>, <code>BOOT … ERR</code>, e.g. from a 
 successes — error classification now matches the full AAComm reply taxonomy instead of only
 controller <code>ERR …</code> replies.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="removed-1">Removed</h3>
 <ul>
 <li>The C++/CLI <code>AAMotionCPP</code> (mixed-mode) and <code>AGAAMotion</code> (native shim) projects have been
 <strong>retired</strong>. Non-.NET (C/C++) consumers move to the new C-ABI SDK — <code>aamotion.h</code> +
@@ -224,7 +353,7 @@ controller <code>ERR …</code> replies.</li>
 </ul>
 <hr>
 <h2 id="1000---2026-05-25">[10.0.0] - 2026-05-25</h2>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li><code>EnsureAACommServerRunning()</code>: New method on <code>IMotionController</code> / <code>MotionController</code> that ensures the AACommServer is running and ready to accept connections. Launches the server if not already running, with proper path resolution.</li>
 </ul>
@@ -236,13 +365,13 @@ equivalent observable transport behavior for callers using a single path seriall
 internal wait-handle over the async flow — see issue #32 history). The flag is
 therefore a no-op for typical usage and will be removed in a future release.</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>DataLogger <code>StartDataRecording</code>: AGD155 and AGD155-EC now use <code>ARecStart[1]</code> command syntax (firmware v2.3+); other controllers continue to use <code>ARecStart</code> without index.</li>
 <li>Refactored DataLogger and SlowLogger to route all communication through <code>CommAPIInterface.SendAndRecieve()</code> instead of directly calling <code>CommAPI.SendReceive()</code>. This ensures consistent behavior when <code>AAMotionConfig.UseAsyncCommTransport</code> is enabled (async) or disabled (sync).</li>
 </ul>
 <h2 id="911---2026-04-17">[9.1.1] - 2026-04-17</h2>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li>Packaging: picks up AAComm 12.1.1 sidecar change. AACommServer sidecar is now
 selected by consumer OS rather than TFM: Windows consumers (net48 or net8.0)
@@ -251,7 +380,7 @@ get the WPF <code>AACommServer.exe</code>; non-Windows net8.0 consumers get
 code or reference changes required.</li>
 </ul>
 <h2 id="910---2026-04-15">[9.1.0] - 2026-04-15</h2>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li><code>ScanController</code> / <code>ScanControllerDetailed</code>: Replaced unreliable TCP probe (<code>TcpPortReachable</code>) with ARP-based discovery via <code>ARPTools.GetSubnetActiveIPs</code>. This uses the same multi-NIC ARP scan as PCSuite's Discover Connections, ensuring controllers on all Ethernet interfaces are reliably found.
 <ul>
@@ -262,12 +391,12 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="900---2026-04-03">[9.0.0] - 2026-04-03</h2>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>Decoupled nuget from direct AAComm dependency: AAComm is now resolved via nuget</li>
 </ul>
 <h2 id="841---2026-03-27">[8.4.1] - 2026-03-27</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>Added <code>LockSrcZeroSupported()</code> method to <code>ISingleAxis</code> / <code>SingleAxis</code>, exposing Identity[62] bit 0x10 (<code>ControllerIdentityFeature_02.LockSrcZero_Supported</code>). When <code>lockSource = 0</code> is passed to the three multi-step homing methods on an unsupported controller, <code>NotSupportedException</code> is thrown.</li>
 <li>Added <code>ControllerIdentityFeature_02.IDENTITY_NEW_FEATURES_2_LOCKSRC_ZERO_SUPPORTED = 0x00000010</code> constant.</li>
@@ -280,7 +409,7 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="840---2026-03-25">[8.4.0] - 2026-03-25</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>Added <strong>FastReadCache</strong> high-performance cached read mechanism:
 <ul>
@@ -292,14 +421,14 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li><code>AAMotionConfig</code> now exposes <code>FastReadEnabled</code> (global on/off switch) and <code>FastReadCacheRefreshIntervalMs</code> (default 1ms).</li>
 <li><code>MotionController</code> now exposes <code>FastReadCache</code> property, <code>EnableFastReadCache()</code>, <code>DisableFastReadCache()</code>, <code>RegisterCacheKeywords()</code>, <code>RefreshCacheNow()</code>, and <code>GetCacheAgeMs()</code>.</li>
 <li><code>CommAPIInterface.HandleSingleValueAccessed</code> and <code>HandleArrayValueAccessed</code> now check the cache first when enabled, falling back to controller reads.</li>
 <li><code>InitializeFastReadCacheIfEnabled()</code> is automatically called after successful <code>Connect()</code> — registers A/B/C axes' common keywords ( <code>Pos</code>, <code>MotionStat</code>, <code>InTargetStat</code>) and <code>AInPort[1-4]</code>, then enables the cache if <code>AAMotionConfig.FastReadEnabled</code> is true.</li>
 </ul>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Added <code>CommAPI</code> property on <code>MotionController</code> to expose the underlying <code>AAComm.CommAPI</code> instance for direct low-level communication with maximum performance.</li>
 </ul>
@@ -312,7 +441,7 @@ code or reference changes required.</li>
 - Ring buffer with configurable retention policies</p>
 <hr>
 <h2 id="822---2026-02-26">[8.2.2] - 2026-02-26</h2>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>Added <code>GenerateCsvFile(DataLoggerResult result, string filePath = null)</code> in DataLogger API to export recorded data to a CSV file:
 <ul>
@@ -323,17 +452,17 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>DataLogger <code>GetDataRecordingStatus</code>: AGD155 and AGD155-EC now use keyword <code>ARecStat</code> (no array index); other controllers continue to use <code>ARecStat[1]</code>.</li>
 </ul>
 <hr>
 <h2 id="821---2026-01-14">[8.2.1] - 2026-01-14</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Added <code>GetDataRecordingCapacity</code> method to DataLogger API for querying the maximum recording capacity of the controller.</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>Improved auto-reconnect logic in <code>IsConnected</code> property:
 <ul>
@@ -346,7 +475,7 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="820---2026-01-10">[8.2.0] - 2026-01-10</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Added <strong>DataLogger</strong> high-speed recording API on <code>MotionController</code>:
 <ul>
@@ -358,13 +487,13 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>Improved XML documentation for DataLogger trigger parameters with clearer English/Chinese descriptions to match PCSuite terminology (持续时间, 间隔, 触发器, 掩码, 最大触发值, 触发时刻).</li>
 </ul>
 <hr>
 <h2 id="811---2026-01-09">[8.1.1] - 2026-01-09</h2>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li><strong>Keyword filtering now relies solely on MessagesContainer (from AAbout command) instead of ControllerKeywordFilter</strong>
 <ul>
@@ -377,7 +506,7 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="removed-1">Removed</h3>
+<h3 id="removed-2">Removed</h3>
 <ul>
 <li>Removed <code>ControllerKeywordFilter</code> class and all keyword filtering rules</li>
 <li>Removed firmware version detection code from <code>CommAPIInterface.Connect()</code> method</li>
@@ -390,13 +519,13 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="809---2026-01-06">[8.0.9] - 2026-01-06</h2>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>Corrected CNC buffer clear routing so GroupA and GroupB send to their own CNC groups.</li>
 </ul>
 <hr>
 <h2 id="808---2026-01-06">[8.0.8] - 2026-01-06</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>Added CNCB (CNC Group B) keyword properties to <code>ICiGroupAxis</code> interface and <code>CiGroupAxis</code> implementation for AGM800 controller:
 <ul>
@@ -407,18 +536,18 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="807---2026-01-06">[8.0.7] - 2026-01-06</h2>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li><code>IsCNCCompleted</code> now supports AGM800's GroupB (AxisRef.B). For GroupB, it reads <code>{axis}CNCBStatus[10]</code> instead of <code>CNCAStatus[10]</code>.</li>
 <li><code>ControllerType</code> enum values now reference <code>ProductTypes</code> constants to eliminate duplicate definitions and ensure single source of truth for product type IDs.</li>
 </ul>
 <h2 id="806---2026-01-04">[8.0.6] - 2026-01-04</h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li>Added CNC <code>Begin(AxisRef axisRef)</code> method to specify the axis for CNC operations.</li>
 </ul>
 <h2 id="805---2026-01-04">[8.0.5] - 2026-01-04</h2>
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li>Added firmware version-based keyword filtering system in <code>ControllerKeywordFilter</code>:
 <ul>
@@ -446,7 +575,7 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li>Refactored keyword filtering system to use unified configuration:
 <ul>
@@ -458,27 +587,27 @@ code or reference changes required.</li>
 <li>Enhanced <code>KeywordRegistry</code> to accept firmware version parameter for dynamic keyword filtering</li>
 <li>Improved <code>CommAPIInterface.Connect()</code> method to read and parse firmware version from controller during connection</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Fixed keyword filtering to properly handle firmware version-dependent keywords for different controller types</li>
 <li>Improved keyword availability detection based on actual controller firmware version</li>
 </ul>
 <h2 id="804---2025-12-22">[8.0.4] - 2025-12-22</h2>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li><code>EventPulseRes</code> now reports the correct value (previously always 0).</li>
 </ul>
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 <ul>
 <li>Added <code>Commutated</code> and <code>IsCommutated</code> APIs.</li>
 </ul>
 <h2 id="803---2025-12-17">[8.0.3] - 2025-12-17</h2>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>Fixed vector motion <code>Begin</code> behavior in <code>SingleAxis.Vector*</code> helpers to <strong>only send one <code>Begin</code> command for the currently selected axis</strong>, ensuring correct behavior when multiple member axes participate in a vector move.</li>
 </ul>
 <h2 id="802---2025-12-12">[8.0.2] - 2025-12-12</h2>
-<h3 id="added-12">Added</h3>
+<h3 id="added-13">Added</h3>
 <ul>
 <li>Added controller discovery helpers in <code>AAMotionAPI</code>:
 <ul>
@@ -488,7 +617,7 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="801---2025-12-02">[8.0.1] - 2025-12-02</h2>
-<h3 id="added-13">Added</h3>
+<h3 id="added-14">Added</h3>
 <ul>
 <li>Added global communication transport switch <code>AAMotionConfig.UseAsyncCommTransport</code> to control how AAMotion sends commands to AAComm:
 <ul>
@@ -498,7 +627,7 @@ code or reference changes required.</li>
 </li>
 <li>Added <code>SendViaAsyncQueue</code> implementation in <code>CommAPIInterface</code> to wrap AAComm's async <code>Send</code> API into a synchronous-style call at AAMotion level.</li>
 </ul>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>Centralized communication error handling in <code>CommAPIInterface</code> via unified <code>ErrorHandlers(AACommEventArgs status)</code> helper:
 <ul>
@@ -514,13 +643,13 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="800---2025-12-01">[8.0.0] - 2025-12-01</h2>
-<h3 id="added-14">Added</h3>
+<h3 id="added-15">Added</h3>
 <ul>
 <li>Deprecate .NET 4.0 target framework. The minimum supported .NET framework is now 4.8</li>
 </ul>
 <hr>
 <h2 id="762---2025-11-25">[7.6.2] - 2025-11-25</h2>
-<h3 id="added-15">Added</h3>
+<h3 id="added-16">Added</h3>
 <ul>
 <li>Added SlowLogger functionality for data logging and monitoring
 <ul>
@@ -553,7 +682,7 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="761---2025-11-17">[7.6.1] - 2025-11-17</h2>
-<h3 id="added-16">Added</h3>
+<h3 id="added-17">Added</h3>
 <ul>
 <li>Added <code>EnumPropertyHelper</code> static class to provide enumeration value description functionality
 <ul>
@@ -582,7 +711,7 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="760---2025-10-31">[7.6.0] - 2025-10-31</h2>
-<h3 id="added-17">Added</h3>
+<h3 id="added-18">Added</h3>
 <ul>
 <li>Added global configuration class <code>AAMotionConfig</code> with <code>UseNativeDataTypes</code> property to control data type behavior
 <ul>
@@ -595,7 +724,7 @@ code or reference changes required.</li>
 <li>Added unified <code>AASmartArrayWrapper</code> class to automatically handle type conversion for array properties (int/float/double/long)</li>
 <li>Added support for native float, double, and long data types with automatic type detection and conversion</li>
 </ul>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>Refactored parameter type conversion logic from <code>SingleAxis.cs</code> to centralized <code>ParameterTypeConverter</code> class</li>
 <li>Enhanced array wrapper system to automatically detect and handle int/float/double/long types based on parameter metadata</li>
@@ -605,7 +734,7 @@ code or reference changes required.</li>
 <li>Enhanced backward compatibility: old code expecting int types continues to work without modification</li>
 <li>Optimized <code>KeywordMappings</code> initialization in <code>Connect()</code> method to handle controller type detection failures gracefully</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>Fixed type conversion errors when accessing float/double/long parameters in old code that expects int types</li>
 <li>Fixed <code>KeyNotFoundException</code> when <code>KeywordMappings</code> was not initialized due to controller connection failures</li>
@@ -613,14 +742,14 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="755---2025-09-24">[7.5.5] - 2025-09-24</h2>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>Add the retry reconnection mechanism. Method: TryReconnect()</li>
 <li>Add the automatic connection mechanism. In the Connect() method, add the parameter enableAutoReconnect to enable/disable the automatic reconnection mechanism.</li>
 <li>AGM800 supports linear and ARC movements for all axes.</li>
 </ul>
 <h2 id="754---2025-09-12">[7.5.4] - 2025-09-12</h2>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li>Add CNC attributes ：CNCASpeed, CNCAAccel, CNCADecel, CNCAJerk</li>
 <li>Add ECAM attributes: ECAMStart, ECAMStartCyc, ECAMEndCyc, ECAMEnd, ECAMGap, ECAMCycles, ECAMMasterIni, ECAMCycCount, ECAMInterp, ECAMMaster, StopECAM, ECAMTableNum</li>
@@ -628,13 +757,13 @@ code or reference changes required.</li>
 <li>Enhance ECAM functions</li>
 </ul>
 <h2 id="753---2025-08-26">[7.5.3] - 2025-08-26</h2>
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 <ul>
 <li>Added a check for relative motion to disallow zero distance.</li>
 <li>Added IO_B for AGD20.</li>
 </ul>
 <h2 id="752---2025-08-08">[7.5.2] - 2025-08-08</h2>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>Change &quot;Commutated&quot; to &quot;AutoPhase&quot;. Change &quot;IsCommutated&quot; to &quot;IsAutoPhase&quot;</li>
 <li>Add the keywords CNCAEncFactNu, CNCAEncFactDn, CNCASpeedPer, CNCAEndSegMod,AccelFact</li>
@@ -642,47 +771,47 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="751---2025-08-04">[7.5.1] - 2025-08-04</h2>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>Add WriteGenData and ReadGenData to read and write GenData</li>
 <li>A dynamic keyword shielding mechanism based on controller type has been implemented, which has enhanced the system's compatibility and maintainability.</li>
 <li>Initialization and connection exception information optimization</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>The issue of the AGD101-EC controller connection failure has been resolved.</li>
 </ul>
 <hr>
 <h2 id="7412---2025-07-30">[7.4.12] - 2025-07-30</h2>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>Add the keyword &quot;EventPulseRes&quot;</li>
 <li>Override MoveAbs to achieve position override</li>
 </ul>
 <hr>
 <h2 id="7411---2025-07-22">[7.4.11] - 2025-07-22</h2>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>Add methods SetEventTableBeginIndex, SetEventTableEndIndex, SetEventTableSelect, and SetEventTableValue to be compatible with older versions of PEG</li>
 <li>Modify the return type of ClearConFlt to be bool</li>
 </ul>
 <hr>
 <h2 id="7410---2025-07-18">[7.4.10] - 2025-07-18</h2>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li>Add method RunCNCProgramFromFile (use the CNC file generated by PCSuite to perform interpolation movement)</li>
 <li>Add method IsCNCCompleted (determine whether the CNC movement has been completed)</li>
 </ul>
 <hr>
 <h2 id="749---2025-07-17">[7.4.9] - 2025-07-17</h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>Add the MotorOn and InjectType enumeration types along with the English descriptions of the parameters.</li>
 <li>Added methods MoveAbsAndWait, MoveAbsRepetitiveAndWait, MoveRelAndWait, MoveRelRepetitiveAndWait. Return true after movement and positioning.</li>
 </ul>
 <hr>
 <h2 id="748---2025-07-04">[7.4.8] - 2025-07-04</h2>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>Add enumeration types and English descriptions for parameters to enhance usability.</li>
 <li>After the vector motion parameters are configured, the &quot;Begin&quot; command is automatically sent.</li>
@@ -690,140 +819,140 @@ code or reference changes required.</li>
 <hr>
 <hr>
 <h2 id="747---2025-06-26">[7.4.7] - 2025-06-26</h2>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>Modify the array length of HomingDef.</li>
 </ul>
 <hr>
 <h2 id="746---2025-06-16">[7.4.6] - 2025-06-16</h2>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>The AAValueArray array starts from index 1.</li>
 <li>Add the keywords MapTableB, MapTableC, MapTableD, and MapTableE.</li>
 </ul>
 <hr>
 <h2 id="745---2025-06-11">[7.4.5] - 2025-06-11</h2>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>Add the method ClearConFlt() to clear ConFlt.</li>
 <li>Add the methods GetDOutPort and GetDInPort to obtain the IO status of the specified bit.</li>
 </ul>
 <hr>
 <h2 id="744---2025-06-05">[7.4.4] - 2025-06-05</h2>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>Add annotations to methods and attributes.</li>
 </ul>
 <hr>
 <h2 id="743---2025-06-03">[7.4.3] - 2025-06-03</h2>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li>Add method and attribute annotations.</li>
 </ul>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li>Add the minimum axis judgment of the VectorLinear method of Vector.</li>
 </ul>
 <hr>
 <h2 id="742---2025-05-30">[7.4.2] - 2025-05-30</h2>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Change IsHomed to IsHoming and determine whether the return to home is complete.</li>
 </ul>
 <hr>
 <h2 id="741---2025-05-29">[7.4.1] - 2025-05-29</h2>
-<h3 id="changed-27">Changed</h3>
+<h3 id="changed-28">Changed</h3>
 <ul>
 <li>Add Home() to set HomingOn=1.</li>
 </ul>
 <hr>
 <h2 id="740---2025-05-29">[7.4.0] - 2025-05-29</h2>
-<h3 id="changed-28">Changed</h3>
+<h3 id="changed-29">Changed</h3>
 <ul>
 <li>Add the Vector function.</li>
 </ul>
 <hr>
 <h2 id="7313---2025-05-23">[7.3.13] - 2025-05-23</h2>
-<h3 id="changed-29">Changed</h3>
+<h3 id="changed-30">Changed</h3>
 <ul>
 <li>OpenAACommServer increases the return value ConnectResult.</li>
 </ul>
 <hr>
 <h2 id="7312---2025-05-23">[7.3.12] - 2025-05-23</h2>
-<h3 id="changed-30">Changed</h3>
+<h3 id="changed-31">Changed</h3>
 <ul>
 <li>The Amotion API of CiGroup adds operations on GroupB.</li>
 </ul>
 <hr>
 <h2 id="7311---2025-05-21">[7.3.11] - 2025-05-21</h2>
-<h3 id="changed-31">Changed</h3>
+<h3 id="changed-32">Changed</h3>
 <ul>
 <li>The MoveRel and MoveAbs of the AAMotionAPI add MotionController (different controller instances can be used).</li>
 </ul>
 <hr>
 <h2 id="7310---2025-05-20">[7.3.10] - 2025-05-20</h2>
-<h3 id="changed-32">Changed</h3>
+<h3 id="changed-33">Changed</h3>
 <ul>
 <li>Commutation success added judgment 200: Not required, 300/400: Successfully completed (using Hall), 500: Successfully completed (parameters have been modified).</li>
 <li>Adding a judgment to return to zero completes IsHoming().</li>
 </ul>
 <hr>
 <h2 id="739---2025-05-06">[7.3.9] - 2025-05-06</h2>
-<h3 id="changed-33">Changed</h3>
+<h3 id="changed-34">Changed</h3>
 <ul>
 <li>Add GroupB to AGM800.</li>
 </ul>
 <hr>
 <h2 id="738---2025-04-24">[7.3.8] - 2025-04-24</h2>
-<h3 id="changed-34">Changed</h3>
+<h3 id="changed-35">Changed</h3>
 <ul>
 <li>Add force control function.</li>
 <li>Add attributes &quot;RptMode&quot;, &quot;RptCycles&quot;, and &quot;RptCounter&quot;.</li>
 </ul>
 <hr>
 <h2 id="737---2025-04-16">[7.3.7] - 2025-04-16</h2>
-<h3 id="changed-35">Changed</h3>
+<h3 id="changed-36">Changed</h3>
 <ul>
 <li>Added axis properties CurrDir, RevPLim, FwdPLim, MaxPosErr, MaxVelErr.</li>
 </ul>
 <hr>
 <h2 id="736---2025-04-03">[7.3.6] - 2025-04-03</h2>
-<h3 id="changed-36">Changed</h3>
+<h3 id="changed-37">Changed</h3>
 <ul>
 <li>Adapt to AAComm.StartAACommServer() return type change from 'string' to 'ConnectResult'.</li>
 </ul>
 <hr>
 <h2 id="735---2025-04-03">[7.3.5] - 2025-04-03</h2>
-<h3 id="changed-37">Changed</h3>
+<h3 id="changed-38">Changed</h3>
 <ul>
 <li>PEG and Lock do not need to specify an axis when using an axis object.</li>
 </ul>
 <hr>
 <h2 id="734---2025-03-27">[7.3.4] - 2025-03-27</h2>
-<h3 id="changed-38">Changed</h3>
+<h3 id="changed-39">Changed</h3>
 <ul>
 <li>Increase the Commutate method commutate and determine whether commutation is complete.</li>
 </ul>
 <hr>
 <h2 id="733---2025-03-27">[7.3.3] - 2025-03-27</h2>
-<h3 id="changed-39">Changed</h3>
+<h3 id="changed-40">Changed</h3>
 <ul>
 <li>The fourth parameter of SetMotionProfile is double.</li>
 </ul>
 <hr>
 <h2 id="732---2025-03-21">[7.3.2] - 2025-03-21</h2>
-<h3 id="changed-40">Changed</h3>
+<h3 id="changed-41">Changed</h3>
 <ul>
 <li>Add the SetLock method to set the Lock function.</li>
 </ul>
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 <ul>
 <li>Delete the attribute array VecPosFDef. This attribute is not in the dictionary.</li>
 <li>Make four connection attempts while making a connection in AAmotion.</li>
 </ul>
 <hr>
 <h2 id="731---2025-03-20">[7.3.1] - 2025-03-20</h2>
-<h3 id="changed-41">Changed</h3>
+<h3 id="changed-42">Changed</h3>
 <ul>
 <li>Repair Group can set the specified bit of the specified axis.</li>
 <li>Add PEG methods, SetSingleEventPEG and SetEventFixedGapPEG.</li>
@@ -831,40 +960,40 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="730---2025-03-18">[7.3.0] - 2025-03-18</h2>
-<h3 id="changed-42">Changed</h3>
+<h3 id="changed-43">Changed</h3>
 <ul>
 <li>Implement AAValueArray's foreach method.</li>
 <li>Add and implement the Java language call AAMotion project. AAMotionJava.</li>
 </ul>
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 <ul>
 <li>Fixed VecPosFDef attribute being AAValueArray<int>.</int></li>
 <li>Adds the undefined attribute int UserPWMDiv. AAValueArray<int> MapTable. int EventOn.</int></li>
 </ul>
 <hr>
 <h2 id="724---2025-03-05">[7.2.4] - 2025-03-05</h2>
-<h3 id="changed-43">Changed</h3>
+<h3 id="changed-44">Changed</h3>
 <ul>
 <li>Add the method CiGroupDOutSetBit, CiGroupDOutClearBit, CiGroupDOutToggleBit. When using CNCGroup, can set, clear, and switch the specified axis (AAMotionAPI also add).</li>
 <li>AAValueArray<int> CNCAStatus, added to the registry.</int></li>
 </ul>
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 <ul>
 <li>Fixed the return value error of MotionReason, ForceCmdValVecArcDir, VecSpeed, VecType, LoggerFullMod.</li>
 </ul>
 <hr>
 <h2 id="723---2025-02-18">[7.2.3] - 2025-02-18</h2>
-<h3 id="changed-44">Changed</h3>
+<h3 id="changed-45">Changed</h3>
 <ul>
 <li>Add Home(filepath) to return to zero based on the zeroback file.</li>
 </ul>
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="fixed-15">Fixed</h3>
 <ul>
 <li>Fix the Group API method using GetGroup.</li>
 </ul>
 <hr>
 <h2 id="722---2025-02-12">[7.2.2] - 2025-02-12</h2>
-<h3 id="changed-45">Changed</h3>
+<h3 id="changed-46">Changed</h3>
 <ul>
 <li>Add the noAck parameter of Connect.</li>
 <li>Deleted the directory &quot;\AAMotion\Implementations\Central_I\Core&quot;.</li>
@@ -872,56 +1001,56 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="721---2025-02-11">[7.2.1] - 2025-02-11</h2>
-<h3 id="fixed-15">Fixed</h3>
+<h3 id="fixed-16">Fixed</h3>
 <ul>
 <li>Fix AAMotion MoveAbs by adding Begin().</li>
 <li>Fix MoveAbs() of AAMotionAPI; MoveAbs is called instead of MoveRel.</li>
 </ul>
-<h3 id="changed-46">Changed</h3>
+<h3 id="changed-47">Changed</h3>
 <ul>
 <li>Improve the AAMotionAPI and add the API of IGroupAxis, ICiSlave, ICiGroupAxis and IGroupAxis interfaces.</li>
 </ul>
 <hr>
 <h2 id="720---2025-02-10">[7.2.0] - 2025-02-10</h2>
-<h3 id="changed-47">Changed</h3>
+<h3 id="changed-48">Changed</h3>
 <ul>
 <li>Add the bit operation of Group on IO output (GroupDOutSetBit, GroupDOutClearBit, GroupDOutToggleBit).</li>
 </ul>
 <hr>
 <h2 id="710---2025-02-07">[7.1.0] - 2025-02-07</h2>
-<h3 id="changed-48">Changed</h3>
+<h3 id="changed-49">Changed</h3>
 <ul>
 <li>Increase the usage methods of the keywords, ProgHalt, ProgRun, AutoExec, ProgHaltAll and ProgReset.</li>
 <li>Reload connect and add the port number.</li>
 </ul>
 <hr>
 <h2 id="705---2025-01-16">[7.0.5] - 2025-01-16</h2>
-<h3 id="fixed-16">Fixed</h3>
+<h3 id="fixed-17">Fixed</h3>
 <ul>
 <li>If connection fail due to FwInfoMismatch, retry connection with ForceAboutData set to true.</li>
 </ul>
 <hr>
 <h2 id="704---2025-01-16">[7.0.4] - 2025-01-16</h2>
-<h3 id="changed-49">Changed</h3>
+<h3 id="changed-50">Changed</h3>
 <ul>
 <li>Reduce AAMotionAPI overloading: use methods with optional parameters.</li>
 <li>Add the calling method of the AAMotionAPI.</li>
 </ul>
 <hr>
 <h2 id="703---2025-01-09">[7.0.3] - 2025-01-09</h2>
-<h3 id="fixed-17">Fixed</h3>
+<h3 id="fixed-18">Fixed</h3>
 <ul>
 <li>Add a timeout mechanism to the initialization loop in the CommAPIInterface constructor to prevent infinite waiting. Set the maximum wait time to 3 seconds (30 ticks of 100ms).</li>
 </ul>
 <hr>
 <h2 id="702---2025-01-09">[7.0.2] - 2025-01-09</h2>
-<h3 id="fixed-18">Fixed</h3>
+<h3 id="fixed-19">Fixed</h3>
 <ul>
 <li>Make sure the dictionary's life cycle is permanent.</li>
 </ul>
 <hr>
 <h2 id="701---2025-01-08">[7.0.1] - 2025-01-08</h2>
-<h3 id="fixed-19">Fixed</h3>
+<h3 id="fixed-20">Fixed</h3>
 <ul>
 <li>Include controller parameters eKeyword.cs file.</li>
 </ul>
@@ -945,327 +1074,327 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="604---2024-11-20">[6.0.4] - 2024-11-20</h2>
-<h3 id="fixed-20">Fixed</h3>
+<h3 id="fixed-21">Fixed</h3>
 <ul>
 <li>Fixed indexing bug for ForceCurr_SetForceCmdSource() and ForceCurr_SetCurrCmdSource() methods.</li>
 </ul>
 <hr>
 <h2 id="603---2024-07-01">[6.0.3] - 2024-07-01</h2>
-<h3 id="fixed-21">Fixed</h3>
+<h3 id="fixed-22">Fixed</h3>
 <ul>
 <li>Setting and Querying the MotorOn keyword in PCSuite is 20 seconds, so here we do the same thing at the communicator interface.</li>
 </ul>
 <hr>
 <h2 id="602---2024-06-16">[6.0.2] - 2024-06-16</h2>
-<h3 id="fixed-22">Fixed</h3>
+<h3 id="fixed-23">Fixed</h3>
 <ul>
 <li>.NET 4.0 YamlDotNet reference 4.2.2.</li>
 </ul>
 <hr>
 <h2 id="601---2024-05-31">[6.0.1] - 2024-05-31</h2>
-<h3 id="fixed-23">Fixed</h3>
+<h3 id="fixed-24">Fixed</h3>
 <ul>
 <li>Set motion mode when MoveAbs is called.</li>
 </ul>
 <hr>
 <h2 id="600---2024-05-08">[6.0.0] - 2024-05-08</h2>
-<h3 id="added-18">Added</h3>
+<h3 id="added-19">Added</h3>
 <ul>
 <li>Reference AAComm 7.0.0.</li>
 </ul>
 <hr>
 <h2 id="5130---2023-12-20">[5.13.0] - 2023-12-20</h2>
-<h3 id="added-19">Added</h3>
+<h3 id="added-20">Added</h3>
 <ul>
 <li>Added support for interpreting user program variable names via AdaptUserProgMessage.</li>
 </ul>
 <hr>
 <h2 id="5123---2023-11-30">[5.12.3] - 2023-11-30</h2>
-<h3 id="fixed-24">Fixed</h3>
+<h3 id="fixed-25">Fixed</h3>
 <ul>
 <li>AllStatInterpreter now supports 12 axes to compliment changes in 5.10.0.</li>
 <li>VectorMotion Pause Continue Fix, Added Enum for Vector Motion.</li>
 </ul>
 <hr>
 <h2 id="5122---2023-11-27">[5.12.2] - 2023-11-27</h2>
-<h3 id="changed-50">Changed</h3>
+<h3 id="changed-51">Changed</h3>
 <ul>
 <li>AACommServer: Allow &quot;retrying&quot; socket init. upon process start.</li>
 </ul>
 <hr>
 <h2 id="5121---2023-11-22">[5.12.1] - 2023-11-22</h2>
-<h3 id="changed-51">Changed</h3>
+<h3 id="changed-52">Changed</h3>
 <ul>
 <li>Added support for on-the-fly target/speed/accel change for MoveAbs().</li>
 </ul>
 <hr>
 <h2 id="5120---2023-10-31">[5.12.0] - 2023-10-31</h2>
-<h3 id="changed-52">Changed</h3>
+<h3 id="changed-53">Changed</h3>
 <ul>
 <li>Add .net 6.0 and 7.0 targets. (nuget 5.11.0 is wrongly built and deprecated).</li>
 </ul>
 <hr>
 <h2 id="5110---2023-09-08">[5.11.0] - 2023-09-08</h2>
-<h3 id="fixed-25">Fixed</h3>
+<h3 id="fixed-26">Fixed</h3>
 <ul>
 <li>Fix the errcode of 'FailAboutData' when connecting.</li>
 </ul>
 <hr>
 <h2 id="5100---2023-08-04">[5.10.0] - 2023-08-04</h2>
-<h3 id="fixed-26">Fixed</h3>
+<h3 id="fixed-27">Fixed</h3>
 <ul>
 <li>AllStatUpdate to query for all 12 axes (instead of 8) such that the auxiliary ports will be updated too.</li>
 </ul>
 <hr>
 <h2 id="590---2023-08-03">[5.9.0] - 2023-08-03</h2>
-<h3 id="fixed-27">Fixed</h3>
+<h3 id="fixed-28">Fixed</h3>
 <ul>
 <li>AllStatUpdate to include AGD155_EC_ID as well.</li>
 </ul>
 <hr>
 <h2 id="580---2023-04-13">[5.8.0] - 2023-04-13</h2>
-<h3 id="fixed-28">Fixed</h3>
+<h3 id="fixed-29">Fixed</h3>
 <ul>
 <li>CRITICAL! AAComm RecUpload and &quot;continuous&quot; messages related bug.</li>
 </ul>
 <hr>
 <h2 id="570---2023-04-13">[5.7.0] - 2023-04-13</h2>
-<h3 id="fixed-29">Fixed</h3>
+<h3 id="fixed-30">Fixed</h3>
 <ul>
 <li>Add YamlDotNet nuget dependency.</li>
 </ul>
 <hr>
 <h2 id="5610---2023-04-13">[5.6.10] - 2023-04-13</h2>
-<h3 id="changed-53">Changed</h3>
+<h3 id="changed-54">Changed</h3>
 <ul>
 <li>Add vector motion methods.</li>
 </ul>
 <hr>
 <h2 id="569---2023-01-12">[5.6.9] - 2023-01-12</h2>
-<h3 id="changed-54">Changed</h3>
+<h3 id="changed-55">Changed</h3>
 <ul>
 <li>Added gcode analysis methods.</li>
 </ul>
 <hr>
 <h2 id="568---2023-01-12">[5.6.8] - 2023-01-12</h2>
-<h3 id="changed-55">Changed</h3>
+<h3 id="changed-56">Changed</h3>
 <ul>
 <li>Added methods to cigroup-axis class to do 6-axes linear motion and write doutport value related to axis to buffer.</li>
 </ul>
 <hr>
 <h2 id="566---2023-01-12">[5.6.6] - 2023-01-12</h2>
-<h3 id="changed-56">Changed</h3>
+<h3 id="changed-57">Changed</h3>
 <ul>
 <li>Move params and methods of event class to single axis class.</li>
 </ul>
 <hr>
 <h2 id="565---2023-01-12">[5.6.5] - 2023-01-12</h2>
-<h3 id="changed-57">Changed</h3>
+<h3 id="changed-58">Changed</h3>
 <ul>
 <li>Added params of gantry.</li>
 </ul>
 <hr>
 <h2 id="564---2023-01-12">[5.6.4] - 2023-01-12</h2>
-<h3 id="changed-58">Changed</h3>
+<h3 id="changed-59">Changed</h3>
 <ul>
 <li>Added params and methods of error map.</li>
 </ul>
 <hr>
 <h2 id="563---2023-01-12">[5.6.3] - 2023-01-12</h2>
-<h3 id="changed-59">Changed</h3>
+<h3 id="changed-60">Changed</h3>
 <ul>
 <li>Added params of userpwm.</li>
 </ul>
 <hr>
 <h2 id="562---2023-01-12">[5.6.2] - 2023-01-12</h2>
-<h3 id="changed-60">Changed</h3>
+<h3 id="changed-61">Changed</h3>
 <ul>
 <li>Added params and methods of group9(userparam).</li>
 </ul>
 <hr>
 <h2 id="561---2023-01-11">[5.6.1] - 2023-01-11</h2>
-<h3 id="changed-61">Changed</h3>
+<h3 id="changed-62">Changed</h3>
 <ul>
 <li>Added params and methods of position lock.</li>
 </ul>
 <hr>
 <h2 id="560---2023-01-03">[5.6.0] - 2023-01-03</h2>
-<h3 id="added-20">Added</h3>
+<h3 id="added-21">Added</h3>
 <ul>
 <li>Added override for Home method to do homing based on sequence stored in memory.</li>
 </ul>
 <hr>
 <h2 id="550---2022-08-17">[5.5.0] - 2022-08-17</h2>
-<h3 id="changed-62">Changed</h3>
+<h3 id="changed-63">Changed</h3>
 <ul>
 <li>Communicator interface, AllStat Instantiation is cleaned to used feature_1 integer directly.</li>
 </ul>
 <hr>
 <h2 id="550---2022-08-03">[5.5.0] - 2022-08-03</h2>
-<h3 id="added-21">Added</h3>
+<h3 id="added-22">Added</h3>
 <ul>
 <li>All the Move commands in Single axis motion is now updated to include speed, accel, decel parameters.</li>
 </ul>
 <hr>
 <h2 id="5413---2022-08-03">[5.4.13] - 2022-08-03</h2>
-<h3 id="changed-63">Changed</h3>
+<h3 id="changed-64">Changed</h3>
 <ul>
 <li>MotionStat is added to the end of each Move Command. This should eliminate the timing issue that we experienced with the Taiwan customer.</li>
 </ul>
 <hr>
 <h2 id="5412---2022-08-03">[5.4.12] - 2022-08-03</h2>
-<h3 id="fixed-30">Fixed</h3>
+<h3 id="fixed-31">Fixed</h3>
 <ul>
 <li>Removing MotorCurrent, Fixing MotorCurr and CurrRef Statuses in ISingleAxis.</li>
 </ul>
 <hr>
 <h2 id="5411---2021-10-04">[5.4.11] - 2021-10-04</h2>
-<h3 id="changed-64">Changed</h3>
+<h3 id="changed-65">Changed</h3>
 <ul>
 <li>Modify all Properties related to Force/Current/Position Mode Switch feature to be based on InternalProperies.</li>
 </ul>
 <hr>
 <h2 id="5410---2021-09-13">[5.4.10] - 2021-09-13</h2>
-<h3 id="changed-65">Changed</h3>
+<h3 id="changed-66">Changed</h3>
 <ul>
 <li>If packet number in a SlowLogger UpLoad is zero, jump to next UpLoad without processing.</li>
 </ul>
 <hr>
 <h2 id="549---2021-09-10">[5.4.9] - 2021-09-10</h2>
-<h3 id="changed-66">Changed</h3>
+<h3 id="changed-67">Changed</h3>
 <ul>
 <li>Slow logger API StopSlowLogData: check the ID of the packet that was last logged, remove unwanted packet ID and contents from the main log list.</li>
 </ul>
 <hr>
 <h2 id="548---2021-09-09">[5.4.8] - 2021-09-09</h2>
-<h3 id="added-22">Added</h3>
+<h3 id="added-23">Added</h3>
 <ul>
 <li>Slow logger API functions: StartSLowLogProcess and StopSlowLogData.</li>
 </ul>
 <hr>
 <h2 id="547---2021-09-07">[5.4.7] - 2021-09-07</h2>
-<h3 id="fixed-31">Fixed</h3>
+<h3 id="fixed-32">Fixed</h3>
 <ul>
 <li>BuffTime and BuffPos command format must be array type.</li>
 </ul>
 <hr>
 <h2 id="546---2021-09-06">[5.4.6] - 2021-09-06</h2>
-<h3 id="added-23">Added</h3>
+<h3 id="added-24">Added</h3>
 <ul>
 <li>Add properties and methods for Spline buffer motion in CiSingleAxis.</li>
 </ul>
 <hr>
 <h2 id="545---2021-08-04">[5.4.5] - 2021-08-04</h2>
-<h3 id="fixed-32">Fixed</h3>
+<h3 id="fixed-33">Fixed</h3>
 <ul>
 <li>HomeToLimitThenIndex, Jog to index - 4, the first parameter is speed, argu 1.</li>
 </ul>
 <hr>
 <h2 id="544---2021-06-30">[5.4.4] - 2021-06-30</h2>
-<h3 id="changed-67">Changed</h3>
+<h3 id="changed-68">Changed</h3>
 <ul>
 <li>Turn on AGMotion.</li>
 <li>Open the CloseAACommServer API to the user.</li>
 </ul>
 <hr>
 <h2 id="543---2021-06-08">[5.4.3] - 2021-06-08</h2>
-<h3 id="changed-68">Changed</h3>
+<h3 id="changed-69">Changed</h3>
 <ul>
 <li>Hide AGMotion for interim version release.</li>
 </ul>
 <hr>
 <h2 id="543---2021-05-24">[5.4.3] - 2021-05-24</h2>
-<h3 id="changed-69">Changed</h3>
+<h3 id="changed-70">Changed</h3>
 <ul>
 <li>Do some Clearance works.</li>
 </ul>
 <hr>
 <h2 id="543---2021-05-23">[5.4.3] - 2021-05-23</h2>
-<h3 id="added-24">Added</h3>
+<h3 id="added-25">Added</h3>
 <ul>
 <li>Add Force/Current/Position Mode Switch feature.</li>
 </ul>
 <hr>
 <h2 id="542---2021-05-20">[5.4.2] - 2021-05-20</h2>
-<h3 id="added-25">Added</h3>
+<h3 id="added-26">Added</h3>
 <ul>
 <li>Add new AGMotion feature.</li>
 </ul>
-<h3 id="changed-70">Changed</h3>
+<h3 id="changed-71">Changed</h3>
 <ul>
 <li>Eliminate all compilation Warnings.</li>
 <li>AGMotion as an individual namespace.</li>
 </ul>
 <hr>
 <h2 id="541---2021-05-12">[5.4.1] - 2021-05-12</h2>
-<h3 id="fixed-33">Fixed</h3>
+<h3 id="fixed-34">Fixed</h3>
 <ul>
 <li>Default set time out as 2 seconds when send out packet.</li>
 </ul>
 <hr>
 <h2 id="540---2021-04-16">[5.4.0] - 2021-04-16</h2>
-<h3 id="added-26">Added</h3>
+<h3 id="added-27">Added</h3>
 <ul>
 <li>Add an option to set time out when send out packet, convenient for the user to debug for breakpoint.</li>
 </ul>
 <hr>
 <h2 id="532---2021-03-24">[5.3.2] - 2021-03-24</h2>
-<h3 id="fixed-34">Fixed</h3>
+<h3 id="fixed-35">Fixed</h3>
 <ul>
 <li>Corrected <param> tag for CNC Arc Motion.</li>
 </ul>
 <hr>
 <h2 id="531---2021-03-04">[5.3.1] - 2021-03-04</h2>
-<h3 id="fixed-35">Fixed</h3>
+<h3 id="fixed-36">Fixed</h3>
 <ul>
 <li>Fix the bug on AIO Output Readback value incorrect.</li>
 </ul>
 <hr>
 <h2 id="5210---2021-02-17">[5.2.10] - 2021-02-17</h2>
-<h3 id="changed-71">Changed</h3>
+<h3 id="changed-72">Changed</h3>
 <ul>
 <li>Move VBus, VLogic, PwrTemp, MotorTemp into IMotionController to be used for all controller class.</li>
 </ul>
 <hr>
 <h2 id="529---2021-02-17">[5.2.9] - 2021-02-17</h2>
-<h3 id="changed-72">Changed</h3>
+<h3 id="changed-73">Changed</h3>
 <ul>
 <li>Extend AGM400 Axes, IO, GroupAxis, PositionEventEx, full range from A to F.</li>
 <li>Extend AGM800 Axes, IO, GroupAxis, PositionEventEx, full range from A to L.</li>
 </ul>
 <hr>
 <h2 id="528---2020-10-29">[5.2.8] - 2020-10-29</h2>
-<h3 id="changed-73">Changed</h3>
+<h3 id="changed-74">Changed</h3>
 <ul>
 <li>AllStat for different controllers.</li>
 </ul>
 <hr>
 <h2 id="527---2020-09-29">[5.2.7] - 2020-09-29</h2>
-<h3 id="changed-74">Changed</h3>
+<h3 id="changed-75">Changed</h3>
 <ul>
 <li>Change 4.6.2 target frameworks to 4.8 (remove redundancy).</li>
 </ul>
 <hr>
 <h2 id="526---2020-09-29">[5.2.6] - 2020-09-29</h2>
-<h3 id="fixed-36">Fixed</h3>
+<h3 id="fixed-37">Fixed</h3>
 <ul>
 <li>Updated calls to GetAllAxisStat within Group.cs.</li>
 </ul>
 <hr>
 <h2 id="525---2020-09-19">[5.2.5] - 2020-09-19</h2>
-<h3 id="added-27">Added</h3>
+<h3 id="added-28">Added</h3>
 <ul>
 <li>And multiple target frameworks support: .net 4, 4.6, 4.6.2.</li>
 </ul>
 <hr>
 <h2 id="515---2020-09-18">[5.1.5] - 2020-09-18</h2>
-<h3 id="changed-75">Changed</h3>
+<h3 id="changed-76">Changed</h3>
 <ul>
 <li>Updated definitions and bug fixes for CNC Motion.</li>
 </ul>
 <hr>
 <h2 id="514---2020-09-18">[5.1.4] - 2020-09-18</h2>
-<h3 id="changed-76">Changed</h3>
+<h3 id="changed-77">Changed</h3>
 <ul>
 <li>Call GetAllAxisStat using a new parameter to decide if AllStatAxisData group 10 is included.</li>
 <li>Add DInPortHigh in AllStatAxisData group 10.</li>
@@ -1274,24 +1403,24 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="513---2020-09-17">[5.1.3] - 2020-09-17</h2>
-<h3 id="changed-77">Changed</h3>
+<h3 id="changed-78">Changed</h3>
 <ul>
 <li>Array Type parameter index start from 1 for AAMotion user.</li>
 <li>Rename and add elements in enum ControllerType.</li>
 </ul>
-<h3 id="fixed-37">Fixed</h3>
+<h3 id="fixed-38">Fixed</h3>
 <ul>
 <li>Instantiate eEventSetting dictionary for read.</li>
 </ul>
 <hr>
 <h2 id="512---2020-09-16">[5.1.2] - 2020-09-16</h2>
-<h3 id="added-28">Added</h3>
+<h3 id="added-29">Added</h3>
 <ul>
 <li>Add BiDirConfig feature.</li>
 </ul>
 <hr>
 <h2 id="511---2020-09-15">[5.1.1] - 2020-09-15</h2>
-<h3 id="changed-78">Changed</h3>
+<h3 id="changed-79">Changed</h3>
 <ul>
 <li>Rename Class AG100 to AGD155.</li>
 <li>Rename Class MAS02 to AGM800.</li>
@@ -1299,22 +1428,22 @@ code or reference changes required.</li>
 <li>Rename Class AG300 to AGC300.</li>
 <li>Rename Class AGD301 to AGC301.</li>
 </ul>
-<h3 id="added-29">Added</h3>
+<h3 id="added-30">Added</h3>
 <ul>
 <li>Add DInLogHigh feature.</li>
 </ul>
 <hr>
 <h2 id="510---2020-09-10">[5.1.0] - 2020-09-10</h2>
-<h3 id="added-30">Added</h3>
+<h3 id="added-31">Added</h3>
 <ul>
 <li>Add AGD301 class.</li>
 <li>Add TimerHandler in TimerEvent for internal debug from AAMotion user source code program.</li>
 </ul>
-<h3 id="changed-79">Changed</h3>
+<h3 id="changed-80">Changed</h3>
 <ul>
 <li>Change the commands of GetAllSettingsDIOAG300, GetAllSettingsAIOAG300 to dynamic contents, initialize them in the CommandList and rebuild later dynamically.</li>
 </ul>
-<h3 id="fixed-38">Fixed</h3>
+<h3 id="fixed-39">Fixed</h3>
 <ul>
 <li>Dynamic Command fix the AGD301 system down after connection.</li>
 <li>Add eIOSetting.DInMode in UpdatePropertyListIOSettingArray.</li>
@@ -1322,50 +1451,50 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="501---2020-09-09">[5.0.1] - 2020-09-09</h2>
-<h3 id="fixed-39">Fixed</h3>
+<h3 id="fixed-40">Fixed</h3>
 <ul>
 <li>FIX nuget package.</li>
 </ul>
 <hr>
 <h2 id="500---2020-09-09">[5.0.0] - 2020-09-09</h2>
-<h3 id="changed-80">Changed</h3>
+<h3 id="changed-81">Changed</h3>
 <ul>
 <li>Merge from 4.21.8.</li>
 <li>ParseDIOSettings, ParseAIOSettings don't trigger event to write into Array-Type IO variables.</li>
 </ul>
 <hr>
 <h2 id="4218---2020-09-04">[4.21.8] - 2020-09-04</h2>
-<h3 id="changed-81">Changed</h3>
+<h3 id="changed-82">Changed</h3>
 <ul>
 <li>Replace PosEvent with PosEvent_A, PosEvent_B, PosEvent_C in AG300 class.</li>
 </ul>
 <hr>
 <h2 id="4217---2020-09-04">[4.21.7] - 2020-09-04</h2>
-<h3 id="fixed-40">Fixed</h3>
+<h3 id="fixed-41">Fixed</h3>
 <ul>
 <li>Take CiStatus from AllStat returning data structure.</li>
 </ul>
 <hr>
 <h2 id="4216---2020-08-31">[4.21.6] - 2020-08-31</h2>
-<h3 id="fixed-41">Fixed</h3>
+<h3 id="fixed-42">Fixed</h3>
 <ul>
 <li>Make AllStat &quot;Continuous&quot; message type.</li>
 </ul>
 <hr>
 <h2 id="4215---2020-08-27">[4.21.5] - 2020-08-27</h2>
-<h3 id="fixed-42">Fixed</h3>
+<h3 id="fixed-43">Fixed</h3>
 <ul>
 <li>Increase Axis to L.</li>
 </ul>
 <hr>
 <h2 id="4214---2020-08-27">[4.21.4] - 2020-08-27</h2>
-<h3 id="added-31">Added</h3>
+<h3 id="added-32">Added</h3>
 <ul>
 <li>Add CiStatus feature (Modified). Temporarily use .PropertyList[Axis].CiSlaveSettingsArray[eCiSlaveSetting.CiStatus][1] to replace .PropertyList[Axis].Statuses.CiStatus_1.</li>
 </ul>
 <hr>
 <h2 id="4213---2020-08-27">[4.21.3] - 2020-08-27</h2>
-<h3 id="added-32">Added</h3>
+<h3 id="added-33">Added</h3>
 <ul>
 <li>Add CiStatus feature.</li>
 <li>Temporarily disable CiSlaveRefreshRequired since AllStat[255] cannot work set.</li>
@@ -1375,168 +1504,168 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="4212---2020-08-06">[4.21.2] - 2020-08-06</h2>
-<h3 id="added-33">Added</h3>
+<h3 id="added-34">Added</h3>
 <ul>
 <li>Optimize Array Properties Access.</li>
 <li>Add new command GetAllSettingDIOCiMaster, GetAllSettingAIOCiMaster.</li>
 </ul>
 <hr>
 <h2 id="4211---2020-07-24">[4.21.1] - 2020-07-24</h2>
-<h3 id="added-34">Added</h3>
+<h3 id="added-35">Added</h3>
 <ul>
 <li>Add MAS02 (AGM800) class, initial version.</li>
 </ul>
 <hr>
 <h2 id="4201---2020-06-30">[4.20.1] - 2020-06-30</h2>
-<h3 id="added-35">Added</h3>
+<h3 id="added-36">Added</h3>
 <ul>
 <li>Add AG100 class, initial version.</li>
 </ul>
 <hr>
 <h2 id="4192---2020-06-30">[4.19.2] - 2020-06-30</h2>
-<h3 id="changed-82">Changed</h3>
+<h3 id="changed-83">Changed</h3>
 <ul>
 <li>Rename the property arrayStorage.</li>
 </ul>
-<h3 id="fixed-43">Fixed</h3>
+<h3 id="fixed-44">Fixed</h3>
 <ul>
 <li>Refresh takes after the communication OK with the controller.</li>
 <li>VBus, VLogic, PwrTemp, MotorTemp updated valid only after the communication OK with the controller.</li>
 </ul>
 <hr>
 <h2 id="4191---2020-06-26">[4.19.1] - 2020-06-26</h2>
-<h3 id="changed-83">Changed</h3>
+<h3 id="changed-84">Changed</h3>
 <ul>
 <li>Set a flag called &quot;AxisInternalPropertyUpdatedFromController&quot; to true after the connection is OK, which prevent intermittently read PropertyList after connection but InternalProperty have not been updated.</li>
 </ul>
 <hr>
 <h2 id="4190---2020-06-23">[4.19.0] - 2020-06-23</h2>
-<h3 id="changed-84">Changed</h3>
+<h3 id="changed-85">Changed</h3>
 <ul>
 <li>Optimize the IO array properties update event handler.</li>
 <li>Property read must occur after connected, otherwise default as &quot;unreasonable&quot; values.</li>
 </ul>
 <hr>
 <h2 id="4180---2020-06-19">[4.18.0] - 2020-06-19</h2>
-<h3 id="added-36">Added</h3>
+<h3 id="added-37">Added</h3>
 <ul>
 <li>Replace the Set methods on &quot;Array-Like&quot; IO Features with direct &quot;Array&quot; format Read/Write Properties. These are DInMode, DOutMode, DOutSelect, AInFilt, AInOffSet, AInDB, AInGain, AInMode, AOutOffset, AOutShifts, AOutMode, AOutPort.</li>
 </ul>
 <hr>
 <h2 id="4170---2020-06-17">[4.17.0] - 2020-06-17</h2>
-<h3 id="added-37">Added</h3>
+<h3 id="added-38">Added</h3>
 <ul>
 <li>Add dynamic allocation array size of Digital and Analogue input/output Mode, Filt, Offset, DB, Gain.</li>
 </ul>
 <hr>
 <h2 id="4160---2020-06-12">[4.16.0] - 2020-06-12</h2>
-<h3 id="changed-85">Changed</h3>
+<h3 id="changed-86">Changed</h3>
 <ul>
 <li>Upgraded AAComm DLL is upgraded from v3.0.0.2 to v3.0.0.18.</li>
 </ul>
 <hr>
 <h2 id="4150---2020-04-30">[4.15.0] - 2020-04-30</h2>
-<h3 id="added-38">Added</h3>
+<h3 id="added-39">Added</h3>
 <ul>
 <li>AOutPort has additional option to change to openloop mode.</li>
 </ul>
-<h3 id="changed-86">Changed</h3>
+<h3 id="changed-87">Changed</h3>
 <ul>
 <li>Clean up namespaces to use only one AAMotion namespace.</li>
 </ul>
 <hr>
 <h2 id="4131---2019-01-10">[4.13.1] - 2019-01-10</h2>
-<h3 id="fixed-44">Fixed</h3>
+<h3 id="fixed-45">Fixed</h3>
 <ul>
 <li>Put back bulk command method which was removed in v4.12.0.</li>
 </ul>
 <hr>
 <h2 id="4130---2019-01-07">[4.13.0] - 2019-01-07</h2>
-<h3 id="added-39">Added</h3>
+<h3 id="added-40">Added</h3>
 <ul>
 <li>MultiController.MoveAbs/MoveRel: Basic (Cross-controller) Multi-axis Synchronized PTP Method.</li>
 </ul>
 <hr>
 <h2 id="4121---2019-01-06">[4.12.1] - 2019-01-06</h2>
-<h3 id="changed-87">Changed</h3>
+<h3 id="changed-88">Changed</h3>
 <ul>
 <li>Changed [UpdateInternalStatus()] to type boolean.</li>
 </ul>
 <hr>
 <h2 id="4120---2019-12-30">[4.12.0] - 2019-12-30</h2>
-<h3 id="added-40">Added</h3>
+<h3 id="added-41">Added</h3>
 <ul>
 <li>New method [UpdateInternalStatus()] on all MotionControllers which allow user to explicitly update internal status.</li>
 </ul>
 <hr>
 <h2 id="4110---2019-10-17">[4.11.0] - 2019-10-17</h2>
-<h3 id="added-41">Added</h3>
+<h3 id="added-42">Added</h3>
 <ul>
 <li>New Homing method, which can take in sequence file .hseq file which is created from PCSuite.</li>
 </ul>
 <hr>
 <h2 id="4102---2019-10-13">[4.10.2] - 2019-10-13</h2>
-<h3 id="fixed-45">Fixed</h3>
+<h3 id="fixed-46">Fixed</h3>
 <ul>
 <li>Edited summary of SendBulkCommandString method.</li>
 </ul>
 <hr>
 <h2 id="4101---2019-10-10">[4.10.1] - 2019-10-10</h2>
-<h3 id="fixed-46">Fixed</h3>
+<h3 id="fixed-47">Fixed</h3>
 <ul>
 <li>Differentiated between internal and external bulk messaging.</li>
 </ul>
 <hr>
 <h2 id="4100---2019-10-10">[4.10.0] - 2019-10-10</h2>
-<h3 id="added-42">Added</h3>
+<h3 id="added-43">Added</h3>
 <ul>
 <li>Support for bulk messaging.</li>
 </ul>
 <hr>
 <h2 id="490---2019-08-26">[4.9.0] - 2019-08-26</h2>
-<h3 id="added-43">Added</h3>
+<h3 id="added-44">Added</h3>
 <ul>
 <li>Support PositionEvents from AG300 Controller.</li>
 </ul>
 <hr>
 <h2 id="480---2019-08-26">[4.8.0] - 2019-08-26</h2>
-<h3 id="added-44">Added</h3>
+<h3 id="added-45">Added</h3>
 <ul>
 <li>LinearAbsolute: Generic CNC Method.</li>
 <li>MultiSegmentOn: Multi-segment Option.</li>
 </ul>
 <hr>
 <h2 id="470---2019-08-26">[4.7.0] - 2019-08-26</h2>
-<h3 id="added-45">Added</h3>
+<h3 id="added-46">Added</h3>
 <ul>
 <li>Added InTargetTol, Added InTargetTime Keywords.</li>
 <li>Added Arc functions in Group Axis to include Additional Cycles Input Parameter.</li>
 </ul>
-<h3 id="fixed-47">Fixed</h3>
+<h3 id="fixed-48">Fixed</h3>
 <ul>
 <li>Arc functions in Group axis was missing 1 parameter.</li>
 </ul>
 <hr>
 <h2 id="460---2019-08-26">[4.6.0] - 2019-08-26</h2>
-<h3 id="changed-88">Changed</h3>
+<h3 id="changed-89">Changed</h3>
 <ul>
 <li>AAComm is now taken from nuget package.</li>
 </ul>
 <hr>
 <h2 id="450---2019-08-26">[4.5.0] - 2019-08-26</h2>
-<h3 id="added-46">Added</h3>
+<h3 id="added-47">Added</h3>
 <ul>
 <li>AllStat: Extension to be backward compatible and for supported MotorTemp.</li>
 </ul>
 <hr>
 <h2 id="440---2019-08-26">[4.4.0] - 2019-08-26</h2>
-<h3 id="added-47">Added</h3>
+<h3 id="added-48">Added</h3>
 <ul>
 <li>Controller has new constructor overload to allow configurable internal update rate.</li>
 </ul>
 <hr>
 <h2 id="430---2019-08-26">[4.3.0] - 2019-08-26</h2>
-<h3 id="changed-89">Changed</h3>
+<h3 id="changed-90">Changed</h3>
 <ul>
 <li>Whenever motion method is called from either SingleAxis or GroupAxis, AllStat command is called immediately afterwards to update the statuses of the internal variables.</li>
 </ul>

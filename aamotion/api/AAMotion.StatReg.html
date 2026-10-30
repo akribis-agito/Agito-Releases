@@ -90,7 +90,7 @@
 
 
   <h1 id="AAMotion_StatReg" data-uid="AAMotion.StatReg" class="text-break">
-Enum StatReg  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L205"><i class="bi bi-code-slash"></i></a>
+Enum StatReg  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L252"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -102,7 +102,8 @@ Enum StatReg  <a class="header-action link-secondary" title="View source" href="
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum StatReg</code></pre>
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum StatReg</code></pre>
   </div>
 
 
@@ -123,131 +124,135 @@ Enum StatReg  <a class="header-action link-secondary" title="View source" href="
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="AAMotion_StatReg_CalcFiltersFailed"><code>CalcFiltersFailed = 27</code></dt>
+    <dt id="AAMotion_StatReg_CalcFiltersFailed"><code>CalcFiltersFailed = 134217728</code></dt>
   
   <dd><p>CalcFilters failed</p>
 </dd>
-    <dt id="AAMotion_StatReg_Commutation"><code>Commutation = 0</code></dt>
+    <dt id="AAMotion_StatReg_Commutation"><code>Commutation = 1</code></dt>
   
   <dd><p>Commutation</p>
 </dd>
-    <dt id="AAMotion_StatReg_CurrentSaturation"><code>CurrentSaturation = 21</code></dt>
+    <dt id="AAMotion_StatReg_CurrentSaturation"><code>CurrentSaturation = 2097152</code></dt>
   
   <dd><p>Current saturation</p>
 </dd>
-    <dt id="AAMotion_StatReg_CurrentWarning0"><code>CurrentWarning0 = 9</code></dt>
+    <dt id="AAMotion_StatReg_CurrentWarning0"><code>CurrentWarning0 = 512</code></dt>
   
   <dd><p>Current warning bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_CurrentWarning1"><code>CurrentWarning1 = 10</code></dt>
+    <dt id="AAMotion_StatReg_CurrentWarning1"><code>CurrentWarning1 = 1024</code></dt>
   
   <dd><p>Current warning bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_DynamicBrake"><code>DynamicBrake = 28</code></dt>
+    <dt id="AAMotion_StatReg_DynamicBrake"><code>DynamicBrake = 268435456</code></dt>
   
   <dd><p>Dynamic brake</p>
 </dd>
-    <dt id="AAMotion_StatReg_FiltersModified"><code>FiltersModified = 26</code></dt>
+    <dt id="AAMotion_StatReg_FiltersModified"><code>FiltersModified = 67108864</code></dt>
   
   <dd><p>Filters modified</p>
 </dd>
-    <dt id="AAMotion_StatReg_ForwardLimitSwitch"><code>ForwardLimitSwitch = 18</code></dt>
+    <dt id="AAMotion_StatReg_ForwardLimitSwitch"><code>ForwardLimitSwitch = 262144</code></dt>
   
   <dd><p>Forward limit switch</p>
 </dd>
-    <dt id="AAMotion_StatReg_ForwardPositionLimit"><code>ForwardPositionLimit = 20</code></dt>
+    <dt id="AAMotion_StatReg_ForwardPositionLimit"><code>ForwardPositionLimit = 1048576</code></dt>
   
   <dd><p>Forward position limit</p>
 </dd>
-    <dt id="AAMotion_StatReg_HomeInputActivated"><code>HomeInputActivated = 30</code></dt>
+    <dt id="AAMotion_StatReg_HomeInputActivated"><code>HomeInputActivated = 1073741824</code></dt>
   
   <dd><p>Home input activated</p>
 </dd>
-    <dt id="AAMotion_StatReg_InitialDelayCompleted"><code>InitialDelayCompleted = 5</code></dt>
+    <dt id="AAMotion_StatReg_InitialDelayCompleted"><code>InitialDelayCompleted = 32</code></dt>
   
   <dd><p>Initial delay completed</p>
 </dd>
-    <dt id="AAMotion_StatReg_MotorTempWarning0"><code>MotorTempWarning0 = 15</code></dt>
+    <dt id="AAMotion_StatReg_MotorTempWarning0"><code>MotorTempWarning0 = 32768</code></dt>
   
   <dd><p>Motor temperature warning bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_MotorTempWarning1"><code>MotorTempWarning1 = 16</code></dt>
+    <dt id="AAMotion_StatReg_MotorTempWarning1"><code>MotorTempWarning1 = 65536</code></dt>
   
   <dd><p>Motor temperature warning bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_OtherWarnings0"><code>OtherWarnings0 = 24</code></dt>
+    <dt id="AAMotion_StatReg_None"><code>None = 0</code></dt>
+  
+  <dd><p>No bit set</p>
+</dd>
+    <dt id="AAMotion_StatReg_OtherWarnings0"><code>OtherWarnings0 = 16777216</code></dt>
   
   <dd><p>Other warnings bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_OtherWarnings1"><code>OtherWarnings1 = 25</code></dt>
+    <dt id="AAMotion_StatReg_OtherWarnings1"><code>OtherWarnings1 = 33554432</code></dt>
   
   <dd><p>Other warnings bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_OverMaxVBus"><code>OverMaxVBus = 3</code></dt>
+    <dt id="AAMotion_StatReg_OverMaxVBus"><code>OverMaxVBus = 8</code></dt>
   
   <dd><p>Over max VBus</p>
 </dd>
-    <dt id="AAMotion_StatReg_OverMaxVBusAbs"><code>OverMaxVBusAbs = 6</code></dt>
+    <dt id="AAMotion_StatReg_OverMaxVBusAbs"><code>OverMaxVBusAbs = 64</code></dt>
   
   <dd><p>Over max VBus abs</p>
 </dd>
-    <dt id="AAMotion_StatReg_PowerTempWarning0"><code>PowerTempWarning0 = 11</code></dt>
+    <dt id="AAMotion_StatReg_PowerTempWarning0"><code>PowerTempWarning0 = 2048</code></dt>
   
   <dd><p>Power temperature warning bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_PowerTempWarning1"><code>PowerTempWarning1 = 12</code></dt>
+    <dt id="AAMotion_StatReg_PowerTempWarning1"><code>PowerTempWarning1 = 4096</code></dt>
   
   <dd><p>Power temperature warning bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_Regeneration"><code>Regeneration = 1</code></dt>
+    <dt id="AAMotion_StatReg_Regeneration"><code>Regeneration = 2</code></dt>
   
   <dd><p>Regeneration</p>
 </dd>
-    <dt id="AAMotion_StatReg_ReverseLimitSwitch"><code>ReverseLimitSwitch = 17</code></dt>
+    <dt id="AAMotion_StatReg_ReverseLimitSwitch"><code>ReverseLimitSwitch = 131072</code></dt>
   
   <dd><p>Reverse limit switch</p>
 </dd>
-    <dt id="AAMotion_StatReg_ReversePositionLimit"><code>ReversePositionLimit = 19</code></dt>
+    <dt id="AAMotion_StatReg_ReversePositionLimit"><code>ReversePositionLimit = 524288</code></dt>
   
   <dd><p>Reverse position limit</p>
 </dd>
-    <dt id="AAMotion_StatReg_SaturationTempWarning0"><code>SaturationTempWarning0 = 13</code></dt>
+    <dt id="AAMotion_StatReg_SaturationTempWarning0"><code>SaturationTempWarning0 = 8192</code></dt>
   
   <dd><p>Saturation temperature warning bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_SaturationTempWarning1"><code>SaturationTempWarning1 = 14</code></dt>
+    <dt id="AAMotion_StatReg_SaturationTempWarning1"><code>SaturationTempWarning1 = 16384</code></dt>
   
   <dd><p>Saturation temperature warning bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_Spare3"><code>Spare3 = 2</code></dt>
+    <dt id="AAMotion_StatReg_Spare3"><code>Spare3 = 4</code></dt>
   
   <dd><p>Spare 3</p>
 </dd>
-    <dt id="AAMotion_StatReg_StaticBrakeLock"><code>StaticBrakeLock = 29</code></dt>
+    <dt id="AAMotion_StatReg_StaticBrakeLock"><code>StaticBrakeLock = 536870912</code></dt>
   
   <dd><p>Static brake lock</p>
 </dd>
-    <dt id="AAMotion_StatReg_StepperOpenLoopStall"><code>StepperOpenLoopStall = 31</code></dt>
+    <dt id="AAMotion_StatReg_StepperOpenLoopStall"><code>StepperOpenLoopStall = -2147483648</code></dt>
   
   <dd><p>Stepper open loop stall</p>
 </dd>
-    <dt id="AAMotion_StatReg_UnderMinVBus"><code>UnderMinVBus = 4</code></dt>
+    <dt id="AAMotion_StatReg_UnderMinVBus"><code>UnderMinVBus = 16</code></dt>
   
   <dd><p>Under min VBus</p>
 </dd>
-    <dt id="AAMotion_StatReg_VBusWarning0"><code>VBusWarning0 = 7</code></dt>
+    <dt id="AAMotion_StatReg_VBusWarning0"><code>VBusWarning0 = 128</code></dt>
   
   <dd><p>VBus warning bit 0</p>
 </dd>
-    <dt id="AAMotion_StatReg_VBusWarning1"><code>VBusWarning1 = 8</code></dt>
+    <dt id="AAMotion_StatReg_VBusWarning1"><code>VBusWarning1 = 256</code></dt>
   
   <dd><p>VBus warning bit 1</p>
 </dd>
-    <dt id="AAMotion_StatReg_VelocitySaturation"><code>VelocitySaturation = 23</code></dt>
+    <dt id="AAMotion_StatReg_VelocitySaturation"><code>VelocitySaturation = 8388608</code></dt>
   
   <dd><p>Velocity saturation</p>
 </dd>
-    <dt id="AAMotion_StatReg_VoltageSaturation"><code>VoltageSaturation = 22</code></dt>
+    <dt id="AAMotion_StatReg_VoltageSaturation"><code>VoltageSaturation = 4194304</code></dt>
   
   <dd><p>Voltage saturation</p>
 </dd>
@@ -258,7 +263,7 @@ Enum StatReg  <a class="header-action link-secondary" title="View source" href="
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L205" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L252" class="edit-link">Edit this page</a>
         </div>
 
 

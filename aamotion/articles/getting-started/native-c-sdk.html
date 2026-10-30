@@ -110,7 +110,7 @@ the conceptual overview.</p>
 <blockquote>
 <p>Status: validated on <strong>win-x64</strong> against a live AGM800 (connect, reads, motor on/off, relative /
 absolute / jog motion, GenData read/write, IO, and the enum/error description getters all exercised
-under NativeAOT). linux-x64 builds and packs in CI; macOS builds are pending a build runner.</p>
+under NativeAOT). linux-x64 builds and packs in CI, and both osx RIDs build, pack and validate nightly on the Mac runner.</p>
 </blockquote>
 <p><strong>Getting the library</strong></p>
 <ul>
@@ -133,6 +133,8 @@ linux-x64) ship on the public <code>Software/AAMotion-Native</code> release line
 <code>Agito.AAMotion</code> release. They are <strong>not on nuget.org</strong> — the C ABI is exact-match gated pre-1.0
 and the package carries only the RIDs above. The package version is locked to the managed
 <code>Agito.AAMotion</code>.</p>
+<p>Verifying a download — the checksums, and the signature over them:
+<a href="https://github.com/akribis-agito/Agito-Releases#verification">https://github.com/akribis-agito/Agito-Releases#verification</a></p>
 </blockquote>
 <hr>
 <h2 id="architecture-in-one-paragraph">Architecture in one paragraph</h2>
@@ -155,7 +157,9 @@ int main(void)
     aamotion_controller c = aamotion_initialize(AAMOTION_CONTROLLER_TYPE_AGM800);
     if (!c) return 1;
 
-    /* aamotion_connect to the controller through AACS. fastArk / enableAutoReconnect are 0/1 flags. */
+    /* Ethernet: aamotion_connect through AACS. fastArk is a 0/1 flag; enableAutoReconnect is
+       recorded but currently inert - nothing probes or reconnects on its own.
+     * Simulation: aamotion_connect_simulation(c, &quot;C:\\path\\to\\firmware_sim.exe&quot;, &quot;AGD301&quot;, &quot;5.0.0&quot;, NULL); */
     if (aamotion_connect(c, &quot;172.1.1.101&quot;, 0, 0))                     /* factory-default address */
     {
         aamotion_motor_on(c, AAMOTION_AXIS_REF_A);                       /* AAMOTION_AXIS_REF_A == 1 */
@@ -197,7 +201,7 @@ lib.aamotion_connect.restype  = ctypes.c_bool
 lib.aamotion_connect.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_bool, ctypes.c_bool]
 lib.aamotion_motor_on.argtypes      = [ctypes.c_void_p, ctypes.c_int]
 lib.aamotion_motor_on.restype       = ctypes.c_bool
-lib.aamotion_move_relative.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int]
+lib.aamotion_move_relative.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_double, ctypes.c_double, ctypes.c_double, ctypes.c_double]
 lib.aamotion_move_relative.restype  = ctypes.c_bool
 lib.aamotion_send_command_string.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int]
 lib.aamotion_send_command_string.restype  = ctypes.c_bool
@@ -256,15 +260,35 @@ controller connection — release it before releasing the controller handle it w
 product-type IDs, <strong>not</strong> ordinals.</li>
 <li><strong><code>aamotion_connect(h, deviceAddress, fastArk, enableAutoReconnect)</code></strong> — opens the controller channel
 through AACS (e.g. the factory-default Ethernet IP <code>&quot;172.1.1.101&quot;</code>). <code>fastArk</code> / <code>enableAutoReconnect</code> are
-<code>bool</code>. Returns <code>true</code> on success.</li>
-<li><strong><code>aamotion_is_connected(h)</code></strong> — <code>true</code> while the channel is open <strong>and</strong> (for IP-connected controllers) the device answers an ICMP ping the call performs synchronously; with auto-reconnect enabled a failed probe runs a full reconnect attempt inline (seconds to tens of seconds worst case, 5 s cooldown). Not a cheap flag read — budget polling accordingly.</li>
+<code>bool</code>. Returns <code>true</code> on success. <code>enableAutoReconnect</code> is recorded and currently has no automatic
+effect: nothing probes or reconnects on its own, so recovery is <code>aamotion_try_reconnect</code> on a schedule
+you own.
+<strong>Simulation:</strong> <strong><code>aamotion_connect_simulation(h, simExePath, simProduct, simVersion, simMotorProfile)</code></strong>
+instead — absolute UTF-8 path to <code>firmware_sim.exe</code> (not shipped with the SDK; <code>sim.info</code> is not read).
+Optional <code>simProduct</code> / <code>simVersion</code> / <code>simMotorProfile</code> may be <strong>NULL</strong> for empty/default. A <code>simProduct</code>
+the product catalog knows (<code>AGM800</code>, <code>AGD301</code>, …) also declares the controller type, which skips a
+discovery probe that spawns a second sim child; a declared type the sim disagrees with returns <strong>false</strong>,
+and a name the catalog does not resolve is discovered by that probe, as <strong>NULL</strong> is. The
+<code>AAMOTION_CONTROLLER_TYPE_*</code> spellings resolve except the four EtherCAT ones (<code>AGD155_EC</code>, …), which the
+catalog spells with a hyphen (<code>AGD155-EC</code>).
+AACS spawns
+the sim and bridges loopback; <code>aamotion_disconnect</code> reaps the child. <code>aamotion_try_reconnect</code> is
+Ethernet-only. To reopen a sim session: <code>aamotion_disconnect(h)</code>, then a <strong>new</strong>
+<code>aamotion_initialize(...)</code> — disconnect always frees the handle, so the old one resolves to nothing —
+then <code>aamotion_connect_simulation</code> on the new handle. Calling <code>aamotion_connect_simulation</code> alone on a
+link that is still open returns <strong>false</strong>: it does not tear down a link it finds open, and the connect
+short-circuits on one. (This is where the C ABI differs from the managed API, whose <code>Disconnect()</code>
+leaves the controller object usable.)</li>
+<li><strong><code>aamotion_is_connected(h)</code></strong> — a cheap, non-blocking read of the comm layer's own logical state: no ICMP probe, no reconnect, safe to poll or evaluate from a debugger. It does <strong>not</strong> prove physical reachability — a pulled cable or a network partition can leave the socket logically open — and there is no probe-only export; <code>aamotion_try_reconnect</code> is the way to actively verify and recover a link.</li>
 <li><strong><code>aamotion_disconnect(h)</code></strong> — closes the channel and frees the handle; or <strong><code>aamotion_release(h)</code></strong> to free without a
 prior disconnect.</li>
 </ol>
 <h3 id="bool-and-result-conventions"><code>bool</code> and result conventions</h3>
 <p>Most exports return a C <code>bool</code> — <strong><code>true</code> on success, <code>false</code> on failure</strong> (a 1-byte <code>0</code>/<code>1</code> at the
-ABI). A <code>NULL</code> handle, a <code>NULL</code> string argument, an unresolvable/stale handle, or an internal exception
-all map to <code>false</code>/<code>0</code> — exceptions never cross the boundary. This bool-return convention is
+ABI). A <code>NULL</code> handle, a <code>NULL</code> string argument, an unresolvable/stale handle, an internal exception, or
+<strong>a controller ERR reply to any command or write the call made</strong> all map to <code>false</code>/<code>0</code> — exceptions
+never cross the boundary, and for a command-carrying export <code>true</code> means the controller <em>acknowledged</em>
+it, not merely that the SDK sent it. This bool-return convention is
 deliberately different from <code>aacomm.*</code>'s uniform <code>aacomm_status</code> return: <code>aamotion.*</code> keeps the
 success/failure contract of the retired <code>AGAAMotion</code> wrapper it replaces, so the two SDKs are each
 internally consistent rather than mutually identical.</p>
@@ -278,13 +302,15 @@ ERR), indistinguishable from a legitimate <code>0</code>. When that matters, rea
 success feedback at all — mirroring <code>AGAAMotion</code>'s void contract. Failures still surface through the
 error callback; use it (or a follow-up read) when you need confirmation of a setter.</p>
 <p>Per-axis <code>int axis</code>
-arguments take an <code>aamotion_axis_ref_t</code> bit value (<code>AAMOTION_AXIS_REF_A</code> = 1, <code>AAMOTION_AXIS_REF_B</code> = 2, … combinable). A plain <code>int</code>
-speed/accel/decel is passed verbatim — <code>0</code> is a literal <code>0</code>, not &quot;use default&quot;.</p>
+arguments take an <code>aamotion_axis_ref_t</code> bit value (<code>AAMOTION_AXIS_REF_A</code> = 1, <code>AAMOTION_AXIS_REF_B</code> = 2, … combinable).
+A quantity — position, distance, speed, accel, decel — is passed verbatim: <code>0</code> is a literal <code>0</code>, not &quot;use default&quot;,
+where the managed parameter behind it is optional. Quantities are <code>double</code>; see <em>API reference</em> for what stays integral.</p>
 <h3 id="strings-the-fixed-buffer-contract">Strings: the fixed-buffer contract</h3>
 <p>Output strings are UTF-8. The string functions — <code>aamotion_send_command_string</code> / <code>aamotion_send_bulk_command_string</code>, the
-<code>Get*Des</code> enum-description getters, and <code>aamotion_get_error_description_by_code</code> — take a caller-supplied writable
-buffer plus its size (<code>char* buf, int size</code>): the result is written <strong>truncated to fit and always
-NUL-terminated</strong>. The <code>Get*</code> description getters return <code>true</code> when a non-empty description was written,
+<code>Get*Des</code> enum-description getters, <code>aamotion_get_error_description_by_code</code>, and <code>aamotion_get_units</code> (which returns
+<code>true</code> on an empty name — see <em>Which units a value is in</em>) — take a caller-supplied writable
+buffer plus its size (<code>char* buf, int size</code>): the result is written <strong>truncated to fit on a character boundary
+(never inside a multi-byte sequence) and always NUL-terminated</strong>. The <code>Get*</code> description getters return <code>true</code> when a non-empty description was written,
 <code>false</code> (writing nothing) on an unknown value, empty result, or <code>NULL</code>/zero buffer. <code>aamotion_send_bulk_command_string</code>
 is Ethernet-only.</p>
 <h3 id="the-error-callback">The error callback</h3>
@@ -293,8 +319,18 @@ is Ethernet-only.</p>
 void aamotion_set_error_occurred_handler(aamotion_controller h, aamotion_error_occurred_cb cb);
 void aamotion_clear_error_occurred_handler(aamotion_controller h);
 </code></pre>
-<p>The callback fires <strong>on AAMotion's firing thread</strong>, never on your calling thread — keep it <strong>short and
-thread-safe</strong>; marshal real work to your own thread/queue. The <code>const char*</code> arguments (<code>message</code>,
+<p>The callback fires <strong>on whichever thread raised the error</strong>, which for a controller ERR answering a
+command you issued is <strong>your own calling thread, synchronously, inside that call</strong> — one invocation per
+refused write. How many times a multi-write export calls you depends on how it writes. One that assigns
+typed properties — <code>aamotion_configure_slow_logger</code>, the move family — stops at the first refusal, because
+the managed write raises there, so it calls you once. One that writes through <code>MotionController.WriteGenData</code>
+— the optical-coupling configuration — keeps going, because <code>WriteGenData</code> catches the refusal into a <code>false</code>
+its setters discard, so it can call you once per refused slot. One that sends its writes in a single packet
+can also call you several times before it returns. Keep it
+<strong>short and re-entrancy-safe</strong>; calling back into the SDK from it is supported but nests inside the call
+being reported on, and marshalling real work to your own thread/queue is the safer shape. Errors raised
+by AAMotion's own background threads arrive on those instead, so the handler must be thread-safe as
+well. The <code>const char*</code> arguments (<code>message</code>,
 <code>exception</code>) are <strong>owned by the library and valid only for the duration of the call</strong> — copy them if
 you need them later; do not free them. Only one handler is held per handle; a later
 <code>aamotion_set_error_occurred_handler</code> replaces the earlier one, and <code>aamotion_clear_error_occurred_handler</code> removes it.</p>
@@ -303,10 +339,54 @@ you need them later; do not free them. Only one handler is held per handle; a la
 <code>aamotion_enums.h</code> to its human-readable description (e.g. <code>aamotion_get_con_flt_des(1003, …)</code> →
 &quot;Encoder disconnected&quot;). <code>aamotion_get_error_description_by_code(int errorCode, …)</code> resolves a controller error
 code. Both follow the fixed-buffer contract above.</p>
+<h3 id="which-units-a-value-is-in">Which units a value is in</h3>
+<p><code>aamotion_get_units(controller, axis, keyword, name, nameSize, factor)</code> answers what a parameter reads and
+writes in on an axis <strong>through this session</strong>: the controller's unit name and factor when Global User Units
+are enabled on the axis and the parameter belongs to one of its groups, otherwise an empty name and factor
+<code>1</code> — controller counts. Counts is also the answer for units off, a parameter in no group, an unknown
+keyword, a session not connected yet, and a User Units read that failed at connect: the answer is what the
+session holds, the same values it scales its own reads and writes with. That identity answer is the counts
+pin: test <code>factor == 1</code> before treating a value as counts (a scaled axis may carry no unit name). <code>keyword</code>
+is an <code>int</code> carrying an <code>aamotion_keyword_t</code> value from <code>aamotion_enums.h</code>, the parameter's <code>eKeyword</code>
+value; <code>axis</code> is one <code>AAMOTION_AXIS_REF_*</code> bit. The name follows the fixed-buffer contract — a unit name is
+at most 8 characters on current firmware, up to two UTF-8 bytes each, so a 32-byte buffer always holds it. The
+call returns <code>false</code> (name empty, <code>*factor</code> untouched) only when it is malformed: bad handle, null <code>name</code> or
+<code>factor</code>, <code>nameSize &lt;= 0</code>, or an axis that is not exactly one of A..L.</p>
+<h3 id="reading-a-value-by-keyword">Reading a value by keyword</h3>
+<p><code>aamotion_get_value(controller, axis, keyword, index, value)</code> reads the number a parameter holds, keyed the
+same way — so a consumer reads <code>Pos</code> by naming it, instead of sending <code>APos</code> and parsing the reply. <code>index</code> 0
+reads a scalar parameter; 1 and up read one element of an array parameter, in the parameter's own indexing. An
+array parameter has no reading at 0 and a scalar one none at 1 — both are refused rather than answered from the
+backing slot. The value comes back in the units that axis reads in, which <code>aamotion_get_units</code> names.</p>
+<p>It returns <code>false</code> and leaves <code>*value</code> untouched for a bad handle, a null <code>value</code>, an axis that is not one of
+A..L, an index the parameter does not have, a keyword outside <code>aamotion_keyword_t</code>, a keyword the controller's
+table flags as a <strong>command</strong> rather than a parameter — reading one would <em>send</em> it, and on the captured table
+that is <code>PROG_RUN</code>, <code>PROG_HALT</code>, <code>PROG_HALT_ALL</code>, <code>PROG_RESET</code>, <code>LOGGER_UPLOAD</code> and <code>STOP_ECAM</code>, of which
+<code>PROG_RUN</code> starts a user program — a read the controller refused with an ERR, or a reply that is not a number at
+all. Neither is a reading. That is why it is a status-returning call rather than one returning the number
+directly: <code>0</code> is a legal value for nearly every parameter, so a sentinel could not be told apart from a
+measurement.</p>
+<p>Some parameters the controller declares as arrays are not carried as arrays by the SDK's parameter registry —
+the registry promotes a fixed list, and the rest keep a single-element slot. Those are <strong>refused at every index</strong>
+rather than read as something they are not: index 0 because the controller's table says they are arrays, and any
+element index because the local slot has no such element. Reach them through <code>aamotion_send_command_string</code>.
+The set follows the registry rather than this document, so the symptom is the way to recognise one.</p>
+<p>Two things it cannot separate, stated rather than implied. The command refusal is only as good as the controller's
+message table: a command mnemonic the connected controller does not declare cannot be classified, and would be
+sent. And a value served from the fast-read cache reaches the caller without touching the wire — no export turns
+that cache on, but a .NET consumer sharing the process can.</p>
+<p>Every parameter comes back as a <code>double</code>, integral ones included, because the managed pipeline reads them all
+that way. A register-shaped parameter — a status word, a digital-output port — is therefore a whole number that
+may have bit 31 set: read those into a <code>uint32_t</code>. A C <code>(int)</code> cast is undefined for a value above <code>INT_MAX</code>,
+which is exactly the case that matters.</p>
 <hr>
 <h2 id="api-reference">API reference</h2>
-<p><code>aamotion.h</code> is the authoritative per-function reference. The 200 exports (199 motion functions +
-<code>aamotion_abi_version</code>) group as follows:</p>
+<p><code>aamotion.h</code> is the authoritative per-function reference. The exports group as follows.</p>
+<p><strong>Quantities are <code>double</code>.</strong> Positions, distances, speeds, accelerations, decelerations, thresholds and
+the PID gains carry the type their managed counterpart carries, so a target scaled by Global User Units
+is expressible — under a unit factor a whole count is rarely a whole user value. Modes, indices, counts,
+bitmasks, axis selectors and millisecond timeouts stay <code>int</code>; the CNC group surface takes controller
+counts and is <code>int</code> on both sides apart from <code>aamotion_set_motion_profile</code>'s smoothing factor.</p>
 <table>
 <thead>
 <tr>
@@ -317,7 +397,7 @@ code. Both follow the fixed-buffer contract above.</p>
 <tbody>
 <tr>
 <td>Lifecycle</td>
-<td><code>aamotion_initialize</code>, <code>aamotion_connect</code>, <code>aamotion_disconnect</code>, <code>aamotion_is_connected</code>, <code>aamotion_try_reconnect</code>, <code>aamotion_release</code>, <code>aamotion_init</code>, <code>aamotion_shutdown</code></td>
+<td><code>aamotion_initialize</code>, <code>aamotion_connect</code>, <code>aamotion_connect_simulation</code>, <code>aamotion_disconnect</code>, <code>aamotion_is_connected</code>, <code>aamotion_try_reconnect</code>, <code>aamotion_release</code>, <code>aamotion_init</code>, <code>aamotion_shutdown</code></td>
 </tr>
 <tr>
 <td>Raw command pass-through</td>
@@ -346,6 +426,14 @@ code. Both follow the fixed-buffer contract above.</p>
 <tr>
 <td>Error handling</td>
 <td><code>aamotion_set_error_occurred_handler</code>, <code>aamotion_clear_error_occurred_handler</code></td>
+</tr>
+<tr>
+<td>User Units</td>
+<td><code>aamotion_get_units</code></td>
+</tr>
+<tr>
+<td>Values</td>
+<td><code>aamotion_get_value</code></td>
 </tr>
 <tr>
 <td>Descriptions</td>
@@ -393,7 +481,7 @@ code. Both follow the fixed-buffer contract above.</p>
 </tr>
 <tr>
 <td>Vector</td>
-<td><code>aamotion_stop_vec</code>, <code>aamotion_vector_pause</code>, <code>aamotion_vector_continue</code>, <code>aamotion_vector_linear</code>, <code>aamotion_vector_linear_with_mask</code>, <code>aamotion_vector_arc</code>, <code>aamotion_set_vector_param</code></td>
+<td><code>aamotion_stop_vec</code>, <code>aamotion_vector_pause</code>, <code>aamotion_vector_continue</code>, <code>aamotion_vector_linear_with_mask</code>, <code>aamotion_vector_arc</code>, <code>aamotion_set_vector_param</code></td>
 </tr>
 <tr>
 <td>Slow logger</td>
@@ -401,7 +489,7 @@ code. Both follow the fixed-buffer contract above.</p>
 </tr>
 <tr>
 <td>Optical coupling</td>
-<td><code>aamotion_optical_coupling_create</code>, <code>aamotion_optical_coupling_release</code>, <code>aamotion_optical_coupling_apply_spiral_config</code>, <code>aamotion_optical_coupling_apply_single_axis_config</code>, <code>aamotion_optical_coupling_start_spiral_scan</code>, <code>aamotion_optical_coupling_start_single_axis_scan</code>, <code>aamotion_optical_coupling_emergency_stop</code>, <code>aamotion_optical_coupling_sync_all_gen_data</code>, <code>aamotion_optical_coupling_read_range</code>, <code>aamotion_optical_coupling_is_success</code>, <code>aamotion_optical_coupling_has_error</code>, <code>aamotion_optical_coupling_get_error_code</code>, <code>aamotion_optical_coupling_get_coupling_result</code>, <code>aamotion_optical_coupling_get_last_sample_index</code>, <code>aamotion_optical_coupling_get_leveling_angle</code>, <code>aamotion_optical_coupling_get_max_power</code>, <code>aamotion_optical_coupling_get_max_power_x_pos</code>, <code>aamotion_optical_coupling_get_max_power_y_pos</code>, <code>aamotion_optical_coupling_get_spiral_x_pos_array</code>, <code>aamotion_optical_coupling_get_spiral_y_pos_array</code>, <code>OpticalCoupling_GetChannel1/2/3/4PowerArray</code>, <code>aamotion_optical_coupling_get_single_axis_pos_array</code>, <code>aamotion_optical_coupling_get_single_axis_max_power_pos</code>, <code>OpticalCoupling_GetSingleAxisChannel1/2/3/4PowerArray</code>, <code>aamotion_optical_coupling_get_two_channel_intersection_pos</code></td>
+<td><code>aamotion_optical_coupling_create</code>, <code>aamotion_optical_coupling_release</code>, <code>aamotion_optical_coupling_apply_spiral_config</code>, <code>aamotion_optical_coupling_apply_single_axis_config</code>, <code>aamotion_optical_coupling_start_spiral_scan</code>, <code>aamotion_optical_coupling_start_single_axis_scan</code>, <code>aamotion_optical_coupling_emergency_stop</code>, <code>aamotion_optical_coupling_sync_all_gen_data</code>, <code>aamotion_optical_coupling_read_range</code>, <code>aamotion_optical_coupling_is_success</code>, <code>aamotion_optical_coupling_has_error</code>, <code>aamotion_optical_coupling_get_error_code</code>, <code>aamotion_optical_coupling_get_coupling_result</code>, <code>aamotion_optical_coupling_get_last_sample_index</code>, <code>aamotion_optical_coupling_get_leveling_angle</code>, <code>aamotion_optical_coupling_get_max_power</code>, <code>aamotion_optical_coupling_get_max_power_x_pos</code>, <code>aamotion_optical_coupling_get_max_power_y_pos</code>, <code>aamotion_optical_coupling_get_spiral_x_pos_array</code>, <code>aamotion_optical_coupling_get_spiral_y_pos_array</code>, <code>aamotion_optical_coupling_get_channel1/2/3/4_power_array</code>, <code>aamotion_optical_coupling_get_single_axis_pos_array</code>, <code>aamotion_optical_coupling_get_single_axis_max_power_pos</code>, <code>aamotion_optical_coupling_get_single_axis_channel1/2/3/4_power_array</code>, <code>aamotion_optical_coupling_get_two_channel_intersection_pos</code></td>
 </tr>
 </tbody>
 </table>
@@ -427,8 +515,8 @@ It is bumped <strong>only on a breaking change</strong>: a changed or removed ex
 callback-signature change, or changed semantics. <strong>Additive changes — new exports, new enum
 values — never bump it</strong> (they cannot break a compiled consumer). It returns its value directly
 (it cannot fail) and takes no handle; the same value is the <code>AAMOTION_ABI_VERSION</code> macro in the
-generated <code>aamotion_enums.h</code>. Generation <strong>1</strong> is the first shipped ABI (pre-release increments
-carried no compatibility meaning and were reset).</li>
+generated <code>aamotion_enums.h</code>. Generation <strong>2</strong> is current; AAMotion 11 published generation 1, so
+a consumer built against those headers must be rebuilt.</li>
 </ul>
 <p><strong>Consumer rule — exact-match gate.</strong> Call <code>aamotion_abi_version()</code> once at load and reject a
 library whose value does not equal <code>AAMOTION_ABI_VERSION</code> from the headers your binding was built
@@ -436,7 +524,8 @@ against — coherent with the bump policy, because the number only moves when yo
 cannot run. The committed <code>include/aamotion.abi.txt</code> records the exact export surface for the
 generation; <code>aamotion_enums.h</code> and the manifest are generated from the C# source and CI diff-gated,
 while <code>aamotion.h</code> is <strong>hand-maintained</strong> — the manifest diff is what forces it to be updated in
-review. Always build against the <code>aamotion.h</code> that ships with the library you load.</p>
+review, and its callback typedefs are additionally machine-checked against <code>CallbackAbi.Callbacks</code>
+by the generator. Always build against the <code>aamotion.h</code> that ships with the library you load.</p>
 <hr>
 <h2 id="release-notes">Release notes</h2>
 <p><code>CHANGELOG.md</code> — package version tracks <code>Agito.AAMotion</code> in lockstep; the

@@ -90,7 +90,7 @@
 
 
   <h1 id="AAMotion_MotionStat" data-uid="AAMotion.MotionStat" class="text-break">
-Enum MotionStat  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L160"><i class="bi bi-code-slash"></i></a>
+Enum MotionStat  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L204"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -102,7 +102,8 @@ Enum MotionStat  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum MotionStat</code></pre>
+    <pre><code class="lang-csharp hljs">[Flags]
+public enum MotionStat</code></pre>
   </div>
 
 
@@ -123,87 +124,91 @@ Enum MotionStat  <a class="header-action link-secondary" title="View source" hre
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="AAMotion_MotionStat_Accelerating"><code>Accelerating = 4</code></dt>
+    <dt id="AAMotion_MotionStat_Accelerating"><code>Accelerating = 16</code></dt>
   
   <dd><p>Accelerating</p>
 </dd>
-    <dt id="AAMotion_MotionStat_BufferStop"><code>BufferStop = 17</code></dt>
+    <dt id="AAMotion_MotionStat_BufferStop"><code>BufferStop = 131072</code></dt>
   
   <dd><p>Buffer stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCAMember"><code>CNCAMember = 10</code></dt>
+    <dt id="AAMotion_MotionStat_CNCAMember"><code>CNCAMember = 1024</code></dt>
   
   <dd><p>CNCA member</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCAMotion"><code>CNCAMotion = 11</code></dt>
+    <dt id="AAMotion_MotionStat_CNCAMotion"><code>CNCAMotion = 2048</code></dt>
   
   <dd><p>CNCA motion</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCAStop"><code>CNCAStop = 12</code></dt>
+    <dt id="AAMotion_MotionStat_CNCAStop"><code>CNCAStop = 4096</code></dt>
   
   <dd><p>CNCA stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCBMember"><code>CNCBMember = 13</code></dt>
+    <dt id="AAMotion_MotionStat_CNCBMember"><code>CNCBMember = 8192</code></dt>
   
   <dd><p>CNCB member</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCBMotion"><code>CNCBMotion = 14</code></dt>
+    <dt id="AAMotion_MotionStat_CNCBMotion"><code>CNCBMotion = 16384</code></dt>
   
   <dd><p>CNCB motion</p>
 </dd>
-    <dt id="AAMotion_MotionStat_CNCBStop"><code>CNCBStop = 15</code></dt>
+    <dt id="AAMotion_MotionStat_CNCBStop"><code>CNCBStop = 32768</code></dt>
   
   <dd><p>CNCB stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_ControlledStop"><code>ControlledStop = 16</code></dt>
+    <dt id="AAMotion_MotionStat_ControlledStop"><code>ControlledStop = 65536</code></dt>
   
   <dd><p>Controlled stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_Decelerating"><code>Decelerating = 5</code></dt>
+    <dt id="AAMotion_MotionStat_Decelerating"><code>Decelerating = 32</code></dt>
   
   <dd><p>Decelerating</p>
 </dd>
-    <dt id="AAMotion_MotionStat_ECAMStop"><code>ECAMStop = 7</code></dt>
+    <dt id="AAMotion_MotionStat_ECAMStop"><code>ECAMStop = 128</code></dt>
   
   <dd><p>ECAM stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_FIFOStop"><code>FIFOStop = 8</code></dt>
+    <dt id="AAMotion_MotionStat_FIFOStop"><code>FIFOStop = 256</code></dt>
   
   <dd><p>FIFO stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_InMotion"><code>InMotion = 0</code></dt>
+    <dt id="AAMotion_MotionStat_InMotion"><code>InMotion = 1</code></dt>
   
   <dd><p>In Motion</p>
 </dd>
-    <dt id="AAMotion_MotionStat_JOGStopPLIM"><code>JOGStopPLIM = 20</code></dt>
+    <dt id="AAMotion_MotionStat_JOGStopPLIM"><code>JOGStopPLIM = 1048576</code></dt>
   
   <dd><p>JOG stop PLIM</p>
 </dd>
-    <dt id="AAMotion_MotionStat_LastSmoothing"><code>LastSmoothing = 6</code></dt>
+    <dt id="AAMotion_MotionStat_LastSmoothing"><code>LastSmoothing = 64</code></dt>
   
   <dd><p>Last smoothing</p>
 </dd>
-    <dt id="AAMotion_MotionStat_RepetitiveStopRequested"><code>RepetitiveStopRequested = 2</code></dt>
+    <dt id="AAMotion_MotionStat_None"><code>None = 0</code></dt>
+  
+  <dd><p>No bit set: the motor is not in motion</p>
+</dd>
+    <dt id="AAMotion_MotionStat_RepetitiveStopRequested"><code>RepetitiveStopRequested = 4</code></dt>
   
   <dd><p>Repetitive stop requested</p>
 </dd>
-    <dt id="AAMotion_MotionStat_RepetitiveWait"><code>RepetitiveWait = 1</code></dt>
+    <dt id="AAMotion_MotionStat_RepetitiveWait"><code>RepetitiveWait = 2</code></dt>
   
   <dd><p>Repetitive Wait</p>
 </dd>
-    <dt id="AAMotion_MotionStat_StopRequested"><code>StopRequested = 3</code></dt>
+    <dt id="AAMotion_MotionStat_StopRequested"><code>StopRequested = 8</code></dt>
   
   <dd><p>Stop requested</p>
 </dd>
-    <dt id="AAMotion_MotionStat_VectorMember"><code>VectorMember = 19</code></dt>
+    <dt id="AAMotion_MotionStat_VectorMember"><code>VectorMember = 524288</code></dt>
   
   <dd><p>Vector member</p>
 </dd>
-    <dt id="AAMotion_MotionStat_VectorStop"><code>VectorStop = 18</code></dt>
+    <dt id="AAMotion_MotionStat_VectorStop"><code>VectorStop = 262144</code></dt>
   
   <dd><p>Vector stop</p>
 </dd>
-    <dt id="AAMotion_MotionStat_WaitingForInputToStart"><code>WaitingForInputToStart = 9</code></dt>
+    <dt id="AAMotion_MotionStat_WaitingForInputToStart"><code>WaitingForInputToStart = 512</code></dt>
   
   <dd><p>Waiting for input to start</p>
 </dd>
@@ -214,7 +219,7 @@ Enum MotionStat  <a class="header-action link-secondary" title="View source" hre
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L160" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Resources/Enums.cs/#L204" class="edit-link">Edit this page</a>
         </div>
 
 

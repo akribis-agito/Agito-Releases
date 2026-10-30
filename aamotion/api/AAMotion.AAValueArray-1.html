@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AAValueArray&lt;T&gt; | Agito AAMotion SDK ">
       
-      <meta name="description" content="Base array wrapper - provides index validation, event triggering and other basic functionality Used for low-level arrays (event-driven) that communicate with controller">
+      <meta name="description" content="Base array wrapper - provides index validation, event triggering and other basic functionality Used for low-level arrays (event-driven) that communicate with controller.  (on a single-valued parameter), the indexer and enumeration are controller round trips, so the debug view shows the slot&#39;s identity only.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_AAValueArray_1" data-uid="AAMotion.AAValueArray`1" class="text-break">
-Class AAValueArray&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L782"><i class="bi bi-code-slash"></i></a>
+Class AAValueArray&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L719"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,7 +98,9 @@ Class AAValueArray&lt;T&gt;  <a class="header-action link-secondary" title="View
   </div>
 
   <div class="markdown summary"><p>Base array wrapper - provides index validation, event triggering and other basic functionality
-Used for low-level arrays (event-driven) that communicate with controller</p>
+Used for low-level arrays (event-driven) that communicate with controller.
+<a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_Value">Value</a> (on a single-valued parameter), the indexer and enumeration are controller round trips, so the debug
+view shows the slot's identity only.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -170,7 +172,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1__ctor_System_Int32_System_Int32_System_String_" data-uid="AAMotion.AAValueArray`1.#ctor(System.Int32,System.Int32,System.String)">
   AAValueArray(int, int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L799"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L751"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -209,7 +211,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_EndIndex" data-uid="AAMotion.AAValueArray`1.EndIndex">
   EndIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L791"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L743"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -240,10 +242,11 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_Item_System_Int32_" data-uid="AAMotion.AAValueArray`1.Item(System.Int32)">
   this[int]
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L810"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L777"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>An element of an array parameter, from <a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_StartIndex">StartIndex</a> to <a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_EndIndex">EndIndex</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -269,6 +272,18 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.indexoutofrangeexception">IndexOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">index</code> is outside that range.
+Nothing is sent.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>A member the SDK returns is a scalar parameter
+(<a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_Mode">Mode</a> is <a class="xref" href="AAMotion.HybridValueMode.html#AAMotion_HybridValueMode_Single">Single</a>), which has no elements: read or write
+it through <a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_Value">Value</a>. Enumerating it throws the same. Nothing is sent.</p>
+</dd>
+  </dl>
 
 
 
@@ -276,7 +291,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_KeywordName" data-uid="AAMotion.AAValueArray`1.KeywordName">
   KeywordName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L792"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L744"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -307,7 +322,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_Length" data-uid="AAMotion.AAValueArray`1.Length">
   Length
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L789"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L741"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -338,7 +353,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_Mode" data-uid="AAMotion.AAValueArray`1.Mode">
   Mode
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L788"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L740"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -369,7 +384,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_StartIndex" data-uid="AAMotion.AAValueArray`1.StartIndex">
   StartIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L790"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L742"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -400,10 +415,11 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_Value" data-uid="AAMotion.AAValueArray`1.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L828"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L802"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The value of a single-valued parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -424,6 +440,15 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>A member the SDK returns is an array parameter
+(<a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_Mode">Mode</a> is <a class="xref" href="AAMotion.HybridValueMode.html#AAMotion_HybridValueMode_Array">Array</a>), which has no single value: read or
+write an element through the indexer, from <a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_StartIndex">StartIndex</a> to <a class="xref" href="AAMotion.AAValueArray-1.html#AAMotion_AAValueArray_1_EndIndex">EndIndex</a>.
+Nothing is sent.</p>
+</dd>
+  </dl>
 
 
 
@@ -435,7 +460,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_GetEnumerator" data-uid="AAMotion.AAValueArray`1.GetEnumerator">
   GetEnumerator()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L852"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L827"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
@@ -471,14 +496,14 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_SingleValueAccessedWithResult" data-uid="AAMotion.AAValueArray`1.SingleValueAccessedWithResult">
   SingleValueAccessedWithResult
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L796"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L748"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Func&lt;int?&gt; SingleValueAccessedWithResult</code></pre>
+    <pre><code class="lang-csharp hljs">public event Func&lt;double?&gt; SingleValueAccessedWithResult</code></pre>
   </div>
 
 
@@ -488,7 +513,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -501,7 +526,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_SingleValueChanged" data-uid="AAMotion.AAValueArray`1.SingleValueChanged">
   SingleValueChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L797"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L749"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -531,14 +556,14 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_ValueAccessedWithResult" data-uid="AAMotion.AAValueArray`1.ValueAccessedWithResult">
   ValueAccessedWithResult
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L795"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L747"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Func&lt;int, int?&gt; ValueAccessedWithResult</code></pre>
+    <pre><code class="lang-csharp hljs">public event Func&lt;int, double?&gt; ValueAccessedWithResult</code></pre>
   </div>
 
 
@@ -548,7 +573,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -561,7 +586,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 
   <h3 id="AAMotion_AAValueArray_1_ValueChanged" data-uid="AAMotion.AAValueArray`1.ValueChanged">
   ValueChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L794"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L746"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -592,7 +617,7 @@ Used for low-level arrays (event-driven) that communicate with controller</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L782" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L719" class="edit-link">Edit this page</a>
         </div>
 
 

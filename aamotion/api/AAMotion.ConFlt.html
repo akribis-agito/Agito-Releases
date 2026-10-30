@@ -135,6 +135,18 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>Abort signal was detected</p>
 </dd>
+    <dt id="AAMotion_ConFlt_AbsEncoderCRCError"><code>AbsEncoderCRCError = 1069</code></dt>
+  
+  <dd><p>Abs Encoder CRC has failed beyond a time threshold set by EncAbsErrTime. The noise level might be too high</p>
+</dd>
+    <dt id="AAMotion_ConFlt_AbsEncoderDisconnected"><code>AbsEncoderDisconnected = 1070</code></dt>
+  
+  <dd><p>Abs Encoder could not be detected and looks like is disconnected</p>
+</dd>
+    <dt id="AAMotion_ConFlt_AbsEncoderErrorBit"><code>AbsEncoderErrorBit = 1068</code></dt>
+  
+  <dd><p>Abs Encoder Error bit is asserted, either the assembly encoder readhead is not good, or the encoder scale needs to be inspected</p>
+</dd>
     <dt id="AAMotion_ConFlt_AmpTypeConflict"><code>AmpTypeConflict = 1039</code></dt>
   
   <dd><p>AAmpType and BAmpType have conflicting values. Can not be one Linear and one PWM</p>
@@ -147,6 +159,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>Amplifier isolated 5v fault</p>
 </dd>
+    <dt id="AAMotion_ConFlt_AnomalyDetected"><code>AnomalyDetected = 1067</code></dt>
+  
+  <dd><p>Anomaly/collision detected in the system</p>
+</dd>
     <dt id="AAMotion_ConFlt_AuxEncoderTypeNotSupported"><code>AuxEncoderTypeNotSupported = 1029</code></dt>
   
   <dd><p>The selected auxiliary encoder type is currently not supported</p>
@@ -154,6 +170,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
     <dt id="AAMotion_ConFlt_AuxiliaryEncoderDisconnected"><code>AuxiliaryEncoderDisconnected = 1026</code></dt>
   
   <dd><p>Auxiliary encoder disconnected</p>
+</dd>
+    <dt id="AAMotion_ConFlt_BoardTemperatureTooHigh"><code>BoardTemperatureTooHigh = 1060</code></dt>
+  
+  <dd><p>Product temperature (BoardTemp) too high</p>
 </dd>
     <dt id="AAMotion_ConFlt_BusCurrentTooHigh"><code>BusCurrentTooHigh = 1012</code></dt>
   
@@ -175,9 +195,17 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>CI Communication was disconnected</p>
 </dd>
+    <dt id="AAMotion_ConFlt_CPUBackgroundWatchdog"><code>CPUBackgroundWatchdog = 1081</code></dt>
+  
+  <dd><p>CPU background loop watchdog timeout</p>
+</dd>
     <dt id="AAMotion_ConFlt_CPUTemperatureTooHigh"><code>CPUTemperatureTooHigh = 1022</code></dt>
   
   <dd><p>CPU temperature too high</p>
+</dd>
+    <dt id="AAMotion_ConFlt_CollisionDetected"><code>CollisionDetected = 1073</code></dt>
+  
+  <dd><p>Collision detected: the load estimator anomaly |AnomOut| exceeded AnomThrld, motor was turned off</p>
 </dd>
     <dt id="AAMotion_ConFlt_DriverPowerExceedsLimit"><code>DriverPowerExceedsLimit = 1017</code></dt>
   
@@ -207,6 +235,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>The selected encoder type is currently not supported</p>
 </dd>
+    <dt id="AAMotion_ConFlt_ExternalAmplifierFault"><code>ExternalAmplifierFault = 1082</code></dt>
+  
+  <dd><p>External amplifier fault (e.g. Varedan undervoltage)</p>
+</dd>
     <dt id="AAMotion_ConFlt_ExternalFaultInputActivated"><code>ExternalFaultInputActivated = 1050</code></dt>
   
   <dd><p>External fault input (for example: of external drive) is activated</p>
@@ -219,6 +251,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>FPGA watchdog not received</p>
 </dd>
+    <dt id="AAMotion_ConFlt_FaultInputControlledStop"><code>FaultInputControlledStop = 1062</code></dt>
+  
+  <dd><p>External request to Fault with Controlled Stop: stop ended and motor was disabled</p>
+</dd>
     <dt id="AAMotion_ConFlt_ForceControlAnalogFeedbackNotDefined"><code>ForceControlAnalogFeedbackNotDefined = 1046</code></dt>
   
   <dd><p>Force control: analog force feedback not defined</p>
@@ -227,9 +263,17 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>Force error exceeds limit</p>
 </dd>
+    <dt id="AAMotion_ConFlt_ForceErrorExceedsLimitOpenLoop"><code>ForceErrorExceedsLimitOpenLoop = 1057</code></dt>
+  
+  <dd><p>Force error exceeds limit in open-loop</p>
+</dd>
     <dt id="AAMotion_ConFlt_HallInputDisconnected"><code>HallInputDisconnected = 1006</code></dt>
   
   <dd><p>Hall input disconnected</p>
+</dd>
+    <dt id="AAMotion_ConFlt_HighPIVNoise"><code>HighPIVNoise = 1072</code></dt>
+  
+  <dd><p>High noise/jitter detected</p>
 </dd>
     <dt id="AAMotion_ConFlt_IPMFault"><code>IPMFault = 1027</code></dt>
   
@@ -242,6 +286,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
     <dt id="AAMotion_ConFlt_InternalRelayStillOff"><code>InternalRelayStillOff = 1051</code></dt>
   
   <dd><p>Internal relay is still switched off. Try waiting more time after power on before enabling the motor</p>
+</dd>
+    <dt id="AAMotion_ConFlt_LoadEstimatorNotReady"><code>LoadEstimatorNotReady = 1074</code></dt>
+  
+  <dd><p>Motor-on refused: AnomDetectEn=1 but a motor constant the load estimator needs is unset (0, or the factory placeholder EncRes 1 / MotTorqConst 1.0 / MotForceConst 10.0). Needed: EncRes, plus rotary MotTorqConst + MotorJ; linear MotForceConst + MotorMass + MagneticPitch; voice coil MotForceConst + MotorMass. Set them, or set AnomDetectEn=0</p>
 </dd>
     <dt id="AAMotion_ConFlt_LogicVoltageTooHigh"><code>LogicVoltageTooHigh = 1010</code></dt>
   
@@ -275,9 +323,21 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>No fault has occurred</p>
 </dd>
+    <dt id="AAMotion_ConFlt_NoPhasingDetected"><code>NoPhasingDetected = 1080</code></dt>
+  
+  <dd><p>No phasing is detected</p>
+</dd>
+    <dt id="AAMotion_ConFlt_OtherGantryMemberAxisMotorOff"><code>OtherGantryMemberAxisMotorOff = 1061</code></dt>
+  
+  <dd><p>Other gantry member axis got motor off</p>
+</dd>
     <dt id="AAMotion_ConFlt_OtherMemberAxisMotorOff"><code>OtherMemberAxisMotorOff = 1048</code></dt>
   
   <dd><p>Other member axis got motor off</p>
+</dd>
+    <dt id="AAMotion_ConFlt_OtherVectorMemberAxisMotorOff"><code>OtherVectorMemberAxisMotorOff = 1063</code></dt>
+  
+  <dd><p>Other vector member axis got motor off</p>
 </dd>
     <dt id="AAMotion_ConFlt_OverContinuousCurrentLinearAmp"><code>OverContinuousCurrentLinearAmp = 1037</code></dt>
   
@@ -290,6 +350,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
     <dt id="AAMotion_ConFlt_OverCurrentMotorB"><code>OverCurrentMotorB = 1036</code></dt>
   
   <dd><p>Over current detected on motor B</p>
+</dd>
+    <dt id="AAMotion_ConFlt_OverCurrentMotorC"><code>OverCurrentMotorC = 1059</code></dt>
+  
+  <dd><p>Over current detected on motor C</p>
 </dd>
     <dt id="AAMotion_ConFlt_OverVoltageLinearAmp"><code>OverVoltageLinearAmp = 1038</code></dt>
   
@@ -315,6 +379,10 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>Position error exceeds limit</p>
 </dd>
+    <dt id="AAMotion_ConFlt_PositionErrorExceedsLimitOpenLoop"><code>PositionErrorExceedsLimitOpenLoop = 1055</code></dt>
+  
+  <dd><p>Position error exceeds limit in open-loop</p>
+</dd>
     <dt id="AAMotion_ConFlt_PowerOnBITFault"><code>PowerOnBITFault = 1033</code></dt>
   
   <dd><p>Some fault was detected during power on BIT. Use BITFault to read its code</p>
@@ -331,17 +399,37 @@ Enum ConFlt  <a class="header-action link-secondary" title="View source" href="h
   
   <dd><p>STO2 activated or problem with Vcc of amplifier</p>
 </dd>
+    <dt id="AAMotion_ConFlt_StallDetectedMotorOff"><code>StallDetectedMotorOff = 1065</code></dt>
+  
+  <dd><p>Stall detection activated, motor is turning off</p>
+</dd>
+    <dt id="AAMotion_ConFlt_Undervoltage10v5Supply"><code>Undervoltage10v5Supply = 1058</code></dt>
+  
+  <dd><p>Undervoltage detected on 10.5v supply (8v threshold)</p>
+</dd>
     <dt id="AAMotion_ConFlt_UnexpectedErrorCode"><code>UnexpectedErrorCode = 1041</code></dt>
   
   <dd><p>Unexpected error code, consult Agito</p>
+</dd>
+    <dt id="AAMotion_ConFlt_UnstableCurrentLoop"><code>UnstableCurrentLoop = 1071</code></dt>
+  
+  <dd><p>Unstable current loop detected</p>
 </dd>
     <dt id="AAMotion_ConFlt_VelocityErrorExceedsLimit"><code>VelocityErrorExceedsLimit = 1021</code></dt>
   
   <dd><p>Velocity error exceeds limit</p>
 </dd>
+    <dt id="AAMotion_ConFlt_VelocityErrorExceedsLimitOpenLoop"><code>VelocityErrorExceedsLimitOpenLoop = 1056</code></dt>
+  
+  <dd><p>Velocity error exceeds limit in open-loop</p>
+</dd>
     <dt id="AAMotion_ConFlt_VelocityTooHigh"><code>VelocityTooHigh = 1019</code></dt>
   
   <dd><p>Velocity too high</p>
+</dd>
+    <dt id="AAMotion_ConFlt_VirtualEncoderMaxPulsesExceeded"><code>VirtualEncoderMaxPulsesExceeded = 1066</code></dt>
+  
+  <dd><p>Virtual encoder has exceeded the max number of possible pulses per interrupt</p>
 </dd>
   </dl>
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_AASmartArrayWrapper" data-uid="AAMotion.AASmartArrayWrapper" class="text-break">
-Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L872"><i class="bi bi-code-slash"></i></a>
+Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L854"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -167,9 +167,9 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
 
   <a id="AAMotion_AASmartArrayWrapper__ctor_" data-uid="AAMotion.AASmartArrayWrapper.#ctor*"></a>
 
-  <h3 id="AAMotion_AASmartArrayWrapper__ctor_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_AAMotion_AAValueArray_System_Int32__" data-uid="AAMotion.AASmartArrayWrapper.#ctor(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,AAMotion.AAValueArray{System.Int32})">
-  AASmartArrayWrapper(AxisRef, CommAPIInterface, eKeyword, AAValueArray&lt;int&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L946"><i class="bi bi-code-slash"></i></a>
+  <h3 id="AAMotion_AASmartArrayWrapper__ctor_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_AAMotion_AAValueArray_System_Double__" data-uid="AAMotion.AASmartArrayWrapper.#ctor(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,AAMotion.AAValueArray{System.Double})">
+  AASmartArrayWrapper(AxisRef, CommAPIInterface, eKeyword, AAValueArray&lt;double&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L939"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructor - for regular arrays (int/float/double/long), automatically detects type</p>
@@ -177,7 +177,7 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AASmartArrayWrapper(AxisRef axis, CommAPIInterface commApi, eKeyword keyword, AAValueArray&lt;int&gt; underlyingArray)</code></pre>
+    <pre><code class="lang-csharp hljs">public AASmartArrayWrapper(AxisRef axis, CommAPIInterface commApi, eKeyword keyword, AAValueArray&lt;double&gt; underlyingArray)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -188,7 +188,7 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
     <dd></dd>
     <dt><code>keyword</code> <a class="xref" href="AAMotion.eKeyword.html">eKeyword</a></dt>
     <dd></dd>
-    <dt><code>underlyingArray</code> <a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><code>underlyingArray</code> <a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -207,7 +207,7 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
 
   <h3 id="AAMotion_AASmartArrayWrapper__ctor_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_System_Int32_" data-uid="AAMotion.AASmartArrayWrapper.#ctor(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32,System.Int32)">
   AASmartArrayWrapper(AxisRef, CommAPIInterface, string, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L974"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L967"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructor - for Double arrays (GenDataD)</p>
@@ -251,14 +251,14 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
 
   <h3 id="AAMotion_AASmartArrayWrapper_Item_System_Int32_" data-uid="AAMotion.AASmartArrayWrapper.Item(System.Int32)">
   this[int]
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L884"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L867"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic this[int index] { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double this[int index] { get; set; }</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -272,7 +272,7 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">dynamic</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -287,7 +287,7 @@ Class AASmartArrayWrapper  <a class="header-action link-secondary" title="View s
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L872" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L854" class="edit-link">Edit this page</a>
         </div>
 
 

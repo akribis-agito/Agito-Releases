@@ -81,27 +81,24 @@
 <h2 id="overview">Overview</h2>
 <p>AAMotion provides a comprehensive interface for connecting to, configuring, and controlling a wide range of motion controllers. The API supports both high-level and low-level operations, enabling users to perform tasks such as initialization, connection, axis control, IO operations, and advanced motion programming.</p>
 <ul>
-<li><strong>Supported platforms:</strong> Windows 7 or later</li>
-<li><strong>Supported frameworks:</strong> .NET Framework 4.8</li>
+<li><strong>Supported platforms:</strong> Windows 10 or later (Windows 7 SP1 or later on the .NET Framework 4.8 build)</li>
+<li><strong>Supported frameworks:</strong> .NET Framework 4.8, .NET 8, .NET 10</li>
 <li><strong>Documentation:</strong> API documentation is available via IntelliSense (XML doc comments included with the package).</li>
 </ul>
 <h2 id="system-requirements">System Requirements</h2>
 <ul>
-<li>Microsoft Windows 7 or later</li>
-<li>.NET Framework 4.8</li>
-<li>Visual Studio 2010 or later (other IDEs may be used, but are not officially supported)</li>
+<li>Microsoft Windows 10 or later; Windows 7 SP1 or later for the .NET Framework 4.8 build</li>
+<li>.NET Framework 4.8, .NET 8 or .NET 10</li>
+<li>Visual Studio 2022 or later (other IDEs may be used, but are not officially supported)</li>
 </ul>
 <h2 id="installation">Installation</h2>
-<p>Install the NuGet package from <a href="https://www.nuget.org/">nuget.org</a>:
-<code>.dotnet add package Agito.AAMotion</code></p>
+<p>Install the NuGet package from <a href="https://www.nuget.org/">nuget.org</a>:</p>
+<pre><code class="lang-bash">dotnet add package Agito.AAMotion
+</code></pre>
 <p>Or via the NuGet Package Manager in Visual Studio.</p>
-<blockquote>
-<p><strong>Note:</strong><br>
-The package may require additional dependencies such as <code>YamlDotNet</code>. These are automatically handled by NuGet.</p>
-</blockquote>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
-<li>Create a new C# project targeting .NET Framework 4.8.</li>
+<li>Create a new C# project targeting .NET Framework 4.8, .NET 8 or .NET 10.</li>
 <li>Add the <code>Agito.AAMotion</code> NuGet package.</li>
 <li>Explore the API via IntelliSense — XML doc comments are included with the package.</li>
 </ol>
@@ -147,7 +144,7 @@ namespace ConsoleApp1
             finally
             {
                 AAMotionAPI.MotorOff(controller, AxisRef.B);
-                Console.WriteLine($&quot;MotorOff status for Axis A: {controller.GetAxis(AxisRef.A).MotorOn}&quot;);
+                Console.WriteLine($&quot;MotorOff status for Axis B: {controller.GetAxis(AxisRef.B).MotorOn}&quot;);
 
                 // Release THIS controller's resources. The shared AACommServer keeps running
                 // for other clients; controller.Shutdown() would request a server shutdown,
@@ -160,12 +157,126 @@ namespace ConsoleApp1
 }
 
 </code></pre>
+<h2 id="firmware-simulation">Firmware simulation</h2>
+<p>The legacy file-based echo simulator (<code>ConnectSimulator</code>) was removed in 12.0.0. Local firmware
+simulation now runs through AACommServer's managed <strong><code>ChannelType.Simulation</code></strong> channel: the server
+spawns a <code>firmware_sim.exe</code> child, configures the motor, and bridges it over loopback.</p>
+<p>The AAMotion package does <strong>not</strong> ship <code>firmware_sim.exe</code>. Provide the absolute path to a copy —
+for example one extracted from a firmware release's <code>AG300_MAS01_sim_&lt;product&gt;_v&lt;version&gt;.zip</code>, or
+one PCSuite imported under <code>Documents\PCSuite\ApplicationData\Simulations\&lt;product&gt;\&lt;version&gt;\</code>. A
+sibling <code>sim.info</code> in that folder is used by PCSuite's version picker only; this API reads the exe
+path alone.</p>
+<pre><code class="lang-csharp">controller.Init();
+
+string simExe = @&quot;C:\Users\me\Documents\PCSuite\ApplicationData\Simulations\AGD301\5.3.0\firmware_sim.exe&quot;;
+bool ok = AAMotionAPI.ConnectSimulation(controller, simExe);
+
+// Optional: pass catalog labels and a custom motor profile
+// ok = AAMotionAPI.ConnectSimulation(controller, simExe, &quot;AGD301&quot;, &quot;5.0.0&quot;, &quot;counts_per_rev=8000\npole_pairs=2\n&quot;);
+
+if (ok)
+{
+    // ... operate against the simulated controller ...
+}
+
+controller.Disconnect();   // reaps the firmware_sim child via AACommServer
+controller.Dispose();
+</code></pre>
+<p><code>simProduct</code> is forwarded to the server, and a value the product catalog resolves <em>also</em> declares the
+session's controller type. That lets the connect verify the type rather than discover it, and
+discovering it costs a probe that spawns and reaps a whole extra <code>firmware_sim</code> child before the
+session's own. A declared type the sim disagrees with fails the connect — <code>ConnectSimulation</code> returns
+<code>false</code>, and the underlying <code>InvalidControllerType</code> appears in the AAComm debug log.</p>
+<p>What resolves is the <strong><code>ProductTypes</code> catalog spelling</strong>: <code>AGM800</code>, <code>AGD155</code>, <code>AGD155-EC</code>,
+<code>AGD101-EC</code>, <code>AGD156-EC</code>, <code>DRV6-V3</code>, <code>Pulse-Sync</code>, <code>AGM800-EC</code> and <code>AGM400</code>; the paired products under either half
+of their name — <code>AGD301</code> and <code>AGD200</code>, the <code>Simulations\&lt;product&gt;\</code> folder prefixes (including the one
+used above), or <code>AGC301</code> and <code>AGC300</code> — or their paired spelling (<code>AGD301orAGC301</code>,
+<code>AGD200orAGC300</code>); and the older spellings of the products that have them (<code>AGD301/AGC301</code>,
+<code>AG300-CTL02</code>, <code>CiG1-MAS02</code>, …). Passing <code>myType.ToString()</code> for a <code>ControllerType</code> resolves for
+every member but the four EtherCAT ones — <code>AGD155EC</code> is catalogued <code>AGD155-EC</code>.</p>
+<p>An unresolved name discovers the type by probe, exactly as omitting the argument does.</p>
+<p><code>TryReconnect</code> is Ethernet-only and cannot recover a simulation link. To reopen one, call
+<code>Disconnect()</code> first and then <code>ConnectSimulation(...)</code>. <code>ConnectSimulation</code> does not tear down a link
+it finds open, and the connect short-circuits on one, so calling it alone on a wedged session returns
+<code>false</code> without reopening anything — <code>LastKnownAddress</code> and <code>AutoReconnectEnabled</code> are recorded before
+the attempt, so a failed call still updates them.</p>
+<h2 id="user-units">User Units</h2>
+<p>When the connected controller has <strong>Global User Units</strong> armed for an axis, AAMotion carries that axis's
+scaled parameters in the controller's display units. The groups are position (main, auxiliary,
+pulse-direction), velocity (the same three), acceleration and force: on an axis configured at
+<code>0.01 mm/count</code>, <code>Pos</code> reads <code>24.68</code> rather than <code>2468</code>, and an assignment is converted back to counts on
+the way out. The conversion is applied by the communication layer, per parameter, from the group
+membership and per-axis factor it reads at connect. A controller with no Global User Units armed is
+unaffected, and so is one using the firmware's <em>embedded</em> user-units system — the firmware applies those
+on the wire, before AAMotion sees the value.</p>
+<p>To keep an integration on raw controller counts, opt the controller out:</p>
+<pre><code class="lang-csharp">controller.UseUserUnits = false;   // before or after Connect — it is remembered either way
+AAMotionAPI.Connect(controller, ip);
+</code></pre>
+<p><code>UseUserUnits</code> defaults to <code>true</code>, and three things about it are worth knowing:</p>
+<ul>
+<li><strong>It survives connect and reconnect.</strong> The communication layer clears its own opt-out on every
+successful connect; the controller re-applies your setting once the connect succeeds, so configuring
+it up front works. A direct write to <code>CommAPI.SkipUserUnits</code> is visible through the property but is
+not remembered — only a value assigned through <code>UseUserUnits</code> is re-applied.</li>
+<li><strong>It is instance-wide, not call-wide.</strong> It forwards to <code>CommAPI.SkipUserUnits</code>, so two controllers
+sharing one <code>CommAPI</code> share the setting. To bypass the scaling for a single message, use
+<code>AACommMessage.SkipUserUnits</code> instead.</li>
+<li><strong>It does not unlock raw User Units configuration writes.</strong> A direct assignment to a <code>*UnitFct</code> or
+<code>*UnitUnt</code> parameter is rejected either way (error 4023) — change those through the API.</li>
+</ul>
+<p>A <strong>multi-axis move requires its axes to agree on their units.</strong> <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> over
+several axes apply one <code>speed</code> and one <code>accel</code> to the vector distance across them, which only means
+something if the axes measure the same quantity: every axis must carry the same unit <em>name</em> in the
+position, velocity and acceleration groups. Different scaling factors under one name are fine — two
+encoder resolutions on the same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have
+no common speed, and an axis with User Units off is on controller counts, which does not match a scaled
+one. Axes that disagree make the call return <code>false</code> and command nothing, before any parameter is read
+from or written to the controller; the reason arrives on <code>MotionController.ErrorOccurred</code> as
+<code>(-1, &quot;&lt;method&gt;&quot;, &lt;message naming the axes and the group&gt;)</code>. Passing <code>null</code> as the controller does not
+opt out — the units are read from the axes themselves, so the call still returns <code>false</code>; there is just
+no channel to report it on. For the same reason the axes must be the SDK's own (<code>controller.GetAxis(...)</code>
+/ <code>controller.AxisList</code>): a wrapper or mock of your own around <code>ISingleAxis</code> carries no axis identity, so
+its units cannot be checked and the call is refused. Check an axis's configuration with
+<code>controller.CommAPI.GetUserUnitsEnabled('A')</code> and
+<code>controller.CommAPI.MessagesContainer.TryGetUserUnitsGroup(group)?.AxisUnits('A')</code> — both are keyed by
+the axis letter, not by <code>AxisRef</code> — or opt out with <code>UseUserUnits = false</code>, which puts every axis back
+on counts and therefore always matches.</p>
+<p>The <strong>vector surface carries the same rule</strong>. <code>IVector.VectorLinear</code> (both overloads) and <code>VectorArc</code>
+apply one <code>VecSpeed</code>/<code>VecAccel</code>/<code>VecDecel</code> across the axes named by the mask while each axis's <code>AbsTrgt</code>
+— and, for an arc, its <code>VecArcCenter</code> — is in that axis's own units, so the same three groups must agree
+and a mismatch is refused the same way, with the same <code>(-1, &quot;&lt;method&gt;&quot;, &lt;message&gt;)</code> on
+<code>ErrorOccurred</code>. The profile slots are written to the axis the call was made on, which is always one of the
+members: the controller reads the profile from the axis that receives <code>Begin</code>, requires that axis to be the
+mask's lowest member, and needs at least two members, all among A..H. A call whose initiating axis is not a
+member of its mask, or not the lowest one, or that names fewer than two members or an axis past H, is
+therefore refused before anything is written, with the same <code>ErrorOccurred</code> shape.</p>
+<h3 id="which-units-a-value-is-in">Which units a value is in</h3>
+<p><code>controller.GetUserUnits(axis, keyword)</code> returns the unit name and factor that parameter reads and writes
+in on that axis, as a <code>UserUnitAxis</code>: the controller's values when Global User Units are enabled on the
+axis and the parameter belongs to one of its groups, otherwise an empty name and factor <code>1</code> — controller
+counts. That identity answer is the counts pin: check <code>Factor == 1</code> before treating a value as counts — a
+scaled axis may carry no unit name, so the name alone is not the test. It is never <code>null</code>, and it is also
+what an unknown keyword, an axis with units off, and a controller opted out through <code>UseUserUnits = false</code>
+return. <code>axis</code> names one axis; a combined mask is an <code>ArgumentException</code>.</p>
+<h3 id="setposition-takes-counts-not-display-units"><code>SetPosition</code> takes counts, not display units</h3>
+<p><code>ISingleAxis.SetPosition</code> writes a parameter the controller declares unscaled, so its argument is in
+controller counts whether or not Global User Units are armed — not in the display units <code>Pos</code> reads in.
+<code>SetPosition(axis.Pos)</code> is therefore not a round trip on a scaled axis: on the <code>0.01 mm/count</code> axis
+above it writes <code>24.68</code> as a count, rounded to 25. To set the current position from a display value,
+divide it by that axis's position factor —</p>
+<pre><code class="lang-csharp">double factor = controller.GetUserUnits(AxisRef.A, eKeyword.Pos).Factor;   // 1 when the axis is on counts
+axis.SetPosition(displayValue / factor);
+</code></pre>
+<p>— or read the position in counts (<code>controller.UseUserUnits = false</code>) and pass that value straight back.</p>
 <h2 id="api-documentation">API Documentation</h2>
 <p>API documentation is available via IntelliSense. XML doc comments are included with the NuGet package.</p>
+<h2 id="upgrading-from-1100">Upgrading from 11.0.0</h2>
+<p>12.0.0 is a breaking release: download <a href="https://github.com/akribis-agito/Agito-Releases/releases/download/Software/AAMotion/v12.0.0/aamotion-12-change-disclosure.html"><code>aamotion-12-change-disclosure.html</code></a>, published with the 12.0.0 release, and open it in a browser for every break with the diagnostic it raises and compiled before/after samples — GitHub serves an <code>.html</code> release asset as a file rather than rendering it.</p>
 <h2 id="release-notes">Release Notes</h2>
 <p>See <a href="https://akribis-agito.github.io/Agito-Releases/aamotion/articles/release-notes/aamotion-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
 <h2 id="license">License</h2>
-<p>This software is <strong>proprietary</strong>. All rights reserved. Contact Agito for licensing and usage terms.</p>
+<p>This software is licensed under the <strong>MIT License</strong>. See the NuGet package metadata for details.</p>
 <hr>
 <p>For further information, consult the included documentation or contact Agito support.</p>
 

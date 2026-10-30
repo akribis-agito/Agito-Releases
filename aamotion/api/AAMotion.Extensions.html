@@ -106,7 +106,7 @@ Classes
 controller, then sends each as a SET command.
 </code></pre>
 <p></p>
-<pre><code>Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
 </code></pre>
 <p></p>
 <pre><code>After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.
@@ -125,13 +125,23 @@ controller, then sends each as a SET command.
 firmware/FPGA version, date, checksum) to a plain ASCII .par file.
 </code></pre>
 <p></p>
-<pre><code>Ethernet connections use Bulk messages (up to 50 per packet); other channels send one by one.
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
 </code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.Extensions.ParamConversion.html">ParamConversion</a></dt>
+      <dd><p>One download row whose value was rewritten before it was sent.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.Extensions.ParamHandlingSummary.html">ParamHandlingSummary</a></dt>
       <dd><p>Summary of a parameter upload or download operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.Extensions.ParamRejection.html">ParamRejection</a></dt>
+      <dd><p>One entry the controller refused, or a download skipped, as it was sent (or read) and as it was answered.</p>
 </dd>
     </dl>
 

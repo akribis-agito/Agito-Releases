@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IECAM | Agito AAMotion SDK ">
       
-      
+      <meta name="description" content="The electronic-cam surface: the table registers, and the helpers that fill a table and run it.  Its  arguments are controller quantities in counts - GenData element indices, cycle counts, a master keyword code, and the table entries themselves, which the controller consumes as counts. Nothing on this surface converts units, so the whole-number signatures are the contract rather than a missing retype.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_IECAM" data-uid="AAMotion.IECAM" class="text-break">
-Interface IECAM  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L3"><i class="bi bi-code-slash"></i></a>
+Interface IECAM  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,13 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>The electronic-cam surface: the table registers, and the helpers that fill a table and run it.</p>
+<p></p>
+<p>Its <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> arguments are controller quantities in counts - <code>GenData</code> element
+indices, cycle counts, a master keyword code, and the table entries themselves, which the
+controller consumes as counts. Nothing on this surface converts units, so the whole-number
+signatures are the contract rather than a missing retype.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -124,7 +130,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMCycCount" data-uid="AAMotion.IECAM.ECAMCycCount">
   ECAMCycCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Current cycle count for ECAM motion for each table.</p>
@@ -132,7 +138,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMCycCount { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMCycCount { get; }</code></pre>
   </div>
 
 
@@ -141,7 +147,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -156,7 +162,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMCycles" data-uid="AAMotion.IECAM.ECAMCycles">
   ECAMCycles
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Number of cycles for ECAM motion for each table.</p>
@@ -164,7 +170,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMCycles { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMCycles { get; }</code></pre>
   </div>
 
 
@@ -173,7 +179,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -188,7 +194,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMEnd" data-uid="AAMotion.IECAM.ECAMEnd">
   ECAMEnd
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>End index of ECAM table data in GenData array for each table.</p>
@@ -196,7 +202,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMEnd { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMEnd { get; }</code></pre>
   </div>
 
 
@@ -205,7 +211,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -220,7 +226,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMEndCyc" data-uid="AAMotion.IECAM.ECAMEndCyc">
   ECAMEndCyc
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>End cycle index for ECAM table repetition for each table.</p>
@@ -228,7 +234,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMEndCyc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMEndCyc { get; }</code></pre>
   </div>
 
 
@@ -237,7 +243,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -252,7 +258,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMGap" data-uid="AAMotion.IECAM.ECAMGap">
   ECAMGap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gap between master positions for each ECAM table.</p>
@@ -260,7 +266,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMGap { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMGap { get; }</code></pre>
   </div>
 
 
@@ -269,7 +275,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -284,7 +290,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMInterp" data-uid="AAMotion.IECAM.ECAMInterp">
   ECAMInterp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Interpolation type or mode for ECAM table for each table.</p>
@@ -292,7 +298,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMInterp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMInterp { get; }</code></pre>
   </div>
 
 
@@ -301,7 +307,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -316,7 +322,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMMaster" data-uid="AAMotion.IECAM.ECAMMaster">
   ECAMMaster
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Master axis keyword or code for each ECAM table.</p>
@@ -324,7 +330,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMMaster { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMMaster { get; }</code></pre>
   </div>
 
 
@@ -333,7 +339,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -348,7 +354,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMMasterIni" data-uid="AAMotion.IECAM.ECAMMasterIni">
   ECAMMasterIni
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Master initial position compensation for each ECAM table.</p>
@@ -356,7 +362,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMMasterIni { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMMasterIni { get; }</code></pre>
   </div>
 
 
@@ -365,7 +371,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -380,7 +386,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMStart" data-uid="AAMotion.IECAM.ECAMStart">
   ECAMStart
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start index of ECAM table data in GenData array for each table.</p>
@@ -388,7 +394,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMStart { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMStart { get; }</code></pre>
   </div>
 
 
@@ -397,7 +403,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -412,7 +418,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMStartCyc" data-uid="AAMotion.IECAM.ECAMStartCyc">
   ECAMStartCyc
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start cycle index for ECAM table repetition for each table.</p>
@@ -420,7 +426,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; ECAMStartCyc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; ECAMStartCyc { get; }</code></pre>
   </div>
 
 
@@ -429,7 +435,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -444,7 +450,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAMTableNum" data-uid="AAMotion.IECAM.ECAMTableNum">
   ECAMTableNum
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Current ECAM table number in use.</p>
@@ -480,7 +486,7 @@ Interface IECAM  <a class="header-action link-secondary" title="View source" hre
 
   <h3 id="AAMotion_IECAM_ECAM_ConfigureTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_ConfigureTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ECAM_ConfigureTable(int, int, int, int, int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Configure ECAM table parameters for electronic cam motion.</p>
@@ -541,7 +547,7 @@ The ECAM table data should be stored in GenData array from startIndex to endInde
 
   <h3 id="AAMotion_IECAM_ECAM_CreateLinearTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_CreateLinearTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ECAM_CreateLinearTable(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L209"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a simple ECAM table with linear interpolation between start and end positions.</p>
@@ -590,7 +596,7 @@ The table will contain numPoints positions linearly interpolated between startPo
 
   <h3 id="AAMotion_IECAM_ECAM_CreateSinusoidalTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_CreateSinusoidalTable(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
   ECAM_CreateSinusoidalTable(int, int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a sinusoidal ECAM table.</p>
@@ -629,7 +635,8 @@ The table will contain numPoints positions linearly interpolated between startPo
 
   <h4 class="section" id="AAMotion_IECAM_ECAM_CreateSinusoidalTable_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This method automatically generates a sinusoidal ECAM table and stores it in the GenData array.
-The table will contain numPoints positions following a sinusoidal pattern with specified amplitude and offset.</p>
+The table will contain numPoints positions following a sinusoidal pattern with specified amplitude and offset.
+The last point repeats the first, so the sweep closes exactly for any offset.</p>
 </div>
 
 
@@ -639,7 +646,7 @@ The table will contain numPoints positions following a sinusoidal pattern with s
 
   <h3 id="AAMotion_IECAM_ECAM_GetCycleCount_System_Int32_" data-uid="AAMotion.IECAM.ECAM_GetCycleCount(System.Int32)">
   ECAM_GetCycleCount(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get current ECAM cycle count for specified table.</p>
@@ -681,7 +688,7 @@ The table will contain numPoints positions following a sinusoidal pattern with s
 
   <h3 id="AAMotion_IECAM_ECAM_IsActive" data-uid="AAMotion.IECAM.ECAM_IsActive">
   ECAM_IsActive()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if ECAM motion is currently active.</p>
@@ -717,7 +724,7 @@ The table will contain numPoints positions following a sinusoidal pattern with s
 
   <h3 id="AAMotion_IECAM_ECAM_SetCycleParams_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetCycleParams(System.Int32,System.Int32,System.Int32,System.Int32)">
   ECAM_SetCycleParams(int, int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L184"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set ECAM cycle parameters.</p>
@@ -762,7 +769,7 @@ The table will contain numPoints positions following a sinusoidal pattern with s
 
   <h3 id="AAMotion_IECAM_ECAM_SetGap_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetGap(System.Int32,System.Int32)">
   ECAM_SetGap(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set ECAM gap between master positions.</p>
@@ -802,7 +809,7 @@ Negative values reverse the direction of motion.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_SetMaster_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetMaster(System.Int32,System.Int32)">
   ECAM_SetMaster(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set ECAM master axis (typically the main axis being followed).</p>
@@ -842,7 +849,7 @@ Common master keywords: 2 (PosRef), 24 (PosRef), etc.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_SetMasterIni_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetMasterIni(System.Int32,System.Int32)">
   ECAM_SetMasterIni(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set ECAM master initial position compensation.</p>
@@ -881,10 +888,11 @@ Common master keywords: 2 (PosRef), 24 (PosRef), etc.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_SetTableData_System_Int32___System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetTableData(System.Int32[],System.Int32)">
   ECAM_SetTableData(int[], int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Set ECAM table data using GenData array. Data will be written starting from ECAMStart[tableNum] to ECAMEnd[tableNum].</p>
+  <div class="markdown level1 summary"><p>Set ECAM table data using GenData array. The points are written from ECAMStart[tableNum] up to and
+including ECAMEnd[tableNum] or the last GenData index, whichever comes first; surplus values are ignored.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -910,7 +918,9 @@ Common master keywords: 2 (PosRef), 24 (PosRef), etc.</p>
 
 
   <h4 class="section" id="AAMotion_IECAM_ECAM_SetTableData_System_Int32___System_Int32__remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>The data array will be written to the GenData array starting from the configured start index.
+  <div class="markdown level1 remarks"><p>The data array will be written to the GenData array starting from the configured start index,
+up to and including ECAMEnd[tableNum] or the GenData array's last index, whichever comes first.
+A range that starts below the GenData array's first index is rejected without writing anything.
 Make sure the data array size matches the configured table range.</p>
 </div>
 
@@ -921,7 +931,7 @@ Make sure the data array size matches the configured table range.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_SetTableRange_System_Int32_System_Int32_System_Int32_" data-uid="AAMotion.IECAM.ECAM_SetTableRange(System.Int32,System.Int32,System.Int32)">
   ECAM_SetTableRange(int, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L195"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set ECAM table range (start and end indices in GenData array).</p>
@@ -963,7 +973,7 @@ Make sure the data array size matches the configured table range.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_Start_System_Int32_" data-uid="AAMotion.IECAM.ECAM_Start(System.Int32)">
   ECAM_Start(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start ECAM motion with specified table.</p>
@@ -1010,7 +1020,7 @@ Make sure the data array size matches the configured table range.</p>
 
   <h3 id="AAMotion_IECAM_ECAM_Stop" data-uid="AAMotion.IECAM.ECAM_Stop">
   ECAM_Stop()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop ECAM motion.</p>
@@ -1046,7 +1056,7 @@ Make sure the data array size matches the configured table range.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L3" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IECAM.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

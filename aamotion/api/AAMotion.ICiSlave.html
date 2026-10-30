@@ -155,7 +155,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_CiIdentity" data-uid="AAMotion.ICiSlave.CiIdentity">
   CiIdentity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>CiIdentity array parameter used to report the identity and configuration information of the remote unit:
@@ -229,11 +229,20 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 <p></p>
 <pre><code>Index 23: Amplifier variant
 </code></pre>
+<p></p>
+<pre><code>Indices 24..39: Remote FPGA FEATURES words 0..15
+</code></pre>
+<p></p>
+<pre><code>Index 40: Feature availability (0 pending, 1 valid, 2 absent, 3 invalid, 4 transport error)
+</code></pre>
+<p></p>
+<pre><code>Index 41: Feature snapshot generation; bracket multi-message reads with generation and availability
+</code></pre>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; CiIdentity { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; CiIdentity { get; }</code></pre>
   </div>
 
 
@@ -242,7 +251,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -257,7 +266,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_CiStatus" data-uid="AAMotion.ICiSlave.CiStatus">
   CiStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>CiStatus array parameter used to report the status information of the remote unit:
@@ -288,7 +297,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; CiStatus { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; CiStatus { get; }</code></pre>
   </div>
 
 
@@ -297,7 +306,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -351,7 +360,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AAValueArray&lt;int&gt; DCDC { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">AAValueArray&lt;double&gt; DCDC { get; }</code></pre>
   </div>
 
 
@@ -360,7 +369,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="AAMotion.AAValueArray-1.html">AAValueArray</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -375,7 +384,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_IsCiConnected" data-uid="AAMotion.ICiSlave.IsCiConnected">
   IsCiConnected
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks whether the Central-I device is connected.</p>
@@ -408,7 +417,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_MotorTemp" data-uid="AAMotion.ICiSlave.MotorTemp">
   MotorTemp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Returns the temperature of the motor (unit: Celsius).
@@ -420,7 +429,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int MotorTemp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double MotorTemp { get; }</code></pre>
   </div>
 
 
@@ -429,7 +438,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -444,7 +453,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_PwrTemp" data-uid="AAMotion.ICiSlave.PwrTemp">
   PwrTemp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>PwrTemp returns the temperature in Celsius measured on the power generating part of the product.
@@ -455,7 +464,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int PwrTemp { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double PwrTemp { get; }</code></pre>
   </div>
 
 
@@ -464,7 +473,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -479,7 +488,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_VBus" data-uid="AAMotion.ICiSlave.VBus">
   VBus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the reading of the bus voltage, in millivolts.</p>
@@ -487,7 +496,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int VBus { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VBus { get; }</code></pre>
   </div>
 
 
@@ -496,7 +505,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -511,7 +520,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_VLogic" data-uid="AAMotion.ICiSlave.VLogic">
   VLogic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Returns the current reading of the logic power supply voltage, in millivolts.
@@ -523,7 +532,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int VLogic { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">double VLogic { get; }</code></pre>
   </div>
 
 
@@ -532,7 +541,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -551,7 +560,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_CiConnect" data-uid="AAMotion.ICiSlave.CiConnect">
   CiConnect()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connect Central-I device</p>
@@ -584,7 +593,7 @@ Interface ICiSlave  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="AAMotion_ICiSlave_CiDisconnect" data-uid="AAMotion.ICiSlave.CiDisconnect">
   CiDisconnect()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Central_I/ICiSlave.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disconnect Central-I device</p>

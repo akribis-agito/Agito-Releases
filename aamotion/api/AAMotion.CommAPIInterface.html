@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_CommAPIInterface" data-uid="AAMotion.CommAPIInterface" class="text-break">
-Class CommAPIInterface  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L213"><i class="bi bi-code-slash"></i></a>
+Class CommAPIInterface  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L239"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -162,7 +162,7 @@ Class CommAPIInterface  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_CommAPIInterface__ctor" data-uid="AAMotion.CommAPIInterface.#ctor">
   CommAPIInterface()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -191,7 +191,7 @@ Class CommAPIInterface  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_CommAPIInterface_CommApi" data-uid="AAMotion.CommAPIInterface.CommApi">
   CommApi
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L251"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -226,7 +226,7 @@ Class CommAPIInterface  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_CommAPIInterface_DefaultTimeout" data-uid="AAMotion.CommAPIInterface.DefaultTimeout">
   DefaultTimeout
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -257,7 +257,7 @@ Class CommAPIInterface  <a class="header-action link-secondary" title="View sour
 
   <h3 id="AAMotion_CommAPIInterface_FastReadCache" data-uid="AAMotion.CommAPIInterface.FastReadCache">
   FastReadCache
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the FastReadCache instance for high-performance cached reads.
@@ -286,6 +286,71 @@ The cache must be enabled before use: FastReadCache.Enable()</p>
 
 
 
+  <a id="AAMotion_CommAPIInterface_LastReadError_" data-uid="AAMotion.CommAPIInterface.LastReadError*"></a>
+
+  <h3 id="AAMotion_CommAPIInterface_LastReadError" data-uid="AAMotion.CommAPIInterface.LastReadError">
+  LastReadError
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The most recent failed parameter read, or null when none has failed since the last
+successful <span class="xref">AAMotion.CommAPIInterface.Connect(AAComm.Services.ConnectionData)</span>. A later successful read does not clear it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadError LastReadError { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="AAMotion.ReadError.html">ReadError</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="AAMotion_CommAPIInterface_ReadFailures_" data-uid="AAMotion.CommAPIInterface.ReadFailures*"></a>
+
+  <h3 id="AAMotion_CommAPIInterface_ReadFailures" data-uid="AAMotion.CommAPIInterface.ReadFailures">
+  ReadFailures
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>How many parameter reads have failed since the last successful <span class="xref">AAMotion.CommAPIInterface.Connect(AAComm.Services.ConnectionData)</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadFailures { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -294,7 +359,7 @@ The cache must be enabled before use: FastReadCache.Enable()</p>
 
   <h3 id="AAMotion_CommAPIInterface_CloseAACommServer" data-uid="AAMotion.CommAPIInterface.CloseAACommServer">
   CloseAACommServer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L641"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L663"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -320,7 +385,7 @@ The cache must be enabled before use: FastReadCache.Enable()</p>
 
   <h3 id="AAMotion_CommAPIInterface_Connect_AAComm_Shared_ChannelType_System_Byte___System_Nullable_System_Int32__System_Boolean_" data-uid="AAMotion.CommAPIInterface.Connect(AAComm.Shared.ChannelType,System.Byte[],System.Nullable{System.Int32},System.Boolean)">
   Connect(ChannelType, byte[], int?, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L399"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L524"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -358,96 +423,11 @@ The cache must be enabled before use: FastReadCache.Enable()</p>
 
 
 
-  <a id="AAMotion_CommAPIInterface_ConnectSimulator_" data-uid="AAMotion.CommAPIInterface.ConnectSimulator*"></a>
-
-  <h3 id="AAMotion_CommAPIInterface_ConnectSimulator_System_Int32_" data-uid="AAMotion.CommAPIInterface.ConnectSimulator(System.Int32)">
-  ConnectSimulator(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L485"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Connects to the AACommServer Simulator channel.
-The Simulator reads parameters from a text file, allowing testing without real hardware.
-AACommServer must have AllowSim enabled and SimParamsFile configured.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ConnectSimulator(int controllerType)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>controllerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The simulated controller type (e.g. AGD301_AGC301_ID for AGD301).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if connection is successful; otherwise false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="AAMotion_CommAPIInterface_ConnectSimulator_" data-uid="AAMotion.CommAPIInterface.ConnectSimulator*"></a>
-
-  <h3 id="AAMotion_CommAPIInterface_ConnectSimulator_System_Int32_System_Int32_" data-uid="AAMotion.CommAPIInterface.ConnectSimulator(System.Int32,System.Int32)">
-  ConnectSimulator(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L498"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Connects to the AACommServer Simulator channel with retry support.
-The Simulator reads parameters from a text file, allowing testing without real hardware.
-AACommServer must have AllowSim enabled and SimParamsFile configured.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ConnectSimulator(int controllerType, int retryCount)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>controllerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The simulated controller type (e.g. AGD301_AGC301_ID for AGD301).</p>
-</dd>
-    <dt><code>retryCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Number of retry attempts on failure.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if connection is successful; otherwise false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="AAMotion_CommAPIInterface_Disconnect_" data-uid="AAMotion.CommAPIInterface.Disconnect*"></a>
 
   <h3 id="AAMotion_CommAPIInterface_Disconnect" data-uid="AAMotion.CommAPIInterface.Disconnect">
   Disconnect()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L568"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L602"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disconnect and clear the cache.</p>
@@ -474,7 +454,7 @@ AACommServer must have AllowSim enabled and SimParamsFile configured.</p>
 
   <h3 id="AAMotion_CommAPIInterface_Dispose" data-uid="AAMotion.CommAPIInterface.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L621"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L643"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -501,7 +481,7 @@ AACommServer must have AllowSim enabled and SimParamsFile configured.</p>
 
   <h3 id="AAMotion_CommAPIInterface_OpenAACommServer" data-uid="AAMotion.CommAPIInterface.OpenAACommServer">
   OpenAACommServer()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L629"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L651"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -532,12 +512,12 @@ AACommServer must have AllowSim enabled and SimParamsFile configured.</p>
 
   <h3 id="AAMotion_CommAPIInterface_OpenAACommServer_System_String_" data-uid="AAMotion.CommAPIInterface.OpenAACommServer(System.String)">
   OpenAACommServer(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L639"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L661"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if AACommServer is already running; if not, launches it from the specified executable path.
 Delegates to <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">StartAACommServer(string)</a> — the spawn contract lives there
-(headless args, redirected stdin, server working directory, socket-ready polling with a
+(headless args, its own standard streams, server working directory, socket-ready polling with a
 child-death probe). A bare Process.Start + fixed sleep proved every one of those wrong.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -577,7 +557,7 @@ child-death probe). A bare Process.Start + fixed sleep proved every one of those
 
   <h3 id="AAMotion_CommAPIInterface_ErrorOccurred" data-uid="AAMotion.CommAPIInterface.ErrorOccurred">
   ErrorOccurred
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L243"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -608,7 +588,7 @@ child-death probe). A bare Process.Start + fixed sleep proved every one of those
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L213" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L239" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -1,7 +1,28 @@
 {
   "agito": {
-    "version": "18.0.0",
-    "url": "https://github.com/akribis-agito/Agito-Releases/releases/download/Software/PCSuite/v18.0.0/Agito_PCSuiteSetup_18.0.0_RC.exe",
-    "date": "2026-08-26"
+    "version": "19.0.0",
+    "url": "https://github.com/akribis-agito/Agito-Releases/releases/download/Software/PCSuite/v19.0.0/Agito_PCSuiteSetup_19.0.0_RC.exe",
+    "date": "2026-11-01",
+    "sidecar": {
+      "url": "https://github.com/akribis-agito/Agito-Releases/releases/download/Software/PCSuite/v19.0.0/PCSuiteSidecar.zip",
+      "components": [
+        {
+          "kind": "docs",
+          "source": "akribis-agito/DocumentationPublic",
+          "version": "2026.11",
+          "commit": "79edea533cd323b0a7904a61ba13bf1c2030cd30"
+        },
+        {
+          "kind": "firmware",
+          "source": "akribis-agito/Agito-Releases",
+          "tag": "Firmware/v5.3.0-rc7"
+        },
+        {
+          "kind": "fpga",
+          "source": "akribis-agito/Agito-Releases",
+          "tag": "FPGA/v5.5.0-rc5"
+        }
+      ]
+    }
   }
 }

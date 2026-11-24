@@ -136,7 +136,7 @@ When starting the DL process, the API state must be NOT connected.
 <pre><code>Process ends with API state: Disconnected (success or error)
 </code></pre>
 <p></p>
-<pre><code>Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.
+<pre><code>Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success. Each reconnect waits up to 10 s for the remote and reports the time it took through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
 </code></pre>
 <p></p>
 <pre><code>Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.
@@ -189,6 +189,41 @@ Older FW HEX files don't contain FW information. Opening such files will result 
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommParametersDownload.html">AACommParametersDownload</a></dt>
+      <dd><pre><code>Asynchronously downloads (writes) controller parameters from a .par file.
+</code></pre>
+<p></p>
+<pre><code>&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.
+</code></pre>
+<p></p>
+<pre><code>Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected
+controller, then sends each as a SET command.
+</code></pre>
+<p></p>
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
+</code></pre>
+<p></p>
+<pre><code>After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.AACommParametersUpload.html">AACommParametersUpload</a></dt>
+      <dd><pre><code>Asynchronously uploads (saves) controller parameters to a .par file.
+</code></pre>
+<p></p>
+<pre><code>&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.
+</code></pre>
+<p></p>
+<pre><code>Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,
+firmware/FPGA version, date, checksum) to a plain ASCII .par file.
+</code></pre>
+<p></p>
+<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
+</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAComm.Extensions.AACommRemoteFpgaInfo.html">AACommRemoteFpgaInfo</a></dt>
       <dd><pre><code>Helper class used to read and validate Master Remote Unit FPGA RPD (data) and VER (version) files.
 </code></pre>
@@ -197,6 +232,21 @@ Older FW HEX files don't contain FW information. Opening such files will result 
 
 Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;
 </code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.ParamConversion.html">ParamConversion</a></dt>
+      <dd><p>One download row whose value was rewritten before it was sent.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.ParamHandlingSummary.html">ParamHandlingSummary</a></dt>
+      <dd><p>Summary of a parameter upload or download operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAComm.Extensions.ParamRejection.html">ParamRejection</a></dt>
+      <dd><p>One entry the controller refused, or a download skipped, as it was sent (or read) and as it was answered.</p>
 </dd>
     </dl>
     <h3 id="enums">
@@ -227,7 +277,7 @@ Enums
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

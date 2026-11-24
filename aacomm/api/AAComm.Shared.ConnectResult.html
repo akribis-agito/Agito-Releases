@@ -90,7 +90,7 @@
 
 
   <h1 id="AAComm_Shared_ConnectResult" data-uid="AAComm.Shared.ConnectResult" class="text-break">
-Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L124"><i class="bi bi-code-slash"></i></a>
+Enum ConnectResult  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -185,9 +185,15 @@ surfaced via &lt;xref href=&quot;AAComm.CommAPI.OnCommsError&quot; data-throw-if
 </dd>
     <dt id="AAComm_Shared_ConnectResult_CANDeviceNotConnected"><code>CANDeviceNotConnected = 48</code></dt>
   
-  <dd><p>48 - connection error - no Kvaser CAN device detected on the AACommServer host (canlib
-enumerates only virtual channels). Distinct from <a class="xref" href="AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_CANLibMissing">CANLibMissing</a> (the canlib
-driver is absent) — here the driver is present but no physical Kvaser interface is connected.</p>
+  <dd><p>48 - connection error - no CAN device detected on the AACommServer host: on Windows canlib
+enumerates only virtual channels (distinct from <a class="xref" href="AAComm.Shared.ConnectResult.html#AAComm_Shared_ConnectResult_CANLibMissing">CANLibMissing</a>, the canlib driver
+absent); on Linux there is no SocketCAN interface <code>can&lt;CAN_Channel&gt;</code>.</p>
+</dd>
+    <dt id="AAComm_Shared_ConnectResult_CANInterfaceNotConfigured"><code>CANInterfaceNotConfigured = 53</code></dt>
+  
+  <dd><p>53 - connection error - Linux: the SocketCAN interface <code>can&lt;CAN_Channel&gt;</code> exists but is
+down, or runs at a bit rate other than <code>ConnectionData.CAN_BaudRate</code>. The host configures
+the interface (<code>ip link set can0 up type can bitrate 1000000</code>); AACommServer only checks it.</p>
 </dd>
     <dt id="AAComm_Shared_ConnectResult_CANLibMissing"><code>CANLibMissing = 17</code></dt>
   
@@ -368,7 +374,7 @@ simulation's parameter file cannot be created. A packaged simulation ships one.<
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L124" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Shared/ConnectResult.cs/#L125" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -384,7 +390,7 @@ simulation's parameter file cannot be created. A packaged simulation ships one.<
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

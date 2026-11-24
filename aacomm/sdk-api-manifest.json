@@ -1,0 +1,1499 @@
+{
+  "corpus": "sdk-api-aacomm",
+  "version": "aacomm/v15.1.0",
+  "generated": "2026-11-24",
+  "chunk_count": 213,
+  "chunks": [
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.CommAPI/part-1",
+      "keyword": "CommAPI",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "fe33192b90efa508a1d4d7db639ed32a832c6b61462364a244b1678f2680ea73"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.CommAPI/part-2",
+      "keyword": "CommAPI",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "688b7fc64bca8ee7e002024d9e7fc26a21473d718554de80d2a85eb9f301f887"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.CommAPI/part-3",
+      "keyword": "CommAPI",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "9a32a6be6a29c838c05d47c4bec50f70ab7069a32949760898929c92492a8b05"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.CommAPIWrapper",
+      "keyword": "CommAPIWrapper",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "8ad5bef35e83624cc2350bc754dddcc1d477136e74baf07d886bfbe67f590e3d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Acknowledgement",
+      "keyword": "Acknowledgement",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e0329c0dace13a067cc75a076abadc0283660d80fef3a57b94f4c2dd711b6dde"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.AcquisitionSource",
+      "keyword": "AcquisitionSource",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "275f1b3b5356d0bad51a65f28b6f836c07a352f08d47cdd36b8b5139d19e7fbf"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Attempt",
+      "keyword": "Attempt",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a4b7b1b4a6901007ce4f14a72f5576ea8ac8f12af67883604898206fdfc0bfdf"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.AttemptStatus",
+      "keyword": "AttemptStatus",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1a8f0a1ec9ab6cc96a6a4b72d60885f5fce0bfbec93dd307a4ab2bd52d9c44ec"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Capture",
+      "keyword": "Capture",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "96c0a6bd116710c69048a8f01fc02aa1c017d32c7771130ea27015518c6bbd31"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningIssue",
+      "keyword": "CommissioningIssue",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c082ec590a7ff414e05ba966229e57d0246d79cc10595e20fe0cbc7ca38986e8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningIssueCode",
+      "keyword": "CommissioningIssueCode",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e875a9e1ba2d4b99defbafde6133a8e364f79f04fe5b54131da8a4d4220b328c"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningKeys",
+      "keyword": "CommissioningKeys",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f93c2f48f43eb897a9491807d469f0357eca25f153f973b5c61fc29bb5ada099"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningReport",
+      "keyword": "CommissioningReport",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "bcb233ea5ac693331a60b1e0b8a491d0eaf2561becc66ffb551e5c0284f5807b"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningValidation",
+      "keyword": "CommissioningValidation",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e6f9fc977148536b70b81690875b7d237a658baa71a81bc0d8dacb503af6d513"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.CommissioningValidator",
+      "keyword": "CommissioningValidator",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f1668d647e5faac7e8cbb6b12ea6936aa5e6dfffd9eda0f398bd1c1a46bf794c"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Declaration",
+      "keyword": "Declaration",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a98b2dcc8eb6cbc1f35450e3bcde9ee7b3d021eeb80a43572825fd45239b9b04"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.DeclarationKind",
+      "keyword": "DeclarationKind",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4d750152ee40f0c49ce73792940dedb0934417213cc7d17c7e79554a866ae9ca"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.EvidenceCompleteness",
+      "keyword": "EvidenceCompleteness",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "9533cf0cb0a479e483dd0b0a209f96211c6ca9dfbf941c91c5568f39e3a5a561"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.EvidenceKind",
+      "keyword": "EvidenceKind",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ae9981b7c7c5771fa3aef119126ae1c9baa234c7f94d6de1ed33e2d90295a49f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.EvidenceRef",
+      "keyword": "EvidenceRef",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1f8f4848076b068ef8361f5da767acb75c01c80b0c5ef2c454d281530128c8de"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Limit",
+      "keyword": "Limit",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2cb5ab444869f4a92c56c51d5c300ef681ef1d4663eaf753d7d5d9c6632f5a61"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Observation",
+      "keyword": "Observation",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d0cd26a6a9c8132b7765293ec75b1b662422e298aaf9c05042f908c29bb5c227"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.ObservationOutcome",
+      "keyword": "ObservationOutcome",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "daea76f03507811d44484686c8ffe7218499f917534c643fa771f10a0f1f1b8b"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.ObservationValue",
+      "keyword": "ObservationValue",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d6b6f4d99471bce5e26648602d1eb1d254ea31ac649a1d05a67e72ff14c89333"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.PassiveCollectionRequest",
+      "keyword": "PassiveCollectionRequest",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5f0fa3b5b6b253571dd7aa25510656e4645b13eaacff9b8850b855cb773bb112"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.PassiveEncoderRole",
+      "keyword": "PassiveEncoderRole",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f886f20f15f463bd1faf4cc90f052efb54588995193461f8a4e741a1c6663099"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.PassiveEncoderSelection",
+      "keyword": "PassiveEncoderSelection",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6c22ce48d9e184f75aa897ea7d47761a735f856ecedd9ed4d1ab0a296229a83b"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.PassiveKeys",
+      "keyword": "PassiveKeys",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3cb007bc25462ec4c50b730be9fa516a2cdf0f1071200e603b05104a7e2406b6"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.PassiveMetadataCollector",
+      "keyword": "PassiveMetadataCollector",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4e3ac32c0c08931494420f02b2dc6b8a2da42e2b0783ac88691845e45525ac62"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.RestoreKind",
+      "keyword": "RestoreKind",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "73fa885da9e7abcdd44b112672e48c3ad35dd42c90334f667f87fb1740b520e5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.RestoreOutcome",
+      "keyword": "RestoreOutcome",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4268c53fe57f29d5a2fcfc5e457f03f6fe424fa9acbfe23bc7ba2fcd9550a34f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.RestoreStep",
+      "keyword": "RestoreStep",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f21a35f2d944e3eacb95b079af68053cec85074a4ed6bbb9aa69755460ac78a2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.Scope",
+      "keyword": "Scope",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2378b7e03523a3eb98f421d32690345d899013726517d908ef8d0b9017a9ded6"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.ScopeMapping",
+      "keyword": "ScopeMapping",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7f903ad326f68678ac8a3d3db2cb08cb145dea06a4b7e3eae3521b8460bf846e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.SourceKind",
+      "keyword": "SourceKind",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "54416f4a8bd7cb9d5e8251fdb9d19c11bb2aa4ae56c0a34355b9f8571156d880"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.StepEffect",
+      "keyword": "StepEffect",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f8a806409824b126cd4a77148171f72b1bdf0c4324f2633720353ee930222c85"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.TimeDomain",
+      "keyword": "TimeDomain",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6d2059ab6feadf4dac48b5355d168358a2de70e915668ae2fcf9670c75842f4d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Commissioning.ValueOrigin",
+      "keyword": "ValueOrigin",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "fe3a97655013d566631a60166de4231bbb685fa573e1aaf65ce1070032722b17"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommBinFwInfo",
+      "keyword": "AACommBinFwInfo",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "679040d3cc878dfbf0b1856a44daeae1f5dec42563a2dc6d6a6db7a61b321d2e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommDownloadFPGA",
+      "keyword": "AACommDownloadFPGA",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1b3c29850449ce12736f38c76a7150603059ce6cc7a44f94672d9754503bb4c6"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommDownloadFPGAEtherCat",
+      "keyword": "AACommDownloadFPGAEtherCat",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "370bb7b49a285d911005eafdd7b2b378bd0b734ca08ef79efbe3d99b628094b2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommDownloadFPGARemote",
+      "keyword": "AACommDownloadFPGARemote",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c83b258a6673adcf3518566882be7ecdc27a7030f37c3994a66e676c52ac43eb"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommDownloadFW",
+      "keyword": "AACommDownloadFW",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "843911ee7e9e79266b16e284a9cd14185666eb788cc863aa580ccd0112587a5f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommDownloadUP",
+      "keyword": "AACommDownloadUP",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6c3060a475ff69821cd6457f4c5f4988db8121924eec8e48cec3693617e63f74"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommFwInfo",
+      "keyword": "AACommFwInfo",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b6292501e67988e5f551f965b3c3bb1e35a6436280b37a7a68f85775897a551f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommFwInfo\u002BTargets",
+      "keyword": "AACommFwInfo.Targets",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2a1b8c4927552bc7bfa4f6650663f20013078f1feb128b6d86dd05fd48dc9bfd"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommParametersDownload",
+      "keyword": "AACommParametersDownload",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e8f46372ee12bea95322ea160078321f3d62897335e5f47a2a032d52e82f930d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommParametersUpload",
+      "keyword": "AACommParametersUpload",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "15d326f32a199d83f1bd1a838c2a8522abb94f474f314ef3fe15608a6d5ac3c8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.AACommRemoteFpgaInfo",
+      "keyword": "AACommRemoteFpgaInfo",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b23342ca2c305c363fca324a253ee7e09f7026e435a14aa15c498e89f2f97c32"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.ParamConversion",
+      "keyword": "ParamConversion",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "16a3fc6ddd46476c57a785e388e518e2ab45bd45cd70859ef7772bfea99e86cb"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.ParamHandlingSummary",
+      "keyword": "ParamHandlingSummary",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0d86505e45db3dceecd16741bf2128918c75f9f4142be5039e44c9f5634f59e3"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.ParamRejection",
+      "keyword": "ParamRejection",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f0826d1a2dee117546f8f96aeb9b53f6509d378e80d1432d44cd824f0d2ec63e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.AACommDataRecManager",
+      "keyword": "AACommDataRecManager",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "383f8d1b571e06589a99c3c38bef56fbd292f26d6ddc55f0273f9ea994fcd022"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.AACommDataRecManagerSync",
+      "keyword": "AACommDataRecManagerSync",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7ff8a08e44411a4dfcc32fc6bb5cbbcdf17fa3e2026b8d97fd2e1156e8137556"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.LoggerDataContainer",
+      "keyword": "LoggerDataContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "115f8191d6aa99cf79b019b03690759f5904c6e3dd38b846ca5a1cf13fd5d322"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.LoggerPacket",
+      "keyword": "LoggerPacket",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "555701b923860e9368fb3185ad0989e4b280f2467fe526127d18d8e353507159"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.LogicalTriggerRelation",
+      "keyword": "LogicalTriggerRelation",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "984e73353be82c7194dfefcd47655d55904f16c508d7c822c5c2429f6ac43135"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.MultiTriggerModes",
+      "keyword": "MultiTriggerModes",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c51fd548b897bf540f15c8c990b5bdaac0e1eae2471936e57f3a4ebe01d8acd7"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.RecParamsResolver",
+      "keyword": "RecParamsResolver",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b200af889ae3b2de193f00e9b311906a80e35ad76212850ffd0a6b9751e84b3f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.RecordingDataContainer",
+      "keyword": "RecordingDataContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "69baac617971599c8a2aaabf01348fcb82679d368d0e423095b4c797b8122f0f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.RecordingSetupContainer",
+      "keyword": "RecordingSetupContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5b5a2af4095cd8e199f210b0d39e881e2b21daca314b3cb8554f97bca5496eb9"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.ScopeDataContainer",
+      "keyword": "ScopeDataContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "53fae21a2a70507d65e587210a7cb5f79f185ced8e9039e0a2387c8b85b10802"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.ScopeDataPoint",
+      "keyword": "ScopeDataPoint",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3ae6867db6d712bdd468813f92f7ed0b23f3bf9f63d6d0de327f939c7aa33111"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.TriggerContainer",
+      "keyword": "TriggerContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e916db5584da75fa62365c7bd1a63a8a25879c4c6fbe543bf77aa4ed229547c2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.TriggersDataContainer",
+      "keyword": "TriggersDataContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "93e2d6ee324908a6b89ca6bbd8b9f70697dffbd4999b6dafd62cf9ad0d807097"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Extensions.RecData.VectorDataContainer",
+      "keyword": "VectorDataContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7cd1bf1fa425460302c8295734cc71504ac642b76473488984e12895c39b851e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Interfaces.ICommService",
+      "keyword": "ICommService",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b37b286d3ff934effd9949572e3860a3098f56318c06a4f2736b532c612de872"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Interfaces.IIdentityContainer",
+      "keyword": "IIdentityContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "cb0371e4656b070bd5c503a34b53da1c0902465bb092980fd0b25c1584fec25f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Interfaces.IMessagesContainer",
+      "keyword": "IMessagesContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7c3c9e26cad841ed29c7122dd664e772121c4397ccb7c2abdd19d3a13545eb6e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AACommEventArgs",
+      "keyword": "AACommEventArgs",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ed65bfc854c9438a1bad9da2270b200c8d9a606a05480f73af0672644d489e58"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AACommExclusiveCommsManager",
+      "keyword": "AACommExclusiveCommsManager",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b6865262072c727e9df4336db225825b5843cda4885d2a3e6369d902e83955d2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AACommMessage",
+      "keyword": "AACommMessage",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "58e13a66cbd4737154ff2876b31bb94b38646aa7a8fa7b19eb1bb632fd9b1ae5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AACommMnemonicHelper",
+      "keyword": "AACommMnemonicHelper",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "77163a043bb7e77ab72736a990625fc0a270f8839c7c1ae824189d31dd240b51"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AACommVerifySingleClient",
+      "keyword": "AACommVerifySingleClient",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4ac8e977343ca8a802539788aecc89861e818290d94bafc5f461565a402bd4a7"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ARPTools",
+      "keyword": "ARPTools",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "cb959a4b32633ee42e9eff06ff6d1f2b22de6521d5094d41de93ff1651c1d307"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ARPTools\u002BEthernetLookupResults",
+      "keyword": "ARPTools.EthernetLookupResults",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "16a05f69e10015afad6d38302bea9c0b28d4c967a94aff914d46caf666ee1118"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ARPTools\u002BLookupResult",
+      "keyword": "ARPTools.LookupResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "492382b070a022f4ee6fcddfcfebb099847489a706a3fe79e1d81a56622c3292"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.AllStatInterpreter",
+      "keyword": "AllStatInterpreter",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0aa64ca5c25ab558b5d7510839b90a8589d7d478dce7df0335de9258df28e82a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ArrayDownloadResult",
+      "keyword": "ArrayDownloadResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "26c0910c72462c9ce1d603242ce4399e01c53be7c3bcd2420c704074dd008a3c"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ArrayDownloadStatus",
+      "keyword": "ArrayDownloadStatus",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "200fe1c0de788fba266d0b3d13fc1abe9c72ef8d49b6189a3ab42de236e37986"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ArrayDownloadTransport",
+      "keyword": "ArrayDownloadTransport",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "52f3c74427938cac90aeb11adb49d4feb27515fce2a17314ce95594db59c494d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ArrayStreamError",
+      "keyword": "ArrayStreamError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1751db5beb930222523538cc13589f932e1f15d71ef5cef09ef47f2681ea4594"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.BulkReply",
+      "keyword": "BulkReply",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3148b500c1868e4241e329f785c57c5154ed9bc89ed8d6827ff3cd879b82f372"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.COMTools",
+      "keyword": "COMTools",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1ab3933dbe3be982667f8f25925233687fa53980fd3f37e78b9b2ebb514a1ba9"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.CanDescriptionBuilder",
+      "keyword": "CanDescriptionBuilder",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "80777bfb38a15b2394460a2eb240fa86bb2352b872224a0d9a7838fc6696cc38"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.CiFeatureAvailability",
+      "keyword": "CiFeatureAvailability",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "544984ff6fd740f2c70ae768a6bd0d0115d8291de7726654a04c73cbd7cf3b62"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.CiFpgaFeatures",
+      "keyword": "CiFpgaFeatures",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7e890ce353f7ee2b9e93e32ad96faf15a2ab1ffda6bde9ac8100e5d2558f8765"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.CommSessionHandle",
+      "keyword": "CommSessionHandle",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "12150a6f8221c155b44a111a975183a912e761ad40fec92074a65ba74d870e1e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ConnectionData",
+      "keyword": "ConnectionData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "922c6835d02126dfcf5346580d6767e063012016bd6bf87e41477ef5535c5b22"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerErrorInterpreter",
+      "keyword": "ControllerErrorInterpreter",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3b5fb9f9f48b8cce640a6866ba89cb39afd5aa1672c6e80fb400d3306be630ac"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerIdentityConnectivity",
+      "keyword": "ControllerIdentityConnectivity",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ae27b9a43333e6435f67079e94ae3bc4d0783d4fd9f955e4594eab98020422b7"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerIdentityContainer",
+      "keyword": "ControllerIdentityContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e1b83ffc74e6d59a99028fe8b3619d8ff1e53320a942e8c141681a83bebe99a5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerIdentityFeature_01",
+      "keyword": "ControllerIdentityFeature_01",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5833c7ac7e5f3ed4a276054b9b99fd3a225befae799ba3890b10b46586e026a5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerIdentityFeature_02",
+      "keyword": "ControllerIdentityFeature_02",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "19cab0077ef79cf85b33fee875f4872c94f019d29815d4bb6c907703c4585cdc"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerIdentityVersions",
+      "keyword": "ControllerIdentityVersions",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c6bf4e6c13f80b3d8925d5e3eda66aba5ef381161738f1251774c78158a1557c"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerMessagesContainer",
+      "keyword": "ControllerMessagesContainer",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1bc2e0fbbd93af9790fa3124e92bf346e3ec8c46d603e81d9695ebdfe56bc663"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerMessagesContainer\u002BMessageCategory",
+      "keyword": "ControllerMessagesContainer.MessageCategory",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e9b48945db1682ffe9b9c9242546da6970df3ee594bc5eb2ea1c1a9e44154e52"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ControllerVersionWord",
+      "keyword": "ControllerVersionWord",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a713348d3f31effac69c3561ccdf0581ef8e31fe6f181d55b156e58e11485003"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Diagnostics.AACommDebugLog",
+      "keyword": "AACommDebugLog",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "64698be7fbce427d25617fc86d3e7574b941c5378ef645c21de1651d0864eea0"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableCapabilities",
+      "keyword": "EventTableCapabilities",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0e2b8304cad26190826283d483817215a1d186a871c37aa2ded08ff11d7b3484"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableClient",
+      "keyword": "EventTableClient",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6f797f0b2d51a34cd63b669b712af5fee7467d68702785471c698b8fb9cd2b5a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableDefinition",
+      "keyword": "EventTableDefinition",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f2bf8057c48d8cdf7ab65b3794adfbfc02f4da7d0005e6ab506864fd7c0fbded"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableEntry",
+      "keyword": "EventTableEntry",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "018ca1af55d384a40b78e9d099d8a0ee897d644be38e1d75c8040b28d1efb773"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableError",
+      "keyword": "EventTableError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e9e00330e40263f0effa7b9eb8c55b64b56b6620bc0b1817765878bc4e9d0601"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableErrorCode",
+      "keyword": "EventTableErrorCode",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4df70d435a15d7ef89f55121f2d6f8b957168a1a0d59e91b42c27288306f680d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableFailure",
+      "keyword": "EventTableFailure",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5ff8aae3e815718c7de2f7b9226e15d2483fa4042c2df26e44c86aa34100654e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableObservation",
+      "keyword": "EventTableObservation",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4bd5ab96c309f321a4bc03dcb8b058ae904c3e439e274929aac5deba4276d540"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableObservationOutcome",
+      "keyword": "EventTableObservationOutcome",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "11912b38faab80778e34ee2e7b2425d1ed59caf74997aa2206f89e0804f5022a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableOutcome",
+      "keyword": "EventTableOutcome",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "65e95eaee059301e868b348324d8ce807cf9ec7d35590ebd93a51766aea8c57d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTablePhase",
+      "keyword": "EventTablePhase",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c267fbb8defd5a36c3ce8058fec4dbaff974f4b5991997b1a67671e0c16b3bc8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTablePulseResolution",
+      "keyword": "EventTablePulseResolution",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "00461687084e51d96f079f44c05f0ed3a18d7324dfc579e44c065b5d80b74b9a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableRealizedEntry",
+      "keyword": "EventTableRealizedEntry",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "56ccde2f75165fe4ea872c1f888824073758319439f625fe0a41a2a2712b14a2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableResult",
+      "keyword": "EventTableResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c6bdb7c4126e32695e50ce5fe2b742a01dba8efeb7ee9435dd03e399e1a627f5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableState",
+      "keyword": "EventTableState",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2d2209ca98176cc148e240d8d37a33a38a3c33721f9ed4d19f993b8f52d8a230"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableStatus",
+      "keyword": "EventTableStatus",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3e0d482993d1bf5045b95eaf12e0ae827a1ccc1b9f323ef563e63e444352442f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.Events.EventTableStatusReader",
+      "keyword": "EventTableStatusReader",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1dc9294048292eba255972ef3a2a95f54d7bd53b04343710229212687c63807a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.FloatHelper",
+      "keyword": "FloatHelper",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ce7993af3eefbcc9f504c88a961c667791eb0bc2ce929d84540d4fdd803383a8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.GlobalVar",
+      "keyword": "GlobalVar",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "944fc0e0dfca3b722a6b4ff3daca903d240d62e948f4507445cefb53907a1ee0"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.HeaderParser",
+      "keyword": "HeaderParser",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d8bee1a8848c13aceea494d0e5c5183903d967e90c620e32c7dcb61aba16a0ae"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.LocaleProvider",
+      "keyword": "LocaleProvider",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "fbcc3a5179ec102a168bc9317943238f87ce5027884819c0fefb36dca819cd2f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.LockEventWriteOrder",
+      "keyword": "LockEventWriteOrder",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4406460be268f70b83cd2ae35a61bc08c59f7abe69c2ea0b4d58207a8c7b64e6"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.LockEventWriteOrder\u002BPlan",
+      "keyword": "LockEventWriteOrder.Plan",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0b41b5f43e544d055f1cb699efa8ce5575400f467842aac646b7dfef6ccbacbb"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.MessageData",
+      "keyword": "MessageData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3773086ce7d191a1522f80300b52e0803356694ae0cacc0e81f2758727d8592b"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.MessageDataValueExtensions",
+      "keyword": "MessageDataValueExtensions",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2f7e20264463076a13cc7140afb197c9ab6b46e1badbc2cf22d53ba4433183a2"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.NumberFormatter",
+      "keyword": "NumberFormatter",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "85d77bcadaf0361262e9fd8db2deedc0e37e3c282daa5e441633bfad5a64659a"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ParamInfo.ParameterDescription",
+      "keyword": "ParameterDescription",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "14457efa99d494e0d5de00d145b4b6aab2b01f197783f5bd7c36d6b6551d6bec"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ParamInfo.ParameterIndexInfo",
+      "keyword": "ParameterIndexInfo",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "57a657df63170ab4e1d4ed3626e4805ba6e72644f2985ebfaf2e938b0cb58776"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ParamInfo.ParameterInfo",
+      "keyword": "ParameterInfo",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6369df1338367edc3b76039813dcf07fe6b17b7a910a3320180ed70544ef1ecd"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.ParamInfo.ParametersInfoDB",
+      "keyword": "ParametersInfoDB",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ea96cc88bf6fe9f4c38da04e7df28cdf1c30cd2cbb000944e1f4a7c50e0ddf79"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.AACommPushMsgBase",
+      "keyword": "AACommPushMsgBase",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5d62c50c6f8bcc34a4de0f8e7b07450139b68ccb5be4b8b2584ed0a170c3e7b8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.AACommPushMsgError",
+      "keyword": "AACommPushMsgError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "4eb929f9136c24153ab446aec2817e06a3f737874944bb02f7d4d8878e5b2139"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.AACommPushMsgPushEvents",
+      "keyword": "AACommPushMsgPushEvents",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c6248bee0318f1312006c460975ca07a4985f7cbe7fb4cc2083e759c791dc2f5"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.AACommPushMsgUP",
+      "keyword": "AACommPushMsgUP",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e7c33e6f7206bc0e8d9d9de56ea8e098b47eb95591390d70dc8ae8e4d25fafb3"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.PrintfMessage",
+      "keyword": "PrintfMessage",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2494d414ec12527490da8ded5385c7c54a0d12998ef2d675010e57cdc6354489"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.PushEventRecord",
+      "keyword": "PushEventRecord",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "59f2a757dbe462c255eaecc242b2dd08cb60bbeb92f197c47cff8eddc393454d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.PushData.PushSources",
+      "keyword": "PushSources",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f165fa358688712a91c88d39bfe884e30343682dff0d99452ea55dc8470db462"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.SimParameterFile",
+      "keyword": "SimParameterFile",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ffaab0f320e6a2fda942108a0b7a5d6478fd6d1553ef6b9663302b1c73d0ef6f"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.SpecialMessages",
+      "keyword": "SpecialMessages",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "14f0c268cb5da4d164a5a480984daa60d27a384b98b32b7c2d3517326b209929"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.TaskFunc",
+      "keyword": "TaskFunc",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6b161861c57791885f31f5336f4f0073b76e38c7dee3f95e4623165d150f6a63"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserProgVarsAdapter",
+      "keyword": "UserProgVarsAdapter",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "bdac8958ea647284ca3c81024fe0f97b0e02cf57a7dd7c5a99ccf5e9980d00d7"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UUErrors",
+      "keyword": "UUErrors",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "543b1f02b6e92a077a33f2cd8e123acd928977383aa9c68baab03a62cc5f6dbe"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UUGroups",
+      "keyword": "UUGroups",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "42fd46afb17980864ac937d93fe309a9e599c48949919c5f396f1f672fd35f59"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UUMnemonics",
+      "keyword": "UUMnemonics",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d64ac2653683405b49894ed2755c3286969c742f9e656544f39055e7cbb18d4e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UserUnitAxis",
+      "keyword": "UserUnitAxis",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0623eda57498a069c8df1eeeb41b46697646ccb43335481c9e9c41dcba16b4c1"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UserUnitGroup",
+      "keyword": "UserUnitGroup",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6a25f00c1b9e990cdb49087fec949d5ab89a936836a1b3a447ad3657db8cfcc4"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.UserUnits.UserUnitsData",
+      "keyword": "UserUnitsData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ea37c94c0a45b6436e1a993b6d3ba1b8cba868ec4f9246fd8d107e0a0f42f565"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.XmlHandler",
+      "keyword": "XmlHandler",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "49034f38b7de56f7b6bfa5e6e1a1434060eb81efea82d3e9b6ca6eb0202a9005"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Services.XmlHandler\u002BTextNodeData",
+      "keyword": "XmlHandler.TextNodeData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "32b7c2a293fdc6d0cbb020dbe1e520604bf41cb6d41cf0ea1739dbd1b035c90d"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.AllStatAxisData",
+      "keyword": "AllStatAxisData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ea517f7ec6fd995684a130f7292e3ac536e58141ac1fc7aecd93154d181a7e18"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.AllStatData",
+      "keyword": "AllStatData",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "195bdb7a049830c575e6cd3a8328bc5c728f8146ffd103b942bfc8bb28af6c2e"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ChannelType",
+      "keyword": "ChannelType",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "db3ac95418557671479f366ff0866b74a98a5c60de132a05130da6acba15a2b0"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ConnectResult/part-1",
+      "keyword": "ConnectResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b2e6c8f5c462917febda8ee601f5a324e3cc447d512f7ccec0f1b8b675f8e926"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ConnectResult/part-2",
+      "keyword": "ConnectResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "aa9cf46326d2836cca1eb890ec16d2d7f1667fd19894b6cf3dfb97433da40097"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ConnectResultInterpreter",
+      "keyword": "ConnectResultInterpreter",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3d8c253a1ecd74fa450753f845c1a23e34ed6a2de3190ea2cc75571c3445b1f8"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ConnectionDataDefaults",
+      "keyword": "ConnectionDataDefaults",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3816d8389a2c87ffb4f395c3636ee0638a21626f68640920fbe8a84c4f0e5121"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.DataRecParams",
+      "keyword": "DataRecParams",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5084680c5f0a7d676e2a346107bfbee45c4953805c4c72ca786dab8c69118c45"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.LongOperationType",
+      "keyword": "LongOperationType",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "aadd31e19517aeb607f5ec1925806ef5c851bb28be11dcc5353de8288a736979"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.MessageType",
+      "keyword": "MessageType",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "03b7b5645646752aa520fb67c721b10c34bc7d61c45f1a55759a50c31c1dad75"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ProductTypes",
+      "keyword": "ProductTypes",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "097e841219358f04c027d78021fd619ece0ee2c076ae2296c83972813b2595ef"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ProtocolMode",
+      "keyword": "ProtocolMode",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "5936af55a15d12855f1a81ce907bf807282d5c1fe615b537481294266924512c"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.ServerCompat",
+      "keyword": "ServerCompat",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "95865d16c879f1d66279674e8766e17999af6b569384c1aea41e6cf362de9606"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.SimSupplyVoltage",
+      "keyword": "SimSupplyVoltage",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6719288c805f30e8e004d25a5cfb4d3b373ad6769094595f0243026629b5bf52"
+    },
+    {
+      "id": "sdk-api/aacomm-csharp/AAComm.Shared.TimeoutMs",
+      "keyword": "TimeoutMs",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f2b88adce19c0f69caffada531d85a9322f6ed2037e5856fc54802fac1e0e31e"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_status",
+      "keyword": "aacomm_status",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "843bb818b420b6e9b81f7d96605c5124f846ab206f40b1b21b203a7ebd879771"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_array_download_transport",
+      "keyword": "aacomm_array_download_transport",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "72fe6bdb948a8bbba57adc8449dab0abd0b0d7aa4b459bb343d36e1bd16be545"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_array_download_status",
+      "keyword": "aacomm_array_download_status",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "ca07d28653ae7fa72149e33ec6335a59a6925be6e96208dfe8d9192d9872a44a"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_array_download_result",
+      "keyword": "aacomm_array_download_result",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "19ca8b2cec3750eeb0fece20de475df0d13a60dfc6737ed06a479aae84b470d2"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_connection",
+      "keyword": "aacomm_connection",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "89c03f6d828b77d4cb0c7a578a94761bc835843b8cfaf90b315d6ea3523d50bc"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_channel_type",
+      "keyword": "aacomm_channel_type",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f154b9e2b511a9b29cc7049620a22b2133c83798bc333c8873aaada1825e1c95"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_connect_result",
+      "keyword": "aacomm_connect_result",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "eeb6500a33e4cb81ffe6595441f4856c29ce9e369d79f5dacdbc2386c7811944"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_long_operation_type",
+      "keyword": "aacomm_long_operation_type",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d0497bd498f990cdae75e26543e61ef095305ecde602cbfc324623ea5018cba5"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_reply",
+      "keyword": "aacomm_reply",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3b989b414c22c845f9eb1a1d9462538dddf92c385bbfd185684ce6c88dc309c5"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_error",
+      "keyword": "aacomm_error",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b3426a64a3461eb500762ace68c91187ec810eae180d3cad9a06d53405691ec5"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_push",
+      "keyword": "aacomm_push",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "2c8bb9823ee5d70d3667084a43f8918de085fb7fd7fbabb8000252b5e1b4c712"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_longop",
+      "keyword": "aacomm_longop",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6d8d74fd6e4f66f8224922ca7f4dd715cf1a8234dc28e42e03376992899a3b82"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_download",
+      "keyword": "aacomm_download",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "e0cc9667dd16214cb2377c98127c5f280db8be0e8c8c9ce2c1bd0ee04148f31d"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_abi",
+      "keyword": "aacomm_abi",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "d03b68edfd477c5c3645761ab616618dcb9eef3feb2d433a851aef4781d8f380"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_create",
+      "keyword": "aacomm_create",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f4441f6fb623060918d7b06543aa1742ff541ac7037f8c61970a23a8249d5b50"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_destroy",
+      "keyword": "aacomm_destroy",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "0fd0155953e6147d010e33f8de373fcb870c38e5ee15ff0b225744b5c8608b4b"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_is",
+      "keyword": "aacomm_is",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "8c6f30a2a52b1fa0a633ad9f15817ef32b9c69ff8dd8905aaad2057f020e08be"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_last",
+      "keyword": "aacomm_last",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f763912b6e76e6be1d2108ddd7d14a2e0a17e38e0ebbb636b1012af9359066bc"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_start",
+      "keyword": "aacomm_start",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "be9f55cc0fc89c5c388ff1fbcf41fdc2eacafe13f2106dba724080e2b3cf0135"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_test",
+      "keyword": "aacomm_test",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "8cf9b1cd05c2ae128af6a0e824fb09248ad1f3d7079877b343b5c3b1807abf71"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_connect",
+      "keyword": "aacomm_connect",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "9c3a9d05779cfa7080dc1fae35232d08b1eb22294afbacbc8be1ad910b4752b3"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_disconnect",
+      "keyword": "aacomm_disconnect",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c18e78404fb360df9781dfcb510b16181e94002ba0d4dee1a6cbc834a1827e8d"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_close",
+      "keyword": "aacomm_close",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6d347a1e7fc09f9d0f4213257dff8db43a8d98ba444e7b21977d89fdb62c76f8"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_send",
+      "keyword": "aacomm_send",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1cdf5f5be1af2c6cb4eadaa12a39d7581820debcd249c05b353b8cbdd30410af"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_supports",
+      "keyword": "aacomm_supports",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "712acc4ffebf532f849e4959937e7b07eaf816988748d187360f46d07aae3678"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_set",
+      "keyword": "aacomm_set",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "02b06a7011247afd06d2ad1f1943b5819f4f5831c1dde977caf5821fc80febad"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_record",
+      "keyword": "aacomm_record",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "95227f1746815abf0436dd8925d21c1bac79bd4dce2a648291975a0ab84c574d"
+    },
+    {
+      "id": "sdk-api/aacomm-c/aacomm_get",
+      "keyword": "aacomm_get",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "83057b5149b54ebca689e334cb2d27981566f7608c00dbe1fe2dd14f3ce8d7d2"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.client",
+      "keyword": "aacommpy.client",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "dde1e62f66719e4b7f452073565f4512738a469563add4ba937caff232a7d7d9"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.client.Client",
+      "keyword": "Client",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1c4478cfa63e4b6e863252583fe8cfb2e4bcbe8ebf4a48095bbec50c2499e98f"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.connection.Can",
+      "keyword": "Can",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "30d518a84541093a8ea78f7eb72cd38374e47ad3b87a887bccd25e8371a7af2d"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.connection.Ethernet",
+      "keyword": "Ethernet",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "eb47d9259b4a0841c871f565fcbf80ffc0d8c420e70d68459742f4bd56d29a28"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.connection.Serial",
+      "keyword": "Serial",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "c9188074dd9054e5cd8c4e7ad727b2d917e97d675d6dca15aee6b9fd12cc0588"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.errors.AACommError",
+      "keyword": "AACommError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b4c526acc397ae0fd4a1d30339523f2c852def857f17c98a9d089f1b5e38db2f"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.errors.ConnectionError",
+      "keyword": "ConnectionError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "3a43c34f826750928ca36169f2ee1266b7829243311090d43c7b1ce5b2114dfd"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.errors.ControllerError",
+      "keyword": "ControllerError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f238319cd9599be3ffc326fdd1bbcb6b8d14ace4bdc6abc6f8284ef2c6ada324"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.errors.ServerError",
+      "keyword": "ServerError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "7433260570e67987ff7fcab7c80d683f12e2e35dd7c41ab402a11efe071bd755"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.errors.Timeout",
+      "keyword": "Timeout",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "6a185965bb81aebaf0c9318c053581816947cf7f3c51ed18fb1a9addafa57d5c"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.record.Recording",
+      "keyword": "Recording",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1aaee4b332c7efe8c9d17467c76d188f1f53529d984d4a94d099722af12c08c7"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.record.Trigger",
+      "keyword": "Trigger",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "1ef189b98766ebb3a48212c34b4cf696b60cad329205a457e12a857f81e53912"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.record.Vector",
+      "keyword": "Vector",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "be24c87fe99e5af9d38f94bf8ddc14ac30cdddf124d3cbda3ee415198016453d"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ArrayDownloadResult",
+      "keyword": "ArrayDownloadResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "f2988fa50b3a67977d137697447d248a62e8c5b343b1b05936e4d25bf0513ec6"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ArrayDownloadStatus",
+      "keyword": "ArrayDownloadStatus",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "676ad348b9d09794b4db78ed4bfa7aeecd17c490ac8d8d9f1b4a05f3e7e37669"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ArrayDownloadTransport",
+      "keyword": "ArrayDownloadTransport",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a640335b03c4c3fab4804ed44f0bb12f6407a33d340ac7f01786941746332083"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ArrayStreamError",
+      "keyword": "ArrayStreamError",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "b15474118a060b4530ad553da9e56d0818974fab7c538e86f3eb128a9d91a89f"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ChannelType",
+      "keyword": "ChannelType",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "bae48559d2ebc7a683984e7af107605ff2d403c1dfc170bb5d03111b771b2375"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.ConnectResult",
+      "keyword": "ConnectResult",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a51fcbe95a100005d4f00691a1c448388274d5b99290d70fda8a71b0dd1eb14d"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.LongOperationType",
+      "keyword": "LongOperationType",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "a56ecb736aa451aa7101056eab018e8167d65a4150aeba9deaaf4c7d388d1f5d"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.results.Reply",
+      "keyword": "Reply",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "517ba320a6b556ad9b39bef37f5657d496f77665658873198abfc0e2ebcc687a"
+    },
+    {
+      "id": "sdk-api/aacomm-python/aacommpy.server",
+      "keyword": "aacommpy.server",
+      "doc_revision": "aacomm/v15.1.0",
+      "last_updated": "2026-11-24",
+      "sha256": "06f56e30897c49b005118ad4e8f1183789cbe639a718d0bbfda6c77a72d2293d"
+    }
+  ]
+}

@@ -163,13 +163,13 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo__ctor_System_String_" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.#ctor(System.String)">
   AACommRemoteFpgaInfo(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L141"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><pre><code>Reads the RPD data and VER version files, and initializes the properties members
+  <div class="markdown level1 summary"><pre><code>Reads the RPD (MAX10) or BIN (PH1P) data file and its VER version file, and initializes the properties members
 </code></pre>
 <p></p>
-<pre><code>The VER file must be of the same name as the RPD file, residing in the same directory
+<pre><code>The VER file must be of the same name as the data file, residing in the same directory
 </code></pre>
 <p></p>
 <pre><code>Throws on IO/reading/parsing/mismatch errors
@@ -184,7 +184,7 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>rpdFile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>full path to the RPD data file</p>
+    <dd><p>full path to the RPD or BIN data file</p>
 </dd>
   </dl>
 
@@ -201,6 +201,37 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
   <h2 class="section" id="fields">Fields
 </h2>
+
+
+
+  <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_BIN" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.BIN">
+  BIN
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>PH1P remote FPGA image extension: the TD bitstream, written to the remote's SPI flash as is</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string BIN = &quot;.bin&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 
@@ -237,7 +268,7 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Size16K" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Size16K">
   Size16K
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>string describing the FPGA model size &quot;16K&quot;</p>
@@ -268,7 +299,7 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Size4K" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Size4K">
   Size4K
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>string describing the FPGA model size &quot;4K&quot;</p>
@@ -297,9 +328,40 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
 
 
+  <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Size60K" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Size60K">
+  Size60K
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>string describing the FPGA model size &quot;60K&quot; (Anlogic PH1P50, .bin image)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string Size60K = &quot;60K&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Size8K" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Size8K">
   Size8K
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>string describing the FPGA model size &quot;8K&quot;</p>
@@ -335,7 +397,7 @@ Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteF
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_AllowAga155CurrentRatingMismatch" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.AllowAga155CurrentRatingMismatch">
   AllowAga155CurrentRatingMismatch
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Allows engineering comparisons between AGA155 2A06 and 2A10 FPGA images (current codes 6 and 10).
@@ -369,7 +431,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_AllowForce" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce">
   AllowForce
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>a user-set property that specifies whether to allow force FPGA download in case of:
@@ -409,7 +471,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_AmpVersion" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.AmpVersion">
   AmpVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remote FPGA file is only for this Remote Unit Amplifier Version ('0' means NA)</p>
@@ -441,7 +503,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_AmpVersionStr" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.AmpVersionStr">
   AmpVersionStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remote Unit Amplifier Version string representation</p>
@@ -473,7 +535,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_CommVersion" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.CommVersion">
   CommVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remote FPGA file is only for this Remote Unit Comm Version ('0' means NA)</p>
@@ -505,7 +567,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_CommVersionStr" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.CommVersionStr">
   CommVersionStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remote Unit Comm Version string representation</p>
@@ -537,10 +599,10 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_DataFileName" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.DataFileName">
   DataFileName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The RPD Data file used at CTOR</p>
+  <div class="markdown level1 summary"><p>The RPD (MAX10) or BIN (PH1P) data file used at CTOR</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -569,10 +631,10 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_FPGASize" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.FPGASize">
   FPGASize
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Remote FPGA 'size' identifier: 4K or 8K</p>
+  <div class="markdown level1 summary"><p>Remote FPGA 'size' identifier: 4K, 8K, 16K or 60K</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -601,7 +663,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_FPGAVersion" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.FPGAVersion">
   FPGAVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remote FPGA Version string, i.e. 2.4.3 or 4.2.2.9-6 (ALPHA)</p>
@@ -629,11 +691,43 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
 
 
+  <a id="AAComm_Extensions_AACommRemoteFpgaInfo_IsBinImage_" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.IsBinImage*"></a>
+
+  <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_IsBinImage" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.IsBinImage">
+  IsBinImage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True for a PH1P .bin image; the remote must then report the PH1P FPGA family</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBinImage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_Extensions_AACommRemoteFpgaInfo_Port_" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Port*"></a>
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Port" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Port">
   Port
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>a user-set property to indicate the target download Port index (i.e. 'A' = '0', 'B' = '1', etc.)</p>
@@ -665,7 +759,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_UnitSubType" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.UnitSubType">
   UnitSubType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remote FPGA only for this Remote Unit Type/SubType</p>
@@ -697,7 +791,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_UnitType" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.UnitType">
   UnitType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remote FPGA only for this Remote Unit Type/SubType</p>
@@ -729,7 +823,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_Variant" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.Variant">
   Variant
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The remote FPGA file is only for this Remote Unit Variant ('0' means NA)</p>
@@ -761,7 +855,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_VariantStr" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.VariantStr">
   VariantStr
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Remote Unit Variant string representation</p>
@@ -793,7 +887,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
 
   <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_VersionFileName" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.VersionFileName">
   VersionFileName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The accompanying Remote FPGA Version file</p>
@@ -813,6 +907,57 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="AAComm_Extensions_AACommRemoteFpgaInfo_ReadDataFileExtension_" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.ReadDataFileExtension*"></a>
+
+  <h3 id="AAComm_Extensions_AACommRemoteFpgaInfo_ReadDataFileExtension_AAComm_CommAPI_System_Int32_" data-uid="AAComm.Extensions.AACommRemoteFpgaInfo.ReadDataFileExtension(AAComm.CommAPI,System.Int32)">
+  ReadDataFileExtension(CommAPI, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommRemoteFpgaInfo.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><pre><code>Reads which data file the remote FPGA on &lt;code class=&quot;paramref&quot;&gt;port&lt;/code&gt; takes, from its FEATURES block:
+&lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.BIN&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; when it reports the PH1P family, &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.RPD&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; for every other remote (MAX10,
+or an image that predates the family field). The download refuses any other file with the same rule.
+</code></pre>
+<p></p>
+<pre><code>Needs a connected &lt;code class=&quot;paramref&quot;&gt;api&lt;/code&gt; and a connected remote unit; throws when an offline read fails.
+</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ReadDataFileExtension(CommAPI api, int port)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="AAComm.CommAPI.html">CommAPI</a></dt>
+    <dd><p>a connected CommAPI</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the remote unit's port index ('A' = 0, 'B' = 1, etc.)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 
@@ -841,7 +986,7 @@ Does not allow unknown current identities; <a class="xref" href="AAComm.Extensio
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

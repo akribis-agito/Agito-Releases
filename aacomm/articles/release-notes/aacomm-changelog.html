@@ -77,6 +77,49 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr>
+<h2 id="1510---2026-11-24">[15.1.0] - 2026-11-24</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong><code>ARPTools.GetSubnetActiveIPs(string DeviceSubnet, bool fastScan)</code> can scan a subnet without the stagger.</strong> <code>false</code> keeps the 50 ms stagger between the subnet's ARP requests (about 13 s); <code>true</code> sends them back to back, which is safe only when every controller on the subnet is an AGM800 or runs firmware 5.3.0 or later, since an older drive can fault on the burst. <code>GetSubnetActiveIPs(string DeviceSubnet)</code> keeps the stagger.</li>
+<li><strong><code>BulkReply.TrySplit</code> splits a bulk reply into one answer per command, or says why it is malformed.</strong> <code>AAComm.Services.BulkReply.TrySplit(reply, commandCount, haltOnError, out segments, out malformed)</code> applies the bulk reply grammar: every answer is non-empty and there is one per command, except that a halt-on-error bulk may stop early at an error. Pass it <code>AACommEventArgs.MsgReceived</code> as delivered.</li>
+<li><code>AACommParametersUpload</code> and <code>AACommParametersDownload</code> (<code>AAComm.Extensions</code>) save a controller's parameters to a <code>.par</code> file and write a <code>.par</code> file back to the controller over a connected <code>CommAPI</code>, with the same file format, checks and reporting as AAMotion's <code>UploadParameters</code> and <code>DownloadParameters</code>. <code>Download(api, filePath, calcAndSave)</code> takes the commit explicitly: <code>true</code> sends <code>ASave</code> and per-axis <code>CalcFilters</code> after a successful download, <code>false</code> leaves the parameters in RAM. Both are non-blocking and report through <code>OnProgress</code> and <code>OnDone</code>, which receives a <code>ParamHandlingSummary</code> (with <code>ParamConversion</code> and <code>ParamRejection</code> entries) and an error text, empty on success. Ethernet and simulation connections transfer in bulk; serial and CAN send one parameter per message. An uploaded file's header line now reads <code>// AAComm version:</code>.</li>
+<li>CAN on Linux runs over the kernel's SocketCAN instead of Kvaser canlib, so a Linux host needs no vendor driver or kernel module, and any adapter with an in-kernel driver (Kvaser, PEAK, candleLight) works. <code>CAN_Channel</code> N is the interface <code>canN</code>. The host sets its bit rate and brings it up, for example <code>ip link set can0 up type can bitrate 1000000</code>; AACommServer only checks it. A new <code>ConnectResult.CANInterfaceNotConfigured</code> (53) names an interface that is down or at a bit rate other than the connection's, and <code>CANDeviceNotConnected</code> (48) on Linux means there is no <code>canN</code>. Windows still uses Kvaser canlib.</li>
+<li><code>AACommDownloadFPGARemote</code> downloads FPGA images to PH1P50 Central-i remotes (CIG1-COM02). <code>AACommRemoteFpgaInfo</code> accepts a <code>.bin</code> image (<code>AACommRemoteFpgaInfo.BIN</code>, <code>IsBinImage</code>) beside the MAX10 <code>.rpd</code>, and the remote's FEATURES FPGA family selects the flow: a PH1P remote takes only a <code>.bin</code>, every other remote only a <code>.rpd</code>.</li>
+<li>FPGA size 60K (<code>AACommRemoteFpgaInfo.Size60K</code>, CIIdentity[22] = 4) for the PH1P50. A <code>.bin</code> must come with a <code>.ver</code> saying <code>FPGA Size: 60K</code>, and a 60K <code>.ver</code> with a <code>.bin</code>. Controller firmware that predates the 60K code reports a PH1P50 as 8K; that report is accepted for a 60K image, and the FEATURES family check still requires a PH1P remote.</li>
+<li><code>AACommRemoteFpgaInfo.ReadDataFileExtension(api, port)</code> reads a remote's FEATURES FPGA family and returns the data file it takes: <code>.bin</code> for PH1P, <code>.rpd</code> for every other remote. The download refuses any other file by the same rule.</li>
+<li>A PH1P download succeeds only when the remote runs the <code>.ver</code> file's FPGA version after the reboot; a <code>.bin</code> built without MultiBoot fails with that cause named. A remote whose FPGA image cannot verify a download is refused before anything is erased, and a failure after the erase says the remote keeps its current image until power-cycled, then boots Golden, and that a retry is safe.</li>
+<li><code>ControllerIdentityFeature_02.PhasingAutoVbusRevamp_Supported</code> reports firmware <code>IDENTITY_NEW_FEATURES_2_REVAMP_PHASING_AUTO_VBUS</code> (Identity[62] bit 0x100): the revamped auto-VBus learning of auto-phasing, done within the phasing run as bit 9 of <code>ComtMode[30]</code> with its target current in <code>ComtMode[26]</code>. It is clear on firmware that has the older, separate step-voltage estimate (<code>ControllerIdentityFeature_01.CommutationLearnVBus</code>).</li>
+<li>Capable macOS and Linux simulators also watch the owning server's lifetime; older simulators retain their existing launch behavior.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><code>CommAPI.StartAACommServer</code> retries a server that does not come up with growing waits of 2, 4, 8 and 15 s, and gives up within 30 s, spawning at most one server process per try. A server that is slow to start still connects, and a server started by an earlier try that comes up late is used instead of starting another.</li>
+<li><strong>A malformed bulk reply now arrives as <code>ERR 4024</code> instead of being padded or cut to fit.</strong> A bulk reply with a blank answer, more answers than commands, or fewer answers without an error at the point it stopped is delivered as <code>ERR 4024</code> (malformed reply) for the whole bulk. AAComm no longer fills missing answers of a continue-on-error bulk with <code>PC Suite: ERR no reply</code>, and no longer drops extra or blank answers. Replies the controller sends normally, a single error AACommServer sends for a whole refused bulk, and the controller's <code>ERR 160</code> for a bulk type it does not support, are unchanged.</li>
+<li>The <code>Agito.AAComm</code> package now includes the MIT license text (<code>LICENSE</code>). The package metadata names Agito Akribis Systems as author and copyright holder.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><code>CommAPI.Connect</code> no longer fails with <code>ConnectResult.AACommServerFailedToOpenProperly</code> when another process sends AACommServer a <code>ShutDown</code> while the connect is still opening its channel: AACommServer now counts a channel that is still opening as an active client.</li>
+<li><code>CommAPI.Connect</code> returns <code>ConnectResult.FailFwInfo</code> instead of throwing a <code>NullReferenceException</code> when the connection drops, or AACommServer reports a FATAL, while it reads <code>AFwInfo</code>.</li>
+<li>AACommServer no longer stays running with no clients when its last client dies while another client's <code>CommAPI.Connect</code> is still opening a channel and that connect then fails.</li>
+<li>The parameter info for <code>DrawStat[4]</code> describes value 11: the PC simulation could not compile or load the Draw Control scheme.</li>
+<li>The Chinese parameter info describes <code>DrawMode</code> value -1 (&quot;illegal state&quot;) under <code>DrawMode</code>, where English has it, instead of under <code>DrawStat[4]</code>.</li>
+<li>A client that reconnects to a controller whose link just failed keeps its connection: a <code>Close</code> from another client that was attached before the failure no longer shuts the channel down under it.</li>
+<li>Opening the same connection again from the same client keeps its exclusive access and its pending requests.</li>
+<li><strong>Negative controller values now read correctly on a right-to-left host culture.</strong> On .NET 8 and .NET 10, a host set to Hebrew, Arabic, Persian or Urdu could not parse a negative reply: a negative float or double read came back as its raw integer bit pattern, a <code>ParamAbout</code> reply with a negative bound came back unconverted, and a recording upload with a negative sample failed. Replies are now always parsed with an ASCII <code>-</code>. A remote FPGA flash on those cultures, and on cultures whose minus sign is U+2212 (such as Swedish and Finnish), no longer sends a corrupt image word when its top bit is set. .NET Framework 4.8 hosts were not affected.</li>
+<li><strong><code>DownloadArray</code> now reports a refused bulk as a communication error in halt-on-error mode too.</strong> When AACommServer refused a bulk of a legacy array download (<code>ERR 4010</code> exclusive channel, <code>ERR 4020</code> no controller connection) with continue-on-error off, the result was a controller error on the first element, and the refused elements counted as received. It is now a <code>CommunicationError</code> with the refusal's code and text and an unknown outcome, and the refused bulk's elements no longer count as received, as it already was with continue-on-error on.</li>
+<li><strong>An array download sent one element per message reports a server refusal as a communication error.</strong> On the <code>Individual</code> transport (a parameter that cannot ride in a bulk), an <code>ERR 4010</code> or <code>ERR 4020</code> from AACommServer was reported as a controller error on that element, which counted as received, in either error mode. It is now a <code>CommunicationError</code> with the refusal's code and text and an unknown outcome, and the refused element no longer counts as received.</li>
+<li><strong>A remote FPGA download checks the remote unit correctly on a right-to-left host culture.</strong> On .NET 8 and .NET 10, a host set to Hebrew, Arabic, Persian or Urdu could not parse a device-type or revision word with its top bit set, which the controller answers as a negative number, so the download refused the remote unit or ended with an error. The controller's integer replies are now always parsed with an ASCII <code>-</code>. .NET Framework 4.8 hosts were not affected.</li>
+<li><strong>A ParamAbout query of a floating-point parameter returns its real range and default on an axis with a remote drive.</strong> On firmware that supports 64-bit values, such an axis reports a float parameter's MIN, MAX and DEFAULT as 32-bit float values, which AAComm read as doubles near zero (<code>4000</code> came back as <code>5.75894426545842E-315</code>). A tool that restores defaults from ParamAbout, such as a current limit, would have written that near-zero value. Both encodings are now decoded.</li>
+<li><strong><code>AACommEventArgs.IsSessionClosed</code> is true for a <code>SendReceive</code> in flight when the link is lost, if <code>OnCommsError</code> reports that lost link.</strong> <code>OnCommsError</code> reports it when an asynchronous request was also in flight or queued. Before this fix, the <code>SendReceive</code> reply (<code>ERR Sync: !@#FATAL: …</code>) was not recognised as a closed session, so PC Suite showed the page's own error dialog on top of the lost-connection dialog. When only <code>SendReceive</code> requests were in flight, <code>OnCommsError</code> is still not raised, <code>IsSessionClosed</code> stays false, and that reply remains the one report of the lost link.</li>
+<li><strong>A remote FPGA download no longer fails when the remote is slow to reconnect after a reconfiguration.</strong> <code>AACommDownloadFPGARemote</code> checked the remote's connection once, about 1.9 s after it triggered the move to the boot image, and failed with <em>Remote not connected after Triggering to move to Boot image</em> if the remote was not back yet, leaving it in its boot image. It now keeps checking for up to 10 s, and sends the connect request again if the attempt ends disabled or in a fault. The move back to the primary image waits the same way. <code>OnStatus</code> reports how long the reconnect took, for example <em>Remote reconnected after 2.6 s</em>. A remote that is still not connected after 10 s fails with the same errors as before.</li>
+<li>Two CAN channels whose controllers are on the same node are now two separate connections. A client on the second channel was served by the first channel's controller while the first was open.</li>
+<li><strong>When an Ethernet controller closes the connection while no request is waiting, the session ends at once.</strong> This happens, for example, when a second PC connects to an AGM800 that serves one client at a time. <code>OnCommsError</code> reports <code>4011 Connection closed by controller</code> when the close arrives, and the next request fails immediately. Before this fix, AACommServer ignored the close, and the next request waited out its own timeout (2 s for an ordinary command) and failed with <code>ERR Sync: !@#FATAL: Timeout</code>.</li>
+<li><strong><code>OnLongOperationEnded</code> no longer runs before <code>OnLongOperationStarted</code>.</strong> A Save, Load, SaveUser or EventCorrect whose reply arrives just after the 100 ms start-grace window raises both events almost at once. They used to run on two independent tasks, so a handler could see &quot;ended&quot; first and then &quot;started&quot;, and a subscriber that pauses on one and resumes on the other stayed paused. The two events now run in the order they were raised, each handler starting only after the previous one has returned.</li>
+<li>Uploading a long recording (more than about 10 MB of data, such as 60 s at the shortest gap on an AGM800) no longer ends the session with <code>Invalid binary frame length</code> and <code>ERR Sync: Session terminated</code>: the connection to AACommServer takes a reply of any size.</li>
+<li><code>NumberFormatter.ValToString(double, bool, bool, int nDig)</code> with <code>nDig</code> 10 or more no longer formats every value of 1 or more in E+ notation, and a value above <code>int.MaxValue</code> no longer loses its decimal digits; <code>nDig</code> 9 and below format as before.</li>
+<li>The Chinese <code>ComtStatus[1]</code> descriptions: -8 names Central-i (it read &quot;Cenreal-i&quot;), and -11 no longer repeats &quot;失败；&quot;.</li>
+</ul>
 <h2 id="1500---2026-10-30">[15.0.0] - 2026-10-30</h2>
 <h3 id="-breaking">⚠️ Breaking</h3>
 <ul>
@@ -89,7 +132,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>CommAPI.MessagesInBulk</code> reports the bulk capacity, 50, on a <code>ChannelType.Simulation</code> connection, as it does on Ethernet. The firmware-simulator channel has always carried a <code>MessageType.BulkMessage</code>, but the property said 1 there, so every consumer that routes on it took the one-message-per-command path: recording-parameter download (<code>AACommDataRecManager.SendRecordingParams</code>) on a Simulation connection now crosses as one bulk instead of one message per parameter, and the AAMotion parameter batches batch there too. A consumer that read <code>MessagesInBulk == 1</code> as &quot;not an Ethernet connection&quot; now sees 50 on Simulation as well.</li>
 <li><code>AllStatInterpreter.ParseAllStatData</code> now takes the AllStat reply <strong>as AAComm delivers it</strong> — the resolved text a caller reads from <code>AACommEventArgs.MsgReceived</code> — and reads those values straight into <code>AllStatData</code>. It used to expect the raw controller longs and re-run the IEEE 754 decode and the User Units factor itself, so the only reply a consumer can actually obtain was converted twice: on a controller with 64-bit AllStat every floating-point field came back 0. The structured data now carries exactly the values the reply text shows, already scaled. Callers pass the received reply unchanged — and must not ask for it with <code>AACommMessage.SkipUserUnits</code>, which suppresses the User Units factor but not the IEEE 754 decode, so it never yields raw wire values.</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li><code>CiFpgaFeatures.FromReadback</code> decodes the remote FPGA capability snapshot that AGM800 and AGM800-EC firmware publish in <code>CiIdentity[24..41]</code>: the generation, the availability (<code>CiFeatureAvailability</code>) and the main and auxiliary index-output bits. A read that is not bracketed by a matching generation and availability, or whose header or check word is wrong, decodes as <code>CiFpgaFeatures.Unknown</code></li>
 <li>Two <code>ConnectResult</code> codes name why a managed <code>Simulation</code> connection could not launch its <code>firmware_sim</code>: <code>SimExeNotFound</code> (51), when <code>ConnectionData.SimExePath</code> is empty or names no file on the AACommServer host, and <code>SimStarterParMissing</code> (52), when no <code>starter.par</code> is next to the simulator executable, as with a <code>firmware_sim</code> built from source rather than packaged. Every other launch failure is still <code>SimLaunchFailed</code> (49), with its cause in the AACommServer log. A client older than the server gets <code>FailOpenCommHandler</code> for the two new codes</li>
@@ -143,7 +186,7 @@ firmware answers through its legacy command parser.</li>
 <li><code>ControllerIdentityVersions.BuildCiRemoteVersionString(ciIdentity4, ciIdentity15To19)</code> returns a Ci remote unit's FPGA version text from <code>CiIdentity[4]</code> and <code>CiIdentity[15-19]</code>. A unit whose <code>CiIdentity[4]</code> is 4444 gets the five words formatted by <code>BuildVersionString</code> (so owner 0 with sub-version 2 reads <code>5.5.0-rc2</code>, and a null or short word list gives an empty string); any other unit gets the old <code>A.BBB</code> text, always with a dot, whatever the machine's culture. <code>aacomm.cli</code> reads a remote unit's FPGA version through it.</li>
 <li><code>ControllerVersionWord</code> is a public, comparable firmware or FPGA version word (<code>Major.Minor.Patch</code> plus owner and sub-version), built with <code>FromWords</code> from the five identity words or with <code>TryParse</code> from <code>X.Y.Z</code>, <code>X.Y.Z-rcN</code>, <code>X.Y.Z.O</code> or <code>X.Y.Z.O-S</code>. A release candidate orders below its final and a development build above it. <code>ControllerIdentityVersions.FirmwareVersionWord</code> returns the connected controller's firmware as one (null for the old firmware format and in boot mode).</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>When the packet sniffer is unavailable because Npcap is not installed, the AACommServer window and the AACommServerNative console now link to the Npcap download page, <a href="https://npcap.com/#download">https://npcap.com/#download</a>. Npcap is not redistributed with AAComm; install it yourself to use the sniffer.</li>
 <li>A <code>ChannelType.Simulation</code> connection starts its <code>firmware_sim</code> child with <code>AGITO_DRAW_GCC</code> set to <code>%LOCALAPPDATA%\PCSuite\HostGcc\bin\gcc.exe</code> when that file exists, so Draw runs on the simulation with the host compiler PCSuite downloads, whichever client started AACommServer. A value already set in AACommServer's environment is passed through unchanged.</li>
@@ -162,7 +205,7 @@ payloads only to discard the result.</li>
 <li>An exception thrown by an <code>OnProcessEnded</code> handler of <code>AACommDownloadFPGAEtherCat</code> at the end of a download now propagates to the caller of <code>StartDownloading</code>, which runs the whole download on the calling thread; the handler is called once.</li>
 <li><code>ControllerIdentityVersions.BuildVersionString</code>, and through it <code>FirmwareVersionStr</code>, <code>FPGAVersionStr</code> and <code>CMFirmwareVersionStr</code>, shows a release candidate (owner 0, sub-version N greater than 0) as <code>X.Y.Z-rcN</code> instead of <code>X.Y.Z</code>. <code>AACommFwInfo.AACommVersionFromString</code> follows: a <code>.ver</code> line <code>5.5.0.0-1</code> resolves to <code>5.5.0-rc1</code>. A user program compiled on a release candidate carries that form in its <code>FirmwareVersion:</code> line, so it loads on that controller and not on its final; one compiled earlier carries <code>X.Y.Z</code> and must be recompiled. The About cache folder of a release candidate is named by the new form. <code>FirmwareSystemVersion</code>, <code>IsFPGAVersionEqualOrGreater</code> and the firmware-to-FPGA match check are unchanged.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>A late dispatcher or synchronous timeout from a closed session cannot send commands to, or disconnect, a replacement connection at the same endpoint.</li>
 <li>RS-232 decimal text replies, including <code>100000.0</code>, retain their exact text through ASCII and binary IPC instead of becoming incorrect integers when their lengths match binary reply frames.</li>
@@ -254,7 +297,7 @@ payloads only to discard the result.</li>
 <li>The native C-ABI SDK (<code>aacomm.*</code>) adopts a <strong>uniform status convention</strong>: every <code>aacomm_*</code> function now returns <code>int32_t aacomm_status</code> (<code>AACOMM_OK</code>=0 / <code>AACOMM_NULL_ARG</code>=-1 / <code>AACOMM_BAD_HANDLE</code>=-2 / <code>AACOMM_EXCEPTION</code>=-3), and domain results (the <code>ConnectResult</code>, the connected flag, reply/error byte sizes) move to <code>out_*</code> parameters. So <code>aacomm_create</code>, <code>aacomm_destroy</code>, <code>aacomm_is_connected</code>, <code>aacomm_last_error</code>, <code>aacomm_start_server</code>, <code>aacomm_test_connection</code>, <code>aacomm_connect</code>/<code>_silent</code>, <code>aacomm_send_receive</code>, and <code>aacomm_last_reply</code> all change signature (e.g. <code>aacomm_create(aacomm_handle* out)</code>, <code>aacomm_is_connected(h, int32_t* out_connected)</code>) — this removes the old ambiguity where <code>aacomm_is_connected</code> returned <code>0</code> for both &quot;not connected&quot; and a bad handle. Handles now come from a table that rejects forged/stale/double-freed handles with <code>AACOMM_BAD_HANDLE</code> instead of risking undefined behavior. Adds <code>aacomm_close_server(h, force)</code> to shut down a spawned AACS. <strong>ABI generation resets to 1 at first ship</strong> under the soname policy (the ABI number now bumps only on breaking changes; additive growth never bumps it — see the AACommNative README); native consumers rebuild against the shipped <code>aacomm.h</code>.</li>
 <li><code>XmlHandler.SaveXml()</code> is removed in favour of <code>TrySaveXml(out Exception)</code> (see Added). It returned nothing and reported a failed write only through a <code>Debug.Assert</code> — a no-op in Release, so a document that never reached disk passed silently.</li>
 </ul>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li><strong>Always-on client diagnostic log</strong> — <code>AAComm.Services.Diagnostics.AACommDebugLog</code>, the client-side counterpart of AACommServer's debug log. Session-lifecycle events (construction, connect/test outcomes, sync-timeout expiries — including the phase-1 queue-abandon vs phase-2 teardown distinction — server FATALs, disconnects with their reason) accumulate in an in-memory ring with zero configuration and zero steady-state file IO; a severe event (sync phase-2 teardown, FATAL, comms error) snapshots the ring to <code>%LocalAppData%\PCSuite\AAComm_DebugLogs\{timestamp}_{process}_{pid}_{trigger}.log</code> (debounced, pruned at 200 files). Every line carries an identity tag (<code>api#N/conn#M</code>); the connect line logs the endpoint and the socket's local port, which joins against the <code>UserId</code> ↔ client-endpoint line AACommServer now writes on each Open. Public surface: <code>AACommDebugLog.Sink</code> (an <code>Action&lt;string,string&gt;</code> bridge so hosts can forward the lines into their own log) and <code>AACommDebugLog.Flush()</code> (on-demand snapshot). Full spec: <code>docs/diagnostics-srs.md</code>.</li>
 <li><strong>User Units</strong> — per-axis engineering-unit scaling, applied transparently to parameter values on both send and receive. At connect, the API reads the controller's units configuration (the <code>*UnitGroup</code>/<code>*UnitFct</code>/<code>*UnitUnt</code> parameter families, grouped per <code>UUGroups</code>: Pos/PosAux/PosPD/Vel/VelAux/VelPD/Acc/Frc) and the per-axis <code>UserUnitsEn</code> enables; from then on values of parameters in an enabled group are scaled by the axis factor in both directions. The new <code>AAComm.Services.UserUnits</code> namespace carries the model (<code>UserUnitGroup</code>, <code>UserUnitAxis</code>, <code>UserUnitsData</code>, <code>UUGroups</code>, <code>UUErrors</code>, <code>UUMnemonics</code>). The surface:
@@ -285,7 +328,7 @@ payloads only to discard the result.</li>
 <li><code>XmlHandler.TrySaveXml(out Exception)</code> — saves the document, returning <code>false</code> with the failure that stopped the final attempt when it could not be written after ten retries. Replaces <code>SaveXml()</code> (see Breaking).</li>
 <li>Four new <code>ConnectResult</code> codes: <code>CANDeviceNotConnected</code> (48) — a CAN <code>Connect</code> found the Kvaser driver installed but no physical Kvaser interface connected (canlib enumerates only virtual channels; distinct from <code>CANLibMissing</code>, the driver itself absent — the native C-ABI SDK exposes it as <code>AACOMM_RESULT_CANDEVICE_NOT_CONNECTED</code>); <code>SimLaunchFailed</code> (49) / <code>SimNoPort</code> (50) — the managed <code>Simulation</code> channel's <code>firmware_sim</code> process could not be launched / did not announce its loopback port; and <code>ServerNotBinaryCapable</code> (47) — an internal protocol-negotiation signal (a binary Open that got no handshake ack), never returned from a public <code>Connect</code>.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li><code>Connect</code> and <code>TestConnection</code> no longer fail on a busy machine while the controller is healthy. Both steps of the connect handshake were budgeted as if they measured controller response time, but each depended on ThreadPool scheduling, so CPU pressure — a build, a test run, another application — could produce <code>AACommServerNotRunning</code> against a server that was listening, or <code>FailControllerType</code> against a controller answering in under a millisecond. Three changes: the server-liveness probe completes its loopback check on the calling thread instead of waiting on a pool-dispatched completion; a message waiting to reach the wire is no longer charged that wait against its own <code>TimeoutMs</code> when nothing else is on the wire, since only client-side scheduling can delay it there; and a dispatched request is no longer torn down for delays that are not the controller's — client-side completion scheduling, or server-side queueing behind another client — the synchronous wait grants starvation headroom above <code>TimeoutMs + 100</code> before implicating the link, because the server itself polices controller silence at <code>TimeoutMs</code> and reports it as a FATAL. A genuinely unresponsive server is still detected and disconnected, a few seconds later than before. A message queued behind a live one keeps its caller's budget and stays as responsive as before, and <code>TimeoutMs</code> still means what it always did to the server — the controller's reply budget — so a wedged controller is still detected promptly. Measured against a live controller on a 12-core host: the first two changes took connect failures under load from reproducible to rare cold-start-only cases, and the third targets that remainder; idle-path latency unchanged.</li>
 <li><code>AACommFwInfo</code> now reads the identity block (product, version, current ratings, identity text) of v5.x AGD301/AGD200 hex images. It located the block by counting records after the last <code>0x0014</code> segment record; those images fill that segment with code ahead of the block, so <code>DataValid</code> came back <code>false</code>, <code>VerifyCurrents</code> threw &quot;selected FW file doesn't contain 'currents' information&quot;, and <code>ValidateFwFiles</code> skipped its product/version cross-checks. The block is now found by its record addresses; v3.x images and AGD155 read exactly as before.</li>
@@ -350,7 +393,7 @@ path when user units don't transform the value.</li>
 <li>net8.0 / .NET-Core consumers received the <strong>net48</strong> <code>AACommServer.exe</code> as their bundled server and crashed it on launch (a <code>System.Runtime</code> version mismatch when the net48 process loaded the consumer's net8.0 assemblies). Each consumer now gets a server matching its own runtime (see Changed). The net48 sidecar additionally ships its full runtime closure (it had been missing <code>Google.Protobuf.dll</code>).</li>
 <li>net8.0 / .NET-Core (and native C-ABI) clients could not connect over <strong>CAN</strong> — a client-side WMI Kvaser-presence pre-check was compiled out on .NET Core (<code>#if !NETCOREAPP</code>) and always reported &quot;no device&quot;, so the connect failed with <code>RequiredConnectionUnavailable</code> before the (working) CAN transport was reached. The presence check now runs <strong>server-side via canlib</strong> (cross-platform, excluding virtual channels), so CAN connects succeed from net8.0 / native clients; when the host has no physical Kvaser interface the connect returns the new <code>ConnectResult.CANDeviceNotConnected</code> (see Added).</li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li><strong><code>StartAACommServer</code> now auto-locates a server on Linux and macOS</strong> (.NET 8/10 clients). It previously refused outright off Windows, so a non-Windows consumer had to pass an explicit path. The search is the application directory then the working directory, <code>aacommserver/</code> before flat, looking for <code>AACommServerNative</code> — off Windows the NativeAOT host carries no extension and the net48 WPF host does not exist, so it is the only candidate. There is no install-location convention to fall back on, so a miss there is the final answer and still reports <code>AACS_ResolveWrongOS</code>, whose documentation now describes that rather than a blanket refusal. Windows resolution is unchanged, and .NET Framework clients keep their previous behaviour.</li>
 <li><strong>The daemon's execute bit is restored before spawning it</strong> (Unix only). Neither a zip nor a NuGet package carries the Unix executable bit, so a host delivered through either arrives non-executable and the spawn failed with EACCES. Best-effort: a read-only mount or another owner's file is left alone, and the start reports the real error.</li>
@@ -389,14 +432,14 @@ can dismiss; its spawner attaches to the winning instance. Interactive launches 
 <li>Rename <code>HighPrecGainScale_Supported</code> → <code>HighPrecGainScaleAMAT_Supported</code></li>
 <li>AACommServer closed-connection error payload changed to &quot;PC Suite: ERR 4021&quot; (was &quot;AACommServerNotRunning&quot;). Callers using <code>AACommEventArgs.IsError</code> are unaffected.</li>
 </ul>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>New <code>CommAPI.IsResetting</code> property — true during the post-Reset recovery window.</li>
 <li>SendReceive returns &quot;ERR Sync: Session terminated&quot; on session death (distinct from &quot;Timeout&quot;).</li>
 <li>New <code>OnUserProgramVarsUpdated</code> event — fired when a User Program download changes cached global vars.</li>
 <li>AACommSniffer: <code>MaxTotalSizeMB</code> (default 1500) caps total disk usage; <code>MinUserSessionMs</code> (default 2000) filters noise from rapid reconnect cycles.</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>SendReceive no longer deadlocks when the internal dispatcher dies unexpectedly.</li>
 <li>Post-AReset reconnect retries with backoff (5 × 500 ms) instead of failing on first attempt. Eliminates mysterious timeouts when controller is slow to recover.</li>
@@ -404,7 +447,7 @@ can dismiss; its spawner attaches to the winning instance. Interactive launches 
 <li><code>IsConnected</code> now correctly becomes false when AACommServer closes cleanly (was silently stale until next Send failed).</li>
 <li><code>OnCommsError</code> no longer silently suppressed during brief dispatcher-iteration gaps.</li>
 </ul>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>Send and SendReceive fully thread-safe for concurrent use — no more mutual rejection. FIFO ordering preserved per-flow. Re-entry guard: calling SendReceive from inside an OnReplyReceived callback returns an error instead of deadlocking.</li>
 <li>Internal transport rebuilt on dual independent pipelines (no public API change).</li>
@@ -412,7 +455,7 @@ can dismiss; its spawner attaches to the winning instance. Interactive launches 
 </ul>
 <hr>
 <h2 id="1211---2026-04-17">[12.1.1] - 2026-04-17</h2>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li>Packaging: 	NuGet sidecar selection is now <strong>OS-based</strong> instead of TFM-based.
 Windows consumers (net48 or net8.0) always receive the WPF <code>AACommServer.exe</code>
@@ -422,7 +465,7 @@ to receive <code>AACommServerNetConsole</code></li>
 </ul>
 <hr>
 <h2 id="1210---2026-04-15">[12.1.0] - 2026-04-15</h2>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <p>-AAComm/Services/ARPTools:	SendARP multi-NIC discovery fix: scan from all local Ethernet
 interfaces on the target subnet instead of relying on OS routing
 (SrcIP=0). Fixes discovery missing controllers when multiple NICs
@@ -444,7 +487,7 @@ ScanSubnetFromSource() with explicit SrcIP binding
 <li>AAComm/Services/CanDescriptionBuilder:	Make class static, change methods</li>
 <li>AAComm/Extensions/RemoteFpgaInfo:		Change FPGAVersion from 'Version' to 'string'</li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>AAComm/Services/Feature_02: 			Add LockSrcZero_Supported</li>
 <li>AAComm/Extensions/RecData: 			Expose RecParamsResolver class + more functionality</li>
@@ -460,7 +503,7 @@ ScanSubnetFromSource() with explicit SrcIP binding
 - UI: status indicator, statistics, enable checkbox, mark capture button
 - Ring buffer with configurable retention policies</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>AAComm/Extensions/RecData: 			Correct float/double rec upload data processing</li>
 <li>AAComm/Extensions/RecData: 			Legacy RecUpload header parsing trigger type/mask</li>
@@ -475,13 +518,13 @@ Min/Max/DefaultValueStr
 Min/Max/DefaultValueInt/Long
 ToString() is replaced with GetDescription(char axis)</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>AAComm:					'Push' notifications support + API</li>
 <li>AAComm:					Read exact 'Identity' indexes at Connect() without
 'out of range' controller error break</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>AACommServer:				.NET SDK 10 Resource Loading Fix</li>
 <li>AACommServer:				multi-threaded debug log access crash</li>
@@ -492,7 +535,7 @@ ToString() is replaced with GetDescription(char axis)</li>
 <ul>
 <li>AAComm and AACommServer: 	Deprecate .NET 4.0 targets</li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>AAComm/Extensions/RecData:	Fix incorrect trigger initialization at TriggersContainer</li>
 <li>AAComm/Services/Feature_02: Add HighPrecGainScaleOFR_Supported</li>
@@ -517,7 +560,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm:					Remove: 'MinMsgDelayMsec', 'IgnoreDebug13', 'IsUser1', 'DrawCodeCRC',
 'ChannelType.User1UDP', 'ChannelType.User1RS232'</li>
 </ul>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>AAComm/IdentityContainer: 	Add support for 'New_Features_02' (Identity[62])</li>
 <li>AAComm/IdentityContainer: 	DrawModeProfiler_Supported, HomingStep_21_Supported bits</li>
@@ -528,14 +571,14 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="910---2025-07-25">[9.1.0] - 2025-07-25</h2>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li>AAComm: IdentityContainer: Add 'InjectTypeBeforeMotorOn' flag</li>
 <li>AACommServer: Improve Ethernet communication to fix 300 msec delay</li>
 </ul>
 <hr>
 <h2 id="901---2025-05-23">[9.0.1] - 2025-05-23</h2>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>AACommServerAPI: Ethernet: multiple NIC up/down connect issue</li>
 </ul>
@@ -545,13 +588,13 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <ul>
 <li>AAComm: Change IsAACommServerRunning() to return 'ConnectResult' enum</li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li>AAComm: Remove ParamAbout handling &quot;hack&quot;</li>
 <li>AAComm: Improve reliability of StartAACommServer() function</li>
 <li>AAComm: Correct error code for disconnected Ethernet cable at Connect() call</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>General: Correct the 'manual' AAComm package .net 6.0 and 8.0 targets</li>
 </ul>
@@ -561,7 +604,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <ul>
 <li>AAComm/Services/ControllerMessagesContainer: Deprecate 'MnemonicToData' and 'AllMnemonicsHashLow' containers</li>
 </ul>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>AAComm/OnResetProgress: Improve behavior and invoke in NEW task</li>
 <li>AAComm/Shared/ProductTypes: Mark AGM400 as 'deprecated'</li>
@@ -569,30 +612,30 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="712---2025-02-12">[7.1.2] - 2025-02-12</h2>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>AAComm: Add protection against invalid AACommMessage format</li>
 <li>AAComm: Increase AGM800 'reset time' to 10 sec.</li>
 <li>AAComm: Extend FwInfo validations at Connect() with Current Rating</li>
 <li>General: Update YAML nuget to 16.3.0</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>AAComm/Extensions/AACommDownloadFW: Fix AGM800 DL over non-default IP</li>
 </ul>
 <hr>
 <h2 id="711---2025-01-16">[7.1.1] - 2025-01-16</h2>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>AACommServer: Improve faults logging, add &quot;save log&quot; button</li>
 </ul>
 <hr>
 <h2 id="710---2024-11-21">[7.1.0] - 2024-11-21</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>AAComm/Extensions/DlFPGA: Add support for EC FPGA DL</li>
 </ul>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li>AACommServer/API: Add .NET 4.0 target</li>
 <li>AAComm: Add PULSE_SYNC product type</li>
@@ -601,24 +644,24 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="704---2024-09-16">[7.0.4] - 2024-09-16</h2>
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 <ul>
 <li>General: Allow connecting over wifi interfaces</li>
 </ul>
 <hr>
 <h2 id="703---2024-06-16">[7.0.3] - 2024-06-16</h2>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>General: .NET 4.0 YamlDotNet reference 4.2.2</li>
 </ul>
 <hr>
 <h2 id="702---2024-06-11">[7.0.2] - 2024-06-11</h2>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>AAComm: Add 'MessagesInBulk' property</li>
 <li>AAComm/Shared/DataRecParams: Add 'ParamsToRecParamArray' helper function</li>
 </ul>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li>AACommServer: &quot;Exclusive comms. access&quot; bug</li>
 </ul>
@@ -629,7 +672,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm/Extensions/AACommFwInfo: Change CTOR signature</li>
 <li>ControllerIdentityContainer: SlowLoggerByTime -&gt; DataLoggerByTime</li>
 </ul>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Extensions: add &quot;RecData&quot; related classes and functionality</li>
 <li>Support 'float', 'double', 'long' parameters: Terminal, IDE+, Watch and Panel windows</li>
@@ -641,7 +684,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm/Services: Add 'VerifySingleAACommClient' helper class</li>
 <li>AAComm/Services: Add 'AACommExclusiveCommsManager' helper class</li>
 </ul>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>AACommServer Simulator: Improve behavior for LARGE parameters file</li>
 <li>AACommDownloadFPGA: Add 'Product type' protection to '.ver; file</li>
@@ -669,7 +712,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm/Services/LocaleProvider: Add support for Draw err. 5001-6000</li>
 <li>ControllerIdentityContainer: HomingSteps_19_20_Supported property</li>
 </ul>
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 <ul>
 <li>AACommDownloadFW: Add protection CPU1/CM files mismatch</li>
 <li>AACommServer: RecUpload (all &quot;continuous&quot; messages) over Ethernet bug</li>
@@ -689,38 +732,38 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <ul>
 <li>Removed multiple unused properties and functions</li>
 </ul>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>ParametersInfoDB: Refactor + add support for 'values' descriptions</li>
 </ul>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>LocaleProvider: Refactor, deprecate functions</li>
 <li>ControllerMessagesContainer: deprecate GetJerkMessage() function</li>
 </ul>
 <hr>
 <h2 id="550---2023-03-13">[5.5.0] - 2023-03-13</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Support for 'BMI:' prefix: Bulk message that ignores errors</li>
 </ul>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: 'MasterPWM_Supported' property</li>
 <li>AAComm.CommAPIWrapper: Add GetCanDescriptionFromParameter()</li>
 </ul>
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 <ul>
 <li>AAComm: Set proper timeout when MotorOn,1 is sent using ','</li>
 </ul>
 <hr>
 <h2 id="540---2023-03-03">[5.4.0] - 2023-03-03</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>AAComm.Services: Add ParametersInfoDB class(es) (also add to Services.MessageData)</li>
 <li>General: Support for RecUploadB - new recording stack</li>
 </ul>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: 'DoubleFlash_Supported' property</li>
 <li>ControllerIdentityContainer: 'HomingSteps_17_18_Supported' property</li>
@@ -731,23 +774,23 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="531---2023-01-19">[5.3.1] - 2023-01-19</h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: Add IsEtherCAT property</li>
 <li>AAC: Improve big packets Rx handling</li>
 </ul>
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 <ul>
 <li>AACS: Fix RecUpload and ProgInfo error interpretation</li>
 <li>Fix nuget YamlDotNet dependency</li>
 </ul>
 <hr>
 <h2 id="530---2022-12-21">[5.3.0] - 2022-12-21</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>AACommDownloadFW: Add support for AGD155_EC Core1 and CM FW DL</li>
 </ul>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer: Deprecate 'MaxNumOfRecParams' property</li>
 <li>Update YAML nuget</li>
@@ -758,35 +801,35 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm/AACS/Ethernet: Decrease 'long' messages handling time by a factor of x100 (i.e. RecUpload, ProgInfo, ...)</li>
 <li>AACS Wnd: Add 'Stay on top' checkbox</li>
 </ul>
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="fixed-15">Fixed</h3>
 <ul>
 <li>AACommDownloadFPGA: Deprecate unneeded Reset at end of process</li>
 </ul>
 <hr>
 <h2 id="520---2022-11-15">[5.2.0] - 2022-11-15</h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li>AACS: Controller over Ethernet: 10x speed increase of &quot;continuous messages&quot;</li>
 </ul>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>Add public class &quot;Services/HeaderParser.cs&quot;</li>
 <li>AAComm.Extensions.DL_FPGA: Add &quot;reset&quot; at the end of DL FPGA process</li>
 <li>AAComm.IdentityContainer: Add &quot;Halls-only Phasing supported&quot; property</li>
 <li>AAComm.IdentityContainer: Add &quot;CNC 3D Arc supported&quot; property</li>
 </ul>
-<h3 id="fixed-15">Fixed</h3>
+<h3 id="fixed-16">Fixed</h3>
 <ul>
 <li>AACS: Simulation: Do NOT save changes to the Parameters file</li>
 <li>AACS: Simulation: Allow parallel use by multiple clients</li>
 </ul>
 <hr>
 <h2 id="510---2022-06-19">[5.1.0] - 2022-06-19</h2>
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li>AACS: Improve 'debug' logging and auto-save log on implicit AACS close</li>
 </ul>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>Add support for AGD155-EC</li>
 <li>Internal: Add lock section for socket closure</li>
@@ -794,7 +837,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>AAComm.IdentityContainer: Add 'indirect array indexing is supported' flag</li>
 <li>AAComm.Services.CanDescriptionBuilder: Add new functions for User Program CCC handling (internal use!)</li>
 </ul>
-<h3 id="fixed-16">Fixed</h3>
+<h3 id="fixed-17">Fixed</h3>
 <ul>
 <li>AAComm.Services.ControllerIdentityContainer.FPGAVersionStr: 'Dyn Brk Mismatch' is NOT an FPGA fault</li>
 <li>AACS: Fix CAN Tx/Rx bug when connecting to multiple controllers over a 'daisy chain'</li>
@@ -802,13 +845,13 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="501---2022-03-07">[5.0.1] - 2022-03-07</h2>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>AAComm.Services.ControllerErrorInterpreter: Add 'IsAssignedValOutOfRange()' static function</li>
 <li>AACommNative: Fix dependencies and add YAML dll to package</li>
 <li>Documentation: Some additional details</li>
 </ul>
-<h3 id="fixed-17">Fixed</h3>
+<h3 id="fixed-18">Fixed</h3>
 <ul>
 <li>Simulator connection: Increase 'Open' timeout to accommodate for large parameters files</li>
 </ul>
@@ -820,14 +863,14 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>Removed AAComm.Services.ControllerErrorInterpreter.GetErrorCodeByName() (deprecated)</li>
 <li>AAComm.ControllerIdentityContainer.AnyFPGA_Fault + IsFaultyFPGA... properties are replaced with &quot;UnitStat&quot; property. Contact Agito for faults interpretation.</li>
 </ul>
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 <ul>
 <li>Add .NET 5.0 target framework</li>
 <li>AAComm.Services.LocaleProvider class that handles multi-language support</li>
 <li>Add User Program Download protection (target controller FW version check)</li>
 <li>Add support for 16 bit (large) arrays</li>
 </ul>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li>Download FW: Increase MAS02 erase flash to 22 sec</li>
 <li>AAComm.Shared.ProductTypes: add public GetProductIdByName() function</li>
@@ -836,48 +879,48 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="4151---2021-09-29">[4.15.1] - 2021-09-29</h2>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Add IdentityContainer &quot;CNC_Feature_6_Supported&quot; NewFeatures bit property</li>
 </ul>
-<h3 id="fixed-18">Fixed</h3>
+<h3 id="fixed-19">Fixed</h3>
 <ul>
 <li>FW DL bug over RS-232</li>
 </ul>
 <hr>
 <h2 id="4150---2021-09-16-deprecated-fw-dl-bug-over-rs-232">[4.15.0] - 2021-09-16 (DEPRECATED: FW DL bug over RS-232)</h2>
-<h3 id="added-12">Added</h3>
+<h3 id="added-13">Added</h3>
 <ul>
 <li>Introduce AAComm &lt;-&gt; AACommServer &quot;error reporting&quot; and logging protocol</li>
 </ul>
-<h3 id="changed-27">Changed</h3>
+<h3 id="changed-28">Changed</h3>
 <ul>
 <li>Improve ConnectResultInterpreter class</li>
 <li>Improve Connect() error reporting</li>
 </ul>
 <hr>
 <h2 id="4140---2021-09-10">[4.14.0] - 2021-09-10</h2>
-<h3 id="added-13">Added</h3>
+<h3 id="added-14">Added</h3>
 <ul>
 <li>Support for SBCB and BMCB message type for CNCB support</li>
 <li>Shared/ConnectResultInterpreter class for ConnectResult enum interpretation</li>
 </ul>
-<h3 id="changed-28">Changed</h3>
+<h3 id="changed-29">Changed</h3>
 <ul>
 <li>ControllerIdentityContainer/IsFPGAVersionEqualOrGreater(): allow 3 &quot;version&quot; values</li>
 </ul>
-<h3 id="fixed-19">Fixed</h3>
+<h3 id="fixed-20">Fixed</h3>
 <ul>
 <li>Fix FW/UP/FPGA DL bug over non-Ethernet channels (due to 4.13.0 &quot;protections&quot; feature)</li>
 </ul>
 <hr>
 <h2 id="4130---2021-09-06-deprecated-fwupfpga-dl-bug-over-non-ethernet-channels">[4.13.0] - 2021-09-06 (DEPRECATED: FW/UP/FPGA DL bug over non-Ethernet channels)</h2>
-<h3 id="added-14">Added</h3>
+<h3 id="added-15">Added</h3>
 <ul>
 <li>AAComm property &quot;AACommServerVersion&quot;</li>
 <li>Add multi-AACommServer client protection for FW, FPGA, remote FPGA, UserProg download</li>
 </ul>
-<h3 id="changed-29">Changed</h3>
+<h3 id="changed-30">Changed</h3>
 <ul>
 <li>Add IdentityContainer &quot;GearMasterProfiler&quot; NewFeatures bit property</li>
 <li>Add IdentityContainer &quot;SlowLoggerByTime&quot; NewFeatures bit property</li>
@@ -888,32 +931,32 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="4121---2021-08-24">[4.12.1] - 2021-08-24</h2>
-<h3 id="changed-30">Changed</h3>
+<h3 id="changed-31">Changed</h3>
 <ul>
 <li>Add 'Spline Buffer Stop' MotionStat text</li>
 </ul>
 <hr>
 <h2 id="4120---2021-08-12">[4.12.0] - 2021-08-12</h2>
-<h3 id="added-15">Added</h3>
+<h3 id="added-16">Added</h3>
 <ul>
 <li>AACommDownloadFPGA: Don't allow Ethernet FPGA DL over other than 172.1.1 subnets (non-AGM800 products only)</li>
 </ul>
-<h3 id="changed-31">Changed</h3>
+<h3 id="changed-32">Changed</h3>
 <ul>
 <li>AGM800 DL FW: Increase sleep time after DL FW from 8 to 12 sec</li>
 <li>FPGA DL: Don't allow download when BOOT version &lt; 1.013</li>
 </ul>
-<h3 id="fixed-20">Fixed</h3>
+<h3 id="fixed-21">Fixed</h3>
 <ul>
 <li>Don't sleep after &quot;failed&quot; Reset request</li>
 </ul>
 <hr>
 <h2 id="4110---2021-06-24">[4.11.0] - 2021-06-24</h2>
-<h3 id="added-16">Added</h3>
+<h3 id="added-17">Added</h3>
 <ul>
 <li>New &quot;Extension&quot;: FPGA Download for Master remote unit</li>
 </ul>
-<h3 id="changed-32">Changed</h3>
+<h3 id="changed-33">Changed</h3>
 <ul>
 <li>FPGA DL: CAN is NOT supported</li>
 <li>Increase Load and Save timeouts</li>
@@ -921,12 +964,12 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="4100---2021-06-08">[4.10.0] - 2021-06-08</h2>
-<h3 id="added-17">Added</h3>
+<h3 id="added-18">Added</h3>
 <ul>
 <li>Extensions/DL FW &amp; FPGA: Add FW/FPGA compatibility validation</li>
 <li>New MotionReason status: Controlled stop by input</li>
 </ul>
-<h3 id="changed-33">Changed</h3>
+<h3 id="changed-34">Changed</h3>
 <ul>
 <li>ControllerErrorInterpreter: Use random file name for errors list resource</li>
 <li>FwInfo: Add info item 26: &quot;Additional Bi-Quad Filters bypassed&quot;</li>
@@ -934,28 +977,28 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="495---2021-05-13">[4.9.5] - 2021-05-13</h2>
-<h3 id="changed-34">Changed</h3>
+<h3 id="changed-35">Changed</h3>
 <ul>
 <li>ControllerMessagesContainer: Use random file name for default messages list</li>
 <li>AACommServerAPI: Fix OpenEnded reported assembly version (not used ATM)</li>
 </ul>
 <hr>
 <h2 id="494---2021-05-10">[4.9.4] - 2021-05-10</h2>
-<h3 id="fixed-21">Fixed</h3>
+<h3 id="fixed-22">Fixed</h3>
 <ul>
 <li>AGM400: increase reset time for proper reconnect</li>
 </ul>
-<h3 id="added-18">Added</h3>
+<h3 id="added-19">Added</h3>
 <ul>
 <li>Extend FW/FPGA mismatch indication (Support for UnitStat bits[1,2])</li>
 </ul>
-<h3 id="changed-35">Changed</h3>
+<h3 id="changed-36">Changed</h3>
 <ul>
 <li>Increase ALoad command timeout from 2 sec to 10 sec</li>
 </ul>
 <hr>
 <h2 id="493---2021-04-18">[4.9.3] - 2021-04-18</h2>
-<h3 id="changed-36">Changed</h3>
+<h3 id="changed-37">Changed</h3>
 <ul>
 <li>Add DRV3-V6 controller type (8) to Product Types</li>
 <li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
@@ -963,14 +1006,14 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="483---2021-03-24">[4.8.3] - 2021-03-24</h2>
-<h3 id="changed-37">Changed</h3>
+<h3 id="changed-38">Changed</h3>
 <ul>
 <li>Add DRV3-V6 controller type (8) to Product Types</li>
 <li>Connect: Do not fail if AIdentity[22] (RS232 cable type) doesn't exist</li>
 </ul>
 <hr>
 <h2 id="473---2021-02-05">[4.7.3] - 2021-02-05</h2>
-<h3 id="changed-38">Changed</h3>
+<h3 id="changed-39">Changed</h3>
 <ul>
 <li>AACommCore must use explicit AACS file StartAACommServer() parameter</li>
 <li>Change LoggerUpload message from &quot;Continuous&quot; to &quot;Regular&quot;</li>
@@ -979,67 +1022,67 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="472---2020-12-25">[4.7.2] - 2020-12-25</h2>
-<h3 id="fixed-22">Fixed</h3>
+<h3 id="fixed-23">Fixed</h3>
 <ul>
 <li>FPGA Download over RS-232</li>
 </ul>
-<h3 id="changed-39">Changed</h3>
+<h3 id="changed-40">Changed</h3>
 <ul>
 <li>AAComm Core: start AACS process improvement</li>
 <li>AAComm Core: default AACS: AACSCoreConsole on non-Win32 OS</li>
 </ul>
 <hr>
 <h2 id="470---2020-12-07">[4.7.0] - 2020-12-07</h2>
-<h3 id="added-19">Added</h3>
+<h3 id="added-20">Added</h3>
 <ul>
 <li>AACommDownloadFW: Don't allow Ethernet FW DL over other than 172.1.1 subnets (non-AGM800 products only)</li>
 </ul>
 <hr>
 <h2 id="461---2020-11-29">[4.6.1] - 2020-11-29</h2>
-<h3 id="added-20">Added</h3>
+<h3 id="added-21">Added</h3>
 <ul>
 <li>Support for recognition of User Program defined Global Variables and Task names (See CommAPI.Services.UserProgramInfo class for more details.)</li>
 <li>Add ControllerErrorInterpreter.GetErrorDescriptionByAACommEventArgs() function</li>
 </ul>
-<h3 id="changed-40">Changed</h3>
+<h3 id="changed-41">Changed</h3>
 <ul>
 <li>Support detection of multiple IP's set on a single NIC</li>
 </ul>
 <hr>
 <h2 id="451---2020-11-09">[4.5.1] - 2020-11-09</h2>
-<h3 id="fixed-23">Fixed</h3>
+<h3 id="fixed-24">Fixed</h3>
 <ul>
 <li>AACommServer simulation mode 'file name' bug</li>
 </ul>
-<h3 id="changed-41">Changed</h3>
+<h3 id="changed-42">Changed</h3>
 <ul>
 <li>Add 'Bulk' error code 4002 - &quot;unexpected reply format&quot;</li>
 </ul>
 <hr>
 <h2 id="450---2020-11-08">[4.5.0] - 2020-11-08</h2>
-<h3 id="added-21">Added</h3>
+<h3 id="added-22">Added</h3>
 <ul>
 <li>Improve FPGA Download error message</li>
 </ul>
-<h3 id="changed-42">Changed</h3>
+<h3 id="changed-43">Changed</h3>
 <ul>
 <li>Add ConnectResult.FailMacAddress error code</li>
 </ul>
 <hr>
 <h2 id="440---2020-10-29">[4.4.0] - 2020-10-29</h2>
-<h3 id="added-22">Added</h3>
+<h3 id="added-23">Added</h3>
 <ul>
 <li>ControllerIdentityContainer.IsFPGAVersionEqualOrGreater function</li>
 </ul>
 <hr>
 <h2 id="430---2020-10-18">[4.3.0] - 2020-10-18</h2>
-<h3 id="added-23">Added</h3>
+<h3 id="added-24">Added</h3>
 <ul>
 <li>Add &quot;CNC_TrueJerk_Supported&quot; property to ControllerIdentityContainer</li>
 <li>Add .NET 4.8, remove 4.62. target frameworks</li>
 <li>Add .Net Core RS-232 support (in dev!)</li>
 </ul>
-<h3 id="changed-43">Changed</h3>
+<h3 id="changed-44">Changed</h3>
 <ul>
 <li>Improve ConnectResult.CorruptAboutFile error code file logic</li>
 <li>Support &quot;old&quot; '/' FW info names: AGD200orAGC300 and AGD301/AGC301</li>
@@ -1048,7 +1091,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="420---2020-09-17">[4.2.0] - 2020-09-17</h2>
-<h3 id="added-24">Added</h3>
+<h3 id="added-25">Added</h3>
 <ul>
 <li>Add &quot;Group 10&quot; to AllStatData: DInPortHigh and BoardTemp</li>
 <li>Add &quot;HomingByLock_Supported&quot; property to ControllerIdentityContainer</li>
@@ -1056,18 +1099,18 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="410---2020-09-10">[4.1.0] - 2020-09-10</h2>
-<h3 id="added-25">Added</h3>
+<h3 id="added-26">Added</h3>
 <ul>
 <li>Improve AAComm.StartAACommServer() capabilities to support .NET Core server</li>
 </ul>
 <hr>
 <h2 id="400---2020-09-09">[4.0.0] - 2020-09-09</h2>
-<h3 id="added-26">Added</h3>
+<h3 id="added-27">Added</h3>
 <ul>
 <li>Resolve AAComm &lt;=&gt; AACommServer socket port number according to OS (instead of target framework) (results in interoperability between .NET and .NET Core assemblies on Windows)</li>
 <li>Add .NET 4.6.2 target framework</li>
 </ul>
-<h3 id="changed-44">Changed</h3>
+<h3 id="changed-45">Changed</h3>
 <ul>
 <li>Introduce Semantic Versioning 2.0.0 (<a href="https://semver.org/">https://semver.org/</a>) to AAComm and AACommServer (no compilation breaking, or backwards incompatibility changes introduced)</li>
 </ul>
@@ -1089,16 +1132,16 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 <li>Make property CommAPI.IsAACommServerRunning STATIC</li>
 <li>Make function CommAPI.StartAACommServer() STATIC</li>
 </ul>
-<h3 id="changed-45">Changed</h3>
+<h3 id="changed-46">Changed</h3>
 <ul>
 <li>Improve AAComm documentation (including 'Bulk' message type)</li>
 <li>Protection against LocalHost loopback &quot;rogue&quot; connect requests</li>
 </ul>
-<h3 id="fixed-24">Fixed</h3>
+<h3 id="fixed-25">Fixed</h3>
 <ul>
 <li>AllStat handling time bug (MAS02)</li>
 </ul>
-<h3 id="added-27">Added</h3>
+<h3 id="added-28">Added</h3>
 <ul>
 <li>Protect all synchronous API functions against multi-thread re-entry (mutual lock)</li>
 <li>Package and NUGET for .NET 4.0 and 4.6</li>
@@ -1106,57 +1149,57 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
 </ul>
 <hr>
 <h2 id="3028---2020-08-27">[3.0.2.8] - 2020-08-27</h2>
-<h3 id="fixed-25">Fixed</h3>
+<h3 id="fixed-26">Fixed</h3>
 <ul>
 <li>AllStat handling time bug</li>
 </ul>
-<h3 id="added-28">Added</h3>
+<h3 id="added-29">Added</h3>
 <ul>
 <li>ControllerIdentityContainer.IsFaultyFPGA property, supported for FW &gt;= 1.3.0.1-142</li>
 </ul>
 <hr>
 <h2 id="3027---2020-08-17-deprecated-allstat-handling-time-bug">[3.0.2.7] - 2020-08-17 (DEPRECATED: AllStat handling time bug!!)</h2>
-<h3 id="fixed-26">Fixed</h3>
+<h3 id="fixed-27">Fixed</h3>
 <ul>
 <li>Protect AACommServer startup vs. corrupt user.config file</li>
 <li>AGD301/AGC301 product names</li>
 </ul>
-<h3 id="added-29">Added</h3>
+<h3 id="added-30">Added</h3>
 <ul>
 <li>Backwards compatibility for old products names</li>
 </ul>
 <hr>
 <h2 id="3026---2020-08-16-deprecated-allstat-handling-time-bug">[3.0.2.6] - 2020-08-16 (DEPRECATED: AllStat handling time bug!!)</h2>
-<h3 id="added-30">Added</h3>
+<h3 id="added-31">Added</h3>
 <ul>
 <li>AAComm.Extensions.AACommFwInfo: Rename products according to new definitions</li>
 <li>Services.COMTools.GetFTDI_COMs: add default &quot;GetAllCOMPorts&quot; parameter (no backwards compatibility issues)</li>
 </ul>
-<h3 id="changed-46">Changed</h3>
+<h3 id="changed-47">Changed</h3>
 <ul>
 <li>Update documentation</li>
 <li>CommAPI.DocsAppFolder to &quot;PCSuite&quot; (default folder for FW connection history)</li>
 </ul>
 <hr>
 <h2 id="3025---2020-08-05-deprecated-allstat-handling-time-bug">[3.0.2.5] - 2020-08-05 (DEPRECATED: AllStat handling time bug!!)</h2>
-<h3 id="added-31">Added</h3>
+<h3 id="added-32">Added</h3>
 <ul>
 <li>FPGA download: rolling progress bar</li>
 </ul>
-<h3 id="changed-47">Changed</h3>
+<h3 id="changed-48">Changed</h3>
 <ul>
 <li>Remove Microsoft.Windows.Compatibility dependency</li>
 <li>Improve 'special' messages handling (implicit CTOR: need &quot;BM:&quot;, explicit CTOR: NO &quot;BM:&quot;)</li>
 </ul>
 <hr>
 <h2 id="3024---2020-08-04-deprecated">[3.0.2.4] - 2020-08-04 (DEPRECATED)</h2>
-<h3 id="added-32">Added</h3>
+<h3 id="added-33">Added</h3>
 <ul>
 <li>FPGA download support</li>
 </ul>
 <hr>
 <h2 id="3023---2020-08-02">[3.0.2.3] - 2020-08-02</h2>
-<h3 id="changed-48">Changed</h3>
+<h3 id="changed-49">Changed</h3>
 <ul>
 <li>StartAACommServer(string AACSFile = &quot;&quot;) =&gt; AACS file NAME instead of path (defaults to &quot;&quot; -&gt; look within working directory)</li>
 <li>Default timeout to IsCommServerRunning(int timeoutMS = 100)</li>
@@ -1193,7 +1236,7 @@ Fix: RS-232 and USB connection failed if Ethernet cable disconnected</li>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

@@ -349,6 +349,41 @@ through its legacy parser. See Firmware-Main issue #154.</p>
 
 
 
+  <a id="AAComm_Services_ControllerIdentityFeature_02_PhasingAutoVbusRevamp_Supported_" data-uid="AAComm.Services.ControllerIdentityFeature_02.PhasingAutoVbusRevamp_Supported*"></a>
+
+  <h3 id="AAComm_Services_ControllerIdentityFeature_02_PhasingAutoVbusRevamp_Supported" data-uid="AAComm.Services.ControllerIdentityFeature_02.PhasingAutoVbusRevamp_Supported">
+  PhasingAutoVbusRevamp_Supported
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityFeature_02.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates the revamped auto-VBus learning of auto-phasing, done within the phasing run itself as bit 9 of the
+learn word (<code>ComtMode[30]</code>) with its target current in <code>ComtMode[26]</code>:
+firmware <code>IDENTITY_NEW_FEATURES_2_REVAMP_PHASING_AUTO_VBUS</code>, Identity[62] bit 0x100.
+Clear on firmware with the older, separate step-voltage estimate (<a class="xref" href="AAComm.Services.ControllerIdentityFeature_01.html#AAComm_Services_ControllerIdentityFeature_01_CommutationLearnVBus">CommutationLearnVBus</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PhasingAutoVbusRevamp_Supported { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="AAComm_Services_ControllerIdentityFeature_02_PushEvents_Supported_" data-uid="AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported*"></a>
 
   <h3 id="AAComm_Services_ControllerIdentityFeature_02_PushEvents_Supported" data-uid="AAComm.Services.ControllerIdentityFeature_02.PushEvents_Supported">
@@ -386,7 +421,7 @@ through its legacy parser. See Firmware-Main issue #154.</p>
 
   <h3 id="AAComm_Services_ControllerIdentityFeature_02_VerifiedEventTable_Supported" data-uid="AAComm.Services.ControllerIdentityFeature_02.VerifiedEventTable_Supported">
   VerifiedEventTable_Supported
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityFeature_02.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Services/ControllerIdentityFeature_02.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates the explicit verified event-table preload API, Identity[62] bit 0x200.</p>
@@ -434,7 +469,7 @@ through its legacy parser. See Firmware-Main issue #154.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

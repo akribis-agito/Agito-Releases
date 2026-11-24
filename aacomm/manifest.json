@@ -582,7 +582,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommDownloadFPGARemote",
-      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"4\">Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)\nWhen starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"8\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"11\">Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"14\">Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"17\">Process can't be canceled in the middle.\n</code></pre>\n"
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"1\">Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"4\">Make sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; and &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; (if need)\nWhen starting the DL process, the API state must be NOT connected.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"8\">Process ends with API state: Disconnected (success or error)\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"11\">Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success. Each reconnect waits up to 10 s for the remote and reports the time it took through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"14\">Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommDownloadFPGARemote.yml\" sourcestartlinenumber=\"17\">Process can't be canceled in the middle.\n</code></pre>\n"
     },
     {
       "type": "ManagedReference",
@@ -642,6 +642,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommParametersDownload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommParametersDownload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommParametersDownload",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersDownload.yml\" sourcestartlinenumber=\"1\">Asynchronously downloads (writes) controller parameters from a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersDownload.yml\" sourcestartlinenumber=\"4\">&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersDownload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected\ncontroller, then sends each as a SET command.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersDownload.yml\" sourcestartlinenumber=\"11\">Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersDownload.yml\" sourcestartlinenumber=\"14\">After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.AACommParametersUpload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.AACommParametersUpload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.AACommParametersUpload",
+      "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersUpload.yml\" sourcestartlinenumber=\"1\">Asynchronously uploads (saves) controller parameters to a .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersUpload.yml\" sourcestartlinenumber=\"4\">&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersUpload.yml\" sourcestartlinenumber=\"7\">Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,\nfirmware/FPGA version, date, checksum) to a plain ASCII .par file.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommParametersUpload.yml\" sourcestartlinenumber=\"11\">Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Extensions.AACommRemoteFpgaInfo.yml",
       "output": {
         ".html": {
@@ -653,6 +681,48 @@
       "IsMRef": true,
       "Title": "AAComm.Extensions.AACommRemoteFpgaInfo",
       "Summary": "<pre><code sourcefile=\"api/AAComm.Extensions.AACommRemoteFpgaInfo.yml\" sourcestartlinenumber=\"1\">Helper class used to read and validate Master Remote Unit FPGA RPD (data) and VER (version) files.\n</code></pre>\n<p></p>\n<pre><code sourcefile=\"api/AAComm.Extensions.AACommRemoteFpgaInfo.yml\" sourcestartlinenumber=\"4\">Class instance is passed as an argument to&lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.StartDownloading(AAComm.CommAPI%2cAAComm.Services.ConnectionData%2cAAComm.Extensions.AACommRemoteFpgaInfo)&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;&lt;p&gt;&lt;/p&gt;\n\nMake sure to set the correct &lt;xref href=&quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;\n</code></pre>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.ParamConversion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.ParamConversion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.ParamConversion",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.ParamConversion.yml\" sourcestartlinenumber=\"1\">One download row whose value was rewritten before it was sent.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.ParamHandlingSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.ParamHandlingSummary.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.ParamHandlingSummary",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.ParamHandlingSummary.yml\" sourcestartlinenumber=\"1\">Summary of a parameter upload or download operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Extensions.ParamRejection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Extensions.ParamRejection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Extensions.ParamRejection",
+      "Summary": "<p sourcefile=\"api/AAComm.Extensions.ParamRejection.yml\" sourcestartlinenumber=\"1\">One entry the controller refused, or a download skipped, as it was sent (or read) and as it was answered.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1118,6 +1188,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/AAComm.Services.BulkReply.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AAComm.Services.BulkReply.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "AAComm.Services.BulkReply",
+      "Summary": "<p sourcefile=\"api/AAComm.Services.BulkReply.yml\" sourcestartlinenumber=\"1\">The bulk reply grammar: how a controller answers a bulk of <code>N</code> ';'-separated commands.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/AAComm.Services.COMTools.yml",
       "output": {
         ".html": {
@@ -1254,7 +1338,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "AAComm.Services.ControllerIdentityFeature_01",
-      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityFeature_01.yml\" sourcestartlinenumber=\"1\">a container class for the &quot;New Features 1&quot; bitfield (Identity[26])</p>\n"
+      "Summary": "<p sourcefile=\"api/AAComm.Services.ControllerIdentityFeature_01.yml\" sourcestartlinenumber=\"1\">a container class for the &quot;New Features 1&quot; bitfield (Identity[25])</p>\n"
     },
     {
       "type": "ManagedReference",

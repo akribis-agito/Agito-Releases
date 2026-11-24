@@ -352,8 +352,8 @@ marshal work to your own thread/queue rather than blocking inside the callback. 
 <tr>
 <td><code>longop_started</code> / <code>longop_ended</code></td>
 <td>the matching setter</td>
-<td>the firing thread</td>
-<td>bracket a busy window (reset/save/load)</td>
+<td>the thread pool, one at a time</td>
+<td>bracket a busy window (reset/save/load); delivered in the order raised, each after the previous one returns, so a callback that blocks delays the next</td>
 </tr>
 </tbody>
 </table>
@@ -705,7 +705,7 @@ C# enum — do not edit). <code>0</code> is success.</p>
 <tr>
 <td><code>AACOMM_RESULT_CANDEVICE_NOT_CONNECTED</code></td>
 <td>48</td>
-<td>Kvaser driver is installed but no physical CAN interface is connected (distinct from <code>CANLIB_MISSING</code>=17, where the driver itself is absent)</td>
+<td>No CAN interface on the AACS host: on Windows the Kvaser driver is installed but no physical interface is connected (distinct from <code>CANLIB_MISSING</code>=17, where the driver itself is absent); on Linux there is no <code>canN</code> for <code>CAN_Channel</code> N</td>
 </tr>
 <tr>
 <td><code>AACOMM_RESULT_SIM_LAUNCH_FAILED</code></td>
@@ -726,6 +726,11 @@ C# enum — do not edit). <code>0</code> is success.</p>
 <td><code>AACOMM_RESULT_SIM_STARTER_PAR_MISSING</code></td>
 <td>52</td>
 <td>No <code>starter.par</code> next to the <code>firmware_sim</code> executable, so the sim's parameter file cannot be created</td>
+</tr>
+<tr>
+<td><code>AACOMM_RESULT_CANINTERFACE_NOT_CONFIGURED</code></td>
+<td>53</td>
+<td>Linux: the SocketCAN interface <code>canN</code> is down, or runs at a bit rate other than the connection's</td>
 </tr>
 </tbody>
 </table>
@@ -921,7 +926,7 @@ already set <code>controller_type</code> yourself. Writes the <code>ConnectResul
 <pre><code class="lang-c">int32_t aacomm_connect(aacomm_handle h, const aacomm_connection* conn, int32_t* out_result);
 </code></pre>
 <p>Opens the controller connection, querying identity / about / firmware data. Requires
-<code>conn-&gt;controller_type</code> to be set (run <code>aacomm_test_connection</code> first, or set it yourself) — otherwise
+<code>conn-&gt;controller_type</code> to match the connected controller (run <code>aacomm_test_connection</code> first, or set it yourself) — otherwise
 <code>*out_result == AACOMM_RESULT_INVALID_CONTROLLER_TYPE</code> (16). Writes the <code>ConnectResult</code> to <code>*out_result</code>.</p>
 <pre><code class="lang-c">int32_t aacomm_connect_silent(aacomm_handle h, const aacomm_connection* conn, int32_t* out_result);
 </code></pre>
@@ -1033,7 +1038,7 @@ against — the value is bumped on any breaking change.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

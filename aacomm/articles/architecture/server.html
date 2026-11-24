@@ -94,7 +94,7 @@
         end
 
         subgraph &quot;Channel Management Layer&quot;
-            Handler[ChannelHandler&lt;br/&gt;- Message Queue&lt;br/&gt;- Timeout Timer&lt;br/&gt;- Exclusive Access Control&lt;br/&gt;- NumOfUsers Tracking]
+            Handler[ChannelHandler&lt;br/&gt;- Message Queue&lt;br/&gt;- Timeout Timer&lt;br/&gt;- Exclusive Access Control&lt;br/&gt;- Member User Ids]
         end
 
         subgraph &quot;Hardware Abstraction Layer&quot;
@@ -164,7 +164,8 @@
 <h3 id="multi-user-channel-sharing">Multi-User Channel Sharing</h3>
 <ul>
 <li>Multiple AAComm clients can share the same hardware channel</li>
-<li><code>ChannelHandler</code> tracks <code>NumOfUsers</code> per channel</li>
+<li><code>ChannelHandler</code> tracks the set of member user ids per channel; <code>NumOfUsers</code> is its size</li>
+<li>An Open adds the user (a same-key re-Open joins nothing new), a Close removes it, and a Close from a non-member does nothing</li>
 <li>Channel closes only when last user disconnects</li>
 </ul>
 <h3 id="exclusive-access-mode">Exclusive Access Mode</h3>
@@ -232,7 +233,7 @@ with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; s
 </ul>
 <h2 id="supported-hardware-protocols">Supported Hardware Protocols</h2>
 <ul>
-<li><strong>CAN Bus</strong>: Kvaser CANlib-based communication (Windows or Linux)</li>
+<li><strong>CAN Bus</strong>: Kvaser CANlib on Windows, the kernel's SocketCAN on Linux</li>
 <li><strong>RS-232</strong>: Serial port communication</li>
 <li><strong>Ethernet</strong>: TCP/IP socket-based communication with bulk message support (up to 50 messages per bulk; the Simulation channel carries bulk too)</li>
 <li><strong>Simulation</strong>: managed firmware-sim — the server spawns <code>firmware_sim</code> locally over loopback and bridges it (<code>Communicator_FirmwareSim</code>). A temporary connection uses a fresh scratch folder that is removed on disconnect. <code>ConnectionData.SimMemoryFolder</code> selects a persistent working directory that is created when needed and retained. Before startup a missing runtime <code>agito.par</code> is derived from the executable's sibling complete <code>starter.par</code> for the selected motor; an existing parameter file and user program are retained. The resolved physical profile is written as <code>motor.txt</code> in that same working directory. The host sets <code>AGITO_FLASH_FILE</code> to a path in this folder, which selects the firmware memory directory for normal parameter/program loading and saving. When <code>%LOCALAPPDATA%\PCSuite\HostGcc\bin\gcc.exe</code> exists (the host gcc PCSuite downloads, <code>agito-host-gcc-14.2.0-r3.zip</code> of the <code>Software/HostGcc/v14.2.0-r3</code> release on <code>akribis-agito/Agito-Releases</code>) and the server's own environment does not set <code>AGITO_DRAW_GCC</code>, the host sets it to that file, so the sim compiles a downloaded Draw scheme with it. Opening the channel sends no firmware requests; normal parameter loading preserves saved motor type zero and custom gains in RAM. The legacy file-based <code>Simulator</code> channel is removed; its enum remains for the virtual-test echo channel.</li>
@@ -244,6 +245,9 @@ with bounded backpressure (tx-queue overflow / send-timeout still hard-closes; s
 <li><strong>Linux</strong> — <code>prctl(PR_SET_PDEATHSIG, SIGKILL)</code>, applied by launching the child through <code>setpriv --pdeathsig</code> (util-linux) since .NET has no pre-exec hook. The death-signal is keyed to the <em>forking task</em>, so the fork runs on a process-lifetime spawner thread (else a transient caller thread exiting would SIGKILL a healthy sim). Logged no-op fallback if setpriv is absent.</li>
 <li><strong>macOS</strong> — a detached <code>/bin/sh</code> babysitter launched beside the child: once a second it checks that its own parent is still the server (a zombie server still answers <code>kill -0</code>, but macOS reparents its children to launchd the moment it exits) and that the child's pid still carries the same start time (a recycled pid is never killed), and SIGKILLs the child once the server is gone, exiting as soon as either side dies so it never lingers. It drops its inherited stdio, so a parent reading the server's output to EOF is not held open. The child itself starts normally, so graceful <code>Dispose</code>/<code>Close</code> reaps it directly. Reap latency is up to two seconds; a <code>kqueue NOTE_EXIT</code> babysitter is the upgrade if that ever matters.</li>
 </ul>
+<p>On macOS and Linux, <code>SimProcessHost</code> additionally admits the simulator's own parent guard only after an isolated parser probe of the executable. The probe supplies <code>--port 0 --parent-pid 0</code>, no motor or caller files, and a private temporary working directory and flash path. Support requires exit 2, exactly <code>[PC] --parent-pid requires a positive decimal host PID; exiting</code> on stderr with a terminal line ending, and empty stdout. Both streams have bounded byte drains; exit and drain completion share a two-second deadline. Unknown, oversized, incomplete or timed-out responses retain the default launch. SHA-256 must agree before and after the probe and immediately before launch; admission is never cached by path.</p>
+<p>An admitted real launch receives <code>--parent-pid</code> with the owning AACommServer process ID, formatted with invariant culture before any reaper wrapping. <code>ParentGuardCapability</code> reports parser admission internally; it is not a lifetime guarantee. The simulator guard depends on its healthy foreground loop and does not address PID reuse or hostile executable replacement races. The external reapers remain enabled for the probe and ordinary launches, including older binaries. Windows receives neither the probe nor the flag and retains its Job Object.</p>
+<p>The isolated <code>AACommServerCore.ParentGuardHost</code> test fixture uses the same launcher and a test-only direct-start seam for ON/OFF lifetime controls. Its explicit preflight requires absolute capable/old executable and profile paths, their SHA-256 values, and full actual producer source identities. Preflight checks identity syntax and pinned file hashes; the invoking native caller verifies source/artifact receipts independently. Missing, malformed or hash-mismatched inputs fail preflight. The observer records OS, architecture, runtime and owned process identities; Linux orphan adoption and macOS process-exit observation retain the guard's exit status after server death. The simulator handshake includes the birth identity read from the server's owned process; the observer validates it and observes exit before any fallback cleanup, refusing to signal a mismatched PID. The standalone verification also selects the qualified old executable as the nominal capable input for an explicit rejected-capability cleanup control, retaining its actual old source metadata. Identity-checked fallback cleanup handles failures before exit observation is established; Linux reaps owned orphan descendants. The fixture retains its provenance and observations in a private temporary <code>native.log</code>, whose path it prints, and retains owned scratch when cleanup fails. Integration inputs use the <code>AGITO_PARENT_GUARD_</code> prefix: <code>EXE</code>, <code>PROFILE</code>, <code>OLD_EXE</code>, each matching <code>_SHA256</code>, plus <code>SOURCE</code> and <code>OLD_SOURCE</code>; <code>NATIVE=1</code> enables the selected native test. Existing optional <code>FIRMWARE_SIM_EXE</code> tests do not establish this native proof.</p>
 <p>The IPC listen socket is also made non-inheritable (<code>HandleInheritance</code>) so a spawned child (started with <code>bInheritHandles=TRUE</code> for stdio redirect) never inherits it and pins the IPC port after the server exits — Windows-only, since .NET Core already creates non-inheritable sockets on Linux/macOS.</p>
 <h2 id="internal-layout--seams">Internal layout &amp; seams</h2>
 <p>The file map for code work (the client-side equivalent is in <code>AAComm/docs/architecture.md</code>
@@ -374,7 +378,7 @@ Linux/macOS) via <code>PcapDetector</code>.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

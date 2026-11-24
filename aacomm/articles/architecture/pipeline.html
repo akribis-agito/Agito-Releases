@@ -282,7 +282,9 @@ thread so ThreadPool pressure cannot fake a &quot;no server&quot; negative.</li>
 </ul>
 <h2 id="key-features">Key Features</h2>
 <h3 id="public-events">Public Events</h3>
-<p><code>CommAPI</code> raises five events. All but <code>OnCommsError</code> are dispatched via <code>Task.Run</code>.</p>
+<p><code>CommAPI</code> raises five events. All but <code>OnCommsError</code> are dispatched to the ThreadPool: the push and
+User Units events via <code>Task.Run</code>, the two long-operation events through one ordered queue (see
+§Long-Operation Handling).</p>
 <table>
 <thead>
 <tr>
@@ -495,9 +497,9 @@ real <code>ConnectResult</code>.</li>
 <li>The content-based stride guess is reached only for a RecUpload-mnemonic reply the server
 threaded no width onto, and it tries stride 5 before stride 9 — a width the server does know is
 always preferred over guessing.</li>
-<li>Outbound frames are not size-checked: <code>BinaryFramingBuffer.MaxFrameSize</code> (10 MB) is inbound-only
-headroom. All IPC payloads are bounded small — controller commands are small, and a RecUpload is
-bounded by the controller's recording buffer.</li>
+<li>Frames are not size-checked in either direction: <code>BinaryFramingBuffer</code> rejects only a negative
+declared length. A RecUpload is bounded by the controller's recording buffer, which on an AGM800
+runs to tens of MB; every other payload is small.</li>
 </ul>
 <h3 id="connection-lifecycle">Connection Lifecycle</h3>
 <ol>
@@ -519,22 +521,37 @@ for net48 clients on Windows only, the PCSuite install path from the 32-bit regi
 candidate <em>name</em> is TFM-matched: a .NET-Core client prefers <strong><code>AACommServerNative.exe</code></strong> over
 <code>AACommServer.exe</code> (a stale net48 host left beside a net8 client would otherwise be spawned under
 it), and off Windows only the extension-less NativeAOT host is a candidate. net48 clients prefer
-<code>AACommServer.exe</code>. The helper then polls the port for up to 15 s, failing early if the child
-exits without the port answering — except that a bind-race loser's exit is followed by one last
-probe, so the surviving winner is attached to instead.</p>
+<code>AACommServer.exe</code>. The helper then polls the port, failing early if the child exits without
+the port answering — except that a bind-race loser's exit is followed by one last probe, so the
+surviving winner is attached to instead. The whole sequence runs at most four attempts with
+back-off deadlines of 2, 4, 8 and 15 s (<code>AACommServerHelper.SpawnDeadlinesMs</code>), so a server that
+never binds is given up on within 30 s, with at most one process spawned per attempt. Each attempt
+probes the port first, so a child from an earlier attempt that bound late is attached to rather
+than spawned again; an attempt that fails at once (missing file, child exits early) moves straight
+to the next.</p>
 <p><strong>Shutdown.</strong> <code>CloseAACommServer(isForceClose)</code> disconnects this API's own session and then, if
 the port answers, sends <code>ShutDown</code> (or <code>ShutDownForce</code>) to <strong>whichever</strong> AACommServer is
 listening — the client keeps no record of what it spawned and applies no ownership check. The
 server is what gates the request: a plain <code>ShutDown</code> is honoured only when no client holds an
-open channel and is otherwise ignored; <code>ShutDownForce</code> is honoured unless a client is in
-exclusive-comms mode.</p>
+open channel or is still opening one (the controller connect behind an <code>Open</code> takes seconds, and
+the channel counts its client only once it returns), and is otherwise ignored; <code>ShutDownForce</code> is
+honoured unless a client is in exclusive-comms mode.</p>
 <p><strong>Implicit last-client shutdown.</strong> The server also exits unasked. When the last client's socket
 dies unexpectedly — or dies after its channel was fatal-evicted — a grace timer arms
 (<code>AACommServerModel.ImplicitShutdownGraceMs</code>, 5 000 ms) and the process exits unless a client
-opens a channel inside the window. The window exists because a firmware download drops the
+opens a channel inside the window. A client still opening a channel counts as one, both when the
+last socket dies and when the window expires; the shutdown it holds off is deferred, not dropped:
+when the last in-flight Open ends with no channel user left, the timer arms again with a fresh
+window. A failed Open that deferred nothing arms no shutdown. The window exists because a firmware download drops the
 controller link on the way into BOOT: the flasher is fatal-evicted and must be able to reconnect
 to the boot image before its own server disappears. A graceful <code>Close</code> is deliberately NOT
 counted — a politely departing client leaves the server up for reconnect flows.</p>
+<p>This is the server's only self-shutdown. By owner ruling there is no idle timeout and no other
+self-shutdown of any kind: an orphaned server is a spawn, handle or ownership
+defect, fixed where the server is spawned. In-process, <code>AACommServerModel.Shutdown()</code> / <code>Dispose()</code>
+are cooperative — they close the listener and every channel and never raise <code>OnKillRequest</code>, so an
+embedded or native host survives them (<code>ShutdownTests.Shutdown_DoesNotFireOnKillRequest</code>). The
+server hosts tear down cooperatively before they exit; neither kills its own process.</p>
 <h3 id="state-management">State Management</h3>
 <p><strong>ControllerIdentityContainer</strong> (<code>CommAPI.IdentityContainer</code>):</p>
 <ul>
@@ -559,6 +576,21 @@ counted — a politely departing client leaves the server up for reconnect flows
 <li><strong>ConnectResult</strong> enum: Detailed error codes for all operations</li>
 <li><strong>Automatic cleanup</strong>: API auto-disconnects on fatal errors and sync safety-net timeouts — the originating session. The in-flight sync waiter is woken before that teardown runs, so a caller that expects the failure and reconnects at once (the EC firmware flasher after the password that drops the drive into BOOT) may already own a successor session; the late teardown leaves it alone and raises no <code>OnCommsError</code></li>
 <li><strong>Exception handling</strong>: TCP socket errors converted to events</li>
+<li><strong>No implicit recovery</strong> (owner ruling): an unexpected controller-channel death — a socket abort
+or a reply-timeout FATAL — surfaces at once and in full. No server reconnect-on-abort, no client
+auto-reconnect, no silent retry: a recovery loop hides the firmware fault behind it. The
+post-Reset reconnect (<code>ChannelHandler.ResetRecoveryWorker</code>) is the one exception, because a
+Reset's outage is expected and bounded. Making the loud path clearer is welcome; making it
+survivable is not.</li>
+<li><strong>A throwing client callback ends the process</strong>: a throw from <code>OnReplyReceived</code> is logged with
+its full <code>ToString()</code>, the debug log is flushed synchronously, and the exception is rethrown
+unhandled on a ThreadPool thread (<code>AACommMessage.InvokeReplyCallback</code>), never on the dispatcher,
+which would wedge the session. It is not routed to <code>OnCommsError</code>. Any new place AAComm invokes
+client code takes the same path — never an empty <code>catch</code> or an unobserved task.</li>
+<li><strong>4xxx codes come from AAComm or AACommServer, never the controller</strong> (<code>CommCommons</code>, &quot;PCSuite
+errors (not FW!)&quot;): they report what the client or server observed, so diagnose them there; a
+controller fault arrives as the controller's own <code>ERR</code> code. <code>ERR 4022</code> and <code>ERR 4023</code> are
+deliberate refusals, not faults. The table is in <code>AACommComponents/docs/ipc-contract.md</code>.</li>
 </ul>
 <h3 id="diagnostics">Diagnostics</h3>
 <p><code>AAComm.Services.Diagnostics.AACommDebugLog</code> is a process-wide, zero-config, always-on
@@ -573,7 +605,21 @@ local-port ↔ <code>UserId</code> procedure that joins the client and server lo
 <code>diagnostics-srs.md</code>.</p>
 <h3 id="protocol-support">Protocol Support</h3>
 <ul>
-<li><strong>CAN</strong>: Binary protocol with CAN ID and data bytes (requires Kvaser CANlib; Windows or Linux, macOS unsupported)</li>
+<li><strong>CAN</strong>: Binary protocol with CAN ID and data bytes. Windows needs Kvaser CANlib; Linux uses the
+kernel's SocketCAN, so any adapter with an in-kernel driver works and nothing is installed; macOS is unsupported.
+<ul>
+<li>Kvaser has no public NuGet: the PCSuite installer ships the driver, the AAComm packages do not,
+and a missing driver is <code>ConnectResult.CANLibMissing</code>. Server-side, CAN sits behind the
+<code>ICanChannel</code> seam (<code>KvaserCanChannel</code> over <code>NativeCanlib</code> on Windows, <code>SocketCanChannel</code> on Linux,
+<code>FakeCanChannel</code> in tests).</li>
+<li>On Linux <code>CAN_Channel</code> N is the interface <code>canN</code>. The host sets its bit rate and brings it up;
+AACommServer refuses one that is down or at another rate with <code>ConnectResult.CANInterfaceNotConfigured</code>.</li>
+<li>A request that times out while the controller reboots fatals and evicts the channel like any
+controller silence; reconnect, with retry, once the controller is back.</li>
+<li>AACommServer is a pipeline on every channel (owner ruling): capability gating lives in the
+AAComm client, not the server.</li>
+</ul>
+</li>
 <li><strong>RS-232</strong>: Serial port text-based communication. A binary UP-download chunk (<code>UserProgramBin</code>)
 is declined with <code>PC Suite: ERR 4022</code> unless a download is active (issue <code>DownloadUPBin</code> /
 <code>DownloadUProg</code> first) — its raw bytes (embedded CRs / the <code>&gt;\r</code> pair) would otherwise fragment
@@ -595,12 +641,28 @@ reports 50 there, 1 on every other channel and while disconnected)</li>
 <li><strong>Binary Uploads</strong>: Firmware and user program downloads</li>
 <li><strong>Special Messages</strong>: FPGA downloads, ASCII bulk, CNC-specific bulk messages</li>
 </ul>
+<h3 id="message-grammar">Message Grammar</h3>
+<p>A command is <code>&lt;axis-letter&gt;&lt;mnemonic&gt;[index]</code> (<code>APos</code>); a doubled axis letter (<code>AAPos</code>) is
+<code>ERR 13</code>, mnemonic not found. The <code>EA:</code> EthernetASCII form carries one extra axis character
+(<code>EA:AAPos</code>), which <code>FloatHelper</code> drops. <code>AACommMnemonicHelper</code> is the SDK's single home for
+axis, mnemonic and index parsing. These grammar variants stay outside it on purpose: the <code>TerminalMessage</code> state machine, <code>ArrayIndexHelpers</code> and
+<code>MathExpressionEvaluator</code>, <code>ParametersFileReader</code>, <code>HeaderParser</code>, AAMotion's <code>FastReadCache</code> and
+<code>SlowLogger</code>, the <code>FloatHelper</code> <code>EA:</code> form, and CAN (<code>CanDescriptionBuilder</code>,
+<code>CommCommons.BuildCCC</code> / <code>ParseCCC</code>). The three global-variable target parsers —
+<code>ControllerMessageListM.ParseGlobalVarTarget</code>, <code>GeneralDataM.UpdateVectorFromTarget</code>,
+<code>RawIdentifierRef.TryParse</code> — differ deliberately: <code>RawIdentifierRef</code> accepts index 0 where
+<code>AACommMnemonicHelper.SeparateArrayIndex</code> requires an index above 0. Unify them only where the
+semantics match.</p>
 <h3 id="long-operation-handling">Long-Operation Handling</h3>
 <p><code>OnLongOperationStarted(LongOperationType)</code> and <code>OnLongOperationEnded(LongOperationType, int errorCode)</code>
 fire for operations that freeze the controller firmware for a significant duration. The ended edge's
 <code>errorCode</code> is <code>0</code> on success or the controller error code (e.g. <code>22</code> = &quot;motor on&quot;) on failure, so a
 subscriber can suppress a &quot;complete&quot; message on a failed long operation. Both are suppressed for
 <code>SendReceive</code> (sync path).</p>
+<p>The two edges are dispatched in the order they were raised: each handler runs on a ThreadPool task
+that starts only after the handlers of every earlier edge have returned. A Save whose reply lands just
+past the start-grace window raises both edges back to back, and on two independent tasks a subscriber
+that pauses on <code>started</code> and resumes on <code>ended</code> could see them swapped and stay paused.</p>
 <p>For the non-Reset types the <code>started</code> edge is gated by a short <strong>start-grace window</strong>
 (<code>Session.LongOpStartGraceMs</code>, 100 ms): it fires only once the reply has failed to arrive within that
 window. A reply that lands sooner means the op was not long-running — e.g. an immediate ERR 22 rejecting
@@ -690,6 +752,10 @@ A Reset that returned an error leaves the cache alone. See <code>AAComm/docs/flo
 <li><strong>Firmware download</strong>: 6000ms; UP-bin chunk: 10000ms (<code>TimeoutMs.DownloadUPBin</code>; text-mode UP lines use the default)</li>
 <li><strong>Open channel</strong>: 1000ms (RS-232/CAN), 10000ms (Ethernet), 20000ms (Simulator/Simulation)</li>
 <li>All timeouts configurable per-message via <code>TimeoutMs</code> property; the full table is in <code>AACommComponents/docs/ipc-contract.md</code></li>
+<li>Budgets are per command (<code>AAComm/Shared/Timeouts.cs</code>), and many commands legitimately take
+seconds — <code>ASave</code> / <code>ALoad</code> 120 000 ms (a dual-flash board can need most of it), <code>MotorOn</code>
+20 000 ms. Judge a timeout against that command's budget, never against the round trip of a
+simple query</li>
 </ul>
 <h3 id="exclusive-channel-access">Exclusive Channel Access</h3>
 <ul>
@@ -717,7 +783,7 @@ The guard catches sync re-entry only — an <code>async void</code> callback tha
 continuation that resumed after an <code>await</code> is NOT rejected (out of scope: the post-await
 continuation no longer holds the dispatcher's frame).</li>
 <li><code>OnPushMessageReceived</code>, <code>OnUserUnitsEnabledChanged</code> and the long-operation events are
-dispatched via <code>Task.Run</code> (no blocking of the receiver thread), but
+dispatched to the ThreadPool (no blocking of the receiver thread), but
 <code>ResetCoordinator.RunPostResetWait</code> runs the recovery sleep synchronously on the async
 dispatcher thread — the async pipeline is blocked for the recovery window.
 <code>OnCommsError</code> is the deliberate exception (sync on receiver) — see the suppression
@@ -822,7 +888,7 @@ api.Disconnect();
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

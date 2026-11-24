@@ -144,10 +144,25 @@ firmware without a boot jump, and connects in full so the controller's own keywo
 <code>DownloadESI</code>. An AGM400, AGM800 or Pulse-Sync connection asked for <code>EC_ESI</code> is refused before anything
 is sent. Every gate per path is in <code>docs/ci-cd/fw-fpga-download-constraints.md</code>.</p>
 <h2 id="remote-fpga-identity-checks">Remote FPGA identity checks</h2>
-<p><code>AACommDownloadFPGARemote</code> downloads a remote <code>.rpd</code> over the AGM800 family's Ethernet
-connection, including AGM800-EC. <code>AACommRemoteFpgaInfo</code> reads the adjacent seven-line
-<code>.ver</code> in this order: FPGA Version, FPGA Size, Remote Type, Remote SubType, Remote
-Variant, Amplifier Version, Comm Version. The metadata is not a payload checksum.</p>
+<p><code>AACommDownloadFPGARemote</code> downloads a remote <code>.rpd</code> (MAX10) or <code>.bin</code> (PH1P) over the
+AGM800 family's Ethernet connection, including AGM800-EC. <code>AACommRemoteFpgaInfo</code> reads the
+adjacent seven-line <code>.ver</code> in this order: FPGA Version, FPGA Size, Remote Type, Remote
+SubType, Remote Variant, Amplifier Version, Comm Version. The metadata is not a payload
+checksum.</p>
+<p>The remote's FEATURES FPGA family picks the flow. It is word 0 at 0x1F0, read with Central-i
+offline messages; a PH1P remote takes only a <code>.bin</code>, every other remote only a <code>.rpd</code>.
+<code>AACommRemoteFpgaInfo.ReadDataFileExtension</code> returns that extension for a port. A <code>.bin</code>
+needs <code>FPGA Size: 60K</code> in its <code>.ver</code>, and a 60K <code>.ver</code> needs a <code>.bin</code>. A 60K image also
+accepts a remote reporting size <code>2</code> (8K, from firmware without the 60K decode), because the
+family check still requires PH1P. A remote whose running image does not report a command time
+in 0x302 (no dropped-word flag or CRC command) is refused before anything is erased. The PH1P
+flow erases only Primary, writes in batches and re-sends any span with a dropped word; a write
+may keep the flash busy for its word count at the tPP maximum. Before it reboots into Primary,
+it compares a CRC-32 of the whole image, computed by the remote. It succeeds only when, after
+the reboot, the remote is not on Golden and reports the <code>.ver</code> FPGA Version at offline 0x007;
+a <code>.bin</code> built without MultiBoot ignores the reboot and fails here. A failure after the erase
+tells the user the remote keeps its current image until power-cycled, then boots Golden, and
+that a retry is safe.</p>
 <p>For AGA155 (type <code>1</code>, subtype <code>0x0150</code>), compact Remote Variant codes <code>0x3</code>, <code>0x6</code>,
 and <code>0xA</code> identify 2A03, 2A06, and 2A10 and match <code>CIIdentity[23]</code>. Amplifier Version
 codes <code>0x1</code>, <code>0x2</code>, and <code>0x3</code> identify hardware Variant37, Variant47, and Variant46
@@ -342,7 +357,7 @@ channel-fatal) are accepted as success for the last step.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

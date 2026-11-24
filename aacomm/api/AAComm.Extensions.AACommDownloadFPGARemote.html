@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AACommDownloadFPGARemote | Agito AAComm SDK ">
       
-      <meta name="description" content="Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit   Make sure to set the correct &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (if need) When starting the DL process, the API state must be NOT connected.   Process ends with API state: Disconnected (success or error)   Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.   Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.   Process can&#39;t be canceled in the middle.">
+      <meta name="description" content="Asynchronous service class used for downloading FPGA to AGM400 and AGM800 products Remote Unit   Make sure to set the correct &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommRemoteFpgaInfo.Port&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; and &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommRemoteFpgaInfo.AllowForce&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; (if need) When starting the DL process, the API state must be NOT connected.   Process ends with API state: Disconnected (success or error)   Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success. Each reconnect waits up to 10 s for the remote and reports the time it took through &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt;.   Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &amp;lt;xref href=&amp;quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&amp;quot; data-throw-if-not-resolved=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/xref&amp;gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.   Process can&#39;t be canceled in the middle.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAComm_Extensions_AACommDownloadFPGARemote" data-uid="AAComm.Extensions.AACommDownloadFPGARemote" class="text-break">
-Class AACommDownloadFPGARemote  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L18"><i class="bi bi-code-slash"></i></a>
+Class AACommDownloadFPGARemote  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -107,7 +107,7 @@ When starting the DL process, the API state must be NOT connected.
 <pre><code>Process ends with API state: Disconnected (success or error)
 </code></pre>
 <p></p>
-<pre><code>Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success.
+<pre><code>Remote image transitions require checked preparation, reconnect and fresh dual-configuration state: boot (3/4) before flash writes, primary (2/5) before success. Each reconnect waits up to 10 s for the remote and reports the time it took through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt;.
 </code></pre>
 <p></p>
 <pre><code>Only ERR 151 on the final reconfiguration trigger may proceed to that verification; it is reported through &lt;xref href=&quot;AAComm.Extensions.AACommDownloadFPGARemote.OnStatus&quot; data-throw-if-not-resolved=&quot;false&quot;&gt;&lt;/xref&gt; as uncertain completion. Other failures terminate without retrying erase or image transfer.
@@ -174,7 +174,7 @@ When starting the DL process, the API state must be NOT connected.
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGARemote_OnProcessEnded" data-uid="AAComm.Extensions.AACommDownloadFPGARemote.OnProcessEnded">
   OnProcessEnded
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>indicated the end of the Remote FPGA DL process. String parameters indicates status. Empty for success, error description otherwise.
@@ -216,7 +216,7 @@ When starting the DL process, the API state must be NOT connected.
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGARemote_OnProgress" data-uid="AAComm.Extensions.AACommDownloadFPGARemote.OnProgress">
   OnProgress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the binary data download progress, 0 to 100</p>
@@ -248,7 +248,7 @@ When starting the DL process, the API state must be NOT connected.
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGARemote_OnStatus" data-uid="AAComm.Extensions.AACommDownloadFPGARemote.OnStatus">
   OnStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>reports the current status of Remote FPGA DL process as string</p>
@@ -284,7 +284,7 @@ When starting the DL process, the API state must be NOT connected.
 
   <h3 id="AAComm_Extensions_AACommDownloadFPGARemote_StartDownloading_AAComm_CommAPI_AAComm_Services_ConnectionData_AAComm_Extensions_AACommRemoteFpgaInfo_" data-uid="AAComm.Extensions.AACommDownloadFPGARemote.StartDownloading(AAComm.CommAPI,AAComm.Services.ConnectionData,AAComm.Extensions.AACommRemoteFpgaInfo)">
   StartDownloading(CommAPI, ConnectionData, AACommRemoteFpgaInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>asynchronous function, starts downloading Remote FPGA
@@ -332,7 +332,7 @@ the API object must be NOT connected!
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L18" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAComm/Extensions/AACommDownloadFPGARemote.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -348,7 +348,7 @@ the API object must be NOT connected!
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

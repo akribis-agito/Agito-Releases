@@ -1,0 +1,21 @@
+// Group A, axes A and B starting at (0, 0), coordinates in counts.
+// A moves to 1000 and returns, B remains at zero.
+ACNCAClear
+ACNCAPushType, 100663295
+ACNCAPushParam, 100
+ACNCAPushParam, 10000
+ACNCAPushParam, 10000
+ACNCAPushParam, 0
+ACNCAPushType, 16908287
+ACNCAPushParam, 1000
+ACNCAPushParam, 0
+ACNCAPushParam, 1000
+ACNCAPushParam, 0
+ACNCAPushType, 16908287
+ACNCAPushParam, 0
+ACNCAPushParam, 0
+ACNCAPushParam, 1000
+ACNCAPushParam, 0
+AMotionMode=11
+BMotionMode=11
+ABegin

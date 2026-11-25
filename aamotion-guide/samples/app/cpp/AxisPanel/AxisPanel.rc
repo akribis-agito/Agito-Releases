@@ -1,0 +1,72 @@
+// 界面布局（Win32 对话框资源，单位为对话框单位）：只描述控件与位置，不含任何逻辑。
+// Visual Studio 中可以用资源编辑器直接拖拽修改。
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+IDD_MAIN DIALOGEX 0, 0, 600, 420
+STYLE DS_SETFONT | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_VISIBLE
+CAPTION "AAMotion 轴控制面板 / Axis Panel"
+FONT 9, "Microsoft YaHei UI"
+BEGIN
+    GROUPBOX        "连接 Connection", -1, 7, 4, 286, 52
+    LTEXT           "Target", -1, 14, 18, 30, 10
+    EDITTEXT        IDC_TARGET, 48, 16, 236, 13, ES_AUTOHSCROLL
+    PUSHBUTTON      "连接", IDC_CONNECT, 14, 35, 50, 15
+    PUSHBUTTON      "断开", IDC_DISCONNECT, 68, 35, 50, 15
+    LTEXT           "未连接", IDC_LINK, 126, 38, 150, 10
+
+    GROUPBOX        "状态 Status", -1, 7, 60, 286, 138
+    LTEXT           "轴", -1, 14, 74, 30, 10
+    COMBOBOX        IDC_AXIS, 48, 72, 40, 80, CBS_DROPDOWNLIST | WS_TABSTOP
+    LTEXT           "Pos", -1, 14, 92, 60, 10
+    LTEXT           "PosRef", -1, 14, 104, 60, 10
+    LTEXT           "MotorOn", -1, 14, 116, 60, 10
+    LTEXT           "MotionStat", -1, 14, 128, 60, 10
+    LTEXT           "InTargetStat", -1, 14, 140, 60, 10
+    LTEXT           "ConFlt", -1, 14, 152, 60, 10
+    LTEXT           "换相", -1, 14, 164, 60, 10
+    LTEXT           "HomingStat", -1, 14, 176, 60, 10
+    LTEXT           "-", IDC_STATUS0 + 0, 80, 92, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 1, 80, 104, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 2, 80, 116, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 3, 80, 128, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 4, 80, 140, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 5, 80, 152, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 6, 80, 164, 206, 10
+    LTEXT           "-", IDC_STATUS0 + 7, 80, 176, 206, 10
+
+    GROUPBOX        "电机 Motor", -1, 7, 202, 286, 32
+    PUSHBUTTON      "换相", IDC_AUTOPHASE, 14, 214, 60, 15
+    PUSHBUTTON      "使能", IDC_MOTORON, 78, 214, 60, 15
+    PUSHBUTTON      "断使能", IDC_MOTOROFF, 142, 214, 60, 15
+
+    GROUPBOX        "运动 Motion", -1, 7, 238, 286, 106
+    LTEXT           "速度", -1, 14, 254, 24, 10
+    EDITTEXT        IDC_SPEED, 40, 252, 50, 13
+    LTEXT           "加速度", -1, 96, 254, 30, 10
+    EDITTEXT        IDC_ACCEL, 128, 252, 56, 13
+    LTEXT           "减速度", -1, 190, 254, 30, 10
+    EDITTEXT        IDC_DECEL, 222, 252, 56, 13
+    LTEXT           "目标 / 距离", -1, 14, 274, 50, 10
+    EDITTEXT        IDC_VALUE, 66, 272, 60, 13
+    PUSHBUTTON      "绝对运动", IDC_MOVEABS, 134, 271, 64, 15
+    PUSHBUTTON      "相对运动", IDC_MOVEREL, 204, 271, 64, 15
+    PUSHBUTTON      "Jog -", IDC_JOGMINUS, 14, 294, 50, 15
+    PUSHBUTTON      "Jog +", IDC_JOGPLUS, 68, 294, 50, 15
+    PUSHBUTTON      "停止 Stop", IDC_STOP, 134, 294, 64, 15
+    PUSHBUTTON      "急停 Abort", IDC_ABORT, 204, 294, 64, 15
+    PUSHBUTTON      "按已配置流程回零", IDC_HOME, 14, 318, 104, 15
+
+    LTEXT           "按钮会让真实轴运动：先在仿真器上试，真机先在 PCSuite 中确认行程与急停。",
+                    -1, 7, 350, 286, 20
+
+    GROUPBOX        "高级功能 Advanced", -1, 300, 4, 293, 68
+    COMBOBOX        IDC_OPERATION, 306, 16, 281, 180, CBS_DROPDOWNLIST | WS_TABSTOP
+    LTEXT           "", IDC_OPERATION_HINT, 306, 32, 281, 20
+    EDITTEXT        IDC_ARGUMENTS, 306, 53, 227, 14, ES_AUTOHSCROLL | WS_TABSTOP
+    PUSHBUTTON      "执行 Run", IDC_RUN_OPERATION, 538, 53, 49, 14
+    GROUPBOX        "日志 Log", -1, 300, 75, 293, 339
+    LISTBOX         IDC_LOG, 306, 87, 281, 321,
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+END

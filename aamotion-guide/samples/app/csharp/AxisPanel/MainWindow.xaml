@@ -1,0 +1,101 @@
+<Window x:Class="AxisPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AAMotion 轴控制面板 / Axis Panel" Width="960" Height="680"
+        FontFamily="Microsoft YaHei UI" FontSize="13">
+    <!-- 界面只描述布局与绑定；数据与命令在 MainViewModel，SDK 调用在 AxisController -->
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="440" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <GroupBox Header="连接 Connection">
+                <StackPanel>
+                    <DockPanel>
+                        <TextBlock Text="Target" Width="60" VerticalAlignment="Center" />
+                        <TextBox Text="{Binding Target}" />
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="连接" Command="{Binding ConnectCommand}" />
+                        <Button Content="断开" Command="{Binding DisconnectCommand}" />
+                        <TextBlock Text="{Binding LinkText}" VerticalAlignment="Center" Margin="8,0,0,6" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="状态 Status">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                        <TextBlock Text="轴" Width="60" VerticalAlignment="Center" />
+                        <ComboBox ItemsSource="{Binding Axes}" SelectedIndex="{Binding AxisIndex}" Width="60" />
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding Status}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,1">
+                                    <TextBlock Text="{Binding Name}" Width="110" />
+                                    <TextBlock Text="{Binding Value}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="电机 Motor">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="换相" Command="{Binding AutoPhaseCommand}" />
+                    <Button Content="使能" Command="{Binding MotorOnCommand}" />
+                    <Button Content="断使能" Command="{Binding MotorOffCommand}" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="运动 Motion">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="速度" VerticalAlignment="Center" Margin="0,0,4,6" />
+                        <TextBox Text="{Binding Speed}" Width="70" />
+                        <TextBlock Text="加速度" VerticalAlignment="Center" Margin="0,0,4,6" />
+                        <TextBox Text="{Binding Accel}" Width="80" />
+                        <TextBlock Text="减速度" VerticalAlignment="Center" Margin="0,0,4,6" />
+                        <TextBox Text="{Binding Decel}" Width="80" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="目标 / 距离" VerticalAlignment="Center" Margin="0,0,4,6" />
+                        <TextBox Text="{Binding Value}" Width="90" />
+                        <Button Content="绝对运动" Command="{Binding MoveAbsCommand}" />
+                        <Button Content="相对运动" Command="{Binding MoveRelCommand}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Jog -" Command="{Binding JogMinusCommand}" />
+                        <Button Content="Jog +" Command="{Binding JogPlusCommand}" />
+                        <Button Content="停止 Stop" Command="{Binding StopCommand}" />
+                        <Button Content="急停 Abort" Command="{Binding AbortCommand}" />
+                    </StackPanel>
+                    <Button Content="按已配置流程回零" Command="{Binding HomeCommand}" HorizontalAlignment="Left" />
+                </StackPanel>
+            </GroupBox>
+
+            <TextBlock TextWrapping="Wrap" Foreground="DarkRed"
+                       Text="按钮会让真实轴运动：先在仿真器上试，真机先在 PCSuite 中确认行程与急停。" />
+        </StackPanel>
+
+        <DockPanel Grid.Column="1" Margin="10,0,0,0">
+            <GroupBox DockPanel.Dock="Top" Header="高级功能 / Advanced">
+                <StackPanel>
+                    <ComboBox x:Name="Operations" SelectionChanged="SelectOperation" />
+                    <TextBlock x:Name="OperationHint" TextWrapping="Wrap" />
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Content="执行 / Run" Click="RunOperation" />
+                        <TextBox x:Name="Arguments" />
+                    </DockPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="日志 Log">
+                <ListBox x:Name="LogList" ItemsSource="{Binding Log}" FontFamily="Consolas, Microsoft YaHei UI" />
+            </GroupBox>
+        </DockPanel>
+    </Grid>
+</Window>

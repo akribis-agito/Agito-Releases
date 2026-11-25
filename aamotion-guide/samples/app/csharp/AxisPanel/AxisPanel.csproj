@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <LangVersion>7.3</LangVersion>
+    <RootNamespace>AxisPanel</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../operations.tsv" Link="operations.tsv" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Agito.AAMotion" Version="$(AAMotionVersion)" />
+  </ItemGroup>
+</Project>

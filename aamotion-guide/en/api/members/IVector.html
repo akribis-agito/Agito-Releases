@@ -1,0 +1,2151 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+      
+      
+        
+          <link rel="alternate" href="../../../api/members/IVector.html" hreflang="zh">
+        
+          <link rel="alternate" href="IVector.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>IVector - AAMotion Programming Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../../../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ivector" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="AAMotion Programming Guide" class="md-header__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion Programming Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IVector
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../api/members/IVector.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="IVector.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Core concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  Cookbook
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../demos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enums
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  Reference lookup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Help and appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="AAMotion Programming Guide" class="md-nav__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion Programming Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../demos/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference lookup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help and appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stopvec-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StopVec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorpause-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorPause
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorcontinue-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorContinue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorlinear-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorLinear
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorlinear-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorLinear
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorarc-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorArc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setvectorparam-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SetVectorParam
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecabstrgt-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecAbsTrgt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecaccel-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecAccel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecarccenter-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecArcCenter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecarcdir-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecArcDir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecdecel-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecDecel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecdposref-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecdPosRef
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecemrgdec-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecEmrgDec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecencratio-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecEncRatio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecjerk-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecJerk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecmemberaxes-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecMemberAxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecmotionstat-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecMotionStat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecpause-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecPause
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecposref-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecPosRef
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecspeed-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecSpeed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectype-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecnumcircles-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecNumCircles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecposfon-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecPosFOn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vecposfdef-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VecPosFDef
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ivector"><code>IVector</code><a class="headerlink" href="#ivector" title="Permanent link">&para;</a></h1>
+<p><strong>SDK 13.0.0 · interface · <code>AAMotion</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Kind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stopvec-1">StopVec</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vectorpause-1">VectorPause</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vectorcontinue-1">VectorContinue</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vectorlinear-1">VectorLinear</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vectorlinear-2">VectorLinear</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vectorarc-1">VectorArc</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#setvectorparam-1">SetVectorParam</a></td>
+<td>method</td>
+</tr>
+<tr>
+<td><a href="#vecabstrgt-1">VecAbsTrgt</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecaccel-1">VecAccel</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecarccenter-1">VecArcCenter</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecarcdir-1">VecArcDir</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecdecel-1">VecDecel</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecdposref-1">VecdPosRef</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecemrgdec-1">VecEmrgDec</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecencratio-1">VecEncRatio</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecjerk-1">VecJerk</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecmemberaxes-1">VecMemberAxes</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecmotionstat-1">VecMotionStat</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecpause-1">VecPause</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecposref-1">VecPosRef</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecspeed-1">VecSpeed</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vectype-1">VecType</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecnumcircles-1">VecNumCircles</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecposfon-1">VecPosFOn</a></td>
+<td>property</td>
+</tr>
+<tr>
+<td><a href="#vecposfdef-1">VecPosFDef</a></td>
+<td>property</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stopvec-1">StopVec<a class="headerlink" href="#stopvec-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">StopVec</span><span class="p">()</span>
+</span></code></pre></div>
+<p><code>VectorPause</code> decelerates along the path and pauses (<code>VecPause=1</code>), <code>VectorContinue</code> resumes (<code>VecPause=0</code>), <code>StopVec</code> stops the vector move.</p>
+<p><a href="../12-vector.html#vector-control">Pause, continue and stop</a></p>
+<p><strong>SDK summary:</strong> Stop vector motion.</p>
+<p><strong>Parameters:</strong> none.</p>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if stopped successfully, otherwise false.</p>
+<p>true when accepted.</p>
+<h2 id="vectorpause-1">VectorPause<a class="headerlink" href="#vectorpause-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">VectorPause</span><span class="p">()</span>
+</span></code></pre></div>
+<p><code>VectorPause</code> decelerates along the path and pauses (<code>VecPause=1</code>), <code>VectorContinue</code> resumes (<code>VecPause=0</code>), <code>StopVec</code> stops the vector move.</p>
+<p><a href="../12-vector.html#vector-control">Pause, continue and stop</a></p>
+<p><strong>SDK summary:</strong> Pause vector motion.</p>
+<p><strong>Parameters:</strong> none.</p>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if paused successfully, otherwise false.</p>
+<p>true when accepted.</p>
+<h2 id="vectorcontinue-1">VectorContinue<a class="headerlink" href="#vectorcontinue-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">VectorContinue</span><span class="p">()</span>
+</span></code></pre></div>
+<p><code>VectorPause</code> decelerates along the path and pauses (<code>VecPause=1</code>), <code>VectorContinue</code> resumes (<code>VecPause=0</code>), <code>StopVec</code> stops the vector move.</p>
+<p><a href="../12-vector.html#vector-control">Pause, continue and stop</a></p>
+<p><strong>SDK summary:</strong> Continue vector motion.</p>
+<p><strong>Parameters:</strong> none.</p>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if continued successfully, otherwise false.</p>
+<p>true when accepted.</p>
+<h2 id="vectorlinear-1">VectorLinear<a class="headerlink" href="#vectorlinear-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">VectorLinear</span><span class="p">(</span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axisRef</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">bPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">cPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">dPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">ePos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">fPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">gPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double?</span><span class="w"> </span><span class="n">hPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">decel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emrgdec</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">smooth</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Moves the axes in the mask in a straight line to their targets at one vector speed, starting and arriving together. The function writes <code>VecMemberAxes</code>, <code>VecType=0</code>, the vector speed values and each target, puts every member in <code>MotionMode=16</code>, then sends <code>Begin</code> from the starting axis. <code>SetVectorParam</code> writes only the speed values.</p>
+<p><a href="../12-vector.html#vector-linear">Linear vector move</a></p>
+<p><strong>SDK summary:</strong> Perform linear vector motion. Note: The vector motion must be initiated from the axis object with the lowest index among the participating axes. For example, for (B, C) use axis B; for (D, E, F) use axis D. Start exercising</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Direction</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axisRef</code></td>
+<td><code>AxisRef</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The mask of the member axes</td>
+</tr>
+<tr>
+<td><code>aPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis A target; null leaves it out</td>
+</tr>
+<tr>
+<td><code>bPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis B target</td>
+</tr>
+<tr>
+<td><code>cPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis C target</td>
+</tr>
+<tr>
+<td><code>dPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis D target</td>
+</tr>
+<tr>
+<td><code>ePos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis E target</td>
+</tr>
+<tr>
+<td><code>fPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis F target</td>
+</tr>
+<tr>
+<td><code>gPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis G target</td>
+</tr>
+<tr>
+<td><code>hPos</code></td>
+<td><code>double?</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Axis H target</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector speed</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector acceleration</td>
+</tr>
+<tr>
+<td><code>decel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector deceleration</td>
+</tr>
+<tr>
+<td><code>emrgdec</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector emergency deceleration</td>
+</tr>
+<tr>
+<td><code>smooth</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The smoothing <code>VecJerk</code> (0–9, a 2^n-cycle moving average)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if executed successfully, otherwise false.</p>
+<p>true when the move started.</p>
+<p><strong>SDK remarks:</strong> A vector move requires its axes to agree on their <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr>. One <code>VecSpeed</code>, <code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target is in that axis's own units, which only means something if they measure the same quantity: every axis must carry the same unit name in the position, velocity and acceleration groups. Different scaling factors under one name are fine — two encoder resolutions on the same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no common vector length, and an axis with <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> off is on controller counts, which does not match a scaled one. Every member is checked in all three groups; the axis this call was made on is one of them. A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code> reaches H), and the axis this call was made on must be one of them and the lowest: it carries the profile and receives <code>Begin</code>, and the controller rejects any other shape. A call that breaks that is refused before anything is written — it returns <code>false</code> and raises <code>MotionController.ErrorOccurred</code>. Axes that disagree make the call return <code>false</code> and command nothing — before any parameter is read from or written to the controller — and raise <code>MotionController.ErrorOccurred</code> with code -1, the name of the method called, and a message naming the axes and the group. Setting <code>MotionController.UseUserUnits</code> to false puts every axis back on controller counts, which always matches.</p>
+<h2 id="vectorlinear-2">VectorLinear<a class="headerlink" href="#vectorlinear-2" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">VectorLinear</span><span class="p">(</span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axisMask</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">decel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emrgdec</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">smooth</span><span class="p">,</span><span class="w"> </span><span class="k">params</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Moves the axes in the mask in a straight line to their targets at one vector speed, starting and arriving together. The function writes <code>VecMemberAxes</code>, <code>VecType=0</code>, the vector speed values and each target, puts every member in <code>MotionMode=16</code>, then sends <code>Begin</code> from the starting axis. <code>SetVectorParam</code> writes only the speed values.</p>
+<p><a href="../12-vector.html#vector-linear">Linear vector move</a></p>
+<p><strong>SDK summary:</strong> Perform linear vector motion. Note: The vector motion must be initiated from the axis object with the lowest index among the participating axes. For example, for (B, C) use axis B; for (D, E, F) use axis D. Start exercising</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Direction</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axisMask</code></td>
+<td><code>AxisRef</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The mask of the member axes</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector speed</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector acceleration</td>
+</tr>
+<tr>
+<td><code>decel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector deceleration</td>
+</tr>
+<tr>
+<td><code>emrgdec</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector emergency deceleration</td>
+</tr>
+<tr>
+<td><code>smooth</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The smoothing <code>VecJerk</code> (0–9, a 2^n-cycle moving average)</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><code>double[]</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The targets, in the order of the mask (A first)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if executed successfully, otherwise false.</p>
+<p>true when the move started.</p>
+<p><strong>SDK remarks:</strong> A vector move requires its axes to agree on their <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr>. One <code>VecSpeed</code>, <code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target is in that axis's own units, which only means something if they measure the same quantity: every axis must carry the same unit name in the position, velocity and acceleration groups. Different scaling factors under one name are fine — two encoder resolutions on the same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no common vector length, and an axis with <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> off is on controller counts, which does not match a scaled one. Every member is checked in all three groups; the axis this call was made on is one of them. A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code> reaches H), and the axis this call was made on must be one of them and the lowest: it carries the profile and receives <code>Begin</code>, and the controller rejects any other shape. A call that breaks that is refused before anything is written — it returns <code>false</code> and raises <code>MotionController.ErrorOccurred</code>. <code>pos</code> carries one position per mask bit, in axis order; a shorter array is refused the same way, before the first write. Axes that disagree make the call return <code>false</code> and command nothing — before any parameter is read from or written to the controller — and raise <code>MotionController.ErrorOccurred</code> with code -1, the name of the method called, and a message naming the axes and the group. Setting <code>MotionController.UseUserUnits</code> to false puts every axis back on controller counts, which always matches.</p>
+<h2 id="vectorarc-1">VectorArc<a class="headerlink" href="#vectorarc-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">VectorArc</span><span class="p">(</span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis1</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis2</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">center1</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">center2</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pos1</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pos2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">circles</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">decel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emrgdec</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">smooth</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Moves along an arc to the end point in the plane of axis1 (X) and axis2 (Y). The centre is an <strong>absolute coordinate</strong> (<code>VecArcCenter</code>). <code>circles</code> adds full turns (<code>VecNumCircles</code>); 0 runs just the arc.</p>
+<p><a href="../12-vector.html#vector-arc">Arc vector move</a></p>
+<p><strong>SDK summary:</strong> Execute arc vector motion. Note: The vector motion must be initiated from the axis object with the lowest index among the participating axes. For example, for (B, C) use axis B; for (D, E, F) use axis D. /// Start exercising</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Direction</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axis1</code></td>
+<td><code>AxisRef</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The first axis of the plane (X)</td>
+</tr>
+<tr>
+<td><code>axis2</code></td>
+<td><code>AxisRef</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The second axis of the plane (Y)</td>
+</tr>
+<tr>
+<td><code>center1</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The centre on the first axis, absolute</td>
+</tr>
+<tr>
+<td><code>center2</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The centre on the second axis, absolute</td>
+</tr>
+<tr>
+<td><code>pos1</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The first axis end</td>
+</tr>
+<tr>
+<td><code>pos2</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The second axis end</td>
+</tr>
+<tr>
+<td><code>dir</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The direction, written to <code>VecArcDir</code>: <strong>0 counter-clockwise, 1 clockwise</strong></td>
+</tr>
+<tr>
+<td><code>circles</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>Extra full turns; 0 runs just the arc</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector speed</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector acceleration</td>
+</tr>
+<tr>
+<td><code>decel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector deceleration</td>
+</tr>
+<tr>
+<td><code>emrgdec</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector emergency deceleration</td>
+</tr>
+<tr>
+<td><code>smooth</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The smoothing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return type:</strong> <code>bool</code></p>
+<p><strong>Returns:</strong> Returns true if executed successfully, otherwise false.</p>
+<p>true when the move started.</p>
+<p><strong>SDK remarks:</strong> A vector move requires its axes to agree on their <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr>. One <code>VecSpeed</code>, <code>VecAccel</code> and <code>VecDecel</code> are applied across the whole move while each axis's target is in that axis's own units, which only means something if they measure the same quantity: every axis must carry the same unit name in the position, velocity and acceleration groups. Different scaling factors under one name are fine — two encoder resolutions on the same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have no common vector length, and an axis with <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> off is on controller counts, which does not match a scaled one. Every member is checked in all three groups; the axis this call was made on is one of them. A move needs at least two members, all among axes A..H (the controller's <code>VecMemberAxes</code> reaches H), and the axis this call was made on must be one of them and the lowest: it carries the profile and receives <code>Begin</code>, and the controller rejects any other shape. A call that breaks that is refused before anything is written — it returns <code>false</code> and raises <code>MotionController.ErrorOccurred</code>. Axes that disagree make the call return <code>false</code> and command nothing — before any parameter is read from or written to the controller — and raise <code>MotionController.ErrorOccurred</code> with code -1, the name of the method called, and a message naming the axes and the group. Setting <code>MotionController.UseUserUnits</code> to false puts every axis back on controller counts, which always matches.</p>
+<h2 id="setvectorparam-1">SetVectorParam<a class="headerlink" href="#setvectorparam-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">SetVectorParam</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">decel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emrgdec</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">smooth</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Moves the axes in the mask in a straight line to their targets at one vector speed, starting and arriving together. The function writes <code>VecMemberAxes</code>, <code>VecType=0</code>, the vector speed values and each target, puts every member in <code>MotionMode=16</code>, then sends <code>Begin</code> from the starting axis. <code>SetVectorParam</code> writes only the speed values.</p>
+<p><a href="../12-vector.html#vector-linear">Linear vector move</a></p>
+<p><strong>SDK summary:</strong> Set vector motion parameters. <code>IVector.VecSpeed</code>, , , , "/&gt;</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Direction</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>speed</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector speed</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector acceleration</td>
+</tr>
+<tr>
+<td><code>decel</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector deceleration</td>
+</tr>
+<tr>
+<td><code>emrgdec</code></td>
+<td><code>double</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The vector emergency deceleration</td>
+</tr>
+<tr>
+<td><code>smooth</code></td>
+<td><code>int</code></td>
+<td>input by value</td>
+<td><code>required</code></td>
+<td>The smoothing <code>VecJerk</code> (0–9, a 2^n-cycle moving average)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return type:</strong> <code>void</code></p>
+<p>true when the move started.</p>
+<h2 id="vecabstrgt-1">VecAbsTrgt<a class="headerlink" href="#vecabstrgt-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecAbsTrgt</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Target distance of the vector path (always positive, for status reporting only; use each axis's RelTrgt or AbsTrgt to define motion). , , The value is a double and carries any User-Units scaling <abbr title="通信层：编码、队列、超时 / The communication layer: encoding, queueing, timeouts">AAComm</abbr> applied to the reply.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecAbsTrgt.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecaccel-1">VecAccel<a class="headerlink" href="#vecaccel-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecAccel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion acceleration.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecAccel.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecarccenter-1">VecArcCenter<a class="headerlink" href="#vecarccenter-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecArcCenter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Arc center point (independent for each axis, defines the center coordinates).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecArcCenter.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecarcdir-1">VecArcDir<a class="headerlink" href="#vecarcdir-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecArcDir</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Arc direction: 0 = counterclockwise (CCW), 1 = clockwise (CW). Set per axis, but only the value on the axis that issues <code>Begin</code> takes effect. Used with <code>IVector.VecArcCenter</code>, which fixes the arc's center and radius.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecArcDir.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecdecel-1">VecDecel<a class="headerlink" href="#vecdecel-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecDecel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion deceleration.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecDecel.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecdposref-1">VecdPosRef<a class="headerlink" href="#vecdposref-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecdPosRef</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Derivative of the vector position reference (derivative of VecPosRef, always positive, for status reporting only, unit same as speed).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecdPosRef.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecemrgdec-1">VecEmrgDec<a class="headerlink" href="#vecemrgdec-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecEmrgDec</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector emergency stop deceleration.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecEmrgDec.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecencratio-1">VecEncRatio<a class="headerlink" href="#vecencratio-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecEncRatio</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Encoder resolution compensation ratio, scaled by each axis's resolution, actual ratio = value/256, range 256(1)~25600(100). Reported by AGD200-class firmware only; an AGM800 does not carry this mnemonic.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecEncRatio.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecjerk-1">VecJerk<a class="headerlink" href="#vecjerk-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecJerk</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion jerk (rate of change of acceleration), defines the time to build up acceleration (or deceleration), in milliseconds.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecJerk.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecmemberaxes-1">VecMemberAxes<a class="headerlink" href="#vecmemberaxes-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecMemberAxes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Axes participating in vector motion (bitwise definition).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecMemberAxes.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecmotionstat-1">VecMotionStat<a class="headerlink" href="#vecmotionstat-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecMotionStat</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion status (read-only).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecMotionStat.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecpause-1">VecPause<a class="headerlink" href="#vecpause-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecPause</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector pause flag, 1: decelerate to stop, 0: resume running.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecPause.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecposref-1">VecPosRef<a class="headerlink" href="#vecposref-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecPosRef</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector current position reference (read-only, always positive, starts at 0, equals VecAbsTrgt at the end of motion).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecPosRef.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vecspeed-1">VecSpeed<a class="headerlink" href="#vecspeed-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">VecSpeed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion speed.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecSpeed.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>double</code></p>
+<h2 id="vectype-1">VecType<a class="headerlink" href="#vectype-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector motion type 0 = linear, 1 = arc, 2 = combined (main axis arc + other axes linear).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecType.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecnumcircles-1">VecNumCircles<a class="headerlink" href="#vecnumcircles-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecNumCircles</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Additional number of circles for vector arc motion.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecNumCircles.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecposfon-1">VecPosFOn<a class="headerlink" href="#vecposfon-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">VecPosFOn</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector position filter switch.</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecPosFOn.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get; set;</code></p>
+<p><strong>Value type:</strong> <code>int</code></p>
+<h2 id="vecposfdef-1">VecPosFDef<a class="headerlink" href="#vecposfdef-1" title="Permanent link">&para;</a></h2>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">AAValueArray</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">VecPosFDef</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>SDK summary:</strong> Vector position filter (read-only).</p>
+<p><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/10-motion/10-motion-mode-vector/VecPosFDef.md">Keyword, units and value contract</a></p>
+<p><strong>Access:</strong> <code>get;</code></p>
+<p><strong>Value type:</strong> <code>AAValueArray&lt;double&gt;</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../assets/data/single-demos.js"></script>
+      
+        <script src="../../../assets/js/widgets.js"></script>
+      
+        <script src="../../../assets/js/tools.js"></script>
+      
+        <script src="../../../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<Project>
+  <!-- Off for customers. The guide build sets AAMotionFromTree to the repository's AAMotion.csproj, so the samples
+       compile against the AAMotion of this tree, which is not on nuget.org yet. -->
+  <ItemGroup Condition="'$(AAMotionFromTree)' != ''">
+    <PackageReference Remove="Agito.AAMotion" />
+    <ProjectReference Include="$(AAMotionFromTree)" />
+  </ItemGroup>
+</Project>

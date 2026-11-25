@@ -1,0 +1,12 @@
+<Project>
+  <Import Project="../../../Directory.Build.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Agito.AAMotion" Version="$(AAMotionVersion)" />
+    <Compile Include="$(MSBuildThisFileDirectory)Demo.cs" />
+  </ItemGroup>
+</Project>

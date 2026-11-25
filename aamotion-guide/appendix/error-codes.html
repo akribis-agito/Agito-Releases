@@ -1,0 +1,3722 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="../help/related-docs.html">
+      
+      
+        <link rel="next" href="c-functions.html">
+      
+      
+        
+          <link rel="alternate" href="error-codes.html" hreflang="zh">
+        
+          <link rel="alternate" href="../en/appendix/error-codes.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>错误码 - AAMotion 编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#错误码" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../index.html" title="AAMotion 编程手册" class="md-header__button md-logo" aria-label="AAMotion 编程手册" data-md-component="logo">
+      
+  <img src="../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion 编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              错误码
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="error-codes.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/appendix/error-codes.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  核心概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  实战案例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../demos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  枚举
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  参考查询
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  帮助与附录
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion 编程手册" class="md-nav__button md-logo" aria-label="AAMotion 编程手册" data-md-component="logo">
+      
+  <img src="../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion 编程手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实战案例
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../demos/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../api/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考查询
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    帮助与附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    帮助与附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/diagnose.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 12H3.5L6 9.5 3.5 7H11V3l1-1 1 1v4h5l2.5 2.5L18 12h-5v8a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    诊断流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/server-logs.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 12c2.5 0 4.5 2 4.5 4.5 0 .88-.25 1.71-.69 2.4l3.08 3.1L21 23.39l-3.12-3.07c-.69.43-1.51.68-2.38.68-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5M5 3h14c1.11 0 2 .89 2 2v8.03c-.5-.8-1.19-1.49-2-2.03V5H5v14h4.5c.31.75.76 1.42 1.31 2H5c-1.11 0-2-.89-2-2V5c0-1.11.89-2 2-2m2 4h10v2H7zm0 4h5.03c-.8.5-1.49 1.19-2.03 2H7zm0 4h2.17c-.11.5-.17 1-.17 1.5v.5H7z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    读懂 AAComm 日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/safety.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    安全检查清单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/cheatsheet.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 1H3c-1.1 0-2 .9-2 2v12l3-3h5v-1c0-2.2 1.79-4 4-4V3c0-1.1-.9-2-2-2m0 3H9.5c-.34 1.19-.96 2.3-1.82 3.26l-.02.02 1.26 1.25-.37 1.01L7 8l-2.5 2.5-.69-.73 2.53-2.49A8.6 8.6 0 0 1 4.86 5h.99c.31.6.69 1.17 1.15 1.68A7.7 7.7 0 0 0 8.57 4H3V3h3.5V2h1v1H11zm10 5h-8c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h7l3 3V11c0-1.1-.9-2-2-2m-1.37 10-.85-2.25h-3.56L14.38 19h-1.5l3.37-9h1.5l3.38 9zM17 12l1.22 3.25h-2.43z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    语言对照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/faq.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 15H6l-4 4V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1m5-6v14l-4-4H8a1 1 0 0 1-1-1v-1h14V8h1a1 1 0 0 1 1 1M8.19 4c-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77l.01.03h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91C7.11 9.08 7 9.5 7 10h2c0-.31.04-.56.13-.74s.26-.36.51-.52c.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82C9.85 4.23 9.12 4 8.19 4M7 11v2h2v-2zm6 2h2v-2h-2zm0-9v6h2V4z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/glossary.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.81 2C4.83 2.09 4 3 4 4v16c0 1.05.95 2 2 2h12c1.05 0 2-.95 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H5.81M12 13h1a1 1 0 0 1 1 1v4h-1v-2h-1v2h-1v-4a1 1 0 0 1 1-1m0 1v1h1v-1zm3 1h3v1l-2 3h2v1h-3v-1l2-3h-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    术语表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/downloads.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    下载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/related-docs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    相关文档与下载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="error-codes.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    错误码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="c-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C 函数表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../help/diagnose.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    帮助与附录
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="错误码">错误码<a class="headerlink" href="#错误码" title="Permanent link">&para;</a></h1>
+<p>下表收录 SDK 的错误码。通信层的 4000–4025 号错误见<a href="../tools/error-lookup.html">通信与服务器错误</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">自动生成</p>
+<p>本页由 <code>tools/gen_appendix.py</code> 从 SDK 13.0.0 的发布文件生成，请勿手工修改。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">错误码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>消息过长</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>首字母轴名称非法</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>语法错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>助记符太短</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>数组索引需要右括号</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>数组索引值无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>数组索引值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>分配的值无效：字符不当或类型不匹配</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>分配值超出32位范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>“]”之后的字符无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>意外字符。使用“=”或“[”</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>助记符太长</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>关键字表中未找到的助记符</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>分配值超出此关键字取值范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>收到字节的数量超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>保留，联系Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>通电后记录的数据无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>仍在采集，无法上传或开始采集</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>无法开始长度为0或负数的数据采集</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>数组索引为负数，或者为零，或者大于此关键字允许的最大索引值</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>参数赋值或函数调用在运动过程中无效。（对于非轴相关的关键字，错误可能来自其他正在运动的轴）</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>参数赋值或函数调用在伺服使能时无效。（对于非轴相关的关键字，错误可能来自其他正在伺服使能的轴）</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>试图将值分配给只读参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>此关键字需要数组索引</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>此关键字不需要数组索引</td>
+</tr>
+<tr>
+<td style="text-align: right;">26</td>
+<td>在保存到闪存的过程中，无法解锁</td>
+</tr>
+<tr>
+<td style="text-align: right;">27</td>
+<td>无法清除闪存</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td>写入闪存错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">29</td>
+<td>闪存已满，并非所有参数都已保存</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td>加载参数时，闪存校验和验证失败</td>
+</tr>
+<tr>
+<td style="text-align: right;">31</td>
+<td>尚未执行自动换相，无法使能电机</td>
+</tr>
+<tr>
+<td style="text-align: right;">32</td>
+<td>从闪存加载参数时，遇到意外数据</td>
+</tr>
+<tr>
+<td style="text-align: right;">33</td>
+<td>无法开始采集，因为请求的一个或多个参数是一个函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">34</td>
+<td>“参数数量*（乘以）RecLength”超过记录数组大小</td>
+</tr>
+<tr>
+<td style="text-align: right;">35</td>
+<td>RecTrigMask=0将无法开始数据采集</td>
+</tr>
+<tr>
+<td style="text-align: right;">36</td>
+<td>在开始采集之前，RecStop被激活</td>
+</tr>
+<tr>
+<td style="text-align: right;">37</td>
+<td>RecTrigSrc是一个函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">38</td>
+<td>在触发之前，RecStop停止了采集。数据不完整</td>
+</tr>
+<tr>
+<td style="text-align: right;">39</td>
+<td>电机未使能，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">40</td>
+<td>该固件版本尚不支持此运动模式</td>
+</tr>
+<tr>
+<td style="text-align: right;">41</td>
+<td>已处于“运动中”状态，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">42</td>
+<td>在固件下载过程中，某行校验和错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">43</td>
+<td>在固件下载过程中，接收到一个意外的字符</td>
+</tr>
+<tr>
+<td style="text-align: right;">44</td>
+<td>下载文件中某行字符数错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">45</td>
+<td>下载文件中某地址超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">46</td>
+<td>输入密码错误，下载固件进程中止</td>
+</tr>
+<tr>
+<td style="text-align: right;">47</td>
+<td>固件下载过程中超时</td>
+</tr>
+<tr>
+<td style="text-align: right;">48</td>
+<td>试图以无效的运动模式值开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">49</td>
+<td>被采集的参数索引值错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>此函数型关键字需要参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">51</td>
+<td>此函数型关键字不需要参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">52</td>
+<td>用户程序的数字堆栈已满</td>
+</tr>
+<tr>
+<td style="text-align: right;">53</td>
+<td>试图从空堆栈中弹出数据。请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">54</td>
+<td>指向数字堆栈的指针超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">55</td>
+<td>显示的用户程序线程超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">56</td>
+<td>堆栈中没有足够的数据进行所需的操作</td>
+</tr>
+<tr>
+<td style="text-align: right;">57</td>
+<td>数学函数调用时除数为0</td>
+</tr>
+<tr>
+<td style="text-align: right;">58</td>
+<td>数学函数的结果超出允许的数字范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">59</td>
+<td>试图访问堆栈全区域以外的位置</td>
+</tr>
+<tr>
+<td style="text-align: right;">60</td>
+<td>请求的操作不存在</td>
+</tr>
+<tr>
+<td style="text-align: right;">61</td>
+<td>负数幂尚未实现</td>
+</tr>
+<tr>
+<td style="text-align: right;">62</td>
+<td>有负值进入平方根算式</td>
+</tr>
+<tr>
+<td style="text-align: right;">63</td>
+<td>数学函数尚未实现</td>
+</tr>
+<tr>
+<td style="text-align: right;">64</td>
+<td>数据采集触发源不能是函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">65</td>
+<td>采集的参数来自不可用的轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">66</td>
+<td>采集的参数CAN代码超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">67</td>
+<td>采集间隔超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">68</td>
+<td>采集触发源来自不可用的轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">69</td>
+<td>采集触发源的参数CAN代码超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">70</td>
+<td>采集触发源的参数索引值错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">71</td>
+<td>采集触发位置超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">72</td>
+<td>数据采集触发方式超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">73</td>
+<td>ECAM表中存于GenData[]的某个索引值为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">74</td>
+<td>ECAM表索引值不是按递增的顺序排列</td>
+</tr>
+<tr>
+<td style="text-align: right;">75</td>
+<td><abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>（主轴）间距含非法值0</td>
+</tr>
+<tr>
+<td style="text-align: right;">76</td>
+<td>ECAM循环次数含非法值0</td>
+</tr>
+<tr>
+<td style="text-align: right;">77</td>
+<td>电子凸轮、齿轮主轴、虚拟编码器或龙门反馈的源参数CAN代码超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">78</td>
+<td>电子凸轮、齿轮主轴、虚拟编码器或龙门反馈的源参数来自无效的轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">79</td>
+<td>电子凸轮、齿轮主轴、虚拟编码器或龙门反馈的源参数索引值错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">80</td>
+<td>电子凸轮、齿轮的主轴或虚拟编码器的源参数不能是函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">81</td>
+<td>ECAM请求的主轴数据范围超出了+/-2,000,000,000的限值</td>
+</tr>
+<tr>
+<td style="text-align: right;">82</td>
+<td>ECAM表包含至少两个或以上连续值，它们彼此差异太大</td>
+</tr>
+<tr>
+<td style="text-align: right;">83</td>
+<td>误差补偿激活时，不能给位置（或位置指令）赋值</td>
+</tr>
+<tr>
+<td style="text-align: right;">84</td>
+<td>自动增益激活时，不能给位置（或位置指令）赋值</td>
+</tr>
+<tr>
+<td style="text-align: right;">85</td>
+<td>输入整型激活时，在使能状态下不能给位置（或位置指令）赋值</td>
+</tr>
+<tr>
+<td style="text-align: right;">86</td>
+<td>浪涌继电器尚未接通，无法使能电机</td>
+</tr>
+<tr>
+<td style="text-align: right;">87</td>
+<td>CalcFilters失败，无法使能电机</td>
+</tr>
+<tr>
+<td style="text-align: right;">88</td>
+<td>速度滤波器1超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">89</td>
+<td>速度滤波器2超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">90</td>
+<td>速度滤波器3超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">91</td>
+<td>速度滤波器4超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">92</td>
+<td>速度滤波器5超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">93</td>
+<td>速度滤波器6超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">94</td>
+<td>速度滤波器7超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">95</td>
+<td>位置滤波器1超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">96</td>
+<td>位置滤波器2超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">97</td>
+<td>位置滤波器3超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">98</td>
+<td>位置滤波器4超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">99</td>
+<td>位置滤波器5超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">100</td>
+<td>位置滤波器6超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">101</td>
+<td>位置滤波器7超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">102</td>
+<td>滤波器被修改，且CalcFilters未执行，无法使能电机</td>
+</tr>
+<tr>
+<td style="text-align: right;">103</td>
+<td>CalcIden无法执行计算，因为采集数据长度超出了最小或最大范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">104</td>
+<td>由于采集参数不是两个，CalcIden无法执行计算</td>
+</tr>
+<tr>
+<td style="text-align: right;">105</td>
+<td>因为FIFO已满，无法压入数据</td>
+</tr>
+<tr>
+<td style="text-align: right;">106</td>
+<td>目前在FIFO模式下，加速度不能小于1/Ts</td>
+</tr>
+<tr>
+<td style="text-align: right;">107</td>
+<td>FIFO是空的，无法启动FIFO运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">108</td>
+<td>FIFO中的第一段运动未定义FIFO周期时间，无法启动FIFO运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">109</td>
+<td>正在执行回零，无法启动用户请求的运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">110</td>
+<td>闪存中没有用户程序</td>
+</tr>
+<tr>
+<td style="text-align: right;">111</td>
+<td>此关键字只能在用户程序中使用</td>
+</tr>
+<tr>
+<td style="text-align: right;">112</td>
+<td>用户程序调用栈已满</td>
+</tr>
+<tr>
+<td style="text-align: right;">113</td>
+<td>用户程序调用栈为空</td>
+</tr>
+<tr>
+<td style="text-align: right;">114</td>
+<td>电机制动器锁定时，无法启动用户请求的运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">115</td>
+<td>试图做间接分配到未知的数组中。检查IndirectArray值</td>
+</tr>
+<tr>
+<td style="text-align: right;">116</td>
+<td>试图在所选数组的索引范围外执行间接分配。检查IndirectIndex值</td>
+</tr>
+<tr>
+<td style="text-align: right;">117</td>
+<td>试图压入允许范围以外的CNC FIFO类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">118</td>
+<td>试图压入CNC FIFO类型，但参与轴的数量超出允许范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">119</td>
+<td>试图压入CNC FIFO类型，但至少一个参与轴超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">120</td>
+<td>试图压入CNC FIFO类型，但参与的轴没有正确分配</td>
+</tr>
+<tr>
+<td style="text-align: right;">121</td>
+<td>试图压入CNC FIFO类型，但参与轴与正在使用的轴重复</td>
+</tr>
+<tr>
+<td style="text-align: right;">122</td>
+<td>试图压入CNC FIFO类型，但上一段的参数压入尚未完成</td>
+</tr>
+<tr>
+<td style="text-align: right;">123</td>
+<td>试图压入CNC FIFO类型，但这时候CNC FIFO没有足够的空间</td>
+</tr>
+<tr>
+<td style="text-align: right;">124</td>
+<td>试图将参数压入CNC <abbr title="先进先出队列 / First in, first out queue">FIFO</abbr>，但没有预先定义的程序段接受此参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">125</td>
+<td>FIFO是空的，无法执行请求的操作</td>
+</tr>
+<tr>
+<td style="text-align: right;">126</td>
+<td>程序段正在使用（在运动中），因此无法将其删除</td>
+</tr>
+<tr>
+<td style="text-align: right;">127</td>
+<td>试图开始CNC运动，但它已经在使用中</td>
+</tr>
+<tr>
+<td style="text-align: right;">128</td>
+<td>试图启动CNC运动，但FIFO是空的</td>
+</tr>
+<tr>
+<td style="text-align: right;">129</td>
+<td>压入的CNC程序段含有超出范围的速度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">130</td>
+<td>压入的CNC程序段存在半径不匹配（从中心到起始点与从中心到结束点）</td>
+</tr>
+<tr>
+<td style="text-align: right;">131</td>
+<td>压入的CNC程序段含有超出范围的方向参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">132</td>
+<td>压入的CNC程序段含有超出范围的间距参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">133</td>
+<td>压入的CNC程序段含有超出范围的延迟参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">134</td>
+<td>压入的CNC程序段含有超出范围的速度百分比参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">135</td>
+<td>压入的CNC程序段含有超出范围的加速度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">136</td>
+<td>压入的CNC程序段含有超出范围的减速度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">137</td>
+<td>压入的CNC程序段含有超出范围的加加速度（平滑因子）参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">138</td>
+<td>压入的CNC程序段含有超出范围的拐角半径（或拐角误差）参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">139</td>
+<td>这种类型的程序段不能作为CNC运动的第一个运动程序段</td>
+</tr>
+<tr>
+<td style="text-align: right;">140</td>
+<td>这种类型的程序段仅可作为CNC运动的第一个运动程序段</td>
+</tr>
+<tr>
+<td style="text-align: right;">141</td>
+<td>第一个程序段是设置位置，但它并没有设给相关的参与轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">142</td>
+<td>第一个程序段是设置位置，但其值与当前位置不匹配</td>
+</tr>
+<tr>
+<td style="text-align: right;">143</td>
+<td>圆弧运动段中心定义导致中心到起始点和结束点的半径不相等</td>
+</tr>
+<tr>
+<td style="text-align: right;">144</td>
+<td>螺旋运动段中心定义导致中心到起始点和结束点的半径不相等</td>
+</tr>
+<tr>
+<td style="text-align: right;">145</td>
+<td>螺旋运动段定义创建了不一致的结束点</td>
+</tr>
+<tr>
+<td style="text-align: right;">146</td>
+<td>RJ45 RS232接收中发生错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">147</td>
+<td>Micro USB RS232接收中发生错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">148</td>
+<td>保留，联系Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">149</td>
+<td>保留，联系Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">150</td>
+<td>往复运动UPM功能未完成，因为运动时长加上UPMRptTime超出内存范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">151</td>
+<td>Central-i远程单元通讯错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">152</td>
+<td>检测到的Central-i设备类型与用户输入的类型不相符</td>
+</tr>
+<tr>
+<td style="text-align: right;">153</td>
+<td>Central-i传输缓冲区已满</td>
+</tr>
+<tr>
+<td style="text-align: right;">154</td>
+<td>Central-i背景离线消息超时</td>
+</tr>
+<tr>
+<td style="text-align: right;">155</td>
+<td>未知</td>
+</tr>
+<tr>
+<td style="text-align: right;">156</td>
+<td>不在位置控制模式下无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">157</td>
+<td>无法在速度控制模式下使用GoToPosMode指令。仅能在电流控制模式下使用</td>
+</tr>
+<tr>
+<td style="text-align: right;">158</td>
+<td>请求的连接已处于活动状态</td>
+</tr>
+<tr>
+<td style="text-align: right;">159</td>
+<td>此请求仅适用于已激活（连接）的Central-i端口</td>
+</tr>
+<tr>
+<td style="text-align: right;">160</td>
+<td>不支持控制器接收到的第一个以太网包TCP/IP数据字节（它用于表示消息类型，例如：0x0为一般消息，0x1为CNC压入的程序段，0x2为批量消息，0x41/0x61为字符“A”/“a”的ASCII码，用于支持以太网ACSII消息类型）。如果该错误间歇性的发生，可能是因为接收到的数据字节受到损坏。请检查您是否使用了屏蔽电缆</td>
+</tr>
+<tr>
+<td style="text-align: right;">161</td>
+<td>最终目标位置超出了软件设定的位置限制RevPlim或是FwdPlim，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">162</td>
+<td>当处于RLS或是FLS并且运动方向是朝向限位时，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">163</td>
+<td>无法设定超出软件位置限制（RevPLim到FwdPLim之间）的位置（或位置指令）值</td>
+</tr>
+<tr>
+<td style="text-align: right;">164</td>
+<td>超出软件位置限制，无法在此运动模式下开始运动。请切换到PTP模式、点动模式或者速度摇杆模式离开软件限位</td>
+</tr>
+<tr>
+<td style="text-align: right;">165</td>
+<td>找不到请求的任务编号</td>
+</tr>
+<tr>
+<td style="text-align: right;">166</td>
+<td>找不到请求的函数编号</td>
+</tr>
+<tr>
+<td style="text-align: right;">167</td>
+<td>此线程已运行时，不允许操作</td>
+</tr>
+<tr>
+<td style="text-align: right;">168</td>
+<td>当任何线程运行时，不允许操作</td>
+</tr>
+<tr>
+<td style="text-align: right;">169</td>
+<td>无法运行用户程序：已到达用户程序的末尾</td>
+</tr>
+<tr>
+<td style="text-align: right;">170</td>
+<td>无法将放大器连接到此端口</td>
+</tr>
+<tr>
+<td style="text-align: right;">171</td>
+<td>错误的用户程序校验和</td>
+</tr>
+<tr>
+<td style="text-align: right;">172</td>
+<td>CNC程序段内UserParam/GenData分配的索引超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">173</td>
+<td>CNC程序段内DOutPort分配的轴超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">174</td>
+<td>CNC程序段内DOutPort分配值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">175</td>
+<td>设备非放大器，关键字使用不相关</td>
+</tr>
+<tr>
+<td style="text-align: right;">176</td>
+<td>放大器电流与DSP支持的电流不同</td>
+</tr>
+<tr>
+<td style="text-align: right;">177</td>
+<td>在用户程序或绘制控制下载过程中，接收到一个意外的字符</td>
+</tr>
+<tr>
+<td style="text-align: right;">178</td>
+<td>已查询Func属性类型的关键字，但是AllStat不支持</td>
+</tr>
+<tr>
+<td style="text-align: right;">179</td>
+<td>当前连接类型不支持所要执行的关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">180</td>
+<td>控制器接收的字节总数与预期字节数不匹配</td>
+</tr>
+<tr>
+<td style="text-align: right;">181</td>
+<td>接收参数的数量与指定类型不匹配</td>
+</tr>
+<tr>
+<td style="text-align: right;">182</td>
+<td>用户程序尝试调用事件函数时，发现调用栈已满</td>
+</tr>
+<tr>
+<td style="text-align: right;">183</td>
+<td>找不到所请求的事件函数编号</td>
+</tr>
+<tr>
+<td style="text-align: right;">184</td>
+<td>此关键字不支持作为批量消息的一部分</td>
+</tr>
+<tr>
+<td style="text-align: right;">185</td>
+<td>不允许将函数型关键字压入堆栈</td>
+</tr>
+<tr>
+<td style="text-align: right;">186</td>
+<td>远程放大器的继电器仍然处于断开状态</td>
+</tr>
+<tr>
+<td style="text-align: right;">187</td>
+<td>无法在电流控制模式下使用GoToForeMode指令，只能在位置控制模式或速度控制模式下使用</td>
+</tr>
+<tr>
+<td style="text-align: right;">188</td>
+<td>压入的CNC程序段含有超出范围的完整循环次数参数（必须为0或正数）</td>
+</tr>
+<tr>
+<td style="text-align: right;">189</td>
+<td>CNC运动的首段不能是绝对运动模式</td>
+</tr>
+<tr>
+<td style="text-align: right;">190</td>
+<td>此CNC模式正在运动，不能清除CNC <abbr title="先进先出队列 / First in, first out queue">FIFO</abbr></td>
+</tr>
+<tr>
+<td style="text-align: right;">191</td>
+<td>CNC运动中不能转为电流或力控模式</td>
+</tr>
+<tr>
+<td style="text-align: right;">192</td>
+<td>VecMemberAxes参数必须包括用于开始矢量运动的轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">193</td>
+<td>VecMemberAxes定义的其中一个矢量运动参与轴的电机没有被使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">194</td>
+<td>VecMemberAxes定义的其中一个矢量运动参与轴没有处于矢量运动模式</td>
+</tr>
+<tr>
+<td style="text-align: right;">195</td>
+<td>VecMemberAxes定义的其中一个矢量运动参与轴已经处在运动中</td>
+</tr>
+<tr>
+<td style="text-align: right;">196</td>
+<td>矢量运动参与轴不够（VecMemberAxes必须定义至少两个参与轴）</td>
+</tr>
+<tr>
+<td style="text-align: right;">197</td>
+<td>矢量圆弧模式仅适用于只有两个参与轴的情况</td>
+</tr>
+<tr>
+<td style="text-align: right;">198</td>
+<td>矢量圆弧运动中心定义导致中心到起始点和结束点的半径不相等</td>
+</tr>
+<tr>
+<td style="text-align: right;">199</td>
+<td>参与轴的最终目标位置超出了软件设置的位置限制RevPLim或FWdPLim，或是圆弧运动的参与轴正处在位置限制之外，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td>当参与轴处于RLS或是FLS并且运动方向是朝向限位时，或是圆弧运动的参与轴正处于限位开关位置时，无法开始运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">201</td>
+<td>CNC程序段内UserParam/GenData的数组选择超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">202</td>
+<td>CNC程序段内UserParam/GenData的轴选择超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">203</td>
+<td>Wait Array CNC程序段的触发类型超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">204</td>
+<td>最后一个运动段的结束速度非零，此段无法继续</td>
+</tr>
+<tr>
+<td style="text-align: right;">205</td>
+<td>压入的CNC程序段含有超出范围的拐角类型参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">206</td>
+<td>压入的CNC程序段含有超出范围的拐角轴加速度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">207</td>
+<td>压入的CNC程序段含有超出范围的拐角最小角度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">208</td>
+<td>未使用设定初始位置程序段，在首个直线运动程序段之后不允许接上自动拐角运动程序段</td>
+</tr>
+<tr>
+<td style="text-align: right;">209</td>
+<td>自动拐角运动程序段必须包含所有预留参数，且值为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">210</td>
+<td>自动拐角运动程序段必须出现在两轴直线运动程序段之后（忽略非运动段）</td>
+</tr>
+<tr>
+<td style="text-align: right;">211</td>
+<td>调用堆栈中的参数不足。请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">212</td>
+<td>PeakTime、ContCL或PeakCL不得为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">213</td>
+<td>该产品不支持此编码器类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">214</td>
+<td>当Central-i与端口的通讯处于活动状态时，不允许修改CIDeviceType或AmpType的值。请转到“配置/<abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr>”页面断开端口连接，然后修改参数并重新连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">215</td>
+<td>在PStatParams中输入的值无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">216</td>
+<td>Central-i设备类型和AmpType设定不匹配。Central-i设备类型是PWM放大板，但AmpType不是PWM放大板；或者，设备类型是适配器，但AmpType不是模拟量命令</td>
+</tr>
+<tr>
+<td style="text-align: right;">217</td>
+<td>输入整型频率超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">218</td>
+<td>输入整型参数不匹配，请查看手册</td>
+</tr>
+<tr>
+<td style="text-align: right;">219</td>
+<td>未激活误差补偿，则无法执行事件校正</td>
+</tr>
+<tr>
+<td style="text-align: right;">220</td>
+<td>第一个误差补偿使用的编码器不是此轴的主编码器，无法执行事件校正</td>
+</tr>
+<tr>
+<td style="text-align: right;">221</td>
+<td>其他轴未使能或处于运动状态，无法执行事件校正</td>
+</tr>
+<tr>
+<td style="text-align: right;">222</td>
+<td>其他轴未使用它们的主编码器，无法执行事件校正</td>
+</tr>
+<tr>
+<td style="text-align: right;">223</td>
+<td>间接访问控制器参数（指针）来进行读取，但没有指向合法的参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">224</td>
+<td>数字堆栈没有足够的自由空间用于返回参数。请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">225</td>
+<td>不允许使用带有输入和/或输出参数的事件函数。请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">226</td>
+<td>压入的CNC程序段中含有超出范围的拐角半径方法参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">227</td>
+<td>压入的CNC程序段中含有超出范围的轴加速度限制类型参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">228</td>
+<td>压入的CNC程序段中含有超出范围的最大轴加速度参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">229</td>
+<td>压入的CNC程序段中含有超出范围的轴速度跳转模式参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">230</td>
+<td>压入的CNC程序段中含有超出范围的轴速度最大跳转参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">231</td>
+<td>用户1调试模式，控制器收到一个0x13命令，所携带的关键字在命令0x13内不受支持</td>
+</tr>
+<tr>
+<td style="text-align: right;">232</td>
+<td>用户1的固件版本不支持此关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">233</td>
+<td>仅用户1的特殊产品支持此关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">234</td>
+<td>被控对象模型至少有一个数据是非法的</td>
+</tr>
+<tr>
+<td style="text-align: right;">235</td>
+<td>下载固件只能在通过以太网连接的情况下进行</td>
+</tr>
+<tr>
+<td style="text-align: right;">236</td>
+<td>没有用于往复运动UPM计算的有效被控对象模型（PlantModel[]）</td>
+</tr>
+<tr>
+<td style="text-align: right;">237</td>
+<td>该固件版本尚不支持此功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">238</td>
+<td>由于等待远程单元发送或接收数据超时，导致远程CAN访问失败</td>
+</tr>
+<tr>
+<td style="text-align: right;">239</td>
+<td>远程CAN访问回复了一个错误（错误代码存储在RemoteCANVal中）</td>
+</tr>
+<tr>
+<td style="text-align: right;">240</td>
+<td>远程CAN访问接收到一个无法解析的回复</td>
+</tr>
+<tr>
+<td style="text-align: right;">241</td>
+<td>所有轴的连续电流限制（ContCL）的总和过高（大于28,000mA）</td>
+</tr>
+<tr>
+<td style="text-align: right;">242</td>
+<td>该控制器型号不支持此功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">243</td>
+<td>下载FPGA时，遇到未知的FPGA类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">244</td>
+<td>检测到FPGA存在故障。尝试重新下载FPGA代码，或咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">245</td>
+<td>此设备的FPGA与固件不匹配，请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">246</td>
+<td><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr>/矢量位置滤波器超出了滤波器的定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">247</td>
+<td>“修改CNC位置滤波器”程序段内的参数（其中一个：启用/禁用、滤波器类型、滤波器参数）超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">248</td>
+<td>这个通讯通道因LCU模式而被阻断</td>
+</tr>
+<tr>
+<td style="text-align: right;">249</td>
+<td>尝试启动CNCB，但该产品不支持此功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">250</td>
+<td>本设备中的FPGA与此新固件（支持大型数组）不匹配，请联系Agito客服获取新的FPGA版本</td>
+</tr>
+<tr>
+<td style="text-align: right;">251</td>
+<td>您正在双闪存板上运行单闪存固件。请下载正确的版本</td>
+</tr>
+<tr>
+<td style="text-align: right;">252</td>
+<td>您正在单闪存板上运行双闪存固件。请下载正确的版本</td>
+</tr>
+<tr>
+<td style="text-align: right;">253</td>
+<td>BuffTime[]第一个输入值不能为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">254</td>
+<td>在BuffTime[]中无法找到等于0的值来指示有效值的结束</td>
+</tr>
+<tr>
+<td style="text-align: right;">255</td>
+<td>BuffTime[]必须包含依次递增的时间值</td>
+</tr>
+<tr>
+<td style="text-align: right;">256</td>
+<td>循环时间长于内部缓冲区中的可用内存</td>
+</tr>
+<tr>
+<td style="text-align: right;">257</td>
+<td>主轴（用于发送BuffCalc）必须是参与轴（由BuffCalc[<index>]的索引定义）</td>
+</tr>
+<tr>
+<td style="text-align: right;">258</td>
+<td>Begin命令必须发送到在BuffCalc中定义的主轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">259</td>
+<td>一个或多个样条插补原始数据参数（BuffTime、BuffPos、BuffSplineMod等）被修改（或在通电后，或从闪存加载后）但是BuffCalc未执行，也没有更新内部缓冲区</td>
+</tr>
+<tr>
+<td style="text-align: right;">260</td>
+<td>一个或多个在BuffCalc中定义的参与轴尚未准备好进行运动（必须伺服使能，同时MotionMode=18并且未处于“运动中”状态）</td>
+</tr>
+<tr>
+<td style="text-align: right;">261</td>
+<td>一个或多个在BuffCalc中定义的参与轴已经是正在运动中的另一个样条插补运动的参与轴</td>
+</tr>
+<tr>
+<td style="text-align: right;">262</td>
+<td>圆弧中心定义导致中心到圆弧起点和圆弧终点的半径不相等</td>
+</tr>
+<tr>
+<td style="text-align: right;">263</td>
+<td>矢量圆弧方向参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">264</td>
+<td>矢量速度参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">265</td>
+<td>圆弧含有超出范围的完整循环次数参数（必须为0或正数）</td>
+</tr>
+<tr>
+<td style="text-align: right;">266</td>
+<td>矢量运动的主轴必须是最小的参与轴（A &lt; B &lt; C …）</td>
+</tr>
+<tr>
+<td style="text-align: right;">267</td>
+<td>ModRev值超出软件（SW）位置范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">268</td>
+<td>此设备的FPGA与新固件不匹配（新的动态制动实现方法），请联系Agito客服获取更新的FPGA版本</td>
+</tr>
+<tr>
+<td style="text-align: right;">269</td>
+<td>运动速度设置不能高于MaxVel</td>
+</tr>
+<tr>
+<td style="text-align: right;">270</td>
+<td>MaxVel不能设置得低于运动速度</td>
+</tr>
+<tr>
+<td style="text-align: right;">271</td>
+<td>运动指令所需的最大速度（Speed）高于MaxVel的限制，无法启动运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">272</td>
+<td>EtherCAT未同步或未处于合适的运动模式（CSP）</td>
+</tr>
+<tr>
+<td style="text-align: right;">273</td>
+<td>试图压入一个新项目到位置跟踪模式的内部FIFO缓冲区，但缓冲区已满</td>
+</tr>
+<tr>
+<td style="text-align: right;">274</td>
+<td>三维立体圆弧必须具有3个非共线点来定义圆弧的轨迹</td>
+</tr>
+<tr>
+<td style="text-align: right;">275</td>
+<td>ConFlt快照参数CAN代码无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">276</td>
+<td>ConFlt快照参数轴号无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">277</td>
+<td>ConFlt快照参数索引值无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">278</td>
+<td>ConFlt快照参数不能是函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">279</td>
+<td>ProgSnap快照参数CAN代码无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">280</td>
+<td>ProgSnap快照参数轴号无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">281</td>
+<td>ProgSnap快照参数索引值无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">282</td>
+<td>ProgSnap快照参数不能是函数</td>
+</tr>
+<tr>
+<td style="text-align: right;">283</td>
+<td>CNC程序段内DInPort/AInPort的选择超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">284</td>
+<td>CNC程序段内DInPort/AInPort的轴选择超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">285</td>
+<td>Wait Input CNC程序段的触发类型超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">286</td>
+<td>CNC程序段内AInPort索引值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">287</td>
+<td>ASCII码批量消息过长</td>
+</tr>
+<tr>
+<td style="text-align: right;">288</td>
+<td>仅Central-i产品支持三维圆弧功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">289</td>
+<td>变量类型不匹配（长整型/浮点型）</td>
+</tr>
+<tr>
+<td style="text-align: right;">290</td>
+<td>数学运算输入超出范围（负数的对数等）</td>
+</tr>
+<tr>
+<td style="text-align: right;">291</td>
+<td>CNC线段太短，请减小前一段的结束速度或者增加当前线段的目标值</td>
+</tr>
+<tr>
+<td style="text-align: right;">292</td>
+<td>无法在大门开/关后启动运动。在过渡后等待约40毫秒</td>
+</tr>
+<tr>
+<td style="text-align: right;">293</td>
+<td>这个通讯通道因Panel模式而被阻断</td>
+</tr>
+<tr>
+<td style="text-align: right;">294</td>
+<td>在这个方案中，没有有效的绘制控制项目，或者没有绘制控制功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">295</td>
+<td>试图使用绘制控制，但此轴没有绘制控制项目或方案，请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">296</td>
+<td>试图分配与方案中设置的 DrawMode 不同的 DrawMode</td>
+</tr>
+<tr>
+<td style="text-align: right;">297</td>
+<td>仅支持通过以太网下载或清除绘制控制项目</td>
+</tr>
+<tr>
+<td style="text-align: right;">298</td>
+<td>在其中一个方案不处于DrawMode 等于 0 或 -1 时，下载或清除绘制控制项目</td>
+</tr>
+<tr>
+<td style="text-align: right;">299</td>
+<td>密码输入错误。绘制控制下载过程中止</td>
+</tr>
+<tr>
+<td style="text-align: right;">300</td>
+<td>绘制控制下载过程中超时</td>
+</tr>
+<tr>
+<td style="text-align: right;">301</td>
+<td>绘制控制下载或清除仅允许用于AGM800</td>
+</tr>
+<tr>
+<td style="text-align: right;">302</td>
+<td>由于AZDoNotUse[]参数没有正确配置，绘制控制下载失败。请咨询Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">303</td>
+<td>当DualLoopOn不为0时，不允许使用带有全闭环的龙门控制功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">304</td>
+<td>不允许通过 <abbr title="控制器局域网总线；也指关键字的通信编号 / Controller area network; also a keyword's wire code">CAN</abbr> 总线访问 64 位的关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">305</td>
+<td>引用的关键字必须为 Long64 类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">306</td>
+<td>如果轴处于 CNCA、CNCB 或矢量运动中，则不允许使用此关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">307</td>
+<td>只有当轴处于位置操作模式时，才允许使用此关键字</td>
+</tr>
+<tr>
+<td style="text-align: right;">308</td>
+<td>如果启用龙门模式且电机使能的情况下，不允许写入 GantryOffset</td>
+</tr>
+<tr>
+<td style="text-align: right;">309</td>
+<td>在龙门模式下不支持 SetPosition 功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">310</td>
+<td>当带有全闭环控制的龙门模式开启时，不能启用单轴全闭环</td>
+</tr>
+<tr>
+<td style="text-align: right;">311</td>
+<td>尝试设置速度、加速度或减速度，超出了此系统由MVG定义的限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">312</td>
+<td>推送的CNC段的轴参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">313</td>
+<td>推送的CNC段的事件脉冲分辨率参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">314</td>
+<td>推送的CNC段的事件脉冲宽度参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">315</td>
+<td>推送的CNC段的事件类型参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">316</td>
+<td>推送的CNC段的事件选择参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">317</td>
+<td>压入的CNC程序段含有超出范围的位置事件源（Pos Event Source，参见EncSinCosHWEn）参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">318</td>
+<td>推送的CNC段的事件表结束参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">319</td>
+<td>推送的CNC段的是预配置表参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">320</td>
+<td>推送的CNC段的事件表开始参数超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">321</td>
+<td>推送的CNC段的事件表无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">322</td>
+<td>推送的CNC段的虚拟参数非零</td>
+</tr>
+<tr>
+<td style="text-align: right;">323</td>
+<td>ECAMMasterIni参数在一个电子凸轮循环内超出了主轴范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">324</td>
+<td>运动指令所需的最大加速度（Accel）高于最大加速度限制（MaxAcc），无法启动运动</td>
+</tr>
+<tr>
+<td style="text-align: right;">325</td>
+<td>力滤波器1超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">326</td>
+<td>力滤波器2超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">327</td>
+<td>ESI版本文件不匹配</td>
+</tr>
+<tr>
+<td style="text-align: right;">328</td>
+<td>不允许设置产品序列号，需要提升权限</td>
+</tr>
+<tr>
+<td style="text-align: right;">329</td>
+<td>在龙门模式下偏摆轴不支持 SetPosition 功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">330</td>
+<td>在当前ModShort模式下，绝对目标值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">331</td>
+<td>多摩川编码器的分辨率为固化参数，无法更改；系统会自动识别（学习）该分辨率</td>
+</tr>
+<tr>
+<td style="text-align: right;">332</td>
+<td>控制器仍在忙于发送先前的RS485命令请求</td>
+</tr>
+<tr>
+<td style="text-align: right;">333</td>
+<td>从GenData[]数组获取的指令长度为零、负数或者过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">334</td>
+<td>当 LockEventMode 为 0（向后兼容模式）时，使用 LockEventInit 是没有意义的。请检查您的锁定 / 触发配置逻辑</td>
+</tr>
+<tr>
+<td style="text-align: right;">335</td>
+<td>尚未计算锁定/触发偏移量，无法启用锁定（Lock）或触发（Event）。LockEventMode 为 1 时，请执行 LockEventInit；LockEventMode 为 2 时，请检查远程单元及其连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">336</td>
+<td>使用轴字母请求 DrawRunBack，但没有方案或没有与之相关的有效方案</td>
+</tr>
+<tr>
+<td style="text-align: right;">337</td>
+<td>为未定义为后台执行的方案请求 DrawRunBack，请参阅 DrawMode</td>
+</tr>
+<tr>
+<td style="text-align: right;">338</td>
+<td>全局用户单位功能与嵌入式控制器用户单位互斥。请禁用其中一个缩放因子</td>
+</tr>
+<tr>
+<td style="text-align: right;">339</td>
+<td>没有任何要记录的参数，无法开始数据采集</td>
+</tr>
+<tr>
+<td style="text-align: right;">340</td>
+<td>当UPM状态不是Idle时，不允许使用UPMRptCalc。在调用UPMRptCalc之前请检查UPMRptState</td>
+</tr>
+<tr>
+<td style="text-align: right;">341</td>
+<td>龙门模式开启时不允许此操作</td>
+</tr>
+<tr>
+<td style="text-align: right;">342</td>
+<td>前馈滤波器超出了滤波器定义范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">380</td>
+<td>总行程不能为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">381</td>
+<td>总行程与预巡航行程必须方向一致</td>
+</tr>
+<tr>
+<td style="text-align: right;">382</td>
+<td>定义的速度不能为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">383</td>
+<td>总行程必须大于预巡航行程</td>
+</tr>
+<tr>
+<td style="text-align: right;">384</td>
+<td>预巡航行程不足以达到巡航速度</td>
+</tr>
+<tr>
+<td style="text-align: right;">385</td>
+<td>停止行程不足以使速度降为零</td>
+</tr>
+<tr>
+<td style="text-align: right;">386</td>
+<td>轨迹计算无解</td>
+</tr>
+<tr>
+<td style="text-align: right;">387</td>
+<td>后台计算的等待时间长于剩余运动/驻留时间</td>
+</tr>
+<tr>
+<td style="text-align: right;">388</td>
+<td>后台计算的等待时间过短，在等待时间内重新计算未完成</td>
+</tr>
+<tr>
+<td style="text-align: right;">389</td>
+<td>新的正弦轨迹计算超出16个控制周期的时间限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">390</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表大小超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">391</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表间隔超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">392</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表模式必须为 0（绝对）或 1（相对）</td>
+</tr>
+<tr>
+<td style="text-align: right;">393</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表位置超出位置限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">394</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表速度超过 MaxVel</td>
+</tr>
+<tr>
+<td style="text-align: right;">395</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表加速度超过 MaxAcc</td>
+</tr>
+<tr>
+<td style="text-align: right;">396</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表未通过位置连续性检查。请检查 PVAJPosTol</td>
+</tr>
+<tr>
+<td style="text-align: right;">397</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表未通过速度连续性检查。请检查 PVAJVelTol</td>
+</tr>
+<tr>
+<td style="text-align: right;">398</td>
+<td><abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 列表未经验证。请在激活（PVAJArm）前调用 PVAJValidate</td>
+</tr>
+<tr>
+<td style="text-align: right;">399</td>
+<td>正在执行 <abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 运动的轴不允许执行 PVAJArm</td>
+</tr>
+<tr>
+<td style="text-align: right;">400</td>
+<td>在 <abbr title="按位置、速度、加速度、加加速度点列运动 / Motion through position, velocity, acceleration and jerk points">PVAJ</abbr> 运动模式下执行 Begin，要求被指令的轴已激活（PVAJArm）</td>
+</tr>
+<tr>
+<td style="text-align: right;">401</td>
+<td>MultiAxisPVAJ 的某个参与轴电机未使能，或已在运动中</td>
+</tr>
+<tr>
+<td style="text-align: right;">402</td>
+<td>MultiAxisPVAJ 的某个参与轴未激活——请验证其 PVAJList 并设置 PVAJArm = 1</td>
+</tr>
+<tr>
+<td style="text-align: right;">403</td>
+<td>在 LockEventMode 为 1 或 2 时，锁定（Lock）或触发（Event）启用期间不能更改锁定 / 触发位置源（EncSinCosHWEn、EncDir、VEncSrc、VEncOn；辅助编码器源时的 AuxEncDir，虚拟编码器源时的 VEncFact/VEncFactDen），也不能在偏移量自启用以来已移动时进入 LockEventMode 1/2。请先禁用，再更改，执行 LockEventInit（模式 1），然后重新启用</td>
+</tr>
+<tr>
+<td style="text-align: right;">404</td>
+<td>无法启用锁定（Lock）或触发（Event）：偏移量计算之后，锁定 / 触发源设置已更改或远程单元已重新连接。请执行 LockEventInit（模式 1）或检查远程单元（模式 2）</td>
+</tr>
+<tr>
+<td style="text-align: right;">405</td>
+<td>无法设置 AnomDetectEn=1：EncRes 未设置（为 0，或为出厂占位值 1）</td>
+</tr>
+<tr>
+<td style="text-align: right;">406</td>
+<td>无法设置 AnomDetectEn=1：旋转型 MotorType 的 MotTorqConst 未设置（为 0，或为出厂占位值 1.0）</td>
+</tr>
+<tr>
+<td style="text-align: right;">407</td>
+<td>无法设置 AnomDetectEn=1：直线 / 音圈型 MotorType 的 MotForceConst 未设置（为 0，或为出厂占位值 10.0）</td>
+</tr>
+<tr>
+<td style="text-align: right;">408</td>
+<td>无法设置 AnomDetectEn=1：MagneticPitch 为 0（直线无刷 MotorType）</td>
+</tr>
+<tr>
+<td style="text-align: right;">409</td>
+<td>无法设置 AnomDetectEn=1：MotorJ（旋转型）或 MotorMass（直线 / 音圈型）为 0</td>
+</tr>
+<tr>
+<td style="text-align: right;">410</td>
+<td>MotorOn 被拒绝：AnomDetectEn=1，但负载估计器所需的某个电机常数未设置或仍为出厂占位值（ConFlt 1074）。请设置该常数，或设置 AnomDetectEn=0</td>
+</tr>
+<tr>
+<td style="text-align: right;">411</td>
+<td>AnomDetectEn=1 时，不能更改此轴的 EncRes / MotorType / MagneticPitch / MotTorqConst / MotForceConst / MotorJ / MotorMass / MotorJF。请先设置 AnomDetectEn=0</td>
+</tr>
+<tr>
+<td style="text-align: right;">412</td>
+<td>无法设置 PDSubType=2（C0/C1）或 3（CW/CCW）：已加载的 FPGA 未报告支持这些模式，或此轴为 <abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> 远程轴（尚不支持远程 PD 输入）</td>
+</tr>
+<tr>
+<td style="text-align: right;">413</td>
+<td>GantryOn 被拒绝 - 链路上没有在线的龙门伙伴驱动器。请检查龙门电缆、另一台驱动器（电源、固件）及其 GantryMode</td>
+</tr>
+<tr>
+<td style="text-align: right;">414</td>
+<td>GantryOn 只能在龙门主站上发出。从站驱动器通过龙门链路从主站接收该命令</td>
+</tr>
+<tr>
+<td style="text-align: right;">415</td>
+<td><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> 空间事件的位置或路径偏移超出有符号 32 位整数范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">416</td>
+<td>软件位置事件在一个控制采样周期内跨过了多个触发点</td>
+</tr>
+<tr>
+<td style="text-align: right;">800</td>
+<td>在其中一个SparkOn[x]打开的情况下，参数赋值或函数调用无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">1001</td>
+<td>检测到中止信号</td>
+</tr>
+<tr>
+<td style="text-align: right;">1002</td>
+<td>电机相线与地短路</td>
+</tr>
+<tr>
+<td style="text-align: right;">1003</td>
+<td>编码器错误（断开连接或其他错误）</td>
+</tr>
+<tr>
+<td style="text-align: right;">1004</td>
+<td>没收到FPGA看门狗程序</td>
+</tr>
+<tr>
+<td style="text-align: right;">1005</td>
+<td>PWM死区时间太短</td>
+</tr>
+<tr>
+<td style="text-align: right;">1006</td>
+<td>霍尔输入断开连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">1007</td>
+<td>电机堵转</td>
+</tr>
+<tr>
+<td style="text-align: right;">1008</td>
+<td>母线电压过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1009</td>
+<td>母线电压过低</td>
+</tr>
+<tr>
+<td style="text-align: right;">1010</td>
+<td>逻辑电压过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1011</td>
+<td>逻辑电压过低</td>
+</tr>
+<tr>
+<td style="text-align: right;">1012</td>
+<td>母线电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1013</td>
+<td>A相电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1014</td>
+<td>B相电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1015</td>
+<td>C相电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1016</td>
+<td>电机电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1017</td>
+<td>驱动器功率超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1018</td>
+<td>IPM温度过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1019</td>
+<td>速度过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1020</td>
+<td>位置误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1021</td>
+<td>速度误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1022</td>
+<td>CPU温度过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1023</td>
+<td>母线电压过高 - 超过绝对限制值</td>
+</tr>
+<tr>
+<td style="text-align: right;">1024</td>
+<td>STO1被激活</td>
+</tr>
+<tr>
+<td style="text-align: right;">1025</td>
+<td>在A轴电机上检测到电流过流</td>
+</tr>
+<tr>
+<td style="text-align: right;">1026</td>
+<td>辅助编码器错误（断开连接或其他错误）</td>
+</tr>
+<tr>
+<td style="text-align: right;">1027</td>
+<td>IPM故障</td>
+</tr>
+<tr>
+<td style="text-align: right;">1028</td>
+<td>不支持选定的编码器类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">1029</td>
+<td>不支持选定的辅助编码器类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">1030</td>
+<td>ECAM主轴变化太大</td>
+</tr>
+<tr>
+<td style="text-align: right;">1031</td>
+<td>FIFO程序段的加速度过低</td>
+</tr>
+<tr>
+<td style="text-align: right;">1032</td>
+<td>编码器模量和输入整形同时使用</td>
+</tr>
+<tr>
+<td style="text-align: right;">1033</td>
+<td>在BIT上电时检测到故障</td>
+</tr>
+<tr>
+<td style="text-align: right;">1034</td>
+<td>STO2被激活或内部放大器电源故障</td>
+</tr>
+<tr>
+<td style="text-align: right;">1035</td>
+<td>用于控制的交流输入电源被切断</td>
+</tr>
+<tr>
+<td style="text-align: right;">1036</td>
+<td>在B轴电机上检测到电流过流</td>
+</tr>
+<tr>
+<td style="text-align: right;">1037</td>
+<td>线性放大器的连续电流过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1038</td>
+<td>线性放大器的电压过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1039</td>
+<td>轴相关的AmpType取值冲突</td>
+</tr>
+<tr>
+<td style="text-align: right;">1040</td>
+<td>电机温度过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1041</td>
+<td>意外错误代码。请咨询PCSuite提供商</td>
+</tr>
+<tr>
+<td style="text-align: right;">1042</td>
+<td>放大器5v隔离电路故障</td>
+</tr>
+<tr>
+<td style="text-align: right;">1043</td>
+<td>CI通讯断开连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">1044</td>
+<td>电机电流超过I2T</td>
+</tr>
+<tr>
+<td style="text-align: right;">1045</td>
+<td>力误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1046</td>
+<td>力控制：未定义模拟量力反馈</td>
+</tr>
+<tr>
+<td style="text-align: right;">1047</td>
+<td>5v引脚电流过载。检查您的硬件连接！</td>
+</tr>
+<tr>
+<td style="text-align: right;">1048</td>
+<td>其他参与轴的电机下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1049</td>
+<td>全闭环两路编码器速度反馈相差太大</td>
+</tr>
+<tr>
+<td style="text-align: right;">1050</td>
+<td>外部故障输入（例如：来自外部驱动器）被激活</td>
+</tr>
+<tr>
+<td style="text-align: right;">1051</td>
+<td>内部继电器仍处于断开状态。在使能电机之前，请尝试在通电后等待更多时间</td>
+</tr>
+<tr>
+<td style="text-align: right;">1052</td>
+<td>STO2被激活</td>
+</tr>
+<tr>
+<td style="text-align: right;">1053</td>
+<td>AmpType的值不允许用于本产品</td>
+</tr>
+<tr>
+<td style="text-align: right;">1054</td>
+<td>交流电源输入其中至少一相被切断</td>
+</tr>
+<tr>
+<td style="text-align: right;">1055</td>
+<td>开环位置误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1056</td>
+<td>开环速度误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1057</td>
+<td>开环力误差超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">1058</td>
+<td>在10.5v电源（8v阈值）上检测到电压不足</td>
+</tr>
+<tr>
+<td style="text-align: right;">1059</td>
+<td>在C轴电机上检测到电流过流</td>
+</tr>
+<tr>
+<td style="text-align: right;">1060</td>
+<td>产品温度（BoardTemp）过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1061</td>
+<td>其他龙门参与轴电机下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1062</td>
+<td>外部请求的受控停止故障：电机已停止并且下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1063</td>
+<td>其他矢量运动参与轴的电机下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1064</td>
+<td>编码器正弦/余弦信号读数错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">1065</td>
+<td>失速检测已激活，电机正在下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1066</td>
+<td>虚拟编码器超过每个中断允许的最大脉冲数</td>
+</tr>
+<tr>
+<td style="text-align: right;">1067</td>
+<td>系统检测到异常/碰撞</td>
+</tr>
+<tr>
+<td style="text-align: right;">1068</td>
+<td>绝对编码器错误位被置位，可能是装配的编码器读头出现问题，或者需要检查编码器刻度</td>
+</tr>
+<tr>
+<td style="text-align: right;">1069</td>
+<td>绝对编码器的CRC在超过 EncAbsErrTime 所设定的时间阈值后依然出错，可能是噪声水平过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1070</td>
+<td>无法检测到绝对编码器，似乎已经断开连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">1071</td>
+<td>检测到不稳定的电流环</td>
+</tr>
+<tr>
+<td style="text-align: right;">1072</td>
+<td>检测到高噪声 / 高抖动</td>
+</tr>
+<tr>
+<td style="text-align: right;">1073</td>
+<td>检测到碰撞：负载估计器异常值 |AnomOut| 超过 AnomThrld，电机已下使能</td>
+</tr>
+<tr>
+<td style="text-align: right;">1074</td>
+<td>伺服使能被拒绝：AnomDetectEn=1，但负载估计器所需的某个电机常数未设置（为 0，或仍为出厂占位值 EncRes 1 / MotTorqConst 1.0 / MotForceConst 10.0）。所需常数：EncRes，以及旋转型 MotTorqConst + MotorJ；直线型 MotForceConst + MotorMass + MagneticPitch；音圈型 MotForceConst + MotorMass。请设置这些常数，或设置 AnomDetectEn=0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1075</td>
+<td>龙门开启期间与另一台驱动器的龙门链路丢失（无心跳）。请检查龙门电缆和另一台驱动器</td>
+</tr>
+<tr>
+<td style="text-align: right;">1080</td>
+<td>未检测到相位</td>
+</tr>
+<tr>
+<td style="text-align: right;">1081</td>
+<td>CPU后台循环看门狗超时</td>
+</tr>
+<tr>
+<td style="text-align: right;">1082</td>
+<td>外部放大器故障（例如：Varedan欠压）</td>
+</tr>
+<tr>
+<td style="text-align: right;">1300</td>
+<td>用户1：齿轮跟踪误差过高</td>
+</tr>
+<tr>
+<td style="text-align: right;">1301</td>
+<td>A相电流过高，由FPGA检测到</td>
+</tr>
+<tr>
+<td style="text-align: right;">1302</td>
+<td>B相电流过高，由FPGA检测到</td>
+</tr>
+<tr>
+<td style="text-align: right;">1303</td>
+<td>C相电流过高，由FPGA检测到</td>
+</tr>
+<tr>
+<td style="text-align: right;">1304</td>
+<td>Allegro故障输出被激活</td>
+</tr>
+<tr>
+<td style="text-align: right;">1305</td>
+<td>FPGA关闭了28v</td>
+</tr>
+<tr>
+<td style="text-align: right;">2001</td>
+<td>Load()指令发现闪存中的数组比预期的短</td>
+</tr>
+<tr>
+<td style="text-align: right;">2002</td>
+<td>Load()指令发现闪存中的数组比预期的长</td>
+</tr>
+<tr>
+<td style="text-align: right;">2003</td>
+<td>Load()指令发现闪存中的值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">2004</td>
+<td>Load()指令遇到意外的空CAN代码</td>
+</tr>
+<tr>
+<td style="text-align: right;">2005</td>
+<td>Load()指令发现闪存中的轴数比预期的多</td>
+</tr>
+<tr>
+<td style="text-align: right;">2006</td>
+<td>Load()指令发现闪存中的轴数比预期的少</td>
+</tr>
+<tr>
+<td style="text-align: right;">2007</td>
+<td>输入整型功能检测到错误或超出范围的参数（频率或阻尼）</td>
+</tr>
+<tr>
+<td style="text-align: right;">2008</td>
+<td>由于参数错误，无法设置电机功率限制。它被设置为峰值200mA和连续100mA</td>
+</tr>
+<tr>
+<td style="text-align: right;">2009</td>
+<td>在PStatParams中输入了无效的CAN代码</td>
+</tr>
+<tr>
+<td style="text-align: right;">2010</td>
+<td>分配给数字输入的功能过多</td>
+</tr>
+<tr>
+<td style="text-align: right;">2011</td>
+<td>DOutMode的来源轴无效</td>
+</tr>
+<tr>
+<td style="text-align: right;">2012</td>
+<td>分配给DOutMode的功能过多</td>
+</tr>
+<tr>
+<td style="text-align: right;">2013</td>
+<td>分配给AInMode的功能超出了现有范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">2014</td>
+<td>闪存ID与预期的不同</td>
+</tr>
+<tr>
+<td style="text-align: right;">2015</td>
+<td>用户程序初始化时，在闪存中发现校验和错误</td>
+</tr>
+<tr>
+<td style="text-align: right;">2016</td>
+<td>用户程序初始化时，在闪存中发现错误内容</td>
+</tr>
+<tr>
+<td style="text-align: right;">2180</td>
+<td>上次重置是由看门狗事件引起的</td>
+</tr>
+<tr>
+<td style="text-align: right;">2181</td>
+<td>HVS-100AG：处于正常模式时的RLS</td>
+</tr>
+<tr>
+<td style="text-align: right;">2182</td>
+<td>HVS-100AG：处于正常模式时的FLS</td>
+</tr>
+<tr>
+<td style="text-align: right;">3001</td>
+<td>EC对象不存在</td>
+</tr>
+<tr>
+<td style="text-align: right;">3002</td>
+<td>EC对象不是受支持的原始类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">3003</td>
+<td>EC对象的原始类型没有子索引</td>
+</tr>
+<tr>
+<td style="text-align: right;">3004</td>
+<td>EC对象的数组或记录类型的子索引超过限制</td>
+</tr>
+<tr>
+<td style="text-align: right;">3005</td>
+<td>不支持具有函数调用的EC对象</td>
+</tr>
+<tr>
+<td style="text-align: right;">3006</td>
+<td>EC对象没有写入访问权限</td>
+</tr>
+<tr>
+<td style="text-align: right;">3007</td>
+<td>EC对象在当前通信状态机中没有写入访问权限</td>
+</tr>
+<tr>
+<td style="text-align: right;">3008</td>
+<td>当CiA402通信状态机处于操作启用状态时，EC对象没有写入访问权限</td>
+</tr>
+<tr>
+<td style="text-align: right;">4000</td>
+<td>不允许空消息</td>
+</tr>
+<tr>
+<td style="text-align: right;">4001</td>
+<td>批量消息支持最多100个组件</td>
+</tr>
+<tr>
+<td style="text-align: right;">4002</td>
+<td>批量消息回复格式不正确</td>
+</tr>
+<tr>
+<td style="text-align: right;">4003</td>
+<td>无效的消息类型</td>
+</tr>
+<tr>
+<td style="text-align: right;">4004</td>
+<td>仅在通过以太网连接的情况下，支持消息功能</td>
+</tr>
+<tr>
+<td style="text-align: right;">4006</td>
+<td>分配值超出64位范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">4007</td>
+<td>启动独占访问失败：通道已被其他AAComm客户端独占访问策略占用</td>
+</tr>
+<tr>
+<td style="text-align: right;">4008</td>
+<td>停止独占访问失败：通道未处于独占访问策略下</td>
+</tr>
+<tr>
+<td style="text-align: right;">4009</td>
+<td>停止独占访问失败：只有发起该策略的用户ID可以停止</td>
+</tr>
+<tr>
+<td style="text-align: right;">4010</td>
+<td>通道当前被其他AAComm客户端独占访问策略占用</td>
+</tr>
+<tr>
+<td style="text-align: right;">4011</td>
+<td>以太网套接字错误，请联系Agito客服</td>
+</tr>
+<tr>
+<td style="text-align: right;">4012</td>
+<td>仿真：参数文件不存在</td>
+</tr>
+<tr>
+<td style="text-align: right;">4013</td>
+<td>仿真：参数值解析失败</td>
+</tr>
+<tr>
+<td style="text-align: right;">4014</td>
+<td>仿真：参数行解析失败</td>
+</tr>
+<tr>
+<td style="text-align: right;">4015</td>
+<td>仿真：未解析的参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">4016</td>
+<td>仿真：参数索引值超出范围</td>
+</tr>
+<tr>
+<td style="text-align: right;">4017</td>
+<td>仿真：无法分配参数</td>
+</tr>
+<tr>
+<td style="text-align: right;">4018</td>
+<td>仿真：赋值解析失败</td>
+</tr>
+<tr>
+<td style="text-align: right;">4019</td>
+<td>仿真：非法参数行</td>
+</tr>
+<tr>
+<td style="text-align: right;">4020</td>
+<td><abbr title="通信层：编码、队列、超时 / The communication layer: encoding, queueing, timeouts">AAComm</abbr> API 未连接</td>
+</tr>
+<tr>
+<td style="text-align: right;">4021</td>
+<td><abbr title="本机通信服务器：所有程序经它连接控制器 / The local server every program uses to reach the controller">AACommServer</abbr> 的 <abbr title="进程间通信 / Inter-process communication">IPC</abbr> 连接在会话期间被关闭（服务进程已退出、崩溃或主动关闭了连接）</td>
+</tr>
+<tr>
+<td style="text-align: right;">4022</td>
+<td>用户程序二进制消息仅在下载进行中时有效（请先发送 DownloadUPBin 或 DownloadUProg 命令）</td>
+</tr>
+<tr>
+<td style="text-align: right;">4023</td>
+<td>用户单位的比例因子/单位名称不能通过原始报文写入；请使用用户单位 API（TrySetUnitsSync）进行设置</td>
+</tr>
+<tr>
+<td style="text-align: right;">4024</td>
+<td>控制器回复格式错误或不完整（回复已终止，但缺少预期的返回值）</td>
+</tr>
+<tr>
+<td style="text-align: right;">4025</td>
+<td>连接在消息发送前已关闭，消息未到达控制器</td>
+</tr>
+<tr>
+<td style="text-align: right;">5001–6000</td>
+<td>绘制控制所定义的故障</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../help/related-docs.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 相关文档与下载">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                相关文档与下载
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="c-functions.html" class="md-footer__link md-footer__link--next" aria-label="下一页: C 函数表">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                C 函数表
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../assets/data/single-demos.js"></script>
+      
+        <script src="../assets/js/widgets.js"></script>
+      
+        <script src="../assets/js/tools.js"></script>
+      
+        <script src="../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

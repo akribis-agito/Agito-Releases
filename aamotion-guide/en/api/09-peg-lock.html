@@ -1,0 +1,2847 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="08-io.html">
+      
+      
+        <link rel="next" href="10-program.html">
+      
+      
+        
+          <link rel="alternate" href="../../api/09-peg-lock.html" hreflang="zh">
+        
+          <link rel="alternate" href="09-peg-lock.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Position events (PEG) and position lock - AAMotion Programming Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#position-events-peg-and-position-lock" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-header__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion Programming Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Position events (PEG) and position lock
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../api/09-peg-lock.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="09-peg-lock.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Core concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  Cookbook
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../demos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enums
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  Reference lookup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Help and appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-nav__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion Programming Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../demos/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="members/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types and members
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-lifecycle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Initialization and connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-parameters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading and writing parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-motor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motor, commutation and stop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-ptp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point-to-point motion and jog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-homing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-advanced-motion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repetitive, two-speed and sine motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-io.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position events (PEG) and position lock
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09-peg-lock.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position events (PEG) and position lock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#single-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed-gap events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table events
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Table events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#central-i-verified-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Central-i verified tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position lock
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-program.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User programs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-cnc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNC interpolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-vector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-ecam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electronic cam (ECAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-force.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force and current control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-recording.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DataLogger (high-speed recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-slow-logger.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SlowLogger (slow recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-fastread.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastReadCache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-central-i.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Central-i multi-axis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-optical.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optical coupling light finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference lookup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help and appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#single-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Single event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed-gap events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-peg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table events
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Table events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#central-i-verified-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Central-i verified tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position lock
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    API reference
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="position-events-peg-and-position-lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock<a class="headerlink" href="#position-events-peg-and-position-lock" title="Permanent link">&para;</a></h1>
+<p>Two hardware features working in opposite directions, both done by the controller every control cycle, so communication delays do not affect their accuracy:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Direction</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr></strong> position events</td>
+<td>position → output pulse</td>
+<td>camera trigger on the fly, laser marking, dispensing</td>
+</tr>
+<tr>
+<td><strong>Lock</strong> position latch</td>
+<td>input signal → recorded position</td>
+<td>edge measurement, alignment, mark detection</td>
+</tr>
+</tbody>
+</table>
+<p><abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> compares in three ways (<code>EventType</code>): single point (0), fixed gap (1) and table (any list of positions). Details in keyword <a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventType.md">EventType</a>.</p>
+<details class="abstract">
+<summary>In this chapter</summary>
+<ul>
+<li><a href="#single-peg">Single event</a></li>
+<li><a href="#gap-peg">Fixed-gap events</a></li>
+<li><a href="#table-peg">Table events</a></li>
+<li><a href="#lock">Position lock</a></li>
+</ul>
+</details>
+<p><a class="md-button" href="../demos/09-peg-lock.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 16.5v-9l6 4.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> Run this chapter's demo</a></p>
+<h2 id="single-peg">Single event<a class="headerlink" href="#single-peg" title="Permanent link">&para;</a></h2>
+<p>Outputs one pulse as the axis passes <code>eventBegPos</code>. The function writes the parameters and enables the event (<code>EventOn=1</code>). <code>EventEnable</code> / <code>EventDisEnable</code> switch event output on or off on their own.</p>
+<p><a href="../demos/09-peg-lock/single-peg.html">Standalone demo: Single position event</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>One pulse at one point of a move (one photo, one action).</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C#</label><label for="__tabbed_1_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// Output PEG by single event</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// eventBegPos: The trigger position</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// eventSelect: Which output line (0–7, default 1); see keyword [EventSelect](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 microseconds (default), 1 nanoseconds. Optional in C#</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// eventPulseWid: The pulse width, in the unit eventPulseRes picks (default 50 µs). Optional in C#</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetSingleEventPEG</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1">// Enable PEG event</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EventEnable</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">// Disable PEG event</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EventDisEnable</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1">// Set a single event PEG.</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1">// eventBegPos: The trigger position</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1">// eventSelect: Which output line (0–7, default 1); see keyword [EventSelect](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 microseconds (default), 1 nanoseconds. Optional in C#</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1">// eventPulseWid: The pulse width, in the unit eventPulseRes picks (default 50 µs). Optional in C#</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">void</span><span class="w"> </span><span class="nf">SetSingleEventPEG</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// PEG emits output pulses at programmed positions; the lock (position capture) latches the position on an input edge. The void calls return nothing: failures reach the error callback only. Programs one PEG event at a position. @param eventBegPos Event position. @param eventSelect Event selection. @param eventPulseRes 0 = pulse width in microseconds, 1 = in nanoseconds. @param eventPulseWid Pulse width.</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// eventBegPos: The trigger position</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">// eventSelect: Which output line (0–7, default 1); see keyword [EventSelect](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 microseconds (default), 1 nanoseconds. Optional in C#</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// eventPulseWid: The pulse width, in the unit eventPulseRes picks (default 50 µs). Optional in C#</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_set_single_event_peg</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// Enables the PEG events.</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_event_enable</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1">// Disables the PEG events.</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_event_dis_enable</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Keyword written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>The axis whose position is compared</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>eventBegPos</code></td>
+<td><code>double</code></td>
+<td>The trigger position</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventBegPos.md"><code>EventBegPos</code></a></td>
+</tr>
+<tr>
+<td><code>eventSelect</code></td>
+<td><code>int</code></td>
+<td>Which output line (0–7, default 1); see keyword <a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md">EventSelect</a></td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md"><code>EventSelect</code></a></td>
+</tr>
+<tr>
+<td><code>eventPulseRes</code></td>
+<td><code>int?</code> / <code>int</code></td>
+<td>The pulse width unit: 0 microseconds (default), 1 nanoseconds. Optional in C#</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventPulseRes.md"><code>EventPulseRes</code></a></td>
+</tr>
+<tr>
+<td><code>eventPulseWid</code></td>
+<td><code>int?</code> / <code>int</code></td>
+<td>The pulse width, in the unit eventPulseRes picks (default 50 µs). Optional in C#</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventPulseWid.md"><code>EventPulseWid</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commands sent</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{Axis}EventPulseRes={eventPulseRes} (if eventPulseRes is not null)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>{Axis}EventPulseWid={eventPulseWid} (if eventPulseWid is not null)
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>{Axis}EventType=0
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>{Axis}EventBegPos={eventBegPos}
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>{Axis}EventSelect={eventSelect}
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>{Axis}EventOn=1
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<p>Neither the C# nor the C version returns a value; failures reach the error hook (the C version never throws).</p>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>The C interface writes every argument, with no "keep current", so pass real values for the unit and width (for example 0 and 50).</li>
+<li>A single event clears <code>EventOn</code> after firing. Before another run, return to the approach side of the trigger and configure it again or use <code>EventEnable</code> with the existing settings.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">C#</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// one pulse when axis A passes 50000, on the output chosen by eventSelect</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetSingleEventPEG</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">MoveAbs</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// ...</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">EventDisEnable</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>SetSingleEventPEG(MotionController, AxisRef, double, int, int?, int?)</code> — Output <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> by single event {Axis}EventPulseRes={eventPulseRes} (if eventPulseRes is not null) {Axis}EventPulseWid={eventPulseWid} (if eventPulseWid is not null) {Axis}EventType=0 {Axis}EventBegPos={eventBegPos} {Axis}EventSelect={eventSelect} {Axis}EventOn=1</li>
+<li><code>SetSingleEventPEG(double, int, int?, int?)</code> — Set a single event <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>.</li>
+<li><code>EventEnable(MotionController, AxisRef)</code> — Enable <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event {Axis}EventOn=1</li>
+<li><code>EventDisEnable(MotionController, AxisRef)</code> — Disable <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event {Axis}EventOn=0</li>
+<li><code>aamotion_set_single_event_peg</code> — <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> emits output pulses at programmed positions; the lock (position capture) latches the position on an input edge. The void calls return nothing: failures reach the error callback only. Programs one <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event at a position. @param eventBegPos Event position. @param eventSelect Event selection. @param eventPulseRes 0 = pulse width in microseconds, 1 = in nanoseconds. @param eventPulseWid Pulse width.</li>
+<li><code>aamotion_event_enable</code> — Enables the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> events.</li>
+<li><code>aamotion_event_dis_enable</code> — Disables the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> events.</li>
+</ul>
+</details>
+<h2 id="gap-peg">Fixed-gap events<a class="headerlink" href="#gap-peg" title="Permanent link">&para;</a></h2>
+<p>Outputs a pulse every <code>eventGap</code> from <code>eventBegPos</code> to <code>eventEndPos</code> (<code>EventType=1</code>). For forward travel, use start 10000, end 90000 and gap 1000. For reverse travel, swap the endpoints and use -1000. Both schedules contain 81 pulses when the axis crosses the full window in the configured direction.</p>
+<p><a href="../demos/09-peg-lock/fixed-gap-peg.html">Standalone demo: Evenly spaced events</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Evenly spaced triggers during motion (on-the-fly imaging, even marking, scanning).</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">C#</label><label for="__tabbed_3_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// Output PEG by fixed gap event</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">// eventBegPos: The first pulse position</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">// eventGap: The pulse spacing</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// eventEndPos: The last pulse position</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">// eventSelect: Which output line (0–7)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 µs, 1 ns</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// eventPulseWid: The pulse width</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetEventFixedGapPEG</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventGap</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventEndPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1">// Set fixed interval event PEG.</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// eventBegPos: The first pulse position</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1">// eventGap: The pulse spacing</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1">// eventEndPos: The last pulse position</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1">// eventSelect: Which output line (0–7)</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 µs, 1 ns</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1">// eventPulseWid: The pulse width</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="k">void</span><span class="w"> </span><span class="nf">SetEventFixedGapPEG</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventGap</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventEndPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">int?</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Programs PEG events every eventGap from eventBegPos to eventEndPos. @param eventSelect Event selection. @param eventPulseRes 0 = microseconds, 1 = nanoseconds. @param eventPulseWid Pulse width.</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// eventBegPos: The first pulse position</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">// eventGap: The pulse spacing</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">// eventEndPos: The last pulse position</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">// eventSelect: Which output line (0–7)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">// eventPulseRes: The pulse width unit: 0 µs, 1 ns</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">// eventPulseWid: The pulse width</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_set_event_fixed_gap_peg</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventBegPos</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventGap</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eventEndPos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventPulseRes</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Keyword written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>The axis whose position is compared</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>eventBegPos</code></td>
+<td><code>double</code></td>
+<td>The first pulse position</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventBegPos.md"><code>EventBegPos</code></a></td>
+</tr>
+<tr>
+<td><code>eventGap</code></td>
+<td><code>double</code></td>
+<td>The pulse spacing</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventGap.md"><code>EventGap</code></a></td>
+</tr>
+<tr>
+<td><code>eventEndPos</code></td>
+<td><code>double</code></td>
+<td>The last pulse position</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventEndPos.md"><code>EventEndPos</code></a></td>
+</tr>
+<tr>
+<td><code>eventSelect</code></td>
+<td><code>int</code></td>
+<td>Which output line (0–7)</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventSelect.md"><code>EventSelect</code></a></td>
+</tr>
+<tr>
+<td><code>eventPulseRes</code></td>
+<td><code>int?</code> / <code>int</code></td>
+<td>The pulse width unit: 0 µs, 1 ns</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventPulseRes.md"><code>EventPulseRes</code></a></td>
+</tr>
+<tr>
+<td><code>eventPulseWid</code></td>
+<td><code>int?</code> / <code>int</code></td>
+<td>The pulse width</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventPulseWid.md"><code>EventPulseWid</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commands sent</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>{Axis}EventPulseRes={eventPulseRes} (if eventPulseRes is not null)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>{Axis}EventPulseWid={eventPulseWid} (if eventPulseWid is not null)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>{Axis}EventType=1
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>{Axis}EventBegPos={eventBegPos}
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>{Axis}EventGap={eventGap}
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>{Axis}EventEndPos={eventEndPos}
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>{Axis}EventSelect={eventSelect}
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>{Axis}EventOn=1
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>For a finite sequence, set <code>EventAlwaysOn = 0</code>. The gap must be nonzero and advance toward the end. The wrong sign can trigger <code>ERR 14</code> at arm time.</li>
+<li>Estimate time between pulses by dividing the absolute gap by travel speed in matching units. Compare it with the output pulse width and the camera's minimum interval. For dropped frames, also check the output selection, pulse unit, and waveform at the receiver.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">C#</label><label for="__tabbed_4_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// a pulse every 1000 between 10000 and 90000: 81 pulses, e.g. to trigger a camera</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetEventFixedGapPEG</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">90000</span><span class="p">,</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">eventPulseWid</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">MoveAbs</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cm">/* every argument is written: pass the pulse resolution and width you want */</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">aamotion_set_event_fixed_gap_peg</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">90000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">aamotion_move_abs</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w"> </span><span class="mi">200000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>SetEventFixedGapPEG(MotionController, AxisRef, double, double, double, int, int?, int?)</code> — Output <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> by fixed gap event {Axis}EventPulseRes={eventPulseRes} (if eventPulseRes is not null) {Axis}EventPulseWid={eventPulseWid} (if eventPulseWid is not null) {Axis}EventType=1 {Axis}EventBegPos={eventBegPos} {Axis}EventGap={eventGap} {Axis}EventEndPos={eventEndPos} {Axis}EventSelect={eventSelect} {Axis}EventOn=1</li>
+<li><code>SetEventFixedGapPEG(double, double, double, int, int?, int?)</code> — Set fixed interval event <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>.</li>
+<li><code>aamotion_set_event_fixed_gap_peg</code> — Programs <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> events every eventGap from eventBegPos to eventEndPos. @param eventSelect Event selection. @param eventPulseRes 0 = microseconds, 1 = nanoseconds. @param eventPulseWid Pulse width.</li>
+</ul>
+</details>
+<h2 id="table-peg">Table events<a class="headerlink" href="#table-peg" title="Permanent link">&para;</a></h2>
+<p>A standard table event (<code>EventType = 2</code>) triggers at unevenly spaced part features. Disarm first, then write <code>EventTable</code> positions in travel order. Set each output selection, pulse width, and the first and last indexes. Arm before the first trigger position. Use <code>EventCorrect</code> when the setup calls for corrected coordinates.</p>
+<h3 id="central-i-verified-tables"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> verified tables<a class="headerlink" href="#central-i-verified-tables" title="Permanent link">&para;</a></h3>
+<p>The AAMotion .NET factory <code>c.CreateEventTableClient('A')</code> binds to the current connection and axis. Check verified-table support (<code>Identity[62]</code> mask <code>0x200</code>), a compatible remote drive image, a commissioned encoder and event source, and <code>LockEventStat = 1</code>.</p>
+<ol>
+<li><code>LoadAsync</code> uploads and reads back the definition and waits for controller-confirmed <code>Ready</code>. Then call <code>ArmAsync</code>. If it returns <code>Armed</code>, call <code>WaitForCompletionAsync</code> to confirm completion. Short sequences can complete before the host sees <code>Running</code>.</li>
+<li>After normal completion, call <code>AbortAsync</code> and confirm <code>Aborted</code>, then acknowledge the release to <code>Empty</code>. If the controller has retained an error, inspect that occurrence and use the corresponding <code>AcknowledgeAsync</code> overload.</li>
+<li>Cancellation or disposal ends the host operation. Confirm the controller state separately. Disconnect invalidates the old <code>Ready</code> result. <code>RecoverAsync</code> can confirm an abort only on the original live connection when takeover is allowed. Reconnecting requires checking the controller state before further action.</li>
+</ol>
+<p><a href="../demos/09-peg-lock/table-peg.html">Standalone demo: Events from a table</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Unevenly spaced trigger positions (at features of the part).</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">C#</label><label for="__tabbed_5_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">// Set the trigger position for a specific item in the PEG event table.</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1">// position: The trigger position</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableValue</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">position</span><span class="p">);</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1">// Set the start index of the PEG event table.</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1">// eventTableBeginIndex: The first item used</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableBeginIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableBeginIndex</span><span class="p">);</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1">// Set the end index of the PEG event table.</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="c1">// eventTableEndIndex: The last item used</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableEndIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableEndIndex</span><span class="p">);</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="c1">// Set the PEG event table selection (for multi-table switching or multiple event types).</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="c1">// eventSelect: The item's output line</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableSelect</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">);</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="c1">// Calibrate the event table. Performs calibration operation on the event table.</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="c1">// Returns: Returns true if abort is successful, otherwise false</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">EventCorrect</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="c1">// Set event table value.</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="c1">// position: The trigger position</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">position</span><span class="p">);</span>
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="c1">// Set event table begin index.</span>
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="c1">// eventTableBeginIndex: The first item used</span>
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableBeginIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableBeginIndex</span><span class="p">);</span>
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a>
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="c1">// Set event table end index.</span>
+</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="c1">// eventTableEndIndex: The last item used</span>
+</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableEndIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableEndIndex</span><span class="p">);</span>
+</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a>
+</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a><span class="c1">// Set event table select.</span>
+</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="c1">// eventSelect: The item's output line</span>
+</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a><span class="c1">// Returns: Returns true if successful, otherwise false.</span>
+</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">SetEventTableSelect</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">);</span>
+</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a>
+</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a><span class="c1">// Calibrate the event table. Performs calibration operation on the event table.</span>
+</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a><span class="c1">// Returns: Returns true if calibration is successful, otherwise false.</span>
+</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">EventCorrect</span><span class="p">();</span>
+</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a>
+</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a><span class="c1">// MotionController</span>
+</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a><span class="c1">// Creates an explicit verified-event client bound to this connection and axis.</span>
+</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a><span class="n">EventTableClient</span><span class="w"> </span><span class="nf">CreateEventTableClient</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Sets the position of event-table entry tableIndex.</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1">// position: The trigger position</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_set_event_table_value</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">position</span><span class="p">);</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1">// Sets the first entry of the event table.</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1">// eventTableBeginIndex: The first item used</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_set_event_table_begin_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableBeginIndex</span><span class="p">);</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">// Sets the last entry of the event table.</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1">// eventTableEndIndex: The last item used</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_set_event_table_end_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventTableEndIndex</span><span class="p">);</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="c1">// Sets the event selection of event-table entry tableIndex.</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1">// tableIndex: The table item, from 1</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="c1">// eventSelect: The item's output line</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_set_event_table_select</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tableIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">eventSelect</span><span class="p">);</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="c1">// Calibrates the event table.</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="c1">// axis: The axis whose position is compared</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_event_correct</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>char</code> / <code>int</code></td>
+<td>The axis whose position is compared</td>
+</tr>
+<tr>
+<td><code>tableIndex</code></td>
+<td><code>int</code></td>
+<td>The table item, from 1</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>double</code></td>
+<td>The trigger position</td>
+</tr>
+<tr>
+<td><code>eventTableBeginIndex</code></td>
+<td><code>int</code></td>
+<td>The first item used</td>
+</tr>
+<tr>
+<td><code>eventTableEndIndex</code></td>
+<td><code>int</code></td>
+<td>The last item used</td>
+</tr>
+<tr>
+<td><code>eventSelect</code></td>
+<td><code>int</code></td>
+<td>The item's output line</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>true on success.</p>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>Check every write to a standard table. After a write or correction fails, check the table and arming state before proceeding. See <a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/18-event-generation/EventTableWid.md">EventTableWid</a> for table rules.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">C#</label><label for="__tabbed_6_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"AEventOn=0"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventType=2"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventPulseRes=0"</span><span class="p">,</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">                   </span><span class="s">"AEventPulseWid=10"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventTableWid[1]=-1"</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">setup</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">{</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">c</span><span class="p">.</span><span class="n">SendCommandString</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">reply</span><span class="p">))</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">}</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">positions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"> </span><span class="mi">15500</span><span class="p">,</span><span class="w"> </span><span class="mi">23000</span><span class="p">,</span><span class="w"> </span><span class="mi">41000</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">positions</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="p">{</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetEventTableValue</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">        </span><span class="o">!</span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetEventTableSelect</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">}</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetEventTableBeginIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetEventTableEndIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">positions</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="o">!</span><span class="n">c</span><span class="p">.</span><span class="n">SendCommandString</span><span class="p">(</span><span class="s">"AEventOn=1"</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">armReply</span><span class="p">))</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">armReply</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">reply</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">setup</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"AEventOn=0"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventType=2"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventPulseRes=0"</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">                        </span><span class="s">"AEventPulseWid=10"</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventTableWid[1]=-1"</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">setup</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">aamotion_send_command_string</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">setup</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">reply</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">reply</span><span class="p">))</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="p">}</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">positions</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"> </span><span class="mi">15500</span><span class="p">,</span><span class="w"> </span><span class="mi">23000</span><span class="p">,</span><span class="w"> </span><span class="mi">41000</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">{</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">aamotion_set_event_table_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="o">!</span><span class="n">aamotion_set_event_table_select</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="p">}</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_set_event_table_begin_index</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">    </span><span class="n">aamotion_set_event_table_end_index</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">    </span><span class="o">!</span><span class="n">aamotion_send_command_string</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">"AEventOn=1"</span><span class="p">,</span><span class="w"> </span><span class="n">reply</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">reply</span><span class="p">))</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>SetEventTableValue(MotionController, AxisRef, int, double)</code> — Set the trigger position for a specific item in the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event table. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableBeginIndex(MotionController, AxisRef, int)</code> — Set the start index of the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event table. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableEndIndex(MotionController, AxisRef, int)</code> — Set the end index of the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event table. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableSelect(MotionController, AxisRef, int, int)</code> — Set the <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> event table selection (for multi-table switching or multiple event types). Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableValue(int, double)</code> — Set event table value. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableBeginIndex(int)</code> — Set event table begin index. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableEndIndex(int)</code> — Set event table end index. Returns: Returns true if successful, otherwise false.</li>
+<li><code>SetEventTableSelect(int, int)</code> — Set event table select. Returns: Returns true if successful, otherwise false.</li>
+<li><code>EventCorrect(MotionController, AxisRef)</code> — Calibrate the event table. Performs calibration operation on the event table. Returns: Returns true if abort is successful, otherwise false 1. {Axis}EventCorrect</li>
+<li><code>EventCorrect()</code> — Calibrate the event table. Performs calibration operation on the event table. Returns: Returns true if calibration is successful, otherwise false.</li>
+<li><code>CreateEventTableClient(char)</code> — Creates an explicit verified-event client bound to this connection and axis.</li>
+<li><code>aamotion_set_event_table_value</code> — Sets the position of event-table entry tableIndex.</li>
+<li><code>aamotion_set_event_table_begin_index</code> — Sets the first entry of the event table.</li>
+<li><code>aamotion_set_event_table_end_index</code> — Sets the last entry of the event table.</li>
+<li><code>aamotion_set_event_table_select</code> — Sets the event selection of event-table entry tableIndex.</li>
+<li><code>aamotion_event_correct</code> — Calibrates the event table.</li>
+</ul>
+</details>
+<h2 id="lock">Position lock<a class="headerlink" href="#lock" title="Permanent link">&para;</a></h2>
+<p>When an edge of the input signal arrives, the controller records the encoder position at that moment. <code>LockCntr</code> counts up, <code>LockVal</code> is the latest position, and <code>LockValTable</code> / <code>LockTimeTable</code> keep each position and time in order. <code>SetLock</code> sets enable, polarity and source (it writes <code>LockEn</code> and <code>LockSrc</code>).</p>
+<p><a href="../demos/09-peg-lock/lock-index.html">Standalone demo: Latch at the encoder index</a></p>
+<p><a href="../demos/09-peg-lock/lock-input.html">Standalone demo: Wait for a latch</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Recording the position at the instant a signal arrives: edge measurement, mark detection, alignment.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">C#</label><label for="__tabbed_7_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1">// Configure Lock function parameters</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">// enableLock: Whether latching is enabled</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1">// lockSignalPolarity: The edge: 1 rising, 0 falling (written as the sign of `LockSrc`)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1">// lockSource: The source number (the magnitude of `LockSrc`); see keyword [LockSrc](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockSrc-AuxLockSrc.md)</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetLock</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableLock</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSignalPolarity</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">);</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1">// Enable Lock function</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">LockEnable</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="c1">// Disable Lock function</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">LockDisEnable</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="c1">// Set Lock function.</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="c1">// enableLock: Whether latching is enabled</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="c1">// lockSignalPolarity: The edge: 1 rising, 0 falling (written as the sign of `LockSrc`)</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="c1">// lockSource: The source number (the magnitude of `LockSrc`); see keyword [LockSrc](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockSrc-AuxLockSrc.md)</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="k">void</span><span class="w"> </span><span class="nf">SetLock</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">enableLock</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSignalPolarity</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// Configures the position lock. @param lockSignalPolarity 0 = rising edge, 1 = falling edge. @param lockSource The lock input.</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// enableLock: Whether latching is enabled</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">// lockSignalPolarity: The edge: 1 rising, 0 falling (written as the sign of `LockSrc`)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">// lockSource: The source number (the magnitude of `LockSrc`); see keyword [LockSrc](https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockSrc-AuxLockSrc.md)</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_set_lock</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableLock</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSignalPolarity</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">);</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1">// Enables the position lock.</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_lock_enable</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1">// Disables the position lock.</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">aamotion_lock_dis_enable</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Keyword written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>One axis</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>enableLock</code></td>
+<td><code>bool</code></td>
+<td>Whether latching is enabled</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockEn-AuxLockEn.md"><code>LockEn</code></a></td>
+</tr>
+<tr>
+<td><code>lockSignalPolarity</code></td>
+<td><code>int</code></td>
+<td>The edge: 1 rising, 0 falling (written as the sign of <code>LockSrc</code>)</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockSrc-AuxLockSrc.md"><code>LockSrc</code></a></td>
+</tr>
+<tr>
+<td><code>lockSource</code></td>
+<td><code>int</code></td>
+<td>The source number (the magnitude of <code>LockSrc</code>); see keyword <a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/03-encoder/03-event-based-feedback-logging/LockSrc-AuxLockSrc.md">LockSrc</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commands sent</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>{Axis}LockEn={enableLock ? 1 : 0}
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>{Axis}LockSrc={lockSignalPolarity == 0 ? -lockSource : lockSource}
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li><code>LockSrc</code> is kept in flash across power cycles. When the latch table fills, it overflows into the B tables (<code>LockValTabB</code>); see the keyword pages.</li>
+<li>Read <code>LockCntr</code> once after arming to get a baseline. Check that the count has advanced before using <code>LockVal</code>. Read the supported latch table for a sequence of fast edges. <code>LockVal</code> returns the latest capture.</li>
+<li>On standalone drives with a shared hardware pin, arming <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> turns Lock off and arming Lock turns <abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr> off. For <abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> remote drives with separate hardware, check the model's pinout.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label><label for="__tabbed_8_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">ISingleAxis</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">LockDisEnable</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">SetLock</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">enableLock</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w"> </span><span class="n">lockSignalPolarity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">lockSource</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">try</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">{</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">LockEnable</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">LockCntr</span><span class="p">;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Apply one edge to the selected input, then press Enter."</span><span class="p">);</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">LockCntr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">before</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Captured position: {a.LockVal}"</span><span class="p">);</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"No new capture."</span><span class="p">);</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="p">}</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="k">finally</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="p">{</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">LockDisEnable</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">aamotion_lock_dis_enable</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">);</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">aamotion_set_lock</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">aamotion_lock_enable</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">);</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="kt">double</span><span class="w"> </span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">after</span><span class="p">,</span><span class="w"> </span><span class="n">latched</span><span class="p">;</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_get_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_KEYWORD_LOCK_CNTR</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">before</span><span class="p">))</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">{</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="s">"Apply one edge to the selected input, then press Enter."</span><span class="p">);</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="n">getchar</span><span class="p">();</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_get_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_KEYWORD_LOCK_CNTR</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">after</span><span class="p">))</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">before</span><span class="p">)</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">            </span><span class="n">puts</span><span class="p">(</span><span class="s">"No new capture."</span><span class="p">);</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_get_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_KEYWORD_LOCK_VAL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">latched</span><span class="p">))</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"Captured position: %g</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">latched</span><span class="p">);</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="p">}</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="n">aamotion_lock_dis_enable</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>SetLock(MotionController, AxisRef, bool, int, int)</code> — Configure Lock function parameters {Axis}LockEn={enableLock ? 1 : 0} {Axis}LockSrc={lockSignalPolarity == 0 ? -lockSource : lockSource}</li>
+<li><code>LockEnable(MotionController, AxisRef)</code> — Enable Lock function {Axis}LockEn=1</li>
+<li><code>LockDisEnable(MotionController, AxisRef)</code> — Disable Lock function {Axis}LockEn=0</li>
+<li><code>SetLock(bool, int, int)</code> — Set Lock function.</li>
+<li><code>aamotion_set_lock</code> — Configures the position lock. @param lockSignalPolarity 0 = rising edge, 1 = falling edge. @param lockSource The lock input.</li>
+<li><code>aamotion_lock_enable</code> — Enables the position lock.</li>
+<li><code>aamotion_lock_dis_enable</code> — Disables the position lock.</li>
+</ul>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="08-io.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Digital I/O">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Digital I/O
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="10-program.html" class="md-footer__link md-footer__link--next" aria-label="Next: User programs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                User programs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../assets/data/single-demos.js"></script>
+      
+        <script src="../../assets/js/widgets.js"></script>
+      
+        <script src="../../assets/js/tools.js"></script>
+      
+        <script src="../../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

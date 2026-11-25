@@ -1,0 +1,3159 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="../cookbook/troubleshooting.html">
+      
+      
+        <link rel="next" href="axis-panel.html">
+      
+      
+        
+          <link rel="alternate" href="index.html" hreflang="zh">
+        
+          <link rel="alternate" href="../en/demos/index.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Demo - AAMotion 编程手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#demo" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../index.html" title="AAMotion 编程手册" class="md-header__button md-logo" aria-label="AAMotion 编程手册" data-md-component="logo">
+      
+  <img src="../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion 编程手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Demo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="index.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/demos/index.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  入门
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  核心概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  实战案例
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  枚举
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  参考查询
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  帮助与附录
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion 编程手册" class="md-nav__button md-logo" aria-label="AAMotion 编程手册" data-md-component="logo">
+      
+  <img src="../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion 编程手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心概念
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实战案例
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link md-nav__link--active">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Demo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="axis-panel.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16V4H3v12zm0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2zM5 6h9v5H5zm10 0h4v2h-4zm4 3v5h-4V9zM5 12h4v2H5zm5 0h4v2h-4z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    轴控制面板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    按章节
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    按章节
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="01-lifecycle.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 初始化与连接
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="02-errors.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 错误处理
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="03-parameters.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 参数读写
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="04-motor.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 使能、换相与停止
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="05-ptp.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 点位运动与 Jog
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="06-homing.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 回零
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="07-advanced-motion.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 往复、双速与正弦运动
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="08-io.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · 数字输入输出
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="09-peg-lock.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · 位置事件输出与位置锁存
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="10-program.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · 用户程序
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="11-cnc.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · CNC 插补
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="12-vector.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · 矢量运动
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="13-ecam.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 · 电子凸轮（ECAM）
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="14-force.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 · 力控与电流控制
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="15-recording.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 · DataLogger（高速数据记录）
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="16-slow-logger.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 · SlowLogger（慢速记录器）
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="17-fastread.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 · 快速读缓存（FastReadCache）
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="18-central-i.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 · Central-i 多轴
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="19-optical.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 · 光耦合找光
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../api/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考查询
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    帮助与附录
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01--初始化与连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · 初始化与连接
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02--错误处理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · 错误处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03--参数读写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · 参数读写
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04--使能换相与停止" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · 使能、换相与停止
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05--点位运动与-jog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · 点位运动与 Jog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06--回零" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · 回零
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07--往复双速与正弦运动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · 往复、双速与正弦运动
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08--数字输入输出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · 数字输入输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09--位置事件输出与位置锁存" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · 位置事件输出与位置锁存
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10--用户程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · 用户程序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11--cnc-插补" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11 · CNC 插补
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12--矢量运动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12 · 矢量运动
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13--电子凸轮ecam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13 · 电子凸轮（ECAM）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14--力控与电流控制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14 · 力控与电流控制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15--datalogger高速数据记录" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15 · DataLogger（高速数据记录）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16--slowlogger慢速记录器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16 · SlowLogger（慢速记录器）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17--快速读缓存fastreadcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17 · 快速读缓存（FastReadCache）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18--central-i-多轴" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18 · Central-i 多轴
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19--光耦合找光" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19 · 光耦合找光
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Demo
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h1>
+<p>每个功能一个小工程，C#、C++ 与 Python 各一份：C# 打开 <code>samples/single/csharp/AAMotionDemos.sln</code>；C++ 用 Visual Studio「打开本地文件夹」打开 <code>samples/single/cpp</code>；Python 运行 <code>samples/single/python</code> 中的脚本。连接目标写在每个程序顶部，默认控制器 IP <code>172.1.1.101</code>。</p>
+<p><a class="md-button md-button--primary" href="axis-panel.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16V4H3v12zm0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2zM5 6h9v5H5zm10 0h4v2h-4zm4 3v5h-4V9zM5 12h4v2H5zm5 0h4v2h-4z"/></svg></span> 轴控制面板：带界面的完整示例（C#、C++、Python）</a></p>
+<p><input class="ag-demo-filter" type="search" placeholder="按名称、API 或用途过滤…" aria-label="过滤 Demo"></p>
+<section class="ag-demo-chapter">
+<h2 id="01--初始化与连接">01 · 初始化与连接<a class="headerlink" href="#01--初始化与连接" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="连接与断开 Connect 连接仿真器或控制器，读一次位置后断开" href="01-lifecycle/connect.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>连接与断开</b><span>连接仿真器或控制器，读一次位置后断开</span><code>Connect</code></a>
+<a class="ag-demo-card" data-text="连接状态 IsConnected 读本地记录的连接状态，不发数据" href="01-lifecycle/is-connected.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>连接状态</b><span>读本地记录的连接状态，不发数据</span><code>IsConnected</code></a>
+<a class="ag-demo-card" data-text="检测是否可达 CheckConnection ping 控制器，只报告结果" href="01-lifecycle/check-connection.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>检测是否可达</b><span>ping 控制器，只报告结果</span><code>CheckConnection</code></a>
+<a class="ag-demo-card" data-text="命令超时时间 CommandTimeout 临时加大默认超时，用完改回" href="01-lifecycle/command-timeout.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>命令超时时间</b><span>临时加大默认超时，用完改回</span><code>CommandTimeout</code></a>
+<a class="ag-demo-card" data-text="重新连接 Reconnect 断线后用上次的地址重新连接" href="01-lifecycle/reconnect.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>重新连接</b><span>断线后用上次的地址重新连接</span><code>Reconnect</code></a>
+<a class="ag-demo-card" data-text="扫描网段 ScanNetwork 不知道 IP 时查找网段内的控制器" href="01-lifecycle/scan-network.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/conn.svg" /><b>扫描网段</b><span>不知道 IP 时查找网段内的控制器</span><code>ScanNetwork</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="02--错误处理">02 · 错误处理<a class="headerlink" href="#02--错误处理" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="错误钩子 ErrorHook 集中接收控制器和 SDK 报告的错误" href="02-errors/error-hook.html"><b>错误钩子</b><span>集中接收控制器和 SDK 报告的错误</span><code>ErrorHook</code></a>
+<a class="ag-demo-card" data-text="捕获被拒绝的命令 CommandException ControllerCommandException 中的 ERR 编号" href="02-errors/command-exception.html"><b>捕获被拒绝的命令</b><span>ControllerCommandException 中的 ERR 编号</span><code>CommandException</code></a>
+<a class="ag-demo-card" data-text="安全读取 SafeRead TryGetValue 失败返回 false，不抛异常" href="02-errors/safe-read.html"><b>安全读取</b><span>TryGetValue 失败返回 false，不抛异常</span><code>SafeRead</code></a>
+<a class="ag-demo-card" data-text="错误码转成文字 DescribeError 把日志里的错误码翻译成说明" href="02-errors/describe-error.html"><b>错误码转成文字</b><span>把日志里的错误码翻译成说明</span><code>DescribeError</code></a>
+<a class="ag-demo-card" data-text="状态值转成文字 StatusText MotionReason、MotionStat 读数的说明" href="02-errors/status-text.html"><b>状态值转成文字</b><span>MotionReason、MotionStat 读数的说明</span><code>StatusText</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="03--参数读写">03 · 参数读写<a class="headerlink" href="#03--参数读写" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="发送原始命令 RawCommand 与 PCSuite 终端相同的命令字符串" href="03-parameters/raw-command.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b>发送原始命令</b><span>与 PCSuite 终端相同的命令字符串</span><code>RawCommand</code></a>
+<a class="ag-demo-card" data-text="批量读取 BulkRead 一包发送多条命令，按序取回复" href="03-parameters/bulk-read.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b>批量读取</b><span>一包发送多条命令，按序取回复</span><code>BulkRead</code></a>
+<a class="ag-demo-card" data-text="按关键字读数值 ReadByKeyword GetValue 与用户单位" href="03-parameters/read-by-keyword.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b>按关键字读数值</b><span>GetValue 与用户单位</span><code>ReadByKeyword</code></a>
+<a class="ag-demo-card" data-text="轴对象属性读写 AxisProperties ISingleAxis 的属性读写" href="03-parameters/axis-properties.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b>轴对象属性读写</b><span>ISingleAxis 的属性读写</span><code>AxisProperties</code></a>
+<a class="ag-demo-card" data-text="CAN 编号与参数类型 CanCode 从控制器命令表读 CAN 编号" href="03-parameters/can-code.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b><abbr title="控制器局域网总线；也指关键字的通信编号 / Controller area network; also a keyword's wire code">CAN</abbr> 编号与参数类型</b><span>从控制器命令表读 <abbr title="控制器局域网总线；也指关键字的通信编号 / Controller area network; also a keyword's wire code">CAN</abbr> 编号</span><code>CanCode</code></a>
+<a class="ag-demo-card" data-text="GenData 与 UserParam GenDataUserParam 与用户程序交换数据的通用数组" href="03-parameters/gen-data.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/arrays.svg" /><b><abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> 与 <abbr title="控制器上的用户参数数组 / The controller's user parameter array">UserParam</abbr></b><span>与用户程序交换数据的通用数组</span><code>GenDataUserParam</code></a>
+<a class="ag-demo-card" data-text="上传参数文件 UploadParameters 备份全部参数到 .par 文件" href="03-parameters/upload-parameters.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/params.svg" /><b>上传参数文件</b><span>备份全部参数到 .par 文件</span><code>UploadParameters</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="04--使能换相与停止">04 · 使能、换相与停止<a class="headerlink" href="#04--使能换相与停止" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="自动换相 AutoPhase 启动换相并有超时地等待完成" href="04-motor/auto-phase.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/phas.svg" /><b>自动换相</b><span>启动换相并有超时地等待完成</span><code>AutoPhase</code></a>
+<a class="ag-demo-card" data-text="使能与断使能 MotorOnOff 确认使能后断使能并读回状态" href="04-motor/motor-on-off.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/phas.svg" /><b>使能与断使能</b><span>确认使能后断使能并读回状态</span><code>MotorOnOff</code></a>
+<a class="ag-demo-card" data-text="读使能与故障状态 MotorStatus MotorOn、ConFlt 与换相状态" href="04-motor/motor-status.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/phas.svg" /><b>读使能与故障状态</b><span>MotorOn、ConFlt 与换相状态</span><code>MotorStatus</code></a>
+<a class="ag-demo-card" data-text="正常停止 Stop Jog 后用 Stop 按 Decel 减速停止" href="04-motor/stop.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>正常停止</b><span>Jog 后用 Stop 按 Decel 减速停止</span><code>Stop</code></a>
+<a class="ag-demo-card" data-text="紧急减速停止 Abort Jog 后用 Abort 按 EmrgDec 减速停止" href="04-motor/abort.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>紧急减速停止</b><span>Jog 后用 Abort 按 EmrgDec 减速停止</span><code>Abort</code></a>
+<a class="ag-demo-card" data-text="往返结束后停止 StopRep StopRep 让当前往返走完再停" href="04-motor/stop-rep.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>往返结束后停止</b><span>StopRep 让当前往返走完再停</span><code>StopRep</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="05--点位运动与-jog">05 · 点位运动与 Jog<a class="headerlink" href="#05--点位运动与-jog" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="绝对运动 MoveAbs 运动到绝对坐标，单独等待到位" href="05-ptp/move-abs.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>绝对运动</b><span>运动到绝对坐标，单独等待到位</span><code>MoveAbs</code></a>
+<a class="ag-demo-card" data-text="相对运动 MoveRel 从当前位置走一段距离" href="05-ptp/move-rel.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>相对运动</b><span>从当前位置走一段距离</span><code>MoveRel</code></a>
+<a class="ag-demo-card" data-text="绝对运动并等待 MoveAbsAndWait 一个调用完成启动与等待" href="05-ptp/move-abs-wait.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>绝对运动并等待</b><span>一个调用完成启动与等待</span><code>MoveAbsAndWait</code></a>
+<a class="ag-demo-card" data-text="相对运动并等待 MoveRelAndWait 一个调用完成相对运动与等待" href="05-ptp/move-rel-wait.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>相对运动并等待</b><span>一个调用完成相对运动与等待</span><code>MoveRelAndWait</code></a>
+<a class="ag-demo-card" data-text="Jog 持续运动 Jog 按速度持续运动，Stop 才停" href="05-ptp/jog.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/jog.svg" /><b>Jog 持续运动</b><span>按速度持续运动，Stop 才停</span><code>Jog</code></a>
+<a class="ag-demo-card" data-text="写参数后 Begin Begin 自己写运动参数，再用 Begin 启动" href="05-ptp/begin.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>写参数后 Begin</b><span>自己写运动参数，再用 Begin 启动</span><code>Begin</code></a>
+<a class="ag-demo-card" data-text="两轴批量启动 MultiAxis A、B 两轴一包启动，各自到位" href="05-ptp/multi-axis.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/multi.svg" /><b>两轴批量启动</b><span>A、B 两轴一包启动，各自到位</span><code>MultiAxis</code></a>
+<a class="ag-demo-card" data-text="读位置与到位状态 MotionState Pos、MotionStat、InTargetStat 的含义" href="05-ptp/motion-state.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>读位置与到位状态</b><span>Pos、MotionStat、InTargetStat 的含义</span><code>MotionState</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="06--回零">06 · 回零<a class="headerlink" href="#06--回零" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="按已配置流程回零 Home 执行控制器中已配置的回零流程" href="06-homing/home.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>按已配置流程回零</b><span>执行控制器中已配置的回零流程</span><code>Home</code></a>
+<a class="ag-demo-card" data-text="回零后运动 PowerUpMove 使用控制器中配置的回零流程，再运动到 10000" href="06-homing/power-up-move.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>回零后运动</b><span>使用控制器中配置的回零流程，再运动到 10000</span><code>PowerUpMove</code></a>
+<a class="ag-demo-card" data-text="限位 + Index 回零 HomeLimitIndex 先找限位，再找编码器 Index" href="06-homing/home-limit-index.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>限位 + Index 回零</b><span>先找限位，再找编码器 Index</span><code>HomeLimitIndex</code></a>
+<a class="ag-demo-card" data-text="碰硬限位回零 HomeHardStop 慢速碰到硬限位作为参考" href="06-homing/home-hard-stop.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>碰硬限位回零</b><span>慢速碰到硬限位作为参考</span><code>HomeHardStop</code></a>
+<a class="ag-demo-card" data-text="Index 回零 HomeToIndex 只搜索编码器 Index" href="06-homing/home-to-index.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>Index 回零</b><span>只搜索编码器 Index</span><code>HomeToIndex</code></a>
+<a class="ag-demo-card" data-text="读回零状态 HomingState HomingStat 与 IsHomed" href="06-homing/homing-state.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>读回零状态</b><span>HomingStat 与 IsHomed</span><code>HomingState</code></a>
+<a class="ag-demo-card" data-text="读取回零流程表 HomingTable 按步骤读出 HomingDef" href="06-homing/homing-table.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/homing.svg" /><b>读取回零流程表</b><span>按步骤读出 HomingDef</span><code>HomingTable</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="07--往复双速与正弦运动">07 · 往复、双速与正弦运动<a class="headerlink" href="#07--往复双速与正弦运动" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="往返指定次数 RepetitiveCycle 往返 2 次后自动停止" href="07-advanced-motion/repetitive-cycle.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>往返指定次数</b><span>往返 2 次后自动停止</span><code>RepetitiveCycle</code></a>
+<a class="ag-demo-card" data-text="按计数停止往返 RepetitiveCounter 读 RptCounter，够数后 StopRep" href="07-advanced-motion/repetitive-counter.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>按计数停止往返</b><span>读 RptCounter，够数后 StopRep</span><code>RepetitiveCounter</code></a>
+<a class="ag-demo-card" data-text="双速运动 TwoSpeed 快速走大半程，慢速走完" href="07-advanced-motion/two-speed.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>双速运动</b><span>快速走大半程，慢速走完</span><code>TwoSpeed</code></a>
+<a class="ag-demo-card" data-text="相对双速并等待 TwoSpeedAndWait 一个调用完成双速运动与等待" href="07-advanced-motion/two-speed-wait.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>相对双速并等待</b><span>一个调用完成双速运动与等待</span><code>TwoSpeedAndWait</code></a>
+<a class="ag-demo-card" data-text="正弦点位与改目标 SinePtp 正弦加速度运动，运动中改目标" href="07-advanced-motion/sine-ptp.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>正弦点位与改目标</b><span>正弦加速度运动，运动中改目标</span><code>SinePtp</code></a>
+<a class="ag-demo-card" data-text="写参数后提交 CommitMotion 改 AbsTrgt 后用 CommitMotion 生效" href="07-advanced-motion/commit-motion.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ptp.svg" /><b>写参数后提交</b><span>改 AbsTrgt 后用 CommitMotion 生效</span><code>CommitMotion</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="08--数字输入输出">08 · 数字输入输出<a class="headerlink" href="#08--数字输入输出" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="置位与清零输出 DigitalOutput 输出 1 置位、清零，再改回" href="08-io/digital-output.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ioDIO.svg" /><b>置位与清零输出</b><span>输出 1 置位、清零，再改回</span><code>DigitalOutput</code></a>
+<a class="ag-demo-card" data-text="翻转输出 ToggleOutput 翻转输出 1 四次，回到原状态" href="08-io/toggle-output.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ioDIO.svg" /><b>翻转输出</b><span>翻转输出 1 四次，回到原状态</span><code>ToggleOutput</code></a>
+<a class="ag-demo-card" data-text="读数字输入 DigitalInput 逐位读输入 1–4" href="08-io/digital-input.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ioDIO.svg" /><b>读数字输入</b><span>逐位读输入 1–4</span><code>DigitalInput</code></a>
+<a class="ag-demo-card" data-text="读整个 IO 寄存器 IoPorts 一次读出全部输入和输出" href="08-io/io-ports.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ioDIO.svg" /><b>读整个 IO 寄存器</b><span>一次读出全部输入和输出</span><code>IoPorts</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="09--位置事件输出与位置锁存">09 · 位置事件输出与位置锁存<a class="headerlink" href="#09--位置事件输出与位置锁存" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="单点位置事件 SinglePeg 经过一个位置时输出一个脉冲" href="09-peg-lock/single-peg.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/event.svg" /><b>单点位置事件</b><span>经过一个位置时输出一个脉冲</span><code>SinglePeg</code></a>
+<a class="ag-demo-card" data-text="等间距位置事件 FixedGapPeg 每隔 1000 输出一个脉冲" href="09-peg-lock/fixed-gap-peg.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/event.svg" /><b>等间距位置事件</b><span>每隔 1000 输出一个脉冲</span><code>FixedGapPeg</code></a>
+<a class="ag-demo-card" data-text="表格位置事件 TablePeg 按任意位置列表输出脉冲" href="09-peg-lock/table-peg.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/event.svg" /><b>表格位置事件</b><span>按任意位置列表输出脉冲</span><code>TablePeg</code></a>
+<a class="ag-demo-card" data-text="锁存编码器 Index 位置 LockIndex 运动中在 Index 处记录位置" href="09-peg-lock/lock-index.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/lock.svg" /><b>锁存编码器 Index 位置</b><span>运动中在 Index 处记录位置</span><code>LockIndex</code></a>
+<a class="ag-demo-card" data-text="等待输入锁存 LockInput 用已配置的信号源锁存一次" href="09-peg-lock/lock-input.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/lock.svg" /><b>等待输入锁存</b><span>用已配置的信号源锁存一次</span><code>LockInput</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="10--用户程序">10 · 用户程序<a class="headerlink" href="#10--用户程序" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="运行、暂停与复位线程 ProgRunHalt 线程 1 运行任务 1，再暂停、复位" href="10-program/prog-run-halt.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/idePlus.svg" /><b>运行、暂停与复位线程</b><span>线程 1 运行任务 1，再暂停、复位</span><code>ProgRunHalt</code></a>
+<a class="ag-demo-card" data-text="暂停所有线程 ProgHaltAll 一次暂停全部线程并列出状态" href="10-program/prog-halt-all.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/idePlus.svg" /><b>暂停所有线程</b><span>一次暂停全部线程并列出状态</span><code>ProgHaltAll</code></a>
+<a class="ag-demo-card" data-text="接收程序 printf 输出 ProgramPrint 运行 5 秒，显示程序打印的每一行" href="10-program/program-print.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/idePlus.svg" /><b>接收程序 printf 输出</b><span>运行 5 秒，显示程序打印的每一行</span><code>ProgramPrint</code></a>
+<a class="ag-demo-card" data-text="和用户程序交换数据 GenDataExchange GenData 握手：给参数、等结果" href="10-program/gen-data-exchange.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/idePlus.svg" /><b>和用户程序交换数据</b><span><abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> 握手：给参数、等结果</span><code>GenDataExchange</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="11--cnc-插补">11 · <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> 插补<a class="headerlink" href="#11--cnc-插补" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="正方形直线路径 CncSquare 四段直线，回到起点" href="11-cnc/cnc-square.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/cnc.svg" /><b>正方形直线路径</b><span>四段直线，回到起点</span><code>CncSquare</code></a>
+<a class="ag-demo-card" data-text="直线接圆弧 CncArc 圆心填绝对坐标" href="11-cnc/cnc-arc.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/cnc.svg" /><b>直线接圆弧</b><span>圆心填绝对坐标</span><code>CncArc</code></a>
+<a class="ag-demo-card" data-text="路径暂停与继续 CncPauseResume 沿路径减速暂停，再从原处继续" href="11-cnc/cnc-pause-resume.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/cnc.svg" /><b>路径暂停与继续</b><span>沿路径减速暂停，再从原处继续</span><code>CncPauseResume</code></a>
+<a class="ag-demo-card" data-text="路径上的输出动作 CncOutputOnPath 走到某点时输出 1 打开 200 ms" href="11-cnc/cnc-output-on-path.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/cnc.svg" /><b>路径上的输出动作</b><span>走到某点时输出 1 打开 200 ms</span><code>CncOutputOnPath</code></a>
+<a class="ag-demo-card" data-text="运行 CNC 程序文件 CncProgramFile 运行随附的 CNC 文本程序" href="11-cnc/cnc-program-file.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/cnc.svg" /><b>运行 <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> 程序文件</b><span>运行随附的 <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> 文本程序</span><code>CncProgramFile</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="12--矢量运动">12 · 矢量运动<a class="headerlink" href="#12--矢量运动" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="两轴直线矢量运动 VectorLine A、B 同时启动、同时到达" href="12-vector/vector-line.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/vector.svg" /><b>两轴直线矢量运动</b><span>A、B 同时启动、同时到达</span><code>VectorLine</code></a>
+<a class="ag-demo-card" data-text="矢量圆弧 VectorArc 圆心是绝对坐标，走半圆" href="12-vector/vector-arc.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/vector.svg" /><b>矢量圆弧</b><span>圆心是绝对坐标，走半圆</span><code>VectorArc</code></a>
+<a class="ag-demo-card" data-text="矢量运动暂停与继续 VectorPauseContinue VecPause 暂停，再继续走完" href="12-vector/vector-pause.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/vector.svg" /><b>矢量运动暂停与继续</b><span>VecPause 暂停，再继续走完</span><code>VectorPauseContinue</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="13--电子凸轮ecam">13 · 电子凸轮（<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>）<a class="headerlink" href="#13--电子凸轮ecam" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="正弦凸轮跟随 EcamSine B 轴按正弦表跟随 A 轴" href="13-ecam/ecam-sine.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ecam.svg" /><b>正弦凸轮跟随</b><span>B 轴按正弦表跟随 A 轴</span><code>EcamSine</code></a>
+<a class="ag-demo-card" data-text="自定义凸轮表 EcamCustomTable 自己算表，主轴走一段，从轴平滑上升" href="13-ecam/ecam-custom.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/ecam.svg" /><b>自定义凸轮表</b><span>自己算表，主轴走一段，从轴平滑上升</span><code>EcamCustomTable</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="14--力控与电流控制">14 · 力控与电流控制<a class="headerlink" href="#14--力控与电流控制" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="切换控制模式 ControlModes 位置控制 → 电流控制 → 位置控制" href="14-force/control-modes.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/force.svg" /><b>切换控制模式</b><span>位置控制 → 电流控制 → 位置控制</span><code>ControlModes</code></a>
+<a class="ag-demo-card" data-text="压装流程 ForcePress 快速接近、慢速接近、切力控、保持、回退" href="14-force/force-press.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/force.svg" /><b>压装流程</b><span>快速接近、慢速接近、切力控、保持、回退</span><code>ForcePress</code></a>
+<a class="ag-demo-card" data-text="设定当前位置 SetPosition 不运动，把当前位置定义为 0" href="14-force/set-position.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/force.svg" /><b>设定当前位置</b><span>不运动，把当前位置定义为 0</span><code>SetPosition</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="15--datalogger高速数据记录">15 · DataLogger（高速数据记录）<a class="headerlink" href="#15--datalogger高速数据记录" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="记录一次运动 RecordMove A 轴开始运动时触发，记录 1 秒并存 CSV" href="15-recording/record-move.html"><b>记录一次运动</b><span>A 轴开始运动时触发，记录 1 秒并存 CSV</span><code>RecordMove</code></a>
+<a class="ag-demo-card" data-text="立即记录并上传 RecordNow 不设触发，记录 1 秒后上传" href="15-recording/record-now.html"><b>立即记录并上传</b><span>不设触发，记录 1 秒后上传</span><code>RecordNow</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="16--slowlogger慢速记录器">16 · SlowLogger（慢速记录器）<a class="headerlink" href="#16--slowlogger慢速记录器" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="慢速记录 2 秒 SlowLogger 配置、开启、上传、检查丢包" href="16-slow-logger/slow-logger.html"><b>慢速记录 2 秒</b><span>配置、开启、上传、检查丢包</span><code>SlowLogger</code></a>
+<a class="ag-demo-card" data-text="读记录器状态 LoggerState 开关、间隔、模式、剩余空间、丢包" href="16-slow-logger/logger-state.html"><b>读记录器状态</b><span>开关、间隔、模式、剩余空间、丢包</span><code>LoggerState</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="17--快速读缓存fastreadcache">17 · 快速读缓存（FastReadCache）<a class="headerlink" href="#17--快速读缓存fastreadcache" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="快速读缓存 FastReadCache 登记关键字，后台刷新，属性读取不再通信" href="17-fastread/fast-read-cache.html"><b>快速读缓存</b><span>登记关键字，后台刷新，属性读取不再通信</span><code>FastReadCache</code></a>
+<a class="ag-demo-card" data-text="缓存刷新事件 CacheEvents 每次刷新完成时取缓存值" href="17-fastread/cache-events.html"><b>缓存刷新事件</b><span>每次刷新完成时取缓存值</span><code>CacheEvents</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="18--central-i-多轴">18 · <abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> 多轴<a class="headerlink" href="#18--central-i-多轴" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="从站上线与下线 CiConnect CiConnect 上线，CiDisconnect 下线" href="18-central-i/ci-connect.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/centrali.svg" /><b>从站上线与下线</b><span>CiConnect 上线，CiDisconnect 下线</span><code>CiConnect</code></a>
+<a class="ag-demo-card" data-text="Central-i 路径与组输出 CiPathOutput 第二 CNC 缓冲区：直线 + 组输出" href="18-central-i/ci-path-output.html"><img alt="" class="ag-card-icon" src="../assets/images/pcsuite/centrali.svg" /><b><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> 路径与组输出</b><span>第二 <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> 缓冲区：直线 + 组输出</span><code>CiPathOutput</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="19--光耦合找光">19 · 光耦合找光<a class="headerlink" href="#19--光耦合找光" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="螺旋找光 SpiralScan 配置、启动、等待结果、读最大光功率" href="19-optical/spiral-scan.html"><b>螺旋找光</b><span>配置、启动、等待结果、读最大光功率</span><code>SpiralScan</code></a>
+<a class="ag-demo-card" data-text="读取扫描曲线 ScanCurves 一次读出 GenData，取 X、Y 与光功率" href="19-optical/scan-curves.html"><b>读取扫描曲线</b><span>一次读出 <abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr>，取 X、Y 与光功率</span><code>ScanCurves</code></a>
+<a class="ag-demo-card" data-text="按固件地址表读 GenData FirmwareGenData 用字符串命令读一个下标并检查解析" href="19-optical/firmware-gen-data.html"><b>按固件地址表读 <abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr></b><span>用字符串命令读一个下标并检查解析</span><code>FirmwareGenData</code></a></p>
+</div>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../cookbook/troubleshooting.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 故障排查">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                故障排查
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="axis-panel.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 轴控制面板">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                轴控制面板
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../assets/data/single-demos.js"></script>
+      
+        <script src="../assets/js/widgets.js"></script>
+      
+        <script src="../assets/js/tools.js"></script>
+      
+        <script src="../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4927 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="../demos/19-optical/firmware-gen-data.html">
+      
+      
+        <link rel="next" href="members/index.html">
+      
+      
+        
+          <link rel="alternate" href="../../api/index.html" hreflang="zh">
+        
+          <link rel="alternate" href="index.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>API index - AAMotion Programming Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-index" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-header__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion Programming Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../api/index.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="index.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Core concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  Cookbook
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../demos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enums
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  Reference lookup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Help and appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-nav__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion Programming Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../demos/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="members/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types and members
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-lifecycle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Initialization and connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-parameters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading and writing parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-motor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motor, commutation and stop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-ptp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point-to-point motion and jog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-homing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-advanced-motion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repetitive, two-speed and sine motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-io.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-peg-lock.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position events (PEG) and position lock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-program.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User programs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-cnc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNC interpolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-vector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-ecam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electronic cam (ECAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-force.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force and current control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-recording.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DataLogger (high-speed recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-slow-logger.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SlowLogger (slow recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-fastread.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastReadCache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-central-i.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Central-i multi-axis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-optical.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optical coupling light finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference lookup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help and appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c-method-groups-chapter-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C# method groups (chapter scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    API reference
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-index">API index<a class="headerlink" href="#api-index" title="Permanent link">&para;</a></h1>
+<p>Method groups and C functions organized by chapter for SDK 13.0.0. See type members for properties, fields, constructors and all overloads.</p>
+<p><a href="members/index.html">Types, properties, fields and overload reference</a></p>
+<p><strong>Coverage</strong>: C# method groups (chapter scope) 465/465 · C functions 277/277</p>
+<h2 id="c-method-groups-chapter-scope">C# method groups (chapter scope)<a class="headerlink" href="#c-method-groups-chapter-scope" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>C# method groups (chapter scope)</th>
+<th>Documented in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AAMotionAPI.Abort</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Arc</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcXT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcXY</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcXZ</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcYZ</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ArcZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.AutoCorner</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.AutoExec</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.AutoPhase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Begin</code></td>
+<td><a href="05-ptp.html#begin">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CheckConnection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CiConnect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CiDisconnect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CiGroupDOutClearBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CiGroupDOutSetBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CiGroupDOutToggleBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ClearBuffer</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ClearErrorOccurredHandler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ClearErrorReportedHandler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ClearUserProgramPrintHandler</code></td>
+<td><a href="10-program.html#print">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CommitMotion</code></td>
+<td><a href="07-advanced-motion.html#commit">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Commutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Connect</code></td>
+<td><a href="01-lifecycle.html#connect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ConnectSimulation</code></td>
+<td><a href="01-lifecycle.html#connect-simulation">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.CreateOpticalCouplingLightFinding</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Delay</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.DisableFastReadCache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Disconnect</code></td>
+<td><a href="01-lifecycle.html#disconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Dispose</code></td>
+<td><a href="01-lifecycle.html#dispose">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.DOutClearBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.DOutSetBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.DOutToggleBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.DownloadParameters</code></td>
+<td><a href="03-parameters.html#par-files">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_ConfigureTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_CreateLinearTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_CreateSinusoidalTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_GetCycleCount</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_IsActive</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetCycleParams</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetGap</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetMaster</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetMasterIni</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetTableData</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_SetTableRange</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_Start</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ECAM_Stop</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.EnableFastReadCache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.EventCorrect</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.EventDisEnable</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.EventEnable</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetCurrModeSWTrigSrc</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetForceCmdSource</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetForceTunePID</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetMotion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetPosThForAutoSwToPosMode</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetRetractMotion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ForceCurr_SetSlowApproach</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GearBegin</code></td>
+<td><a href="07-advanced-motion.html#electronic-gearing">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GenDataWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GetCacheAgeMs</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GetDefaultTimeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GetDInPort</code></td>
+<td><a href="08-io.html#inputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GetDOutPort</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GoToCurrMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GoToForceMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GoToPosMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GroupDOutClearBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GroupDOutSetBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GroupDOutToggleBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GroupStop</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.GroupWriteUserParam</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Home</code></td>
+<td><a href="06-homing.html#home">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.HomeToHardStop</code></td>
+<td><a href="06-homing.html#hard-stop">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.HomeToHardStopByStuckThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.HomeToHardStopThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.HomeToIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.HomeToLimitThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Init</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Initialize</code></td>
+<td><a href="01-lifecycle.html#initialize">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.IsAutoPhase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.IsCNCCompleted</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.IsCommutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.IsConnected</code></td>
+<td><a href="01-lifecycle.html#is-connected">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.IsHomed</code></td>
+<td><a href="06-homing.html#is-homed">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Jog</code></td>
+<td><a href="05-ptp.html#jog">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsolute</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteX</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXY</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXYZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXYZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteXZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteY</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteYZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteYZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LinearAbsoluteZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LockDisEnable</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LockEnable</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.LockSrcZeroSupported</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MotorOff</code></td>
+<td><a href="04-motor.html#motor-on">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MotorOn</code></td>
+<td><a href="04-motor.html#motor-on">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbs</code></td>
+<td><a href="05-ptp.html#move-abs">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsAndWait</code></td>
+<td><a href="05-ptp.html#move-abs-wait">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsRepetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsRepetitiveAndWait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsRepetitiveCycle</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsTwoSpeed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveAbsTwoSpeedAndWait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRel</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelAndWait</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelative</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelRepetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelRepetitiveAndWait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelTwoSpeed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MoveRelTwoSpeedAndWait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MultiWriteGenData</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MultiWriteGenDataWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MultiWriteUserParam</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.MultiWriteUserParamWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpenAACommServer</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_ApplySingleAxisConfig</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_ApplySpiralConfig</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_EmergencyStop</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetChannel1PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetChannel2PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetChannel3PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetChannel4PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetCouplingResult</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetErrorCode</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetLastSampleIndex</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetLevelingAngle</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetMaxPower</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetMaxPowerXPos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetMaxPowerYPos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisChannel1PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisChannel2PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisChannel3PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisChannel4PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisMaxPowerPos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSingleAxisScanResult</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSpiralScanResult</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSpiralXPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetSpiralYPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_GetTwoChannelIntersectionPos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_HasError</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_IsSuccess</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_ReadRange</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_StartSingleAxisScan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_StartSpiralScan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.OpticalCoupling_SyncAllGenData</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Pause</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ProbeConnection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ProgHalt</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ProgHaltAll</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ProgReset</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ProgRun</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajArm</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajBegin</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajGetStatus</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajIsValidated</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajSupported</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajValidate</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajWriteHeader</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.PvajWritePoint</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadGenData</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadGenDataD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadGenDataF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadUserParam</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadUserParamD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ReadUserParamF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.RefreshCacheNow</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.RegisterCacheKeywords</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Resume</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.RunCNCProgramFromFile</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ScanController</code></td>
+<td><a href="01-lifecycle.html#scan">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.ScanControllerDetailed</code></td>
+<td><a href="01-lifecycle.html#scan">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SendBulkCommandString</code></td>
+<td><a href="03-parameters.html#bulk">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SendCommandString</code></td>
+<td><a href="03-parameters.html#raw">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetCornerParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetCurrPositions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetDefaultTimeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetErrorOccurredHandler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetErrorReportedHandler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetEventFixedGapPEG</code></td>
+<td><a href="09-peg-lock.html#gap-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetEventTableBeginIndex</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetEventTableEndIndex</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetEventTableSelect</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetEventTableValue</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetLock</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetMaxAccelParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetMaxVelJumpParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetMotionProfile</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetPosition</code></td>
+<td><a href="14-force.html#set-position">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetSingleEventPEG</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetStartPositions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetUserProgramPrintHandler</code></td>
+<td><a href="10-program.html#print">User programs</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SetVectorParam</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Shutdown</code></td>
+<td><a href="01-lifecycle.html#shutdown">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SinePtpBegin</code></td>
+<td><a href="07-advanced-motion.html#sine-ptp">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.SinePtpCommit</code></td>
+<td><a href="07-advanced-motion.html#sine-ptp">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.Stop</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.StopRep</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.StopVec</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.TryReconnect</code></td>
+<td><a href="01-lifecycle.html#try-reconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.UploadParameters</code></td>
+<td><a href="03-parameters.html#par-files">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.UserParamWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.VectorArc</code></td>
+<td><a href="12-vector.html#vector-arc">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.VectorContinue</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.VectorLinear</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.VectorPause</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteDOutPort</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteGenData</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteGenDataD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteGenDataF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteICiGroupDOutPort</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteUserParam</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteUserParamD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>AAMotionAPI.WriteUserParamF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.ClearCache</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.Disable</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.Dispose</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.Enable</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.GetCacheAgeMs</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.GetCachedArrayValue</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.GetCachedValue</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.IsArrayElementRegistered</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.IsRegistered</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RefreshCompleted</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RefreshError</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RefreshNow</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RefreshStarted</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RegisterArrayElements</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.RegisterKeywords</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>FastReadCache.UnregisterKeywords</code></td>
+<td><a href="17-fastread.html#cache-object">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.Arc</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.ArcXT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.ArcYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.ArcZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.CiGroupDOutClearBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.CiGroupDOutSetBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.CiGroupDOutToggleBit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsolute</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteXT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteXYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteXYZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteXZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteYT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteYZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.LinearAbsoluteZT</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiGroupAxis.WriteDOutPort</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiSlave.CiConnect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>ICiSlave.CiDisconnect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_ConfigureTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_CreateLinearTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_CreateSinusoidalTable</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_GetCycleCount</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_IsActive</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetCycleParams</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetGap</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetMaster</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetMasterIni</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetTableData</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_SetTableRange</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_Start</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IECAM.ECAM_Stop</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.ArcXY</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.ArcXZ</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.ArcYZ</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.AutoCorner</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.Begin</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.ClearBuffer</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.Delay</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.GenDataWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.GroupDOutClearBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.GroupDOutSetBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.GroupDOutToggleBit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.IsCNCCompleted</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsolute</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteX</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteXY</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteXYZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteXZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteY</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteYZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.LinearAbsoluteZ</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.MultiWriteGenData</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.MultiWriteGenDataWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.MultiWriteUserParam</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.MultiWriteUserParamWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.Pause</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.Resume</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.RunCNCProgramFromFile</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetCornerParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetCurrPositions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetMaxAccelParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetMaxVelJumpParams</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetMotionProfile</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.SetStartPositions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.Stop</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.UserParamWait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.WriteDOutPort</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.WriteGenData</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IGroupAxis.WriteUserParam</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>IIOModule.DOutClearBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>IIOModule.DOutSetBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>IIOModule.DOutToggleBit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>IIOModule.GetDInPort</code></td>
+<td><a href="08-io.html#inputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>IIOModule.GetDOutPort</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Abort</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.AutoExec</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.AutoPhase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Begin</code></td>
+<td><a href="05-ptp.html#begin">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.CommitMotion</code></td>
+<td><a href="07-advanced-motion.html#commit">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Commutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.EventCorrect</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetCurrModeSWTrigSrc</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetForceCmdSource</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetForceTunePID</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetMotion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetPosThForAutoSwToPosMode</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetRetractMotion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ForceCurr_SetSlowApproach</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.GetHomingDefStep</code></td>
+<td><a href="06-homing.html#homing-def-step">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.GoToCurrMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.GoToForceMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.GoToPosMode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Home</code></td>
+<td><a href="06-homing.html#home">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.HomeToHardStop</code></td>
+<td><a href="06-homing.html#hard-stop">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.HomeToHardStopByStuckThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.HomeToHardStopThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.HomeToIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.HomeToLimitThenIndex</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.IsAutoPhase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.IsCommutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.IsHomed</code></td>
+<td><a href="06-homing.html#is-homed">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Jog</code></td>
+<td><a href="05-ptp.html#jog">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.LockSrcZeroSupported</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbs</code></td>
+<td><a href="05-ptp.html#move-abs">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsAndWait</code></td>
+<td><a href="05-ptp.html#move-abs-wait">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsRepetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsRepetitiveAndWait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsRepetitiveCycle</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsTwoSpeed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveAbsTwoSpeedAndWait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRel</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRelAndWait</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRelRepetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRelRepetitiveAndWait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRelTwoSpeed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.MoveRelTwoSpeedAndWait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ProgHalt</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ProgHaltAll</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ProgReset</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.ProgRun</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetEventFixedGapPEG</code></td>
+<td><a href="09-peg-lock.html#gap-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetEventTableBeginIndex</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetEventTableEndIndex</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetEventTableSelect</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetEventTableValue</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetLock</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetPosition</code></td>
+<td><a href="14-force.html#set-position">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.SetSingleEventPEG</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.Stop</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.StopRep</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.TryRead</code></td>
+<td><a href="03-parameters.html#get-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>ISingleAxis.TryReadArray</code></td>
+<td><a href="03-parameters.html#get-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>IVector.SetVectorParam</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>IVector.StopVec</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>IVector.VectorArc</code></td>
+<td><a href="12-vector.html#vector-arc">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>IVector.VectorContinue</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>IVector.VectorLinear</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>IVector.VectorPause</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>MotionController.BulkCommandParser</code></td>
+<td><a href="03-parameters.html#bulk">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.CheckConnection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.CloseAACommServer</code></td>
+<td><a href="01-lifecycle.html#shutdown">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.CommitMotion</code></td>
+<td><a href="07-advanced-motion.html#commit">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ConfigureDataLogger</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ConfigureSlowLogger</code></td>
+<td><a href="16-slow-logger.html#slow-configure">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.Connect</code></td>
+<td><a href="01-lifecycle.html#connect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ConnectSimulation</code></td>
+<td><a href="01-lifecycle.html#connect-simulation">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.CreateEventTableClient</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>MotionController.DisableFastReadCache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>MotionController.Disconnect</code></td>
+<td><a href="01-lifecycle.html#disconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.Dispose</code></td>
+<td><a href="01-lifecycle.html#dispose">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.EnableFastReadCache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>MotionController.EnsureAACommServerRunning</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ErrorOccurred</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ErrorReported</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ForceDataLoggerTrigger</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GenerateCsvFile</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetAxis</code></td>
+<td><a href="03-parameters.html#objects">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetCacheAgeMs</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetCiGroup</code></td>
+<td><a href="03-parameters.html#objects">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetDataLoggerTotalDataCount</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetDataRecordingCapacity</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetDataRecordingStatus</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetDefaultTimeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetGroup</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetIO</code></td>
+<td><a href="03-parameters.html#objects">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetKeywordCANCode</code></td>
+<td><a href="03-parameters.html#can-code">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetParameterType</code></td>
+<td><a href="03-parameters.html#can-code">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetUserUnits</code></td>
+<td><a href="03-parameters.html#units">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.GetValue</code></td>
+<td><a href="03-parameters.html#get-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.Init</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.LoggerUpload</code></td>
+<td><a href="16-slow-logger.html#slow-configure">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ProbeConnection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadDataLoggerIncrementalData</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadGenData</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadGenDataD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadGenDataF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadUserParam</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadUserParamD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.ReadUserParamF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.RecordData</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.RefreshCacheNow</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>MotionController.RegisterCacheKeywords</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>MotionController.SendBulkCommandString</code></td>
+<td><a href="03-parameters.html#bulk">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.SendCommandString</code></td>
+<td><a href="03-parameters.html#raw">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.SetDefaultTimeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.SetValue</code></td>
+<td><a href="03-parameters.html#set-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.Shutdown</code></td>
+<td><a href="01-lifecycle.html#shutdown">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.StartDataRecording</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.StartUploadDataLoggerDataNonblocking</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.StopDataRecording</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.TryGetValue</code></td>
+<td><a href="03-parameters.html#get-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.TryReconnect</code></td>
+<td><a href="01-lifecycle.html#try-reconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>MotionController.UploadDataLoggerData</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.UploadDataLoggerDataNonblocking</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.UserProgramPrintReceived</code></td>
+<td><a href="10-program.html#print">User programs</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WaitForDataRecordingToEnd</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteGenData</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteGenDataD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteGenDataF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteUserParam</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteUserParamD</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>MotionController.WriteUserParamF</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.ApplySingleAxisConfig</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.ApplySpiralConfig</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.Channel1PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.Channel2PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.Channel3PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.Channel4PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.EmergencyStop</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.GetSingleAxisScanResult</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.GetSpiralScanResult</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.ReadRange</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SingleAxisChannel1PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SingleAxisChannel2PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SingleAxisChannel3PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SingleAxisChannel4PowerArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SingleAxisPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SpiralXPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SpiralYPosArray</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.StartSingleAxisScan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.StartSpiralScan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>OpticalCouplingLightFinding.SyncAllGenData</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-functions">C functions<a class="headerlink" href="#c-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>C functions</th>
+<th>Documented in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aamotion_abi_version</code></td>
+<td><a href="01-lifecycle.html#abi-version">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_abort</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_xt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_xy</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_xy_with_cycles</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_xz</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_xz_with_cycles</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_yt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_yz</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_yz_with_cycles</code></td>
+<td><a href="11-cnc.html#arc"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_arc_zt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_auto_corner</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_auto_exec</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_auto_phase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_begin</code></td>
+<td><a href="05-ptp.html#begin">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_check_connection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ci_connect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ci_disconnect</code></td>
+<td><a href="18-central-i.html#ci-connect"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ci_group_d_out_clear_bit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ci_group_d_out_set_bit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ci_group_d_out_toggle_bit</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_clear_buffer</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_clear_error_occurred_handler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_clear_error_reported_handler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_clear_user_program_print_handler</code></td>
+<td><a href="10-program.html#print">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_cnc_begin</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_commit_motion</code></td>
+<td><a href="07-advanced-motion.html#commit">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_commutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_configure_slow_logger</code></td>
+<td><a href="16-slow-logger.html#slow-configure">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_connect</code></td>
+<td><a href="01-lifecycle.html#connect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_connect_simulation</code></td>
+<td><a href="01-lifecycle.html#connect-simulation">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_d_out_clear_bit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>aamotion_d_out_set_bit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>aamotion_d_out_toggle_bit</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_capacity</code></td>
+<td><a href="15-recording.html#record-steps">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_info</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_record</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_time</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_vector_info</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_data_rec_vector_values</code></td>
+<td><a href="15-recording.html#record">DataLogger (high-speed recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_delay</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_disable_fast_read_cache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>aamotion_disconnect</code></td>
+<td><a href="01-lifecycle.html#disconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_download_parameters</code></td>
+<td><a href="03-parameters.html#par-files">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_configure_table</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_create_linear_table</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_create_sinusoidal_table</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_get_cycle_count</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_is_active</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_cycle_params</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_gap</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_master</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_master_ini</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_table_data</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_set_table_range</code></td>
+<td><a href="13-ecam.html#ecam-table">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_start</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_ecam_stop</code></td>
+<td><a href="13-ecam.html#ecam-run">Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_enable_fast_read_cache</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>aamotion_event_correct</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_event_dis_enable</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_event_enable</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_curr_mode_sw_trig_src</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_force_cmd_source</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_force_tune_pid</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_motion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_pos_th_for_auto_sw_to_pos_mode</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_retract_motion</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_force_curr_set_slow_approach</code></td>
+<td><a href="14-force.html#force-sequence">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_gear_begin</code></td>
+<td><a href="07-advanced-motion.html#electronic-gearing">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_gen_data_wait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_cache_age_ms</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_con_flt_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_d_in_port</code></td>
+<td><a href="08-io.html#inputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_d_out_port</code></td>
+<td><a href="08-io.html#outputs">Digital I/O</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_default_timeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_enc_type_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_error_description_by_code</code></td>
+<td><a href="02-errors.html#error-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_homing_stat_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_in_target_stat_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_inject_type_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_about</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_free_space</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_full_mode</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_gap</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_lost_packets</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_on</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_params</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_pushed_packets</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_state</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_logger_status</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_map_type_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_motion_mode_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_motion_reason_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_motion_stat_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_motor_on_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_operation_mode_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_stat_reg_des</code></td>
+<td><a href="02-errors.html#enum-text">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_units</code></td>
+<td><a href="03-parameters.html#units">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_get_value</code></td>
+<td><a href="03-parameters.html#get-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_go_to_curr_mode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_go_to_force_mode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_go_to_pos_mode</code></td>
+<td><a href="14-force.html#force-modes">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_group_d_out_clear_bit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_group_d_out_set_bit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_group_d_out_toggle_bit</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_group_stop</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_group_write_user_param</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home</code></td>
+<td><a href="06-homing.html#home">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_from_file</code></td>
+<td><a href="06-homing.html#home">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_to_hard_stop</code></td>
+<td><a href="06-homing.html#hard-stop">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_to_hard_stop_by_stuck_then_index</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_to_hard_stop_then_index</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_to_index</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_to_limit_then_index</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_home_with_options</code></td>
+<td><a href="06-homing.html#home">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_init</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_initialize</code></td>
+<td><a href="01-lifecycle.html#initialize">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_is_auto_phase</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_is_cnc_completed</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_is_commutated</code></td>
+<td><a href="04-motor.html#auto-phase">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_is_connected</code></td>
+<td><a href="01-lifecycle.html#is-connected">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_is_homed</code></td>
+<td><a href="06-homing.html#is-homed">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_jog</code></td>
+<td><a href="05-ptp.html#jog">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute4_axis</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute6_axis</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_multi_axis</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_t</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_x</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xy</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xyt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xyz</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xyzt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xz</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_xzt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_y</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_yt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_yz</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_yzt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_z</code></td>
+<td><a href="11-cnc.html#linear"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_linear_absolute_zt</code></td>
+<td><a href="18-central-i.html#ci-cnc"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_lock_dis_enable</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_lock_enable</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_lock_src_zero_supported</code></td>
+<td><a href="06-homing.html#index">Homing</a></td>
+</tr>
+<tr>
+<td><code>aamotion_logger_upload</code></td>
+<td><a href="16-slow-logger.html#slow-configure">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_motor_off</code></td>
+<td><a href="04-motor.html#motor-on">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_motor_on</code></td>
+<td><a href="04-motor.html#motor-on">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs</code></td>
+<td><a href="05-ptp.html#move-abs">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_and_wait</code></td>
+<td><a href="05-ptp.html#move-abs-wait">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_multi</code></td>
+<td><a href="05-ptp.html#multi-axis">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_repetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_repetitive_and_wait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_repetitive_cycle</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_two_speed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_abs_two_speed_and_wait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_and_wait</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_multi</code></td>
+<td><a href="05-ptp.html#multi-axis">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_repetitive</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_repetitive_and_wait</code></td>
+<td><a href="07-advanced-motion.html#repetitive">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_two_speed</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_rel_two_speed_and_wait</code></td>
+<td><a href="07-advanced-motion.html#two-speed">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_move_relative</code></td>
+<td><a href="05-ptp.html#move-rel">Point-to-point motion and jog</a></td>
+</tr>
+<tr>
+<td><code>aamotion_multi_write_gen_data</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_multi_write_gen_data_wait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_multi_write_user_param</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_multi_write_user_param_wait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_open_aacomm_server</code></td>
+<td><a href="01-lifecycle.html#init">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_apply_single_axis_config</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_apply_spiral_config</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_create</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_emergency_stop</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_channel1_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_channel2_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_channel3_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_channel4_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_coupling_result</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_error_code</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_last_sample_index</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_leveling_angle</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_max_power</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_max_power_x_pos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_max_power_y_pos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_channel1_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_channel2_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_channel3_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_channel4_power_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_max_power_pos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_pos_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_single_axis_scan_result</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_spiral_scan_result</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_spiral_x_pos_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_spiral_y_pos_array</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_get_two_channel_intersection_pos</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_has_error</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_is_success</code></td>
+<td><a href="19-optical.html#oc-result">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_read_range</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_release</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_start_single_axis_scan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_start_spiral_scan</code></td>
+<td><a href="19-optical.html#oc-create">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_optical_coupling_sync_all_gen_data</code></td>
+<td><a href="19-optical.html#oc-data">Optical coupling light finding</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pause</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_probe_connection</code></td>
+<td><a href="01-lifecycle.html#check-connection">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_prog_halt</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_prog_halt_all</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_prog_reset</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_prog_run</code></td>
+<td><a href="10-program.html#run">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_arm</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_begin</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_get_status</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_is_validated</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_supported</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_validate</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_write_header</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_pvaj_write_point</code></td>
+<td><a href="07-advanced-motion.html#pvaj-workflow">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_gen_data</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_gen_data_d</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_gen_data_f</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_user_param</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_user_param_d</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_read_user_param_f</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_refresh_cache_now</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>aamotion_register_cache_keywords</code></td>
+<td><a href="17-fastread.html#cache">FastReadCache</a></td>
+</tr>
+<tr>
+<td><code>aamotion_release</code></td>
+<td><a href="01-lifecycle.html#dispose">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_resume</code></td>
+<td><a href="11-cnc.html#group-control"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_run_cnc_program_from_file</code></td>
+<td><a href="11-cnc.html#program-file"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_scan_controller</code></td>
+<td><a href="01-lifecycle.html#scan">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_scan_controller_detailed</code></td>
+<td><a href="01-lifecycle.html#scan">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_send_bulk_command_string</code></td>
+<td><a href="03-parameters.html#bulk">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_send_command_string</code></td>
+<td><a href="03-parameters.html#raw">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_corner_params</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_curr_positions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_default_timeout</code></td>
+<td><a href="01-lifecycle.html#timeout">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_error_occurred_handler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_error_reported_handler</code></td>
+<td><a href="02-errors.html#error-hook">Error handling</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_event_fixed_gap_peg</code></td>
+<td><a href="09-peg-lock.html#gap-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_event_table_begin_index</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_event_table_end_index</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_event_table_select</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_event_table_value</code></td>
+<td><a href="09-peg-lock.html#table-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_lock</code></td>
+<td><a href="09-peg-lock.html#lock">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_logger_full_mode</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_logger_gap</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_logger_on</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_logger_params</code></td>
+<td><a href="16-slow-logger.html#slow-state">SlowLogger (slow recording)</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_max_accel_params</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_max_vel_jump_params</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_motion_profile</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_position</code></td>
+<td><a href="14-force.html#set-position">Force and current control</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_single_event_peg</code></td>
+<td><a href="09-peg-lock.html#single-peg">Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_start_positions</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_start_positions_abc</code></td>
+<td><a href="11-cnc.html#profile"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_user_program_print_handler</code></td>
+<td><a href="10-program.html#print">User programs</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_value</code></td>
+<td><a href="03-parameters.html#set-value">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_set_vector_param</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_shutdown</code></td>
+<td><a href="01-lifecycle.html#shutdown">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_sine_ptp_begin</code></td>
+<td><a href="07-advanced-motion.html#sine-ptp">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_sine_ptp_commit</code></td>
+<td><a href="07-advanced-motion.html#sine-ptp">Repetitive, two-speed and sine motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_stop</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_stop_rep</code></td>
+<td><a href="04-motor.html#stop">Motor, commutation and stop</a></td>
+</tr>
+<tr>
+<td><code>aamotion_stop_vec</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_try_reconnect</code></td>
+<td><a href="01-lifecycle.html#try-reconnect">Initialization and connection</a></td>
+</tr>
+<tr>
+<td><code>aamotion_upload_parameters</code></td>
+<td><a href="03-parameters.html#par-files">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_user_param_wait</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_vector_arc</code></td>
+<td><a href="12-vector.html#vector-arc">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_vector_continue</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_vector_linear_with_mask</code></td>
+<td><a href="12-vector.html#vector-linear">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_vector_pause</code></td>
+<td><a href="12-vector.html#vector-control">Vector motion</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_d_out_port</code></td>
+<td><a href="11-cnc.html#path-actions"><abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_gen_data</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_gen_data_d</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_gen_data_f</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_i_ci_group_d_out_port</code></td>
+<td><a href="18-central-i.html#ci-io"><abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_user_param</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_user_param_d</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+<tr>
+<td><code>aamotion_write_user_param_f</code></td>
+<td><a href="03-parameters.html#gen-data">Reading and writing parameters</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../demos/19-optical/firmware-gen-data.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Read GenData by the firmware table">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Read GenData by the firmware table
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="members/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Types and members">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Types and members
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../assets/data/single-demos.js"></script>
+      
+        <script src="../../assets/js/widgets.js"></script>
+      
+        <script src="../../assets/js/tools.js"></script>
+      
+        <script src="../../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

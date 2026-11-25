@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.20)
+project(RepetitiveCycle CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(AAMOTION_SDK_DIR "" CACHE PATH "Folder of the extracted agito-aamotion-native-sdk zip")
+if(NOT AAMOTION_SDK_DIR)
+  message(FATAL_ERROR "Set AAMOTION_SDK_DIR to the extracted native SDK folder")
+endif()
+if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
+  message(FATAL_ERROR "aamotion is 64-bit only: configure an x64 build")
+endif()
+
+add_executable(RepetitiveCycle main.cpp)
+target_include_directories(RepetitiveCycle PRIVATE "${AAMOTION_SDK_DIR}/include")
+# The sources are UTF-8 with Chinese comments; MSVC otherwise reads them in the system code page.
+if(MSVC)
+  target_compile_options(RepetitiveCycle PRIVATE /utf-8)
+endif()
+if(WIN32)
+  set(rid win-x64)
+  target_link_libraries(RepetitiveCycle PRIVATE "${AAMOTION_SDK_DIR}/win-x64/aamotion.lib")
+  set(runtime aamotion.dll AACommServerNative.exe)
+else()
+  set(rid linux-x64)
+  target_link_libraries(RepetitiveCycle PRIVATE "${AAMOTION_SDK_DIR}/linux-x64/libaamotion.so")
+  set_target_properties(RepetitiveCycle PROPERTIES BUILD_RPATH "$ORIGIN")
+  set(runtime libaamotion.so AACommServerNative)
+endif()
+# The library and the AACommServerNative daemon must sit beside the program.
+foreach(file IN LISTS runtime)
+  add_custom_command(TARGET RepetitiveCycle POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${AAMOTION_SDK_DIR}/${rid}/${file}" $<TARGET_FILE_DIR:RepetitiveCycle>)
+endforeach()

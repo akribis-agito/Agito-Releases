@@ -1,0 +1,9 @@
+<Project>
+  <!-- The samples are standalone customer-style projects: they consume Agito.AAMotion from NuGet and must not pick up
+       the repository's build settings or central package versions above this folder. -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <!-- The Agito.AAMotion version every sample references; sdk-version.txt is its one place. -->
+    <AAMotionVersion>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)sdk-version.txt').Trim())</AAMotionVersion>
+  </PropertyGroup>
+</Project>

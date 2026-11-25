@@ -1,0 +1,3018 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="05-ptp.html">
+      
+      
+        <link rel="next" href="07-advanced-motion.html">
+      
+      
+        
+          <link rel="alternate" href="../../api/06-homing.html" hreflang="zh">
+        
+          <link rel="alternate" href="06-homing.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Homing - AAMotion Programming Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#homing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-header__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion Programming Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Homing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../api/06-homing.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="06-homing.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Core concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  Cookbook
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../demos/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enums
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  Reference lookup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Help and appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-nav__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion Programming Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../demos/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="members/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types and members
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-lifecycle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Initialization and connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-parameters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading and writing parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-motor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motor, commutation and stop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-ptp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point-to-point motion and jog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-homing.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home with the configured sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-homed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check homing is done
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home to a hard stop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Index homing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homing sequence from a file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#homing-def-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read and write the homing table by step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-advanced-motion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repetitive, two-speed and sine motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-io.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-peg-lock.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position events (PEG) and position lock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-program.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User programs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-cnc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNC interpolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-vector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-ecam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electronic cam (ECAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-force.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force and current control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-recording.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DataLogger (high-speed recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-slow-logger.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SlowLogger (slow recording)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-fastread.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastReadCache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-central-i.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Central-i multi-axis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-optical.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optical coupling light finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference lookup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help and appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home with the configured sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-homed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check homing is done
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home to a hard stop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Index homing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homing sequence from a file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#homing-def-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read and write the homing table by step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    API reference
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="homing">Homing<a class="headerlink" href="#homing" title="Permanent link">&para;</a></h1>
+<p>Homing finds the axis's zero. Every homing function only <strong>starts</strong> the homing sequence in the controller and returns at once; the controller runs it, and the program polls <code>IsHomed</code> (that is <code>HomingStat == 100</code>) for completion. A negative <code>HomingStat</code> is a failure; each value is in <a href="../reference/enums/HomingStat.html">Enums: Homing status</a>.</p>
+<p>The controller's homing sequence is a table <code>HomingDef[]</code> of up to 20 steps with 10 parameters each: the first is the step type (find a limit, find the index, hit a hard stop, …), the others speed, acceleration, emergency deceleration, timeout and so on. The functions below fill the table for common cases and start it; or configure homing in PCSuite's homing tool and just call <code>Home(c, axis)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Function</th>
+<th>Use it when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The sequence configured in the controller</td>
+<td><code>Home(c, axis)</code></td>
+<td>homing is set up in PCSuite</td>
+</tr>
+<tr>
+<td>Limit / index / limit + index</td>
+<td><code>Home(c, axis, isHomeToLimit, isHomeToIndex, …)</code></td>
+<td>the common case</td>
+</tr>
+<tr>
+<td>Hard stop</td>
+<td><code>HomeToHardStop</code></td>
+<td>no limit switches, a mechanical end stop</td>
+</tr>
+<tr>
+<td>Index only, limit + index, hard stop + index, stuck + index</td>
+<td><code>HomeToIndex</code> and others</td>
+<td>you choose the lock source and direction</td>
+</tr>
+<tr>
+<td>Sequence from a file</td>
+<td><code>Home(c, axis, filePath)</code></td>
+<td>the sequence ships with the product's configuration</td>
+</tr>
+</tbody>
+</table>
+<details class="abstract">
+<summary>In this chapter</summary>
+<ul>
+<li><a href="#home">Home with the configured sequence</a></li>
+<li><a href="#is-homed">Check homing is done</a></li>
+<li><a href="#hard-stop">Home to a hard stop</a></li>
+<li><a href="#index">Index homing</a></li>
+<li><a href="#from-file">Homing sequence from a file</a></li>
+<li><a href="#homing-def-step">Read and write the homing table by step</a></li>
+</ul>
+</details>
+<p><a class="md-button" href="../demos/06-homing.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 16.5v-9l6 4.5M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> Run this chapter's demo</a></p>
+<h2 id="home">Home with the configured sequence<a class="headerlink" href="#home" title="Permanent link">&para;</a></h2>
+<p>Three overloads:</p>
+<ul>
+<li>'<code>Home(c, axis)</code> starts the sequence already configured in the controller (<code>AHomingOn=1</code>).'</li>
+<li>'<code>Home(c, axis, isHomeToLimit, isHomeToIndex, …)</code> builds the sequence from its arguments: a limit only, the index only, or a limit then the index; the position found plus <code>homeoffset</code> becomes zero.'</li>
+<li>'<code>Home(c, axis, filePath)</code> writes the <code>HomingDef[n]=value</code> lines of a text file to the controller and starts. Lines starting with <code>//</code> are comments.'</li>
+</ul>
+<p>The axis must be motor-on (and commutated, for a synchronous motor) before homing.</p>
+<p><a href="../demos/06-homing/home.html">Standalone demo: Home with the configured sequence</a></p>
+<p><a href="../demos/06-homing/power-up-move.html">Standalone demo: Home then move</a></p>
+<p><a href="../demos/06-homing/home-limit-index.html">Standalone demo: Limit then index</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Establishing zero after power-up; needed every power-up on an axis with an incremental encoder.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C#</label><label for="__tabbed_1_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// Execute homing for the axis</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// Execute homing for the axis (with limit and index options) Every value goes into `HomingDef`, which the controller reads in controller units: User Units do not apply to homing. Determine whether the Homed has been completed</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// isHomeToLimit: true: find the limit switch. With isHomeToIndex also true, the limit first, then the index</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1">// isHomeToIndex: true: find the encoder index</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1">// velocity: The homing speed</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// acceleration: The homing acceleration</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">// emergencydeceleration: The emergency deceleration when a switch is hit during homing</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1">// homeoffset: The zero offset: the position found plus this becomes zero</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">// timeOut: The timeout of each step in ms; on expiry homing fails with a negative `HomingStat`</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToLimit</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1">// Execute homing for the axis (by file configuration) Determine whether the Homed has been completed</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1">// filePath: Path of the sequence file, one `HomingDef[n]=value` per line</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1">// Start homing operation.</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">();</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1">// Perform homing operation for the axis to find its zero position. Every value goes into `HomingDef`, which the controller reads in controller units: User Units do not apply to homing. Determine whether the return to zero is successful`ISingleAxis.IsHomed`</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1">// isHomeToLimit: true: find the limit switch. With isHomeToIndex also true, the limit first, then the index</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="c1">// isHomeToIndex: true: find the encoder index</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1">// velocity: The homing speed</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1">// acceleration: The homing acceleration</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c1">// emergencydeceleration: The emergency deceleration when a switch is hit during homing</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="c1">// homeoffset: The zero offset: the position found plus this becomes zero</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="c1">// timeOut: The timeout of each step in ms; on expiry homing fails with a negative `HomingStat`</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToLimit</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="c1">// Perform homing operation from configuration file.</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="c1">// filePath: Path of the sequence file, one `HomingDef[n]=value` per line</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="k">void</span><span class="w"> </span><span class="nf">Home</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Starts the homing sequence configured on the controller (HomingOn = 1).</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// Homes the axis to find its zero. Every value goes into HomingDef, which the controller reads in controller units: User Units do not apply to homing. @param isHomeToLimit true to move to the limit sensor and take it as zero. @param isHomeToIndex true to move to the encoder index and take it as zero; with isHomeToLimit also true, homes to the limit first, then to the index. @param velocity Homing velocity, counts/s. @param acceleration Homing acceleration, counts/s squared. @param emergencydeceleration Emergency deceleration during homing, counts/s squared. @param homeoffset Zero offset distance, counts. @param timeOut Timeout, milliseconds.</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// isHomeToLimit: true: find the limit switch. With isHomeToIndex also true, the limit first, then the index</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// isHomeToIndex: true: find the encoder index</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// velocity: The homing speed</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">// acceleration: The homing acceleration</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">// emergencydeceleration: The emergency deceleration when a switch is hit during homing</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1">// homeoffset: The zero offset: the position found plus this becomes zero</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1">// timeOut: The timeout of each step in ms; on expiry homing fails with a negative `HomingStat`</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_with_options</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToLimit</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHomeToIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="c1">// Runs the homing sequence stored in a homing file. @param filePath Path to the homing file.</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1">// filePath: Path of the sequence file, one `HomingDef[n]=value` per line</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_from_file</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Keyword written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>One axis</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>isHomeToLimit</code></td>
+<td><code>bool</code></td>
+<td>true: find the limit switch. With isHomeToIndex also true, the limit first, then the index</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>isHomeToIndex</code></td>
+<td><code>bool</code></td>
+<td>true: find the encoder index</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td><code>double</code></td>
+<td>The homing speed</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>acceleration</code></td>
+<td><code>double</code></td>
+<td>The homing acceleration</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>emergencydeceleration</code></td>
+<td><code>double</code></td>
+<td>The emergency deceleration when a switch is hit during homing</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>homeoffset</code></td>
+<td><code>double</code></td>
+<td>The zero offset: the position found plus this becomes zero</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>timeOut</code></td>
+<td><code>int</code> / <code>uint</code></td>
+<td>The timeout of each step in ms; on expiry homing fails with a negative <code>HomingStat</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>filePath</code></td>
+<td><code>const char*</code> / <code>string</code></td>
+<td>Path of the sequence file, one <code>HomingDef[n]=value</code> per line</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commands sent</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{Axis}HomingOn=1
+</span></code></pre></div>
+<p><strong>Returns</strong></p>
+<p>C# returns nothing (throws <code>ControllerCommandException</code> when starting is refused); the C version returns true when started. <strong>true does not mean homing is done.</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li><code>Stop</code> / <code>Abort</code> interrupt homing.</li>
+<li>The timeout is converted to current-loop cycles before it is written to <code>HomingDef</code>.</li>
+<li>The meaning of each <code>HomingDef</code> element is in keyword <a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md">HomingDef</a>.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">C#</label><label for="__tabbed_2_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// limit switch first, then the index; offset 1000 from the index becomes 0</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">Home</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">isHomeToLimit</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">isHomeToIndex</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">velocity</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="n">acceleration</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">homeoffset</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">timeOut</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WaitHomed</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">25000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">/* limit switch first, then the index; offset 1000; timeout 20 s */</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">aamotion_home_with_options</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wait_homed</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">25000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>Home(MotionController, AxisRef)</code> — Execute homing for the axis {Axis}HomingOn=1</li>
+<li><code>Home(MotionController, AxisRef, bool, bool, double, double, double, double, uint)</code> — Execute homing for the axis (with limit and index options) Every value goes into <code>HomingDef</code>, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing. Determine whether the Homed has been completed 1.For HomeToLimitThenIndex: <code>isHomeToIndex</code>=ture&amp;&amp; <code>isHomeToLimit</code>=ture {Axis}HomingDef[1] = 1 {Axis}HomingDef[2] = {velocity} {Axis}HomingDef[3] = {acceleration} {Axis}HomingDef[4] = {emergencydeceleration} {Axis}HomingDef[5] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[11] = 4 {Axis}HomingDef[12] = -{velocity} {Axis}HomingDef[13] = {acceleration} {Axis}HomingDef[14] = {emergencydeceleration} {Axis}HomingDef[15] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[21] = 5 {Axis}HomingDef[22] = {velocity} {Axis}HomingDef[23] = {acceleration} {Axis}HomingDef[24] = {emergencydeceleration} {Axis}HomingDef[25] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[31] = 6 {Axis}HomingDef[32] = {homeoffset} {Axis}HomingDef[33] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[41] = 0 {Axis}HomingOn = 1 2.For HomeToIndex: <code>isHomeToIndex</code>=ture&amp;&amp; <code>isHomeToLimit</code>=false {Axis}HomingDef[1] = 4 {Axis}HomingDef[2] = {velocity} {Axis}HomingDef[3] = {acceleration} {Axis}HomingDef[4] = {emergencydeceleration} {Axis}HomingDef[5] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[11] = 5 {Axis}HomingDef[12] = {velocity} {Axis}HomingDef[13] = {acceleration} {Axis}HomingDef[14] = {emergencydeceleration} {Axis}HomingDef[15] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[21] = 6 {Axis}HomingDef[22] = {homeoffset} {Axis}HomingDef[23] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[31] = 0 {Axis}HomingOn = 1 3.For HomeToLimit: <code>isHomeToIndex</code>=false&amp;&amp; <code>isHomeToLimit</code>=ture {Axis}HomingDef[1] = 1 {Axis}HomingDef[2] = {velocity} {Axis}HomingDef[3] = {acceleration} {Axis}HomingDef[4] = {emergencydeceleration} {Axis}HomingDef[5] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[11] = 6 {Axis}HomingDef[12] = {homeoffset} {Axis}HomingDef[13] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[21] = 0 {Axis}HomingOn = 1</li>
+<li><code>Home(MotionController, AxisRef, string)</code> — Execute homing for the axis (by file configuration) Determine whether the Homed has been completed</li>
+<li><code>Home()</code> — Start homing operation. The actual command sequence sent to the back end: {Axis}HomingOn=1</li>
+<li><code>Home(bool, bool, double, double, double, double, uint)</code> — Perform homing operation for the axis to find its zero position. Every value goes into <code>HomingDef</code>, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing. Determine whether the return to zero is successful<code>ISingleAxis.IsHomed</code> Determine whether the return to zero is successful<code>ISingleAxis.IsHomed</code></li>
+<li><code>Home(string)</code> — Perform homing operation from configuration file.</li>
+<li><code>aamotion_home</code> — Starts the homing sequence configured on the controller (HomingOn = 1).</li>
+<li><code>aamotion_home_with_options</code> — Homes the axis to find its zero. Every value goes into HomingDef, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing. @param isHomeToLimit true to move to the limit sensor and take it as zero. @param isHomeToIndex true to move to the encoder index and take it as zero; with isHomeToLimit also true, homes to the limit first, then to the index. @param velocity Homing velocity, counts/s. @param acceleration Homing acceleration, counts/s squared. @param emergencydeceleration Emergency deceleration during homing, counts/s squared. @param homeoffset Zero offset distance, counts. @param timeOut Timeout, milliseconds.</li>
+<li><code>aamotion_home_from_file</code> — Runs the homing sequence stored in a homing file. @param filePath Path to the homing file.</li>
+</ul>
+</details>
+<h2 id="is-homed">Check homing is done<a class="headerlink" href="#is-homed" title="Permanent link">&para;</a></h2>
+<p>Reads <code>HomingStat</code> live (never through the FastReadCache) and returns true when it is 100. Poll it while homing runs, and also check whether <code>HomingStat</code> turned negative, which is a failure you need not wait out.</p>
+<p><a href="../demos/06-homing/homing-state.html">Standalone demo: Homing state</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Polling after starting homing, or confirming zero is valid before moving.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">C#</label><label for="__tabbed_3_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// Check if the axis is homed</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">// Returns: Returns true if homed, otherwise false</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsHomed</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">// Check if the axis has completed homing.</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">// Returns: Returns true if the axis has completed homing, otherwise false.</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">IsHomed</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// @return true when the axis has completed homing.</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_is_homed</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>One axis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>true once homed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>Track <code>HomingStep</code> and <code>HomingStat</code> while waiting. Status 0 means no homing since power-up or reset, a positive in-process status identifies the current step, and 100 indicates success.</li>
+<li>Status -2 means a step timed out. Check that step's search direction, input, and timeout. Status -3 means the motor was unexpectedly disabled. Read <code>ConFlt</code> for the cause. Status -4 means the actual stop reason differed from what the step expected. Check the limit or latch signal used by that step.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">C#</label><label for="__tabbed_4_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">DateTime</span><span class="w"> </span><span class="n">deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">AddMilliseconds</span><span class="p">(</span><span class="n">timeoutMs</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">deadline</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">IsHomed</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="p">))</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">                                   </span><span class="c1">// HomingStat == 100</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">eKeyword</span><span class="p">.</span><span class="n">HomingStat</span><span class="p">);</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"homing failed: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">EnumPropertyHelper</span><span class="p">.</span><span class="n">GetHomingStatDes</span><span class="p">(</span><span class="n">stat</span><span class="p">));</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">}</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">wait_homed</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeout_ms</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">waited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">waited</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">timeout_ms</span><span class="p">;</span><span class="w"> </span><span class="n">waited</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_is_homed</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="p">))</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">                                   </span><span class="cm">/* HomingStat == 100 */</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">stat</span><span class="p">;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_get_value</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_KEYWORD_HOMING_STAT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stat</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">text</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">            </span><span class="n">aamotion_get_homing_stat_des</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">stat</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"homing failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>IsHomed(MotionController, AxisRef)</code> — Check if the axis is homed Returns: Returns true if homed, otherwise false</li>
+<li><code>IsHomed()</code> — Check if the axis has completed homing. Returns: Returns true if the axis has completed homing, otherwise false.</li>
+<li><code>aamotion_is_homed</code> — @return true when the axis has completed homing.</li>
+</ul>
+</details>
+<h2 id="hard-stop">Home to a hard stop<a class="headerlink" href="#hard-stop" title="Permanent link">&para;</a></h2>
+<p>Without limit switches, the axis moves slowly until it presses against the mechanical end stop; a position error above <code>threshold</code> marks the stop, and that position plus <code>homeoffset</code> becomes zero.</p>
+<p><a href="../demos/06-homing/home-hard-stop.html">Standalone demo: Hard-stop homing</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Axes without limit switches but with a mechanical end stop.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">C#</label><label for="__tabbed_5_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">// Execute hard-stop homing for the axis Every value goes into `HomingDef`, which the controller reads in controller units: User Units do not apply to homing. Determine whether the Homed has been completed</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1">// threshold: The position error that marks the hard stop</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1">// velocity: The search speed; keep it low</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">// acceleration: The acceleration</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1">// emergencydeceleration: The emergency deceleration</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1">// homeoffset: The zero offset</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1">// timeOut: The timeout in ms</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStop</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">threshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1">// JOG until a hard stop is detected by position error. Assign home position at this point. Every value goes into `HomingDef`, which the controller reads in controller units: User Units do not apply to homing.</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="c1">// threshold: The position error that marks the hard stop</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1">// velocity: The search speed; keep it low</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1">// acceleration: The acceleration</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="c1">// emergencydeceleration: The emergency deceleration</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1">// homeoffset: The zero offset</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="c1">// timeOut: The timeout in ms</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStop</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">threshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Jogs until a hard stop is detected by position error, and takes that point as home. Every value goes into HomingDef, which the controller reads in controller units: User Units do not apply to homing. @param threshold Position error above which the axis is taken to have reached the hard stop, counts. @param velocity Homing velocity, counts/s. @param acceleration Homing acceleration, counts/s squared. @param emergencydeceleration Emergency deceleration during homing, counts/s squared. @param homeoffset Home offset, counts. @param timeOut Timeout, milliseconds.</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">// threshold: The position error that marks the hard stop</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1">// velocity: The search speed; keep it low</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">// acceleration: The acceleration</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">// emergencydeceleration: The emergency deceleration</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1">// homeoffset: The zero offset</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">// timeOut: The timeout in ms</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_to_hard_stop</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">threshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">velocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeOut</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Keyword written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>One axis</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td><code>double</code></td>
+<td>The position error that marks the hard stop</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td><code>double</code></td>
+<td>The search speed; keep it low</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>acceleration</code></td>
+<td><code>double</code></td>
+<td>The acceleration</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>emergencydeceleration</code></td>
+<td><code>double</code></td>
+<td>The emergency deceleration</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>homeoffset</code></td>
+<td><code>double</code></td>
+<td>The zero offset</td>
+<td><a href="https://github.com/akribis-agito/DocumentationPublic/blob/2a479d972e696d5b0d00f10cb077f1fa85c50922/03%20USER%20MANUALS/00%20KEYWORD%20REFERENCE%20MANUAL/content/02-keywords/16-homing/HomingDef.md"><code>HomingDef</code></a></td>
+</tr>
+<tr>
+<td><code>timeOut</code></td>
+<td><code>int</code> / <code>uint</code></td>
+<td>The timeout in ms</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commands sent</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>{Axis}HomingDef[1] = 10
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>{Axis}HomingDef[2] = {velocity}
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>{Axis}HomingDef[3] = {acceleration}
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>{Axis}HomingDef[4] = {emergencydeceleration}
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>{Axis}HomingDef[5] = {threshold}
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>{Axis}HomingDef[6] = {homeoffset}
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>{Axis}HomingDef[7] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)}
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>{Axis}HomingDef[11] = 0
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>{Axis}HomingOn = 1
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>The motor pushes against the stop, so keep the speed and current limits sensible to protect the mechanics. Try a very low speed first.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">C#</label><label for="__tabbed_6_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// move slowly into the mechanical end; a position error above 2000 marks the stop</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">HomeToHardStop</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">threshold</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="n">velocity</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">acceleration</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">emergencydeceleration</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w"> </span><span class="n">homeoffset</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="n">timeOut</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WaitHomed</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">25000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">aamotion_home_to_hard_stop</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wait_homed</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">25000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>HomeToHardStop(MotionController, AxisRef, double, double, double, double, double, uint)</code> — Execute hard-stop homing for the axis Every value goes into <code>HomingDef</code>, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing. Determine whether the Homed has been completed {Axis}HomingDef[1] = 10 {Axis}HomingDef[2] = {velocity} {Axis}HomingDef[3] = {acceleration} {Axis}HomingDef[4] = {emergencydeceleration} {Axis}HomingDef[5] = {threshold} {Axis}HomingDef[6] = {homeoffset} {Axis}HomingDef[7] = {Round(timeOut / 1000.0 * CurrentLoopSampleRate)} {Axis}HomingDef[11] = 0 {Axis}HomingOn = 1</li>
+<li><code>HomeToHardStop(double, double, double, double, double, uint)</code> — JOG until a hard stop is detected by position error. Assign home position at this point. Every value goes into <code>HomingDef</code>, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing.</li>
+<li><code>aamotion_home_to_hard_stop</code> — Jogs until a hard stop is detected by position error, and takes that point as home. Every value goes into HomingDef, which the controller reads in controller units: <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> do not apply to homing. @param threshold Position error above which the axis is taken to have reached the hard stop, counts. @param velocity Homing velocity, counts/s. @param acceleration Homing acceleration, counts/s squared. @param emergencydeceleration Emergency deceleration during homing, counts/s squared. @param homeoffset Home offset, counts. @param timeOut Timeout, milliseconds.</li>
+</ul>
+</details>
+<h2 id="index">Index homing<a class="headerlink" href="#index" title="Permanent link">&para;</a></h2>
+<p>Use a latch signal, normally the encoder index, as zero, optionally after a fast coarse search and before a slow latch search:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>First stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HomeToIndex</code></td>
+<td>none: a slow latch search straight away</td>
+</tr>
+<tr>
+<td><code>HomeToLimitThenIndex</code></td>
+<td>a fast search for the limit switch</td>
+</tr>
+<tr>
+<td><code>HomeToHardStopThenIndex</code></td>
+<td>a fast move into the mechanical stop, detected by a position error above <code>hardStopThreshold</code></td>
+</tr>
+<tr>
+<td><code>HomeToHardStopByStuckThenIndex</code></td>
+<td>a fast move into the mechanical stop, detected by motor stuck: velocity below <code>stuckVel</code> with current above <code>stuckCurr</code> for <code>stuckTimeMs</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each fills <code>HomingDef[]</code>, starts the controller's homing sequence and returns; poll <code>IsHomed</code> for completion (see the chapter introduction). <code>lockSource</code> 0 selects the main encoder index (it needs <code>LockSrcZeroSupported</code> to return true; otherwise C# throws <code>NotSupportedException</code>).</p>
+<p>See the <a href="../cookbook/pcsuite-api-map.html#homing">PCSuite homing controls and parameters</a>.</p>
+<p><a href="../demos/06-homing/home-to-index.html">Standalone demo: Index homing</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>When zero must repeat very precisely: a coarse search for a limit or hard stop, then a fine search for the encoder index. Without limit switches use one of the hard-stop methods, the detection the PCSuite homing page was commissioned with.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">C#</label><label for="__tabbed_7_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// AAMotionAPI</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">// Home the axis to the index signal only (no limit switch involvement). Requires `AAMotionAPI.LockSrcZeroSupported` to return true if using lockSource=0.</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HomeToIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="c1">// Home the axis to a limit switch first, then find the index signal. Requires `AAMotionAPI.LockSrcZeroSupported` to return true if using lockSource=0.</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HomeToLimitThenIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="c1">// Home the axis to a hard stop first, then find the index signal. Requires `AAMotionAPI.LockSrcZeroSupported` to return true if using lockSource=0.</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="c1">// hardStopThreshold: The position error that marks the hard stop, counts (written to `HomingDef[25]`)</span>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStopThenIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">hardStopThreshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="c1">// Home the axis to a hard stop detected by motor stuck (low velocity with high current), then find the index signal. Requires `AAMotionAPI.LockSrcZeroSupported` to return true if using lockSource=0.</span>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a><span class="c1">// stuckVel: The stuck velocity threshold in counts/s; below it the axis counts as stuck (written to `HomingDef[25]`). It is not the `StuckVel` parameter, whose property User Units scale; this value is always in controller units</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="c1">// stuckCurr: The stuck current threshold in mA; above it the axis counts as stuck (written to `HomingDef[26]`)</span>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a><span class="c1">// stuckTimeMs: How long both conditions must hold, in ms; written to `HomingDef[27]` in servo samples</span>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-47"><a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStopByStuckThenIndex</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckVel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckCurr</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckTimeMs</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-48"><a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a>
+</span><span id="__span-14-49"><a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a><span class="c1">// Check if the controller supports lockSource=0 (main axis index) for homing operations. When true, HomeToIndex and similar methods can use lockSource=0 to reference the main encoder index.</span>
+</span><span id="__span-14-50"><a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-14-51"><a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a><span class="c1">// axisRef: One axis</span>
+</span><span id="__span-14-52"><a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a><span class="c1">// Returns: Returns true if lockSource=0 is supported, otherwise false</span>
+</span><span id="__span-14-53"><a id="__codelineno-14-53" name="__codelineno-14-53" href="#__codelineno-14-53"></a><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">LockSrcZeroSupported</span><span class="p">(</span><span class="n">MotionController</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="w"> </span><span class="n">axisRef</span><span class="p">);</span>
+</span><span id="__span-14-54"><a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a>
+</span><span id="__span-14-55"><a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-14-56"><a id="__codelineno-14-56" name="__codelineno-14-56" href="#__codelineno-14-56"></a><span class="c1">// Simplified homing via hardware index signal: Motor On (30 s) → Configure Lock (30 s) → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - `direction = 1` (Positive): Jog to index at `+slowSpeed`, move to lock at `+slowSpeed`. - `direction = -1` (Negative): Jog to index at `-slowSpeed`, move to lock at `-slowSpeed`. Emergency deceleration = `accel × 10`. Motion step timeouts are user-defined via `timeoutMs` (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as `30 × CurrentLoopSampleRate` servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (`3 × CurrentLoopSampleRate` samples), a step duration rather than a timeout.</span>
+</span><span id="__span-14-57"><a id="__codelineno-14-57" name="__codelineno-14-57" href="#__codelineno-14-57"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-58"><a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-59"><a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-60"><a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-61"><a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-62"><a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a><span class="k">void</span><span class="w"> </span><span class="nf">HomeToIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-63"><a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>
+</span><span id="__span-14-64"><a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a><span class="c1">// Simplified homing to limit switch then index: Motor On (30 s) → Configure Lock (30 s) → Jog to Limit → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - `direction = 1` (Positive): Jog to limit at `+fastSpeed`, back off to the index at `-slowSpeed`, move to lock at `+slowSpeed`. - `direction = -1` (Negative): Jog to limit at `-fastSpeed`, back off to the index at `+slowSpeed`, move to lock at `+slowSpeed` (the move-to-lock velocity does not take the direction sign). Emergency deceleration = `accel × 10`. Motion step timeouts are user-defined via `timeoutMs` (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as `30 × CurrentLoopSampleRate` servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (`3 × CurrentLoopSampleRate` samples), a step duration rather than a timeout.</span>
+</span><span id="__span-14-65"><a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-66"><a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-67"><a id="__codelineno-14-67" name="__codelineno-14-67" href="#__codelineno-14-67"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-68"><a id="__codelineno-14-68" name="__codelineno-14-68" href="#__codelineno-14-68"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-69"><a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-70"><a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-71"><a id="__codelineno-14-71" name="__codelineno-14-71" href="#__codelineno-14-71"></a><span class="k">void</span><span class="w"> </span><span class="nf">HomeToLimitThenIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-72"><a id="__codelineno-14-72" name="__codelineno-14-72" href="#__codelineno-14-72"></a>
+</span><span id="__span-14-73"><a id="__codelineno-14-73" name="__codelineno-14-73" href="#__codelineno-14-73"></a><span class="c1">// Simplified homing sequence combining hard-stop detection with index lock. Sequence: Motor On (30 s) → Configure Lock (30 s) → Jog to Hard Stop → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - `direction = 1` (Positive): Jog to hard stop at `+fastSpeed`, back off to the index at `-slowSpeed`, move to lock at `+slowSpeed`. - `direction = -1` (Negative): Jog to hard stop at `-fastSpeed`, back off to the index at `+slowSpeed`, move to lock at `+slowSpeed` (the move-to-lock velocity does not take the direction sign). All steps use the same user-supplied `accel` and emergency deceleration (`accel × 10`). Motion step timeouts are user-defined via `timeoutMs` (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as `30 × CurrentLoopSampleRate` servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (`3 × CurrentLoopSampleRate` samples), a step duration rather than a timeout.</span>
+</span><span id="__span-14-74"><a id="__codelineno-14-74" name="__codelineno-14-74" href="#__codelineno-14-74"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-75"><a id="__codelineno-14-75" name="__codelineno-14-75" href="#__codelineno-14-75"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-76"><a id="__codelineno-14-76" name="__codelineno-14-76" href="#__codelineno-14-76"></a><span class="c1">// hardStopThreshold: The position error that marks the hard stop, counts (written to `HomingDef[25]`)</span>
+</span><span id="__span-14-77"><a id="__codelineno-14-77" name="__codelineno-14-77" href="#__codelineno-14-77"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-78"><a id="__codelineno-14-78" name="__codelineno-14-78" href="#__codelineno-14-78"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-79"><a id="__codelineno-14-79" name="__codelineno-14-79" href="#__codelineno-14-79"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-80"><a id="__codelineno-14-80" name="__codelineno-14-80" href="#__codelineno-14-80"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-81"><a id="__codelineno-14-81" name="__codelineno-14-81" href="#__codelineno-14-81"></a><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStopThenIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">hardStopThreshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-82"><a id="__codelineno-14-82" name="__codelineno-14-82" href="#__codelineno-14-82"></a>
+</span><span id="__span-14-83"><a id="__codelineno-14-83" name="__codelineno-14-83" href="#__codelineno-14-83"></a><span class="c1">// Simplified homing sequence combining hard-stop detection by motor stuck (homing step type 9) with index lock. Sequence: Motor On (30 s) → Configure Lock (30 s) → Jog to Hard Stop by Stuck → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. The hard stop is reached when the velocity stays below `stuckVel` while the motor current stays above `stuckCurr` for `stuckTimeMs`. Direction logic is that of `ISingleAxis.HomeToHardStopThenIndex`: the hard stop at `direction × fastSpeed`, back to the index at `-direction × slowSpeed`, onto the lock at `+slowSpeed`. Every time is written in servo samples (`round(ms / 1000 × CurrentLoopSampleRate)`), the stuck time included, as `HomingDef` stores times.</span>
+</span><span id="__span-14-84"><a id="__codelineno-14-84" name="__codelineno-14-84" href="#__codelineno-14-84"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-14-85"><a id="__codelineno-14-85" name="__codelineno-14-85" href="#__codelineno-14-85"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-14-86"><a id="__codelineno-14-86" name="__codelineno-14-86" href="#__codelineno-14-86"></a><span class="c1">// stuckVel: The stuck velocity threshold in counts/s; below it the axis counts as stuck (written to `HomingDef[25]`). It is not the `StuckVel` parameter, whose property User Units scale; this value is always in controller units</span>
+</span><span id="__span-14-87"><a id="__codelineno-14-87" name="__codelineno-14-87" href="#__codelineno-14-87"></a><span class="c1">// stuckCurr: The stuck current threshold in mA; above it the axis counts as stuck (written to `HomingDef[26]`)</span>
+</span><span id="__span-14-88"><a id="__codelineno-14-88" name="__codelineno-14-88" href="#__codelineno-14-88"></a><span class="c1">// stuckTimeMs: How long both conditions must hold, in ms; written to `HomingDef[27]` in servo samples</span>
+</span><span id="__span-14-89"><a id="__codelineno-14-89" name="__codelineno-14-89" href="#__codelineno-14-89"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-14-90"><a id="__codelineno-14-90" name="__codelineno-14-90" href="#__codelineno-14-90"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-14-91"><a id="__codelineno-14-91" name="__codelineno-14-91" href="#__codelineno-14-91"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-14-92"><a id="__codelineno-14-92" name="__codelineno-14-92" href="#__codelineno-14-92"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-14-93"><a id="__codelineno-14-93" name="__codelineno-14-93" href="#__codelineno-14-93"></a><span class="k">void</span><span class="w"> </span><span class="nf">HomeToHardStopByStuckThenIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckVel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckCurr</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckTimeMs</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="n">timeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15000</span><span class="p">);</span>
+</span><span id="__span-14-94"><a id="__codelineno-14-94" name="__codelineno-14-94" href="#__codelineno-14-94"></a>
+</span><span id="__span-14-95"><a id="__codelineno-14-95" name="__codelineno-14-95" href="#__codelineno-14-95"></a><span class="c1">// Indicates whether the controller supports `lockSource = 0` (meaning main axis index with normal polarity). When `false`, passing `lockSource = 0` to homing methods will throw `System.NotSupportedException`. This requires Identity[62] bit 0x10.</span>
+</span><span id="__span-14-96"><a id="__codelineno-14-96" name="__codelineno-14-96" href="#__codelineno-14-96"></a><span class="c1">// Returns: `true` if lockSource=0 is supported; `false` otherwise.</span>
+</span><span id="__span-14-97"><a id="__codelineno-14-97" name="__codelineno-14-97" href="#__codelineno-14-97"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">LockSrcZeroSupported</span><span class="p">();</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Homes to the encoder index: Motor On, configure lock, jog to the index at slowSpeed, move to the lock, disable lock, dwell, set position. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_to_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">);</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1">// Homes to the limit switch at fastSpeed, then back to the index at slowSpeed. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_to_limit_then_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">);</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="c1">// Homes to a hard stop (detected by position error above hardStopThreshold, in counts) at fastSpeed, then to the index at slowSpeed. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="c1">// hardStopThreshold: The position error that marks the hard stop, counts (written to `HomingDef[25]`)</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_to_hard_stop_then_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">hardStopThreshold</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">);</span>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="c1">// Homes to a hard stop detected by motor stuck at fastSpeed, then to the index at slowSpeed. The axis is stuck when its velocity stays below stuckVel (counts/s) with current above stuckCurr (mA) for stuckTimeMs (milliseconds; written to the controller in servo samples, like every homing time). Unlike the StuckVel parameter, which User Units scale, stuckVel here is never scaled. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</span>
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="c1">// lockSource: The lock input: 0 the main encoder index with normal polarity (needs `LockSrcZeroSupported`); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</span>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="c1">// direction: The initial search direction: 1 forward, -1 reverse</span>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="c1">// stuckVel: The stuck velocity threshold in counts/s; below it the axis counts as stuck (written to `HomingDef[25]`). It is not the `StuckVel` parameter, whose property User Units scale; this value is always in controller units</span>
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a><span class="c1">// stuckCurr: The stuck current threshold in mA; above it the axis counts as stuck (written to `HomingDef[26]`)</span>
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="c1">// stuckTimeMs: How long both conditions must hold, in ms; written to `HomingDef[27]` in servo samples</span>
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="c1">// fastSpeed: The speed toward the limit / hard stop, counts/s, positive</span>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="c1">// slowSpeed: The slow speed of the latch search, counts/s, positive</span>
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="c1">// accel: The acceleration, counts/s², positive</span>
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="c1">// timeoutMs: The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</span>
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_home_to_hard_stop_by_stuck_then_index</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lockSource</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckVel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckCurr</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stuckTimeMs</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fastSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">);</span>
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a>
+</span><span id="__span-15-48"><a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a><span class="c1">// @return true when the controller accepts lockSource 0 (main index, normal polarity) in the homing calls (Identity[62] bit 0x10).</span>
+</span><span id="__span-15-49"><a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a><span class="c1">// controller: The controller object / handle</span>
+</span><span id="__span-15-50"><a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a><span class="c1">// axis: One axis</span>
+</span><span id="__span-15-51"><a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">aamotion_lock_src_zero_supported</span><span class="p">(</span><span class="n">aamotion_controller</span><span class="w"> </span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">axis</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controller</code></td>
+<td><code>MotionController</code> / <code>aamotion_controller</code></td>
+<td>The controller object / handle</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td><code>AxisRef</code> / <code>int</code></td>
+<td>One axis</td>
+</tr>
+<tr>
+<td><code>lockSource</code></td>
+<td><code>int</code></td>
+<td>The lock input: 0 the main encoder index with normal polarity (needs <code>LockSrcZeroSupported</code>); a non-zero magnitude selects the lock input, and a negative sign inverts its polarity</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>int</code></td>
+<td>The initial search direction: 1 forward, -1 reverse</td>
+</tr>
+<tr>
+<td><code>slowSpeed</code></td>
+<td><code>double</code></td>
+<td>The slow speed of the latch search, counts/s, positive</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td><code>double</code></td>
+<td>The acceleration, counts/s², positive</td>
+</tr>
+<tr>
+<td><code>timeoutMs</code></td>
+<td><code>int</code> / <code>uint</code></td>
+<td>The timeout of each motion step in ms, not of the whole sequence. 15000 by default in C#</td>
+</tr>
+<tr>
+<td><code>fastSpeed</code></td>
+<td><code>double</code></td>
+<td>The speed toward the limit / hard stop, counts/s, positive</td>
+</tr>
+<tr>
+<td><code>hardStopThreshold</code></td>
+<td><code>double</code></td>
+<td>The position error that marks the hard stop, counts (written to <code>HomingDef[25]</code>)</td>
+</tr>
+<tr>
+<td><code>stuckVel</code></td>
+<td><code>double</code></td>
+<td>The stuck velocity threshold in counts/s; below it the axis counts as stuck (written to <code>HomingDef[25]</code>). It is not the <code>StuckVel</code> parameter, whose property <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> scale; this value is always in controller units</td>
+</tr>
+<tr>
+<td><code>stuckCurr</code></td>
+<td><code>double</code></td>
+<td>The stuck current threshold in mA; above it the axis counts as stuck (written to <code>HomingDef[26]</code>)</td>
+</tr>
+<tr>
+<td><code>stuckTimeMs</code></td>
+<td><code>double</code></td>
+<td>How long both conditions must hold, in ms; written to <code>HomingDef[27]</code> in servo samples</td>
+</tr>
+<tr>
+<td><code>axisRef</code></td>
+<td><code>AxisRef</code></td>
+<td>One axis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>The C# homing calls return nothing and throw on a bad argument (an <code>ArgumentOutOfRangeException</code>, for example, or <code>NotSupportedException</code> for <code>lockSource</code> 0 on a controller without it). The C homing calls return true when the sequence was written and started without error, and false for a bad argument or a refused write.</p>
+<p><code>LockSrcZeroSupported</code> returns true when the controller can latch on the main encoder index (from its feature bit, <code>Identity[62]</code> mask <code>0x10</code>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Notes</p>
+<ul>
+<li><code>HomingDef</code> is not scaled by <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr>: every speed, acceleration and threshold is in controller units (counts, counts/s, counts/s², mA), even on an axis with <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> on.</li>
+<li>In the two-stage methods, <code>direction</code> selects the initial search direction toward the limit or hard stop; the slow latch search then moves the opposite way. Pass positive speeds, accelerations and thresholds.</li>
+<li>Check <code>LockSrcZeroSupported</code> before using the main encoder index. If it returns false, check which latch sources the hardware and firmware support before configuring homing.</li>
+<li>Both hard-stop detections press the motor against the mechanical stop. Verify a first run at low speed with a conservative current threshold.</li>
+</ul>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label><label for="__tabbed_8_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">LockSrcZeroSupported</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">))</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="p">{</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="c1">// the main encoder index, searching forward at 2000 per second</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">HomeToIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">lockSource</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">);</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">}</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">HomeToLimitThenIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">lockSource</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="n">fastSpeed</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">);</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1">// stuck: below 500 counts/s with more than 800 mA for 50 ms; controller units, never User Units</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">HomeToHardStopByStuckThenIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">lockSource</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="n">stuckVel</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="n">stuckCurr</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w"> </span><span class="n">stuckTimeMs</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="n">fastSpeed</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="n">slowSpeed</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">timeoutMs</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WaitHomed</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">60000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aamotion_lock_src_zero_supported</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">))</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="cm">/* the main encoder index, forward at 2000 counts/s, 30 s per motion step */</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">aamotion_home_to_index</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">);</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="cm">/* the reverse limit fast, then the index slowly */</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">aamotion_home_to_limit_then_index</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_B</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">);</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="cm">/* stuck: below 500 counts/s with more than 800 mA for 50 ms (controller units) */</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="kt">bool</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aamotion_home_to_hard_stop_by_stuck_then_index</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">wait_homed</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="mi">60000</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>HomeToIndex(MotionController, AxisRef, int, int, double, double, uint)</code> — Home the axis to the index signal only (no limit switch involvement). Requires <code>AAMotionAPI.LockSrcZeroSupported</code> to return true if using lockSource=0.</li>
+<li><code>HomeToLimitThenIndex(MotionController, AxisRef, int, int, double, double, double, uint)</code> — Home the axis to a limit switch first, then find the index signal. Requires <code>AAMotionAPI.LockSrcZeroSupported</code> to return true if using lockSource=0.</li>
+<li><code>HomeToHardStopThenIndex(MotionController, AxisRef, int, int, double, double, double, double, uint)</code> — Home the axis to a hard stop first, then find the index signal. Requires <code>AAMotionAPI.LockSrcZeroSupported</code> to return true if using lockSource=0.</li>
+<li><code>HomeToHardStopByStuckThenIndex(MotionController, AxisRef, int, int, double, double, double, double, double, double, uint)</code> — Home the axis to a hard stop detected by motor stuck (low velocity with high current), then find the index signal. Requires <code>AAMotionAPI.LockSrcZeroSupported</code> to return true if using lockSource=0.</li>
+<li><code>HomeToIndex(int, int, double, double, uint)</code> — Simplified homing via hardware index signal: Motor On (30 s) → Configure Lock (30 s) → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - <code>direction = 1</code> (Positive): Jog to index at <code>+slowSpeed</code>, move to lock at <code>+slowSpeed</code>. - <code>direction = -1</code> (Negative): Jog to index at <code>-slowSpeed</code>, move to lock at <code>-slowSpeed</code>. Emergency deceleration = <code>accel × 10</code>. Motion step timeouts are user-defined via <code>timeoutMs</code> (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as <code>30 × CurrentLoopSampleRate</code> servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (<code>3 × CurrentLoopSampleRate</code> samples), a step duration rather than a timeout.</li>
+<li><code>HomeToLimitThenIndex(int, int, double, double, double, uint)</code> — Simplified homing to limit switch then index: Motor On (30 s) → Configure Lock (30 s) → Jog to Limit → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - <code>direction = 1</code> (Positive): Jog to limit at <code>+fastSpeed</code>, back off to the index at <code>-slowSpeed</code>, move to lock at <code>+slowSpeed</code>. - <code>direction = -1</code> (Negative): Jog to limit at <code>-fastSpeed</code>, back off to the index at <code>+slowSpeed</code>, move to lock at <code>+slowSpeed</code> (the move-to-lock velocity does not take the direction sign). Emergency deceleration = <code>accel × 10</code>. Motion step timeouts are user-defined via <code>timeoutMs</code> (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as <code>30 × CurrentLoopSampleRate</code> servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (<code>3 × CurrentLoopSampleRate</code> samples), a step duration rather than a timeout.</li>
+<li><code>HomeToHardStopThenIndex(int, int, double, double, double, double, uint)</code> — Simplified homing sequence combining hard-stop detection with index lock. Sequence: Motor On (30 s) → Configure Lock (30 s) → Jog to Hard Stop → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. Direction logic: - <code>direction = 1</code> (Positive): Jog to hard stop at <code>+fastSpeed</code>, back off to the index at <code>-slowSpeed</code>, move to lock at <code>+slowSpeed</code>. - <code>direction = -1</code> (Negative): Jog to hard stop at <code>-fastSpeed</code>, back off to the index at <code>+slowSpeed</code>, move to lock at <code>+slowSpeed</code> (the move-to-lock velocity does not take the direction sign). All steps use the same user-supplied <code>accel</code> and emergency deceleration (<code>accel × 10</code>). Motion step timeouts are user-defined via <code>timeoutMs</code> (default 15000 ms). The motor-on, configure-lock, disable-lock and set-position steps carry a fixed 30 s step timeout, written as <code>30 × CurrentLoopSampleRate</code> servo samples: it bounds how long the controller's homing state machine waits for motor-on phasing, for the Lock hardware configuration, and for the background loop to apply the new position. The wait step is a fixed 3 s dwell (<code>3 × CurrentLoopSampleRate</code> samples), a step duration rather than a timeout.</li>
+<li><code>HomeToHardStopByStuckThenIndex(int, int, double, double, double, double, double, double, uint)</code> — Simplified homing sequence combining hard-stop detection by motor stuck (homing step type 9) with index lock. Sequence: Motor On (30 s) → Configure Lock (30 s) → Jog to Hard Stop by Stuck → Jog to Index → Move to Lock → Disable Lock (30 s) → Wait (3 s dwell) → Set Position (30 s) → End. The hard stop is reached when the velocity stays below <code>stuckVel</code> while the motor current stays above <code>stuckCurr</code> for <code>stuckTimeMs</code>. Direction logic is that of <code>ISingleAxis.HomeToHardStopThenIndex</code>: the hard stop at <code>direction × fastSpeed</code>, back to the index at <code>-direction × slowSpeed</code>, onto the lock at <code>+slowSpeed</code>. Every time is written in servo samples (<code>round(ms / 1000 × CurrentLoopSampleRate)</code>), the stuck time included, as <code>HomingDef</code> stores times.</li>
+<li><code>LockSrcZeroSupported(MotionController, AxisRef)</code> — Check if the controller supports lockSource=0 (main axis index) for homing operations. When true, HomeToIndex and similar methods can use lockSource=0 to reference the main encoder index. Returns: Returns true if lockSource=0 is supported, otherwise false</li>
+<li><code>LockSrcZeroSupported()</code> — Indicates whether the controller supports <code>lockSource = 0</code> (meaning main axis index with normal polarity). When <code>false</code>, passing <code>lockSource = 0</code> to homing methods will throw <code>System.NotSupportedException</code>. This requires Identity[62] bit 0x10. Returns: <code>true</code> if lockSource=0 is supported; <code>false</code> otherwise.</li>
+<li><code>aamotion_home_to_index</code> — Homes to the encoder index: Motor On, configure lock, jog to the index at slowSpeed, move to the lock, disable lock, dwell, set position. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</li>
+<li><code>aamotion_home_to_limit_then_index</code> — Homes to the limit switch at fastSpeed, then back to the index at slowSpeed. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</li>
+<li><code>aamotion_home_to_hard_stop_then_index</code> — Homes to a hard stop (detected by position error above hardStopThreshold, in counts) at fastSpeed, then to the index at slowSpeed. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</li>
+<li><code>aamotion_home_to_hard_stop_by_stuck_then_index</code> — Homes to a hard stop detected by motor stuck at fastSpeed, then to the index at slowSpeed. The axis is stuck when its velocity stays below stuckVel (counts/s) with current above stuckCurr (mA) for stuckTimeMs (milliseconds; written to the controller in servo samples, like every homing time). Unlike the StuckVel parameter, which <abbr title="用户单位：把计数换算成毫米等单位 / Conversion from counts to units such as millimetres">User Units</abbr> scale, stuckVel here is never scaled. @param lockSource Zero selects the main encoder index with normal polarity where supported. A nonzero magnitude selects the lock input. A negative sign inverts its polarity. @param direction 1 forward, -1 reverse. @param accel Acceleration in counts/s squared. Search speeds are in counts/s. @param timeoutMs Timeout per motion step in milliseconds.</li>
+<li><code>aamotion_lock_src_zero_supported</code> — @return true when the controller accepts lockSource 0 (main index, normal polarity) in the homing calls (Identity[62] bit 0x10).</li>
+</ul>
+</details>
+<h2 id="from-file">Homing sequence from a file<a class="headerlink" href="#from-file" title="Permanent link">&para;</a></h2>
+<p><code>Home(c, axis, filePath)</code> / <code>aamotion_home_from_file</code> write the <code>HomingDef[n]=value</code> lines of a text file to the controller, then start homing. It suits shipping the sequence with the machine configuration: tune homing in PCSuite, then copy the <code>HomingDef</code> elements into the file. Lines with an out-of-range index or a bad format are skipped.</p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Shipping the homing sequence with the machine configuration instead of hard-coding it.</p>
+</div>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">C#</label><label for="__tabbed_9_2">C / C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// homing.txt: one HomingDef element per line ("HomingDef[1]=1", "HomingDef[2]=5000", ...); "//" starts a comment</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">AAMotionAPI</span><span class="p">.</span><span class="n">Home</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">AxisRef</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="s">@"C:\MyApp\homing.txt"</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">aamotion_home_from_file</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">AAMOTION_AXIS_REF_A</span><span class="p">,</span><span class="w"> </span><span class="s">"C:</span><span class="se">\\</span><span class="s">MyApp</span><span class="se">\\</span><span class="s">homing.txt"</span><span class="p">))</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"could not read the homing file or start homing</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="homing-def-step">Read and write the homing table by step<a class="headerlink" href="#homing-def-step" title="Permanent link">&para;</a></h2>
+<p>Every 10 elements of <code>HomingDef[]</code> are one step. <code>a.GetHomingDefStep(n)</code> returns a view of step n (from 1, up to 20): <code>Type</code> is the step type and <code>Param1</code>…<code>Param9</code> its parameters; reading and writing them reads and writes the matching <code>HomingDef</code> elements, so you never compute indexes.</p>
+<p><a href="../demos/06-homing/homing-table.html">Standalone demo: Read the homing table</a></p>
+<div class="admonition tip">
+<p class="admonition-title">When to use it</p>
+<p>Reading or changing one homing step in code without computing HomingDef indexes.</p>
+</div>
+<p><strong>Signatures</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">C#</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// ISingleAxis</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1">// A step-addressed view over `ISingleAxis.HomingDef`, naming the step type and its nine parameters instead of leaving the caller to compute slot indices.</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1">// step: The step, from 1, up to 20</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">HomingDefStep</span><span class="w"> </span><span class="nf">GetHomingDefStep</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">step</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>step</code></td>
+<td><code>int</code></td>
+<td>The step, from 1, up to 20</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>A <code>HomingDefStep</code> object.</p>
+<details class="quote">
+<summary>SDK comments (original)</summary>
+<ul>
+<li><code>GetHomingDefStep(int)</code> — A step-addressed view over <code>ISingleAxis.HomingDef</code>, naming the step type and its nine parameters instead of leaving the caller to compute slot indices.</li>
+</ul>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="05-ptp.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Point-to-point motion and jog">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Point-to-point motion and jog
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="07-advanced-motion.html" class="md-footer__link md-footer__link--next" aria-label="Next: Repetitive, two-speed and sine motion">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Repetitive, two-speed and sine motion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../assets/data/single-demos.js"></script>
+      
+        <script src="../../assets/js/widgets.js"></script>
+      
+        <script src="../../assets/js/tools.js"></script>
+      
+        <script src="../../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

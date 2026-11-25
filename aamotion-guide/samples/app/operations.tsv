@@ -1,0 +1,52 @@
+DataLogger	DataLogger · 采集并读回	空白：所选轴 Pos，1 s / 1 ms		0
+SlowStart	SlowLogger · 开始	空白：所选轴 Pos；10 个 LoggerGap 单位		1
+SlowUpload	SlowLogger · 上传	空白：读取 FIFO、保存原始文本		0
+SlowStop	SlowLogger · 停止	空白		0
+RecorderStatus	SlowLogger · 丢包计数	空白		0
+SinePtp	正弦点位 · 绝对定位	目标（counts）；速度 2000，加减速度 10000，jerk 100000		1
+SineRepeat	正弦点位 · 往复	另一端绝对位置（counts）；用 StopRep 停止		1
+SinePreCruise	正弦点位 · 带预巡航	绝对终点, 预巡航绝对终点（counts）, 预巡航速度（counts/s）		1
+SineCommit	正弦点位 · 在线改目标	运动中的新绝对终点（counts）；关闭预巡航后提交		1
+SineStopRep	正弦点位 · 停止往复 StopRep	空白		0
+Pvaj	PVAJ · 校验并执行五点表	相对位移（counts）, 间隔（1–32 周期）, 实际控制周期（µs）		1
+PvajStatus	PVAJ · 状态	空白：状态、执行索引、剩余点		0
+TwoSpeed	双速 · 相对定位	距离, 切速距离（counts）；速度 2000 → 1000		1
+MultiAxis	两轴 · 批量绝对定位	A 目标, B 目标（counts）；速度 2000 counts/s		1
+StopAB	两轴 · 停止 A 和 B	空白		0
+SetPosition	位置计数 · 设置	位置（counts）；轴必须静止，核对坐标与软限位		1
+MotionConfig	运动 · 读模式和控制模式	空白		0
+CncLine	CNC A/B · 直线并开始	ΔA, ΔB（counts）；速度 1000 counts/s		1
+CncArc	CNC A/B · 圆弧并开始	绝对终点 A,B，绝对圆心 A,B，方向 0 逆时针 / 1 顺时针		1
+CncOutput	CNC A/B · 路径输出脉冲	ΔA, ΔB（counts）；到终点后置 A 的输出 1，200 ms 后清除，再返回起点		1
+CncFile	CNC A/B · 运行程序文件	CNC 文本文件的完整路径；核对文件与 A/B 当前起点		1
+CncPause	CNC A/B · 暂停	空白		0
+CncResume	CNC A/B · 继续	空白		1
+CncStop	CNC A/B · 停止	空白		0
+CncStatus	CNC A/B · 查询完成	空白		0
+VectorLine	矢量插补 · A/B 直线	A、B 绝对目标（counts），逗号分隔		1
+VectorArc	矢量插补 · A/B 圆弧	绝对终点 A,B，绝对圆心 A,B，方向 0 逆时针 / 1 顺时针		1
+VectorPause	矢量插补 · 暂停 A/B	空白		0
+VectorResume	矢量插补 · 继续 A/B	空白		1
+VectorStop	矢量插补 · 停止 A/B	空白		0
+GearDirect	电子齿轮 · 直接	GearMaster 复合 CAN 代码, MasterFact；分母 65536		1
+GearIndirect	电子齿轮 · 间接	GearMaster 复合 CAN 代码, MasterFact；分母 65536		1
+GearStop	电子齿轮 · 停止从轴	空白：所选从轴		0
+GearStatus	电子齿轮 · 状态	空白：所选从轴		0
+EcamStart	电子凸轮 · 启动已配置表	表号 1–10；从轴已使能且静止，先在 PCSuite 配好主轴与表		1
+EcamStop	电子凸轮 · 停止从轴	空白		0
+EcamStatus	电子凸轮 · 状态和循环数	表号 1–10	1	0
+ReadInput	数字输入 · 读位	输入编号 1–32	1	0
+SetOutput	数字输出 · 置位	输出编号 1–32		1
+ClearOutput	数字输出 · 清位	输出编号 1–32		1
+LockStart	位置锁存 · 使能	空白：使用 PCSuite 已配置的锁存源		1
+LockRead	位置锁存 · 读计数与位置	空白		0
+LockStop	位置锁存 · 关闭	空白		0
+PegArm	PEG · 单点触发	触发位置（counts）；输出 1，脉宽 50 µs		1
+EventStatus	PEG · 读状态与计数	空白		0
+PegStop	PEG · 关闭	空白		0
+ProgramRun	用户程序 · 运行	线程号, 任务号；程序须已下载		1
+ProgramHalt	用户程序 · 停止线程	线程号		0
+ProgramHaltAll	用户程序 · 停止所有线程	空白		1
+GenData	GenData · 读值	数组下标；按当前固件地址表填写		0
+CiStatus	Central-i · 读链路状态	空白		0
+ReadCommand	控制器 · 发送文本命令	例如 APos 或 GenData[1]；每次一条命令	APos	1

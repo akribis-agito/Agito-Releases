@@ -1,0 +1,3159 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AAMotion (C#) and AAMotionNative (C ABI) programming guide">
+      
+      
+      
+      
+        <link rel="prev" href="../cookbook/troubleshooting.html">
+      
+      
+        <link rel="next" href="axis-panel.html">
+      
+      
+        
+          <link rel="alternate" href="../../demos/index.html" hreflang="zh">
+        
+          <link rel="alternate" href="index.html" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/agito-mark.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Demo - AAMotion Programming Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../../assets/javascripts/iframe-worker-shim.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/guide.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#demo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-header__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAMotion Programming Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Demo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="深色 / Dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="深色 / Dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="浅色 / Light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色 / Light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../demos/index.html" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="index.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/paths.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/api-reading.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Core concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cookbook/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 1.5c-1.77 0-3.33 1.17-3.83 2.87C8.14 4.13 7.58 4 7 4a4 4 0 0 0-4 4 4.01 4.01 0 0 0 3 3.87V19h13v-7.13c1.76-.46 3-2.05 3-3.87a4 4 0 0 0-4-4c-.58 0-1.14.13-1.67.37-.5-1.7-2.06-2.87-3.83-2.87m-.5 9h1v7h-1zm-3 2h1v5H9zm6 0h1v5h-1zM6 20v1a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-1z"/></svg>
+    
+  
+  Cookbook
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+    
+  
+  Demo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/enums/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Enums
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/index.html" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    
+  
+  Reference lookup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../help/diagnose.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Help and appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="AAMotion Programming Guide" class="md-nav__button md-logo" aria-label="AAMotion Programming Guide" data-md-component="logo">
+      
+  <img src="../../assets/images/agito-white.png" alt="logo">
+
+    </a>
+    AAMotion Programming Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../getting-started/paths.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../concepts/api-reading.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core concepts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cookbook/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link md-nav__link--active">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-2v12H8V4zm0-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-8 12.5v-9l6 4.5z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Demo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="axis-panel.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16V4H3v12zm0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2zM5 6h9v5H5zm10 0h4v2h-4zm4 3v5h-4V9zM5 12h4v2H5zm5 0h4v2h-4z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Axis panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    By chapter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    By chapter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="01-lifecycle.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Initialization and connection
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="02-errors.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Error handling
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="03-parameters.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Reading and writing parameters
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="04-motor.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Motor, commutation and stop
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="05-ptp.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Point-to-point motion and jog
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="06-homing.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Homing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="07-advanced-motion.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Repetitive, two-speed and sine motion
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="08-io.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Digital I/O
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="09-peg-lock.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Position events (PEG) and position lock
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="10-program.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · User programs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="11-cnc.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · CNC interpolation
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="12-vector.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 · Vector motion
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="13-ecam.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 · Electronic cam (ECAM)
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="14-force.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 · Force and current control
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="15-recording.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 · DataLogger (high-speed recording)
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="16-slow-logger.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 · SlowLogger (slow recording)
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="17-fastread.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 · FastReadCache
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="18-central-i.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 · Central-i multi-axis
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="19-optical.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 · Optical coupling light finding
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../api/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../reference/enums/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tools/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference lookup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../help/diagnose.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help and appendix
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01--initialization-and-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Initialization and connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02--error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Error handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03--reading-and-writing-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Reading and writing parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04--motor-commutation-and-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Motor, commutation and stop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05--point-to-point-motion-and-jog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Point-to-point motion and jog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06--homing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Homing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07--repetitive-two-speed-and-sine-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Repetitive, two-speed and sine motion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08--digital-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Digital I/O
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09--position-events-peg-and-position-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Position events (PEG) and position lock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10--user-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · User programs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11--cnc-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11 · CNC interpolation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12--vector-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12 · Vector motion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13--electronic-cam-ecam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13 · Electronic cam (ECAM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14--force-and-current-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14 · Force and current control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15--datalogger-high-speed-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15 · DataLogger (high-speed recording)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16--slowlogger-slow-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16 · SlowLogger (slow recording)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17--fastreadcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17 · FastReadCache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18--central-i-multi-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18 · Central-i multi-axis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19--optical-coupling-light-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19 · Optical coupling light finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Demo
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h1>
+<p>One small project per function, in C#, C++ and Python: open <code>samples/single/csharp/AAMotionDemos.sln</code> for C#, "Open a local folder" on <code>samples/single/cpp</code> in Visual Studio for C++, and run the scripts in <code>samples/single/python</code> for Python. The target is at the top of each program; the default is the controller IP <code>172.1.1.101</code>.</p>
+<p><a class="md-button md-button--primary" href="axis-panel.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16V4H3v12zm0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2zM5 6h9v5H5zm10 0h4v2h-4zm4 3v5h-4V9zM5 12h4v2H5zm5 0h4v2h-4z"/></svg></span> Axis panel: a complete program with a window (C#, C++, Python)</a></p>
+<p><input class="ag-demo-filter" type="search" placeholder="Filter by name, API or purpose…" aria-label="Filter demos"></p>
+<section class="ag-demo-chapter">
+<h2 id="01--initialization-and-connection">01 · Initialization and connection<a class="headerlink" href="#01--initialization-and-connection" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Connect and disconnect Connect Connect, read the position once, disconnect" href="01-lifecycle/connect.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Connect and disconnect</b><span>Connect, read the position once, disconnect</span><code>Connect</code></a>
+<a class="ag-demo-card" data-text="Link state IsConnected Local link state, nothing sent" href="01-lifecycle/is-connected.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Link state</b><span>Local link state, nothing sent</span><code>IsConnected</code></a>
+<a class="ag-demo-card" data-text="Reachability CheckConnection Ping the controller and report" href="01-lifecycle/check-connection.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Reachability</b><span>Ping the controller and report</span><code>CheckConnection</code></a>
+<a class="ag-demo-card" data-text="Command timeout CommandTimeout Raise the default timeout, then restore it" href="01-lifecycle/command-timeout.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Command timeout</b><span>Raise the default timeout, then restore it</span><code>CommandTimeout</code></a>
+<a class="ag-demo-card" data-text="Reconnect Reconnect Reconnect to the last working address" href="01-lifecycle/reconnect.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Reconnect</b><span>Reconnect to the last working address</span><code>Reconnect</code></a>
+<a class="ag-demo-card" data-text="Scan the network ScanNetwork Find controllers when the IP is unknown" href="01-lifecycle/scan-network.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/conn.svg" /><b>Scan the network</b><span>Find controllers when the IP is unknown</span><code>ScanNetwork</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="02--error-handling">02 · Error handling<a class="headerlink" href="#02--error-handling" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Error hook ErrorHook One place for controller and SDK errors" href="02-errors/error-hook.html"><b>Error hook</b><span>One place for controller and SDK errors</span><code>ErrorHook</code></a>
+<a class="ag-demo-card" data-text="Catch a refused command CommandException The ERR number in ControllerCommandException" href="02-errors/command-exception.html"><b>Catch a refused command</b><span>The ERR number in ControllerCommandException</span><code>CommandException</code></a>
+<a class="ag-demo-card" data-text="Safe read SafeRead TryGetValue returns false instead of throwing" href="02-errors/safe-read.html"><b>Safe read</b><span>TryGetValue returns false instead of throwing</span><code>SafeRead</code></a>
+<a class="ag-demo-card" data-text="Error code to text DescribeError Turn a logged error code into text" href="02-errors/describe-error.html"><b>Error code to text</b><span>Turn a logged error code into text</span><code>DescribeError</code></a>
+<a class="ag-demo-card" data-text="Status value to text StatusText Decode MotionReason and MotionStat" href="02-errors/status-text.html"><b>Status value to text</b><span>Decode MotionReason and MotionStat</span><code>StatusText</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="03--reading-and-writing-parameters">03 · Reading and writing parameters<a class="headerlink" href="#03--reading-and-writing-parameters" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Raw commands RawCommand Command strings as in the PCSuite terminal" href="03-parameters/raw-command.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b>Raw commands</b><span>Command strings as in the PCSuite terminal</span><code>RawCommand</code></a>
+<a class="ag-demo-card" data-text="Bulk read BulkRead Several commands in one packet" href="03-parameters/bulk-read.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b>Bulk read</b><span>Several commands in one packet</span><code>BulkRead</code></a>
+<a class="ag-demo-card" data-text="Read by keyword ReadByKeyword GetValue with user units" href="03-parameters/read-by-keyword.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b>Read by keyword</b><span>GetValue with user units</span><code>ReadByKeyword</code></a>
+<a class="ag-demo-card" data-text="Axis object properties AxisProperties Read and write ISingleAxis properties" href="03-parameters/axis-properties.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b>Axis object properties</b><span>Read and write ISingleAxis properties</span><code>AxisProperties</code></a>
+<a class="ag-demo-card" data-text="CAN code and type CanCode CAN codes from the controller command table" href="03-parameters/can-code.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b><abbr title="控制器局域网总线；也指关键字的通信编号 / Controller area network; also a keyword's wire code">CAN</abbr> code and type</b><span><abbr title="控制器局域网总线；也指关键字的通信编号 / Controller area network; also a keyword's wire code">CAN</abbr> codes from the controller command table</span><code>CanCode</code></a>
+<a class="ag-demo-card" data-text="GenData and UserParam GenDataUserParam Arrays shared with user programs" href="03-parameters/gen-data.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/arrays.svg" /><b><abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> and <abbr title="控制器上的用户参数数组 / The controller's user parameter array">UserParam</abbr></b><span>Arrays shared with user programs</span><code>GenDataUserParam</code></a>
+<a class="ag-demo-card" data-text="Upload a parameter file UploadParameters Back up all parameters to a .par file" href="03-parameters/upload-parameters.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/params.svg" /><b>Upload a parameter file</b><span>Back up all parameters to a .par file</span><code>UploadParameters</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="04--motor-commutation-and-stop">04 · Motor, commutation and stop<a class="headerlink" href="#04--motor-commutation-and-stop" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Auto-phasing AutoPhase Start commutation and wait with a limit" href="04-motor/auto-phase.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/phas.svg" /><b>Auto-phasing</b><span>Start commutation and wait with a limit</span><code>AutoPhase</code></a>
+<a class="ag-demo-card" data-text="Motor on and off MotorOnOff Confirm motor-on, then switch it off" href="04-motor/motor-on-off.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/phas.svg" /><b>Motor on and off</b><span>Confirm motor-on, then switch it off</span><code>MotorOnOff</code></a>
+<a class="ag-demo-card" data-text="Enable and fault state MotorStatus MotorOn, ConFlt and commutation state" href="04-motor/motor-status.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/phas.svg" /><b>Enable and fault state</b><span>MotorOn, ConFlt and commutation state</span><code>MotorStatus</code></a>
+<a class="ag-demo-card" data-text="Normal stop Stop Jog, then Stop with Decel" href="04-motor/stop.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Normal stop</b><span>Jog, then Stop with Decel</span><code>Stop</code></a>
+<a class="ag-demo-card" data-text="Emergency deceleration stop Abort Jog, then Abort with EmrgDec" href="04-motor/abort.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Emergency deceleration stop</b><span>Jog, then Abort with EmrgDec</span><code>Abort</code></a>
+<a class="ag-demo-card" data-text="Stop after the repetition StopRep StopRep finishes the stroke in progress" href="04-motor/stop-rep.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Stop after the repetition</b><span>StopRep finishes the stroke in progress</span><code>StopRep</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="05--point-to-point-motion-and-jog">05 · Point-to-point motion and jog<a class="headerlink" href="#05--point-to-point-motion-and-jog" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Absolute move MoveAbs Move to an absolute coordinate, then wait" href="05-ptp/move-abs.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Absolute move</b><span>Move to an absolute coordinate, then wait</span><code>MoveAbs</code></a>
+<a class="ag-demo-card" data-text="Relative move MoveRel Travel a distance from the current position" href="05-ptp/move-rel.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Relative move</b><span>Travel a distance from the current position</span><code>MoveRel</code></a>
+<a class="ag-demo-card" data-text="Absolute move and wait MoveAbsAndWait Start and wait in one call" href="05-ptp/move-abs-wait.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Absolute move and wait</b><span>Start and wait in one call</span><code>MoveAbsAndWait</code></a>
+<a class="ag-demo-card" data-text="Relative move and wait MoveRelAndWait Relative move and wait in one call" href="05-ptp/move-rel-wait.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Relative move and wait</b><span>Relative move and wait in one call</span><code>MoveRelAndWait</code></a>
+<a class="ag-demo-card" data-text="Jog Jog Run at a velocity until Stop" href="05-ptp/jog.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/jog.svg" /><b>Jog</b><span>Run at a velocity until Stop</span><code>Jog</code></a>
+<a class="ag-demo-card" data-text="Write parameters, then Begin Begin Write the profile, then start with Begin" href="05-ptp/begin.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Write parameters, then Begin</b><span>Write the profile, then start with Begin</span><code>Begin</code></a>
+<a class="ag-demo-card" data-text="Two axes in one start MultiAxis Start A and B together; each settles alone" href="05-ptp/multi-axis.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/multi.svg" /><b>Two axes in one start</b><span>Start A and B together; each settles alone</span><code>MultiAxis</code></a>
+<a class="ag-demo-card" data-text="Position and in-target state MotionState What Pos, MotionStat and InTargetStat mean" href="05-ptp/motion-state.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Position and in-target state</b><span>What Pos, MotionStat and InTargetStat mean</span><code>MotionState</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="06--homing">06 · Homing<a class="headerlink" href="#06--homing" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Home with the configured sequence Home Run the sequence configured in the controller" href="06-homing/home.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Home with the configured sequence</b><span>Run the sequence configured in the controller</span><code>Home</code></a>
+<a class="ag-demo-card" data-text="Home then move PowerUpMove Run configured homing and move to 10000" href="06-homing/power-up-move.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Home then move</b><span>Run configured homing and move to 10000</span><code>PowerUpMove</code></a>
+<a class="ag-demo-card" data-text="Limit then index HomeLimitIndex Find the limit, then the encoder index" href="06-homing/home-limit-index.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Limit then index</b><span>Find the limit, then the encoder index</span><code>HomeLimitIndex</code></a>
+<a class="ag-demo-card" data-text="Hard-stop homing HomeHardStop Use the mechanical end as the reference" href="06-homing/home-hard-stop.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Hard-stop homing</b><span>Use the mechanical end as the reference</span><code>HomeHardStop</code></a>
+<a class="ag-demo-card" data-text="Index homing HomeToIndex Search only the encoder index" href="06-homing/home-to-index.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Index homing</b><span>Search only the encoder index</span><code>HomeToIndex</code></a>
+<a class="ag-demo-card" data-text="Homing state HomingState HomingStat and IsHomed" href="06-homing/homing-state.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Homing state</b><span>HomingStat and IsHomed</span><code>HomingState</code></a>
+<a class="ag-demo-card" data-text="Read the homing table HomingTable Read HomingDef step by step" href="06-homing/homing-table.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/homing.svg" /><b>Read the homing table</b><span>Read HomingDef step by step</span><code>HomingTable</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="07--repetitive-two-speed-and-sine-motion">07 · Repetitive, two-speed and sine motion<a class="headerlink" href="#07--repetitive-two-speed-and-sine-motion" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="A set number of round trips RepetitiveCycle Two round trips, then it stops by itself" href="07-advanced-motion/repetitive-cycle.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>A set number of round trips</b><span>Two round trips, then it stops by itself</span><code>RepetitiveCycle</code></a>
+<a class="ag-demo-card" data-text="Stop after a count RepetitiveCounter Read RptCounter, StopRep at a count" href="07-advanced-motion/repetitive-counter.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Stop after a count</b><span>Read RptCounter, StopRep at a count</span><code>RepetitiveCounter</code></a>
+<a class="ag-demo-card" data-text="Two-speed move TwoSpeed Fast for most of the way, slow at the end" href="07-advanced-motion/two-speed.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Two-speed move</b><span>Fast for most of the way, slow at the end</span><code>TwoSpeed</code></a>
+<a class="ag-demo-card" data-text="Relative two-speed and wait TwoSpeedAndWait A two-speed move and its wait in one call" href="07-advanced-motion/two-speed-wait.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Relative two-speed and wait</b><span>A two-speed move and its wait in one call</span><code>TwoSpeedAndWait</code></a>
+<a class="ag-demo-card" data-text="Sine PTP and a new target SinePtp Sine-shaped motion, retargeted on the way" href="07-advanced-motion/sine-ptp.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Sine <abbr title="点到点运动 / Point-to-point motion">PTP</abbr> and a new target</b><span>Sine-shaped motion, retargeted on the way</span><code>SinePtp</code></a>
+<a class="ag-demo-card" data-text="Write, then commit CommitMotion Change AbsTrgt, apply it with CommitMotion" href="07-advanced-motion/commit-motion.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ptp.svg" /><b>Write, then commit</b><span>Change AbsTrgt, apply it with CommitMotion</span><code>CommitMotion</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="08--digital-io">08 · Digital I/O<a class="headerlink" href="#08--digital-io" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Set and clear an output DigitalOutput Set and clear output 1, then restore it" href="08-io/digital-output.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ioDIO.svg" /><b>Set and clear an output</b><span>Set and clear output 1, then restore it</span><code>DigitalOutput</code></a>
+<a class="ag-demo-card" data-text="Toggle an output ToggleOutput Toggle output 1 four times, back where it was" href="08-io/toggle-output.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ioDIO.svg" /><b>Toggle an output</b><span>Toggle output 1 four times, back where it was</span><code>ToggleOutput</code></a>
+<a class="ag-demo-card" data-text="Read digital inputs DigitalInput Read inputs 1–4 bit by bit" href="08-io/digital-input.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ioDIO.svg" /><b>Read digital inputs</b><span>Read inputs 1–4 bit by bit</span><code>DigitalInput</code></a>
+<a class="ag-demo-card" data-text="Read the I/O registers IoPorts All inputs and outputs in one read each" href="08-io/io-ports.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ioDIO.svg" /><b>Read the I/O registers</b><span>All inputs and outputs in one read each</span><code>IoPorts</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="09--position-events-peg-and-position-lock">09 · Position events (<abbr title="位置事件输出：到达位置时输出脉冲 / Position event generation: outputs at set positions">PEG</abbr>) and position lock<a class="headerlink" href="#09--position-events-peg-and-position-lock" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Single position event SinglePeg One pulse when the axis passes a position" href="09-peg-lock/single-peg.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/event.svg" /><b>Single position event</b><span>One pulse when the axis passes a position</span><code>SinglePeg</code></a>
+<a class="ag-demo-card" data-text="Evenly spaced events FixedGapPeg A pulse every 1000 counts" href="09-peg-lock/fixed-gap-peg.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/event.svg" /><b>Evenly spaced events</b><span>A pulse every 1000 counts</span><code>FixedGapPeg</code></a>
+<a class="ag-demo-card" data-text="Events from a table TablePeg Pulses at any list of positions" href="09-peg-lock/table-peg.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/event.svg" /><b>Events from a table</b><span>Pulses at any list of positions</span><code>TablePeg</code></a>
+<a class="ag-demo-card" data-text="Latch at the encoder index LockIndex Record the position at the index while moving" href="09-peg-lock/lock-index.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/lock.svg" /><b>Latch at the encoder index</b><span>Record the position at the index while moving</span><code>LockIndex</code></a>
+<a class="ag-demo-card" data-text="Wait for a latch LockInput Latch once with the configured source" href="09-peg-lock/lock-input.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/lock.svg" /><b>Wait for a latch</b><span>Latch once with the configured source</span><code>LockInput</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="10--user-programs">10 · User programs<a class="headerlink" href="#10--user-programs" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Run, halt and reset a thread ProgRunHalt Run task 1 on thread 1, then halt and reset" href="10-program/prog-run-halt.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/idePlus.svg" /><b>Run, halt and reset a thread</b><span>Run task 1 on thread 1, then halt and reset</span><code>ProgRunHalt</code></a>
+<a class="ag-demo-card" data-text="Halt every thread ProgHaltAll Halt all threads and list their state" href="10-program/prog-halt-all.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/idePlus.svg" /><b>Halt every thread</b><span>Halt all threads and list their state</span><code>ProgHaltAll</code></a>
+<a class="ag-demo-card" data-text="Receive program printf lines ProgramPrint Run 5 s and show every printed line" href="10-program/program-print.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/idePlus.svg" /><b>Receive program printf lines</b><span>Run 5 s and show every printed line</span><code>ProgramPrint</code></a>
+<a class="ag-demo-card" data-text="Exchange data with the program GenDataExchange A GenData handshake: input, flag, result" href="10-program/gen-data-exchange.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/idePlus.svg" /><b>Exchange data with the program</b><span>A <abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> handshake: input, flag, result</span><code>GenDataExchange</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="11--cnc-interpolation">11 · <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> interpolation<a class="headerlink" href="#11--cnc-interpolation" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="A square of lines CncSquare Four lines, back to the start" href="11-cnc/cnc-square.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/cnc.svg" /><b>A square of lines</b><span>Four lines, back to the start</span><code>CncSquare</code></a>
+<a class="ag-demo-card" data-text="A line, then an arc CncArc The centre is an absolute coordinate" href="11-cnc/cnc-arc.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/cnc.svg" /><b>A line, then an arc</b><span>The centre is an absolute coordinate</span><code>CncArc</code></a>
+<a class="ag-demo-card" data-text="Pause and resume a path CncPauseResume Hold on the path, then continue from there" href="11-cnc/cnc-pause-resume.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/cnc.svg" /><b>Pause and resume a path</b><span>Hold on the path, then continue from there</span><code>CncPauseResume</code></a>
+<a class="ag-demo-card" data-text="An output on the path CncOutputOnPath Output 1 on for 200 ms at a point on the path" href="11-cnc/cnc-output-on-path.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/cnc.svg" /><b>An output on the path</b><span>Output 1 on for 200 ms at a point on the path</span><code>CncOutputOnPath</code></a>
+<a class="ag-demo-card" data-text="Run a CNC program file CncProgramFile Run the bundled CNC text program" href="11-cnc/cnc-program-file.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/cnc.svg" /><b>Run a <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> program file</b><span>Run the bundled <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> text program</span><code>CncProgramFile</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="12--vector-motion">12 · Vector motion<a class="headerlink" href="#12--vector-motion" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Two-axis linear vector move VectorLine A and B start and arrive together" href="12-vector/vector-line.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/vector.svg" /><b>Two-axis linear vector move</b><span>A and B start and arrive together</span><code>VectorLine</code></a>
+<a class="ag-demo-card" data-text="Vector arc VectorArc A half circle around an absolute centre" href="12-vector/vector-arc.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/vector.svg" /><b>Vector arc</b><span>A half circle around an absolute centre</span><code>VectorArc</code></a>
+<a class="ag-demo-card" data-text="Pause and continue a vector move VectorPauseContinue Hold with VecPause, then finish" href="12-vector/vector-pause.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/vector.svg" /><b>Pause and continue a vector move</b><span>Hold with VecPause, then finish</span><code>VectorPauseContinue</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="13--electronic-cam-ecam">13 · Electronic cam (<abbr title="电子凸轮：从轴按表格跟随主轴 / Electronic cam: a slave follows a master through a table">ECAM</abbr>)<a class="headerlink" href="#13--electronic-cam-ecam" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Follow a sine cam EcamSine Axis B follows axis A along a sine table" href="13-ecam/ecam-sine.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ecam.svg" /><b>Follow a sine cam</b><span>Axis B follows axis A along a sine table</span><code>EcamSine</code></a>
+<a class="ag-demo-card" data-text="A custom cam table EcamCustomTable Your own table: a smooth rise as the master moves" href="13-ecam/ecam-custom.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/ecam.svg" /><b>A custom cam table</b><span>Your own table: a smooth rise as the master moves</span><code>EcamCustomTable</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="14--force-and-current-control">14 · Force and current control<a class="headerlink" href="#14--force-and-current-control" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Switch the control mode ControlModes Position → current → position control" href="14-force/control-modes.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/force.svg" /><b>Switch the control mode</b><span>Position → current → position control</span><code>ControlModes</code></a>
+<a class="ag-demo-card" data-text="A press sequence ForcePress Approach, slow down, force, hold, retract" href="14-force/force-press.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/force.svg" /><b>A press sequence</b><span>Approach, slow down, force, hold, retract</span><code>ForcePress</code></a>
+<a class="ag-demo-card" data-text="Set the current position SetPosition Define the current position as 0 without moving" href="14-force/set-position.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/force.svg" /><b>Set the current position</b><span>Define the current position as 0 without moving</span><code>SetPosition</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="15--datalogger-high-speed-recording">15 · DataLogger (high-speed recording)<a class="headerlink" href="#15--datalogger-high-speed-recording" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Record a move RecordMove Trigger on the move, record 1 s, save a CSV" href="15-recording/record-move.html"><b>Record a move</b><span>Trigger on the move, record 1 s, save a CSV</span><code>RecordMove</code></a>
+<a class="ag-demo-card" data-text="Record now and upload RecordNow No trigger: record 1 s, then upload" href="15-recording/record-now.html"><b>Record now and upload</b><span>No trigger: record 1 s, then upload</span><code>RecordNow</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="16--slowlogger-slow-recording">16 · SlowLogger (slow recording)<a class="headerlink" href="#16--slowlogger-slow-recording" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Log slowly for 2 s SlowLogger Configure, start, upload, check lost packets" href="16-slow-logger/slow-logger.html"><b>Log slowly for 2 s</b><span>Configure, start, upload, check lost packets</span><code>SlowLogger</code></a>
+<a class="ag-demo-card" data-text="Read the logger state LoggerState On, gap, mode, free space, lost packets" href="16-slow-logger/logger-state.html"><b>Read the logger state</b><span>On, gap, mode, free space, lost packets</span><code>LoggerState</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="17--fastreadcache">17 · FastReadCache<a class="headerlink" href="#17--fastreadcache" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Fast-read cache FastReadCache Register keywords; reads come from a background refresh" href="17-fastread/fast-read-cache.html"><b>Fast-read cache</b><span>Register keywords; reads come from a background refresh</span><code>FastReadCache</code></a>
+<a class="ag-demo-card" data-text="Cache refresh events CacheEvents Take the cached value on each refresh" href="17-fastread/cache-events.html"><b>Cache refresh events</b><span>Take the cached value on each refresh</span><code>CacheEvents</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="18--central-i-multi-axis">18 · <abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> multi-axis<a class="headerlink" href="#18--central-i-multi-axis" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Bring a slave online and offline CiConnect CiConnect, then CiDisconnect" href="18-central-i/ci-connect.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/centrali.svg" /><b>Bring a slave online and offline</b><span>CiConnect, then CiDisconnect</span><code>CiConnect</code></a>
+<a class="ag-demo-card" data-text="A Central-i path with an output CiPathOutput The second CNC buffer: lines and a group output" href="18-central-i/ci-path-output.html"><img alt="" class="ag-card-icon" src="../../assets/images/pcsuite/centrali.svg" /><b>A <abbr title="Agito 的分布式多轴架构 / Agito's distributed multi-axis architecture">Central-i</abbr> path with an output</b><span>The second <abbr title="多轴插补运动（直线、圆弧） / Multi-axis interpolated motion (lines, arcs)">CNC</abbr> buffer: lines and a group output</span><code>CiPathOutput</code></a></p>
+</div>
+</section>
+<section class="ag-demo-chapter">
+<h2 id="19--optical-coupling-light-finding">19 · Optical coupling light finding<a class="headerlink" href="#19--optical-coupling-light-finding" title="Permanent link">&para;</a></h2>
+<div class="ag-demo-grid">
+<p><a class="ag-demo-card" data-text="Spiral light finding SpiralScan Configure, start, wait, read the peak power" href="19-optical/spiral-scan.html"><b>Spiral light finding</b><span>Configure, start, wait, read the peak power</span><code>SpiralScan</code></a>
+<a class="ag-demo-card" data-text="Read the scan curves ScanCurves One bulk GenData read, then X, Y and power" href="19-optical/scan-curves.html"><b>Read the scan curves</b><span>One bulk <abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> read, then X, Y and power</span><code>ScanCurves</code></a>
+<a class="ag-demo-card" data-text="Read GenData by the firmware table FirmwareGenData Read one index with a string command, checked" href="19-optical/firmware-gen-data.html"><b>Read <abbr title="控制器上的通用整数数组 / The controller's general-purpose int array">GenData</abbr> by the firmware table</b><span>Read one index with a string command, checked</span><code>FirmwareGenData</code></a></p>
+</div>
+</section>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../cookbook/troubleshooting.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Troubleshooting">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Troubleshooting
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="axis-panel.html" class="md-footer__link md-footer__link--next" aria-label="Next: Axis panel">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Axis panel
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Agito Akribis Systems. All rights reserved. Code samples: MIT-0.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.prune", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.tracking", "navigation.path", "search.share"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../assets/data/single-demos.js"></script>
+      
+        <script src="../../assets/js/widgets.js"></script>
+      
+        <script src="../../assets/js/tools.js"></script>
+      
+        <script src="../../assets/js/ux.js"></script>
+      
+    
+  </body>
+</html>

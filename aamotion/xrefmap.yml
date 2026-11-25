@@ -395,6 +395,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.ClearErrorOccurredHandler
   nameWithType: AAMotionAPI.ClearErrorOccurredHandler
+- uid: AAMotion.AAMotionAPI.ClearErrorReportedHandler(AAMotion.MotionController,System.EventHandler{AAMotion.ControllerErrorEventArgs})
+  name: ClearErrorReportedHandler(MotionController, EventHandler<ControllerErrorEventArgs>)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ClearErrorReportedHandler_AAMotion_MotionController_System_EventHandler_AAMotion_ControllerErrorEventArgs__
+  commentId: M:AAMotion.AAMotionAPI.ClearErrorReportedHandler(AAMotion.MotionController,System.EventHandler{AAMotion.ControllerErrorEventArgs})
+  name.vb: ClearErrorReportedHandler(MotionController, EventHandler(Of ControllerErrorEventArgs))
+  fullName: AAMotion.AAMotionAPI.ClearErrorReportedHandler(AAMotion.MotionController, System.EventHandler<AAMotion.ControllerErrorEventArgs>)
+  fullName.vb: AAMotion.AAMotionAPI.ClearErrorReportedHandler(AAMotion.MotionController, System.EventHandler(Of AAMotion.ControllerErrorEventArgs))
+  nameWithType: AAMotionAPI.ClearErrorReportedHandler(MotionController, EventHandler<ControllerErrorEventArgs>)
+  nameWithType.vb: AAMotionAPI.ClearErrorReportedHandler(MotionController, EventHandler(Of ControllerErrorEventArgs))
+- uid: AAMotion.AAMotionAPI.ClearErrorReportedHandler*
+  name: ClearErrorReportedHandler
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ClearErrorReportedHandler_
+  commentId: Overload:AAMotion.AAMotionAPI.ClearErrorReportedHandler
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.ClearErrorReportedHandler
+  nameWithType: AAMotionAPI.ClearErrorReportedHandler
 - uid: AAMotion.AAMotionAPI.ClearUserProgramPrintHandler(AAMotion.MotionController,System.Action{AAMotion.UserProgramPrintMessage})
   name: ClearUserProgramPrintHandler(MotionController, Action<UserProgramPrintMessage>)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ClearUserProgramPrintHandler_AAMotion_MotionController_System_Action_AAMotion_UserProgramPrintMessage__
@@ -636,13 +652,13 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.Dispose
   nameWithType: AAMotionAPI.Dispose
-- uid: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController,System.String,System.Boolean,System.Action{System.Int32},System.Action{AAMotion.Extensions.ParamHandlingSummary,System.String})
+- uid: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController,System.String,System.Boolean,System.Action{System.Int32},System.Action{AAComm.Extensions.ParamHandlingSummary,System.String})
   name: DownloadParameters(MotionController, string, bool, Action<int>, Action<ParamHandlingSummary, string>)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_DownloadParameters_AAMotion_MotionController_System_String_System_Boolean_System_Action_System_Int32__System_Action_AAMotion_Extensions_ParamHandlingSummary_System_String__
-  commentId: M:AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController,System.String,System.Boolean,System.Action{System.Int32},System.Action{AAMotion.Extensions.ParamHandlingSummary,System.String})
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_DownloadParameters_AAMotion_MotionController_System_String_System_Boolean_System_Action_System_Int32__System_Action_AAComm_Extensions_ParamHandlingSummary_System_String__
+  commentId: M:AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController,System.String,System.Boolean,System.Action{System.Int32},System.Action{AAComm.Extensions.ParamHandlingSummary,System.String})
   name.vb: DownloadParameters(MotionController, String, Boolean, Action(Of Integer), Action(Of ParamHandlingSummary, String))
-  fullName: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController, string, bool, System.Action<int>, System.Action<AAMotion.Extensions.ParamHandlingSummary, string>)
-  fullName.vb: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController, String, Boolean, System.Action(Of Integer), System.Action(Of AAMotion.Extensions.ParamHandlingSummary, String))
+  fullName: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController, string, bool, System.Action<int>, System.Action<AAComm.Extensions.ParamHandlingSummary, string>)
+  fullName.vb: AAMotion.AAMotionAPI.DownloadParameters(AAMotion.MotionController, String, Boolean, System.Action(Of Integer), System.Action(Of AAComm.Extensions.ParamHandlingSummary, String))
   nameWithType: AAMotionAPI.DownloadParameters(MotionController, string, bool, Action<int>, Action<ParamHandlingSummary, string>)
   nameWithType.vb: AAMotionAPI.DownloadParameters(MotionController, String, Boolean, Action(Of Integer), Action(Of ParamHandlingSummary, String))
 - uid: AAMotion.AAMotionAPI.DownloadParameters*
@@ -1021,6 +1037,103 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.ForceCurr_SetSlowApproach
   nameWithType: AAMotionAPI.ForceCurr_SetSlowApproach
+- uid: AAMotion.AAMotionAPI.GearBegin(AAMotion.MotionController,AAMotion.AxisRef,AAMotion.AAMotionAPI.GearMotionConfig)
+  name: GearBegin(MotionController, AxisRef, GearMotionConfig)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_GearBegin_AAMotion_MotionController_AAMotion_AxisRef_AAMotion_AAMotionAPI_GearMotionConfig_
+  commentId: M:AAMotion.AAMotionAPI.GearBegin(AAMotion.MotionController,AAMotion.AxisRef,AAMotion.AAMotionAPI.GearMotionConfig)
+  fullName: AAMotion.AAMotionAPI.GearBegin(AAMotion.MotionController, AAMotion.AxisRef, AAMotion.AAMotionAPI.GearMotionConfig)
+  nameWithType: AAMotionAPI.GearBegin(MotionController, AxisRef, AAMotionAPI.GearMotionConfig)
+- uid: AAMotion.AAMotionAPI.GearBegin*
+  name: GearBegin
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_GearBegin_
+  commentId: Overload:AAMotion.AAMotionAPI.GearBegin
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearBegin
+  nameWithType: AAMotionAPI.GearBegin
+- uid: AAMotion.AAMotionAPI.GearMotionConfig
+  name: AAMotionAPI.GearMotionConfig
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html
+  commentId: T:AAMotion.AAMotionAPI.GearMotionConfig
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig
+  nameWithType: AAMotionAPI.GearMotionConfig
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.Filter
+  name: Filter
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_Filter
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.Filter
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.Filter
+  nameWithType: AAMotionAPI.GearMotionConfig.Filter
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.Filter*
+  name: Filter
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_Filter_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.Filter
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.Filter
+  nameWithType: AAMotionAPI.GearMotionConfig.Filter
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.Master
+  name: Master
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_Master
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.Master
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.Master
+  nameWithType: AAMotionAPI.GearMotionConfig.Master
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.Master*
+  name: Master
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_Master_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.Master
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.Master
+  nameWithType: AAMotionAPI.GearMotionConfig.Master
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev
+  name: MasterModRev
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_MasterModRev
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev
+  nameWithType: AAMotionAPI.GearMotionConfig.MasterModRev
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev*
+  name: MasterModRev
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_MasterModRev_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.MasterModRev
+  nameWithType: AAMotionAPI.GearMotionConfig.MasterModRev
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.MotionMode
+  name: MotionMode
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_MotionMode
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.MotionMode
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.MotionMode
+  nameWithType: AAMotionAPI.GearMotionConfig.MotionMode
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.MotionMode*
+  name: MotionMode
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_MotionMode_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.MotionMode
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.MotionMode
+  nameWithType: AAMotionAPI.GearMotionConfig.MotionMode
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator
+  name: RatioDenominator
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioDenominator
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator
+  nameWithType: AAMotionAPI.GearMotionConfig.RatioDenominator
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator*
+  name: RatioDenominator
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioDenominator_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.RatioDenominator
+  nameWithType: AAMotionAPI.GearMotionConfig.RatioDenominator
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator
+  name: RatioNumerator
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioNumerator
+  commentId: P:AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator
+  nameWithType: AAMotionAPI.GearMotionConfig.RatioNumerator
+- uid: AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator*
+  name: RatioNumerator
+  href: api/AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioNumerator_
+  commentId: Overload:AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.GearMotionConfig.RatioNumerator
+  nameWithType: AAMotionAPI.GearMotionConfig.RatioNumerator
 - uid: AAMotion.AAMotionAPI.GenDataWait(AAMotion.MotionController,System.Int32,System.Int32,System.Int32)
   name: GenDataWait(MotionController, int, int, int)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_GenDataWait_AAMotion_MotionController_System_Int32_System_Int32_System_Int32_
@@ -1258,6 +1371,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.HomeToHardStop
   nameWithType: AAMotionAPI.HomeToHardStop
+- uid: AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.UInt32)
+  name: HomeToHardStopByStuckThenIndex(MotionController, AxisRef, int, int, double, double, double, double, double, double, uint)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_HomeToHardStopByStuckThenIndex_AAMotion_MotionController_AAMotion_AxisRef_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_System_UInt32_
+  commentId: M:AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.UInt32)
+  name.vb: HomeToHardStopByStuckThenIndex(MotionController, AxisRef, Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+  fullName: AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex(AAMotion.MotionController, AAMotion.AxisRef, int, int, double, double, double, double, double, double, uint)
+  fullName.vb: AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex(AAMotion.MotionController, AAMotion.AxisRef, Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+  nameWithType: AAMotionAPI.HomeToHardStopByStuckThenIndex(MotionController, AxisRef, int, int, double, double, double, double, double, double, uint)
+  nameWithType.vb: AAMotionAPI.HomeToHardStopByStuckThenIndex(MotionController, AxisRef, Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+- uid: AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex*
+  name: HomeToHardStopByStuckThenIndex
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_HomeToHardStopByStuckThenIndex_
+  commentId: Overload:AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.HomeToHardStopByStuckThenIndex
+  nameWithType: AAMotionAPI.HomeToHardStopByStuckThenIndex
 - uid: AAMotion.AAMotionAPI.HomeToHardStopThenIndex(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.UInt32)
   name: HomeToHardStopThenIndex(MotionController, AxisRef, int, int, double, double, double, double, uint)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_HomeToHardStopThenIndex_AAMotion_MotionController_AAMotion_AxisRef_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_UInt32_
@@ -1753,6 +1882,24 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.LockSrcZeroSupported
   nameWithType: AAMotionAPI.LockSrcZeroSupported
+- uid: AAMotion.AAMotionAPI.MaxPvajGap
+  name: MaxPvajGap
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MaxPvajGap
+  commentId: F:AAMotion.AAMotionAPI.MaxPvajGap
+  fullName: AAMotion.AAMotionAPI.MaxPvajGap
+  nameWithType: AAMotionAPI.MaxPvajGap
+- uid: AAMotion.AAMotionAPI.MaxPvajListIndex
+  name: MaxPvajListIndex
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MaxPvajListIndex
+  commentId: F:AAMotion.AAMotionAPI.MaxPvajListIndex
+  fullName: AAMotion.AAMotionAPI.MaxPvajListIndex
+  nameWithType: AAMotionAPI.MaxPvajListIndex
+- uid: AAMotion.AAMotionAPI.MaxPvajPoints
+  name: MaxPvajPoints
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MaxPvajPoints
+  commentId: F:AAMotion.AAMotionAPI.MaxPvajPoints
+  fullName: AAMotion.AAMotionAPI.MaxPvajPoints
+  nameWithType: AAMotionAPI.MaxPvajPoints
 - uid: AAMotion.AAMotionAPI.MotorOff(AAMotion.MotionController,AAMotion.AxisRef)
   name: MotorOff(MotionController, AxisRef)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MotorOff_AAMotion_MotionController_AAMotion_AxisRef_
@@ -1797,60 +1944,60 @@ references:
   fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, AAMotion.AxisRef, Double, Double?, Double?, Double?)
   nameWithType: AAMotionAPI.MoveAbs(MotionController, AxisRef, double, double?, double?, double?)
   nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, AxisRef, Double, Double?, Double?, Double?)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis[],System.Double[])
-  name: MoveAbs(MotionController, double, double, double, ISingleAxis[], double[])
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis___System_Double___
-  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis[],System.Double[])
-  name.vb: MoveAbs(MotionController, Double, Double, Double, ISingleAxis(), Double())
-  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis[], double[])
-  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis(), Double())
-  nameWithType: AAMotionAPI.MoveAbs(MotionController, double, double, double, ISingleAxis[], double[])
-  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double, Double, Double, ISingleAxis(), Double())
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis[],System.Double[])
+  name: MoveAbs(MotionController, double?, double?, double?, ISingleAxis[], double[])
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis___System_Double___
+  commentId: M:AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis[],System.Double[])
+  name.vb: MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis(), Double())
+  fullName: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis[], double[])
+  fullName.vb: AAMotion.AAMotionAPI.MoveAbs(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis(), Double())
+  nameWithType: AAMotionAPI.MoveAbs(MotionController, double?, double?, double?, ISingleAxis[], double[])
+  nameWithType.vb: AAMotionAPI.MoveAbs(MotionController, Double?, Double?, Double?, ISingleAxis(), Double())
 - uid: AAMotion.AAMotionAPI.MoveAbs*
   name: MoveAbs
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveAbs_
@@ -1954,60 +2101,60 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.MoveAbsTwoSpeedAndWait
   nameWithType: AAMotionAPI.MoveAbsTwoSpeedAndWait
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name: MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
-- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis[],System.Double[])
-  name: MoveRel(MotionController, double, double, double, ISingleAxis[], double[])
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Double_System_Double_System_Double_AAMotion_ISingleAxis___System_Double___
-  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Double,System.Double,System.Double,AAMotion.ISingleAxis[],System.Double[])
-  name.vb: MoveRel(MotionController, Double, Double, Double, ISingleAxis(), Double())
-  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double, double, double, AAMotion.ISingleAxis[], double[])
-  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double, Double, Double, AAMotion.ISingleAxis(), Double())
-  nameWithType: AAMotionAPI.MoveRel(MotionController, double, double, double, ISingleAxis[], double[])
-  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double, Double, Double, ISingleAxis(), Double())
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_AAMotion_ISingleAxis_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double,AAMotion.ISingleAxis,System.Double)
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double, AAMotion.ISingleAxis, double)
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double, AAMotion.ISingleAxis, Double)
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double, ISingleAxis, double)
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double, ISingleAxis, Double)
+- uid: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis[],System.Double[])
+  name: MoveRel(MotionController, double?, double?, double?, ISingleAxis[], double[])
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_AAMotion_MotionController_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__AAMotion_ISingleAxis___System_Double___
+  commentId: M:AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},AAMotion.ISingleAxis[],System.Double[])
+  name.vb: MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis(), Double())
+  fullName: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, double?, double?, double?, AAMotion.ISingleAxis[], double[])
+  fullName.vb: AAMotion.AAMotionAPI.MoveRel(AAMotion.MotionController, Double?, Double?, Double?, AAMotion.ISingleAxis(), Double())
+  nameWithType: AAMotionAPI.MoveRel(MotionController, double?, double?, double?, ISingleAxis[], double[])
+  nameWithType.vb: AAMotionAPI.MoveRel(MotionController, Double?, Double?, Double?, ISingleAxis(), Double())
 - uid: AAMotion.AAMotionAPI.MoveRel*
   name: MoveRel
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_MoveRel_
@@ -2652,6 +2799,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.Pause
   nameWithType: AAMotionAPI.Pause
+- uid: AAMotion.AAMotionAPI.ProbeConnection(AAMotion.MotionController,System.Nullable{System.Int32})
+  name: ProbeConnection(MotionController, int?)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ProbeConnection_AAMotion_MotionController_System_Nullable_System_Int32__
+  commentId: M:AAMotion.AAMotionAPI.ProbeConnection(AAMotion.MotionController,System.Nullable{System.Int32})
+  name.vb: ProbeConnection(MotionController, Integer?)
+  fullName: AAMotion.AAMotionAPI.ProbeConnection(AAMotion.MotionController, int?)
+  fullName.vb: AAMotion.AAMotionAPI.ProbeConnection(AAMotion.MotionController, Integer?)
+  nameWithType: AAMotionAPI.ProbeConnection(MotionController, int?)
+  nameWithType.vb: AAMotionAPI.ProbeConnection(MotionController, Integer?)
+- uid: AAMotion.AAMotionAPI.ProbeConnection*
+  name: ProbeConnection
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ProbeConnection_
+  commentId: Overload:AAMotion.AAMotionAPI.ProbeConnection
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.ProbeConnection
+  nameWithType: AAMotionAPI.ProbeConnection
 - uid: AAMotion.AAMotionAPI.ProgHalt(AAMotion.MotionController,AAMotion.AxisRef,System.Int32)
   name: ProgHalt(MotionController, AxisRef, int)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ProgHalt_AAMotion_MotionController_AAMotion_AxisRef_System_Int32_
@@ -2713,6 +2876,143 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.ProgRun
   nameWithType: AAMotionAPI.ProgRun
+- uid: AAMotion.AAMotionAPI.PvajArm(AAMotion.MotionController,AAMotion.AxisRef,System.Boolean)
+  name: PvajArm(MotionController, AxisRef, bool)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajArm_AAMotion_MotionController_AAMotion_AxisRef_System_Boolean_
+  commentId: M:AAMotion.AAMotionAPI.PvajArm(AAMotion.MotionController,AAMotion.AxisRef,System.Boolean)
+  name.vb: PvajArm(MotionController, AxisRef, Boolean)
+  fullName: AAMotion.AAMotionAPI.PvajArm(AAMotion.MotionController, AAMotion.AxisRef, bool)
+  fullName.vb: AAMotion.AAMotionAPI.PvajArm(AAMotion.MotionController, AAMotion.AxisRef, Boolean)
+  nameWithType: AAMotionAPI.PvajArm(MotionController, AxisRef, bool)
+  nameWithType.vb: AAMotionAPI.PvajArm(MotionController, AxisRef, Boolean)
+- uid: AAMotion.AAMotionAPI.PvajArm*
+  name: PvajArm
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajArm_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajArm
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajArm
+  nameWithType: AAMotionAPI.PvajArm
+- uid: AAMotion.AAMotionAPI.PvajBegin(AAMotion.MotionController,AAMotion.AxisRef,System.Boolean)
+  name: PvajBegin(MotionController, AxisRef, bool)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajBegin_AAMotion_MotionController_AAMotion_AxisRef_System_Boolean_
+  commentId: M:AAMotion.AAMotionAPI.PvajBegin(AAMotion.MotionController,AAMotion.AxisRef,System.Boolean)
+  name.vb: PvajBegin(MotionController, AxisRef, Boolean)
+  fullName: AAMotion.AAMotionAPI.PvajBegin(AAMotion.MotionController, AAMotion.AxisRef, bool)
+  fullName.vb: AAMotion.AAMotionAPI.PvajBegin(AAMotion.MotionController, AAMotion.AxisRef, Boolean)
+  nameWithType: AAMotionAPI.PvajBegin(MotionController, AxisRef, bool)
+  nameWithType.vb: AAMotionAPI.PvajBegin(MotionController, AxisRef, Boolean)
+- uid: AAMotion.AAMotionAPI.PvajBegin*
+  name: PvajBegin
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajBegin_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajBegin
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajBegin
+  nameWithType: AAMotionAPI.PvajBegin
+- uid: AAMotion.AAMotionAPI.PvajGetStatus(AAMotion.MotionController,AAMotion.AxisRef,System.Int32@,System.Int32@)
+  name: PvajGetStatus(MotionController, AxisRef, out int, out int)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajGetStatus_AAMotion_MotionController_AAMotion_AxisRef_System_Int32__System_Int32__
+  commentId: M:AAMotion.AAMotionAPI.PvajGetStatus(AAMotion.MotionController,AAMotion.AxisRef,System.Int32@,System.Int32@)
+  name.vb: PvajGetStatus(MotionController, AxisRef, Integer, Integer)
+  fullName: AAMotion.AAMotionAPI.PvajGetStatus(AAMotion.MotionController, AAMotion.AxisRef, out int, out int)
+  fullName.vb: AAMotion.AAMotionAPI.PvajGetStatus(AAMotion.MotionController, AAMotion.AxisRef, Integer, Integer)
+  nameWithType: AAMotionAPI.PvajGetStatus(MotionController, AxisRef, out int, out int)
+  nameWithType.vb: AAMotionAPI.PvajGetStatus(MotionController, AxisRef, Integer, Integer)
+- uid: AAMotion.AAMotionAPI.PvajGetStatus*
+  name: PvajGetStatus
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajGetStatus_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajGetStatus
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajGetStatus
+  nameWithType: AAMotionAPI.PvajGetStatus
+- uid: AAMotion.AAMotionAPI.PvajIndexGap
+  name: PvajIndexGap
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajIndexGap
+  commentId: F:AAMotion.AAMotionAPI.PvajIndexGap
+  fullName: AAMotion.AAMotionAPI.PvajIndexGap
+  nameWithType: AAMotionAPI.PvajIndexGap
+- uid: AAMotion.AAMotionAPI.PvajIndexLen
+  name: PvajIndexLen
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajIndexLen
+  commentId: F:AAMotion.AAMotionAPI.PvajIndexLen
+  fullName: AAMotion.AAMotionAPI.PvajIndexLen
+  nameWithType: AAMotionAPI.PvajIndexLen
+- uid: AAMotion.AAMotionAPI.PvajIndexMode
+  name: PvajIndexMode
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajIndexMode
+  commentId: F:AAMotion.AAMotionAPI.PvajIndexMode
+  fullName: AAMotion.AAMotionAPI.PvajIndexMode
+  nameWithType: AAMotionAPI.PvajIndexMode
+- uid: AAMotion.AAMotionAPI.PvajIsValidated(AAMotion.MotionController,AAMotion.AxisRef)
+  name: PvajIsValidated(MotionController, AxisRef)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajIsValidated_AAMotion_MotionController_AAMotion_AxisRef_
+  commentId: M:AAMotion.AAMotionAPI.PvajIsValidated(AAMotion.MotionController,AAMotion.AxisRef)
+  fullName: AAMotion.AAMotionAPI.PvajIsValidated(AAMotion.MotionController, AAMotion.AxisRef)
+  nameWithType: AAMotionAPI.PvajIsValidated(MotionController, AxisRef)
+- uid: AAMotion.AAMotionAPI.PvajIsValidated*
+  name: PvajIsValidated
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajIsValidated_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajIsValidated
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajIsValidated
+  nameWithType: AAMotionAPI.PvajIsValidated
+- uid: AAMotion.AAMotionAPI.PvajSupported(AAMotion.MotionController)
+  name: PvajSupported(MotionController)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajSupported_AAMotion_MotionController_
+  commentId: M:AAMotion.AAMotionAPI.PvajSupported(AAMotion.MotionController)
+  fullName: AAMotion.AAMotionAPI.PvajSupported(AAMotion.MotionController)
+  nameWithType: AAMotionAPI.PvajSupported(MotionController)
+- uid: AAMotion.AAMotionAPI.PvajSupported*
+  name: PvajSupported
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajSupported_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajSupported
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajSupported
+  nameWithType: AAMotionAPI.PvajSupported
+- uid: AAMotion.AAMotionAPI.PvajValidate(AAMotion.MotionController,AAMotion.AxisRef,AAMotion.PvajValidationMode)
+  name: PvajValidate(MotionController, AxisRef, PvajValidationMode)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajValidate_AAMotion_MotionController_AAMotion_AxisRef_AAMotion_PvajValidationMode_
+  commentId: M:AAMotion.AAMotionAPI.PvajValidate(AAMotion.MotionController,AAMotion.AxisRef,AAMotion.PvajValidationMode)
+  fullName: AAMotion.AAMotionAPI.PvajValidate(AAMotion.MotionController, AAMotion.AxisRef, AAMotion.PvajValidationMode)
+  nameWithType: AAMotionAPI.PvajValidate(MotionController, AxisRef, PvajValidationMode)
+- uid: AAMotion.AAMotionAPI.PvajValidate*
+  name: PvajValidate
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajValidate_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajValidate
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajValidate
+  nameWithType: AAMotionAPI.PvajValidate
+- uid: AAMotion.AAMotionAPI.PvajWriteHeader(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Int32,AAMotion.PvajPositionMode)
+  name: PvajWriteHeader(MotionController, AxisRef, int, int, PvajPositionMode)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajWriteHeader_AAMotion_MotionController_AAMotion_AxisRef_System_Int32_System_Int32_AAMotion_PvajPositionMode_
+  commentId: M:AAMotion.AAMotionAPI.PvajWriteHeader(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Int32,AAMotion.PvajPositionMode)
+  name.vb: PvajWriteHeader(MotionController, AxisRef, Integer, Integer, PvajPositionMode)
+  fullName: AAMotion.AAMotionAPI.PvajWriteHeader(AAMotion.MotionController, AAMotion.AxisRef, int, int, AAMotion.PvajPositionMode)
+  fullName.vb: AAMotion.AAMotionAPI.PvajWriteHeader(AAMotion.MotionController, AAMotion.AxisRef, Integer, Integer, AAMotion.PvajPositionMode)
+  nameWithType: AAMotionAPI.PvajWriteHeader(MotionController, AxisRef, int, int, PvajPositionMode)
+  nameWithType.vb: AAMotionAPI.PvajWriteHeader(MotionController, AxisRef, Integer, Integer, PvajPositionMode)
+- uid: AAMotion.AAMotionAPI.PvajWriteHeader*
+  name: PvajWriteHeader
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajWriteHeader_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajWriteHeader
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajWriteHeader
+  nameWithType: AAMotionAPI.PvajWriteHeader
+- uid: AAMotion.AAMotionAPI.PvajWritePoint(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Double,System.Double,System.Double,System.Double)
+  name: PvajWritePoint(MotionController, AxisRef, int, double, double, double, double)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajWritePoint_AAMotion_MotionController_AAMotion_AxisRef_System_Int32_System_Double_System_Double_System_Double_System_Double_
+  commentId: M:AAMotion.AAMotionAPI.PvajWritePoint(AAMotion.MotionController,AAMotion.AxisRef,System.Int32,System.Double,System.Double,System.Double,System.Double)
+  name.vb: PvajWritePoint(MotionController, AxisRef, Integer, Double, Double, Double, Double)
+  fullName: AAMotion.AAMotionAPI.PvajWritePoint(AAMotion.MotionController, AAMotion.AxisRef, int, double, double, double, double)
+  fullName.vb: AAMotion.AAMotionAPI.PvajWritePoint(AAMotion.MotionController, AAMotion.AxisRef, Integer, Double, Double, Double, Double)
+  nameWithType: AAMotionAPI.PvajWritePoint(MotionController, AxisRef, int, double, double, double, double)
+  nameWithType.vb: AAMotionAPI.PvajWritePoint(MotionController, AxisRef, Integer, Double, Double, Double, Double)
+- uid: AAMotion.AAMotionAPI.PvajWritePoint*
+  name: PvajWritePoint
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_PvajWritePoint_
+  commentId: Overload:AAMotion.AAMotionAPI.PvajWritePoint
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.PvajWritePoint
+  nameWithType: AAMotionAPI.PvajWritePoint
 - uid: AAMotion.AAMotionAPI.ReadGenData(AAMotion.MotionController,System.Int32)
   name: ReadGenData(MotionController, int)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ReadGenData_AAMotion_MotionController_System_Int32_
@@ -2867,15 +3167,15 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.RunCNCProgramFromFile
   nameWithType: AAMotionAPI.RunCNCProgramFromFile
-- uid: AAMotion.AAMotionAPI.ScanController(System.String,System.Int32,System.Int32,System.Int32)
-  name: ScanController(string, int, int, int)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanController_System_String_System_Int32_System_Int32_System_Int32_
-  commentId: M:AAMotion.AAMotionAPI.ScanController(System.String,System.Int32,System.Int32,System.Int32)
-  name.vb: ScanController(String, Integer, Integer, Integer)
-  fullName: AAMotion.AAMotionAPI.ScanController(string, int, int, int)
-  fullName.vb: AAMotion.AAMotionAPI.ScanController(String, Integer, Integer, Integer)
-  nameWithType: AAMotionAPI.ScanController(string, int, int, int)
-  nameWithType.vb: AAMotionAPI.ScanController(String, Integer, Integer, Integer)
+- uid: AAMotion.AAMotionAPI.ScanController(System.Boolean,System.String,System.Int32,System.Int32,System.Int32)
+  name: ScanController(bool, string, int, int, int)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanController_System_Boolean_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:AAMotion.AAMotionAPI.ScanController(System.Boolean,System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: ScanController(Boolean, String, Integer, Integer, Integer)
+  fullName: AAMotion.AAMotionAPI.ScanController(bool, string, int, int, int)
+  fullName.vb: AAMotion.AAMotionAPI.ScanController(Boolean, String, Integer, Integer, Integer)
+  nameWithType: AAMotionAPI.ScanController(bool, string, int, int, int)
+  nameWithType.vb: AAMotionAPI.ScanController(Boolean, String, Integer, Integer, Integer)
 - uid: AAMotion.AAMotionAPI.ScanController*
   name: ScanController
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanController_
@@ -2883,15 +3183,15 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.ScanController
   nameWithType: AAMotionAPI.ScanController
-- uid: AAMotion.AAMotionAPI.ScanControllerDetailed(System.String,System.Int32,System.Int32,System.Int32)
-  name: ScanControllerDetailed(string, int, int, int)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanControllerDetailed_System_String_System_Int32_System_Int32_System_Int32_
-  commentId: M:AAMotion.AAMotionAPI.ScanControllerDetailed(System.String,System.Int32,System.Int32,System.Int32)
-  name.vb: ScanControllerDetailed(String, Integer, Integer, Integer)
-  fullName: AAMotion.AAMotionAPI.ScanControllerDetailed(string, int, int, int)
-  fullName.vb: AAMotion.AAMotionAPI.ScanControllerDetailed(String, Integer, Integer, Integer)
-  nameWithType: AAMotionAPI.ScanControllerDetailed(string, int, int, int)
-  nameWithType.vb: AAMotionAPI.ScanControllerDetailed(String, Integer, Integer, Integer)
+- uid: AAMotion.AAMotionAPI.ScanControllerDetailed(System.Boolean,System.String,System.Int32,System.Int32,System.Int32)
+  name: ScanControllerDetailed(bool, string, int, int, int)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanControllerDetailed_System_Boolean_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:AAMotion.AAMotionAPI.ScanControllerDetailed(System.Boolean,System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: ScanControllerDetailed(Boolean, String, Integer, Integer, Integer)
+  fullName: AAMotion.AAMotionAPI.ScanControllerDetailed(bool, string, int, int, int)
+  fullName.vb: AAMotion.AAMotionAPI.ScanControllerDetailed(Boolean, String, Integer, Integer, Integer)
+  nameWithType: AAMotionAPI.ScanControllerDetailed(bool, string, int, int, int)
+  nameWithType.vb: AAMotionAPI.ScanControllerDetailed(Boolean, String, Integer, Integer, Integer)
 - uid: AAMotion.AAMotionAPI.ScanControllerDetailed*
   name: ScanControllerDetailed
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_ScanControllerDetailed_
@@ -2995,6 +3295,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.SetErrorOccurredHandler
   nameWithType: AAMotionAPI.SetErrorOccurredHandler
+- uid: AAMotion.AAMotionAPI.SetErrorReportedHandler(AAMotion.MotionController,System.EventHandler{AAMotion.ControllerErrorEventArgs})
+  name: SetErrorReportedHandler(MotionController, EventHandler<ControllerErrorEventArgs>)
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_SetErrorReportedHandler_AAMotion_MotionController_System_EventHandler_AAMotion_ControllerErrorEventArgs__
+  commentId: M:AAMotion.AAMotionAPI.SetErrorReportedHandler(AAMotion.MotionController,System.EventHandler{AAMotion.ControllerErrorEventArgs})
+  name.vb: SetErrorReportedHandler(MotionController, EventHandler(Of ControllerErrorEventArgs))
+  fullName: AAMotion.AAMotionAPI.SetErrorReportedHandler(AAMotion.MotionController, System.EventHandler<AAMotion.ControllerErrorEventArgs>)
+  fullName.vb: AAMotion.AAMotionAPI.SetErrorReportedHandler(AAMotion.MotionController, System.EventHandler(Of AAMotion.ControllerErrorEventArgs))
+  nameWithType: AAMotionAPI.SetErrorReportedHandler(MotionController, EventHandler<ControllerErrorEventArgs>)
+  nameWithType.vb: AAMotionAPI.SetErrorReportedHandler(MotionController, EventHandler(Of ControllerErrorEventArgs))
+- uid: AAMotion.AAMotionAPI.SetErrorReportedHandler*
+  name: SetErrorReportedHandler
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_SetErrorReportedHandler_
+  commentId: Overload:AAMotion.AAMotionAPI.SetErrorReportedHandler
+  isSpec: "True"
+  fullName: AAMotion.AAMotionAPI.SetErrorReportedHandler
+  nameWithType: AAMotionAPI.SetErrorReportedHandler
 - uid: AAMotion.AAMotionAPI.SetEventFixedGapPEG(AAMotion.MotionController,AAMotion.AxisRef,System.Double,System.Double,System.Double,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})
   name: SetEventFixedGapPEG(MotionController, AxisRef, double, double, double, int, int?, int?)
   href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_SetEventFixedGapPEG_AAMotion_MotionController_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__
@@ -3471,13 +3787,13 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionAPI.TryReconnect
   nameWithType: AAMotionAPI.TryReconnect
-- uid: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController,System.String,System.Action{System.Int32},System.Action{AAMotion.Extensions.ParamHandlingSummary,System.String})
+- uid: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController,System.String,System.Action{System.Int32},System.Action{AAComm.Extensions.ParamHandlingSummary,System.String})
   name: UploadParameters(MotionController, string, Action<int>, Action<ParamHandlingSummary, string>)
-  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_UploadParameters_AAMotion_MotionController_System_String_System_Action_System_Int32__System_Action_AAMotion_Extensions_ParamHandlingSummary_System_String__
-  commentId: M:AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController,System.String,System.Action{System.Int32},System.Action{AAMotion.Extensions.ParamHandlingSummary,System.String})
+  href: api/AAMotion.AAMotionAPI.html#AAMotion_AAMotionAPI_UploadParameters_AAMotion_MotionController_System_String_System_Action_System_Int32__System_Action_AAComm_Extensions_ParamHandlingSummary_System_String__
+  commentId: M:AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController,System.String,System.Action{System.Int32},System.Action{AAComm.Extensions.ParamHandlingSummary,System.String})
   name.vb: UploadParameters(MotionController, String, Action(Of Integer), Action(Of ParamHandlingSummary, String))
-  fullName: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController, string, System.Action<int>, System.Action<AAMotion.Extensions.ParamHandlingSummary, string>)
-  fullName.vb: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController, String, System.Action(Of Integer), System.Action(Of AAMotion.Extensions.ParamHandlingSummary, String))
+  fullName: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController, string, System.Action<int>, System.Action<AAComm.Extensions.ParamHandlingSummary, string>)
+  fullName.vb: AAMotion.AAMotionAPI.UploadParameters(AAMotion.MotionController, String, System.Action(Of Integer), System.Action(Of AAComm.Extensions.ParamHandlingSummary, String))
   nameWithType: AAMotionAPI.UploadParameters(MotionController, string, Action<int>, Action<ParamHandlingSummary, string>)
   nameWithType.vb: AAMotionAPI.UploadParameters(MotionController, String, Action(Of Integer), Action(Of ParamHandlingSummary, String))
 - uid: AAMotion.AAMotionAPI.UploadParameters*
@@ -3730,6 +4046,45 @@ references:
   isSpec: "True"
   fullName: AAMotion.AAMotionConfig.FastReadEnabled
   nameWithType: AAMotionConfig.FastReadEnabled
+- uid: AAMotion.AAMotionConfig.HighResolutionTimer
+  name: HighResolutionTimer
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_HighResolutionTimer
+  commentId: P:AAMotion.AAMotionConfig.HighResolutionTimer
+  fullName: AAMotion.AAMotionConfig.HighResolutionTimer
+  nameWithType: AAMotionConfig.HighResolutionTimer
+- uid: AAMotion.AAMotionConfig.HighResolutionTimer*
+  name: HighResolutionTimer
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_HighResolutionTimer_
+  commentId: Overload:AAMotion.AAMotionConfig.HighResolutionTimer
+  isSpec: "True"
+  fullName: AAMotion.AAMotionConfig.HighResolutionTimer
+  nameWithType: AAMotionConfig.HighResolutionTimer
+- uid: AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs
+  name: InTargetStatRefreshIntervalMs
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs
+  commentId: P:AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs
+  fullName: AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs
+  nameWithType: AAMotionConfig.InTargetStatRefreshIntervalMs
+- uid: AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs*
+  name: InTargetStatRefreshIntervalMs
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs_
+  commentId: Overload:AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs
+  isSpec: "True"
+  fullName: AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs
+  nameWithType: AAMotionConfig.InTargetStatRefreshIntervalMs
+- uid: AAMotion.AAMotionConfig.MoveStartConfirmMs
+  name: MoveStartConfirmMs
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_MoveStartConfirmMs
+  commentId: P:AAMotion.AAMotionConfig.MoveStartConfirmMs
+  fullName: AAMotion.AAMotionConfig.MoveStartConfirmMs
+  nameWithType: AAMotionConfig.MoveStartConfirmMs
+- uid: AAMotion.AAMotionConfig.MoveStartConfirmMs*
+  name: MoveStartConfirmMs
+  href: api/AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_MoveStartConfirmMs_
+  commentId: Overload:AAMotion.AAMotionConfig.MoveStartConfirmMs
+  isSpec: "True"
+  fullName: AAMotion.AAMotionConfig.MoveStartConfirmMs
+  nameWithType: AAMotionConfig.MoveStartConfirmMs
 - uid: AAMotion.AASmartArrayWrapper
   name: AASmartArrayWrapper
   href: api/AAMotion.AASmartArrayWrapper.html
@@ -5288,6 +5643,139 @@ references:
   commentId: F:AAMotion.ConFlt.VirtualEncoderMaxPulsesExceeded
   fullName: AAMotion.ConFlt.VirtualEncoderMaxPulsesExceeded
   nameWithType: ConFlt.VirtualEncoderMaxPulsesExceeded
+- uid: AAMotion.ConnectionProbeFailure
+  name: ConnectionProbeFailure
+  href: api/AAMotion.ConnectionProbeFailure.html
+  commentId: T:AAMotion.ConnectionProbeFailure
+  fullName: AAMotion.ConnectionProbeFailure
+  nameWithType: ConnectionProbeFailure
+- uid: AAMotion.ConnectionProbeFailure.ControllerError
+  name: ControllerError
+  href: api/AAMotion.ConnectionProbeFailure.html#AAMotion_ConnectionProbeFailure_ControllerError
+  commentId: F:AAMotion.ConnectionProbeFailure.ControllerError
+  fullName: AAMotion.ConnectionProbeFailure.ControllerError
+  nameWithType: ConnectionProbeFailure.ControllerError
+- uid: AAMotion.ConnectionProbeFailure.InvalidReply
+  name: InvalidReply
+  href: api/AAMotion.ConnectionProbeFailure.html#AAMotion_ConnectionProbeFailure_InvalidReply
+  commentId: F:AAMotion.ConnectionProbeFailure.InvalidReply
+  fullName: AAMotion.ConnectionProbeFailure.InvalidReply
+  nameWithType: ConnectionProbeFailure.InvalidReply
+- uid: AAMotion.ConnectionProbeFailure.None
+  name: None
+  href: api/AAMotion.ConnectionProbeFailure.html#AAMotion_ConnectionProbeFailure_None
+  commentId: F:AAMotion.ConnectionProbeFailure.None
+  fullName: AAMotion.ConnectionProbeFailure.None
+  nameWithType: ConnectionProbeFailure.None
+- uid: AAMotion.ConnectionProbeFailure.NotConnected
+  name: NotConnected
+  href: api/AAMotion.ConnectionProbeFailure.html#AAMotion_ConnectionProbeFailure_NotConnected
+  commentId: F:AAMotion.ConnectionProbeFailure.NotConnected
+  fullName: AAMotion.ConnectionProbeFailure.NotConnected
+  nameWithType: ConnectionProbeFailure.NotConnected
+- uid: AAMotion.ConnectionProbeFailure.Timeout
+  name: Timeout
+  href: api/AAMotion.ConnectionProbeFailure.html#AAMotion_ConnectionProbeFailure_Timeout
+  commentId: F:AAMotion.ConnectionProbeFailure.Timeout
+  fullName: AAMotion.ConnectionProbeFailure.Timeout
+  nameWithType: ConnectionProbeFailure.Timeout
+- uid: AAMotion.ConnectionProbeResult
+  name: ConnectionProbeResult
+  href: api/AAMotion.ConnectionProbeResult.html
+  commentId: T:AAMotion.ConnectionProbeResult
+  fullName: AAMotion.ConnectionProbeResult
+  nameWithType: ConnectionProbeResult
+- uid: AAMotion.ConnectionProbeResult.ControllerRestarted
+  name: ControllerRestarted
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_ControllerRestarted
+  commentId: P:AAMotion.ConnectionProbeResult.ControllerRestarted
+  fullName: AAMotion.ConnectionProbeResult.ControllerRestarted
+  nameWithType: ConnectionProbeResult.ControllerRestarted
+- uid: AAMotion.ConnectionProbeResult.ControllerRestarted*
+  name: ControllerRestarted
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_ControllerRestarted_
+  commentId: Overload:AAMotion.ConnectionProbeResult.ControllerRestarted
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.ControllerRestarted
+  nameWithType: ConnectionProbeResult.ControllerRestarted
+- uid: AAMotion.ConnectionProbeResult.ControllerTime
+  name: ControllerTime
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_ControllerTime
+  commentId: P:AAMotion.ConnectionProbeResult.ControllerTime
+  fullName: AAMotion.ConnectionProbeResult.ControllerTime
+  nameWithType: ConnectionProbeResult.ControllerTime
+- uid: AAMotion.ConnectionProbeResult.ControllerTime*
+  name: ControllerTime
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_ControllerTime_
+  commentId: Overload:AAMotion.ConnectionProbeResult.ControllerTime
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.ControllerTime
+  nameWithType: ConnectionProbeResult.ControllerTime
+- uid: AAMotion.ConnectionProbeResult.Failure
+  name: Failure
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Failure
+  commentId: P:AAMotion.ConnectionProbeResult.Failure
+  fullName: AAMotion.ConnectionProbeResult.Failure
+  nameWithType: ConnectionProbeResult.Failure
+- uid: AAMotion.ConnectionProbeResult.Failure*
+  name: Failure
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Failure_
+  commentId: Overload:AAMotion.ConnectionProbeResult.Failure
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.Failure
+  nameWithType: ConnectionProbeResult.Failure
+- uid: AAMotion.ConnectionProbeResult.IsAlive
+  name: IsAlive
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_IsAlive
+  commentId: P:AAMotion.ConnectionProbeResult.IsAlive
+  fullName: AAMotion.ConnectionProbeResult.IsAlive
+  nameWithType: ConnectionProbeResult.IsAlive
+- uid: AAMotion.ConnectionProbeResult.IsAlive*
+  name: IsAlive
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_IsAlive_
+  commentId: Overload:AAMotion.ConnectionProbeResult.IsAlive
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.IsAlive
+  nameWithType: ConnectionProbeResult.IsAlive
+- uid: AAMotion.ConnectionProbeResult.Message
+  name: Message
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Message
+  commentId: P:AAMotion.ConnectionProbeResult.Message
+  fullName: AAMotion.ConnectionProbeResult.Message
+  nameWithType: ConnectionProbeResult.Message
+- uid: AAMotion.ConnectionProbeResult.Message*
+  name: Message
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Message_
+  commentId: Overload:AAMotion.ConnectionProbeResult.Message
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.Message
+  nameWithType: ConnectionProbeResult.Message
+- uid: AAMotion.ConnectionProbeResult.RoundTripMs
+  name: RoundTripMs
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_RoundTripMs
+  commentId: P:AAMotion.ConnectionProbeResult.RoundTripMs
+  fullName: AAMotion.ConnectionProbeResult.RoundTripMs
+  nameWithType: ConnectionProbeResult.RoundTripMs
+- uid: AAMotion.ConnectionProbeResult.RoundTripMs*
+  name: RoundTripMs
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_RoundTripMs_
+  commentId: Overload:AAMotion.ConnectionProbeResult.RoundTripMs
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.RoundTripMs
+  nameWithType: ConnectionProbeResult.RoundTripMs
+- uid: AAMotion.ConnectionProbeResult.Timestamp
+  name: Timestamp
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Timestamp
+  commentId: P:AAMotion.ConnectionProbeResult.Timestamp
+  fullName: AAMotion.ConnectionProbeResult.Timestamp
+  nameWithType: ConnectionProbeResult.Timestamp
+- uid: AAMotion.ConnectionProbeResult.Timestamp*
+  name: Timestamp
+  href: api/AAMotion.ConnectionProbeResult.html#AAMotion_ConnectionProbeResult_Timestamp_
+  commentId: Overload:AAMotion.ConnectionProbeResult.Timestamp
+  isSpec: "True"
+  fullName: AAMotion.ConnectionProbeResult.Timestamp
+  nameWithType: ConnectionProbeResult.Timestamp
 - uid: AAMotion.ControllerCommandException
   name: ControllerCommandException
   href: api/AAMotion.ControllerCommandException.html
@@ -5376,6 +5864,172 @@ references:
   commentId: F:AAMotion.ControllerCommandException.NoControllerCode
   fullName: AAMotion.ControllerCommandException.NoControllerCode
   nameWithType: ControllerCommandException.NoControllerCode
+- uid: AAMotion.ControllerErrorEventArgs
+  name: ControllerErrorEventArgs
+  href: api/AAMotion.ControllerErrorEventArgs.html
+  commentId: T:AAMotion.ControllerErrorEventArgs
+  fullName: AAMotion.ControllerErrorEventArgs
+  nameWithType: ControllerErrorEventArgs
+- uid: AAMotion.ControllerErrorEventArgs.Axis
+  name: Axis
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Axis
+  commentId: P:AAMotion.ControllerErrorEventArgs.Axis
+  fullName: AAMotion.ControllerErrorEventArgs.Axis
+  nameWithType: ControllerErrorEventArgs.Axis
+- uid: AAMotion.ControllerErrorEventArgs.Axis*
+  name: Axis
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Axis_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Axis
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Axis
+  nameWithType: ControllerErrorEventArgs.Axis
+- uid: AAMotion.ControllerErrorEventArgs.Command
+  name: Command
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Command
+  commentId: P:AAMotion.ControllerErrorEventArgs.Command
+  fullName: AAMotion.ControllerErrorEventArgs.Command
+  nameWithType: ControllerErrorEventArgs.Command
+- uid: AAMotion.ControllerErrorEventArgs.Command*
+  name: Command
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Command_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Command
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Command
+  nameWithType: ControllerErrorEventArgs.Command
+- uid: AAMotion.ControllerErrorEventArgs.Controller
+  name: Controller
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Controller
+  commentId: P:AAMotion.ControllerErrorEventArgs.Controller
+  fullName: AAMotion.ControllerErrorEventArgs.Controller
+  nameWithType: ControllerErrorEventArgs.Controller
+- uid: AAMotion.ControllerErrorEventArgs.Controller*
+  name: Controller
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Controller_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Controller
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Controller
+  nameWithType: ControllerErrorEventArgs.Controller
+- uid: AAMotion.ControllerErrorEventArgs.ErrorCode
+  name: ErrorCode
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_ErrorCode
+  commentId: P:AAMotion.ControllerErrorEventArgs.ErrorCode
+  fullName: AAMotion.ControllerErrorEventArgs.ErrorCode
+  nameWithType: ControllerErrorEventArgs.ErrorCode
+- uid: AAMotion.ControllerErrorEventArgs.ErrorCode*
+  name: ErrorCode
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_ErrorCode_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.ErrorCode
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.ErrorCode
+  nameWithType: ControllerErrorEventArgs.ErrorCode
+- uid: AAMotion.ControllerErrorEventArgs.Keyword
+  name: Keyword
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Keyword
+  commentId: P:AAMotion.ControllerErrorEventArgs.Keyword
+  fullName: AAMotion.ControllerErrorEventArgs.Keyword
+  nameWithType: ControllerErrorEventArgs.Keyword
+- uid: AAMotion.ControllerErrorEventArgs.Keyword*
+  name: Keyword
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Keyword_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Keyword
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Keyword
+  nameWithType: ControllerErrorEventArgs.Keyword
+- uid: AAMotion.ControllerErrorEventArgs.Message
+  name: Message
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Message
+  commentId: P:AAMotion.ControllerErrorEventArgs.Message
+  fullName: AAMotion.ControllerErrorEventArgs.Message
+  nameWithType: ControllerErrorEventArgs.Message
+- uid: AAMotion.ControllerErrorEventArgs.Message*
+  name: Message
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Message_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Message
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Message
+  nameWithType: ControllerErrorEventArgs.Message
+- uid: AAMotion.ControllerErrorEventArgs.Method
+  name: Method
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Method
+  commentId: P:AAMotion.ControllerErrorEventArgs.Method
+  fullName: AAMotion.ControllerErrorEventArgs.Method
+  nameWithType: ControllerErrorEventArgs.Method
+- uid: AAMotion.ControllerErrorEventArgs.Method*
+  name: Method
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Method_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Method
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Method
+  nameWithType: ControllerErrorEventArgs.Method
+- uid: AAMotion.ControllerErrorEventArgs.Source
+  name: Source
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Source
+  commentId: P:AAMotion.ControllerErrorEventArgs.Source
+  fullName: AAMotion.ControllerErrorEventArgs.Source
+  nameWithType: ControllerErrorEventArgs.Source
+- uid: AAMotion.ControllerErrorEventArgs.Source*
+  name: Source
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Source_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Source
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Source
+  nameWithType: ControllerErrorEventArgs.Source
+- uid: AAMotion.ControllerErrorEventArgs.ThreadId
+  name: ThreadId
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_ThreadId
+  commentId: P:AAMotion.ControllerErrorEventArgs.ThreadId
+  fullName: AAMotion.ControllerErrorEventArgs.ThreadId
+  nameWithType: ControllerErrorEventArgs.ThreadId
+- uid: AAMotion.ControllerErrorEventArgs.ThreadId*
+  name: ThreadId
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_ThreadId_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.ThreadId
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.ThreadId
+  nameWithType: ControllerErrorEventArgs.ThreadId
+- uid: AAMotion.ControllerErrorEventArgs.Timestamp
+  name: Timestamp
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Timestamp
+  commentId: P:AAMotion.ControllerErrorEventArgs.Timestamp
+  fullName: AAMotion.ControllerErrorEventArgs.Timestamp
+  nameWithType: ControllerErrorEventArgs.Timestamp
+- uid: AAMotion.ControllerErrorEventArgs.Timestamp*
+  name: Timestamp
+  href: api/AAMotion.ControllerErrorEventArgs.html#AAMotion_ControllerErrorEventArgs_Timestamp_
+  commentId: Overload:AAMotion.ControllerErrorEventArgs.Timestamp
+  isSpec: "True"
+  fullName: AAMotion.ControllerErrorEventArgs.Timestamp
+  nameWithType: ControllerErrorEventArgs.Timestamp
+- uid: AAMotion.ControllerErrorSource
+  name: ControllerErrorSource
+  href: api/AAMotion.ControllerErrorSource.html
+  commentId: T:AAMotion.ControllerErrorSource
+  fullName: AAMotion.ControllerErrorSource
+  nameWithType: ControllerErrorSource
+- uid: AAMotion.ControllerErrorSource.Api
+  name: Api
+  href: api/AAMotion.ControllerErrorSource.html#AAMotion_ControllerErrorSource_Api
+  commentId: F:AAMotion.ControllerErrorSource.Api
+  fullName: AAMotion.ControllerErrorSource.Api
+  nameWithType: ControllerErrorSource.Api
+- uid: AAMotion.ControllerErrorSource.ClientCheck
+  name: ClientCheck
+  href: api/AAMotion.ControllerErrorSource.html#AAMotion_ControllerErrorSource_ClientCheck
+  commentId: F:AAMotion.ControllerErrorSource.ClientCheck
+  fullName: AAMotion.ControllerErrorSource.ClientCheck
+  nameWithType: ControllerErrorSource.ClientCheck
+- uid: AAMotion.ControllerErrorSource.FastReadRefresh
+  name: FastReadRefresh
+  href: api/AAMotion.ControllerErrorSource.html#AAMotion_ControllerErrorSource_FastReadRefresh
+  commentId: F:AAMotion.ControllerErrorSource.FastReadRefresh
+  fullName: AAMotion.ControllerErrorSource.FastReadRefresh
+  nameWithType: ControllerErrorSource.FastReadRefresh
+- uid: AAMotion.ControllerErrorSource.InTargetStatPoll
+  name: InTargetStatPoll
+  href: api/AAMotion.ControllerErrorSource.html#AAMotion_ControllerErrorSource_InTargetStatPoll
+  commentId: F:AAMotion.ControllerErrorSource.InTargetStatPoll
+  fullName: AAMotion.ControllerErrorSource.InTargetStatPoll
+  nameWithType: ControllerErrorSource.InTargetStatPoll
 - uid: AAMotion.ControllerType
   name: ControllerType
   href: api/AAMotion.ControllerType.html
@@ -5768,334 +6422,6 @@ references:
   commentId: F:AAMotion.EnumPropertyHelper.ResourceManager
   fullName: AAMotion.EnumPropertyHelper.ResourceManager
   nameWithType: EnumPropertyHelper.ResourceManager
-- uid: AAMotion.Extensions
-  name: AAMotion.Extensions
-  href: api/AAMotion.Extensions.html
-  commentId: N:AAMotion.Extensions
-  fullName: AAMotion.Extensions
-  nameWithType: AAMotion.Extensions
-- uid: AAMotion.Extensions.AAMotionParametersDownload
-  name: AAMotionParametersDownload
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html
-  commentId: T:AAMotion.Extensions.AAMotionParametersDownload
-  fullName: AAMotion.Extensions.AAMotionParametersDownload
-  nameWithType: AAMotionParametersDownload
-- uid: AAMotion.Extensions.AAMotionParametersDownload.Download(AAMotion.MotionController,System.String,System.Boolean)
-  name: Download(MotionController, string, bool)
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_Download_AAMotion_MotionController_System_String_System_Boolean_
-  commentId: M:AAMotion.Extensions.AAMotionParametersDownload.Download(AAMotion.MotionController,System.String,System.Boolean)
-  name.vb: Download(MotionController, String, Boolean)
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.Download(AAMotion.MotionController, string, bool)
-  fullName.vb: AAMotion.Extensions.AAMotionParametersDownload.Download(AAMotion.MotionController, String, Boolean)
-  nameWithType: AAMotionParametersDownload.Download(MotionController, string, bool)
-  nameWithType.vb: AAMotionParametersDownload.Download(MotionController, String, Boolean)
-- uid: AAMotion.Extensions.AAMotionParametersDownload.Download*
-  name: Download
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_Download_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersDownload.Download
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.Download
-  nameWithType: AAMotionParametersDownload.Download
-- uid: AAMotion.Extensions.AAMotionParametersDownload.OnDone
-  name: OnDone
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_OnDone
-  commentId: P:AAMotion.Extensions.AAMotionParametersDownload.OnDone
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.OnDone
-  nameWithType: AAMotionParametersDownload.OnDone
-- uid: AAMotion.Extensions.AAMotionParametersDownload.OnDone*
-  name: OnDone
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_OnDone_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersDownload.OnDone
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.OnDone
-  nameWithType: AAMotionParametersDownload.OnDone
-- uid: AAMotion.Extensions.AAMotionParametersDownload.OnProgress
-  name: OnProgress
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_OnProgress
-  commentId: P:AAMotion.Extensions.AAMotionParametersDownload.OnProgress
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.OnProgress
-  nameWithType: AAMotionParametersDownload.OnProgress
-- uid: AAMotion.Extensions.AAMotionParametersDownload.OnProgress*
-  name: OnProgress
-  href: api/AAMotion.Extensions.AAMotionParametersDownload.html#AAMotion_Extensions_AAMotionParametersDownload_OnProgress_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersDownload.OnProgress
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersDownload.OnProgress
-  nameWithType: AAMotionParametersDownload.OnProgress
-- uid: AAMotion.Extensions.AAMotionParametersUpload
-  name: AAMotionParametersUpload
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html
-  commentId: T:AAMotion.Extensions.AAMotionParametersUpload
-  fullName: AAMotion.Extensions.AAMotionParametersUpload
-  nameWithType: AAMotionParametersUpload
-- uid: AAMotion.Extensions.AAMotionParametersUpload.OnDone
-  name: OnDone
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_OnDone
-  commentId: P:AAMotion.Extensions.AAMotionParametersUpload.OnDone
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.OnDone
-  nameWithType: AAMotionParametersUpload.OnDone
-- uid: AAMotion.Extensions.AAMotionParametersUpload.OnDone*
-  name: OnDone
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_OnDone_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersUpload.OnDone
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.OnDone
-  nameWithType: AAMotionParametersUpload.OnDone
-- uid: AAMotion.Extensions.AAMotionParametersUpload.OnProgress
-  name: OnProgress
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_OnProgress
-  commentId: P:AAMotion.Extensions.AAMotionParametersUpload.OnProgress
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.OnProgress
-  nameWithType: AAMotionParametersUpload.OnProgress
-- uid: AAMotion.Extensions.AAMotionParametersUpload.OnProgress*
-  name: OnProgress
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_OnProgress_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersUpload.OnProgress
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.OnProgress
-  nameWithType: AAMotionParametersUpload.OnProgress
-- uid: AAMotion.Extensions.AAMotionParametersUpload.Upload(AAMotion.MotionController,System.String)
-  name: Upload(MotionController, string)
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_Upload_AAMotion_MotionController_System_String_
-  commentId: M:AAMotion.Extensions.AAMotionParametersUpload.Upload(AAMotion.MotionController,System.String)
-  name.vb: Upload(MotionController, String)
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.Upload(AAMotion.MotionController, string)
-  fullName.vb: AAMotion.Extensions.AAMotionParametersUpload.Upload(AAMotion.MotionController, String)
-  nameWithType: AAMotionParametersUpload.Upload(MotionController, string)
-  nameWithType.vb: AAMotionParametersUpload.Upload(MotionController, String)
-- uid: AAMotion.Extensions.AAMotionParametersUpload.Upload*
-  name: Upload
-  href: api/AAMotion.Extensions.AAMotionParametersUpload.html#AAMotion_Extensions_AAMotionParametersUpload_Upload_
-  commentId: Overload:AAMotion.Extensions.AAMotionParametersUpload.Upload
-  isSpec: "True"
-  fullName: AAMotion.Extensions.AAMotionParametersUpload.Upload
-  nameWithType: AAMotionParametersUpload.Upload
-- uid: AAMotion.Extensions.ParamConversion
-  name: ParamConversion
-  href: api/AAMotion.Extensions.ParamConversion.html
-  commentId: T:AAMotion.Extensions.ParamConversion
-  fullName: AAMotion.Extensions.ParamConversion
-  nameWithType: ParamConversion
-- uid: AAMotion.Extensions.ParamConversion.Parameter
-  name: Parameter
-  href: api/AAMotion.Extensions.ParamConversion.html#AAMotion_Extensions_ParamConversion_Parameter
-  commentId: P:AAMotion.Extensions.ParamConversion.Parameter
-  fullName: AAMotion.Extensions.ParamConversion.Parameter
-  nameWithType: ParamConversion.Parameter
-- uid: AAMotion.Extensions.ParamConversion.Parameter*
-  name: Parameter
-  href: api/AAMotion.Extensions.ParamConversion.html#AAMotion_Extensions_ParamConversion_Parameter_
-  commentId: Overload:AAMotion.Extensions.ParamConversion.Parameter
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamConversion.Parameter
-  nameWithType: ParamConversion.Parameter
-- uid: AAMotion.Extensions.ParamConversion.Sent
-  name: Sent
-  href: api/AAMotion.Extensions.ParamConversion.html#AAMotion_Extensions_ParamConversion_Sent
-  commentId: P:AAMotion.Extensions.ParamConversion.Sent
-  fullName: AAMotion.Extensions.ParamConversion.Sent
-  nameWithType: ParamConversion.Sent
-- uid: AAMotion.Extensions.ParamConversion.Sent*
-  name: Sent
-  href: api/AAMotion.Extensions.ParamConversion.html#AAMotion_Extensions_ParamConversion_Sent_
-  commentId: Overload:AAMotion.Extensions.ParamConversion.Sent
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamConversion.Sent
-  nameWithType: ParamConversion.Sent
-- uid: AAMotion.Extensions.ParamHandlingSummary
-  name: ParamHandlingSummary
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html
-  commentId: T:AAMotion.Extensions.ParamHandlingSummary
-  fullName: AAMotion.Extensions.ParamHandlingSummary
-  nameWithType: ParamHandlingSummary
-- uid: AAMotion.Extensions.ParamHandlingSummary.Canceled
-  name: Canceled
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Canceled
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.Canceled
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Canceled
-  nameWithType: ParamHandlingSummary.Canceled
-- uid: AAMotion.Extensions.ParamHandlingSummary.Canceled*
-  name: Canceled
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Canceled_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.Canceled
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Canceled
-  nameWithType: ParamHandlingSummary.Canceled
-- uid: AAMotion.Extensions.ParamHandlingSummary.Checksum
-  name: Checksum
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Checksum
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.Checksum
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Checksum
-  nameWithType: ParamHandlingSummary.Checksum
-- uid: AAMotion.Extensions.ParamHandlingSummary.Checksum*
-  name: Checksum
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Checksum_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.Checksum
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Checksum
-  nameWithType: ParamHandlingSummary.Checksum
-- uid: AAMotion.Extensions.ParamHandlingSummary.Conversions
-  name: Conversions
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Conversions
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.Conversions
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Conversions
-  nameWithType: ParamHandlingSummary.Conversions
-- uid: AAMotion.Extensions.ParamHandlingSummary.Conversions*
-  name: Conversions
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Conversions_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.Conversions
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Conversions
-  nameWithType: ParamHandlingSummary.Conversions
-- uid: AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds
-  name: ElapsedSeconds
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ElapsedSeconds
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds
-  nameWithType: ParamHandlingSummary.ElapsedSeconds
-- uid: AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds*
-  name: ElapsedSeconds
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ElapsedSeconds_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ElapsedSeconds
-  nameWithType: ParamHandlingSummary.ElapsedSeconds
-- uid: AAMotion.Extensions.ParamHandlingSummary.ErrorCount
-  name: ErrorCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ErrorCount
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.ErrorCount
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ErrorCount
-  nameWithType: ParamHandlingSummary.ErrorCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.ErrorCount*
-  name: ErrorCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ErrorCount_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.ErrorCount
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ErrorCount
-  nameWithType: ParamHandlingSummary.ErrorCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.FPGAVersion
-  name: FPGAVersion
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_FPGAVersion
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.FPGAVersion
-  fullName: AAMotion.Extensions.ParamHandlingSummary.FPGAVersion
-  nameWithType: ParamHandlingSummary.FPGAVersion
-- uid: AAMotion.Extensions.ParamHandlingSummary.FPGAVersion*
-  name: FPGAVersion
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_FPGAVersion_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.FPGAVersion
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.FPGAVersion
-  nameWithType: ParamHandlingSummary.FPGAVersion
-- uid: AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion
-  name: FirmwareVersion
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_FirmwareVersion
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion
-  fullName: AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion
-  nameWithType: ParamHandlingSummary.FirmwareVersion
-- uid: AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion*
-  name: FirmwareVersion
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_FirmwareVersion_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.FirmwareVersion
-  nameWithType: ParamHandlingSummary.FirmwareVersion
-- uid: AAMotion.Extensions.ParamHandlingSummary.ProductType
-  name: ProductType
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ProductType
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.ProductType
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ProductType
-  nameWithType: ParamHandlingSummary.ProductType
-- uid: AAMotion.Extensions.ParamHandlingSummary.ProductType*
-  name: ProductType
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_ProductType_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.ProductType
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.ProductType
-  nameWithType: ParamHandlingSummary.ProductType
-- uid: AAMotion.Extensions.ParamHandlingSummary.Rejections
-  name: Rejections
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Rejections
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.Rejections
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Rejections
-  nameWithType: ParamHandlingSummary.Rejections
-- uid: AAMotion.Extensions.ParamHandlingSummary.Rejections*
-  name: Rejections
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_Rejections_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.Rejections
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.Rejections
-  nameWithType: ParamHandlingSummary.Rejections
-- uid: AAMotion.Extensions.ParamHandlingSummary.SkippedCount
-  name: SkippedCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_SkippedCount
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.SkippedCount
-  fullName: AAMotion.Extensions.ParamHandlingSummary.SkippedCount
-  nameWithType: ParamHandlingSummary.SkippedCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.SkippedCount*
-  name: SkippedCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_SkippedCount_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.SkippedCount
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.SkippedCount
-  nameWithType: ParamHandlingSummary.SkippedCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.SuccessCount
-  name: SuccessCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_SuccessCount
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.SuccessCount
-  fullName: AAMotion.Extensions.ParamHandlingSummary.SuccessCount
-  nameWithType: ParamHandlingSummary.SuccessCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.SuccessCount*
-  name: SuccessCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_SuccessCount_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.SuccessCount
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.SuccessCount
-  nameWithType: ParamHandlingSummary.SuccessCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.TotalCount
-  name: TotalCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_TotalCount
-  commentId: P:AAMotion.Extensions.ParamHandlingSummary.TotalCount
-  fullName: AAMotion.Extensions.ParamHandlingSummary.TotalCount
-  nameWithType: ParamHandlingSummary.TotalCount
-- uid: AAMotion.Extensions.ParamHandlingSummary.TotalCount*
-  name: TotalCount
-  href: api/AAMotion.Extensions.ParamHandlingSummary.html#AAMotion_Extensions_ParamHandlingSummary_TotalCount_
-  commentId: Overload:AAMotion.Extensions.ParamHandlingSummary.TotalCount
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamHandlingSummary.TotalCount
-  nameWithType: ParamHandlingSummary.TotalCount
-- uid: AAMotion.Extensions.ParamRejection
-  name: ParamRejection
-  href: api/AAMotion.Extensions.ParamRejection.html
-  commentId: T:AAMotion.Extensions.ParamRejection
-  fullName: AAMotion.Extensions.ParamRejection
-  nameWithType: ParamRejection
-- uid: AAMotion.Extensions.ParamRejection.Parameter
-  name: Parameter
-  href: api/AAMotion.Extensions.ParamRejection.html#AAMotion_Extensions_ParamRejection_Parameter
-  commentId: P:AAMotion.Extensions.ParamRejection.Parameter
-  fullName: AAMotion.Extensions.ParamRejection.Parameter
-  nameWithType: ParamRejection.Parameter
-- uid: AAMotion.Extensions.ParamRejection.Parameter*
-  name: Parameter
-  href: api/AAMotion.Extensions.ParamRejection.html#AAMotion_Extensions_ParamRejection_Parameter_
-  commentId: Overload:AAMotion.Extensions.ParamRejection.Parameter
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamRejection.Parameter
-  nameWithType: ParamRejection.Parameter
-- uid: AAMotion.Extensions.ParamRejection.Reply
-  name: Reply
-  href: api/AAMotion.Extensions.ParamRejection.html#AAMotion_Extensions_ParamRejection_Reply
-  commentId: P:AAMotion.Extensions.ParamRejection.Reply
-  fullName: AAMotion.Extensions.ParamRejection.Reply
-  nameWithType: ParamRejection.Reply
-- uid: AAMotion.Extensions.ParamRejection.Reply*
-  name: Reply
-  href: api/AAMotion.Extensions.ParamRejection.html#AAMotion_Extensions_ParamRejection_Reply_
-  commentId: Overload:AAMotion.Extensions.ParamRejection.Reply
-  isSpec: "True"
-  fullName: AAMotion.Extensions.ParamRejection.Reply
-  nameWithType: ParamRejection.Reply
 - uid: AAMotion.FastReadCache
   name: FastReadCache
   href: api/AAMotion.FastReadCache.html
@@ -10285,6 +10611,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.ISingleAxis.HomeToHardStop
   nameWithType: ISingleAxis.HomeToHardStop
+- uid: AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex(System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.UInt32)
+  name: HomeToHardStopByStuckThenIndex(int, int, double, double, double, double, double, double, uint)
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopByStuckThenIndex_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_System_UInt32_
+  commentId: M:AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex(System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.UInt32)
+  name.vb: HomeToHardStopByStuckThenIndex(Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+  fullName: AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex(int, int, double, double, double, double, double, double, uint)
+  fullName.vb: AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex(Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+  nameWithType: ISingleAxis.HomeToHardStopByStuckThenIndex(int, int, double, double, double, double, double, double, uint)
+  nameWithType.vb: ISingleAxis.HomeToHardStopByStuckThenIndex(Integer, Integer, Double, Double, Double, Double, Double, Double, UInteger)
+- uid: AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex*
+  name: HomeToHardStopByStuckThenIndex
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopByStuckThenIndex_
+  commentId: Overload:AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.HomeToHardStopByStuckThenIndex
+  nameWithType: ISingleAxis.HomeToHardStopByStuckThenIndex
 - uid: AAMotion.ISingleAxis.HomeToHardStopThenIndex(System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.UInt32)
   name: HomeToHardStopThenIndex(int, int, double, double, double, double, uint)
   href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_HomeToHardStopThenIndex_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_UInt32_
@@ -11788,6 +12130,84 @@ references:
   isSpec: "True"
   fullName: AAMotion.ISingleAxis.PTPKeepMoving
   nameWithType: ISingleAxis.PTPKeepMoving
+- uid: AAMotion.ISingleAxis.PVAJArm
+  name: PVAJArm
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJArm
+  commentId: P:AAMotion.ISingleAxis.PVAJArm
+  fullName: AAMotion.ISingleAxis.PVAJArm
+  nameWithType: ISingleAxis.PVAJArm
+- uid: AAMotion.ISingleAxis.PVAJArm*
+  name: PVAJArm
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJArm_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJArm
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJArm
+  nameWithType: ISingleAxis.PVAJArm
+- uid: AAMotion.ISingleAxis.PVAJList
+  name: PVAJList
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJList
+  commentId: P:AAMotion.ISingleAxis.PVAJList
+  fullName: AAMotion.ISingleAxis.PVAJList
+  nameWithType: ISingleAxis.PVAJList
+- uid: AAMotion.ISingleAxis.PVAJList*
+  name: PVAJList
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJList_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJList
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJList
+  nameWithType: ISingleAxis.PVAJList
+- uid: AAMotion.ISingleAxis.PVAJPosTol
+  name: PVAJPosTol
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJPosTol
+  commentId: P:AAMotion.ISingleAxis.PVAJPosTol
+  fullName: AAMotion.ISingleAxis.PVAJPosTol
+  nameWithType: ISingleAxis.PVAJPosTol
+- uid: AAMotion.ISingleAxis.PVAJPosTol*
+  name: PVAJPosTol
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJPosTol_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJPosTol
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJPosTol
+  nameWithType: ISingleAxis.PVAJPosTol
+- uid: AAMotion.ISingleAxis.PVAJStatus
+  name: PVAJStatus
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJStatus
+  commentId: P:AAMotion.ISingleAxis.PVAJStatus
+  fullName: AAMotion.ISingleAxis.PVAJStatus
+  nameWithType: ISingleAxis.PVAJStatus
+- uid: AAMotion.ISingleAxis.PVAJStatus*
+  name: PVAJStatus
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJStatus_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJStatus
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJStatus
+  nameWithType: ISingleAxis.PVAJStatus
+- uid: AAMotion.ISingleAxis.PVAJValidate
+  name: PVAJValidate
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJValidate
+  commentId: P:AAMotion.ISingleAxis.PVAJValidate
+  fullName: AAMotion.ISingleAxis.PVAJValidate
+  nameWithType: ISingleAxis.PVAJValidate
+- uid: AAMotion.ISingleAxis.PVAJValidate*
+  name: PVAJValidate
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJValidate_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJValidate
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJValidate
+  nameWithType: ISingleAxis.PVAJValidate
+- uid: AAMotion.ISingleAxis.PVAJVelTol
+  name: PVAJVelTol
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJVelTol
+  commentId: P:AAMotion.ISingleAxis.PVAJVelTol
+  fullName: AAMotion.ISingleAxis.PVAJVelTol
+  nameWithType: ISingleAxis.PVAJVelTol
+- uid: AAMotion.ISingleAxis.PVAJVelTol*
+  name: PVAJVelTol
+  href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PVAJVelTol_
+  commentId: Overload:AAMotion.ISingleAxis.PVAJVelTol
+  isSpec: "True"
+  fullName: AAMotion.ISingleAxis.PVAJVelTol
+  nameWithType: ISingleAxis.PVAJVelTol
 - uid: AAMotion.ISingleAxis.PeakCL
   name: PeakCL
   href: api/AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_PeakCL
@@ -13884,6 +14304,12 @@ references:
   commentId: E:AAMotion.MotionController.ErrorOccurred
   fullName: AAMotion.MotionController.ErrorOccurred
   nameWithType: MotionController.ErrorOccurred
+- uid: AAMotion.MotionController.ErrorReported
+  name: ErrorReported
+  href: api/AAMotion.MotionController.html#AAMotion_MotionController_ErrorReported
+  commentId: E:AAMotion.MotionController.ErrorReported
+  fullName: AAMotion.MotionController.ErrorReported
+  nameWithType: MotionController.ErrorReported
 - uid: AAMotion.MotionController.FPGAVersion
   name: FPGAVersion
   href: api/AAMotion.MotionController.html#AAMotion_MotionController_FPGAVersion
@@ -14450,6 +14876,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.MotionController.MotorTemp
   nameWithType: MotionController.MotorTemp
+- uid: AAMotion.MotionController.ProbeConnection(System.Nullable{System.Int32})
+  name: ProbeConnection(int?)
+  href: api/AAMotion.MotionController.html#AAMotion_MotionController_ProbeConnection_System_Nullable_System_Int32__
+  commentId: M:AAMotion.MotionController.ProbeConnection(System.Nullable{System.Int32})
+  name.vb: ProbeConnection(Integer?)
+  fullName: AAMotion.MotionController.ProbeConnection(int?)
+  fullName.vb: AAMotion.MotionController.ProbeConnection(Integer?)
+  nameWithType: MotionController.ProbeConnection(int?)
+  nameWithType.vb: MotionController.ProbeConnection(Integer?)
+- uid: AAMotion.MotionController.ProbeConnection*
+  name: ProbeConnection
+  href: api/AAMotion.MotionController.html#AAMotion_MotionController_ProbeConnection_
+  commentId: Overload:AAMotion.MotionController.ProbeConnection
+  isSpec: "True"
+  fullName: AAMotion.MotionController.ProbeConnection
+  nameWithType: MotionController.ProbeConnection
 - uid: AAMotion.MotionController.ProgError
   name: ProgError
   href: api/AAMotion.MotionController.html#AAMotion_MotionController_ProgError
@@ -14707,6 +15149,22 @@ references:
   isSpec: "True"
   fullName: AAMotion.MotionController.SetDefaultTimeout
   nameWithType: MotionController.SetDefaultTimeout
+- uid: AAMotion.MotionController.SetValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Double,System.Int32)
+  name: SetValue(AxisRef, eKeyword, double, int)
+  href: api/AAMotion.MotionController.html#AAMotion_MotionController_SetValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Double_System_Int32_
+  commentId: M:AAMotion.MotionController.SetValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Double,System.Int32)
+  name.vb: SetValue(AxisRef, eKeyword, Double, Integer)
+  fullName: AAMotion.MotionController.SetValue(AAMotion.AxisRef, AAMotion.eKeyword, double, int)
+  fullName.vb: AAMotion.MotionController.SetValue(AAMotion.AxisRef, AAMotion.eKeyword, Double, Integer)
+  nameWithType: MotionController.SetValue(AxisRef, eKeyword, double, int)
+  nameWithType.vb: MotionController.SetValue(AxisRef, eKeyword, Double, Integer)
+- uid: AAMotion.MotionController.SetValue*
+  name: SetValue
+  href: api/AAMotion.MotionController.html#AAMotion_MotionController_SetValue_
+  commentId: Overload:AAMotion.MotionController.SetValue
+  isSpec: "True"
+  fullName: AAMotion.MotionController.SetValue
+  nameWithType: MotionController.SetValue
 - uid: AAMotion.MotionController.Shutdown
   name: Shutdown()
   href: api/AAMotion.MotionController.html#AAMotion_MotionController_Shutdown
@@ -17042,77 +17500,6 @@ references:
   isSpec: "True"
   fullName: AAMotion.OpticalCouplingLightFinding.TwoChannelIntersectionPower
   nameWithType: OpticalCouplingLightFinding.TwoChannelIntersectionPower
-- uid: AAMotion.ParameterMetadataCache
-  name: ParameterMetadataCache
-  href: api/AAMotion.ParameterMetadataCache.html
-  commentId: T:AAMotion.ParameterMetadataCache
-  fullName: AAMotion.ParameterMetadataCache
-  nameWithType: ParameterMetadataCache
-- uid: AAMotion.ParameterMetadataCache.Clear
-  name: Clear()
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_Clear
-  commentId: M:AAMotion.ParameterMetadataCache.Clear
-  fullName: AAMotion.ParameterMetadataCache.Clear()
-  nameWithType: ParameterMetadataCache.Clear()
-- uid: AAMotion.ParameterMetadataCache.Clear*
-  name: Clear
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_Clear_
-  commentId: Overload:AAMotion.ParameterMetadataCache.Clear
-  isSpec: "True"
-  fullName: AAMotion.ParameterMetadataCache.Clear
-  nameWithType: ParameterMetadataCache.Clear
-- uid: AAMotion.ParameterMetadataCache.GetParameterType(AAMotion.eKeyword,AAMotion.CommAPIInterface)
-  name: GetParameterType(eKeyword, CommAPIInterface)
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_GetParameterType_AAMotion_eKeyword_AAMotion_CommAPIInterface_
-  commentId: M:AAMotion.ParameterMetadataCache.GetParameterType(AAMotion.eKeyword,AAMotion.CommAPIInterface)
-  fullName: AAMotion.ParameterMetadataCache.GetParameterType(AAMotion.eKeyword, AAMotion.CommAPIInterface)
-  nameWithType: ParameterMetadataCache.GetParameterType(eKeyword, CommAPIInterface)
-- uid: AAMotion.ParameterMetadataCache.GetParameterType*
-  name: GetParameterType
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_GetParameterType_
-  commentId: Overload:AAMotion.ParameterMetadataCache.GetParameterType
-  isSpec: "True"
-  fullName: AAMotion.ParameterMetadataCache.GetParameterType
-  nameWithType: ParameterMetadataCache.GetParameterType
-- uid: AAMotion.ParameterMetadataCache.GetTypeInfo(AAMotion.eKeyword)
-  name: GetTypeInfo(eKeyword)
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_GetTypeInfo_AAMotion_eKeyword_
-  commentId: M:AAMotion.ParameterMetadataCache.GetTypeInfo(AAMotion.eKeyword)
-  fullName: AAMotion.ParameterMetadataCache.GetTypeInfo(AAMotion.eKeyword)
-  nameWithType: ParameterMetadataCache.GetTypeInfo(eKeyword)
-- uid: AAMotion.ParameterMetadataCache.GetTypeInfo*
-  name: GetTypeInfo
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_GetTypeInfo_
-  commentId: Overload:AAMotion.ParameterMetadataCache.GetTypeInfo
-  isSpec: "True"
-  fullName: AAMotion.ParameterMetadataCache.GetTypeInfo
-  nameWithType: ParameterMetadataCache.GetTypeInfo
-- uid: AAMotion.ParameterMetadataCache.Initialize(AAComm.CommAPI)
-  name: Initialize(CommAPI)
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_Initialize_AAComm_CommAPI_
-  commentId: M:AAMotion.ParameterMetadataCache.Initialize(AAComm.CommAPI)
-  fullName: AAMotion.ParameterMetadataCache.Initialize(AAComm.CommAPI)
-  nameWithType: ParameterMetadataCache.Initialize(CommAPI)
-- uid: AAMotion.ParameterMetadataCache.Initialize*
-  name: Initialize
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_Initialize_
-  commentId: Overload:AAMotion.ParameterMetadataCache.Initialize
-  isSpec: "True"
-  fullName: AAMotion.ParameterMetadataCache.Initialize
-  nameWithType: ParameterMetadataCache.Initialize
-- uid: AAMotion.ParameterMetadataCache.IsInitialized
-  name: IsInitialized
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_IsInitialized
-  commentId: P:AAMotion.ParameterMetadataCache.IsInitialized
-  fullName: AAMotion.ParameterMetadataCache.IsInitialized
-  nameWithType: ParameterMetadataCache.IsInitialized
-- uid: AAMotion.ParameterMetadataCache.IsInitialized*
-  name: IsInitialized
-  href: api/AAMotion.ParameterMetadataCache.html#AAMotion_ParameterMetadataCache_IsInitialized_
-  commentId: Overload:AAMotion.ParameterMetadataCache.IsInitialized
-  isSpec: "True"
-  fullName: AAMotion.ParameterMetadataCache.IsInitialized
-  nameWithType: ParameterMetadataCache.IsInitialized
 - uid: AAMotion.ParameterTypeConverter
   name: ParameterTypeConverter
   href: api/AAMotion.ParameterTypeConverter.html
@@ -17260,6 +17647,78 @@ references:
   isSpec: "True"
   fullName: AAMotion.ParameterTypeConverter.ToInt32Register
   nameWithType: ParameterTypeConverter.ToInt32Register
+- uid: AAMotion.PvajPositionMode
+  name: PvajPositionMode
+  href: api/AAMotion.PvajPositionMode.html
+  commentId: T:AAMotion.PvajPositionMode
+  fullName: AAMotion.PvajPositionMode
+  nameWithType: PvajPositionMode
+- uid: AAMotion.PvajPositionMode.Absolute
+  name: Absolute
+  href: api/AAMotion.PvajPositionMode.html#AAMotion_PvajPositionMode_Absolute
+  commentId: F:AAMotion.PvajPositionMode.Absolute
+  fullName: AAMotion.PvajPositionMode.Absolute
+  nameWithType: PvajPositionMode.Absolute
+- uid: AAMotion.PvajPositionMode.Relative
+  name: Relative
+  href: api/AAMotion.PvajPositionMode.html#AAMotion_PvajPositionMode_Relative
+  commentId: F:AAMotion.PvajPositionMode.Relative
+  fullName: AAMotion.PvajPositionMode.Relative
+  nameWithType: PvajPositionMode.Relative
+- uid: AAMotion.PvajState
+  name: PvajState
+  href: api/AAMotion.PvajState.html
+  commentId: T:AAMotion.PvajState
+  fullName: AAMotion.PvajState
+  nameWithType: PvajState
+- uid: AAMotion.PvajState.Armed
+  name: Armed
+  href: api/AAMotion.PvajState.html#AAMotion_PvajState_Armed
+  commentId: F:AAMotion.PvajState.Armed
+  fullName: AAMotion.PvajState.Armed
+  nameWithType: PvajState.Armed
+- uid: AAMotion.PvajState.Executing
+  name: Executing
+  href: api/AAMotion.PvajState.html#AAMotion_PvajState_Executing
+  commentId: F:AAMotion.PvajState.Executing
+  fullName: AAMotion.PvajState.Executing
+  nameWithType: PvajState.Executing
+- uid: AAMotion.PvajState.NotValidated
+  name: NotValidated
+  href: api/AAMotion.PvajState.html#AAMotion_PvajState_NotValidated
+  commentId: F:AAMotion.PvajState.NotValidated
+  fullName: AAMotion.PvajState.NotValidated
+  nameWithType: PvajState.NotValidated
+- uid: AAMotion.PvajState.Validated
+  name: Validated
+  href: api/AAMotion.PvajState.html#AAMotion_PvajState_Validated
+  commentId: F:AAMotion.PvajState.Validated
+  fullName: AAMotion.PvajState.Validated
+  nameWithType: PvajState.Validated
+- uid: AAMotion.PvajValidationMode
+  name: PvajValidationMode
+  href: api/AAMotion.PvajValidationMode.html
+  commentId: T:AAMotion.PvajValidationMode
+  fullName: AAMotion.PvajValidationMode
+  nameWithType: PvajValidationMode
+- uid: AAMotion.PvajValidationMode.Force
+  name: Force
+  href: api/AAMotion.PvajValidationMode.html#AAMotion_PvajValidationMode_Force
+  commentId: F:AAMotion.PvajValidationMode.Force
+  fullName: AAMotion.PvajValidationMode.Force
+  nameWithType: PvajValidationMode.Force
+- uid: AAMotion.PvajValidationMode.Full
+  name: Full
+  href: api/AAMotion.PvajValidationMode.html#AAMotion_PvajValidationMode_Full
+  commentId: F:AAMotion.PvajValidationMode.Full
+  fullName: AAMotion.PvajValidationMode.Full
+  nameWithType: PvajValidationMode.Full
+- uid: AAMotion.PvajValidationMode.RangeOnly
+  name: RangeOnly
+  href: api/AAMotion.PvajValidationMode.html#AAMotion_PvajValidationMode_RangeOnly
+  commentId: F:AAMotion.PvajValidationMode.RangeOnly
+  fullName: AAMotion.PvajValidationMode.RangeOnly
+  nameWithType: PvajValidationMode.RangeOnly
 - uid: AAMotion.ReadError
   name: ReadError
   href: api/AAMotion.ReadError.html
@@ -19216,6 +19675,12 @@ references:
   commentId: F:AAMotion.eKeyword.GantryVelKi
   fullName: AAMotion.eKeyword.GantryVelKi
   nameWithType: eKeyword.GantryVelKi
+- uid: AAMotion.eKeyword.GearMaster
+  name: GearMaster
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_GearMaster
+  commentId: F:AAMotion.eKeyword.GearMaster
+  fullName: AAMotion.eKeyword.GearMaster
+  nameWithType: eKeyword.GearMaster
 - uid: AAMotion.eKeyword.GenData
   name: GenData
   href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_GenData
@@ -19420,6 +19885,12 @@ references:
   commentId: F:AAMotion.eKeyword.LockEn
   fullName: AAMotion.eKeyword.LockEn
   nameWithType: eKeyword.LockEn
+- uid: AAMotion.eKeyword.LockLost
+  name: LockLost
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_LockLost
+  commentId: F:AAMotion.eKeyword.LockLost
+  fullName: AAMotion.eKeyword.LockLost
+  nameWithType: eKeyword.LockLost
 - uid: AAMotion.eKeyword.LockSrc
   name: LockSrc
   href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_LockSrc
@@ -19588,6 +20059,30 @@ references:
   commentId: F:AAMotion.eKeyword.MapType
   fullName: AAMotion.eKeyword.MapType
   nameWithType: eKeyword.MapType
+- uid: AAMotion.eKeyword.MasterFact
+  name: MasterFact
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_MasterFact
+  commentId: F:AAMotion.eKeyword.MasterFact
+  fullName: AAMotion.eKeyword.MasterFact
+  nameWithType: eKeyword.MasterFact
+- uid: AAMotion.eKeyword.MasterFactDen
+  name: MasterFactDen
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_MasterFactDen
+  commentId: F:AAMotion.eKeyword.MasterFactDen
+  fullName: AAMotion.eKeyword.MasterFactDen
+  nameWithType: eKeyword.MasterFactDen
+- uid: AAMotion.eKeyword.MasterFilt
+  name: MasterFilt
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_MasterFilt
+  commentId: F:AAMotion.eKeyword.MasterFilt
+  fullName: AAMotion.eKeyword.MasterFilt
+  nameWithType: eKeyword.MasterFilt
+- uid: AAMotion.eKeyword.MasterModRev
+  name: MasterModRev
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_MasterModRev
+  commentId: F:AAMotion.eKeyword.MasterModRev
+  fullName: AAMotion.eKeyword.MasterModRev
+  nameWithType: eKeyword.MasterModRev
 - uid: AAMotion.eKeyword.MasterPos
   name: MasterPos
   href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_MasterPos
@@ -19780,6 +20275,42 @@ references:
   commentId: F:AAMotion.eKeyword.PTPKeepMoving
   fullName: AAMotion.eKeyword.PTPKeepMoving
   nameWithType: eKeyword.PTPKeepMoving
+- uid: AAMotion.eKeyword.PVAJArm
+  name: PVAJArm
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJArm
+  commentId: F:AAMotion.eKeyword.PVAJArm
+  fullName: AAMotion.eKeyword.PVAJArm
+  nameWithType: eKeyword.PVAJArm
+- uid: AAMotion.eKeyword.PVAJList
+  name: PVAJList
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJList
+  commentId: F:AAMotion.eKeyword.PVAJList
+  fullName: AAMotion.eKeyword.PVAJList
+  nameWithType: eKeyword.PVAJList
+- uid: AAMotion.eKeyword.PVAJPosTol
+  name: PVAJPosTol
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJPosTol
+  commentId: F:AAMotion.eKeyword.PVAJPosTol
+  fullName: AAMotion.eKeyword.PVAJPosTol
+  nameWithType: eKeyword.PVAJPosTol
+- uid: AAMotion.eKeyword.PVAJStatus
+  name: PVAJStatus
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJStatus
+  commentId: F:AAMotion.eKeyword.PVAJStatus
+  fullName: AAMotion.eKeyword.PVAJStatus
+  nameWithType: eKeyword.PVAJStatus
+- uid: AAMotion.eKeyword.PVAJValidate
+  name: PVAJValidate
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJValidate
+  commentId: F:AAMotion.eKeyword.PVAJValidate
+  fullName: AAMotion.eKeyword.PVAJValidate
+  nameWithType: eKeyword.PVAJValidate
+- uid: AAMotion.eKeyword.PVAJVelTol
+  name: PVAJVelTol
+  href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PVAJVelTol
+  commentId: F:AAMotion.eKeyword.PVAJVelTol
+  fullName: AAMotion.eKeyword.PVAJVelTol
+  nameWithType: eKeyword.PVAJVelTol
 - uid: AAMotion.eKeyword.PeakCL
   name: PeakCL
   href: api/AAMotion.eKeyword.html#AAMotion_eKeyword_PeakCL

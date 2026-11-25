@@ -118,6 +118,12 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.AAMotionAPI.GearMotionConfig.html">AAMotionAPI.GearMotionConfig</a></dt>
+      <dd><p>One electronic-gearing motion: the axis follows a master parameter multiplied by
+<a class="xref" href="AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioNumerator">RatioNumerator</a> / <a class="xref" href="AAMotion.AAMotionAPI.GearMotionConfig.html#AAMotion_AAMotionAPI_GearMotionConfig_RatioDenominator">RatioDenominator</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.AAMotionAPI.SinePtpMotionConfig.html">AAMotionAPI.SinePtpMotionConfig</a></dt>
       <dd><p>The complete kinematic parameter set of one AXM Sine PTP motion (MotionMode 20/21).</p>
 </dd>
@@ -187,6 +193,12 @@ view shows the slot's identity only.</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ConnectionProbeResult.html">ConnectionProbeResult</a></dt>
+      <dd><p>The outcome of <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ProbeConnection_System_Nullable_System_Int32__">ProbeConnection(int?)</a>: whether the controller answered a
+command, how long the round trip took, and when it did not answer, why.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ControllerCommandException.html">ControllerCommandException</a></dt>
       <dd><p>A command the controller refused, or answered with a reply the SDK could not read as a value.</p>
 <p></p>
@@ -209,6 +221,14 @@ which is raised for the refusal as before.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ControllerErrorEventArgs.html">ControllerErrorEventArgs</a></dt>
+      <dd><p>One error <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorReported">ErrorReported</a> reports: everything
+<a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ErrorOccurred">ErrorOccurred</a> carries, plus which AAMotion member the
+application called, the axis and parameter the failed command named, where the error came from,
+and when and on which thread it was raised.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.DynamicArrayFactory.html">DynamicArrayFactory</a></dt>
       <dd><p>Dynamic array factory - simplifies array wrapper creation and caching
 Centralizes array wrapper creation logic for better maintainability</p>
@@ -221,8 +241,19 @@ Centralizes array wrapper creation logic for better maintainability</p>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.FastReadCache.html">FastReadCache</a></dt>
       <dd><p>Fast read cache for high-performance data reading.
-This cache stores parameter values that are refreshed periodically (default 1ms)
-and allows instant read access without sending commands to the controller.</p>
+A background thread refreshes the registered parameters every <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshIntervalMs">RefreshIntervalMs</a>,
+and a read of a registered parameter answers from the last refresh without a controller round
+trip. Reads never take a lock, so callers polling a value from several threads never hold off
+the refresh that writes it. A value that was never refreshed, that the controller answered
+with an error, or that is not a number is a miss: the read goes to the controller instead.
+A refresh reads supported registrations in channel-sized batches, with motion status last.</p>
+<p></p>
+<p>After a motion begins on an axis (<a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_Begin">Begin()</a>, which every <code>MoveAbs</code>
+sends), a second thread reads that axis's <code>InTargetStat</code> every
+<a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs">InTargetStatRefreshIntervalMs</a> until it reads 4. Until a reading
+shows the motion has started, the cache does not answer that axis's <code>MotionStat</code> or
+<code>InTargetStat</code> — those reads go to the controller — for at most
+<a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_MoveStartConfirmMs">MoveStartConfirmMs</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -278,13 +309,6 @@ The debug view shows identity only.</p>
 Lightweight workflow: 2 steps - parameter configuration, then start
 Process types: spiral scan (ScanCode=1), single-axis scan (ScanCode=5)
 Status queries: 602 (coupling result), 650 (error code), 736 (last sample index)</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.ParameterMetadataCache.html">ParameterMetadataCache</a></dt>
-      <dd><p>Parameter metadata cache - avoids repeated XML queries
-Initialized once on connection, subsequent O(1) dictionary lookup
-Uses ConcurrentDictionary for thread-safe read operations</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -361,8 +385,7 @@ Interfaces
 builders that push onto the second CNC buffer.</p>
 <p></p>
 <p>Its CNC segment members take their arguments in controller counts on the same terms as
-<a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> - a raw <code>SpecialBulk</code> payload the Global User Units seam does not
-scale, so the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the contract rather than a missing retype.</p>
+<a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a> - push commands the Global User Units seam does not scale, so the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the contract rather than a missing retype.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -391,8 +414,9 @@ signatures are the contract rather than a missing retype.</p>
       <dt><a class="xref" href="AAMotion.IGroupAxis.html">IGroupAxis</a></dt>
       <dd><p>IGroupAxis interface definition, used to describe the parameters and states related to the CNC group axes</p>
 <p></p>
-<p>Every CNC segment member takes its arguments in controller counts. A segment is pushed as a raw
-<code>SpecialBulk</code> payload, which the Global User Units seam does not scale, so a caller converts
+<p>Every CNC segment member takes its arguments in controller counts. A segment is pushed as
+<code>CNCAPushType</code> / <code>CNCAPushParam</code> commands (<code>CNCB</code> on group B) that the Global User
+Units seam does not scale, so a caller converts
 from its own display units first and the whole-number <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> signatures are the
 contract rather than a missing retype.</p>
 </dd>
@@ -421,7 +445,9 @@ Enums
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.AxisRef.html">AxisRef</a></dt>
-      <dd></dd>
+      <dd><p>Axis selector. Each axis is one bit, so a call that takes several axes takes them OR-ed together
+(A | C = 5); a call that takes one axis takes exactly one of these values.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.CNCType.html">CNCType</a></dt>
@@ -431,6 +457,16 @@ Enums
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ConFlt.html">ConFlt</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ConnectionProbeFailure.html">ConnectionProbeFailure</a></dt>
+      <dd><p>Why <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_ProbeConnection_System_Nullable_System_Int32__">ProbeConnection(int?)</a> did not get a numeric reply.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.ControllerErrorSource.html">ControllerErrorSource</a></dt>
+      <dd><p>Where a reported error came from.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.ControllerType.html">ControllerType</a></dt>
@@ -496,6 +532,21 @@ Enums
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.PvajPositionMode.html">PvajPositionMode</a></dt>
+      <dd><p>How the controller interprets a PVAJ list's positions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.PvajState.html">PvajState</a></dt>
+      <dd><p>Controller-reported state of a PVAJ list or running snapshot.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="AAMotion.PvajValidationMode.html">PvajValidationMode</a></dt>
+      <dd><p>Checks applied when validating a PVAJ list.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="AAMotion.StatReg.html">StatReg</a></dt>
       <dd></dd>
     </dl>
@@ -526,7 +577,7 @@ velocity, current, motion status, and configuration settings.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

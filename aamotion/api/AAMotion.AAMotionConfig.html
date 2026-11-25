@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_AAMotionConfig" data-uid="AAMotion.AAMotionConfig" class="text-break">
-Class AAMotionConfig  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L35"><i class="bi bi-code-slash"></i></a>
+Class AAMotionConfig  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class AAMotionConfig  <a class="header-action link-secondary" title="View source
 
   <h3 id="AAMotion_AAMotionConfig_FastReadCacheRefreshIntervalMs" data-uid="AAMotion.AAMotionConfig.FastReadCacheRefreshIntervalMs">
   FastReadCacheRefreshIntervalMs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>When FastReadCache is enabled, this interval controls how often data is refreshed from the controller.
@@ -190,13 +190,12 @@ Default: 1ms</p>
 
   <h3 id="AAMotion_AAMotionConfig_FastReadEnabled" data-uid="AAMotion.AAMotionConfig.FastReadEnabled">
   FastReadEnabled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Global switch to enable/disable fast read cache for all controllers.
-When true, reading Speed, Pos, MotionStat, InTargetStat etc. will read from
-a local cache that is refreshed every FastReadCacheRefreshIntervalMs milliseconds,
-instead of sending commands to the controller. This significantly reduces latency.
+  <div class="markdown level1 summary"><p>Turns the fast read cache on: every registered keyword is refreshed with one bulk query
+every <a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_FastReadCacheRefreshIntervalMs">FastReadCacheRefreshIntervalMs</a>, <code>MotionStat</code> and <code>InTargetStat</code>
+last, and reading a registered keyword answers from the cache instead of the controller.
 Default: false (disabled for backward compatibility).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -219,8 +218,135 @@ Default: false (disabled for backward compatibility).</p>
 
 
   <h4 class="section" id="AAMotion_AAMotionConfig_FastReadEnabled_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Set to true before or after connecting to enable fast cached reads.
-The cache is automatically populated with common parameters (A/B/C axes) on connection.</p>
+  <div class="markdown level1 remarks"><p>Set it before connecting: on connect the cache registers <code>MotionStat</code>,
+<code>InTargetStat</code>, <code>MotorOn</code>, <code>ConFlt</code>, <code>Pos</code>, <code>PosRef</code>,
+<code>LimitsStat</code>, <code>MotionReason</code> and <code>Force</code> of axes A, B and C, each only where
+the controller has it; register anything else with <code>RegisterCacheKeywords</code>. While it is
+false AAMotion reads every value from the controller, as it always has.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_AAMotionConfig_HighResolutionTimer_" data-uid="AAMotion.AAMotionConfig.HighResolutionTimer*"></a>
+
+  <h3 id="AAMotion_AAMotionConfig_HighResolutionTimer" data-uid="AAMotion.AAMotionConfig.HighResolutionTimer">
+  HighResolutionTimer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Holds Windows at a 1 ms timer resolution while any controller is connected. Default: false.
+Takes effect at once, connected or not; on other operating systems it does nothing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HighResolutionTimer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="AAMotion_AAMotionConfig_HighResolutionTimer_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>At the default 15.6 ms resolution every <code>Thread.Sleep</code>, timer and wait in the process
+rounds up to a multiple of 15.6 ms: a caller's <code>Sleep(5)</code> takes about 15.6 ms, so an axis
+in target after 18 ms is seen at 31.2 or 46.8 ms. With the switch on, <code>Sleep(5)</code> takes
+about 6 ms. AAMotion calls <code>timeBeginPeriod(1)</code> when the first controller connects and
+<code>timeEndPeriod(1)</code> when the last one disconnects or is disposed, and opts the process out
+of the Windows 11 power throttling that otherwise ignores the 1 ms request while its window
+is minimized or hidden. It is off by default because it changes timing for the whole process
+and costs some power, which matters on a laptop.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs_" data-uid="AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs*"></a>
+
+  <h3 id="AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs" data-uid="AAMotion.AAMotionConfig.InTargetStatRefreshIntervalMs">
+  InTargetStatRefreshIntervalMs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>How often, in milliseconds, the fast read cache reads <code>InTargetStat</code> of an axis that is
+moving, from <code>Begin</code> until the axis reads 4 (in target). Only the moving axes are read:
+one axis with <code>&lt;axis&gt;InTargetStat</code>, the reply the controller answers fastest
+(about 0.4–0.7 ms); several with one bulk. Default: 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int InTargetStatRefreshIntervalMs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Applies only while <a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_FastReadEnabled">FastReadEnabled</a> is on. The poll also stops for an axis that has stood
+outside the in-target window for more than 2 s; a read that fails waits 1 ms before the next.</p>
+</div>
+
+
+
+
+  <a id="AAMotion_AAMotionConfig_MoveStartConfirmMs_" data-uid="AAMotion.AAMotionConfig.MoveStartConfirmMs*"></a>
+
+  <h3 id="AAMotion_AAMotionConfig_MoveStartConfirmMs" data-uid="AAMotion.AAMotionConfig.MoveStartConfirmMs">
+  MoveStartConfirmMs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The longest time, in milliseconds, after <code>Begin</code> that the fast read cache waits to see
+a motion start before it answers <code>MotionStat</code> and <code>InTargetStat</code> again. Default: 5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int MoveStartConfirmMs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="AAMotion_AAMotionConfig_MoveStartConfirmMs_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Right after <code>Begin</code> the controller can still report the state before the motion, and a
+cached <code>InTargetStat</code> of 4 would read as the new motion already finished. Until a
+reading taken after <code>Begin</code> shows the motion has started (<code>InTargetStat</code> other
+than 4, or <code>MotionStat</code> other than 0), the cache does not answer either keyword for
+that axis and the read goes to the controller. A move to the position the axis already
+holds never leaves the in-target window, so after this time the cache answers again.
+Applies only while <a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_FastReadEnabled">FastReadEnabled</a> is on.</p>
 </div>
 
 
@@ -230,7 +356,7 @@ The cache is automatically populated with common parameters (A/B/C axes) on conn
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Implementations/CommAPIInterface.cs/#L35" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/AAMotionConfig.FastRead.cs/#L8" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -246,7 +372,7 @@ The cache is automatically populated with common parameters (A/B/C axes) on conn
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

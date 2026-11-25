@@ -90,7 +90,7 @@
 
 
   <h1 id="AAMotion_eKeyword" data-uid="AAMotion.eKeyword" class="text-break">
-Enum eKeyword  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L34"><i class="bi bi-code-slash"></i></a>
+Enum eKeyword  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Keywords/eKeyword.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -772,6 +772,12 @@ the code it would otherwise carry belongs to <a class="xref" href="AAMotion.eKey
   
   <dd><p>Gantry velocity integral gain.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_GearMaster"><code>GearMaster = 2222</code></dt>
+  
+  <dd><p>Gearing master: the complex CAN code (axis, keyword and array index) of the parameter the axis
+follows in gearing, the encoding VEncSrc and LoggerParams use. AAMotionAPI.GearBegin sets it
+from a parameter name such as &quot;BPos&quot;.</p>
+</dd>
     <dt id="AAMotion_eKeyword_GenData"><code>GenData = 237</code></dt>
   
   <dd><p>General purpose data array for user storage.</p>
@@ -912,6 +918,10 @@ Index 16: Number of axes.</p>
   
   <dd><p>Lock function enable/disable.</p>
 </dd>
+    <dt id="AAMotion_eKeyword_LockLost"><code>LockLost = 918</code></dt>
+  
+  <dd><p>Lock-loss counter - lock edges the firmware could not capture; read-only, cleared with LockCntr when LockEn goes from 0 to 1. Central-i masters, firmware from 5.3.0.</p>
+</dd>
     <dt id="AAMotion_eKeyword_LockSrc"><code>LockSrc = 171</code></dt>
   
   <dd><p>Lock source input number.</p>
@@ -1023,6 +1033,25 @@ Index 16: Number of axes.</p>
     <dt id="AAMotion_eKeyword_MapType"><code>MapType = 320</code></dt>
   
   <dd><p>Error mapping type (0=Disabled, 1=1D, 2=2D, 3=3D).</p>
+</dd>
+    <dt id="AAMotion_eKeyword_MasterFact"><code>MasterFact = 2223</code></dt>
+  
+  <dd><p>Gearing ratio numerator: the master is multiplied by MasterFact / MasterFactDen. -16777215 to
+16777215, default 65536.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_MasterFactDen"><code>MasterFactDen = 2224</code></dt>
+  
+  <dd><p>Gearing ratio denominator, 1 to 16777215, default 65536. Older firmware has no MasterFactDen and
+divides by 65536.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_MasterFilt"><code>MasterFilt = 2225</code></dt>
+  
+  <dd><p>Gearing input filter factor in 64ths, 1 to 64: 64 passes the geared master unfiltered, a smaller
+value filters more slowly. Applies to direct gearing (MotionMode 5).</p>
+</dd>
+    <dt id="AAMotion_eKeyword_MasterModRev"><code>MasterModRev = 2226</code></dt>
+  
+  <dd><p>Modulus of the gearing master: the master's own ModRev when it has one, 0 for none.</p>
 </dd>
     <dt id="AAMotion_eKeyword_MasterPos"><code>MasterPos = 44</code></dt>
   
@@ -1151,6 +1180,31 @@ Index 16: Number of axes.</p>
     <dt id="AAMotion_eKeyword_PTPKeepMoving"><code>PTPKeepMoving = 625</code></dt>
   
   <dd><p>PTP continuous motion enable.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJArm"><code>PVAJArm = 882</code></dt>
+  
+  <dd><p>Arms (1) or disarms (0) the axis for PVAJ motion.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJList"><code>PVAJList = 880</code></dt>
+  
+  <dd><p>PVAJ trajectory list: three header slots (point count, gap, mode), then a position, velocity,
+acceleration and jerk per point.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJPosTol"><code>PVAJPosTol = 884</code></dt>
+  
+  <dd><p>Position tolerance of the PVAJ continuity check.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJStatus"><code>PVAJStatus = 883</code></dt>
+  
+  <dd><p>PVAJ status: [1] state, [2] point being executed, [3] rows left.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJValidate"><code>PVAJValidate = 881</code></dt>
+  
+  <dd><p>Validates the PVAJ list: 1 full check, 2 forced, 3 range checks only.</p>
+</dd>
+    <dt id="AAMotion_eKeyword_PVAJVelTol"><code>PVAJVelTol = 885</code></dt>
+  
+  <dd><p>Velocity tolerance of the PVAJ continuity check.</p>
 </dd>
     <dt id="AAMotion_eKeyword_PeakCL"><code>PeakCL = 52</code></dt>
   
@@ -1390,7 +1444,7 @@ Index 16: Number of axes.</p>
 </dd>
     <dt id="AAMotion_eKeyword_VecArcDir"><code>VecArcDir = 634</code></dt>
   
-  <dd><p>Vector arc direction.</p>
+  <dd><p>Vector arc direction: 0 = counterclockwise (CCW), 1 = clockwise (CW).</p>
 </dd>
     <dt id="AAMotion_eKeyword_VecDecel"><code>VecDecel = 637</code></dt>
   
@@ -1508,7 +1562,7 @@ and writes of it both throw ControllerCommandException.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/eKeyword.cs/#L34" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Keywords/eKeyword.cs/#L34" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -1524,7 +1578,7 @@ and writes of it both throw ControllerCommandException.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

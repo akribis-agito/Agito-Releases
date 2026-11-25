@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_ParameterTypeConverter" data-uid="AAMotion.ParameterTypeConverter" class="text-break">
-Class ParameterTypeConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L227"><i class="bi bi-code-slash"></i></a>
+Class ParameterTypeConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -171,7 +171,7 @@ bit arithmetic on a register-shaped parameter</li>
 
   <h3 id="AAMotion_ParameterTypeConverter_ConvertStringToRawValue_AAMotion_eKeyword_System_String_" data-uid="AAMotion.ParameterTypeConverter.ConvertStringToRawValue(AAMotion.eKeyword,System.String)">
   ConvertStringToRawValue(eKeyword, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L677"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L630"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convert a controller reply to the internal value representation. Every reply is read as a
@@ -214,7 +214,7 @@ on whether an overflowing literal parses at all and on what a non-finite double 
 
   <h3 id="AAMotion_ParameterTypeConverter_ConvertValueForWrite_AAMotion_eKeyword_System_Double_" data-uid="AAMotion.ParameterTypeConverter.ConvertValueForWrite(AAMotion.eKeyword,System.Double)">
   ConvertValueForWrite(eKeyword, double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L665"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L618"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Convert an internal value to the string form sent to the controller: the shortest
@@ -254,7 +254,7 @@ invariant text that parses back to the same value, identical on every target fra
 
   <h3 id="AAMotion_ParameterTypeConverter_GetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32)">
   GetArray(AxisRef, CommAPIInterface, eKeyword, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L580"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L533"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Read array element value (automatic type conversion).
@@ -299,7 +299,7 @@ element read is itself the command — <code>AProgHalt[1]</code> halts user-prog
 
   <h3 id="AAMotion_ParameterTypeConverter_GetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_" data-uid="AAMotion.ParameterTypeConverter.GetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32)">
   GetDoubleArray(AxisRef, CommAPIInterface, string, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L633"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L586"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Read Double array element (for GenDataD).
@@ -353,7 +353,7 @@ sent; the failure is recorded in <a class="xref" href="AAMotion.MotionController
 
   <h3 id="AAMotion_ParameterTypeConverter_GetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_" data-uid="AAMotion.ParameterTypeConverter.GetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword)">
   GetSmartValue(AxisRef, CommAPIInterface, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L382"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Read parameter value (automatically detects type and converts).
@@ -407,7 +407,7 @@ parameter the SDK sizes, which has no single value; nothing is sent. Read an ele
 
   <h3 id="AAMotion_ParameterTypeConverter_SetArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Int32,System.Object)">
   SetArray(AxisRef, CommAPIInterface, eKeyword, int, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L601"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L554"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write array element value (automatic type conversion)</p>
@@ -447,7 +447,7 @@ parameter the SDK sizes, which has no single value; nothing is sent. Read an ele
 
   <h3 id="AAMotion_ParameterTypeConverter_SetDoubleArray_AAMotion_AxisRef_AAMotion_CommAPIInterface_System_String_System_Int32_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetDoubleArray(AAMotion.AxisRef,AAMotion.CommAPIInterface,System.String,System.Int32,System.Object)">
   SetDoubleArray(AxisRef, CommAPIInterface, string, int, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L646"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L599"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write Double array element (for GenDataD)</p>
@@ -494,7 +494,7 @@ error code, the keyword and the command exactly as sent, assignment included.</p
 
   <h3 id="AAMotion_ParameterTypeConverter_SetSmartValue_AAMotion_AxisRef_AAMotion_CommAPIInterface_AAMotion_eKeyword_System_Object_" data-uid="AAMotion.ParameterTypeConverter.SetSmartValue(AAMotion.AxisRef,AAMotion.CommAPIInterface,AAMotion.eKeyword,System.Object)">
   SetSmartValue(AxisRef, CommAPIInterface, eKeyword, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L491"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L444"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Write parameter value (automatic type conversion)</p>
@@ -543,7 +543,7 @@ parameter the SDK sizes, which has no single value; nothing is sent. Write an el
 
   <h3 id="AAMotion_ParameterTypeConverter_ToInt32Register_System_Double_" data-uid="AAMotion.ParameterTypeConverter.ToInt32Register(System.Double)">
   ToInt32Register(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L696"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L649"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The controller's 32-bit two's-complement view of a slot value, for bit arithmetic on a
@@ -585,7 +585,7 @@ which have no bit pattern to fold, resolve to 0.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/PropertyTypeSystem.cs/#L227" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/Parameters/ParameterValueTypes.cs/#L179" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -601,7 +601,7 @@ which have no bit pattern to fold, resolve to 0.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

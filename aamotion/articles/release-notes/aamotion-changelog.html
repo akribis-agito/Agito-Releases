@@ -77,8 +77,108 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr>
-<h2 id="1200---2026-10-30">[12.0.0] - 2026-10-30</h2>
+<h2 id="1300---2026-11-25">[13.0.0] - 2026-11-25</h2>
 <h3 id="-breaking">⚠️ Breaking</h3>
+<ul>
+<li><strong><code>AAMotionAPI.ScanController</code> and <code>AAMotionAPI.ScanControllerDetailed</code> take a required first parameter, <code>bool fastScan</code>.</strong> <code>false</code> keeps the 50 ms stagger between the subnet's ARP requests (about 13 s); <code>true</code> sends them back to back, which is safe only when every controller on the subnet is an AGM800 or runs firmware 5.3.0 or later. A call such as <code>ScanController(&quot;172.1.1&quot;)</code> becomes <code>ScanController(false, &quot;172.1.1&quot;)</code>.</li>
+<li><strong>Multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> send one bulk message</strong>: each axis's profile and target, then every axis's <code>Begin</code>; past 50 commands the last bulk carries every <code>Begin</code>, and on RS-232 or CAN each command goes on its own. The controller executes each <code>Begin</code> separately. Use vector motion for same-sample or coordinated straight-line motion. Nothing is read first, so the call no longer depends on <code>MaxVel</code>, <code>MaxAcc</code>, <code>PosRef</code> or <code>MotorOn</code>.</li>
+<li><strong>Multi-axis <code>MoveAbs</code> / <code>MoveRel</code> write <code>speed</code>, <code>accel</code> and <code>decel</code> to every axis as given</strong>, without the distance scaling that made the axes arrive together. Each parameter changes from <code>double</code> to <code>double?</code>, so callers built against 12.0.0 must recompile. <code>null</code> leaves that value on the controller unchanged.</li>
+<li><strong>Multi-axis <code>MoveRel</code> moves each axis by its distance (<code>RelTrgt</code>)</strong> and leaves an axis with distance 0 untouched.</li>
+<li><strong>A refused command makes multi-axis <code>MoveAbs</code> / <code>MoveRel</code> return <code>false</code></strong> instead of throwing, and <code>ErrorOccurred</code> names the refused command and any axes already moving. Axes must belong to one controller; the User Units match check no longer applies to them.</li>
+<li>Custom implementations of <code>ISingleAxis</code> must implement the new <code>PVAJList</code>, <code>PVAJValidate</code>, <code>PVAJArm</code>, <code>PVAJStatus</code>, <code>PVAJPosTol</code>, <code>PVAJVelTol</code> and <code>HomeToHardStopByStuckThenIndex</code> members and rebuild against AAMotion 13.</li>
+<li><strong>The <code>.par</code> upload and download types moved to AAComm.</strong> <code>AAMotionParametersUpload</code> and <code>AAMotionParametersDownload</code> are now AAComm's <code>AACommParametersUpload</code> and <code>AACommParametersDownload</code>, which take a <code>CommAPI</code> (<code>controller.CommAPI</code>) instead of a <code>MotionController</code>. <code>ParamHandlingSummary</code>, <code>ParamConversion</code> and <code>ParamRejection</code> keep their names and move from <code>AAMotion.Extensions</code> to <code>AAComm.Extensions</code>. <code>AAMotionAPI.UploadParameters</code> and <code>AAMotionAPI.DownloadParameters</code> keep their source signatures and behaviour, but their <code>onDone</code> callback now takes AAComm's <code>ParamHandlingSummary</code>: code calling them recompiles, and code that names the summary type changes <code>using AAMotion.Extensions;</code> to <code>using AAComm.Extensions;</code>. An uploaded file's header line now reads <code>// AAComm version:</code> instead of <code>// AAMotion version:</code>.</li>
+</ul>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong><code>eKeyword.LockLost</code></strong> names the lock-loss counter, the number of lock edges the controller could not capture since <code>LockEn</code> went from 0 to 1. It is read-only and Central-i masters carry it from firmware 5.3.0.</li>
+<li><strong><code>AAMotionConfig.InTargetStatRefreshIntervalMs</code></strong> (default 1) and <strong><code>MoveStartConfirmMs</code></strong> (default 5): with <code>FastReadEnabled</code> on, after <code>Begin</code> the cache reads the moving axes' <code>InTargetStat</code> every interval until it reads 4, one axis with <code>&lt;axis&gt;InTargetStat</code> and several in one bulk. Until a reading shows the motion started, <code>MotionStat</code> and <code>InTargetStat</code> of that axis are read from the controller rather than the cache, for at most <code>MoveStartConfirmMs</code>, so a value from before the move is never taken for its end.</li>
+<li><strong><code>AAMotionConfig.HighResolutionTimer</code></strong> (default false) holds Windows at a 1 ms timer resolution while any controller is connected, so a <code>Sleep(5)</code> takes about 6 ms instead of 15.6 ms. It applies at once, connected or not, and does nothing on other operating systems.</li>
+<li><strong><code>MotionController.ErrorReported</code></strong> tells you which AAMotion call caused a controller error. It is raised right after <code>ErrorOccurred</code>, for the same errors and with the same code, command and text, and its <code>ControllerErrorEventArgs</code> adds:
+<ul>
+<li><code>Method</code>: the AAMotion member the application called, such as <code>SingleAxis.MoveAbs</code> or <code>SingleAxis.Speed (set)</code>, even when the command that failed was one step inside it. In a Release build the JIT compiler can inline a thin member into the application's code, and <code>Method</code> then names a public member it calls, such as <code>MotionController.SendCommandString</code> for <code>AAMotionAPI.SendCommandString</code>;</li>
+<li><code>Axis</code> and <code>Keyword</code>: the axis and parameter the failed command names;</li>
+<li><code>Source</code>: the application's own call, a check before sending, or one of the fast read cache's background reads;</li>
+<li><code>Timestamp</code>, <code>ThreadId</code> and <code>Controller</code>: when, on which thread (so UI code knows whether to <code>Invoke</code>), and on which controller.</li>
+</ul>
+</li>
+<li><code>AAMotionAPI.SetErrorReportedHandler</code> / <code>ClearErrorReportedHandler</code> add and remove a handler. <code>ErrorOccurred</code> is unchanged, and an application that does not subscribe to <code>ErrorReported</code> pays nothing for it.</li>
+<li><strong>AAMotion Programming Guide.</strong> The release page carries <code>aamotion-programming-guide-&lt;version&gt;.zip</code>: a bilingual (English and Chinese) guide to the C# and C APIs of this release, readable offline (open <code>index.html</code>), with runnable C#, C++ and Python samples for each feature. The code samples are MIT-0 (<code>samples/LICENSE</code>): free to use without attribution. It replaces the AAMotion C# v10.0 and AAMotionNative C++ v2.0 PDF manuals.</li>
+<li><strong><code>MotionController.ProbeConnection(timeoutMs)</code></strong> (and <code>AAMotionAPI.ProbeConnection</code>) sends one command to the controller and tells you whether it is answering right now. Unlike <code>IsConnected</code> (the SDK's own connection state) and <code>CheckConnection</code> (an ICMP ping), it proves the controller itself replies, on every channel. Its <code>ConnectionProbeResult</code> carries:
+<ul>
+<li><code>IsAlive</code> and <code>Failure</code>: why the controller did not answer — not connected, timeout, an error reply, or a reply that is not a number — with the error text in <code>Message</code>;</li>
+<li><code>RoundTripMs</code>: how long the round trip took;</li>
+<li><code>ControllerTime</code> and <code>ControllerRestarted</code>: the controller's seconds since power-on, and whether it restarted since the previous successful probe.</li>
+</ul>
+</li>
+<li>A probe that times out tears the connection down like any command timeout, and the probe never reconnects: call <code>TryReconnect</code> when it reports the link down.</li>
+<li><strong><code>MotionController.SetValue(axis, keyword, value, index)</code></strong> writes a parameter you know only by its keyword, the write twin of <code>GetValue</code>: the value is in the units that axis reads in and goes out exactly as the typed property would send it, and the same arguments are refused, with nothing sent.</li>
+<li><strong>PVAJ motion (<code>MotionMode</code> 22, or 23 for a multi-axis group)</strong>: the axis follows a list of position, velocity, acceleration and jerk points. <code>ISingleAxis</code> gains <code>PVAJList</code>, <code>PVAJValidate</code>, <code>PVAJArm</code>, <code>PVAJStatus</code>, <code>PVAJPosTol</code> and <code>PVAJVelTol</code>.</li>
+<li><strong><code>AAMotionAPI.PvajWriteHeader</code>, <code>PvajWritePoint</code>, <code>PvajValidate</code>, <code>PvajIsValidated</code>, <code>PvajArm</code>, <code>PvajGetStatus</code> and <code>PvajBegin</code></strong> run the write, validate, arm and begin sequence, with the list limits as constants (<code>MaxPvajPoints</code>, <code>MaxPvajGap</code>).</li>
+<li>PVAJ requires AGM800 firmware 5.3.0 or later. Use <code>PvajSupported</code> to check the connected controller. Header mode, validation mode and the reported state use named enums.</li>
+<li><strong><code>HomeToHardStopByStuckThenIndex</code></strong> homes to a mechanical stop detected by motor stuck (velocity below a threshold while the current stays above one, for a set time), then to the index, like <code>HomeToHardStopThenIndex</code> does with a position-error threshold.</li>
+<li><strong>Electronic gearing</strong>: <code>AAMotionAPI.GearBegin(controller, axis, GearMotionConfig)</code> makes an axis follow a master parameter such as <code>&quot;BPos&quot;</code> at the ratio <code>RatioNumerator / RatioDenominator</code>, in direct (MotionMode 5) or indirect, profiled (MotionMode 6) gearing, with the master filter and modulus PCSuite's Gearing page sets. A configuration the controller cannot take is refused before anything is written. New keywords <code>GearMaster</code>, <code>MasterFact</code>, <code>MasterFactDen</code>, <code>MasterFilt</code> and <code>MasterModRev</code>.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>The fast read cache</strong> (<code>AAMotionConfig.FastReadEnabled</code> on) is read without a lock, so threads polling it never hold off the refresh, which reads every registered keyword in one bulk with <code>MotionStat</code> and <code>InTargetStat</code> last. A value is cached as its keyword's type, so a cached read equals a direct one; an error reply or a value not yet refreshed is read from the controller. With <code>FastReadEnabled</code> off, the default, nothing changes.</li>
+<li><strong>With <code>FastReadEnabled</code> on, the cache registers different defaults at connect</strong>: <code>MotionStat</code>, <code>InTargetStat</code>, <code>MotorOn</code>, <code>ConFlt</code>, <code>Pos</code>, <code>PosRef</code>, <code>LimitsStat</code>, <code>MotionReason</code> and <code>Force</code> of axes A, B and C, each only where the controller has it. <code>AInPort[1..4]</code> is no longer registered; register it with <code>RegisterCacheKeywords</code> if you read it often.</li>
+<li><strong>With <code>FastReadEnabled</code> on, <code>MotorOn</code> answers a cached 1</strong> and reads the controller only for a cached 0, so a motor that turns off is seen up to one refresh later. <code>MotionStat</code> and <code>InTargetStat</code> read right after <code>MoveAbs</code> returns come from the controller until the motion is seen to start.</li>
+<li><strong>With <code>FastReadEnabled</code> on, <code>ErrorOccurred</code> can be raised on a background thread</strong> by the cache's refresh or <code>InTargetStat</code> poll, such as for a controller error during a motion. UI code that handles it must marshal to the UI thread (<code>Invoke</code> / <code>Dispatcher</code>).</li>
+<li><strong>Multi-axis <code>MoveAbs</code> / <code>MoveRel</code> refuse an axis listed twice</strong>: they return <code>false</code> before sending anything, with code -1 on <code>ErrorOccurred</code>.</li>
+<li><strong>When a multi-axis <code>MoveAbs</code> / <code>MoveRel</code> message gets no answer</strong> (a timeout or a closed session), <code>ErrorOccurred</code> names the axes whose <code>Begin</code> may or may not have run, instead of saying no axis started.</li>
+<li>The <code>Agito.AAMotion</code> package now includes the MIT license text (<code>LICENSE</code>). The package metadata names Agito Akribis Systems as author and copyright holder.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong><code>EnableFastReadCache(refreshIntervalMs)</code> applies its interval.</strong> The cache kept the interval it was created with, so once a keyword had been registered the argument had no effect. The new interval now applies to the existing cache at once.</li>
+<li>The <code>ISingleAxis.SetPosition</code> and <code>AAMotionAPI.SetPosition</code> documentation said their argument is always in controller counts. It was never so: the controller lists <code>SetPosition</code> in its position User Units group, so on a scaled axis the argument is in the same units <code>Pos</code> reads in, and <code>SetPosition(axis.Pos)</code> is a round trip. The 12.0.0 advice to divide a display value by the position factor first sets the wrong position on a scaled axis. Pass the display value as it is.</li>
+<li><code>EnumPropertyHelper.GetMotorOnDes</code> returns &quot;Motor is off&quot; / &quot;Motor is on&quot; for 0 and 1 instead of &quot;Unknown motor state&quot;.</li>
+<li><code>EnumPropertyHelper.GetConFltDes(0)</code> (<code>ConFlt.NoFault</code>) returns &quot;No fault&quot; instead of &quot;No Motion&quot;.</li>
+<li><code>SetDefaultTimeout</code> names the range it accepts, 10 to 60,000 ms, when it refuses a value; its documentation states the range.</li>
+<li>The <code>Commutated</code> documentation describes what it does: like <code>AutoPhase</code>, it sends the command that starts commutation, and <code>IsCommutated</code> reports the result.</li>
+<li>The <code>dir</code> documentation of <code>VectorArc</code> had the direction backwards: 0 is counterclockwise and 1 is clockwise, as <code>VecArcDir</code> defines; <code>VecArcDir</code> also says that only the axis that issues <code>Begin</code> uses it.</li>
+<li>The <code>masterKeyword</code> example of <code>ECAM_ConfigureTable</code> / <code>ECAM_SetMaster</code> names 2 as <code>Pos</code> and 24 as <code>PosRef</code>; it called 2 <code>PosRef</code>.</li>
+<li><code>DataLoggerTrigger.Type</code> lists the trigger types the controller defines (1 greater than, 2 equal to, … 12 out of range) instead of an unrelated list.</li>
+<li><strong>Multi-axis <code>MoveAbs</code> / <code>MoveRel</code> now write the <code>decel</code> you pass</strong>; it was ignored and replaced by the acceleration, and a negative <code>MaxAcc</code> produced a negative <code>Decel</code> the controller refused with ERR 14.</li>
+<li><strong><code>MoveAbsAndWait</code>, <code>MoveRelAndWait</code> and the two-speed and repetitive <code>AndWait</code> moves return <code>false</code> at once when the controller refuses <code>Begin</code></strong>, instead of reporting success for an axis that was already in target or waiting out the timeout.</li>
+<li><strong><code>MoveAbsRepetitive</code> / <code>MoveRelRepetitive</code> repeat endlessly back and forth again</strong> after <code>MoveAbsRepetitiveCycle</code> left a cycle count on the controller: they write <code>RptMode=0</code> and <code>RptCycles=0</code> where the controller has them.</li>
+<li><strong><code>MoveAbsTwoSpeed</code> without <code>speedChgDir</code> takes the speed-change direction from the move</strong>, so a move toward a lower position changes speed instead of keeping <code>speed1</code>.</li>
+<li><strong><code>ECAM_CreateLinearTable</code> keeps every point on the line over a wide span</strong>; a span times a point index past 2^31 wrapped to a negative value, and the table jumped.</li>
+<li><strong><code>HomeToIndex</code> with direction -1 moves to the lock position at a positive speed</strong>, as the homing sequence requires; it passed the negative search speed.</li>
+<li><strong><code>Home(filePath)</code> writes the last <code>HomingDef</code> element</strong> of the table too; it was skipped.</li>
+<li><strong><code>ForceCurr_SetForceCmdSource</code> writes <code>ForceCmdSrc</code></strong> before the slope, value and hold-time tables, as documented; it wrote nothing when the controller held another source. Arrays of different lengths throw <code>ArgumentException</code> before anything is sent.</li>
+<li><strong><code>AutoPhase</code> / <code>Commutated</code> leave an axis that is already commutated or commutating alone</strong>; they restarted commutation unless <code>ComtStatus[1]</code> read exactly 100.</li>
+<li><strong>With two controllers connected in one process, each resolves its parameter types from its own controller.</strong> A second controller of another product or firmware build no longer reads a parameter as the last-connected controller types it: a float parameter read as an int, or a parameter only one of them has falling back to the int type on the other.</li>
+<li><strong>A background fast-read refresh or <code>InTargetStat</code> poll that waits too long behind your own commands no longer raises <code>ErrorOccurred</code> / <code>ErrorReported</code>.</strong> Nothing failed on the controller: the background read gave up its turn, the cache keeps its last values and the next cycle retries. A refresh you start with <code>RefreshNow</code> / <code>RefreshCacheNow</code> and that is dropped the same way still raises the error. A real controller error or a lost connection during a refresh is still reported.</li>
+<li><strong>A parameter upload no longer saves a failed reply as a parameter's value.</strong> A parameter the controller refuses with an <code>ERR</code> was written into the <code>.par</code> file with the <code>ERR</code> text as its value, and an empty reply was saved as <code>&lt;name&gt;=</code> with nothing after it and counted as a success. Now a refused parameter is left out of the file and named in a <code>// Not uploaded:</code> header line with its <code>ERR</code> reason, as well as in <code>ParamHandlingSummary.Rejections</code>; every other parameter is still written. An empty reply is a communication fault: the upload fails, writes no file, counts the parameter in <code>ErrorCount</code>, and names it in the error.</li>
+<li><strong>Negative values in CNC segments and event-table commands now reach the controller on any host culture.</strong> On .NET 8 and .NET 10, a host set to a culture whose minus sign is U+2212 (such as Swedish or Finnish) or a right-to-left culture (Hebrew, Arabic, Persian, Urdu) wrote a negative CNC position, velocity, gen-data, trigger or DOut value, or an event-table index or select value, with a Unicode minus sign or a leading direction mark, and the controller rejected the segment. These commands are now always written with an ASCII <code>-</code>. .NET Framework 4.8 hosts were not affected.</li>
+<li>Creating a motion API object when the AACommServer will not start no longer blocks for up to about 8 minutes and spawns dozens of server processes: it gives up within 30 s, using the start schedule of <code>CommAPI.StartAACommServer</code>.</li>
+<li>When <code>new CommAPIInterface()</code> cannot start the AACommServer, a later failed <code>Connect</code> now raises <code>ErrorOccurred</code> / <code>ErrorReported</code> naming the connect's own failure and what the earlier start returned (for example <code>AACS_ProcessStartFail</code> or <code>AACS_ResolvePCSuiteDirMissing</code>), instead of failing with no reason. The constructor still does not throw.</li>
+<li><strong>A malformed bulk reply now fails the operation instead of being written or counted as success.</strong> A bulk reply with a blank answer, more answers than commands, or fewer answers without an error where it stopped (<code>ERR 4024</code>) fails <code>UploadParameters</code> (no <code>.par</code> is written) and <code>DownloadParameters</code> (nothing more is counted as written, nothing is saved). <code>SendBulkCommandString</code> returns <code>false</code> for it, and a multi-axis <code>MoveAbs</code> / <code>MoveRel</code> names the axes whose <code>Begin</code> may or may not have run. A download row whose reply is blank is reported as refused, never as written. A timeout, a closed session or an AACommServer refusal of a parameters bulk fails the transfer with that error, never as <code>ERR 4024</code>.</li>
+<li><strong><code>.par</code> upload and download work again over Ethernet on firmware without the continue-on-error bulk.</strong> <code>UploadParameters</code> and <code>DownloadParameters</code> failed on such firmware with <code>ERR 4024</code>. They now fall back to a plain bulk again. When a parameter is refused partway through a packet, the parameters after it are sent again, so the refused parameter is the only one missing from the <code>.par</code> or left unwritten.</li>
+<li><strong>A negative GenData value read in one batch now comes back as itself on a right-to-left host culture.</strong> On .NET 8 and .NET 10, a host set to Hebrew, Arabic, Persian or Urdu read a negative <code>AGenDataUpload</code> slot as 0, so the optical coupling light finding saw 0 where the controller held a negative value. The reply is now always parsed with an ASCII <code>-</code>. .NET Framework 4.8 hosts were not affected.</li>
+<li>A failed <code>Connect</code> names a failed AACommServer start only while the server is still not running. If the start in <code>new CommAPIInterface()</code> failed but the server came up later (started by another application, or by <code>OpenAACommServer()</code>), a failed connect, for example to a powered-off controller, no longer reports that old start failure.</li>
+<li>A fast-read refresh you start with <code>RefreshNow</code> / <code>RefreshCacheNow</code> that waits too long behind your own commands and is dropped unsent now raises <code>ErrorOccurred</code> / <code>ErrorReported</code>, as documented. It was silent, like a dropped background refresh. The cache still keeps its last values.</li>
+<li><strong>A <code>.par</code> download or upload over the plain-bulk fallback no longer stops at a parameter that cannot be sent.</strong> On firmware without the continue-on-error bulk, a parameter AAComm could not encode at the start of a packet ended the whole run with its <code>PC Suite: ERR</code>. That parameter is now reported with its error, and the rest of the file is sent. Two such parameters in a row still end the run.</li>
+<li><strong>CNC segments use PCSuite text commands.</strong> Every <code>IGroupAxis</code> / <code>ICiGroupAxis</code> segment builder (linear, arc, delay, outputs, profile, corner and start-position segments, the user-parameter writes and waits) now pushes a segment as plain commands, <code>ACNCAPushType</code> with the header then one <code>ACNCAPushParam</code> per field (<code>BCNCBPush…</code> on group B), the form PCSuite sends. They used to push it as one binary <code>SpecialBulk</code> frame, which an AGM800 on firmware 5.2.0 did not answer: the push timed out and the controller stopped responding. The arguments are unchanged and still go unscaled by User Units; a refused command ends the push, raises <code>ErrorOccurred</code> and the builder returns false. If a push fails partway, stop the group if needed, clear the buffer and rebuild the path.</li>
+<li><code>AAMotionAPI.OpenAACommServer()</code> and <code>AAMotionAPI.OpenAACommServer(string)</code> start AACommServer again when it has exited since an earlier call, for example after it was ended in Task Manager or shut down after a fatal error. Before, only the first start in a process counted: in a host that stays loaded, such as LabVIEW, a Windows service or a long-running application, every later call reported success without starting a server, and <code>Connect</code> failed until the host was restarted.</li>
+<li><strong>ECAM master documentation names the axis encoded in the composite CAN code</strong>: bits 0-9 carry the keyword, bits 10-14 the master axis (0 = A) and bits 16-31 the array index. <code>2</code> and <code>24</code> select axis A's <code>Pos</code> and <code>PosRef</code>; <code>MotionController.GetKeywordCANCode(eKeyword, AxisRef)</code> resolves the code for another axis. The managed <code>IECAM</code> and <code>AAMotionAPI</code> comments now match <code>aamotion.h</code> and the keyword manual.</li>
+<li><strong><code>ECAM_Start</code> documents what it writes before <code>Begin</code></strong>: <code>ECAMTableNum</code>, <code>MotionMode = 7</code> and <code>MotorOn = 1</code>. A refused <code>Begin</code> leaves the axis enabled, so a caller that does not get motion must turn the motor off explicitly.</li>
+<li>FastRead follows the connection's bulk size limit and uses individual requests on serial and CAN. It skips registrations absent from the connected controller's table, checks the table again after reconnect, and backs off after repeated failures. The in-target poller stops following an axis after sustained read failures.</li>
+<li><strong>A plain move no longer slows down at a speed-change position left by an earlier two-speed move.</strong> A two-speed move that ended or was stopped before its change position left the change armed on the controller, and the next <code>MoveAbs</code> / <code>MoveRel</code> dropped to the old second speed when it crossed that position. Every <code>MoveAbs</code> and <code>MoveRel</code> overload, their <code>AndWait</code> forms and the multi-axis <code>MoveAbs</code> / <code>MoveRel</code> now write <code>SpeedChgOn=0</code> before <code>Begin</code>, where the controller has <code>SpeedChgOn</code>. A speed change armed by hand (<code>SpeedChgOn</code>, <code>ForceCurr_SetSlowApproach</code>) is disarmed the same way, so start such a move with <code>Begin</code>.</li>
+<li><strong>A repetitive move no longer slows down at a speed-change position left by an earlier two-speed move.</strong> <code>MoveAbsRepetitive</code>, <code>MoveRelRepetitive</code>, their <code>AndWait</code> forms and <code>MoveAbsRepetitiveCycle</code> write <code>SpeedChgOn=0</code> before <code>Begin</code> too, where the controller has <code>SpeedChgOn</code>.</li>
+<li><strong>The two-speed moves document that they change <code>Speed</code>.</strong> When the axis crosses the change position, the controller sets <code>Speed</code> to <code>speed2</code>, so a later move without a speed argument runs at <code>speed2</code>. Pass a speed to that move to run at another one.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li><strong><code>ParameterMetadataCache</code> is removed</strong>, as announced when it was made obsolete. It was process-wide, so with two controllers connected it held the last-connected controller's types. A connection's parameter types come from that connection's controller: <code>GetParameterType</code> on the controller.</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li><strong><code>ParameterMetadataCache</code> is obsolete and will be removed at the next major version.</strong> It is process-wide, so with two controllers connected it holds the last-connected controller's types. AAMotion does not read it; a connection's typed reads (<code>GetParameterType</code> on the controller) resolve from that connection's controller.</li>
+</ul>
+<h2 id="1200---2026-10-30">[12.0.0] - 2026-10-30</h2>
+<h3 id="-breaking-1">⚠️ Breaking</h3>
 <ul>
 <li>The 11.0.0 → 12.0.0 upgrade page walks the whole release for a consumer — every break with the diagnostic it raises, the changes that raise none, and compiled before/after samples. It is published with the 12.0.0 release as <a href="https://github.com/akribis-agito/Agito-Releases/releases/download/Software/AAMotion/v12.0.0/aamotion-12-change-disclosure.html"><code>aamotion-12-change-disclosure.html</code></a>; download and open it in a browser, as GitHub serves an <code>.html</code> release asset as a file rather than rendering it.</li>
 <li>Requires <code>Agito.AAComm</code> 15.x (see its changelog for the breaking communication-layer changes: the <code>IIdentityContainer</code> member, <code>MessagesInBulk</code> on a Simulation channel, the <code>AllStatInterpreter</code> input contract).</li>
@@ -116,7 +216,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>No compile error — <code>.Value</code> on an array member now throws.</strong> An array parameter has no single value. On any <code>AAValueArray&lt;double&gt;</code> member — <code>MotionController.GenData</code>, <code>IIOModule.AInMode</code>, <code>ISingleAxis.HomingDef</code> and the rest — whose parameter the connected controller lists as an array of one or more elements, <code>.Value</code> raises <code>InvalidOperationException</code> on get and on set, before anything is sent, with a message naming the parameter and the indexes it has (<code>AInMode is an array parameter; read an element from index 1 to 4.</code>). The getter used to answer the slot's cached first element without reading the controller — <code>0</code> before any element was read — and the setter sent nothing, so a write was dropped and the next <code>.Value</code> handed it back as though the controller held it. <code>ParameterTypeConverter.GetSmartValue</code> and <code>SetSmartValue</code> go through <code>.Value</code>, so they throw the same for such a keyword, except a 64-bit (<code>long</code>) one, which they still send unindexed with its own command; the controller refuses that (ERR 24), raised as <code>ControllerCommandException</code>. Read or write an element by its index instead, from <code>StartIndex</code> to <code>EndIndex</code>: <code>io.AInMode[1]</code>, or <code>MotionController.GetValue(axis, keyword, index)</code>, which already refused index 0 on an array parameter. Nothing crosses the C ABI: <code>aamotion_get_value</code> reads through <code>GetValue</code>.</li>
 <li><strong><code>IGroupAxis.IsCNCCompleted</code> raises <code>ControllerCommandException</code> on a failed status read, on both groups.</strong> It is a poll-until-flips predicate, and a predicate has no answer for a link that did not reply, so it now raises rather than reporting a completion state it could not read. The Group B branch previously returned <code>false</code>, which left a <code>while (!IsCNCCompleted(...))</code> loop spinning forever on a dead link; Group A already raised, because it reads through the value-answering path that 12.0.0 made throw. Wrap the poll, or read the status yourself with <code>TryGetValue</code> if a failed poll is an expected outcome. The C ABI is unchanged — <code>aamotion_is_cnc_completed</code> already caught and returned <code>0</code> either way. The <code>Wait*</code> family is deliberately untouched: a wait returns whether it succeeded, and a failed read means it did not, which is the abort behaviour 12.0.0 already introduced.</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li>Add <code>MotionController.CreateEventTableClient(axis)</code> for the shared explicit verified-table lifecycle; it does not commission, move or automatically arm an axis.</li>
 <li><strong><code>AAMotionAPI.DownloadParameters</code> orders the lock/event writes</strong> for firmware with the LockEventMode 1/2 guards (Firmware-Main #1256). On such firmware the controller refuses a change to <code>EncSinCosHWEn</code>, <code>EncDir</code>, <code>VEncSrc</code> or <code>VEncOn</code> (and <code>AuxEncDir</code> with the aux source, <code>VEncFact</code>/<code>VEncFactDen</code> with the VEnc source) while <code>LockEn</code> or <code>EventOn</code> is on (<strong>ERR 403</strong>), and refuses <code>LockEn</code>/<code>EventOn</code> with a stale offset (<strong>ERR 404</strong>; ERR 335 still means LockEventInit never ran). A <code>.par</code> is written in file order, so a restore over an armed axis, or one that re-arms after changing the source, failed partway. When the controller's firmware has the guards (it declares <code>LockEventMode</code> up to 2) and an axis's rows touch a dependency or <code>LockEventMode</code>, the download now writes <code>LockEn</code> and <code>EventOn</code> = 0 first (a <code>.par</code> carries neither, as they are not flash parameters, so <strong>the restore leaves that axis's Lock and Event off</strong>), then the other rows in file order, then <code>LockEventMode</code>, then <code>LockEventInit</code> when the axis is in mode 1 at re-arm (the file's <code>LockEventMode</code> row, else the controller's current mode, which the download reads first; if that read fails nothing is written), then the file's own <code>LockEn</code>/<code>EventOn</code> rows in file order, so the last one requested is the state left. The axis letter is matched case-insensitively (<code>a</code> and <code>A</code> are one axis). The added rows are sent but not counted as written. A refused disarm counts in <code>ErrorCount</code>, is listed in <code>Rejections</code> marked as added, fails the download with a completion error, and nothing is committed. A refused <code>LockEventInit</code> (ERR 151 when the remote can't be reached, say) counts in <code>ErrorCount</code> and is listed in <code>Rejections</code>, marked to be run before enabling Lock or Event, and the download still commits: the firmware refuses to arm that axis (ERR 335 or 404) until <code>LockEventInit</code> succeeds. Firmware that declares <code>LockEventMode</code> only up to 1 has no such guards and is written in file order. Integrators who write these keywords themselves need the same order; <code>EncFilt</code>, <code>AuxEncFilt</code> and <code>CurrDir</code> are not dependencies.</li>
@@ -144,14 +244,14 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>ISingleAxis.GetHomingDefStep(int step)</code> and the <code>HomingDefStep</code> view it returns. <code>HomingDef</code> is one flat array of 20 steps of 10 slots whose slot roles depend on the step type in slot 1; the view names them — <code>Type</code> plus <code>Param1</code>…<code>Param9</code>, or the <code>[1..9]</code> indexer — so a caller no longer computes <code>(step - 1) * 10 + slot</code> by hand. <code>HomingDef</code> itself stays as the escape hatch for a step type the SDK does not name.</li>
 <li><code>ParameterTypeConverter.ToInt32Register(double)</code> — the controller's 32-bit two's-complement view of a value slot, for bit arithmetic on a port or status word now that the slot is a <code>double</code>. A plain <code>(int)</code> cast of a value above 2,147,483,647 — a <code>DOutPort</code> reported as an unsigned full-width word, say — is unspecified in C# and differs between .NET Framework and .NET 8/10; this wraps modulo 2^32, the bits the controller holds, on every framework. <code>GroupDOutSetBit</code> / <code>ClearBit</code> / <code>ToggleBit</code>, their <code>Ci</code> twins and the CNC completion poll fold through it.</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>The digital-output bit API states its index conventions. <code>DOutSetBit</code> / <code>DOutClearBit</code> / <code>DOutToggleBit</code> and the group and Central-I twins take the 1-based output number the controller's <code>DOutPortSBit[n]</code> takes; <code>GetDOutPort</code> / <code>GetDInPort</code> read a 0-based register bit, so output <code>n</code> is <code>GetDOutPort(n - 1)</code>. Documentation only — no member changes behavior.</li>
 <li>A write carries the caller's value whole to AAComm, which divides it by the User Units factor and rounds a firmware-integral parameter <strong>in controller counts</strong>. AAMotion used to narrow the <em>display</em> value first — to an <code>int</code> for a 32-bit parameter, to a <code>long</code> for a 64-bit one — which quantised a scaled axis to whole units: at <code>0.01 mm/count</code>, <code>axis.AbsTrgt = 12.345</code> reached the controller as 1200 counts instead of 1234. The two setter families also disagreed, so the same fraction was rounded on <code>AbsTrgt</code> and passed through raw on <code>MaxVBus</code>. Both now behave the same, and the rounding — to-even, on the counts — happens once, in AAComm's transmit seam. An integral 64-bit assignment still crosses with its exact digits, so a <code>.par</code> round-trip above 2^53 is unaffected.</li>
 <li>The commands that render a value straight into their command text — <code>ISingleAxis.SetPosition</code>, <code>SetEventTableValue</code>, and the <code>VectorLinear</code> / <code>VectorArc</code> target and arc-centre writes — render it with the invariant wire format. They were culture-safe only for as long as those arguments were <code>int</code>.</li>
 <li>Connecting no longer retries with forced About data; a failed connect fails on the first attempt (AAComm now refreshes a stale About cache itself). The same applies to the auto-reconnect path.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li><strong>A <code>.par</code> for another product is refused.</strong> <code>DownloadParameters</code> read no product from the file, so a <code>.par</code> taken from an AGD200 wrote onto an AGM800. When the file's <code>// Controller type:</code> header names a product other than the connected controller's, nothing is sent and the completion callback gets an error naming both products. The controller's legacy names (<code>AG300-CTL02</code> for an AGD301, say) and the name <code>UploadParameters</code> writes for it are accepted; a header name no product answers to is refused the same way, and a file with no header downloads as before.</li>
 <li><strong>An integer keyword takes the rounded value on every transport.</strong> <code>DownloadParameters</code> sent an integer keyword's <code>123.5</code> as 124 over Ethernet, where AAComm's binary form rounds it, and as text over RS-232, where firmware refuses a value with a fraction or an exponent. It now rewrites the value of an integer keyword that is not already an integer literal to the integer firmware's own rounding gives (half away from zero: <code>124.5</code> is 125, <code>-2.5</code> is -3) before it is checked or sent, so both carry the same integer for a value within the keyword's range. A float keyword's value is sent as written.</li>
@@ -202,12 +302,12 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>Reading a controller command as though it were a parameter no longer runs it.</strong> <code>ProgRun</code>, <code>ProgHalt</code>, <code>ProgHaltAll</code>, <code>ProgReset</code>, <code>StopECAM</code> and <code>LoggerUpload</code> name functions the controller performs on receipt, not storage slots — so composing a read of one <em>is</em> the command: <code>ParameterTypeConverter.GetSmartValue(axis, …, eKeyword.ProgRun)</code> started the user program and reported its reply as a value, <code>GetDoubleArray(axis, …, &quot;ProgHalt&quot;, 1)</code> sent <code>AProgHalt[1]</code> and halted user-program thread 1, and <code>MotionController.RegisterCacheKeywords(axis, eKeyword.ProgRun)</code> put the command in the fast-read cache's refresh bulk, re-sending it every millisecond for as long as the cache ran. All six are now refused with an <code>ArgumentException</code> on <code>GetSmartValue</code>, <code>GetArray</code> and <code>GetDoubleArray</code> — which covers the <code>protected Node.GetSmartValue</code> a derived controller inherits — and on <code>RegisterCacheKeywords</code> / <code>FastReadCache.RegisterArrayElements</code>, before anything reaches the wire; a registration naming one is refused whole, so no keyword beside it is registered. <code>MotionController.GetValue</code> already refused them. This is not a rule that a command never answers with data: many controller commands take a parameter and reply with a value, and <code>MotionController.LoggerUpload()</code> — which retrieves the slow-logger data by sending <code>ALoggerUpload</code> itself — is unaffected.</li>
 <li><strong>Expanding a <code>MotionController</code>, an axis or a parameter array in the debugger no longer hangs the evaluation.</strong> Every value property on them is a controller round trip, so a debugger expanding one sent a read per member while it held frozen the thread that delivers the reply, and hung on the first. The debugger now shows their identity only — the kind and axis, a controller's last known address, an array's keyword and index range — and sends nothing to the controller.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="removed-1">Removed</h3>
 <ul>
 <li>The <code>MotionController.ProgHaltAll</code> <strong>property</strong>. It exposed the <code>ProgHaltAll</code> command as a readable value slot, so evaluating it — in code, or in a debugger watch expanding the controller — sent <code>AProgHaltAll</code> and halted every user program. Halt them deliberately with <code>ISingleAxis.ProgHaltAll()</code> or <code>AAMotionAPI.ProgHaltAll(controller, axis)</code>, which are unchanged.</li>
 </ul>
 <h2 id="1100---2026-08-26">[11.0.0] - 2026-08-26</h2>
-<h3 id="-breaking-1">⚠️ Breaking</h3>
+<h3 id="-breaking-2">⚠️ Breaking</h3>
 <ul>
 <li><code>AAMotion.dll</code> is now <strong>strong-named</strong> (<code>PublicKeyToken=043a10799a9b732b</code>, the same key as <code>Agito.AAComm</code> 14.x), so strong-named consumers can reference it. <strong>.NET Framework consumers must recompile</strong> against 11.0.0 — a binary built against a 10.x <code>AAMotion, PublicKeyToken=null</code> reference does not bind to the signed assembly (see the Agito.AAComm 14.0.0 changelog for the details; the same identity change and <code>AssemblyVersion</code> pinning, here <code>11.0.0.0</code>, apply). .NET 8/10 consumers see no difference.</li>
 <li>Requires <code>Agito.AAComm</code> 14.x (see its changelog for the breaking communication-layer changes — long-operation events, binary IPC v3, protocol negotiation).</li>
@@ -216,7 +316,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>AAMotionAPI.ForceCurr_SetSlowApproache</code> is renamed <strong><code>ForceCurr_SetSlowApproach</code></strong> (typo fix) — also on <code>ISingleAxis</code>, the native ABI export, and the Java binding.</li>
 <li><code>MotionController.ErrorOccurred</code> and <code>CommAPIInterface.ErrorOccurred</code> are now <code>event</code> members (were public delegate fields). <code>+=</code>/<code>-=</code> subscriptions recompile as-is; direct assignment or external invocation no longer compiles.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li><code>Connect</code> no longer returns <code>false</code> on a busy machine while the server is running. It gates on
 <code>CommAPI.IsAACommServerRunning</code>, whose loopback probe used to depend on ThreadPool scheduling and
@@ -230,7 +330,7 @@ caused a <code>KeyNotFoundException</code> on the unguarded indexer. Now resolve
 <code>GetGroup(AxisRef.A)</code> like all other CNC facade methods, and forwards the full mask to the
 wire segment. Source- and binary-compatible; no signature or ABI change.</li>
 </ul>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li><p><strong>Native <code>aamotion.*</code> C-ABI SDK</strong> (<code>Agito.AAMotion.Native</code>): a NativeAOT shared library
 (<code>aamotion.dll</code> / <code>libaamotion.so</code> / <code>libaamotion.dylib</code> + <code>aamotion.h</code>) exposing the full flat
@@ -255,7 +355,7 @@ build runner.</p>
 <li><p>Direct GenData/UserParam register I/O in float and double widths: <code>MotionController</code>/<code>AAMotionAPI</code> <code>ReadGenDataF</code>/<code>ReadGenDataD</code>, <code>WriteGenDataF</code>/<code>WriteGenDataD</code>, <code>ReadUserParam</code>/<code>ReadUserParamF</code>/<code>ReadUserParamD</code>, <code>WriteUserParam</code>/<code>WriteUserParamF</code>/<code>WriteUserParamD</code> (writes <code>A&lt;reg&gt;[i]=v</code> directly, complementing the int-typed <code>ReadGenData</code>/<code>WriteGenData</code>), backed by the new <code>eKeyword.UserParam</code>/<code>UserParamF</code>/<code>UserParamD</code> mappings.</p>
 </li>
 <li><p><strong>Optical coupling light-finding API</strong>: new <code>OpticalCouplingLightFinding</code> class in
-<code>AAMotion/Shared/OpticalCouplingLightFinding.cs</code> providing a 2-step workflow
+<code>AAMotion/Features/Procedures/OpticalCouplingLightFinding.cs</code> providing a 2-step workflow
 (parameter configuration, then start) for optical alignment processes.</p>
 <ul>
 <li>Supports spiral scan (<code>ScanType.Spiral = 1</code>) and single-axis scan (<code>ScanType.SingleAxis = 5</code>).</li>
@@ -268,7 +368,7 @@ and batch-sync <code>AGenData</code> via <code>SyncAllGenData</code>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li><code>AAMotionAPI.OpenAACommServer(string)</code> and <code>CommAPIInterface.OpenAACommServer(string)</code> now
 spawn the server through the AAComm spawn contract (headless + redirected stdin, correct
@@ -344,7 +444,7 @@ replies (<code>PC Suite: ERR …</code>, <code>BOOT … ERR</code>, e.g. from a 
 successes — error classification now matches the full AAComm reply taxonomy instead of only
 controller <code>ERR …</code> replies.</li>
 </ul>
-<h3 id="removed-1">Removed</h3>
+<h3 id="removed-2">Removed</h3>
 <ul>
 <li>The C++/CLI <code>AAMotionCPP</code> (mixed-mode) and <code>AGAAMotion</code> (native shim) projects have been
 <strong>retired</strong>. Non-.NET (C/C++) consumers move to the new C-ABI SDK — <code>aamotion.h</code> +
@@ -353,11 +453,11 @@ controller <code>ERR …</code> replies.</li>
 </ul>
 <hr>
 <h2 id="1000---2026-05-25">[10.0.0] - 2026-05-25</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li><code>EnsureAACommServerRunning()</code>: New method on <code>IMotionController</code> / <code>MotionController</code> that ensures the AACommServer is running and ready to accept connections. Launches the server if not already running, with proper path resolution.</li>
 </ul>
-<h3 id="deprecated">Deprecated</h3>
+<h3 id="deprecated-1">Deprecated</h3>
 <ul>
 <li><code>AAMotionConfig.UseAsyncCommTransport</code>: in AAComm 13.0.0 both flag values produce
 equivalent observable transport behavior for callers using a single path serially
@@ -365,13 +465,13 @@ equivalent observable transport behavior for callers using a single path seriall
 internal wait-handle over the async flow — see issue #32 history). The flag is
 therefore a no-op for typical usage and will be removed in a future release.</li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li>DataLogger <code>StartDataRecording</code>: AGD155 and AGD155-EC now use <code>ARecStart[1]</code> command syntax (firmware v2.3+); other controllers continue to use <code>ARecStart</code> without index.</li>
 <li>Refactored DataLogger and SlowLogger to route all communication through <code>CommAPIInterface.SendAndRecieve()</code> instead of directly calling <code>CommAPI.SendReceive()</code>. This ensures consistent behavior when <code>AAMotionConfig.UseAsyncCommTransport</code> is enabled (async) or disabled (sync).</li>
 </ul>
 <h2 id="911---2026-04-17">[9.1.1] - 2026-04-17</h2>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>Packaging: picks up AAComm 12.1.1 sidecar change. AACommServer sidecar is now
 selected by consumer OS rather than TFM: Windows consumers (net48 or net8.0)
@@ -380,7 +480,7 @@ get the WPF <code>AACommServer.exe</code>; non-Windows net8.0 consumers get
 code or reference changes required.</li>
 </ul>
 <h2 id="910---2026-04-15">[9.1.0] - 2026-04-15</h2>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li><code>ScanController</code> / <code>ScanControllerDetailed</code>: Replaced unreliable TCP probe (<code>TcpPortReachable</code>) with ARP-based discovery via <code>ARPTools.GetSubnetActiveIPs</code>. This uses the same multi-NIC ARP scan as PCSuite's Discover Connections, ensuring controllers on all Ethernet interfaces are reliably found.
 <ul>
@@ -391,12 +491,12 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="900---2026-04-03">[9.0.0] - 2026-04-03</h2>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li>Decoupled nuget from direct AAComm dependency: AAComm is now resolved via nuget</li>
 </ul>
 <h2 id="841---2026-03-27">[8.4.1] - 2026-03-27</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>Added <code>LockSrcZeroSupported()</code> method to <code>ISingleAxis</code> / <code>SingleAxis</code>, exposing Identity[62] bit 0x10 (<code>ControllerIdentityFeature_02.LockSrcZero_Supported</code>). When <code>lockSource = 0</code> is passed to the three multi-step homing methods on an unsupported controller, <code>NotSupportedException</code> is thrown.</li>
 <li>Added <code>ControllerIdentityFeature_02.IDENTITY_NEW_FEATURES_2_LOCKSRC_ZERO_SUPPORTED = 0x00000010</code> constant.</li>
@@ -409,11 +509,11 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="840---2026-03-25">[8.4.0] - 2026-03-25</h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Added <strong>FastReadCache</strong> high-performance cached read mechanism:
 <ul>
-<li>New <code>FastReadCache</code> class in <code>Shared/FastReadCache.cs</code> for low-latency parameter reads.</li>
+<li>New <code>FastReadCache</code> class for low-latency parameter reads.</li>
 <li>Supports caching both single-value keywords (e.g., <code>Speed</code>, <code>Pos</code>, <code>MotionStat</code>) and array elements (e.g., <code>AInPort[1]</code>).</li>
 <li>Uses a background timer to batch-refresh all registered values via bulk commands at configurable intervals (default 1ms).</li>
 <li>Built-in events: <code>RefreshStarted</code>, <code>RefreshCompleted</code>, <code>RefreshError</code> for monitoring.</li>
@@ -421,14 +521,14 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li><code>AAMotionConfig</code> now exposes <code>FastReadEnabled</code> (global on/off switch) and <code>FastReadCacheRefreshIntervalMs</code> (default 1ms).</li>
 <li><code>MotionController</code> now exposes <code>FastReadCache</code> property, <code>EnableFastReadCache()</code>, <code>DisableFastReadCache()</code>, <code>RegisterCacheKeywords()</code>, <code>RefreshCacheNow()</code>, and <code>GetCacheAgeMs()</code>.</li>
 <li><code>CommAPIInterface.HandleSingleValueAccessed</code> and <code>HandleArrayValueAccessed</code> now check the cache first when enabled, falling back to controller reads.</li>
 <li><code>InitializeFastReadCacheIfEnabled()</code> is automatically called after successful <code>Connect()</code> — registers A/B/C axes' common keywords ( <code>Pos</code>, <code>MotionStat</code>, <code>InTargetStat</code>) and <code>AInPort[1-4]</code>, then enables the cache if <code>AAMotionConfig.FastReadEnabled</code> is true.</li>
 </ul>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>Added <code>CommAPI</code> property on <code>MotionController</code> to expose the underlying <code>AAComm.CommAPI</code> instance for direct low-level communication with maximum performance.</li>
 </ul>
@@ -441,7 +541,7 @@ code or reference changes required.</li>
 - Ring buffer with configurable retention policies</p>
 <hr>
 <h2 id="822---2026-02-26">[8.2.2] - 2026-02-26</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Added <code>GenerateCsvFile(DataLoggerResult result, string filePath = null)</code> in DataLogger API to export recorded data to a CSV file:
 <ul>
@@ -452,17 +552,17 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>DataLogger <code>GetDataRecordingStatus</code>: AGD155 and AGD155-EC now use keyword <code>ARecStat</code> (no array index); other controllers continue to use <code>ARecStat[1]</code>.</li>
 </ul>
 <hr>
 <h2 id="821---2026-01-14">[8.2.1] - 2026-01-14</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Added <code>GetDataRecordingCapacity</code> method to DataLogger API for querying the maximum recording capacity of the controller.</li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>Improved auto-reconnect logic in <code>IsConnected</code> property:
 <ul>
@@ -475,11 +575,11 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="820---2026-01-10">[8.2.0] - 2026-01-10</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>Added <strong>DataLogger</strong> high-speed recording API on <code>MotionController</code>:
 <ul>
-<li>New partial implementation in <code>Shared/DataLogger.cs</code> wrapping AAComm <code>RecData</code> services.</li>
+<li>New partial implementation in <code>Features/Logging/DataLogger.cs</code> wrapping AAComm <code>RecData</code> services.</li>
 <li><code>DataLoggerConfiguration</code> to configure duration (sec), gap (ms), parameters list, and trigger position.</li>
 <li><code>DataLoggerTrigger</code> to configure trigger type, source, value, mask and optional max value (for range triggers).</li>
 <li><code>DataLoggerResult</code> / <code>DataLoggerVector</code> containers exposing recorded data, time vector, CAN codes and user units.</li>
@@ -487,13 +587,13 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>Improved XML documentation for DataLogger trigger parameters with clearer English/Chinese descriptions to match PCSuite terminology (持续时间, 间隔, 触发器, 掩码, 最大触发值, 触发时刻).</li>
 </ul>
 <hr>
 <h2 id="811---2026-01-09">[8.1.1] - 2026-01-09</h2>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li><strong>Keyword filtering now relies solely on MessagesContainer (from AAbout command) instead of ControllerKeywordFilter</strong>
 <ul>
@@ -506,7 +606,7 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="removed-2">Removed</h3>
+<h3 id="removed-3">Removed</h3>
 <ul>
 <li>Removed <code>ControllerKeywordFilter</code> class and all keyword filtering rules</li>
 <li>Removed firmware version detection code from <code>CommAPIInterface.Connect()</code> method</li>
@@ -519,13 +619,13 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="809---2026-01-06">[8.0.9] - 2026-01-06</h2>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Corrected CNC buffer clear routing so GroupA and GroupB send to their own CNC groups.</li>
 </ul>
 <hr>
 <h2 id="808---2026-01-06">[8.0.8] - 2026-01-06</h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li>Added CNCB (CNC Group B) keyword properties to <code>ICiGroupAxis</code> interface and <code>CiGroupAxis</code> implementation for AGM800 controller:
 <ul>
@@ -536,18 +636,18 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="807---2026-01-06">[8.0.7] - 2026-01-06</h2>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li><code>IsCNCCompleted</code> now supports AGM800's GroupB (AxisRef.B). For GroupB, it reads <code>{axis}CNCBStatus[10]</code> instead of <code>CNCAStatus[10]</code>.</li>
 <li><code>ControllerType</code> enum values now reference <code>ProductTypes</code> constants to eliminate duplicate definitions and ensure single source of truth for product type IDs.</li>
 </ul>
 <h2 id="806---2026-01-04">[8.0.6] - 2026-01-04</h2>
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li>Added CNC <code>Begin(AxisRef axisRef)</code> method to specify the axis for CNC operations.</li>
 </ul>
 <h2 id="805---2026-01-04">[8.0.5] - 2026-01-04</h2>
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 <ul>
 <li>Added firmware version-based keyword filtering system in <code>ControllerKeywordFilter</code>:
 <ul>
@@ -575,7 +675,7 @@ code or reference changes required.</li>
 </ul>
 </li>
 </ul>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>Refactored keyword filtering system to use unified configuration:
 <ul>
@@ -587,27 +687,27 @@ code or reference changes required.</li>
 <li>Enhanced <code>KeywordRegistry</code> to accept firmware version parameter for dynamic keyword filtering</li>
 <li>Improved <code>CommAPIInterface.Connect()</code> method to read and parse firmware version from controller during connection</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>Fixed keyword filtering to properly handle firmware version-dependent keywords for different controller types</li>
 <li>Improved keyword availability detection based on actual controller firmware version</li>
 </ul>
 <h2 id="804---2025-12-22">[8.0.4] - 2025-12-22</h2>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li><code>EventPulseRes</code> now reports the correct value (previously always 0).</li>
 </ul>
-<h3 id="added-12">Added</h3>
+<h3 id="added-13">Added</h3>
 <ul>
 <li>Added <code>Commutated</code> and <code>IsCommutated</code> APIs.</li>
 </ul>
 <h2 id="803---2025-12-17">[8.0.3] - 2025-12-17</h2>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>Fixed vector motion <code>Begin</code> behavior in <code>SingleAxis.Vector*</code> helpers to <strong>only send one <code>Begin</code> command for the currently selected axis</strong>, ensuring correct behavior when multiple member axes participate in a vector move.</li>
 </ul>
 <h2 id="802---2025-12-12">[8.0.2] - 2025-12-12</h2>
-<h3 id="added-13">Added</h3>
+<h3 id="added-14">Added</h3>
 <ul>
 <li>Added controller discovery helpers in <code>AAMotionAPI</code>:
 <ul>
@@ -617,7 +717,7 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="801---2025-12-02">[8.0.1] - 2025-12-02</h2>
-<h3 id="added-14">Added</h3>
+<h3 id="added-15">Added</h3>
 <ul>
 <li>Added global communication transport switch <code>AAMotionConfig.UseAsyncCommTransport</code> to control how AAMotion sends commands to AAComm:
 <ul>
@@ -627,7 +727,7 @@ code or reference changes required.</li>
 </li>
 <li>Added <code>SendViaAsyncQueue</code> implementation in <code>CommAPIInterface</code> to wrap AAComm's async <code>Send</code> API into a synchronous-style call at AAMotion level.</li>
 </ul>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>Centralized communication error handling in <code>CommAPIInterface</code> via unified <code>ErrorHandlers(AACommEventArgs status)</code> helper:
 <ul>
@@ -643,13 +743,13 @@ code or reference changes required.</li>
 </li>
 </ul>
 <h2 id="800---2025-12-01">[8.0.0] - 2025-12-01</h2>
-<h3 id="added-15">Added</h3>
+<h3 id="added-16">Added</h3>
 <ul>
 <li>Deprecate .NET 4.0 target framework. The minimum supported .NET framework is now 4.8</li>
 </ul>
 <hr>
 <h2 id="762---2025-11-25">[7.6.2] - 2025-11-25</h2>
-<h3 id="added-16">Added</h3>
+<h3 id="added-17">Added</h3>
 <ul>
 <li>Added SlowLogger functionality for data logging and monitoring
 <ul>
@@ -682,7 +782,7 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="761---2025-11-17">[7.6.1] - 2025-11-17</h2>
-<h3 id="added-17">Added</h3>
+<h3 id="added-18">Added</h3>
 <ul>
 <li>Added <code>EnumPropertyHelper</code> static class to provide enumeration value description functionality
 <ul>
@@ -711,7 +811,7 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="760---2025-10-31">[7.6.0] - 2025-10-31</h2>
-<h3 id="added-18">Added</h3>
+<h3 id="added-19">Added</h3>
 <ul>
 <li>Added global configuration class <code>AAMotionConfig</code> with <code>UseNativeDataTypes</code> property to control data type behavior
 <ul>
@@ -724,17 +824,17 @@ code or reference changes required.</li>
 <li>Added unified <code>AASmartArrayWrapper</code> class to automatically handle type conversion for array properties (int/float/double/long)</li>
 <li>Added support for native float, double, and long data types with automatic type detection and conversion</li>
 </ul>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>Refactored parameter type conversion logic from <code>SingleAxis.cs</code> to centralized <code>ParameterTypeConverter</code> class</li>
 <li>Enhanced array wrapper system to automatically detect and handle int/float/double/long types based on parameter metadata</li>
 <li>Improved type conversion performance by caching parameter metadata on connection initialization</li>
 <li>Refactored <code>GetSmartValue</code> and <code>SetSmartValue</code> methods in <code>Node.cs</code> to use centralized <code>ParameterTypeConverter</code></li>
-<li>Improved code organization in <code>PropertyTypeSystem.cs</code> with better method grouping and formatting</li>
+<li>Improved code organization in <code>ParameterValueTypes.cs</code> with better method grouping and formatting</li>
 <li>Enhanced backward compatibility: old code expecting int types continues to work without modification</li>
 <li>Optimized <code>KeywordMappings</code> initialization in <code>Connect()</code> method to handle controller type detection failures gracefully</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>Fixed type conversion errors when accessing float/double/long parameters in old code that expects int types</li>
 <li>Fixed <code>KeyNotFoundException</code> when <code>KeywordMappings</code> was not initialized due to controller connection failures</li>
@@ -742,14 +842,14 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="755---2025-09-24">[7.5.5] - 2025-09-24</h2>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li>Add the retry reconnection mechanism. Method: TryReconnect()</li>
 <li>Add the automatic connection mechanism. In the Connect() method, add the parameter enableAutoReconnect to enable/disable the automatic reconnection mechanism.</li>
 <li>AGM800 supports linear and ARC movements for all axes.</li>
 </ul>
 <h2 id="754---2025-09-12">[7.5.4] - 2025-09-12</h2>
-<h3 id="changed-14">Changed</h3>
+<h3 id="changed-15">Changed</h3>
 <ul>
 <li>Add CNC attributes ：CNCASpeed, CNCAAccel, CNCADecel, CNCAJerk</li>
 <li>Add ECAM attributes: ECAMStart, ECAMStartCyc, ECAMEndCyc, ECAMEnd, ECAMGap, ECAMCycles, ECAMMasterIni, ECAMCycCount, ECAMInterp, ECAMMaster, StopECAM, ECAMTableNum</li>
@@ -757,13 +857,13 @@ code or reference changes required.</li>
 <li>Enhance ECAM functions</li>
 </ul>
 <h2 id="753---2025-08-26">[7.5.3] - 2025-08-26</h2>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>Added a check for relative motion to disallow zero distance.</li>
 <li>Added IO_B for AGD20.</li>
 </ul>
 <h2 id="752---2025-08-08">[7.5.2] - 2025-08-08</h2>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>Change &quot;Commutated&quot; to &quot;AutoPhase&quot;. Change &quot;IsCommutated&quot; to &quot;IsAutoPhase&quot;</li>
 <li>Add the keywords CNCAEncFactNu, CNCAEncFactDn, CNCASpeedPer, CNCAEndSegMod,AccelFact</li>
@@ -771,47 +871,47 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="751---2025-08-04">[7.5.1] - 2025-08-04</h2>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>Add WriteGenData and ReadGenData to read and write GenData</li>
 <li>A dynamic keyword shielding mechanism based on controller type has been implemented, which has enhanced the system's compatibility and maintainability.</li>
 <li>Initialization and connection exception information optimization</li>
 </ul>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>The issue of the AGD101-EC controller connection failure has been resolved.</li>
 </ul>
 <hr>
 <h2 id="7412---2025-07-30">[7.4.12] - 2025-07-30</h2>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>Add the keyword &quot;EventPulseRes&quot;</li>
 <li>Override MoveAbs to achieve position override</li>
 </ul>
 <hr>
 <h2 id="7411---2025-07-22">[7.4.11] - 2025-07-22</h2>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li>Add methods SetEventTableBeginIndex, SetEventTableEndIndex, SetEventTableSelect, and SetEventTableValue to be compatible with older versions of PEG</li>
 <li>Modify the return type of ClearConFlt to be bool</li>
 </ul>
 <hr>
 <h2 id="7410---2025-07-18">[7.4.10] - 2025-07-18</h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>Add method RunCNCProgramFromFile (use the CNC file generated by PCSuite to perform interpolation movement)</li>
 <li>Add method IsCNCCompleted (determine whether the CNC movement has been completed)</li>
 </ul>
 <hr>
 <h2 id="749---2025-07-17">[7.4.9] - 2025-07-17</h2>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>Add the MotorOn and InjectType enumeration types along with the English descriptions of the parameters.</li>
 <li>Added methods MoveAbsAndWait, MoveAbsRepetitiveAndWait, MoveRelAndWait, MoveRelRepetitiveAndWait. Return true after movement and positioning.</li>
 </ul>
 <hr>
 <h2 id="748---2025-07-04">[7.4.8] - 2025-07-04</h2>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>Add enumeration types and English descriptions for parameters to enhance usability.</li>
 <li>After the vector motion parameters are configured, the &quot;Begin&quot; command is automatically sent.</li>
@@ -819,140 +919,140 @@ code or reference changes required.</li>
 <hr>
 <hr>
 <h2 id="747---2025-06-26">[7.4.7] - 2025-06-26</h2>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li>Modify the array length of HomingDef.</li>
 </ul>
 <hr>
 <h2 id="746---2025-06-16">[7.4.6] - 2025-06-16</h2>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>The AAValueArray array starts from index 1.</li>
 <li>Add the keywords MapTableB, MapTableC, MapTableD, and MapTableE.</li>
 </ul>
 <hr>
 <h2 id="745---2025-06-11">[7.4.5] - 2025-06-11</h2>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>Add the method ClearConFlt() to clear ConFlt.</li>
 <li>Add the methods GetDOutPort and GetDInPort to obtain the IO status of the specified bit.</li>
 </ul>
 <hr>
 <h2 id="744---2025-06-05">[7.4.4] - 2025-06-05</h2>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li>Add annotations to methods and attributes.</li>
 </ul>
 <hr>
 <h2 id="743---2025-06-03">[7.4.3] - 2025-06-03</h2>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Add method and attribute annotations.</li>
 </ul>
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 <ul>
 <li>Add the minimum axis judgment of the VectorLinear method of Vector.</li>
 </ul>
 <hr>
 <h2 id="742---2025-05-30">[7.4.2] - 2025-05-30</h2>
-<h3 id="changed-27">Changed</h3>
+<h3 id="changed-28">Changed</h3>
 <ul>
 <li>Change IsHomed to IsHoming and determine whether the return to home is complete.</li>
 </ul>
 <hr>
 <h2 id="741---2025-05-29">[7.4.1] - 2025-05-29</h2>
-<h3 id="changed-28">Changed</h3>
+<h3 id="changed-29">Changed</h3>
 <ul>
 <li>Add Home() to set HomingOn=1.</li>
 </ul>
 <hr>
 <h2 id="740---2025-05-29">[7.4.0] - 2025-05-29</h2>
-<h3 id="changed-29">Changed</h3>
+<h3 id="changed-30">Changed</h3>
 <ul>
 <li>Add the Vector function.</li>
 </ul>
 <hr>
 <h2 id="7313---2025-05-23">[7.3.13] - 2025-05-23</h2>
-<h3 id="changed-30">Changed</h3>
+<h3 id="changed-31">Changed</h3>
 <ul>
 <li>OpenAACommServer increases the return value ConnectResult.</li>
 </ul>
 <hr>
 <h2 id="7312---2025-05-23">[7.3.12] - 2025-05-23</h2>
-<h3 id="changed-31">Changed</h3>
+<h3 id="changed-32">Changed</h3>
 <ul>
 <li>The Amotion API of CiGroup adds operations on GroupB.</li>
 </ul>
 <hr>
 <h2 id="7311---2025-05-21">[7.3.11] - 2025-05-21</h2>
-<h3 id="changed-32">Changed</h3>
+<h3 id="changed-33">Changed</h3>
 <ul>
 <li>The MoveRel and MoveAbs of the AAMotionAPI add MotionController (different controller instances can be used).</li>
 </ul>
 <hr>
 <h2 id="7310---2025-05-20">[7.3.10] - 2025-05-20</h2>
-<h3 id="changed-33">Changed</h3>
+<h3 id="changed-34">Changed</h3>
 <ul>
 <li>Commutation success added judgment 200: Not required, 300/400: Successfully completed (using Hall), 500: Successfully completed (parameters have been modified).</li>
 <li>Adding a judgment to return to zero completes IsHoming().</li>
 </ul>
 <hr>
 <h2 id="739---2025-05-06">[7.3.9] - 2025-05-06</h2>
-<h3 id="changed-34">Changed</h3>
+<h3 id="changed-35">Changed</h3>
 <ul>
 <li>Add GroupB to AGM800.</li>
 </ul>
 <hr>
 <h2 id="738---2025-04-24">[7.3.8] - 2025-04-24</h2>
-<h3 id="changed-35">Changed</h3>
+<h3 id="changed-36">Changed</h3>
 <ul>
 <li>Add force control function.</li>
 <li>Add attributes &quot;RptMode&quot;, &quot;RptCycles&quot;, and &quot;RptCounter&quot;.</li>
 </ul>
 <hr>
 <h2 id="737---2025-04-16">[7.3.7] - 2025-04-16</h2>
-<h3 id="changed-36">Changed</h3>
+<h3 id="changed-37">Changed</h3>
 <ul>
 <li>Added axis properties CurrDir, RevPLim, FwdPLim, MaxPosErr, MaxVelErr.</li>
 </ul>
 <hr>
 <h2 id="736---2025-04-03">[7.3.6] - 2025-04-03</h2>
-<h3 id="changed-37">Changed</h3>
+<h3 id="changed-38">Changed</h3>
 <ul>
 <li>Adapt to AAComm.StartAACommServer() return type change from 'string' to 'ConnectResult'.</li>
 </ul>
 <hr>
 <h2 id="735---2025-04-03">[7.3.5] - 2025-04-03</h2>
-<h3 id="changed-38">Changed</h3>
+<h3 id="changed-39">Changed</h3>
 <ul>
 <li>PEG and Lock do not need to specify an axis when using an axis object.</li>
 </ul>
 <hr>
 <h2 id="734---2025-03-27">[7.3.4] - 2025-03-27</h2>
-<h3 id="changed-39">Changed</h3>
+<h3 id="changed-40">Changed</h3>
 <ul>
 <li>Increase the Commutate method commutate and determine whether commutation is complete.</li>
 </ul>
 <hr>
 <h2 id="733---2025-03-27">[7.3.3] - 2025-03-27</h2>
-<h3 id="changed-40">Changed</h3>
+<h3 id="changed-41">Changed</h3>
 <ul>
 <li>The fourth parameter of SetMotionProfile is double.</li>
 </ul>
 <hr>
 <h2 id="732---2025-03-21">[7.3.2] - 2025-03-21</h2>
-<h3 id="changed-41">Changed</h3>
+<h3 id="changed-42">Changed</h3>
 <ul>
 <li>Add the SetLock method to set the Lock function.</li>
 </ul>
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 <ul>
 <li>Delete the attribute array VecPosFDef. This attribute is not in the dictionary.</li>
 <li>Make four connection attempts while making a connection in AAmotion.</li>
 </ul>
 <hr>
 <h2 id="731---2025-03-20">[7.3.1] - 2025-03-20</h2>
-<h3 id="changed-42">Changed</h3>
+<h3 id="changed-43">Changed</h3>
 <ul>
 <li>Repair Group can set the specified bit of the specified axis.</li>
 <li>Add PEG methods, SetSingleEventPEG and SetEventFixedGapPEG.</li>
@@ -960,40 +1060,40 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="730---2025-03-18">[7.3.0] - 2025-03-18</h2>
-<h3 id="changed-43">Changed</h3>
+<h3 id="changed-44">Changed</h3>
 <ul>
 <li>Implement AAValueArray's foreach method.</li>
 <li>Add and implement the Java language call AAMotion project. AAMotionJava.</li>
 </ul>
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 <ul>
 <li>Fixed VecPosFDef attribute being AAValueArray<int>.</int></li>
 <li>Adds the undefined attribute int UserPWMDiv. AAValueArray<int> MapTable. int EventOn.</int></li>
 </ul>
 <hr>
 <h2 id="724---2025-03-05">[7.2.4] - 2025-03-05</h2>
-<h3 id="changed-44">Changed</h3>
+<h3 id="changed-45">Changed</h3>
 <ul>
 <li>Add the method CiGroupDOutSetBit, CiGroupDOutClearBit, CiGroupDOutToggleBit. When using CNCGroup, can set, clear, and switch the specified axis (AAMotionAPI also add).</li>
 <li>AAValueArray<int> CNCAStatus, added to the registry.</int></li>
 </ul>
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="fixed-15">Fixed</h3>
 <ul>
 <li>Fixed the return value error of MotionReason, ForceCmdValVecArcDir, VecSpeed, VecType, LoggerFullMod.</li>
 </ul>
 <hr>
 <h2 id="723---2025-02-18">[7.2.3] - 2025-02-18</h2>
-<h3 id="changed-45">Changed</h3>
+<h3 id="changed-46">Changed</h3>
 <ul>
 <li>Add Home(filepath) to return to zero based on the zeroback file.</li>
 </ul>
-<h3 id="fixed-15">Fixed</h3>
+<h3 id="fixed-16">Fixed</h3>
 <ul>
 <li>Fix the Group API method using GetGroup.</li>
 </ul>
 <hr>
 <h2 id="722---2025-02-12">[7.2.2] - 2025-02-12</h2>
-<h3 id="changed-46">Changed</h3>
+<h3 id="changed-47">Changed</h3>
 <ul>
 <li>Add the noAck parameter of Connect.</li>
 <li>Deleted the directory &quot;\AAMotion\Implementations\Central_I\Core&quot;.</li>
@@ -1001,56 +1101,56 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="721---2025-02-11">[7.2.1] - 2025-02-11</h2>
-<h3 id="fixed-16">Fixed</h3>
+<h3 id="fixed-17">Fixed</h3>
 <ul>
 <li>Fix AAMotion MoveAbs by adding Begin().</li>
 <li>Fix MoveAbs() of AAMotionAPI; MoveAbs is called instead of MoveRel.</li>
 </ul>
-<h3 id="changed-47">Changed</h3>
+<h3 id="changed-48">Changed</h3>
 <ul>
 <li>Improve the AAMotionAPI and add the API of IGroupAxis, ICiSlave, ICiGroupAxis and IGroupAxis interfaces.</li>
 </ul>
 <hr>
 <h2 id="720---2025-02-10">[7.2.0] - 2025-02-10</h2>
-<h3 id="changed-48">Changed</h3>
+<h3 id="changed-49">Changed</h3>
 <ul>
 <li>Add the bit operation of Group on IO output (GroupDOutSetBit, GroupDOutClearBit, GroupDOutToggleBit).</li>
 </ul>
 <hr>
 <h2 id="710---2025-02-07">[7.1.0] - 2025-02-07</h2>
-<h3 id="changed-49">Changed</h3>
+<h3 id="changed-50">Changed</h3>
 <ul>
 <li>Increase the usage methods of the keywords, ProgHalt, ProgRun, AutoExec, ProgHaltAll and ProgReset.</li>
 <li>Reload connect and add the port number.</li>
 </ul>
 <hr>
 <h2 id="705---2025-01-16">[7.0.5] - 2025-01-16</h2>
-<h3 id="fixed-17">Fixed</h3>
+<h3 id="fixed-18">Fixed</h3>
 <ul>
 <li>If connection fail due to FwInfoMismatch, retry connection with ForceAboutData set to true.</li>
 </ul>
 <hr>
 <h2 id="704---2025-01-16">[7.0.4] - 2025-01-16</h2>
-<h3 id="changed-50">Changed</h3>
+<h3 id="changed-51">Changed</h3>
 <ul>
 <li>Reduce AAMotionAPI overloading: use methods with optional parameters.</li>
 <li>Add the calling method of the AAMotionAPI.</li>
 </ul>
 <hr>
 <h2 id="703---2025-01-09">[7.0.3] - 2025-01-09</h2>
-<h3 id="fixed-18">Fixed</h3>
+<h3 id="fixed-19">Fixed</h3>
 <ul>
 <li>Add a timeout mechanism to the initialization loop in the CommAPIInterface constructor to prevent infinite waiting. Set the maximum wait time to 3 seconds (30 ticks of 100ms).</li>
 </ul>
 <hr>
 <h2 id="702---2025-01-09">[7.0.2] - 2025-01-09</h2>
-<h3 id="fixed-19">Fixed</h3>
+<h3 id="fixed-20">Fixed</h3>
 <ul>
 <li>Make sure the dictionary's life cycle is permanent.</li>
 </ul>
 <hr>
 <h2 id="701---2025-01-08">[7.0.1] - 2025-01-08</h2>
-<h3 id="fixed-20">Fixed</h3>
+<h3 id="fixed-21">Fixed</h3>
 <ul>
 <li>Include controller parameters eKeyword.cs file.</li>
 </ul>
@@ -1074,327 +1174,327 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="604---2024-11-20">[6.0.4] - 2024-11-20</h2>
-<h3 id="fixed-21">Fixed</h3>
+<h3 id="fixed-22">Fixed</h3>
 <ul>
 <li>Fixed indexing bug for ForceCurr_SetForceCmdSource() and ForceCurr_SetCurrCmdSource() methods.</li>
 </ul>
 <hr>
 <h2 id="603---2024-07-01">[6.0.3] - 2024-07-01</h2>
-<h3 id="fixed-22">Fixed</h3>
+<h3 id="fixed-23">Fixed</h3>
 <ul>
 <li>Setting and Querying the MotorOn keyword in PCSuite is 20 seconds, so here we do the same thing at the communicator interface.</li>
 </ul>
 <hr>
 <h2 id="602---2024-06-16">[6.0.2] - 2024-06-16</h2>
-<h3 id="fixed-23">Fixed</h3>
+<h3 id="fixed-24">Fixed</h3>
 <ul>
 <li>.NET 4.0 YamlDotNet reference 4.2.2.</li>
 </ul>
 <hr>
 <h2 id="601---2024-05-31">[6.0.1] - 2024-05-31</h2>
-<h3 id="fixed-24">Fixed</h3>
+<h3 id="fixed-25">Fixed</h3>
 <ul>
 <li>Set motion mode when MoveAbs is called.</li>
 </ul>
 <hr>
 <h2 id="600---2024-05-08">[6.0.0] - 2024-05-08</h2>
-<h3 id="added-19">Added</h3>
+<h3 id="added-20">Added</h3>
 <ul>
 <li>Reference AAComm 7.0.0.</li>
 </ul>
 <hr>
 <h2 id="5130---2023-12-20">[5.13.0] - 2023-12-20</h2>
-<h3 id="added-20">Added</h3>
+<h3 id="added-21">Added</h3>
 <ul>
 <li>Added support for interpreting user program variable names via AdaptUserProgMessage.</li>
 </ul>
 <hr>
 <h2 id="5123---2023-11-30">[5.12.3] - 2023-11-30</h2>
-<h3 id="fixed-25">Fixed</h3>
+<h3 id="fixed-26">Fixed</h3>
 <ul>
 <li>AllStatInterpreter now supports 12 axes to compliment changes in 5.10.0.</li>
 <li>VectorMotion Pause Continue Fix, Added Enum for Vector Motion.</li>
 </ul>
 <hr>
 <h2 id="5122---2023-11-27">[5.12.2] - 2023-11-27</h2>
-<h3 id="changed-51">Changed</h3>
+<h3 id="changed-52">Changed</h3>
 <ul>
 <li>AACommServer: Allow &quot;retrying&quot; socket init. upon process start.</li>
 </ul>
 <hr>
 <h2 id="5121---2023-11-22">[5.12.1] - 2023-11-22</h2>
-<h3 id="changed-52">Changed</h3>
+<h3 id="changed-53">Changed</h3>
 <ul>
 <li>Added support for on-the-fly target/speed/accel change for MoveAbs().</li>
 </ul>
 <hr>
 <h2 id="5120---2023-10-31">[5.12.0] - 2023-10-31</h2>
-<h3 id="changed-53">Changed</h3>
+<h3 id="changed-54">Changed</h3>
 <ul>
 <li>Add .net 6.0 and 7.0 targets. (nuget 5.11.0 is wrongly built and deprecated).</li>
 </ul>
 <hr>
 <h2 id="5110---2023-09-08">[5.11.0] - 2023-09-08</h2>
-<h3 id="fixed-26">Fixed</h3>
+<h3 id="fixed-27">Fixed</h3>
 <ul>
 <li>Fix the errcode of 'FailAboutData' when connecting.</li>
 </ul>
 <hr>
 <h2 id="5100---2023-08-04">[5.10.0] - 2023-08-04</h2>
-<h3 id="fixed-27">Fixed</h3>
+<h3 id="fixed-28">Fixed</h3>
 <ul>
 <li>AllStatUpdate to query for all 12 axes (instead of 8) such that the auxiliary ports will be updated too.</li>
 </ul>
 <hr>
 <h2 id="590---2023-08-03">[5.9.0] - 2023-08-03</h2>
-<h3 id="fixed-28">Fixed</h3>
+<h3 id="fixed-29">Fixed</h3>
 <ul>
 <li>AllStatUpdate to include AGD155_EC_ID as well.</li>
 </ul>
 <hr>
 <h2 id="580---2023-04-13">[5.8.0] - 2023-04-13</h2>
-<h3 id="fixed-29">Fixed</h3>
+<h3 id="fixed-30">Fixed</h3>
 <ul>
 <li>CRITICAL! AAComm RecUpload and &quot;continuous&quot; messages related bug.</li>
 </ul>
 <hr>
 <h2 id="570---2023-04-13">[5.7.0] - 2023-04-13</h2>
-<h3 id="fixed-30">Fixed</h3>
+<h3 id="fixed-31">Fixed</h3>
 <ul>
 <li>Add YamlDotNet nuget dependency.</li>
 </ul>
 <hr>
 <h2 id="5610---2023-04-13">[5.6.10] - 2023-04-13</h2>
-<h3 id="changed-54">Changed</h3>
+<h3 id="changed-55">Changed</h3>
 <ul>
 <li>Add vector motion methods.</li>
 </ul>
 <hr>
 <h2 id="569---2023-01-12">[5.6.9] - 2023-01-12</h2>
-<h3 id="changed-55">Changed</h3>
+<h3 id="changed-56">Changed</h3>
 <ul>
 <li>Added gcode analysis methods.</li>
 </ul>
 <hr>
 <h2 id="568---2023-01-12">[5.6.8] - 2023-01-12</h2>
-<h3 id="changed-56">Changed</h3>
+<h3 id="changed-57">Changed</h3>
 <ul>
 <li>Added methods to cigroup-axis class to do 6-axes linear motion and write doutport value related to axis to buffer.</li>
 </ul>
 <hr>
 <h2 id="566---2023-01-12">[5.6.6] - 2023-01-12</h2>
-<h3 id="changed-57">Changed</h3>
+<h3 id="changed-58">Changed</h3>
 <ul>
 <li>Move params and methods of event class to single axis class.</li>
 </ul>
 <hr>
 <h2 id="565---2023-01-12">[5.6.5] - 2023-01-12</h2>
-<h3 id="changed-58">Changed</h3>
+<h3 id="changed-59">Changed</h3>
 <ul>
 <li>Added params of gantry.</li>
 </ul>
 <hr>
 <h2 id="564---2023-01-12">[5.6.4] - 2023-01-12</h2>
-<h3 id="changed-59">Changed</h3>
+<h3 id="changed-60">Changed</h3>
 <ul>
 <li>Added params and methods of error map.</li>
 </ul>
 <hr>
 <h2 id="563---2023-01-12">[5.6.3] - 2023-01-12</h2>
-<h3 id="changed-60">Changed</h3>
+<h3 id="changed-61">Changed</h3>
 <ul>
 <li>Added params of userpwm.</li>
 </ul>
 <hr>
 <h2 id="562---2023-01-12">[5.6.2] - 2023-01-12</h2>
-<h3 id="changed-61">Changed</h3>
+<h3 id="changed-62">Changed</h3>
 <ul>
 <li>Added params and methods of group9(userparam).</li>
 </ul>
 <hr>
 <h2 id="561---2023-01-11">[5.6.1] - 2023-01-11</h2>
-<h3 id="changed-62">Changed</h3>
+<h3 id="changed-63">Changed</h3>
 <ul>
 <li>Added params and methods of position lock.</li>
 </ul>
 <hr>
 <h2 id="560---2023-01-03">[5.6.0] - 2023-01-03</h2>
-<h3 id="added-21">Added</h3>
+<h3 id="added-22">Added</h3>
 <ul>
 <li>Added override for Home method to do homing based on sequence stored in memory.</li>
 </ul>
 <hr>
 <h2 id="550---2022-08-17">[5.5.0] - 2022-08-17</h2>
-<h3 id="changed-63">Changed</h3>
+<h3 id="changed-64">Changed</h3>
 <ul>
 <li>Communicator interface, AllStat Instantiation is cleaned to used feature_1 integer directly.</li>
 </ul>
 <hr>
 <h2 id="550---2022-08-03">[5.5.0] - 2022-08-03</h2>
-<h3 id="added-22">Added</h3>
+<h3 id="added-23">Added</h3>
 <ul>
 <li>All the Move commands in Single axis motion is now updated to include speed, accel, decel parameters.</li>
 </ul>
 <hr>
 <h2 id="5413---2022-08-03">[5.4.13] - 2022-08-03</h2>
-<h3 id="changed-64">Changed</h3>
+<h3 id="changed-65">Changed</h3>
 <ul>
 <li>MotionStat is added to the end of each Move Command. This should eliminate the timing issue that we experienced with the Taiwan customer.</li>
 </ul>
 <hr>
 <h2 id="5412---2022-08-03">[5.4.12] - 2022-08-03</h2>
-<h3 id="fixed-31">Fixed</h3>
+<h3 id="fixed-32">Fixed</h3>
 <ul>
 <li>Removing MotorCurrent, Fixing MotorCurr and CurrRef Statuses in ISingleAxis.</li>
 </ul>
 <hr>
 <h2 id="5411---2021-10-04">[5.4.11] - 2021-10-04</h2>
-<h3 id="changed-65">Changed</h3>
+<h3 id="changed-66">Changed</h3>
 <ul>
 <li>Modify all Properties related to Force/Current/Position Mode Switch feature to be based on InternalProperies.</li>
 </ul>
 <hr>
 <h2 id="5410---2021-09-13">[5.4.10] - 2021-09-13</h2>
-<h3 id="changed-66">Changed</h3>
+<h3 id="changed-67">Changed</h3>
 <ul>
 <li>If packet number in a SlowLogger UpLoad is zero, jump to next UpLoad without processing.</li>
 </ul>
 <hr>
 <h2 id="549---2021-09-10">[5.4.9] - 2021-09-10</h2>
-<h3 id="changed-67">Changed</h3>
+<h3 id="changed-68">Changed</h3>
 <ul>
 <li>Slow logger API StopSlowLogData: check the ID of the packet that was last logged, remove unwanted packet ID and contents from the main log list.</li>
 </ul>
 <hr>
 <h2 id="548---2021-09-09">[5.4.8] - 2021-09-09</h2>
-<h3 id="added-23">Added</h3>
+<h3 id="added-24">Added</h3>
 <ul>
 <li>Slow logger API functions: StartSLowLogProcess and StopSlowLogData.</li>
 </ul>
 <hr>
 <h2 id="547---2021-09-07">[5.4.7] - 2021-09-07</h2>
-<h3 id="fixed-32">Fixed</h3>
+<h3 id="fixed-33">Fixed</h3>
 <ul>
 <li>BuffTime and BuffPos command format must be array type.</li>
 </ul>
 <hr>
 <h2 id="546---2021-09-06">[5.4.6] - 2021-09-06</h2>
-<h3 id="added-24">Added</h3>
+<h3 id="added-25">Added</h3>
 <ul>
 <li>Add properties and methods for Spline buffer motion in CiSingleAxis.</li>
 </ul>
 <hr>
 <h2 id="545---2021-08-04">[5.4.5] - 2021-08-04</h2>
-<h3 id="fixed-33">Fixed</h3>
+<h3 id="fixed-34">Fixed</h3>
 <ul>
 <li>HomeToLimitThenIndex, Jog to index - 4, the first parameter is speed, argu 1.</li>
 </ul>
 <hr>
 <h2 id="544---2021-06-30">[5.4.4] - 2021-06-30</h2>
-<h3 id="changed-68">Changed</h3>
+<h3 id="changed-69">Changed</h3>
 <ul>
 <li>Turn on AGMotion.</li>
 <li>Open the CloseAACommServer API to the user.</li>
 </ul>
 <hr>
 <h2 id="543---2021-06-08">[5.4.3] - 2021-06-08</h2>
-<h3 id="changed-69">Changed</h3>
+<h3 id="changed-70">Changed</h3>
 <ul>
 <li>Hide AGMotion for interim version release.</li>
 </ul>
 <hr>
 <h2 id="543---2021-05-24">[5.4.3] - 2021-05-24</h2>
-<h3 id="changed-70">Changed</h3>
+<h3 id="changed-71">Changed</h3>
 <ul>
 <li>Do some Clearance works.</li>
 </ul>
 <hr>
 <h2 id="543---2021-05-23">[5.4.3] - 2021-05-23</h2>
-<h3 id="added-25">Added</h3>
+<h3 id="added-26">Added</h3>
 <ul>
 <li>Add Force/Current/Position Mode Switch feature.</li>
 </ul>
 <hr>
 <h2 id="542---2021-05-20">[5.4.2] - 2021-05-20</h2>
-<h3 id="added-26">Added</h3>
+<h3 id="added-27">Added</h3>
 <ul>
 <li>Add new AGMotion feature.</li>
 </ul>
-<h3 id="changed-71">Changed</h3>
+<h3 id="changed-72">Changed</h3>
 <ul>
 <li>Eliminate all compilation Warnings.</li>
 <li>AGMotion as an individual namespace.</li>
 </ul>
 <hr>
 <h2 id="541---2021-05-12">[5.4.1] - 2021-05-12</h2>
-<h3 id="fixed-34">Fixed</h3>
+<h3 id="fixed-35">Fixed</h3>
 <ul>
 <li>Default set time out as 2 seconds when send out packet.</li>
 </ul>
 <hr>
 <h2 id="540---2021-04-16">[5.4.0] - 2021-04-16</h2>
-<h3 id="added-27">Added</h3>
+<h3 id="added-28">Added</h3>
 <ul>
 <li>Add an option to set time out when send out packet, convenient for the user to debug for breakpoint.</li>
 </ul>
 <hr>
 <h2 id="532---2021-03-24">[5.3.2] - 2021-03-24</h2>
-<h3 id="fixed-35">Fixed</h3>
+<h3 id="fixed-36">Fixed</h3>
 <ul>
 <li>Corrected <param> tag for CNC Arc Motion.</li>
 </ul>
 <hr>
 <h2 id="531---2021-03-04">[5.3.1] - 2021-03-04</h2>
-<h3 id="fixed-36">Fixed</h3>
+<h3 id="fixed-37">Fixed</h3>
 <ul>
 <li>Fix the bug on AIO Output Readback value incorrect.</li>
 </ul>
 <hr>
 <h2 id="5210---2021-02-17">[5.2.10] - 2021-02-17</h2>
-<h3 id="changed-72">Changed</h3>
+<h3 id="changed-73">Changed</h3>
 <ul>
 <li>Move VBus, VLogic, PwrTemp, MotorTemp into IMotionController to be used for all controller class.</li>
 </ul>
 <hr>
 <h2 id="529---2021-02-17">[5.2.9] - 2021-02-17</h2>
-<h3 id="changed-73">Changed</h3>
+<h3 id="changed-74">Changed</h3>
 <ul>
 <li>Extend AGM400 Axes, IO, GroupAxis, PositionEventEx, full range from A to F.</li>
 <li>Extend AGM800 Axes, IO, GroupAxis, PositionEventEx, full range from A to L.</li>
 </ul>
 <hr>
 <h2 id="528---2020-10-29">[5.2.8] - 2020-10-29</h2>
-<h3 id="changed-74">Changed</h3>
+<h3 id="changed-75">Changed</h3>
 <ul>
 <li>AllStat for different controllers.</li>
 </ul>
 <hr>
 <h2 id="527---2020-09-29">[5.2.7] - 2020-09-29</h2>
-<h3 id="changed-75">Changed</h3>
+<h3 id="changed-76">Changed</h3>
 <ul>
 <li>Change 4.6.2 target frameworks to 4.8 (remove redundancy).</li>
 </ul>
 <hr>
 <h2 id="526---2020-09-29">[5.2.6] - 2020-09-29</h2>
-<h3 id="fixed-37">Fixed</h3>
+<h3 id="fixed-38">Fixed</h3>
 <ul>
 <li>Updated calls to GetAllAxisStat within Group.cs.</li>
 </ul>
 <hr>
 <h2 id="525---2020-09-19">[5.2.5] - 2020-09-19</h2>
-<h3 id="added-28">Added</h3>
+<h3 id="added-29">Added</h3>
 <ul>
 <li>And multiple target frameworks support: .net 4, 4.6, 4.6.2.</li>
 </ul>
 <hr>
 <h2 id="515---2020-09-18">[5.1.5] - 2020-09-18</h2>
-<h3 id="changed-76">Changed</h3>
+<h3 id="changed-77">Changed</h3>
 <ul>
 <li>Updated definitions and bug fixes for CNC Motion.</li>
 </ul>
 <hr>
 <h2 id="514---2020-09-18">[5.1.4] - 2020-09-18</h2>
-<h3 id="changed-77">Changed</h3>
+<h3 id="changed-78">Changed</h3>
 <ul>
 <li>Call GetAllAxisStat using a new parameter to decide if AllStatAxisData group 10 is included.</li>
 <li>Add DInPortHigh in AllStatAxisData group 10.</li>
@@ -1403,24 +1503,24 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="513---2020-09-17">[5.1.3] - 2020-09-17</h2>
-<h3 id="changed-78">Changed</h3>
+<h3 id="changed-79">Changed</h3>
 <ul>
 <li>Array Type parameter index start from 1 for AAMotion user.</li>
 <li>Rename and add elements in enum ControllerType.</li>
 </ul>
-<h3 id="fixed-38">Fixed</h3>
+<h3 id="fixed-39">Fixed</h3>
 <ul>
 <li>Instantiate eEventSetting dictionary for read.</li>
 </ul>
 <hr>
 <h2 id="512---2020-09-16">[5.1.2] - 2020-09-16</h2>
-<h3 id="added-29">Added</h3>
+<h3 id="added-30">Added</h3>
 <ul>
 <li>Add BiDirConfig feature.</li>
 </ul>
 <hr>
 <h2 id="511---2020-09-15">[5.1.1] - 2020-09-15</h2>
-<h3 id="changed-79">Changed</h3>
+<h3 id="changed-80">Changed</h3>
 <ul>
 <li>Rename Class AG100 to AGD155.</li>
 <li>Rename Class MAS02 to AGM800.</li>
@@ -1428,22 +1528,22 @@ code or reference changes required.</li>
 <li>Rename Class AG300 to AGC300.</li>
 <li>Rename Class AGD301 to AGC301.</li>
 </ul>
-<h3 id="added-30">Added</h3>
+<h3 id="added-31">Added</h3>
 <ul>
 <li>Add DInLogHigh feature.</li>
 </ul>
 <hr>
 <h2 id="510---2020-09-10">[5.1.0] - 2020-09-10</h2>
-<h3 id="added-31">Added</h3>
+<h3 id="added-32">Added</h3>
 <ul>
 <li>Add AGD301 class.</li>
 <li>Add TimerHandler in TimerEvent for internal debug from AAMotion user source code program.</li>
 </ul>
-<h3 id="changed-80">Changed</h3>
+<h3 id="changed-81">Changed</h3>
 <ul>
 <li>Change the commands of GetAllSettingsDIOAG300, GetAllSettingsAIOAG300 to dynamic contents, initialize them in the CommandList and rebuild later dynamically.</li>
 </ul>
-<h3 id="fixed-39">Fixed</h3>
+<h3 id="fixed-40">Fixed</h3>
 <ul>
 <li>Dynamic Command fix the AGD301 system down after connection.</li>
 <li>Add eIOSetting.DInMode in UpdatePropertyListIOSettingArray.</li>
@@ -1451,50 +1551,50 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="501---2020-09-09">[5.0.1] - 2020-09-09</h2>
-<h3 id="fixed-40">Fixed</h3>
+<h3 id="fixed-41">Fixed</h3>
 <ul>
 <li>FIX nuget package.</li>
 </ul>
 <hr>
 <h2 id="500---2020-09-09">[5.0.0] - 2020-09-09</h2>
-<h3 id="changed-81">Changed</h3>
+<h3 id="changed-82">Changed</h3>
 <ul>
 <li>Merge from 4.21.8.</li>
 <li>ParseDIOSettings, ParseAIOSettings don't trigger event to write into Array-Type IO variables.</li>
 </ul>
 <hr>
 <h2 id="4218---2020-09-04">[4.21.8] - 2020-09-04</h2>
-<h3 id="changed-82">Changed</h3>
+<h3 id="changed-83">Changed</h3>
 <ul>
 <li>Replace PosEvent with PosEvent_A, PosEvent_B, PosEvent_C in AG300 class.</li>
 </ul>
 <hr>
 <h2 id="4217---2020-09-04">[4.21.7] - 2020-09-04</h2>
-<h3 id="fixed-41">Fixed</h3>
+<h3 id="fixed-42">Fixed</h3>
 <ul>
 <li>Take CiStatus from AllStat returning data structure.</li>
 </ul>
 <hr>
 <h2 id="4216---2020-08-31">[4.21.6] - 2020-08-31</h2>
-<h3 id="fixed-42">Fixed</h3>
+<h3 id="fixed-43">Fixed</h3>
 <ul>
 <li>Make AllStat &quot;Continuous&quot; message type.</li>
 </ul>
 <hr>
 <h2 id="4215---2020-08-27">[4.21.5] - 2020-08-27</h2>
-<h3 id="fixed-43">Fixed</h3>
+<h3 id="fixed-44">Fixed</h3>
 <ul>
 <li>Increase Axis to L.</li>
 </ul>
 <hr>
 <h2 id="4214---2020-08-27">[4.21.4] - 2020-08-27</h2>
-<h3 id="added-32">Added</h3>
+<h3 id="added-33">Added</h3>
 <ul>
 <li>Add CiStatus feature (Modified). Temporarily use .PropertyList[Axis].CiSlaveSettingsArray[eCiSlaveSetting.CiStatus][1] to replace .PropertyList[Axis].Statuses.CiStatus_1.</li>
 </ul>
 <hr>
 <h2 id="4213---2020-08-27">[4.21.3] - 2020-08-27</h2>
-<h3 id="added-33">Added</h3>
+<h3 id="added-34">Added</h3>
 <ul>
 <li>Add CiStatus feature.</li>
 <li>Temporarily disable CiSlaveRefreshRequired since AllStat[255] cannot work set.</li>
@@ -1504,168 +1604,168 @@ code or reference changes required.</li>
 </ul>
 <hr>
 <h2 id="4212---2020-08-06">[4.21.2] - 2020-08-06</h2>
-<h3 id="added-34">Added</h3>
+<h3 id="added-35">Added</h3>
 <ul>
 <li>Optimize Array Properties Access.</li>
 <li>Add new command GetAllSettingDIOCiMaster, GetAllSettingAIOCiMaster.</li>
 </ul>
 <hr>
 <h2 id="4211---2020-07-24">[4.21.1] - 2020-07-24</h2>
-<h3 id="added-35">Added</h3>
+<h3 id="added-36">Added</h3>
 <ul>
 <li>Add MAS02 (AGM800) class, initial version.</li>
 </ul>
 <hr>
 <h2 id="4201---2020-06-30">[4.20.1] - 2020-06-30</h2>
-<h3 id="added-36">Added</h3>
+<h3 id="added-37">Added</h3>
 <ul>
 <li>Add AG100 class, initial version.</li>
 </ul>
 <hr>
 <h2 id="4192---2020-06-30">[4.19.2] - 2020-06-30</h2>
-<h3 id="changed-83">Changed</h3>
+<h3 id="changed-84">Changed</h3>
 <ul>
 <li>Rename the property arrayStorage.</li>
 </ul>
-<h3 id="fixed-44">Fixed</h3>
+<h3 id="fixed-45">Fixed</h3>
 <ul>
 <li>Refresh takes after the communication OK with the controller.</li>
 <li>VBus, VLogic, PwrTemp, MotorTemp updated valid only after the communication OK with the controller.</li>
 </ul>
 <hr>
 <h2 id="4191---2020-06-26">[4.19.1] - 2020-06-26</h2>
-<h3 id="changed-84">Changed</h3>
+<h3 id="changed-85">Changed</h3>
 <ul>
 <li>Set a flag called &quot;AxisInternalPropertyUpdatedFromController&quot; to true after the connection is OK, which prevent intermittently read PropertyList after connection but InternalProperty have not been updated.</li>
 </ul>
 <hr>
 <h2 id="4190---2020-06-23">[4.19.0] - 2020-06-23</h2>
-<h3 id="changed-85">Changed</h3>
+<h3 id="changed-86">Changed</h3>
 <ul>
 <li>Optimize the IO array properties update event handler.</li>
 <li>Property read must occur after connected, otherwise default as &quot;unreasonable&quot; values.</li>
 </ul>
 <hr>
 <h2 id="4180---2020-06-19">[4.18.0] - 2020-06-19</h2>
-<h3 id="added-37">Added</h3>
+<h3 id="added-38">Added</h3>
 <ul>
 <li>Replace the Set methods on &quot;Array-Like&quot; IO Features with direct &quot;Array&quot; format Read/Write Properties. These are DInMode, DOutMode, DOutSelect, AInFilt, AInOffSet, AInDB, AInGain, AInMode, AOutOffset, AOutShifts, AOutMode, AOutPort.</li>
 </ul>
 <hr>
 <h2 id="4170---2020-06-17">[4.17.0] - 2020-06-17</h2>
-<h3 id="added-38">Added</h3>
+<h3 id="added-39">Added</h3>
 <ul>
 <li>Add dynamic allocation array size of Digital and Analogue input/output Mode, Filt, Offset, DB, Gain.</li>
 </ul>
 <hr>
 <h2 id="4160---2020-06-12">[4.16.0] - 2020-06-12</h2>
-<h3 id="changed-86">Changed</h3>
+<h3 id="changed-87">Changed</h3>
 <ul>
 <li>Upgraded AAComm DLL is upgraded from v3.0.0.2 to v3.0.0.18.</li>
 </ul>
 <hr>
 <h2 id="4150---2020-04-30">[4.15.0] - 2020-04-30</h2>
-<h3 id="added-39">Added</h3>
+<h3 id="added-40">Added</h3>
 <ul>
 <li>AOutPort has additional option to change to openloop mode.</li>
 </ul>
-<h3 id="changed-87">Changed</h3>
+<h3 id="changed-88">Changed</h3>
 <ul>
 <li>Clean up namespaces to use only one AAMotion namespace.</li>
 </ul>
 <hr>
 <h2 id="4131---2019-01-10">[4.13.1] - 2019-01-10</h2>
-<h3 id="fixed-45">Fixed</h3>
+<h3 id="fixed-46">Fixed</h3>
 <ul>
 <li>Put back bulk command method which was removed in v4.12.0.</li>
 </ul>
 <hr>
 <h2 id="4130---2019-01-07">[4.13.0] - 2019-01-07</h2>
-<h3 id="added-40">Added</h3>
+<h3 id="added-41">Added</h3>
 <ul>
 <li>MultiController.MoveAbs/MoveRel: Basic (Cross-controller) Multi-axis Synchronized PTP Method.</li>
 </ul>
 <hr>
 <h2 id="4121---2019-01-06">[4.12.1] - 2019-01-06</h2>
-<h3 id="changed-88">Changed</h3>
+<h3 id="changed-89">Changed</h3>
 <ul>
 <li>Changed [UpdateInternalStatus()] to type boolean.</li>
 </ul>
 <hr>
 <h2 id="4120---2019-12-30">[4.12.0] - 2019-12-30</h2>
-<h3 id="added-41">Added</h3>
+<h3 id="added-42">Added</h3>
 <ul>
 <li>New method [UpdateInternalStatus()] on all MotionControllers which allow user to explicitly update internal status.</li>
 </ul>
 <hr>
 <h2 id="4110---2019-10-17">[4.11.0] - 2019-10-17</h2>
-<h3 id="added-42">Added</h3>
+<h3 id="added-43">Added</h3>
 <ul>
 <li>New Homing method, which can take in sequence file .hseq file which is created from PCSuite.</li>
 </ul>
 <hr>
 <h2 id="4102---2019-10-13">[4.10.2] - 2019-10-13</h2>
-<h3 id="fixed-46">Fixed</h3>
+<h3 id="fixed-47">Fixed</h3>
 <ul>
 <li>Edited summary of SendBulkCommandString method.</li>
 </ul>
 <hr>
 <h2 id="4101---2019-10-10">[4.10.1] - 2019-10-10</h2>
-<h3 id="fixed-47">Fixed</h3>
+<h3 id="fixed-48">Fixed</h3>
 <ul>
 <li>Differentiated between internal and external bulk messaging.</li>
 </ul>
 <hr>
 <h2 id="4100---2019-10-10">[4.10.0] - 2019-10-10</h2>
-<h3 id="added-43">Added</h3>
+<h3 id="added-44">Added</h3>
 <ul>
 <li>Support for bulk messaging.</li>
 </ul>
 <hr>
 <h2 id="490---2019-08-26">[4.9.0] - 2019-08-26</h2>
-<h3 id="added-44">Added</h3>
+<h3 id="added-45">Added</h3>
 <ul>
 <li>Support PositionEvents from AG300 Controller.</li>
 </ul>
 <hr>
 <h2 id="480---2019-08-26">[4.8.0] - 2019-08-26</h2>
-<h3 id="added-45">Added</h3>
+<h3 id="added-46">Added</h3>
 <ul>
 <li>LinearAbsolute: Generic CNC Method.</li>
 <li>MultiSegmentOn: Multi-segment Option.</li>
 </ul>
 <hr>
 <h2 id="470---2019-08-26">[4.7.0] - 2019-08-26</h2>
-<h3 id="added-46">Added</h3>
+<h3 id="added-47">Added</h3>
 <ul>
 <li>Added InTargetTol, Added InTargetTime Keywords.</li>
 <li>Added Arc functions in Group Axis to include Additional Cycles Input Parameter.</li>
 </ul>
-<h3 id="fixed-48">Fixed</h3>
+<h3 id="fixed-49">Fixed</h3>
 <ul>
 <li>Arc functions in Group axis was missing 1 parameter.</li>
 </ul>
 <hr>
 <h2 id="460---2019-08-26">[4.6.0] - 2019-08-26</h2>
-<h3 id="changed-89">Changed</h3>
+<h3 id="changed-90">Changed</h3>
 <ul>
 <li>AAComm is now taken from nuget package.</li>
 </ul>
 <hr>
 <h2 id="450---2019-08-26">[4.5.0] - 2019-08-26</h2>
-<h3 id="added-47">Added</h3>
+<h3 id="added-48">Added</h3>
 <ul>
 <li>AllStat: Extension to be backward compatible and for supported MotorTemp.</li>
 </ul>
 <hr>
 <h2 id="440---2019-08-26">[4.4.0] - 2019-08-26</h2>
-<h3 id="added-48">Added</h3>
+<h3 id="added-49">Added</h3>
 <ul>
 <li>Controller has new constructor overload to allow configurable internal update rate.</li>
 </ul>
 <hr>
 <h2 id="430---2019-08-26">[4.3.0] - 2019-08-26</h2>
-<h3 id="changed-90">Changed</h3>
+<h3 id="changed-91">Changed</h3>
 <ul>
 <li>Whenever motion method is called from either SingleAxis or GroupAxis, AllStat command is called immediately afterwards to update the statuses of the internal variables.</li>
 </ul>
@@ -1690,7 +1790,7 @@ code or reference changes required.</li>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

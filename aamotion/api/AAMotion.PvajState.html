@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace AAMotion.Extensions | Agito AAMotion SDK </title>
+      <title>Enum PvajState | Agito AAMotion SDK </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace AAMotion.Extensions | Agito AAMotion SDK ">
+      <meta name="title" content="Enum PvajState | Agito AAMotion SDK ">
       
-      
+      <meta name="description" content="Controller-reported state of a PVAJ list or running snapshot.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/new/master/apiSpec/new?filename=AAMotion_PvajState.md&amp;value=---%0Auid%3A%20AAMotion.PvajState%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,71 +84,70 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="AAMotion.Extensions">
+        <article data-uid="AAMotion.PvajState">
 
-  <h1 id="AAMotion_Extensions" data-uid="AAMotion.Extensions" class="text-break">Namespace AAMotion.Extensions</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.Extensions.AAMotionParametersDownload.html">AAMotionParametersDownload</a></dt>
-      <dd><pre><code>Asynchronously downloads (writes) controller parameters from a .par file.
-</code></pre>
-<p></p>
-<pre><code>&quot;Download&quot; in this context follows the PCSuite convention: a local .par file's contents are written to the controller.
-</code></pre>
-<p></p>
-<pre><code>Mirrors the PCSuite &quot;Parameters Download&quot; tool: reads the .par file, validates parameters against the connected
-controller, then sends each as a SET command.
-</code></pre>
-<p></p>
-<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
-</code></pre>
-<p></p>
-<pre><code>After successful download, optionally sends &quot;Save&quot; plus per-axis &quot;CalcFilters&quot; to persist parameters to flash.
-</code></pre>
+
+
+  <h1 id="AAMotion_PvajState" data-uid="AAMotion.PvajState" class="text-break">
+Enum PvajState  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Enums/PvajEnums.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AAMotion.html">AAMotion</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AAMotion.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Controller-reported state of a PVAJ list or running snapshot.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum PvajState</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="AAMotion.EnumPropertyHelper.html#AAMotion_EnumPropertyHelper_GetDescription_System_Enum_">EnumPropertyHelper.GetDescription(Enum)</a>
+  </div>
+  </dd></dl>
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="AAMotion_PvajState_Armed"><code>Armed = 2</code></dt>
+  
+  <dd><p>The axis is armed.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.Extensions.AAMotionParametersUpload.html">AAMotionParametersUpload</a></dt>
-      <dd><pre><code>Asynchronously uploads (saves) controller parameters to a .par file.
-</code></pre>
-<p></p>
-<pre><code>&quot;Upload&quot; in this context follows the PCSuite convention: controller disk contents are read and persisted to a local file.
-</code></pre>
-<p></p>
-<pre><code>Mirrors the PCSuite &quot;Parameters Upload&quot; tool: queries every supported parameter, writes them with header (product type,
-firmware/FPGA version, date, checksum) to a plain ASCII .par file.
-</code></pre>
-<p></p>
-<pre><code>Ethernet and Simulation connections use Bulk messages (up to 50 per packet); other channels send one by one.
-</code></pre>
+    <dt id="AAMotion_PvajState_Executing"><code>Executing = 3</code></dt>
+  
+  <dd><p>The controller is executing a trajectory snapshot.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.Extensions.ParamConversion.html">ParamConversion</a></dt>
-      <dd><p>One download row whose value was rewritten before it was sent.</p>
+    <dt id="AAMotion_PvajState_NotValidated"><code>NotValidated = 0</code></dt>
+  
+  <dd><p>The list needs validation.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.Extensions.ParamHandlingSummary.html">ParamHandlingSummary</a></dt>
-      <dd><p>Summary of a parameter upload or download operation.</p>
+    <dt id="AAMotion_PvajState_Validated"><code>Validated = 1</code></dt>
+  
+  <dd><p>The list has passed validation.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="AAMotion.Extensions.ParamRejection.html">ParamRejection</a></dt>
-      <dd><p>One entry the controller refused, or a download skipped, as it was sent (or read) and as it was answered.</p>
-</dd>
-    </dl>
+  </dl>
+
 
 
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Enums/PvajEnums.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -164,7 +163,7 @@ firmware/FPGA version, date, checksum) to a plain ASCII .par file.
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

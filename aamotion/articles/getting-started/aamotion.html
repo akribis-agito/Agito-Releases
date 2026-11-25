@@ -225,29 +225,31 @@ sharing one <code>CommAPI</code> share the setting. To bypass the scaling for a 
 <li><strong>It does not unlock raw User Units configuration writes.</strong> A direct assignment to a <code>*UnitFct</code> or
 <code>*UnitUnt</code> parameter is rejected either way (error 4023) — change those through the API.</li>
 </ul>
-<p>A <strong>multi-axis move requires its axes to agree on their units.</strong> <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> over
-several axes apply one <code>speed</code> and one <code>accel</code> to the vector distance across them, which only means
-something if the axes measure the same quantity: every axis must carry the same unit <em>name</em> in the
-position, velocity and acceleration groups. Different scaling factors under one name are fine — two
-encoder resolutions on the same gantry still measure millimetres — but a <code>rad</code> axis and a <code>cm</code> axis have
-no common speed, and an axis with User Units off is on controller counts, which does not match a scaled
-one. Axes that disagree make the call return <code>false</code> and command nothing, before any parameter is read
-from or written to the controller; the reason arrives on <code>MotionController.ErrorOccurred</code> as
-<code>(-1, &quot;&lt;method&gt;&quot;, &lt;message naming the axes and the group&gt;)</code>. Passing <code>null</code> as the controller does not
-opt out — the units are read from the axes themselves, so the call still returns <code>false</code>; there is just
-no channel to report it on. For the same reason the axes must be the SDK's own (<code>controller.GetAxis(...)</code>
-/ <code>controller.AxisList</code>): a wrapper or mock of your own around <code>ISingleAxis</code> carries no axis identity, so
-its units cannot be checked and the call is refused. Check an axis's configuration with
-<code>controller.CommAPI.GetUserUnitsEnabled('A')</code> and
-<code>controller.CommAPI.MessagesContainer.TryGetUserUnitsGroup(group)?.AxisUnits('A')</code> — both are keyed by
-the axis letter, not by <code>AxisRef</code> — or opt out with <code>UseUserUnits = false</code>, which puts every axis back
-on counts and therefore always matches.</p>
-<p>The <strong>vector surface carries the same rule</strong>. <code>IVector.VectorLinear</code> (both overloads) and <code>VectorArc</code>
-apply one <code>VecSpeed</code>/<code>VecAccel</code>/<code>VecDecel</code> across the axes named by the mask while each axis's <code>AbsTrgt</code>
-— and, for an arc, its <code>VecArcCenter</code> — is in that axis's own units, so the same three groups must agree
-and a mismatch is refused the same way, with the same <code>(-1, &quot;&lt;method&gt;&quot;, &lt;message&gt;)</code> on
-<code>ErrorOccurred</code>. The profile slots are written to the axis the call was made on, which is always one of the
-members: the controller reads the profile from the axis that receives <code>Begin</code>, requires that axis to be the
+<p>A <strong>multi-axis move is one bulk message.</strong> <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> over several axes send each
+axis's <code>Speed</code>, <code>Accel</code> and <code>Decel</code> (only those passed; <code>null</code> writes nothing), <code>SpeedChgOn=0</code> where the
+controller has it (disarming a pending two-speed change, as the single-axis plain moves do), <code>MotionMode=1</code> and its target,
+then every axis's <code>Begin</code>, in one <code>;</code>-separated bulk. The controller executes each <code>Begin</code> separately; use
+vector motion for same-sample or coordinated straight-line motion. Past the 50 commands a bulk
+carries, the commands split so that the last bulk ends with every <code>Begin</code>; RS-232 and CAN carry no bulk, so
+there each command goes on its own and the axes begin one after another. Nothing is read first and
+nothing is scaled: every axis gets the values as given, in its own units, and arrives when its own profile
+ends. The controller stops at the first command it refuses, so a refused parameter starts no axis; a refused
+<code>Begin</code> after earlier ones leaves those axes moving, and <code>ErrorOccurred</code> names the refused command and the
+axes already moving. A message that gets no answer (a timeout, a closed session) or a malformed one (<code>ERR 4024</code>) leaves unknown whether its
+<code>Begin</code>s ran: <code>ErrorOccurred</code> names those axes as unknown, and the caller reads their <code>InMotion</code>. The axes
+must be the SDK's own (<code>controller.GetAxis(...)</code> / <code>controller.AxisList</code>), on one controller and each listed
+once; otherwise the call returns <code>false</code> before sending, with <code>(-1, &quot;&lt;method&gt;&quot;, &lt;reason&gt;)</code> on
+<code>ErrorOccurred</code>.</p>
+<p>A <strong>vector move requires its axes to agree on their units.</strong> <code>IVector.VectorLinear</code> (both overloads) and
+<code>VectorArc</code> apply one <code>VecSpeed</code>/<code>VecAccel</code>/<code>VecDecel</code> along the path across the axes named by the mask while
+each axis's <code>AbsTrgt</code> — and, for an arc, its <code>VecArcCenter</code> — is in that axis's own units, so every member
+must carry the same unit <em>name</em> in the position, velocity and acceleration groups. Different factors under
+one name are fine — two encoder resolutions on one gantry still measure millimetres — but a <code>rad</code> axis and a
+<code>cm</code> axis have no common speed, an axis with User Units off is on counts, and an unnamed group must match on
+its factor instead. A mismatch returns <code>false</code> before anything is written, with
+<code>(-1, &quot;&lt;method&gt;&quot;, &lt;message naming the axes and the group&gt;)</code> on <code>ErrorOccurred</code>; <code>UseUserUnits = false</code> puts
+every axis on counts, which always matches.
+The profile slots are written to the axis the call was made on, which is always one of the members: the controller reads the profile from the axis that receives <code>Begin</code>, requires that axis to be the
 mask's lowest member, and needs at least two members, all among A..H. A call whose initiating axis is not a
 member of its mask, or not the lowest one, or that names fewer than two members or an axis past H, is
 therefore refused before anything is written, with the same <code>ErrorOccurred</code> shape.</p>
@@ -259,24 +261,27 @@ counts. That identity answer is the counts pin: check <code>Factor == 1</code> b
 scaled axis may carry no unit name, so the name alone is not the test. It is never <code>null</code>, and it is also
 what an unknown keyword, an axis with units off, and a controller opted out through <code>UseUserUnits = false</code>
 return. <code>axis</code> names one axis; a combined mask is an <code>ArgumentException</code>.</p>
-<h3 id="setposition-takes-counts-not-display-units"><code>SetPosition</code> takes counts, not display units</h3>
-<p><code>ISingleAxis.SetPosition</code> writes a parameter the controller declares unscaled, so its argument is in
-controller counts whether or not Global User Units are armed — not in the display units <code>Pos</code> reads in.
-<code>SetPosition(axis.Pos)</code> is therefore not a round trip on a scaled axis: on the <code>0.01 mm/count</code> axis
-above it writes <code>24.68</code> as a count, rounded to 25. To set the current position from a display value,
-divide it by that axis's position factor —</p>
-<pre><code class="lang-csharp">double factor = controller.GetUserUnits(AxisRef.A, eKeyword.Pos).Factor;   // 1 when the axis is on counts
-axis.SetPosition(displayValue / factor);
-</code></pre>
-<p>— or read the position in counts (<code>controller.UseUserUnits = false</code>) and pass that value straight back.</p>
+<h3 id="setposition-takes-the-units-pos-reads-in"><code>SetPosition</code> takes the units <code>Pos</code> reads in</h3>
+<p>The controller lists <code>SetPosition</code> in its position User Units group, so <code>ISingleAxis.SetPosition</code> is
+scaled exactly like <code>Pos</code>: on the <code>0.01 mm/count</code> axis above, <code>SetPosition(24.68)</code> sets 2468 counts, and
+<code>SetPosition(axis.Pos)</code> is a round trip. With <code>controller.UseUserUnits = false</code>, both are in counts.</p>
 <h2 id="api-documentation">API Documentation</h2>
 <p>API documentation is available via IntelliSense. XML doc comments are included with the NuGet package.</p>
-<h2 id="upgrading-from-1100">Upgrading from 11.0.0</h2>
-<p>12.0.0 is a breaking release: download <a href="https://github.com/akribis-agito/Agito-Releases/releases/download/Software/AAMotion/v12.0.0/aamotion-12-change-disclosure.html"><code>aamotion-12-change-disclosure.html</code></a>, published with the 12.0.0 release, and open it in a browser for every break with the diagnostic it raises and compiled before/after samples — GitHub serves an <code>.html</code> release asset as a file rather than rendering it.</p>
+<h2 id="upgrading-from-12x">Upgrading from 12.x</h2>
+<p>13.0.0 is a major release. Its assembly version is <code>13.0.0.0</code>, so recompile against it: a .NET Framework binary built against 12.x does not bind. What breaks:</p>
+<ul>
+<li><code>AAMotionAPI.ScanController</code> and <code>ScanControllerDetailed</code> take a required first parameter, <code>bool fastScan</code>: <code>ScanController(&quot;172.1.1&quot;)</code> becomes <code>ScanController(false, &quot;172.1.1&quot;)</code>.</li>
+<li>Multi-axis <code>AAMotionAPI.MoveAbs</code> / <code>MoveRel</code> take <code>double?</code> for <code>speed</code>, <code>accel</code> and <code>decel</code> and write them to every axis as given, with no distance scaling; <code>null</code> leaves the controller's value. A refused command returns <code>false</code> instead of throwing. Use vector motion for coordinated motion.</li>
+<li>A custom <code>ISingleAxis</code> implementation must add <code>PVAJList</code>, <code>PVAJValidate</code>, <code>PVAJArm</code>, <code>PVAJStatus</code>, <code>PVAJPosTol</code>, <code>PVAJVelTol</code> and <code>HomeToHardStopByStuckThenIndex</code>.</li>
+<li>The <code>.par</code> upload and download types moved to AAComm: <code>AACommParametersUpload</code> and <code>AACommParametersDownload</code> take <code>controller.CommAPI</code>, and <code>ParamHandlingSummary</code>, <code>ParamConversion</code> and <code>ParamRejection</code> are in <code>AAComm.Extensions</code>.</li>
+<li><code>ParameterMetadataCache</code> is removed: call <code>GetParameterType</code> on the controller.</li>
+<li>Native SDK: the <code>aamotion.h</code> callback registration functions take a <code>void* user</code> argument, and <code>aamotion_error_reported_cb</code> receives the controller error code first. Rebuild against the new header.</li>
+</ul>
+<p>The full list is in <a href="https://akribis-agito.github.io/Agito-Releases/aamotion/articles/release-notes/aamotion-changelog.html">CHANGELOG.md</a>.</p>
 <h2 id="release-notes">Release Notes</h2>
 <p>See <a href="https://akribis-agito.github.io/Agito-Releases/aamotion/articles/release-notes/aamotion-changelog.html">CHANGELOG.md</a> for detailed release notes and version history.</p>
 <h2 id="license">License</h2>
-<p>This software is licensed under the <strong>MIT License</strong>. See the NuGet package metadata for details.</p>
+<p>Copyright © Agito Akribis Systems. Licensed under the <strong>MIT License</strong> (<code>MIT</code>). The package carries the license text (<code>LICENSE</code>); a redistribution keeps it.</p>
 <hr>
 <p>For further information, consult the included documentation or contact Agito support.</p>
 
@@ -300,7 +305,7 @@ axis.SetPosition(displayValue / factor);
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

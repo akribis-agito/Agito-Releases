@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_IVector" data-uid="AAMotion.IVector" class="text-break">
-Interface IVector  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Interface IVector  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -125,7 +125,7 @@ Interface IVector  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="AAMotion_IVector_VecAbsTrgt" data-uid="AAMotion.IVector.VecAbsTrgt">
   VecAbsTrgt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Target distance of the vector path</p>
@@ -160,7 +160,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecAccel" data-uid="AAMotion.IVector.VecAccel">
   VecAccel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion acceleration.</p>
@@ -192,7 +192,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecArcCenter" data-uid="AAMotion.IVector.VecArcCenter">
   VecArcCenter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Arc center point</p>
@@ -225,11 +225,12 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecArcDir" data-uid="AAMotion.IVector.VecArcDir">
   VecArcDir
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Arc direction</p>
-<p>(0: counterclockwise CCW, 1: clockwise CW), independent for each axis.</p>
+  <div class="markdown level1 summary"><p>Arc direction: 0 = counterclockwise (CCW), 1 = clockwise (CW).</p>
+<p>Set per axis, but only the value on the axis that issues <code>Begin</code> takes effect. Used with
+<a class="xref" href="AAMotion.IVector.html#AAMotion_IVector_VecArcCenter">VecArcCenter</a>, which fixes the arc's center and radius.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -258,7 +259,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecDecel" data-uid="AAMotion.IVector.VecDecel">
   VecDecel
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion deceleration.</p>
@@ -290,7 +291,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecEmrgDec" data-uid="AAMotion.IVector.VecEmrgDec">
   VecEmrgDec
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector emergency stop deceleration.</p>
@@ -322,7 +323,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecEncRatio" data-uid="AAMotion.IVector.VecEncRatio">
   VecEncRatio
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Encoder resolution compensation ratio, scaled by each axis's resolution, actual ratio = value/256, range 256(1)~25600(100).</p>
@@ -355,7 +356,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecJerk" data-uid="AAMotion.IVector.VecJerk">
   VecJerk
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion jerk (rate of change of acceleration), defines the time to build up acceleration (or deceleration), in milliseconds.</p>
@@ -387,7 +388,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecMemberAxes" data-uid="AAMotion.IVector.VecMemberAxes">
   VecMemberAxes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Axes participating in vector motion (bitwise definition).</p>
@@ -419,7 +420,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecMotionStat" data-uid="AAMotion.IVector.VecMotionStat">
   VecMotionStat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion status (read-only).</p>
@@ -451,7 +452,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecNumCircles" data-uid="AAMotion.IVector.VecNumCircles">
   VecNumCircles
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Additional number of circles for vector arc motion.</p>
@@ -483,7 +484,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecPause" data-uid="AAMotion.IVector.VecPause">
   VecPause
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Vector pause flag,
@@ -519,7 +520,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecPosFDef" data-uid="AAMotion.IVector.VecPosFDef">
   VecPosFDef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector position filter (read-only).</p>
@@ -551,7 +552,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecPosFOn" data-uid="AAMotion.IVector.VecPosFOn">
   VecPosFOn
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector position filter switch.</p>
@@ -583,7 +584,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecPosRef" data-uid="AAMotion.IVector.VecPosRef">
   VecPosRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector current position reference</p>
@@ -616,7 +617,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecSpeed" data-uid="AAMotion.IVector.VecSpeed">
   VecSpeed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion speed.</p>
@@ -648,7 +649,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecType" data-uid="AAMotion.IVector.VecType">
   VecType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vector motion type</p>
@@ -681,7 +682,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VecdPosRef" data-uid="AAMotion.IVector.VecdPosRef">
   VecdPosRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Derivative of the vector position reference</p>
@@ -718,7 +719,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_SetVectorParam_System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.SetVectorParam(System.Double,System.Double,System.Double,System.Double,System.Int32)">
   SetVectorParam(double, double, double, double, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Set vector motion parameters.  
@@ -766,7 +767,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_StopVec" data-uid="AAMotion.IVector.StopVec">
   StopVec()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop vector motion.</p>
@@ -799,7 +800,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
 
   <h3 id="AAMotion_IVector_VectorArc_AAMotion_AxisRef_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.VectorArc(AAMotion.AxisRef,AAMotion.AxisRef,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
   VectorArc(AxisRef, AxisRef, double, double, double, double, int, int, double, double, double, double, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute arc vector motion.</p>
@@ -834,7 +835,7 @@ The value is a double and carries any User-Units scaling AAComm applied to the r
     <dd><p>Target position of the second axis.</p>
 </dd>
     <dt><code>dir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Vector motion direction.</p>
+    <dd><p>Arc direction, written to <a class="xref" href="AAMotion.IVector.html#AAMotion_IVector_VecArcDir">VecArcDir</a>: 0 = counterclockwise (CCW), 1 = clockwise (CW).</p>
 </dd>
     <dt><code>circles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Number of circles for vector motion.</p>
@@ -898,7 +899,7 @@ false puts every axis back on controller counts, which always matches.</p>
 
   <h3 id="AAMotion_IVector_VectorContinue" data-uid="AAMotion.IVector.VectorContinue">
   VectorContinue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Continue vector motion.   
@@ -934,7 +935,7 @@ false puts every axis back on controller counts, which always matches.</p>
 
   <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Double___" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double[])">
   VectorLinear(AxisRef, double, double, double, double, int, params double[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L214"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform linear vector motion.</p>
@@ -1017,7 +1018,7 @@ false puts every axis back on controller counts, which always matches.</p>
 
   <h3 id="AAMotion_IVector_VectorLinear_AAMotion_AxisRef_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="AAMotion.IVector.VectorLinear(AAMotion.AxisRef,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Double,System.Double,System.Double,System.Double,System.Int32)">
   VectorLinear(AxisRef, double?, double?, double?, double?, double?, double?, double?, double?, double, double, double, double, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L175"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform linear vector motion.</p>
@@ -1119,7 +1120,7 @@ false puts every axis back on controller counts, which always matches.</p>
 
   <h3 id="AAMotion_IVector_VectorPause" data-uid="AAMotion.IVector.VectorPause">
   VectorPause()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><pre><code>Pause vector motion.  
@@ -1155,7 +1156,7 @@ false puts every axis back on controller counts, which always matches.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Interfaces/Standard/IVector.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Model/Interfaces/Standard/IVector.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -1171,7 +1172,7 @@ false puts every axis back on controller counts, which always matches.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

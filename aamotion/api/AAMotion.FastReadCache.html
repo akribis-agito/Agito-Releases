@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class FastReadCache | Agito AAMotion SDK ">
       
-      <meta name="description" content="Fast read cache for high-performance data reading. This cache stores parameter values that are refreshed periodically (default 1ms) and allows instant read access without sending commands to the controller.">
+      <meta name="description" content="Fast read cache for high-performance data reading. A background thread refreshes the registered parameters every , and a read of a registered parameter answers from the last refresh without a controller round trip. Reads never take a lock, so callers polling a value from several threads never hold off the refresh that writes it. A value that was never refreshed, that the controller answered with an error, or that is not a number is a miss: the read goes to the controller instead. A refresh reads supported registrations in channel-sized batches, with motion status last.  After a motion begins on an axis (, which every MoveAbs sends), a second thread reads that axis&#39;s InTargetStat every  until it reads 4. Until a reading shows the motion has started, the cache does not answer that axis&#39;s MotionStat or InTargetStat — those reads go to the controller — for at most .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="AAMotion_FastReadCache" data-uid="AAMotion.FastReadCache" class="text-break">
-Class FastReadCache  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Class FastReadCache  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,8 +98,19 @@ Class FastReadCache  <a class="header-action link-secondary" title="View source"
   </div>
 
   <div class="markdown summary"><p>Fast read cache for high-performance data reading.
-This cache stores parameter values that are refreshed periodically (default 1ms)
-and allows instant read access without sending commands to the controller.</p>
+A background thread refreshes the registered parameters every <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshIntervalMs">RefreshIntervalMs</a>,
+and a read of a registered parameter answers from the last refresh without a controller round
+trip. Reads never take a lock, so callers polling a value from several threads never hold off
+the refresh that writes it. A value that was never refreshed, that the controller answered
+with an error, or that is not a number is a miss: the read goes to the controller instead.
+A refresh reads supported registrations in channel-sized batches, with motion status last.</p>
+<p></p>
+<p>After a motion begins on an axis (<a class="xref" href="AAMotion.ISingleAxis.html#AAMotion_ISingleAxis_Begin">Begin()</a>, which every <code>MoveAbs</code>
+sends), a second thread reads that axis's <code>InTargetStat</code> every
+<a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_InTargetStatRefreshIntervalMs">InTargetStatRefreshIntervalMs</a> until it reads 4. Until a reading
+shows the motion has started, the cache does not answer that axis's <code>MotionStat</code> or
+<code>InTargetStat</code> — those reads go to the controller — for at most
+<a class="xref" href="AAMotion.AAMotionConfig.html#AAMotion_AAMotionConfig_MoveStartConfirmMs">MoveStartConfirmMs</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -165,7 +176,7 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache__ctor_AAMotion_CommAPIInterface_System_Int32_" data-uid="AAMotion.FastReadCache.#ctor(AAMotion.CommAPIInterface,System.Int32)">
   FastReadCache(CommAPIInterface, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new FastReadCache.</p>
@@ -182,7 +193,7 @@ and allows instant read access without sending commands to the controller.</p>
     <dd><p>The communication interface to use for refreshing data.</p>
 </dd>
     <dt><code>refreshIntervalMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Refresh interval in milliseconds (default: 1ms).</p>
+    <dd><p>Refresh interval in milliseconds.</p>
 </dd>
   </dl>
 
@@ -205,7 +216,7 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_IsEnabled" data-uid="AAMotion.FastReadCache.IsEnabled">
   IsEnabled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets whether the cache is currently enabled.</p>
@@ -237,7 +248,7 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_IsRefreshing" data-uid="AAMotion.FastReadCache.IsRefreshing">
   IsRefreshing
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets whether a refresh is currently in progress.</p>
@@ -269,7 +280,7 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_LastRefreshTime" data-uid="AAMotion.FastReadCache.LastRefreshTime">
   LastRefreshTime
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the last refresh time (UTC).</p>
@@ -301,10 +312,10 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_RefreshIntervalMs" data-uid="AAMotion.FastReadCache.RefreshIntervalMs">
   RefreshIntervalMs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the refresh interval in milliseconds.</p>
+  <div class="markdown level1 summary"><p>Gets the refresh interval in milliseconds. <a class="xref" href="AAMotion.MotionController.html#AAMotion_MotionController_EnableFastReadCache_System_Int32_">EnableFastReadCache(int)</a> sets it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -337,10 +348,11 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_ClearCache" data-uid="AAMotion.FastReadCache.ClearCache">
   ClearCache()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L360"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L269"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Clears all cached values.</p>
+  <div class="markdown level1 summary"><p>Marks every cached value invalid; registrations are kept, and reads miss until the next
+refresh.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -364,10 +376,10 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_Disable" data-uid="AAMotion.FastReadCache.Disable">
   Disable()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Disables the cache and stops the refresh timer.</p>
+  <div class="markdown level1 summary"><p>Disables the cache and stops refreshing.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -391,10 +403,10 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_Dispose" data-uid="AAMotion.FastReadCache.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L690"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L465"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Disposes the cache and stops the refresh timer.</p>
+  <div class="markdown level1 summary"><p>Disposes the cache and stops its threads.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -418,10 +430,10 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_Enable" data-uid="AAMotion.FastReadCache.Enable">
   Enable()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Enables the cache and starts the refresh timer.</p>
+  <div class="markdown level1 summary"><p>Enables the cache and starts the refresh thread.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -445,7 +457,7 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_GetCacheAgeMs_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.GetCacheAgeMs(AAMotion.AxisRef,AAMotion.eKeyword)">
   GetCacheAgeMs(AxisRef, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L385"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L277"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the age of a cached value in milliseconds.</p>
@@ -487,11 +499,11 @@ and allows instant read access without sending commands to the controller.</p>
 
   <h3 id="AAMotion_FastReadCache_GetCachedArrayValue_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.FastReadCache.GetCachedArrayValue(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32)">
   GetCachedArrayValue(AxisRef, eKeyword, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets a cached array element value for the specified axis, keyword, and index.
-Returns null if the value is not cached or cache is disabled.</p>
+  <div class="markdown level1 summary"><p>Gets a cached array element value for the specified axis, keyword, and index, without
+taking a lock. Returns null if the value is not available or the cache is disabled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -533,11 +545,13 @@ Returns null if the value is not cached or cache is disabled.</p>
 
   <h3 id="AAMotion_FastReadCache_GetCachedValue_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.GetCachedValue(AAMotion.AxisRef,AAMotion.eKeyword)">
   GetCachedValue(AxisRef, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L203"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets a cached value for the specified axis and keyword.
-Returns null if the value is not cached or cache is disabled.</p>
+  <div class="markdown level1 summary"><p>Gets a cached value for the specified axis and keyword, without taking a lock.
+Returns null when the value is not registered, not yet refreshed or invalid, when the cache
+is disabled, and for <code>MotionStat</code> / <code>InTargetStat</code> while a motion just begun on the
+axis has not yet been seen to start.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -576,10 +590,10 @@ Returns null if the value is not cached or cache is disabled.</p>
 
   <h3 id="AAMotion_FastReadCache_IsArrayElementRegistered_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32_" data-uid="AAMotion.FastReadCache.IsArrayElementRegistered(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32)">
   IsArrayElementRegistered(AxisRef, eKeyword, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L249"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks if an array element is registered for caching.</p>
+  <div class="markdown level1 summary"><p>Checks if an array element is registered for caching, without taking a lock.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -621,10 +635,10 @@ Returns null if the value is not cached or cache is disabled.</p>
 
   <h3 id="AAMotion_FastReadCache_IsRegistered_AAMotion_AxisRef_AAMotion_eKeyword_" data-uid="AAMotion.FastReadCache.IsRegistered(AAMotion.AxisRef,AAMotion.eKeyword)">
   IsRegistered(AxisRef, eKeyword)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L309"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L240"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks if a keyword is registered for caching.</p>
+  <div class="markdown level1 summary"><p>Checks if a keyword is registered for caching, without taking a lock.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -663,13 +677,14 @@ Returns null if the value is not cached or cache is disabled.</p>
 
   <h3 id="AAMotion_FastReadCache_RefreshNow" data-uid="AAMotion.FastReadCache.RefreshNow">
   RefreshNow()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L258"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Forces an immediate refresh of all cached values. Does nothing while another refresh is
-in flight: it neither waits for that refresh nor raises <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a>.
-An exception thrown by a <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a> or <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshCompleted">RefreshCompleted</a>
-subscriber is reported on <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshError">RefreshError</a> instead of propagating.</p>
+  <div class="markdown level1 summary"><p>Forces an immediate refresh of all cached values on the calling thread. Does nothing while
+another refresh is in flight: it neither waits for that refresh nor raises
+<a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a>. An exception thrown by a <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshStarted">RefreshStarted</a> or
+<a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshCompleted">RefreshCompleted</a> subscriber is reported on <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshError">RefreshError</a> instead
+of propagating.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -693,10 +708,10 @@ subscriber is reported on <a class="xref" href="AAMotion.FastReadCache.html#AAMo
 
   <h3 id="AAMotion_FastReadCache_RegisterArrayElements_AAMotion_AxisRef_AAMotion_eKeyword_System_Int32___" data-uid="AAMotion.FastReadCache.RegisterArrayElements(AAMotion.AxisRef,AAMotion.eKeyword,System.Int32[])">
   RegisterArrayElements(AxisRef, eKeyword, params int[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>registers array elements to cache for a specific axis.
+  <div class="markdown level1 summary"><p>Registers array elements to cache for a specific axis.
 For example: RegisterArrayElements(AxisRef.A, eKeyword.AInPort, 1, 2, 3, 4)
 registers AAInPort[1], AAInPort[2], AAInPort[3], AAInPort[4].</p>
 </div>
@@ -741,13 +756,13 @@ registers AAInPort[1], AAInPort[2], AAInPort[3], AAInPort[4].</p>
 
   <h3 id="AAMotion_FastReadCache_RegisterKeywords_AAMotion_AxisRef_AAMotion_eKeyword___" data-uid="AAMotion.FastReadCache.RegisterKeywords(AAMotion.AxisRef,AAMotion.eKeyword[])">
   RegisterKeywords(AxisRef, params eKeyword[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L154"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>registers keywords to cache for a specific axis.
+  <div class="markdown level1 summary"><p>Registers keywords to cache for a specific axis.
 A keyword the controller flags as a command is an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a> and the whole
-call is refused: the refresh ships every registered keyword in a bulk at the configured
-interval, so one accepted command registration would re-send it for as long as the cache runs.</p>
+call is refused: the refresh ships every registered keyword at the configured interval, so one
+accepted command registration would re-send it for as long as the cache runs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -780,7 +795,7 @@ interval, so one accepted command registration would re-send it for as long as t
 
   <h3 id="AAMotion_FastReadCache_UnregisterKeywords_AAMotion_AxisRef_AAMotion_eKeyword___" data-uid="AAMotion.FastReadCache.UnregisterKeywords(AAMotion.AxisRef,AAMotion.eKeyword[])">
   UnregisterKeywords(AxisRef, params eKeyword[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Unregisters keywords from cache for a specific axis.</p>
@@ -819,12 +834,13 @@ interval, so one accepted command registration would re-send it for as long as t
 
   <h3 id="AAMotion_FastReadCache_RefreshCompleted" data-uid="AAMotion.FastReadCache.RefreshCompleted">
   RefreshCompleted
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Event raised when cache refresh completes. On an enabled cache the next refresh is
-scheduled first, so it may already have started when a subscriber runs. An exception
-thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshError">RefreshError</a>.</p>
+  <div class="markdown level1 summary"><p>Event raised when cache refresh completes. On an enabled cache it is raised on a pool
+thread, so a slow subscriber never delays the next refresh, which may already have started
+when the subscriber runs; <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshNow">RefreshNow()</a> raises it on the calling thread. An
+exception thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCache.html#AAMotion_FastReadCache_RefreshError">RefreshError</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -852,10 +868,10 @@ thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCac
 
   <h3 id="AAMotion_FastReadCache_RefreshError" data-uid="AAMotion.FastReadCache.RefreshError">
   RefreshError
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Event raised on refresh error.</p>
+  <div class="markdown level1 summary"><p>Event raised on a refresh or <code>InTargetStat</code> poll error. Raised on a background thread.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -883,7 +899,7 @@ thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCac
 
   <h3 id="AAMotion_FastReadCache_RefreshStarted" data-uid="AAMotion.FastReadCache.RefreshStarted">
   RefreshStarted
-  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event raised when cache refresh starts.</p>
@@ -915,7 +931,7 @@ thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCac
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Shared/FastReadCache.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AAMotion/Features/FastRead/FastReadCache.cs/#L27" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -931,7 +947,7 @@ thrown by a subscriber is reported on <a class="xref" href="AAMotion.FastReadCac
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
+          &copy; Agito Akribis Systems. Licensed under the MIT License.
         </div>
       </div>
     </footer>

@@ -1,141 +1,85 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-      <title>Agito AAComm SDK Documentation | Agito AAComm SDK </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Agito AAComm SDK Documentation | Agito AAComm SDK ">
-      
-      
-      <link rel="icon" href="favicon.ico">
-      <link rel="stylesheet" href="public/docfx.min.css">
-      <link rel="stylesheet" href="public/main.css">
-      <meta name="docfx:navrel" content="toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/index.md/#L1">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agito Releases</title>
+<meta name="description" content="Agito Akribis Systems SDK documentation and release downloads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A3A6E; --navy-deep: #12294F; --agito-teal: #0098B9; --teal: #007096;
+    --ink: #1A3A6E; --body: #4B5468; --on-navy: #F6F8FB; --on-navy-muted: #C6D3E8;
+    --surface-page: #F6F8FB; --surface-card: #E6ECF5; --line: #C6D3E8;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --navy-deep: #0B1630; --teal: #33B7E0; --ink: #F6F8FB; --body: #C6D3E8;
+            --surface-page: #0F1E3A; --surface-card: #1C3561; --line: #2E4E85; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface-page); color: var(--body);
+         font: 17px/1.55 "HarmonyOS Sans", "Inter", "Segoe UI", Arial, sans-serif; }
+  header { background: var(--navy); color: var(--on-navy); border-bottom: 4px solid var(--agito-teal); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header .wrap { padding-top: 48px; padding-bottom: 40px; }
+  h1 { margin: 0; font-size: 40px; line-height: 1.15; font-weight: 700; }
+  header p { margin: 8px 0 0; color: var(--on-navy-muted); }
+  main .wrap { padding-top: 32px; padding-bottom: 48px; }
+  h2 { color: var(--ink); font-size: 24px; line-height: 1.25; font-weight: 600; margin: 32px 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  a.card { display: block; background: var(--surface-card); border: 1px solid var(--line); border-radius: 12px;
+           padding: 20px; text-decoration: none; color: var(--body); }
+  a.card:hover, a.card:focus-visible { border-color: var(--teal); }
+  .label { color: var(--teal); font-size: 13px; line-height: 1.4; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card strong { display: block; color: var(--ink); font-size: 20px; margin: 4px 0; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--teal); }
+  footer { border-top: 1px solid var(--line); color: var(--body); font-size: 13px; }
+  footer .wrap { padding-top: 16px; padding-bottom: 24px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Agito Releases</h1>
+    <p>SDK documentation and release downloads from Agito Akribis Systems.</p>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h2>Documentation</h2>
+    <div class="grid">
+      <a class="card" href="https://akribis-agito.github.io/Agito-Releases/aacomm/">
+        <span class="label">.NET API</span>
+        <strong>AAComm</strong>
+        PC-to-controller communication: the API reference, articles and release notes.
+      </a>
+      <a class="card" href="https://akribis-agito.github.io/Agito-Releases/aamotion/">
+        <span class="label">.NET API</span>
+        <strong>AAMotion</strong>
+        The motion API over AAComm: the API reference and release notes.
+      </a>
+      <a class="card" href="https://akribis-agito.github.io/Agito-Releases/aamotion-guide/">
+        <span class="label">Guide, English and Chinese</span>
+        <strong>AAMotion Programming Guide</strong>
+        The C# and C APIs by task, with runnable C#, C++ and Python samples.
+      </a>
+    </div>
 
-      <script type="module" src="./public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
-  </head>
-
-  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="index.html">
-            <img id="logo" class="svg" src="logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <main class="container-xxl">
-
-      <div class="content">
-        <div class="actionbar">
-
-          <nav id="breadcrumb"></nav>
-        </div>
-
-        <article data-uid="">
-<h1 id="agito-aacomm-sdk-documentation">Agito AAComm SDK Documentation</h1>
-
-<p>Welcome to the documentation for the Agito AAComm communication SDK.</p>
-<h2 id="libraries">Libraries</h2>
-<table>
-<thead>
-<tr>
-<th>Library</th>
-<th>Description</th>
-<th>Package</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="articles/getting-started/aacomm.html">AAComm</a></td>
-<td>PC-to-Controller communication API</td>
-<td><a href="https://www.nuget.org/packages/Agito.AAComm">Agito.AAComm (NuGet)</a></td>
-</tr>
-<tr>
-<td><a href="articles/getting-started/aamotion.html">AAMotion</a></td>
-<td>High-level motion control API</td>
-<td><a href="https://www.nuget.org/packages/Agito.AAMotion">Agito.AAMotion (NuGet)</a></td>
-</tr>
-<tr>
-<td><a href="articles/getting-started/aacommpy.html">AACommPy</a></td>
-<td>Python bindings for AAComm</td>
-<td><a href="https://pypi.org/project/aacommpy/">aacommpy (PyPI)</a></td>
-</tr>
-<tr>
-<td><a href="articles/getting-started/agaamotion.html">AGAAMotion</a></td>
-<td>C++ motion control API</td>
-<td>Standalone library</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quick-links">Quick Links</h2>
-<ul>
-<li><a href="api/index.md">API Reference</a></li>
-<li><a href="articles/architecture/pipeline.html">Architecture Overview</a></li>
-<li><a href="articles/release-notes/aacomm-changelog.html">Release Notes</a></li>
-</ul>
-
-</article>
-
-        <div class="contribution d-print-none">
-          <a href="https://github.com/akribis-agito/PC-Toolsets/blob/master/AACommComponents/AACommDocs/index.md/#L1" class="edit-link">Edit this page</a>
-        </div>
-
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
-
-      </div>
-
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          Copyright &copy; Agito. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  </body>
+    <h2>Downloads</h2>
+    <ul>
+      <li><a href="https://github.com/akribis-agito/Agito-Releases/releases">Release pages</a>: PCSuite, the SDKs and their native libraries, aacomm.cli, firmware and FPGA.</li>
+      <li>NuGet: <a href="https://www.nuget.org/packages/Agito.AAComm">Agito.AAComm</a>, <a href="https://www.nuget.org/packages/Agito.AAMotion">Agito.AAMotion</a></li>
+      <li>PyPI: <a href="https://pypi.org/project/aacommpy/">aacommpy</a></li>
+    </ul>
+  </div>
+</main>
+<footer>
+  <div class="wrap">Agito Akribis Systems</div>
+</footer>
+</body>
 </html>
